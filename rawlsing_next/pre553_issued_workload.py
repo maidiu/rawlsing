@@ -467,12 +467,16 @@ class _NonRoutingEnvelopePin:
                 for v in obj:
                     visit(v)
             elif typ in (dict,MappingProxyType):
-                if any(type(k) is not str for k in obj):
-                    raise Unsupported("NONSTRING_MAPPING_KEY")
-                budget(128+24*2*len(obj),128+80*len(obj))
+                # Match R4's actual items() contract, not a possibly
+                # different key iterator or delegated MappingProxyType.get.
                 items=tuple(x for pair in obj.items() for x in pair)
+                it=iter(items)
+                if any(type(k) is not str for k,v in zip(it,it)):
+                    raise Unsupported("NONSTRING_MAPPING_KEY")
+                budget(128+24*len(items),128+40*len(items))
                 mappings.append((obj,items))
-                for v in items[1::2]:
+                it=iter(items)
+                for k,v in zip(it,it):
                     visit(v)
             elif typ is GovernedC11Projection:
                 attr(obj,tuple(f.name for f in fields(obj) if f.name!="routing"))
@@ -544,7 +548,7 @@ class _NonRoutingEnvelopePin:
                     return False
         for obj,items in self.mappings:
             it=iter(items)
-            if len(obj)*2!=len(items) or any(obj.get(k,missing) is not v for k,v in zip(it,it)):
+            if len(obj)*2!=len(items) or any(k not in obj or obj[k] is not v for k,v in zip(it,it)):
                 return False
         return True
 
