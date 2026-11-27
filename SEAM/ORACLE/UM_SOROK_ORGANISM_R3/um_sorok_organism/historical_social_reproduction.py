@@ -236,6 +236,18 @@ def _work(world,actors,proc,start,days):
                  'EMPLOYER_BALANCE')
     paid=round(min(owed,cash),5)
     unpaid=round(max(0,owed-paid),5)
+    # The source-qualified activity consumes bodily capacity even if the
+    # controller cannot pay. Hours reserved outside modeled activity are
+    # not actual rest. Use the existing care model's provisional hourly
+    # coefficient, without its per-period cap (which would make wage
+    # load depend on arbitrary partition). This is not a medical rate.
+    body=actors[a]['body']
+    from .organism import eligible
+    eligible(body,'WAIT')  # validate; do not equate a period with a micro-act
+    rest_before=body['rest']
+    nominal_load=round(hours*.00012,5)
+    rest_after=round(max(0.,rest_before-nominal_load),5)
+    body['rest']=rest_after
     world['accounts'][controller]=round(cash-paid,5)
     world['accounts'][a]=round(_number(
         world['accounts'].get(a,0),'WORKER_BALANCE')+paid,5)
@@ -247,6 +259,11 @@ def _work(world,actors,proc,start,days):
         'start_clock':start,'end_clock':start+days,
         'worker':a,'controller':controller,'site':site,
         'modeled_labor_hours':round(hours,3),
+        'worker_rest_before_modeled_work':rest_before,
+        'worker_rest_after_modeled_work':rest_after,
+        'worker_rest_expenditure_model':round(rest_before-rest_after,5),
+        'nominal_bodily_load_model':nominal_load,
+        'rest_recovery_in_unmodeled_hours':'NOT_INFERRED',
         'wage_due_sourcefree_model':owed,
         'actual_paid_model':paid,'wage_arrears':unpaid,
         'physical_goods_output':'NOT_INFERRED_WITHOUT_MATERIAL_PRODUCTION_MODEL',
