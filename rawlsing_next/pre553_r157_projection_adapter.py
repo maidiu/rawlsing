@@ -1996,6 +1996,17 @@ def _weight_slots(doc: Mapping[str, Any]) -> tuple[WeightSlotRule, ...]:
     return tuple(result)
 
 
+def _routing_incidence(doc,rule,row,respondent,dependencies):
+    replay_root=rule.get("replay_root")
+    root=(_ref(replay_root) if replay_root is not None else ExactRef(
+        "ROUTING_REPLAY_ROOT",
+        f"urn:rawlsing:r157:routing:{doc['config_id']}:{rule['question_id']}:{row}",
+        semantic_hash({"config_id":doc["config_id"],"question_id":rule["question_id"],
+                       "row_ordinal":row,"respondent_ref":respondent.ref.as_dict()}),
+    ))
+    return respondent.ref,(respondent.ref,*dependencies),root
+
+
 def _routing(doc: Mapping[str, Any], questions: Mapping[str, QuestionVariableBinding],
              respondents: Sequence[Any], *, active_rows: int) -> tuple[Any, ...]:
     from rawlsing_next.pre553_empirical_objects import RoutingEligibilityFact
@@ -2008,23 +2019,14 @@ def _routing(doc: Mapping[str, Any], questions: Mapping[str, QuestionVariableBin
             raise SourceConfigurationFactoryError(
                 "routing row selector is outside the active source row range")
         authority = _authority_ref(rule["authority_ref"])
-        replay_root = rule.get("replay_root")
+        dependencies=tuple(_ref(x) for x in rule.get("dependency_refs", ()))
         for row in rows:
             respondent = respondents[row - 1]
-            root = (_ref(replay_root) if replay_root is not None else ExactRef(
-                "ROUTING_REPLAY_ROOT",
-                f"urn:rawlsing:r157:routing:{doc['config_id']}:{rule['question_id']}:{row}",
-                semantic_hash({
-                    "config_id": doc["config_id"],
-                    "question_id": rule["question_id"],
-                    "row_ordinal": row,
-                    "respondent_ref": respondent.ref.as_dict(),
-                }),
-            ))
+            _,deps,root=_routing_incidence(doc,rule,row,respondent,dependencies)
             result.append(RoutingEligibilityFact(
                 typed_state=rule["typed_state"],
                 authority_snapshot_refs=(authority,),
-                dependency_refs=(respondent.ref, *(_ref(x) for x in rule.get("dependency_refs", ()))),
+                dependency_refs=deps,
                 producer_replay_locator_or_reference_root=root,
                 empirical_universe_ref=respondent.empirical_universe_ref,
                 scoped_respondent_ref=respondent.ref,
@@ -2037,6 +2039,38 @@ def _routing(doc: Mapping[str, Any], questions: Mapping[str, QuestionVariableBin
                 member_set_replay_ref=_ref(rule["member_set_replay_ref"]),
             ))
     return tuple(result)
+
+
+def _packed_routing(doc,questions,respondents,*,active_rows):
+    """Use the existing R17 rule-grain producer on exact R157 config inputs.
+
+    The incumbent expanded producer supplies each real representative.
+    Preserve explicit row order, duplicate incidence (for later refusal),
+    scoped universe, typed UNKNOWN and every exact legacy identity.
+    No new rule or permission is inferred.
+    """
+    from itertools import chain,groupby
+    from rawlsing_next.pre553_source_backed_c11_facade import _PackedRoutingFacts
+    def rules():
+        for rule in doc["routing"]:
+            selector=rule["row_selector"]
+            rows=range(1,active_rows+1) if selector=="ALL" else tuple(selector)
+            if selector!="ALL" and any(row<1 or row>active_rows for row in rows):
+                raise SourceConfigurationFactoryError(
+                    "routing row selector is outside the active source row range")
+            dependencies=tuple(_ref(x) for x in rule.get("dependency_refs",()))
+            # Universe is part of the shared template. Never coalesce
+            # disjoint runs or reorder the original issued incidence.
+            for _,group in groupby(rows,key=lambda r:respondents[r-1].empirical_universe_ref):
+                first=next(group)
+                representative,=_routing(
+                    {**doc,"routing":({**rule,"row_selector":(first,)},)},
+                    questions,respondents,active_rows=active_rows)
+                def incidences(first=first,group=group,rule=rule,dependencies=dependencies):
+                    for row in chain((first,),group):
+                        yield _routing_incidence(doc,rule,row,respondents[row-1],dependencies)
+                yield representative,incidences()
+    return _PackedRoutingFacts.from_rule_incidence(rules())
 
 
 def _slot_owner_sets(doc: Mapping[str, Any]) -> tuple[PhysicalSlotOwnerSet, ...]:
@@ -2071,6 +2105,7 @@ def build_governed_c11_projection(
     source_sha256: str | None = None,
     row_count: int | None = None,
     row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None = None,
+    packed_routing: bool = False,
 ) -> GovernedC11Projection:
     """Construct the actual ``GovernedC11Projection`` from a validated config.
 
@@ -2079,6 +2114,8 @@ def build_governed_c11_projection(
     here: response events and coordinates are created by the existing facade
     only when the physical cell stream is projected.
     """
+    if type(packed_routing) is not bool:
+        raise SourceConfigurationFactoryError("explicit boolean packed routing selection required")
     doc = _doc(config)
     active_sha, active_rows, artifact_id, study_id, release_id = _active_identity(
         doc, source_sha256=source_sha256, row_count=row_count)
@@ -2120,7 +2157,8 @@ def build_governed_c11_projection(
         questions=tuple(questions_by_id.values()),
         response_slots=_response_slots(doc, questions_by_id),
         coordinate_slots=_coordinate_slots(doc),
-        routing=_routing(doc, questions_by_id, respondents, active_rows=active_rows),
+        routing=(_packed_routing if packed_routing else _routing)(
+            doc, questions_by_id, respondents, active_rows=active_rows),
         weight_slots=_weight_slots(doc),
         authority_snapshots=authority_snapshots,
         source_relations=_source_relations(doc),
@@ -3447,11 +3485,25 @@ def verify_config_projection_binding(
     if projection.row_bindings != expected_bindings:
         raise SourceConfigurationBindingError(
             "projection row/respondent bindings differ from the validated config")
-    expected_routing = _routing(
-        doc, questions_by_id, expected_respondents, active_rows=active_rows)
-    if sorted(projection.routing, key=_canonical_object_key) != sorted(
-        expected_routing, key=_canonical_object_key
-    ):
+    from rawlsing_next.pre553_source_backed_c11_facade import _PackedRoutingFacts
+    if type(projection.routing) is _PackedRoutingFacts:
+        projection.routing.immutable_storage()
+        expected_routing=_packed_routing(
+            doc,questions_by_id,expected_respondents,active_rows=active_rows)
+        same=(len(projection.routing)==len(expected_routing) and
+              all(a==b for a,b in zip(projection.routing.canonical_rows(),
+                                      expected_routing.canonical_rows())))
+        # The original config-binding guard is order-independent.
+        # Preserve that contract for reordered callers, even if costly.
+        if not same:
+            same=(sorted(projection.routing,key=_canonical_object_key)==
+                  sorted(expected_routing,key=_canonical_object_key))
+    else:
+        expected_routing=_routing(
+            doc,questions_by_id,expected_respondents,active_rows=active_rows)
+        same=(sorted(projection.routing,key=_canonical_object_key)==
+              sorted(expected_routing,key=_canonical_object_key))
+    if not same:
         raise SourceConfigurationBindingError(
             "projection routing rules differ from the validated config")
 
