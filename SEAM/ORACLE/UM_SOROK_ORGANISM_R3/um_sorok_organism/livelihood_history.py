@@ -199,3 +199,63 @@ def qualify_recurrent_work_orientation(actor, experience, event_ref, claim):
         "world_cause_and_employer_intentions": "UNRESOLVED",
         "grade": GRADE,
     }
+
+
+def possible_relief_reconstitution(actor, experience, event_ref):
+    """Actually exercised temporary relief can qualify a change in a work orientation.
+
+    Neither a funded transfer nor a suspended contract proves freedom from
+    wage dependence. This limited semantic occasion concerns a previously
+    acquired practical approach to WORK, not a diagnosis or a class identity.
+    """
+    aid=actor['id']; clock=experience.get('clock'); site=experience.get('location')
+    selection=experience.get('own_practical_selection') or {}
+    if (experience.get('actor')!=aid or type(clock) is not int
+            or site!=actor.get('location') or experience.get('own_action')!='DRAW_WAGE_RELIEF'
+            or experience.get('status')!='PERFORMED'
+            or experience.get('participated') is not True
+            or selection.get('actor')!=aid
+            or selection.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'):
+        return []
+    signs=[c for c in experience.get('perceived_cues',[])
+           if c.get('kind')=='performed_draw_wage_relief'
+           and c.get('source_actor')==aid
+           and c.get('description')=='REAL_WAGE_RELIEF_TRANSFERRED'
+           and type(c.get('id')) is str]
+    if len(signs)!=1:return []
+    paths=[x for x in actor.get('evidence_paths',[])
+           if x.get('event')==event_ref and x.get('experience_ref')==experience.get('ref')
+           and x.get('own_action')=='DRAW_WAGE_RELIEF'
+           and signs[0]['id'] in x.get('received_cue_refs',[])]
+    if len(paths)!=1:return []
+    out=[]
+    for row in actor.get('historical_orientations',[]):
+        ground=row.get('recurrent_livelihood_ground')
+        if (not ground or row.get('actor')!=aid or row.get('location')!=site
+                or row.get('operation')!='WORK' or row.get('orientation_mode')!='APPROACH'
+                or row.get('revisions') or type(row.get('origin_clock')) is not int
+                or row['origin_clock']>=clock):continue
+        failures=[f for f in actor.get('labor_dependency_encounters',[])
+                  if f.get('actor')==aid and f.get('location')==site
+                  and type(f.get('clock')) is int and row['origin_clock']<f['clock']<clock
+                  and f.get('own_attempted_work')=='WORK'
+                  and any(p.get('event')==f.get('world_event_ref')
+                          and p.get('experience_ref')==f.get('experience_ref')
+                          and f.get('received_unfinished_sign_ref') in p.get('received_cue_refs',[])
+                          for p in actor.get('evidence_paths',[]))]
+        if not failures:continue
+        f=max(failures,key=lambda x:x['clock'])
+        if not any(p.get('event')==row['origin_event']
+                   and p.get('experience_ref')==row['origin_experience_ref']
+                   and ground.get('present_received_public_sign_ref') in p.get('received_cue_refs',[])
+                   for p in actor.get('evidence_paths',[])):continue
+        basis={'actor':aid,'location':site,'orientation_ref':row['id'],
+               'orientation_origin_event':row['origin_event'],
+               'unfinished_work_ref':f['id'],'unfinished_work_event_ref':f['world_event_ref'],
+               'relief_event_ref':event_ref,'relief_experience_ref':experience['ref'],
+               'received_relief_sign_ref':signs[0]['id'],
+               'not_proof_of_independence_or_controller_intent':True}
+        out.append({'kind':'REVISE_HISTORICAL_ORIENTATION','orientation_ref':row['id'],
+                    'revision_mode':'INHIBIT','perceived_cue_ref':signs[0]['id'],
+                    'relief_reconstitution_basis':basis})
+    return out[:8]

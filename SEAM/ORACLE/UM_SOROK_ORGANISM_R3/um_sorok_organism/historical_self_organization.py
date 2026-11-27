@@ -6,7 +6,7 @@ No event, coactor consent, adult motive, cognition or material right is minted h
 """
 from .types import copy, stable_id, GRADE
 from .organism import ACTIONS, eligible
-from .livelihood_history import qualify_recurrent_work_orientation
+from .livelihood_history import qualify_recurrent_work_orientation, possible_relief_reconstitution
 from .attention_field import possible_monitoring_changes
 
 MODES = frozenset(('APPROACH', 'WITHHOLD', 'AMBIVALENT'))
@@ -466,6 +466,10 @@ def revise_orientation(actor, experience, event_ref, proposal):
         if proposal not in possible_monitoring_changes(actor,experience,event_ref):
             raise ValueError('MONITORING_REVISION_UNQUALIFIED')
         revision['monitoring_revision_basis']=copy(proposal['monitoring_revision_basis'])
+    if 'relief_reconstitution_basis' in proposal:
+        if proposal not in possible_relief_reconstitution(actor,experience,event_ref):
+            raise ValueError('RELIEF_RECONSTITUTION_UNQUALIFIED')
+        revision['relief_reconstitution_basis']=copy(proposal['relief_reconstitution_basis'])
     if 'counterhistory_release_basis' in proposal:
         possibilities = possible_counterhistory_release(actor, experience, event_ref)
         if proposal not in possibilities:
