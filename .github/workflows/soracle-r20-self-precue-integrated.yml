@@ -34,6 +34,7 @@ on:
       - agent/soracle-co-mulchineer-relief-reconstitution-20261127-r1
       - agent/soracle-co-mulchineer-provisioning-purpose-20261127-r1
       - agent/soracle-co-mulchineer-embodied-history-20261127-r1
+      - agent/soracle-co-mulchineer-retrospective-reconstitution-20261127-r1
     paths:
       - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/**'
       - '.github/workflows/soracle-r20-self-precue-integrated.yml'
@@ -100,6 +101,10 @@ jobs:
         if: github.ref_name == 'agent/soracle-co-mulchineer-embodied-history-20261127-r1'
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_embodied_history_r60.py' -v
+      - name: R61 actual retrospective reconstitution
+        if: github.ref_name == 'agent/soracle-co-mulchineer-retrospective-reconstitution-20261127-r1'
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest discover -s tests -p 'test_retrospective_reconstitution_r61.py' -v
       - name: R20 historical self and pre-cue focus
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_historical_self_precue_r19.py' -v
