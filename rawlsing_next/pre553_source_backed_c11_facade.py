@@ -1351,6 +1351,10 @@ class SourceBackedC11SessionCache:
 
 def source_backed_facade_key(source, p, *, current_authorities=()):
     """Cache only under the same full semantics AND physical-read context."""
+    return _facade_key_from_projection_identity(source,p.cache_identity,current_authorities)
+
+
+def _facade_key_from_projection_identity(source,identity,current_authorities):
     binding = {
         "row_count": source.row_count,
         "decoder_metadata_digest": _accelerator_decoder_digest(source),
@@ -1358,8 +1362,55 @@ def source_backed_facade_key(source, p, *, current_authorities=()):
         "current_authority_refs": sorted(a.ref.key for a in current_authorities),
     }
     return SourceBackedFacadeKey(
-        source.source_sha256, p.cache_identity, semantic_hash(binding),
+        source.source_sha256, identity, semantic_hash(binding),
     )
+
+
+@dataclass(frozen=True,slots=True)
+class _CountryProjectionPin:
+    """Reuse an exact live projection hash under the existing structural pin.
+
+    No detached digest, persistent verdict or permission is accepted. The
+    actual packed storage and every supported nonrouting input instance are
+    held and checked; physical transport and authority context are freshly
+    bound on each use. Unusual/oversize inputs use the full old traversal.
+    """
+    projection: GovernedC11Projection
+    routing: _PackedRoutingFacts
+    storage: tuple
+    authorities: tuple
+    witness: Any
+    identity: str
+
+    @classmethod
+    def capture(cls,projection,authorities):
+        from rawlsing_next.pre553_issued_workload import _NonRoutingEnvelopePin
+        if type(projection) is not GovernedC11Projection or type(projection.routing) is not _PackedRoutingFacts:
+            return None
+        routing=projection.routing
+        storage=routing.immutable_storage()
+        witness=_NonRoutingEnvelopePin.capture((projection,authorities),8*1024*1024)
+        if witness is None:return None
+        identity=projection.cache_identity
+        pin=cls(projection,routing,storage,authorities,witness,identity)
+        if not pin.matches(projection,authorities):
+            raise SourceBackedC11FacadeError("country projection changed during identity construction")
+        return pin
+
+    def matches(self,projection,authorities):
+        return (projection is self.projection and projection.routing is self.routing
+                and self.routing._storage is self.storage
+                and len(authorities)==len(self.authorities)
+                and all(a is b for a,b in zip(authorities,self.authorities))
+                and self.witness.matches())
+
+    def key(self,source,projection,authorities):
+        if not self.matches(projection,authorities):
+            raise SourceBackedC11FacadeError("country projection identity witness changed")
+        key=_facade_key_from_projection_identity(source,self.identity,authorities)
+        if not self.matches(projection,authorities):
+            raise SourceBackedC11FacadeError("country projection identity witness changed")
+        return key
 
 
 def _accelerator_decoder_digest(source: PhysicalSourceIncidence | ExactPhysicalCellStream) -> str | None:
@@ -1395,13 +1446,17 @@ def _build_source_backed_c11_repository(
         raise SourceBackedC11FacadeError("country repository has live reader; no detached session cache")
     if _country_preparation is not None and not country:
         raise SourceBackedC11FacadeError("country preparation requires live country transport")
-    key = source_backed_facade_key(source, projection, current_authorities=current_authorities)
+    projection_pin=_CountryProjectionPin.capture(projection,current_authorities) if country else None
+    def binding_key(stream):
+        return (projection_pin.key(stream,projection,current_authorities) if projection_pin is not None
+                else source_backed_facade_key(stream,projection,current_authorities=current_authorities))
+    key=binding_key(source)
     if country:
         # Rebind to the live reader's own selected decoder, not a caller's
         # replacement cell_iter_factory on a copied country transport.
         source._verify_binding()
         trusted=source.reader._native_stream(projection)
-        if source_backed_facade_key(trusted,projection,current_authorities=current_authorities)!=key:
+        if binding_key(trusted)!=key:
             raise SourceBackedC11FacadeError("country source transport differs from live reader")
         source=trusted
         # The I02 owner validates each actual event as the physical producer
@@ -1438,7 +1493,7 @@ def _build_source_backed_c11_repository(
             compact_builder=lambda ref,replay,non_events,headers,closure_refs,routing:
                 source.compact_events(ref,replay,non_events,headers,projection,closure_refs,routing),
             _restored_headers=restored_headers)
-        if source_backed_facade_key(source,projection,current_authorities=current_authorities)!=key:
+        if binding_key(source)!=key:
             raise SourceBackedC11FacadeError("cache input changed during C11 build")
         repo=C11Repository((release,))
         if _country_preparation is not None:
@@ -1446,6 +1501,9 @@ def _build_source_backed_c11_repository(
             _country_preparation.finish(key,release,captured)
             source.reader._verify()
         source.certify_release(release,facade_key=key)
+        # Only this live reader owns this derived witness. It cannot survive
+        # a country or projection replacement, and current admission remains.
+        source.reader._certified_projection_pin=projection_pin
         return repo,release
     release = cache.get(key) if cache else None
     if release is None:
