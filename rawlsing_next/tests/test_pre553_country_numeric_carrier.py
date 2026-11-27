@@ -857,6 +857,50 @@ class CountryNumeric(unittest.TestCase):
                 cold.read_s04(query.ref)
 
 
+    def test_lifetime_routing_columns_preserve_exact_bytes_and_refuse_bad_geometry(self):
+        from rawlsing_next.pre553_source_backed_c11_facade import (
+            _RoutingColumnBuilder,_routing_column_value,_PackedRoutingFacts,
+            SourceBackedC11FacadeError)
+        from rawlsing_next.pre553_empirical_objects import canonical_json
+        # All physical encodings are lossless for arbitrary canonical byte
+        # values, including controls and noncanonical reference-like strings.
+        cases=[
+            ([b'"constant"']*1000,b"C"),
+            ([b'"a"']*500+[b'"b"']*500,b"R"),
+            ([b'"a"',b'"b"']*500,b"B"),
+            ([canonical_json(str(i)).encode() for i in range(300)]*5,b"S"),
+            ([canonical_json({"content_hash":hashlib.sha256(str(i).encode()).hexdigest(),
+              "kind":"REPLAY_ROOT","object_id":"urn:test:common-prefix:"+str(i)}).encode()
+              for i in range(5000)],b"H"),
+            ([b'{"content_hash":"'+b'f'*64+b'","object_id":"arbitrary"}',
+              b'{"content_hash":"'+b'F'*64+b'","object_id":"arbitrary"}'],None),
+        ]
+        for values,layout in cases:
+            col=_RoutingColumnBuilder()
+            for value in values:col.add(value)
+            lane=col.finish()
+            if layout is not None:self.assertTrue(lane[3].startswith(layout),lane[3:4])
+            self.assertEqual([_routing_column_value(lane,i) for i in range(len(values))],values)
+        # Validate actual sealed geometry before a prepared digest can rely
+        # on it; malformed tags/runs/codes cannot be hashed through one path
+        # and randomly accessed through another.
+        from rawlsing_next.tests.test_pre553_source_backed_c11_facade import _fixture
+        fixture=_fixture("lifetime-routing-columns")
+        packed=_PackedRoutingFacts(iter(fixture["projection"].routing))
+        original=packed.immutable_storage()
+        rows=list(packed.canonical_rows())
+        self.assertEqual(rows,[canonical_json(x.as_dict()).encode()
+                              for x in fixture["projection"].routing])
+        runs,ends=original
+        keys,cols,digests=runs[0]
+        column=cols[0]
+        for invalid in ((column[0],column[1],b"",b"R"),
+                        (column[0],column[1],b"",b"UNKNOWN")):
+            try:
+                object.__setattr__(packed,"_storage",(((keys,(invalid,*cols[1:]),digests),*runs[1:]),ends))
+                with self.assertRaises(SourceBackedC11FacadeError):packed.immutable_storage()
+            finally:object.__setattr__(packed,"_storage",original)
+
     def test_compact_storage_scale_sourcefree(self):
         """Mechanical storage witness only; not original survey or native I03 timing."""
         import numpy as np

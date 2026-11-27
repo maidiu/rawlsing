@@ -1072,6 +1072,8 @@ def _execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecision
                 raise WorkloadAdmissionError("RESUME_COUNTRY_RELEASE_OR_REPLAY_DRIFT")
         executor = CarrierNeutralResearchExecutor(repo, (release.release_ref,), workload.catalog)
         owned_group_scope = None
+        if group_scope is None and _country_session is not None:
+            group_scope=_country_session._query_scope_for(repo)
         if group_scope is None and len(workload.requests) + len(workload.discoveries) > 1:
             group_scope = I03GroupedExecutionScope()
             owned_group_scope = group_scope

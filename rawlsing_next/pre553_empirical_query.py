@@ -757,9 +757,13 @@ class I03GroupedExecutionScope:
             or cached_members + len(core.denominator_members) > self._max_cached_members
         ):
             self._stats["capacity_fallbacks"] += 1
-            return None
-        self._cache[key] = core
-        self._stats["core_builds"] += 1
+            # Capacity limits govern retention, not truth. The complete
+            # exact measure-independent core has already been evaluated.
+            # Materialize it once rather than re-running the respondent
+            # scan solely because we cannot retain its derivative graph.
+        else:
+            self._cache[key] = core
+            self._stats["core_builds"] += 1
         try:
             evaluation = _materialize_grouped_evaluation(
                 core, plan=plan, profile=profile, registry=registry,
