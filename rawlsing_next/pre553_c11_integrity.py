@@ -683,7 +683,7 @@ def canonical_section_refs(records: Iterable[Any]) -> tuple[ExactRef, ...]:
     return tuple(sorted(refs, key=lambda ref: ref.key))
 
 
-def _country_occurrence_ids_distinct(events):
+def _country_occurrence_ids_distinct(events,*,omitted_group_plane=False):
     """Sufficient exact proof for deterministic private country headers.
 
     Distinct canonical occurrence identifiers imply distinct full occurrence
@@ -699,8 +699,9 @@ def _country_occurrence_ids_distinct(events):
         if type(event) is not _CountryEventHeader:
             return False
         value=event.occurrence_identity
-        if (type(value) is not bytes or len(value)!=32 or value in seen
-                or type(event.group_identity) is not bytes or len(event.group_identity)!=32):
+        valid_group=(event.group_identity is None if omitted_group_plane else
+                     type(event.group_identity) is bytes and len(event.group_identity)==32)
+        if (type(value) is not bytes or len(value)!=32 or value in seen or not valid_group):
             return False
         # Validate the optional exact component just as the complete
         # occurrence preimage would. No shortcut for foreign identity forms.
@@ -710,6 +711,20 @@ def _country_occurrence_ids_distinct(events):
         _field_ref(event,"native_question_ref")
         seen.add(value)
     return True
+
+
+def _validate_restored_country_occurrences(events):
+    """Only the authenticated private preparation path may omit group bytes.
+
+    Global distinct occurrence IDs are a sufficient proof independently of
+    group values. Mixed, malformed or repeated IDs in the omitted format
+    must fail, never fall back to incomplete occurrence preimages.
+    """
+    from rawlsing_next._pre553_c11_execution_view import _CountryEventHeader
+    if not all(type(event) is _CountryEventHeader for event in events):
+        raise C11IntegrityError("restored private country headers required")
+    if not _country_occurrence_ids_distinct(events,omitted_group_plane=True):
+        raise C11IntegrityError("omitted group plane lacks globally distinct exact occurrence identities")
 
 
 def ensure_distinct_event_occurrences(events: Iterable[RespondentEvent]) -> None:
