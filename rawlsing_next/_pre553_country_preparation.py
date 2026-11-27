@@ -26,10 +26,12 @@ from ._pre553_c11_execution_view import (
 
 SCHEMA_V1="PYAT_COUNTRY_PREPARED_HEADERS@1"
 SCHEMA="PYAT_COUNTRY_PREPARED_HEADERS@2"
+SCHEMA_ELIDED="PYAT_COUNTRY_PREPARED_HEADERS@3"
 # Three independent SHA256 identities, six uint32 locators/dictionary
 # indices and one dependency-count byte. Neither digest is regenerated
 # from another, and arbitrary/noncompact headers retain the JSON path.
 _BINARY_HEADER=struct.Struct("<32s32s32s6IB")
+_BINARY_HEADER_ELIDED=struct.Struct("<32s32s6IB")
 _U32=struct.Struct("<I")
 MAX_COMPRESSED=128*1024**2
 MAX_EXPANDED=512*1024**2
@@ -92,7 +94,19 @@ def _read_pinned(path,pin):
         raise _error("external artifact digest mismatch")
     return data
 
-def _encode_headers(out,headers,key,*,legacy=False):
+def _encode_headers(out,headers,key,*,legacy=False,omit_groups=False):
+    # The complete old group plane is retained for every exceptional
+    # population. Elision is lawful only for a globally distinct occurrence
+    # census, not merely a digest-looking group ID.
+    if omit_groups and not legacy:
+        from .pre553_c11_integrity import _country_occurrence_ids_distinct
+        omit_groups=(_country_occurrence_ids_distinct(headers)
+            and all(type(h.event_identity) is bytes and len(h.event_identity)==32
+                    and type(h.source_coordinates) is tuple and len(h.source_coordinates)==3
+                    and all(type(x) is int and 0<=x<2**32 for x in h.source_coordinates)
+                    and len(h.dependency_refs)<=255 for h in headers))
+    else:
+        omit_groups=False
     total=0
     def emit(raw):
         nonlocal total
@@ -102,7 +116,7 @@ def _encode_headers(out,headers,key,*,legacy=False):
         out.write(raw)
     def line(value):
         emit((canonical_json(value)+"\n").encode())
-    line([SCHEMA_V1 if legacy else SCHEMA,key,len(headers)])
+    line([SCHEMA_V1 if legacy else SCHEMA_ELIDED if omit_groups else SCHEMA,key,len(headers)])
     # Compact records refer to already emitted shared payload and reference
     # dictionaries. No expanded response body, per-event selector object,
     # or repeated long question/respondent IDs retained on disk.
@@ -134,9 +148,14 @@ def _encode_headers(out,headers,key,*,legacy=False):
         if (not legacy and all(type(x) is bytes and len(x)==32 for x in (event,occ,group))
                 and type(coords) is tuple and len(coords)==3 and len(deps)<=255
                 and all(type(x) is int and 0<=x<2**32 for x in (*nums,*deps))):
-            emit(b"H"+_BINARY_HEADER.pack(event,occ,group,*nums,len(deps))
-                 +b"".join(_U32.pack(i) for i in deps))
+            if omit_groups:
+                emit(b"J"+_BINARY_HEADER_ELIDED.pack(event,occ,*nums,len(deps))
+                     +b"".join(_U32.pack(i) for i in deps))
+            else:
+                emit(b"H"+_BINARY_HEADER.pack(event,occ,group,*nums,len(deps))
+                     +b"".join(_U32.pack(i) for i in deps))
         else:
+            if omit_groups:raise _error("group-elided binary header precondition drift")
             line(["h",event.hex() if type(event) is bytes else list(event),
                   header.response_event_id_or_deterministic_index,
                   header.event_group_id,payloads[pkey],u,respondent,deps,coords])
@@ -161,16 +180,20 @@ def _decode_headers(data,key):
                 raise _error("invalid preparation dictionary index")
             return items[i]
         start=json.loads(account(stream.readline(MAX_LINE+1)))
-        if (type(start) is not list or len(start)!=3 or start[0] not in (SCHEMA,SCHEMA_V1)
+        if (type(start) is not list or len(start)!=3 or start[0] not in (SCHEMA,SCHEMA_V1,SCHEMA_ELIDED)
                 or start[1]!=key or type(start[2]) is not int or start[2]<1):
             raise _error("preparation schema/binding mismatch")
         count=start[2]
         while True:
             lead=account(stream.read(1))
-            if lead==b"H" and start[0]==SCHEMA:
+            if (lead==b"H" and start[0]==SCHEMA) or (lead==b"J" and start[0]==SCHEMA_ELIDED):
                 if len(headers)>=count:
                     raise _error("preparation census overflow")
-                event,occ,group,p,u,respondent,r,s,o,n=_BINARY_HEADER.unpack(exact(_BINARY_HEADER.size))
+                if lead==b"J":
+                    event,occ,p,u,respondent,r,s,o,n=_BINARY_HEADER_ELIDED.unpack(exact(_BINARY_HEADER_ELIDED.size))
+                    group=None
+                else:
+                    event,occ,group,p,u,respondent,r,s,o,n=_BINARY_HEADER.unpack(exact(_BINARY_HEADER.size))
                 deps=tuple(at(refs,i) for i, in struct.iter_unpack("<I",exact(4*n)))
                 headers.append(_CountryEventHeader(event,occ,at(payloads,p),
                     at(refs,u),at(refs,respondent),deps,group,(r,s,o)))
@@ -187,7 +210,12 @@ def _decode_headers(data,key):
             if row[0]=="end":
                 if row!=["end",count] or len(headers)!=count or account(stream.read(1)):
                     raise _error("preparation census mismatch")
-                return tuple(headers)
+                result=tuple(headers)
+                if start[0]==SCHEMA_ELIDED:
+                    from .pre553_c11_integrity import _validate_restored_country_occurrences
+                    try:_validate_restored_country_occurrences(result)
+                    except ValueError as exc:raise _error(str(exc)) from exc
+                return result
             if row[0]=="r" and len(row)==4:
                 refs.append(ExactRef(*row[1:]))
             elif row[0]=="p" and len(row)==2:
@@ -197,7 +225,7 @@ def _decode_headers(data,key):
                 payloads.append((p[0],*(None if x is None else tuple(x) for x in p[1:4]),
                     tuple(tuple(x) for x in p[4]),
                     *(_freeze_semantic_descendants(x) for x in p[5:])))
-            elif row[0]=="h" and len(row)==9 and len(headers)<count:
+            elif start[0]!=SCHEMA_ELIDED and row[0]=="h" and len(row)==9 and len(headers)<count:
                 _,event,occ,group,p,u,respondent,deps,coords=row
                 identity=bytes.fromhex(event) if type(event) is str else tuple(event)
                 if type(identity) is bytes and len(identity)!=32:
@@ -211,7 +239,9 @@ def _decode_headers(data,key):
                 raise _error("invalid preparation record")
 
 class _CountryPreparation:
-    def __init__(self,path,pin):
+    def __init__(self,path,pin,*,omit_groups=False):
+        if type(omit_groups) is not bool:raise _error("explicit group plane selection required")
+        self.omit_groups=omit_groups
         self.path=Path(path).absolute()
         if pin is not None and type(pin) is not CountryPreparationPin:
             raise _error("exact external producer pin required")
@@ -250,7 +280,7 @@ class _CountryPreparation:
         try:
             with os.fdopen(fd,"wb") as file:
                 with gzip.GzipFile(fileobj=file,mode="wb",mtime=0,filename="") as out:
-                    _encode_headers(out,headers,_key(key))
+                    _encode_headers(out,headers,_key(key),omit_groups=self.omit_groups)
                 file.flush();os.fsync(file.fileno())
             size=stage.stat().st_size
             if not 0<size<=MAX_COMPRESSED:
