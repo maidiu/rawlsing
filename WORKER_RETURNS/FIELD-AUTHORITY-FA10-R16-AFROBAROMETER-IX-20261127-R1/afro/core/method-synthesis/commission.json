@@ -1,0 +1,5 @@
+{
+  "worker": "DeepSeek via isolated OpenCode Go",
+  "task": "synthesize method delta only from completed Afro P2/P4 evidence",
+  "commission": "Single task: derive a source-grounded FA10 method delta from the two actual matched Afrobarometer P2 and P4 diagnostics. Propose zero or more new/refined acts of intellectual attention only if directly supported by an observed miss, gain, regression or residual hold. Each proposal must specify input, transformation, output, stop condition, worked positive example, worked negative example, non-transfer example, affected reader, and a matched fresh-source trial that could falsify it. Distinguish an evidenced case-level improvement from global novelty or capability. Do not change prompts, code, existing records, source meanings or authority; do not claim WVS execution. Return JSON exactly {\"method_proposals\": [...], \"no_change_rationale\": \"...\", \"next_falsifiable_trial\": [...]}. Use exact source references and cite the two probe IDs."
+}

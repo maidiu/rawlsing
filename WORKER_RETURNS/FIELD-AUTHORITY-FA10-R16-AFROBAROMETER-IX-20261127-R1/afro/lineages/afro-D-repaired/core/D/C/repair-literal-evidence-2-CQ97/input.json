@@ -1,0 +1,36 @@
+{
+  "commission": "Afrobarometer R16 D/C literal-evidence repair, CQ97 only",
+  "task": "Revise only the CQ97 replacement patch in response to the independent CORRECTION_REQUIRED. Preserve every other prior patch and HOLD exactly; do not change the original response, create inquiries, or infer anything beyond the supplied literal R9 metadata. The current draft says the item records perceived sponsorship with listed responses but omits the enumerated options and that misattribution remains possible. Return exactly one patch object keyed CQ97, with replacement_claim, exact_source_quote copied literally from supplied metadata, and one-sentence reason. Include the actual distinctions: No one; Afrobarometer or national partner; research company; non-government/religious organization; university/school/college; private company; media; political party/politician; government; international organization/another country; God; Other; plus refused and do not know as special responses. Make clear these are the respondent’s beliefs about who sent the team, not verification of sponsor identity, and a mistaken attribution remains possible. Do not overstate actual commissioning.",
+  "source": {
+    "source": "Afrobarometer",
+    "wave": "R9",
+    "module_guess": "substantive_module",
+    "var_name": "Q97",
+    "question_text": "Who do you think sent us to do this interview?",
+    "value_label_set": "labels318",
+    "storage_type": "numeric",
+    "storage_width": "8",
+    "measure": "nominal",
+    "format": "F8.0",
+    "value_labels_count": "15",
+    "response_options_substantive": "0 = No one | 1 = “Afrobarometer\" or national partner | 2 = Research Company | 3 = Non-government or religious organization | 4 = University / School / College | 5 = Private company | 6 = Media | 7 = Political party or politician | 8 = Government | 9 = International organization or another country | 10 = God | 95 = Other",
+    "response_options_special": "-1 = Missing | 98 = Refused to answer | 99 = Don't know",
+    "response_options_all": "-1 = Missing | 0 = No one | 1 = “Afrobarometer\" or national partner | 2 = Research Company | 3 = Non-government or religious organization | 4 = University / School / College | 5 = Private company | 6 = Media | 7 = Political party or politician | 8 = Government | 9 = International organization or another country | 10 = God | 95 = Other | 98 = Refused to answer | 99 = Don't know",
+    "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+  },
+  "previous_patch": {
+    "claim_id": "CQ97",
+    "disposition": "REPLACE",
+    "replacement_claim": "The item records the respondent's belief about who sent the interview team, with the listed responses as distinct sponsorship options, so it is not an audit of the actual commissioning body.",
+    "exact_source_quote": "Who do you think sent us to do this interview?",
+    "reason": "Quote is literal from Q97 question_text, anchoring the perceived-sponsorship reading."
+  },
+  "independent_review": {
+    "claim_id": "CQ97",
+    "verdict": "CORRECTION_REQUIRED",
+    "exact_quote": "Who do you think sent us to do this interview?",
+    "reason": "Quote is literal, but the replacement drops the prior spelled-out response distinctions (survey organization, research company, party, government, God and other) while keeping the not-an-audit limit; it also leaves out that misattribution remains possible, so the claim understates what the cited field actually enumerates."
+  },
+  "packet_sha256": "42a7b865af1069f116ab2c1bc6a4ef669941b85fc687b0587d13c49d5d3ab8a4",
+  "scope": "CQ97_ONLY_LITERAL_SOURCE_REPAIR"
+}

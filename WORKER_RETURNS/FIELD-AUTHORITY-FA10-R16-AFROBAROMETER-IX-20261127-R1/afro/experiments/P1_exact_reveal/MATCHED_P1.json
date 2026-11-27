@@ -1,0 +1,255 @@
+{
+  "results": {
+    "locator": {
+      "findings": [
+        {
+          "claim": "Q105 (people present during interview) and Q106D (felt threatened) are both interview-context items in the focal packet, but neither row's value is supplied, so the relation between observed presence and felt threat cannot yet be evaluated for any focal observation.",
+          "field_ids": [
+            "Q105",
+            "Q106D"
+          ],
+          "evidence": [
+            {
+              "field_id": "Q105",
+              "quote": "Were there any other people immediately present who might be listening during the interview?"
+            },
+            {
+              "field_id": "Q106D",
+              "quote": "Did you feel threatened during the interview?"
+            }
+          ],
+          "competing_configurations": [
+            "Presence is a nuisance/validity covariate (distal conditions contamination of responses), not a substantive predictor.",
+            "Presence is a protective factor (others present reduce felt threat) in some EAs.",
+            "Both are artifacts of EA-level security context (EA_SEC_A/EA_SEC_B)."
+          ],
+          "uncertainty": "Focal row values for Q105 and Q106D are unknown; only metadata is available.",
+          "falsifier": "A focal observation with Q105='No one' and Q106D='1 = Yes' would show threat without a present listener, breaking a simple presence->threat story."
+        },
+        {
+          "claim": "The locator contains EA-level security items (EA_SEC_A, EA_SEC_B) whose inclusion at the enumeration-area level is the distant observation that changes what a single focal interview can establish about Q105/Q106D: it separates interviewer-report context from respondent-experienced threat.",
+          "field_ids": [
+            "EA_SEC_A",
+            "EA_SEC_B",
+            "Q105",
+            "Q106D"
+          ],
+          "evidence": [
+            {
+              "field_id": "EA_SEC_A",
+              "quote": "Any police officers or police vehicles?"
+            },
+            {
+              "field_id": "EA_SEC_B",
+              "quote": "Any soldiers or army vehicles?"
+            },
+            {
+              "field_id": "Q105",
+              "quote": "immediately present who might be listening"
+            },
+            {
+              "field_id": "Q106D",
+              "quote": "Did you feel threatened"
+            }
+          ],
+          "competing_configurations": [
+            "EA security explains both Q105 and Q106D (common cause).",
+            "Q105 and Q106D are independent interviewer judgments with no EA linkage."
+          ],
+          "uncertainty": "EA assignment of the focal row is not retrievable from the packet; linkage requires the raw row.",
+          "falsifier": "If within-EA variation in Q106D is as large as between-EA variation, the EA-level common-cause account fails."
+        },
+        {
+          "claim": "Q106C (approached by community/party representatives) is a mediator candidate between EA-level security and Q106D, since approach by representatives is the plausible pathway by which threat is induced; its value is also missing for the focal row.",
+          "field_ids": [
+            "Q106C",
+            "Q106D"
+          ],
+          "evidence": [
+            {
+              "field_id": "Q106C",
+              "quote": "Were you approached by community and/or political party representatives?"
+            },
+            {
+              "field_id": "Q106D",
+              "quote": "Did you feel threatened during the interview?"
+            }
+          ],
+          "competing_configurations": [
+            "Direct EA security -> threat.",
+            "Approach -> threat (mediation).",
+            "Threat is unrelated covariate noise."
+          ],
+          "uncertainty": "No observed values for Q106C on the focal row.",
+          "falsifier": "A focal case with Q106C='0 = No' but Q106D='1 = Yes' weakens mediation by approach."
+        },
+        {
+          "claim": "Q109F (interviewer's judgment that respondent was honest/misleading) is the downstream outcome whose meaning is conditional on Q105/Q106D; without the distant observation of audience and threat, a 'misleading' rating conflates fear-driven caution with deception.",
+          "field_ids": [
+            "Q109F",
+            "Q105",
+            "Q106D"
+          ],
+          "evidence": [
+            {
+              "field_id": "Q109F",
+              "quote": "honest, in between, or misleading?"
+            },
+            {
+              "field_id": "Q105",
+              "quote": "other people immediately present"
+            },
+            {
+              "field_id": "Q106D",
+              "quote": "feel threatened"
+            }
+          ],
+          "competing_configurations": [
+            "Q109F is a pure interviewer quality judgment independent of context.",
+            "Q109F is partly a response to Q105 audience effects."
+          ],
+          "uncertainty": "Direction of the conditional relation is untested; only item stems available.",
+          "falsifier": "If Q109F is uncorrelated with Q105 within threat strata, audience does not contaminate the honesty rating."
+        }
+      ],
+      "holds": "Exact row values for Q105, Q106C, Q106D, Q109F on the focal observation and its EA identifiers (PSU/EA), plus EA_SEC_A/EA_SEC_B values for that EA, remain unretrieved; the relation cannot be revised or rejected without them.",
+      "nominations": [
+        "Q105",
+        "Q106C",
+        "Q106D",
+        "Q109F",
+        "EA_SEC_A",
+        "EA_SEC_B",
+        "URBRUR"
+      ],
+      "method_delta": "None proposed; pending exact-row retrieval before any operation is added."
+    },
+    "retrieved": {
+      "findings": [
+        {
+          "claim": "NOCALL_1 record is about outcome of a single attempted household contact, not about a completed interview; its own option set contains a success terminal value, so encountering NOCALL_1 with value 9997 signals the household became an achieved interview.",
+          "field_ids": [
+            "NOCALL_1"
+          ],
+          "evidence": [
+            "\"Reasons for Unsuccessful Calls: Household 1\"",
+            "\"9997 = Interview was successful\""
+          ],
+          "uncertainty": "Packet shows only the codebook row, not whether 9997 actually appears in the data or is reserved for coding artifacts.",
+          "falsifier": "A frequency table for NOCALL_1 with zero cases at 9997 would show the outcome split is carried elsewhere and the terminal label is dormant."
+        },
+        {
+          "claim": "Q105 records a bystander-presence gradient (no one through small crowd), which is a plausible competing explanation for the respondent's demeanor, yet the interview-outcome records alone cannot rule out that third-party presence shaped hostile or misleading attitudes.",
+          "field_ids": [
+            "Q105",
+            "Q109F"
+          ],
+          "evidence": [
+            "\"Were there any other people immediately present who might be listening during the interview?\"",
+            "\"1 = No one | 2 = Spouse only | 3 = Children only | 4 = A few others | 5 = Small crowd\"",
+            "\"Was he or she: honest, in between, or misleading?\"",
+            "\"1 = Honest | 2 = In between | 3 = Misleading\""
+          ],
+          "uncertainty": "The relationship between spectator presence and assessed honesty is assumed, not shown; no cross-tabulation is in the packet."
+        },
+        {
+          "claim": "Q106D is a yes/no threat item that is a different construct from NOCALL_1 reason codes; a threat-during-interview report cannot be substituted for a refusal or not-at-home call outcome.",
+          "field_ids": [
+            "Q106D",
+            "NOCALL_1"
+          ],
+          "evidence": [
+            "\"Did you feel threatened during the interview?\"",
+            "\"0 = No | 1 = Yes\"",
+            "\"1 = Refused to be interviewed\""
+          ],
+          "uncertainty": "Packet lacks the crosswalk between interviewer-observed threat and household-call reasons."
+        },
+        {
+          "claim": "Q106C's approach-by-representatives item belongs to the same interview-context block as Q105, so it is a candidate confounder for whether the respondent was candid, but it does not indicate the household touch was unsuccessful.",
+          "field_ids": [
+            "Q106C",
+            "Q105",
+            "NOCALL_1"
+          ],
+          "evidence": [
+            "\"Were you approached by community and/or political party representatives?\"",
+            "\"0 = No | 1 = Yes\"",
+            "\"Were there any other people immediately present\""
+          ],
+          "uncertainty": "Not confirmed that Q106C is administered on the same record as NOCALL_1's achieved-success households."
+        },
+        {
+          "claim": "Q97's response list includes \"God\" as a sender and an explicit refusal and don't-know route, so treatment of who sent the interviewer is substantively unrelated to call-outcome coding; using Q97 to explain a NOCALL_1 refusal value would be a category error.",
+          "field_ids": [
+            "Q97",
+            "NOCALL_1"
+          ],
+          "evidence": [
+            "\"Who do you think sent us to do this interview?\"",
+            "\"10 = God\"",
+            "\"98 = Refused to answer | 99 = Don't know\"",
+            "\"1 = Refused to be interviewed\""
+          ],
+          "uncertainty": "No evidence in packet that refusal in Q97 co-occurs with refusal reason in NOCALL_1."
+        },
+        {
+          "claim": "Q98A has a dedicated \"not applicable\" branch keyed to lacking a mobile phone number, so follow-up willingness is conditional on a phone-ownership gate, not on having been reached successfully.",
+          "field_ids": [
+            "Q98A",
+            "Q90F"
+          ],
+          "evidence": [
+            "\"Willing to participate in follow-up surveys\"",
+            "\"7 = Not applicable [Respondent does not have a mobile phone number]\"",
+            "\"0 = No, no one in the household owns | 1 = Someone else in household owns | 2 = Yes (personally owns)\""
+          ],
+          "uncertainty": "Whether the N/A flag is always driven by Q90F is not shown in the packet."
+        },
+        {
+          "claim": "Q39B's corruption-reporting-fear item has a missing/refused/don't-know triad, so treating a -1 in that variable as a substantive retaliation attitude collapses two distinct response acts.",
+          "field_ids": [
+            "Q39B"
+          ],
+          "evidence": [
+            "\"can ordinary people report incidents of corruption without fear\"",
+            "\"0 = Can report without fear | 1 = Risk retaliation or other negative consequences\"",
+            "\"-1 = Missing | 8 = Refused | 9 = Don't know\""
+          ],
+          "uncertainty": "No locator evidence on how often -1 occurs in this wave."
+        }
+      ],
+      "holds": "Exact rows linking NOCALL_1 call outcomes to Q105/Q106C/Q106D/Q109F interview-context items (so a refuser-attempt household could be compared with the achieved interview), plus frequency distributions showing whether NOCALL_1 = 9997 is populated at all. Neither the cross-observed record linkage nor frequencies are retrievable from the packet.",
+      "method_delta": "Operation: locate co-occurring fields in the same survey block and test whether any code value denotes a terminal state rather than a measurement, then ask whether the terminal state is the outcome variable itself. Counterexample to treating NOCALL_1 as a purely attitudinal reason field: the 9997 success label means the field encodes a call-cycle outcome; any model of refusal that ignores the terminal category risks coding successes as non-responses.",
+      "nominations": [
+        "NOCALL_1 (required exact retrieval: value distribution and records with 9997)",
+        "Q105 (retrieve cross-tab with NOCALL_1 outcome and 9997 subset)",
+        "Q106C, Q106D, Q109F (retrieve co-observed values on the same achieved interviews)",
+        "Q90F and Q98A (retrieve phone-ownership gate vs N/A follow-up to test conditioning)"
+      ]
+    }
+  },
+  "instruction_identical": true,
+  "source_reveal": {
+    "source_metadata": {
+      "source": "Afrobarometer",
+      "wave": "R9",
+      "module_guess": "administrative",
+      "var_name": "NOCALL_1",
+      "question_text": "Reasons for Unsuccessful Calls: Household 1",
+      "value_label_set": "labels30",
+      "storage_type": "numeric",
+      "storage_width": "8",
+      "measure": "nominal",
+      "format": "F8.0",
+      "value_labels_count": "10",
+      "response_options_substantive": "2 = Person selected was never at home after at least two visits | 3 = Household/Premises empty for the survey period after at least two visits | 4 = Not a citizen/Spoke only a foreign language | 5 = Deaf/Did not speak a survey language | 6 = Did not fit gender quota | 7 = No adults in household | 8 = Other (specify) | 9997 = Interview was successful",
+      "response_options_special": "-1 = Missing | 1 = Refused to be interviewed",
+      "response_options_all": "-1 = Missing | 1 = Refused to be interviewed | 2 = Person selected was never at home after at least two visits | 3 = Household/Premises empty for the survey period after at least two visits | 4 = Not a citizen/Spoke only a foreign language | 5 = Deaf/Did not speak a survey language | 6 = Did not fit gender quota | 7 = No adults in household | 8 = Other (specify) | 9997 = Interview was successful",
+      "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+    },
+    "row_sha256": "60781582bfc0febdf9fe0332be9da6bc8bae09317a03a0aead5756a22aa5373e",
+    "inherited": null
+  },
+  "reason": "NOCALL_1 was a real earlier R9 concern about fieldwork denominator and selected sponsor-report observations."
+}

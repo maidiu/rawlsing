@@ -1,0 +1,121 @@
+{
+  "scope": "Afrobarometer IX arm-C targeted repairs and exact-head independent receiving only",
+  "calls": [
+    {
+      "path": "afro-C-targeted-repair/worker_return_raw.json",
+      "task": "initial source-bound claim/hold repair",
+      "session": "ses_de1139480ffeQnqEVkY2RlwD2a",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 2600,
+      "provider_exit": 0,
+      "input_text_sha256": "3864ddbd34fc2fd16f0e27b499897897e34e81059dd358d69c4eb7baaa53c6f4",
+      "usage": {
+        "input": 4533,
+        "output": 928,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00123675,
+      "actual_billed": null
+    },
+    {
+      "path": "afro-C-targeted-repair/addressee-completion-return.json",
+      "task": "complete exact addressee repairs across stage outputs",
+      "session": "ses_de110da7effeH3AWkRnzpP0IfM",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 2400,
+      "provider_exit": 0,
+      "input_text_sha256": "49cf15e7c40f0ec7434c58a91ab1c38a184220bfcc7b76f50784ece5503a86bc",
+      "usage": {
+        "input": 3423,
+        "output": 965,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00109245,
+      "actual_billed": null
+    },
+    {
+      "path": "afro-C-repaired-v2/C/independent-receiving/worker_return_raw.json",
+      "task": "independent source-bound exact-candidate receiving",
+      "session": "ses_de10bdc3cffez1xtPitu60UCnd",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 3200,
+      "provider_exit": 0,
+      "input_text_sha256": "c2fb51cf9154637824b28aa30fff4501528473c5e42588b2fc31d8192fffd87c",
+      "usage": {
+        "input": 7987,
+        "output": 205,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00132105,
+      "actual_billed": null,
+      "verdict": "PASS_SCOPED"
+    },
+    {
+      "path": "afro-C-targeted-repair/c3-wording-repair-return.json",
+      "task": "replace ambiguous unobserved phrasing",
+      "session": "ses_de10ce4f1ffeEBzJw26vVcRMoe",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 900,
+      "provider_exit": 0,
+      "input_text_sha256": "f39773a07798a427e6f759eb31cc688904aebc063f0362d1a2bbe7881845bc9a",
+      "usage": {
+        "input": 1015,
+        "output": 64,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00019065,
+      "actual_billed": null
+    },
+    {
+      "path": "afro-C-repaired-v1/C/independent-receiving/worker_return_raw.json",
+      "task": "independent exact-candidate source-bound receiving; correction required",
+      "session": "ses_de10dbae9ffetLJYiUc3r1eGkC",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 3200,
+      "provider_exit": 0,
+      "input_text_sha256": "4a8f76a26ddf4dcd3df08614eb9749644b75089ab4ccc0d84587f838282531a5",
+      "usage": {
+        "input": 8039,
+        "output": 1081,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00185445,
+      "actual_billed": null,
+      "verdict": "CORRECTION_REQUIRED"
+    }
+  ],
+  "totals": {
+    "input": 24997,
+    "output": 3243,
+    "reasoning": 0,
+    "cache_read": 0,
+    "opencode_rate_equivalent": 0.00569535,
+    "actual_billed": "UNOBSERVED",
+    "codex_tokens": "UNOBSERVED"
+  }
+}

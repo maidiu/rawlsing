@@ -1,0 +1,16 @@
+{
+  "worker": "DeepSeek via isolated OpenCode Go",
+  "task": "repair invalid locator nominations only",
+  "original_stage_packet_sha256": "58c73963ac30f8771bac08848d212c73c767ab451dd55aae6b537d252a336a67",
+  "repair_packet_sha256": "a56e3f6de9c2e8c26e12efa0a76451708a2868053a1e673b9af7b6b7f7f76e8b",
+  "expected_preserved_valid_ids": [
+    "Q109E",
+    "Q119v"
+  ],
+  "removed_invalid_ids": [
+    "Q105",
+    "Q98A",
+    "Q90F"
+  ],
+  "commission": "Single task: repair the A/M invalid locator-nomination set. Return the exact valid nominations from existing_nominations, unchanged and in their existing order. Do not omit any item marked valid. Remove only nominations marked invalid. Do not add replacements, alter reasons, change claims, or perform other work. This is a mechanical author repair candidate, not independent review or scientific acceptance."
+}

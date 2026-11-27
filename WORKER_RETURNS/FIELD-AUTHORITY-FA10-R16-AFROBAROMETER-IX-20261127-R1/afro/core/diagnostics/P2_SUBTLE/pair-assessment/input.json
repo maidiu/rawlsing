@@ -1,0 +1,392 @@
+{
+  "task": "FA10 P2 matched-pair assessment",
+  "source": {
+    "member": "Rawlsing 35 waves of savs & dtas/Codebooks/Afrobarometer Round 9 codebook.csv",
+    "sha256": "ed3a72796825cc905976da503426d5ce238f6a872bc8018c2a2cc4f832aa3c6c",
+    "source": "Afrobarometer",
+    "wave": "R9"
+  },
+  "source_fields": {
+    "Q28": {
+      "source_metadata": {
+        "source": "Afrobarometer",
+        "wave": "R9",
+        "module_guess": "demographic_core",
+        "var_name": "Q28",
+        "question_text": "Which of the following statements is closest to your view? Choose Statement 1 or Statement 2. Statement 1: Since the [president] was elected to lead the country, [he] should not be bound by laws or court decisions that [he] thinks are wrong. Statement 2: The [president] must always obey the laws and the courts, even if [he] thinks they are wrong.",
+        "value_label_set": "labels102",
+        "storage_type": "numeric",
+        "storage_width": "8",
+        "measure": "ordinal",
+        "format": "F8.0",
+        "value_labels_count": "9",
+        "response_options_substantive": "1 = Agree very strongly with 1 | 2 = Agree with 1 | 3 = Agree with 2 | 4 = Agree very strongly with 2 | 5 = Agree with neither",
+        "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know | 94 = Not asked in the country",
+        "response_options_all": "-1 = Missing | 1 = Agree very strongly with 1 | 2 = Agree with 1 | 3 = Agree with 2 | 4 = Agree very strongly with 2 | 5 = Agree with neither | 8 = Refused | 9 = Don't know | 94 = Not asked in the country",
+        "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+      },
+      "row_sha256": "2d6229745dfec8d76607d800d9b5f57b28bb04b0d4b433b0e2a179e1f614af1f",
+      "inherited": null
+    },
+    "Q29B": {
+      "source_metadata": {
+        "source": "Afrobarometer",
+        "wave": "R9",
+        "module_guess": "demographic_core",
+        "var_name": "Q29B",
+        "question_text": "Which of the following statements is closest to your view? Choose Statement 1 or Statement 2 Statement 1: [Kenya's] armed forces should never intervene in the country's political process. Statement 2: It is legitimate for the armed forces to take control of government when elected leaders abuse power for their own ends.",
+        "value_label_set": "labels104",
+        "storage_type": "numeric",
+        "storage_width": "8",
+        "measure": "ordinal",
+        "format": "F8.0",
+        "value_labels_count": "8",
+        "response_options_substantive": "1 = Agree very strongly with 1 | 2 = Agree with 1 | 3 = Agree with 2 | 4 = Agree very strongly with 2 | 5 = Agree with neither",
+        "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know",
+        "response_options_all": "-1 = Missing | 1 = Agree very strongly with 1 | 2 = Agree with 1 | 3 = Agree with 2 | 4 = Agree very strongly with 2 | 5 = Agree with neither | 8 = Refused | 9 = Don't know",
+        "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+      },
+      "row_sha256": "182744cc731052a9e14bf6615eaa22de2d2e37953bb608137d8de8c9381044fc",
+      "inherited": null
+    },
+    "Q22B": {
+      "source_metadata": {
+        "source": "Afrobarometer",
+        "wave": "R9",
+        "module_guess": "demographic_core",
+        "var_name": "Q22B",
+        "question_text": "There are many ways to govern a country. Would you disapprove or approve of the following alternatives: the army comes in to govern the country?",
+        "value_label_set": "labels93",
+        "storage_type": "numeric",
+        "storage_width": "8",
+        "measure": "ordinal",
+        "format": "F8.0",
+        "value_labels_count": "8",
+        "response_options_substantive": "1 = Strongly disapprove | 2 = Disapprove | 3 = Neither approve nor disapprove | 4 = Approve | 5 = Strongly approve",
+        "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know",
+        "response_options_all": "-1 = Missing | 1 = Strongly disapprove | 2 = Disapprove | 3 = Neither approve nor disapprove | 4 = Approve | 5 = Strongly approve | 8 = Refused | 9 = Don't know",
+        "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+      },
+      "row_sha256": "b4b36500ae5e38a47f04b05a70acfaca62b16202fd6ba49e10e2b1e71aa960a9",
+      "inherited": null
+    },
+    "Q48A": {
+      "source_metadata": {
+        "source": "Afrobarometer",
+        "wave": "R9",
+        "module_guess": "substantive_module",
+        "var_name": "Q48A",
+        "question_text": "Who should be responsible for: making sure that, once elected, [members of Parliament] do their jobs?",
+        "value_label_set": "labels199",
+        "storage_type": "numeric",
+        "storage_width": "8",
+        "measure": "nominal",
+        "format": "F8.0",
+        "value_labels_count": "10",
+        "response_options_substantive": "0 = The President / Executive | 1 = The Parliament / local government council | 2 = Their Political Party | 3 = The Voters | 4 = No One",
+        "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know | 93 = Not asked in Burkina Faso after 4th of October | 94 = Not asked in country",
+        "response_options_all": "-1 = Missing | 0 = The President / Executive | 1 = The Parliament / local government council | 2 = Their Political Party | 3 = The Voters | 4 = No One | 8 = Refused | 9 = Don't know | 93 = Not asked in Burkina Faso after 4th of October | 94 = Not asked in country",
+        "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+      },
+      "row_sha256": "5cc0b8bfd4d0cf0d2d01cfad85b139cd821af93be4e0db9a7cfb46c34136ee99",
+      "inherited": null
+    },
+    "Q48B": {
+      "source_metadata": {
+        "source": "Afrobarometer",
+        "wave": "R9",
+        "module_guess": "substantive_module",
+        "var_name": "Q48B",
+        "question_text": "Who should be responsible for: making sure that, once elected, the [president] does [his] job?",
+        "value_label_set": "labels200",
+        "storage_type": "numeric",
+        "storage_width": "8",
+        "measure": "nominal",
+        "format": "F8.0",
+        "value_labels_count": "9",
+        "response_options_substantive": "0 = The President / Executive | 1 = The Parliament / local government council | 2 = Their Political Party | 3 = The Voters | 4 = No One",
+        "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know | 94 = Not asked in the country",
+        "response_options_all": "-1 = Missing | 0 = The President / Executive | 1 = The Parliament / local government council | 2 = Their Political Party | 3 = The Voters | 4 = No One | 8 = Refused | 9 = Don't know | 94 = Not asked in the country",
+        "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+      },
+      "row_sha256": "9473acc4f1f0e3bf15d1cbd75a6d00bfb33256385b663636439cd169399abb72",
+      "inherited": null
+    },
+    "Q63B": {
+      "source_metadata": {
+        "source": "Afrobarometer",
+        "wave": "R9",
+        "module_guess": "demographic_core",
+        "var_name": "Q63B",
+        "question_text": "When the country is facing a public health emergency like the COVID-19 pandemic, do you agree or disagree that it is justified for the government to temporarily limit democracy or democratic freedoms by taking the following measures: using the police and security forces to enforce public health mandates like restrictions on public gatherings or wearing face masks?",
+        "value_label_set": "labels232",
+        "storage_type": "numeric",
+        "storage_width": "8",
+        "measure": "ordinal",
+        "format": "F8.0",
+        "value_labels_count": "10",
+        "response_options_substantive": "1 = Strongly disagree | 2 = Disagree | 3 = Neither agree nor disagree | 4 = Agree | 5 = Strongly agree",
+        "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know | 94 = Not asked in the country | 97 = Not applicable (COV1=0, 8 or 9)",
+        "response_options_all": "-1 = Missing | 1 = Strongly disagree | 2 = Disagree | 3 = Neither agree nor disagree | 4 = Agree | 5 = Strongly agree | 8 = Refused | 9 = Don't know | 94 = Not asked in the country | 97 = Not applicable (COV1=0, 8 or 9)",
+        "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+      },
+      "row_sha256": "a4b07d0eaaa83cb14d9354718bfb682bf1f9899d2822dc04e50aff8eb9faceb7",
+      "inherited": null
+    }
+  },
+  "probe_definition": {
+    "id": "P2_SUBTLE",
+    "capacity": "Recognizing subtle conceptual differences",
+    "fields": [
+      "Q28",
+      "Q29B",
+      "Q22B",
+      "Q48A",
+      "Q48B",
+      "Q63B"
+    ],
+    "neutral": "Explain what these questions make investigable.",
+    "directed": "Construct two source-consistent configurations that would be falsely merged by a common label; then reconstruct the actual response act, actor, condition and referent. Identify meaningful nontransfer between superficially similar questions.",
+    "intervention": "contrastive operation, not a supplied answer"
+  },
+  "neutral_output": {
+    "field_accounts": [
+      {
+        "field_id": "Q22B",
+        "quote": "the army comes in to govern the country",
+        "account": "Ordinal approval item on military rule as one governing alternative; distinguishes strong disapprove through strong approve plus neutral and special codes."
+      },
+      {
+        "field_id": "Q28",
+        "quote": "should not be bound by laws or court decisions",
+        "account": "Forced-choice item pitting executive exemption from law (Statement 1) against executive obedience to law/courts (Statement 2), with strength and neither options."
+      },
+      {
+        "field_id": "Q29B",
+        "quote": "armed forces should never intervene in the country's political process",
+        "account": "Forced-choice item between military non-intervention (Statement 1) and military takeover as legitimate (Statement 2); ordinal with strength and neither."
+      },
+      {
+        "field_id": "Q48A",
+        "quote": "once elected, [members of Parliament] do their jobs",
+        "account": "Nominal accountability-attribution item for MPs, options spanning executive, parliament/local council, party, voters, no one."
+      },
+      {
+        "field_id": "Q48B",
+        "quote": "once elected, the [president] does [his] job",
+        "account": "Parallel nominal accountability-attribution item for the president, same option structure as Q48A."
+      },
+      {
+        "field_id": "Q63B",
+        "quote": "using the police and security forces to enforce public health mandates",
+        "account": "Ordinal agreement item on limiting democratic freedoms via security enforcement during a health emergency; includes not-applicable code tied to COV1."
+      }
+    ],
+    "observed_contrasts": [
+      {
+        "contrast": "Q22B vs Q29B",
+        "quote": "the army comes in to govern the country",
+        "distinction": "Q22B asks approval of army governing; Q29B frames a conditional legitimacy of takeover when leaders abuse power, plus a non-intervention pole. Related military-role domain but different task format and premise."
+      },
+      {
+        "contrast": "Q28 vs Q29B",
+        "quote": "must always obey the laws and the courts",
+        "distinction": "Q28 is executive legal constraint; Q29B is military political intervention. Both are forced-choice but concern different actors and norms."
+      },
+      {
+        "contrast": "Q48A vs Q48B",
+        "quote": "Who should be responsible for",
+        "distinction": "Near-parallel attribution items differing only in target officeholder (MPs vs president); enables comparing who is named accountable, not frequency claims."
+      },
+      {
+        "contrast": "Q22B/Q29B vs Q63B",
+        "quote": "temporarily limit democracy or democratic freedoms",
+        "distinction": "Military-role items concern permanent governing alternatives; Q63B concerns time-bound emergency limits, a different referent despite shared democracy theme."
+      }
+    ],
+    "candidate_relations": [
+      {
+        "relation": "Accountability attributions for MPs and president can be compared as parallel nominal measures.",
+        "quote": "once elected",
+        "items": [
+          "Q48A",
+          "Q48B"
+        ]
+      },
+      {
+        "relation": "Military-governance attitudes can be examined across approval and forced-choice formats.",
+        "quote": "armed forces",
+        "items": [
+          "Q22B",
+          "Q29B"
+        ]
+      },
+      {
+        "relation": "Executive legal constraint and military intervention are distinct but adjacent democratic-norm indicators.",
+        "quote": "obey the laws and the courts",
+        "items": [
+          "Q28",
+          "Q29B"
+        ]
+      },
+      {
+        "relation": "Emergency policing of mandates is conditionally applicable, distinguishing it from unconditional items.",
+        "quote": "Not applicable (COV1=0, 8 or 9)",
+        "items": [
+          "Q63B"
+        ]
+      }
+    ],
+    "source_limits": [
+      "Packet supplies only variable metadata and value labels; no respondent frequencies or distributions can be inferred.",
+      "Literal quotes show Kenya and Burkina Faso country-specific wording/codes; cross-country comparability beyond supplied form is not established.",
+      "Q63B applicability depends on COV1, which is not in the packet, so conditions on that gate cannot be reconstructed.",
+      "No cross-field co-occurrence, causality, or administration details are supported by this metadata alone."
+    ],
+    "foil_transfer_check": "Distinguish claim types: these fields make investigable stated attitudes and attribution structures (approval of army rule; executive-law tradeoff; military intervention legitimacy; who should hold MPs/president accountable; emergency freedom limits), not measured frequencies, causal effects, or cross-item correlations."
+  },
+  "directed_output": {
+    "field_accounts": {
+      "Q22B": "Asks approval of 'the army comes in to govern the country' as a mode of governing; response act is approve/disapprove rating (ordinal 1-5), actor is the army, referent is military governance of the country.",
+      "Q29B": "Forces a choice: 'armed forces should never intervene in the country's political process' versus 'legitimate for the armed forces to take control of government when elected leaders abuse power'; response act is two-statement agreement (1-5 including 'Agree with neither'), actor is armed forces, referent is military intervention/control conditioned on abuse of power.",
+      "Q28": "Forces choice between president not bound by laws versus 'president must always obey the laws and the courts'; actor is the president, referent is executive subordination to law/courts, not military rule.",
+      "Q48A": "Nominally asks 'Who should be responsible for' ensuring 'members of Parliament do their jobs'; response act is selecting an accountability agent (President/Executive, Parliament/local council, party, voters, no one), referent is MP accountability.",
+      "Q48B": "Same accountability-agent response structure but referent is 'the [president] does [his] job'; actor held accountable is the president, not MPs.",
+      "Q63B": "Asks agreement that it is 'justified for the government to temporarily limit democracy or democratic freedoms' via police/security enforcement of health mandates; response act is agree/disagree (ordinal 1-5), referent is emergency-limited freedoms, includes 'Not applicable (COV1=0, 8 or 9)'."
+    },
+    "observed_contrasts": [
+      "Q22B and Q29B both concern military role in politics but differ in response act: Q22B is a single-option approve/disapprove rating, while Q29B is a forced statement-choice with 'Agree with neither'.",
+      "Q22B asks about 'the army comes in to govern' unconditionally; Q29B conditions legitimacy on 'elected leaders abuse power for their own ends', so scope and condition differ.",
+      "Q28 also uses the forced statement-choice format like Q29B but the actor is 'the [president]' and referent is legal constraint, not armed forces.",
+      "Q48A and Q48B share identical response-option sets and 'Who should be responsible for' stem but swap the accountable actor: 'members of Parliament' vs 'the [president]'.",
+      "Q48A/Q48B are nominal agent-selection items, unlike the ordinal approve/agree scales of Q22B, Q28, Q29B, Q63B.",
+      "Q63B carries 'Not applicable (COV1=0, 8 or 9)' indicating a skip/eligibility dependency absent from Q22B, Q28, Q29B, Q48A, Q48B.",
+      "Q48A uniquely includes 'Not asked in Burkina Faso after 4th of October', a country/time-specific non-administration flag not present in Q48B."
+    ],
+    "candidate_relations": [
+      {
+        "fields": [
+          "Q22B",
+          "Q29B"
+        ],
+        "false_merge_label": "military intervention in politics",
+        "actual_difference": "Q22B: approve/disapprove of army governing; Q29B: forced choice on armed forces control conditioned on abuse of power. Different response structures and conditional framing."
+      },
+      {
+        "fields": [
+          "Q48A",
+          "Q48B"
+        ],
+        "false_merge_label": "who should be responsible for elected officials doing their jobs",
+        "actual_difference": "Q48A referent is members of Parliament; Q48B referent is the president. Same options but distinct accountability targets."
+      },
+      {
+        "fields": [
+          "Q28",
+          "Q29B"
+        ],
+        "false_merge_label": "executive constraint / rule of law",
+        "actual_difference": "Q28 concerns presidential obedience to law/courts; Q29B concerns military takeover legitimacy. Shared forced-choice format but different actor and referent."
+      }
+    ],
+    "source_limits": [
+      "Metadata only: no respondent frequencies, cross-field co-occurrence, or causal inference is supported.",
+      "Administration is known only as supplied; Q48A shows country exclusion flags, and Q63B shows a COV1-based not-applicable condition, so comparability across items cannot be assumed.",
+      "Q28 includes '94 = Not asked in the country', indicating item availability varies; no claim about which countries asked it.",
+      "Module guesses ('demographic_core' for Q22B/Q28/Q29B/Q63B) are metadata labels, not analytic guarantees.",
+      "Ordinal response scales across items are not guaranteed to be psychometrically equivalent."
+    ],
+    "foil_transfer_check": [
+      {
+        "source_field": "Q22B",
+        "foil_field": "Q29B",
+        "transfer": "Do not transfer the single-item approve scale interpretation to Q29B; Q29B requires resolving a two-statement tradeoff and explicitly allows 'Agree with neither'.",
+        "quote": "the army comes in to govern the country"
+      },
+      {
+        "source_field": "Q48A",
+        "foil_field": "Q48B",
+        "transfer": "Do not transfer MP-accountability interpretation to the president item; the agent named changes even though options match.",
+        "quote": "making sure that, once elected, the [president] does [his] job"
+      },
+      {
+        "source_field": "Q28",
+        "foil_field": "Q29B",
+        "transfer": "Do not treat Q28's rule-of-law constraint as measuring military intervention; Q28 actor is the president.",
+        "quote": "The [president] must always obey the laws and the courts"
+      },
+      {
+        "source_field": "Q63B",
+        "foil_field": "Q22B",
+        "transfer": "Do not transfer generic approve/disapprove governance ratings to Q63B; its condition is a public health emergency and includes eligibility filtering.",
+        "quote": "Not applicable (COV1=0, 8 or 9)"
+      }
+    ]
+  },
+  "provider_receipts": {
+    "neutral": {
+      "stage": "neutral-worker",
+      "packet_sha256": "c14d058b9e9c6a99f4026873239d9c56b2741764db6ed65a14c2fe9622d09aa1",
+      "elapsed_seconds": 29.733321974999853,
+      "exit_code": 0,
+      "stdout_sha256": "f655834dd796f95a7af58b17fc2bba97b612629a566ffbae191d726dfbc63766",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "PROVIDER_ENVELOPE_PARSED_NOT_ACCEPTED",
+      "independent_reviewer_authenticated": false,
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "usage": {
+        "input": 2910,
+        "output": 859,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "provider_receipt": {
+        "session": "ses_de14eadceffe034YsKBUyGXcGS",
+        "effort": "none",
+        "cap": 4500,
+        "steps": 1,
+        "exit": 0,
+        "input_text_sha256": "369f433cc0ed18cc4f503f1f4bbcb8d7f13b28366539f45ed22af80d7aa5c77b",
+        "opencode_rate_cost": 0.0009519
+      },
+      "reported_cost": null,
+      "cost_currency": null
+    },
+    "directed": {
+      "stage": "directed-worker",
+      "packet_sha256": "20d98487afecfc8b96a555dca97b8e470d1ffbdc242dc6c7e68e40b789a28cfb",
+      "elapsed_seconds": 44.181540894001955,
+      "exit_code": 0,
+      "stdout_sha256": "8cd8bcbbfe02680429454dec9f4797d36edd438005adabd99ba257d1c2aa4049",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "PROVIDER_ENVELOPE_PARSED_NOT_ACCEPTED",
+      "independent_reviewer_authenticated": false,
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "usage": {
+        "input": 2943,
+        "output": 1359,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "provider_receipt": {
+        "session": "ses_de14e1762ffeM8189VfPT1yJ1I",
+        "effort": "none",
+        "cap": 4500,
+        "steps": 1,
+        "exit": 0,
+        "input_text_sha256": "3235d028193e883c12dd2424a05117c78cbd013f6924ecdc5d86f2a28b4ba396",
+        "opencode_rate_cost": 0.00125685
+      },
+      "reported_cost": null,
+      "cost_currency": null
+    }
+  },
+  "instruction": "Single task: independently compare the matched P2 neutral/directed pair on the exact supplied Afrobarometer metadata. Identify observed change attributable only to the directed task, preserved or lost positive distinctions, errors/holds/regressions, source sufficiency, nontransfer and case-specific limits. Do not infer respondent frequencies, causal effects, native administration beyond source, or general model capacity. Return JSON exactly with keys observed_change, improvements, regressions, remaining_holds, source_sufficiency, case_disposition, next_step. Cite field IDs and exact quotes; no scalar score.",
+  "packet_sha256": "a383dfa62fe119bc18f63b927ebf4d194c2508a91e44d38aa340d554a78b3fab"
+}

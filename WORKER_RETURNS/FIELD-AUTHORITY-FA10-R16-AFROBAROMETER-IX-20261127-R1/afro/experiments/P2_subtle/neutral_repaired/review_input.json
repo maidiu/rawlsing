@@ -1,0 +1,165 @@
+{
+  "experiment": "FA10_R16_P2_NEUTRAL_TWO_PATH_REPAIR_G5",
+  "role": "independent source-bound reviewer",
+  "scope": "Receive only Q28 source_quote and Q22B code-3 limits wording in the candidate neutral-output repair.",
+  "source": {
+    "survey": "Afrobarometer Round 9",
+    "source_sha256": "ed3a72796825cc905976da503426d5ce238f6a872bc8018c2a2cc4f832aa3c6c",
+    "packet_member": "FA10_SOURCE_PACKET.json",
+    "source_metadata_grade": "source-native SAV metadata reconciled to official merged codebook; packet-reviewed"
+  },
+  "source_fields": {
+    "Q28": {
+      "source_metadata": {
+        "source": "Afrobarometer",
+        "wave": "R9",
+        "module_guess": "demographic_core",
+        "var_name": "Q28",
+        "question_text": "Which of the following statements is closest to your view? Choose Statement 1 or Statement 2. Statement 1: Since the [president] was elected to lead the country, [he] should not be bound by laws or court decisions that [he] thinks are wrong. Statement 2: The [president] must always obey the laws and the courts, even if [he] thinks they are wrong.",
+        "value_label_set": "labels102",
+        "storage_type": "numeric",
+        "storage_width": "8",
+        "measure": "ordinal",
+        "format": "F8.0",
+        "value_labels_count": "9",
+        "response_options_substantive": "1 = Agree very strongly with 1 | 2 = Agree with 1 | 3 = Agree with 2 | 4 = Agree very strongly with 2 | 5 = Agree with neither",
+        "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know | 94 = Not asked in the country",
+        "response_options_all": "-1 = Missing | 1 = Agree very strongly with 1 | 2 = Agree with 1 | 3 = Agree with 2 | 4 = Agree very strongly with 2 | 5 = Agree with neither | 8 = Refused | 9 = Don't know | 94 = Not asked in the country",
+        "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+      },
+      "row_sha256": "2d6229745dfec8d76607d800d9b5f57b28bb04b0d4b433b0e2a179e1f614af1f",
+      "inherited": null
+    },
+    "Q22B": {
+      "source_metadata": {
+        "source": "Afrobarometer",
+        "wave": "R9",
+        "module_guess": "demographic_core",
+        "var_name": "Q22B",
+        "question_text": "There are many ways to govern a country. Would you disapprove or approve of the following alternatives: the army comes in to govern the country?",
+        "value_label_set": "labels93",
+        "storage_type": "numeric",
+        "storage_width": "8",
+        "measure": "ordinal",
+        "format": "F8.0",
+        "value_labels_count": "8",
+        "response_options_substantive": "1 = Strongly disapprove | 2 = Disapprove | 3 = Neither approve nor disapprove | 4 = Approve | 5 = Strongly approve",
+        "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know",
+        "response_options_all": "-1 = Missing | 1 = Strongly disapprove | 2 = Disapprove | 3 = Neither approve nor disapprove | 4 = Approve | 5 = Strongly approve | 8 = Refused | 9 = Don't know",
+        "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+      },
+      "row_sha256": "b4b36500ae5e38a47f04b05a70acfaca62b16202fd6ba49e10e2b1e71aa960a9",
+      "inherited": null
+    }
+  },
+  "parent_response": {
+    "field_findings": [
+      {
+        "field_id": "Q28",
+        "what_it_makes_investigable": "A forced choice, via a scenario about a president's tenure, between executive exemption from laws and courts and executive obligation to them; it opens inquiry into preference structure over rule-of-law constraints on the president.",
+        "source_quote": "the [president] should not be bound by laws or court decisions",
+        "limits": "Referent body and gender are bracketed placeholders; no respondent answers, frequencies, country coverage, or causal claims are supplied."
+      },
+      {
+        "field_id": "Q29B",
+        "what_it_makes_investigable": "A forced choice on whether the armed forces may intervene politically, including taking control in an abuse-of-power condition; it opens inquiry into tolerance for military takeover under a stated justification.",
+        "source_quote": "armed forces should never intervene in the country's political process",
+        "limits": "The national referent is a bracketed placeholder; what 'abuse power' denotes to respondents and actual administration remain unknown."
+      },
+      {
+        "field_id": "Q22B",
+        "what_it_makes_investigable": "A five-point disapprove-approve rating applied specifically to 'the army comes in to govern the country,' opening inquiry into approval of military rule as a governing alternative.",
+        "source_quote": "the army comes in to govern the country",
+        "limits": "The scale midpoint is a mixed response, so its meaning to respondents is unknown; no answers or frequencies are given."
+      },
+      {
+        "field_id": "Q48A",
+        "what_it_makes_investigable": "A nominal allocation of accountability for elected legislators across president/executive, parliament/local council, party, voters, or no one; it opens inquiry into where respondents place oversight responsibility.",
+        "source_quote": "once elected, [members of Parliament] do their jobs",
+        "limits": "Lower-house scope is bracketed; nomination is empty because assignment is not a responsibility category offered."
+      },
+      {
+        "field_id": "Q48B",
+        "what_it_makes_investigable": "The same nominal accountability allocation applied to the president, permitting comparison of oversight attribution across two offices.",
+        "source_quote": "once elected, the [president] does [his] job",
+        "limits": "The office term and pronoun are bracketed placeholders; the cross-office parallel is inferred, not stated by the packet."
+      },
+      {
+        "field_id": "Q63B",
+        "what_it_makes_investigable": "A five-point agree-disagree rating on whether temporary pandemic-era limits on democracy are justified when police and security forces enforce health mandates; it opens inquiry into conditional tolerance for rights restriction.",
+        "source_quote": "temporarily limit democracy or democratic freedoms",
+        "limits": "Condition is framed as a public health emergency example; routing code 97 signals eligibility dependence whose actual application is unknown."
+      }
+    ],
+    "cross_item_observations": [
+      "Q29B and Q22B both concern military involvement in government, but the first uses a forced binary with a stated abuse-of-power condition while the second uses an approval scale on army governance; they are distinct response acts, not the same measure.",
+      "Q28 and Q48B both address the president, but Q28 constrains presidential adherence to law while Q48B assigns who oversees the president, separating constraint from accountability attribution."
+    ]
+  },
+  "candidate_response": {
+    "field_findings": [
+      {
+        "field_id": "Q28",
+        "what_it_makes_investigable": "A forced choice, via a scenario about a president's tenure, between executive exemption from laws and courts and executive obligation to them; it opens inquiry into preference structure over rule-of-law constraints on the president.",
+        "source_quote": "should not be bound by laws or court decisions that [he] thinks are wrong",
+        "limits": "Referent body and gender are bracketed placeholders; no respondent answers, frequencies, country coverage, or causal claims are supplied."
+      },
+      {
+        "field_id": "Q29B",
+        "what_it_makes_investigable": "A forced choice on whether the armed forces may intervene politically, including taking control in an abuse-of-power condition; it opens inquiry into tolerance for military takeover under a stated justification.",
+        "source_quote": "armed forces should never intervene in the country's political process",
+        "limits": "The national referent is a bracketed placeholder; what 'abuse power' denotes to respondents and actual administration remain unknown."
+      },
+      {
+        "field_id": "Q22B",
+        "what_it_makes_investigable": "A five-point disapprove-approve rating applied specifically to 'the army comes in to govern the country,' opening inquiry into approval of military rule as a governing alternative.",
+        "source_quote": "the army comes in to govern the country",
+        "limits": "Code 3 is the exact source label “Neither approve nor disapprove,” an explicit neutral midpoint position; it is not a mixed response, and the scale's midpoint meaning to respondents is unknown; no answers or frequencies are given."
+      },
+      {
+        "field_id": "Q48A",
+        "what_it_makes_investigable": "A nominal allocation of accountability for elected legislators across president/executive, parliament/local council, party, voters, or no one; it opens inquiry into where respondents place oversight responsibility.",
+        "source_quote": "once elected, [members of Parliament] do their jobs",
+        "limits": "Lower-house scope is bracketed; nomination is empty because assignment is not a responsibility category offered."
+      },
+      {
+        "field_id": "Q48B",
+        "what_it_makes_investigable": "The same nominal accountability allocation applied to the president, permitting comparison of oversight attribution across two offices.",
+        "source_quote": "once elected, the [president] does [his] job",
+        "limits": "The office term and pronoun are bracketed placeholders; the cross-office parallel is inferred, not stated by the packet."
+      },
+      {
+        "field_id": "Q63B",
+        "what_it_makes_investigable": "A five-point agree-disagree rating on whether temporary pandemic-era limits on democracy are justified when police and security forces enforce health mandates; it opens inquiry into conditional tolerance for rights restriction.",
+        "source_quote": "temporarily limit democracy or democratic freedoms",
+        "limits": "Condition is framed as a public health emergency example; routing code 97 signals eligibility dependence whose actual application is unknown."
+      }
+    ],
+    "cross_item_observations": [
+      "Q29B and Q22B both concern military involvement in government, but the first uses a forced binary with a stated abuse-of-power condition while the second uses an approval scale on army governance; they are distinct response acts, not the same measure.",
+      "Q28 and Q48B both address the president, but Q28 constrains presidential adherence to law while Q48B assigns who oversees the president, separating constraint from accountability attribution."
+    ]
+  },
+  "expected_changed_paths": [
+    "/field_findings/0/source_quote",
+    "/field_findings/2/limits"
+  ],
+  "task": "Independently verify the two changed paths against exact supplied source text/options; determine whether the Q28 quote is a literal substring and supports the claim; determine whether Q22B wording reproduces code 3 accurately without adding unsupported respondent meaning. Confirm every other response path is unchanged from parent. Return PASS_SCOPED, CORRECTION_REQUIRED, or HOLD_SCOPED with exact evidence. Do not infer respondent data, routes, administration or relations.",
+  "response_contract": {
+    "verdict": "one disposition",
+    "findings": [
+      {
+        "path": "exact JSON pointer",
+        "disposition": "PASS/CORRECTION_REQUIRED/HOLD",
+        "source_evidence": "exact supplied source quote",
+        "reason": "brief"
+      }
+    ],
+    "changed_path_audit": {
+      "expected_paths_only": true,
+      "unexpected_paths": []
+    },
+    "scope_limit": "exact two-path source repair only"
+  },
+  "packet_sha256": "27e1819e1559ace874c85bf0c5fbe5e03daf25858cc832ed3c0b882c27fba406"
+}

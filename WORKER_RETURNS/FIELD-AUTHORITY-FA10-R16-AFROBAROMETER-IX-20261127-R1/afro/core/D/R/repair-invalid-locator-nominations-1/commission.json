@@ -1,0 +1,27 @@
+{
+  "worker": "DeepSeek via isolated OpenCode Go",
+  "task": "repair invalid locator nominations only",
+  "original_stage_packet_sha256": "83118b770421627c0eacf28fa8c220254abf9f1cfe9801a6415bd9a681a6ff30",
+  "repair_packet_sha256": "d5e190b10e5fcc7f759c42408da605fce71f1c55ff1000a4d71155385f343048",
+  "invalid_nominations": [
+    {
+      "field": "Q105",
+      "reason": "Retrieving Q105 would let threat reports in Q106D and Q106E be conditioned on who else was immediately present during the interview, separating felt danger from audience composition.",
+      "available_in_locator": true,
+      "already_in_packet": true
+    },
+    {
+      "field": "Q100",
+      "reason": "Retrieving Q100 would permit the candour attribution in Q109F and the harassment likelihood in Q50B to be examined against respondent gender without asserting any answer domain.",
+      "available_in_locator": true,
+      "already_in_packet": true
+    },
+    {
+      "field": "Q90F",
+      "reason": "Retrieving Q90F would test whether the not-applicable follow-up code in Q98A aligns with actual household mobile phone possession.",
+      "available_in_locator": true,
+      "already_in_packet": true
+    }
+  ],
+  "commission": "Single task: correct the D/R response locator nomination list to satisfy the incumbent FA10 locator rule. Return only valid nominations from the supplied existing list. Preserve every already-valid nomination byte-for-byte, remove any nomination whose field is already present in the selected/context packet or absent from the locator, and do not invent replacements or change claims. This is a mechanical author repair candidate, not independent review or scientific acceptance."
+}

@@ -1,0 +1,29 @@
+{
+  "commission": "Afrobarometer R16 C/C author repair; one step only.",
+  "task": "Return a minimal machine-readable repair patch for this exact held C-role response. The validator rejection is “role boundary: inquiries”. The accepted C role may not own I inquiries. Set only the primary response inquiries field to an empty array; preserve all claims, answer_notes, nominations, holds, grade, and packet binding unchanged. The commission’s supplementary discovery sidecar already preserves cross-stage inquiries, so do not recreate them here. Do not perform source review, regenerate content, change any other field, or claim acceptance.",
+  "packet_sha256": "37ba49a5b34bcca1a9b2842112ce94df83cd5bf1f9c12a368734287dc49664c3",
+  "rejection": {
+    "error": "ValueError",
+    "message": "role boundary: inquiries"
+  },
+  "sidecar_reference": {
+    "path": "experiments/core_permeability/C_RECEIPT.json",
+    "sha256": "99960da35d1640ec020dff5eed3346171d56de910c3bae5a7c75c5cf01b0b124"
+  },
+  "required_output": {
+    "packet_sha256": "copy exact",
+    "patch": {
+      "field": "inquiries",
+      "operation": "replace",
+      "value": []
+    },
+    "unchanged_fields": [
+      "claims",
+      "answer_notes",
+      "nominations",
+      "holds",
+      "grade"
+    ],
+    "scope": "PRIMARY_RESPONSE_REPAIR_ONLY"
+  }
+}

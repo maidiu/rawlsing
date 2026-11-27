@@ -1,0 +1,22 @@
+{
+  "verdict": "PASS_SCOPED",
+  "findings": [
+    {
+      "path": "/field_findings/0/source_quote",
+      "disposition": "PASS",
+      "source_evidence": "should not be bound by laws or court decisions that [he] thinks are wrong",
+      "reason": "The candidate quote is a literal contiguous substring of the Q28 question_text; it expresses the Statement 1 exemption proposition that the field finding cites as the forced-choice alternative, so it supports that claim and is bound to supplied source text."
+    },
+    {
+      "path": "/field_findings/2/limits",
+      "disposition": "PASS",
+      "source_evidence": "3 = Neither approve nor disapprove",
+      "reason": "Code 3 is copied from the Q22B response_options_all exactly as the neutral midpoint label 'Neither approve nor disapprove'. The repair correctly distinguishes it from a mixed response, and it adds no respondent answers, frequencies, or inferred meaning beyond noting the midpoint meaning is unknown."
+    }
+  ],
+  "changed_path_audit": {
+    "expected_paths_only": true,
+    "unexpected_paths": []
+  },
+  "scope_limit": "exact two-path source repair only"
+}

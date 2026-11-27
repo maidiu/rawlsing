@@ -1,0 +1,2399 @@
+{
+  "commission": "Independent scoped receiving of the refreshed Afrobarometer IX FA10 D arm; exact current hashes only. No WVS7.",
+  "task": "Review the source-bound content of the refreshed D/C, D/R, D/I, and D/S responses against the exact R9 selected/context metadata. Prioritize the changed D/C patch and new downstream lineage; use the provided earlier source-first review only as a comparison aid, not as a substitute for reading exact source rows. Return per stage: hash-bound disposition PASS_SCOPED / CORRECTION_REQUIRED / HOLD, exact claim/inquiry/nomination IDs, source quote(s), specific defect or positive finding, and smallest next action. Test whether holds remain visible; no unjustified fielding, actor, risk-set, joint-distribution or causal inference; nominations are only retrieval requests; inquiries remain candidates, not issued empirical claims. Do not assert scientific/native authority, overall factorial acceptance, or transfer. No WVS7 work.",
+  "exact_source": {
+    "source": {
+      "member": "Rawlsing 35 waves of savs & dtas/Codebooks/Afrobarometer Round 9 codebook.csv",
+      "sha256": "ed3a72796825cc905976da503426d5ce238f6a872bc8018c2a2cc4f832aa3c6c",
+      "source": "Afrobarometer",
+      "wave": "R9"
+    },
+    "selected": {
+      "Q48A": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "substantive_module",
+          "var_name": "Q48A",
+          "question_text": "Who should be responsible for: making sure that, once elected, [members of Parliament] do their jobs?",
+          "value_label_set": "labels199",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "nominal",
+          "format": "F8.0",
+          "value_labels_count": "10",
+          "response_options_substantive": "0 = The President / Executive | 1 = The Parliament / local government council | 2 = Their Political Party | 3 = The Voters | 4 = No One",
+          "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know | 93 = Not asked in Burkina Faso after 4th of October | 94 = Not asked in country",
+          "response_options_all": "-1 = Missing | 0 = The President / Executive | 1 = The Parliament / local government council | 2 = Their Political Party | 3 = The Voters | 4 = No One | 8 = Refused | 9 = Don't know | 93 = Not asked in Burkina Faso after 4th of October | 94 = Not asked in country",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "5cc0b8bfd4d0cf0d2d01cfad85b139cd821af93be4e0db9a7cfb46c34136ee99",
+        "inherited": null
+      },
+      "Q48B": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "substantive_module",
+          "var_name": "Q48B",
+          "question_text": "Who should be responsible for: making sure that, once elected, the [president] does [his] job?",
+          "value_label_set": "labels200",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "nominal",
+          "format": "F8.0",
+          "value_labels_count": "9",
+          "response_options_substantive": "0 = The President / Executive | 1 = The Parliament / local government council | 2 = Their Political Party | 3 = The Voters | 4 = No One",
+          "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know | 94 = Not asked in the country",
+          "response_options_all": "-1 = Missing | 0 = The President / Executive | 1 = The Parliament / local government council | 2 = Their Political Party | 3 = The Voters | 4 = No One | 8 = Refused | 9 = Don't know | 94 = Not asked in the country",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "9473acc4f1f0e3bf15d1cbd75a6d00bfb33256385b663636439cd169399abb72",
+        "inherited": null
+      },
+      "Q51A": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "substantive_module",
+          "var_name": "Q51A",
+          "question_text": "In your opinion, should government and elected officials be doing more than they are doing now to advance the rights and equality of women, or should they be doing less, or are they doing about the right amount?",
+          "value_label_set": "labels206",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "ordinal",
+          "format": "F8.0",
+          "value_labels_count": "8",
+          "response_options_substantive": "1 = Much less | 2 = Somewhat less | 3 = About the right amount | 4 = Somewhat more | 5 = Much more",
+          "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know",
+          "response_options_all": "-1 = Missing | 1 = Much less | 2 = Somewhat less | 3 = About the right amount | 4 = Somewhat more | 5 = Much more | 8 = Refused | 9 = Don't know",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "dfb3ce081fd9fc5e88cd3da25b117e0908d4909972f4978fda0c53a1409d2d0b",
+        "inherited": null
+      },
+      "Q51B": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "substantive_module",
+          "var_name": "Q51B",
+          "question_text": "In your opinion, which of the following issues related to women's rights and equality do you think is the most important for our government and society to address?",
+          "value_label_set": "labels207",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "nominal",
+          "format": "F8.0",
+          "value_labels_count": "10",
+          "response_options_substantive": "0 = None of these / There are no issues for government to address | 1 = Unequal access to education | 2 = Unequal opportunities or pay in the workplace | 3 = Too few women in influential positions in government | 4 = Unequal rights of property ownership and inheritance | 5 = Gender-based violence | 6 = Some other issue",
+          "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know",
+          "response_options_all": "-1 = Missing | 0 = None of these / There are no issues for government to address | 1 = Unequal access to education | 2 = Unequal opportunities or pay in the workplace | 3 = Too few women in influential positions in government | 4 = Unequal rights of property ownership and inheritance | 5 = Gender-based violence | 6 = Some other issue | 8 = Refused | 9 = Don't know",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "6c7f340321cc91bb61e78809701cbd6ea28ac1e16fb5a2f89dd8b4225aca689c",
+        "inherited": null
+      },
+      "Q50B": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "substantive_module",
+          "var_name": "Q50B",
+          "question_text": "If a woman in your community runs for elected office, how likely or unlikely is it that the following things might occur: she will be criticized, called names, or harassed by others in the community?",
+          "value_label_set": "labels204",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "ordinal",
+          "format": "F8.0",
+          "value_labels_count": "7",
+          "response_options_substantive": "1 = Very unlikely | 2 = Somewhat unlikely | 3 = Somewhat likely | 4 = Very likely",
+          "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know",
+          "response_options_all": "-1 = Missing | 1 = Very unlikely | 2 = Somewhat unlikely | 3 = Somewhat likely | 4 = Very likely | 8 = Refused | 9 = Don't know",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "a38e2693011f2d389d9346d0cb8fa738699531a9a4ef12763e00cd3a9d5a22ef",
+        "inherited": null
+      },
+      "Q28": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "demographic_core",
+          "var_name": "Q28",
+          "question_text": "Which of the following statements is closest to your view? Choose Statement 1 or Statement 2. Statement 1: Since the [president] was elected to lead the country, [he] should not be bound by laws or court decisions that [he] thinks are wrong. Statement 2: The [president] must always obey the laws and the courts, even if [he] thinks they are wrong.",
+          "value_label_set": "labels102",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "ordinal",
+          "format": "F8.0",
+          "value_labels_count": "9",
+          "response_options_substantive": "1 = Agree very strongly with 1 | 2 = Agree with 1 | 3 = Agree with 2 | 4 = Agree very strongly with 2 | 5 = Agree with neither",
+          "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know | 94 = Not asked in the country",
+          "response_options_all": "-1 = Missing | 1 = Agree very strongly with 1 | 2 = Agree with 1 | 3 = Agree with 2 | 4 = Agree very strongly with 2 | 5 = Agree with neither | 8 = Refused | 9 = Don't know | 94 = Not asked in the country",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "2d6229745dfec8d76607d800d9b5f57b28bb04b0d4b433b0e2a179e1f614af1f",
+        "inherited": null
+      },
+      "Q29B": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "demographic_core",
+          "var_name": "Q29B",
+          "question_text": "Which of the following statements is closest to your view? Choose Statement 1 or Statement 2 Statement 1: [Kenya's] armed forces should never intervene in the country's political process. Statement 2: It is legitimate for the armed forces to take control of government when elected leaders abuse power for their own ends.",
+          "value_label_set": "labels104",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "ordinal",
+          "format": "F8.0",
+          "value_labels_count": "8",
+          "response_options_substantive": "1 = Agree very strongly with 1 | 2 = Agree with 1 | 3 = Agree with 2 | 4 = Agree very strongly with 2 | 5 = Agree with neither",
+          "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know",
+          "response_options_all": "-1 = Missing | 1 = Agree very strongly with 1 | 2 = Agree with 1 | 3 = Agree with 2 | 4 = Agree very strongly with 2 | 5 = Agree with neither | 8 = Refused | 9 = Don't know",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "182744cc731052a9e14bf6615eaa22de2d2e37953bb608137d8de8c9381044fc",
+        "inherited": null
+      },
+      "Q63B": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "demographic_core",
+          "var_name": "Q63B",
+          "question_text": "When the country is facing a public health emergency like the COVID-19 pandemic, do you agree or disagree that it is justified for the government to temporarily limit democracy or democratic freedoms by taking the following measures: using the police and security forces to enforce public health mandates like restrictions on public gatherings or wearing face masks?",
+          "value_label_set": "labels232",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "ordinal",
+          "format": "F8.0",
+          "value_labels_count": "10",
+          "response_options_substantive": "1 = Strongly disagree | 2 = Disagree | 3 = Neither agree nor disagree | 4 = Agree | 5 = Strongly agree",
+          "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know | 94 = Not asked in the country | 97 = Not applicable (COV1=0, 8 or 9)",
+          "response_options_all": "-1 = Missing | 1 = Strongly disagree | 2 = Disagree | 3 = Neither agree nor disagree | 4 = Agree | 5 = Strongly agree | 8 = Refused | 9 = Don't know | 94 = Not asked in the country | 97 = Not applicable (COV1=0, 8 or 9)",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "a4b07d0eaaa83cb14d9354718bfb682bf1f9899d2822dc04e50aff8eb9faceb7",
+        "inherited": null
+      },
+      "Q97": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "substantive_module",
+          "var_name": "Q97",
+          "question_text": "Who do you think sent us to do this interview?",
+          "value_label_set": "labels318",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "nominal",
+          "format": "F8.0",
+          "value_labels_count": "15",
+          "response_options_substantive": "0 = No one | 1 = “Afrobarometer\" or national partner | 2 = Research Company | 3 = Non-government or religious organization | 4 = University / School / College | 5 = Private company | 6 = Media | 7 = Political party or politician | 8 = Government | 9 = International organization or another country | 10 = God | 95 = Other",
+          "response_options_special": "-1 = Missing | 98 = Refused to answer | 99 = Don't know",
+          "response_options_all": "-1 = Missing | 0 = No one | 1 = “Afrobarometer\" or national partner | 2 = Research Company | 3 = Non-government or religious organization | 4 = University / School / College | 5 = Private company | 6 = Media | 7 = Political party or politician | 8 = Government | 9 = International organization or another country | 10 = God | 95 = Other | 98 = Refused to answer | 99 = Don't know",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "1f4c0847829903eac59a6680597b79472cf5f8a5df96969b79477ead9c8cfbf9",
+        "inherited": null
+      },
+      "Q98A": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "substantive_module",
+          "var_name": "Q98A",
+          "question_text": "Q98a. Willing to participate in follow-up surveys",
+          "value_label_set": "labels319",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "nominal",
+          "format": "F8.0",
+          "value_labels_count": "4",
+          "response_options_substantive": "0 = No | 1 = Yes",
+          "response_options_special": "-1 = Missing` | 7 = Not applicable [Respondent does not have a mobile phone number]",
+          "response_options_all": "-1 = Missing` | 0 = No | 1 = Yes | 7 = Not applicable [Respondent does not have a mobile phone number]",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "2b90b3812bfa384f5b6636225e081b73ee1c592ec4f67a75aea62bd3d91d39eb",
+        "inherited": null
+      },
+      "Q106C": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "substantive_module",
+          "var_name": "Q106C",
+          "question_text": "Were you approached by community and/or political party representatives?",
+          "value_label_set": "labels329",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "ordinal",
+          "format": "F8.0",
+          "value_labels_count": "2",
+          "response_options_substantive": "0 = No | 1 = Yes",
+          "response_options_special": "",
+          "response_options_all": "0 = No | 1 = Yes",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "14c69c58e9f0ef4ecb790b5e0b8a630fc02b436dffde544624b37d4b166158f2",
+        "inherited": null
+      },
+      "Q106D": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "substantive_module",
+          "var_name": "Q106D",
+          "question_text": "Did you feel threatened during the interview?",
+          "value_label_set": "labels330",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "ordinal",
+          "format": "F8.0",
+          "value_labels_count": "2",
+          "response_options_substantive": "0 = No | 1 = Yes",
+          "response_options_special": "",
+          "response_options_all": "0 = No | 1 = Yes",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "f2bd91221fb1a5358c345eb9a915e7e6b2aed12b8095be92ee6e7798669209cf",
+        "inherited": null
+      },
+      "Q106E": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "substantive_module",
+          "var_name": "Q106E",
+          "question_text": "Were you physically threatened during the interview?",
+          "value_label_set": "labels331",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "ordinal",
+          "format": "F8.0",
+          "value_labels_count": "2",
+          "response_options_substantive": "0 = No | 1 = Yes",
+          "response_options_special": "",
+          "response_options_all": "0 = No | 1 = Yes",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "fa91490c57412bf598d3224329edb922cc2e3a5bd5b1feaca5eac0983c9b1a31",
+        "inherited": null
+      },
+      "Q109F": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "substantive_module",
+          "var_name": "Q109F",
+          "question_text": "What was the respondent's attitude toward you during the interview? Was he or she: honest, in between, or misleading?",
+          "value_label_set": "labels338",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "ordinal",
+          "format": "F8.0",
+          "value_labels_count": "3",
+          "response_options_substantive": "1 = Honest | 2 = In between | 3 = Misleading",
+          "response_options_special": "",
+          "response_options_all": "1 = Honest | 2 = In between | 3 = Misleading",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "b5bdcbaa5e33e41cb576620238ee4cd454e5c534d936094274d0fe88172cb6e5",
+        "inherited": null
+      }
+    },
+    "context": {
+      "Q19A": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "substantive_module",
+          "var_name": "Q19A",
+          "question_text": "Which of the following statements is closest to your view? Choose Statement 1 or Statement 2. Statement 1: The government is like the people's boss. People should respect the government and do what it directs. Statement 2: The government is like the people's employee. It should respect the citizens and do what they request.",
+          "value_label_set": "labels87",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "ordinal",
+          "format": "F8.0",
+          "value_labels_count": "8",
+          "response_options_substantive": "1 = Agree very strongly with 1 | 2 = Agree with 1 | 3 = Agree with 2 | 4 = Agree very strongly with 2 | 5 = Agree with neither",
+          "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know",
+          "response_options_all": "-1 = Missing | 1 = Agree very strongly with 1 | 2 = Agree with 1 | 3 = Agree with 2 | 4 = Agree very strongly with 2 | 5 = Agree with neither | 8 = Refused | 9 = Don't know",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "9f339540ed85e404146a3259ff34c1e8c0f49ea0aba6be954dd7a5e728a3d491",
+        "inherited": null
+      },
+      "Q19B": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "demographic_core",
+          "var_name": "Q19B",
+          "question_text": "Which of the following statements is closest to your view? Choose Statement 1 or Statement 2 Statement 1: Our elected officials should listen to voters' views and do what they demand. Statement 2: Our elected leaders should follow their own ideas in deciding what is best for the country.",
+          "value_label_set": "labels88",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "ordinal",
+          "format": "F8.0",
+          "value_labels_count": "10",
+          "response_options_substantive": "1 = Agree very strongly with 1 | 2 = Agree with 1 | 3 = Agree with 2 | 4 = Agree very strongly with 2 | 5 = Agree with neither",
+          "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know | 94 = Not asked in the country | 997 = Not applicable",
+          "response_options_all": "-1 = Missing | 1 = Agree very strongly with 1 | 2 = Agree with 1 | 3 = Agree with 2 | 4 = Agree very strongly with 2 | 5 = Agree with neither | 8 = Refused | 9 = Don't know | 94 = Not asked in the country | 997 = Not applicable",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "4a61a101708ddc4b0a31ca1fadc54e0da56b8557c6b64caadfabf3664db83f8b",
+        "inherited": null
+      },
+      "Q22B": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "demographic_core",
+          "var_name": "Q22B",
+          "question_text": "There are many ways to govern a country. Would you disapprove or approve of the following alternatives: the army comes in to govern the country?",
+          "value_label_set": "labels93",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "ordinal",
+          "format": "F8.0",
+          "value_labels_count": "8",
+          "response_options_substantive": "1 = Strongly disapprove | 2 = Disapprove | 3 = Neither approve nor disapprove | 4 = Approve | 5 = Strongly approve",
+          "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know",
+          "response_options_all": "-1 = Missing | 1 = Strongly disapprove | 2 = Disapprove | 3 = Neither approve nor disapprove | 4 = Approve | 5 = Strongly approve | 8 = Refused | 9 = Don't know",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "b4b36500ae5e38a47f04b05a70acfaca62b16202fd6ba49e10e2b1e71aa960a9",
+        "inherited": null
+      },
+      "Q21A": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "substantive_module",
+          "var_name": "Q21A",
+          "question_text": "For each of the following statements, please tell me whether you disagree or agree: when jobs are scarce, men should have more rights to a job than women.",
+          "value_label_set": "labels90",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "ordinal",
+          "format": "F8.0",
+          "value_labels_count": "8",
+          "response_options_substantive": "1 = Strongly disagree | 2 = Disagree | 3 = Neither agree nor disagree | 4 = Agree | 5 = Strongly agree",
+          "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know",
+          "response_options_all": "-1 = Missing | 1 = Strongly disagree | 2 = Disagree | 3 = Neither agree nor disagree | 4 = Agree | 5 = Strongly agree | 8 = Refused | 9 = Don't know",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "a9ad6cfd8437e698cf183db8b49f433424456feece4c31875f5a9e47c0c6fc82",
+        "inherited": null
+      },
+      "Q49A": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "demographic_core",
+          "var_name": "Q49A",
+          "question_text": "Now I would like to discuss with you the status of men, women, and children in your community. For each of the following statements, please tell me whether you disagree or agree: in our country today, women and men have equal opportunities to get a job that pays a wage or salary.",
+          "value_label_set": "labels201",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "ordinal",
+          "format": "F8.0",
+          "value_labels_count": "8",
+          "response_options_substantive": "1 = Strongly disagree | 2 = Disagree | 3 = Neither agree nor disagree | 4 = Agree | 5 = Strongly agree",
+          "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't Know",
+          "response_options_all": "-1 = Missing | 1 = Strongly disagree | 2 = Disagree | 3 = Neither agree nor disagree | 4 = Agree | 5 = Strongly agree | 8 = Refused | 9 = Don't Know",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "a6dfcf016299a59c44c9b2d0104189107894fe12fbe121ff1adc0b10de1abb91",
+        "inherited": null
+      },
+      "Q53C": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "demographic_core",
+          "var_name": "Q53C",
+          "question_text": "If a woman in your community goes to the police to report being a victim of gender-based violence, for example, to report a rape or report being physically abused by her husband, how likely or unlikely is it that the following things might occur: she will be criticized, harassed, or shamed by others in the community?",
+          "value_label_set": "labels212",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "ordinal",
+          "format": "F8.0",
+          "value_labels_count": "8",
+          "response_options_substantive": "1 = Very unlikely | 2 = Somewhat unlikely | 3 = Somewhat likely | 4 = Very likely",
+          "response_options_special": "-1 = Missing | 6 = Refused | 8 = Refused | 9 = Don't know",
+          "response_options_all": "-1 = Missing | 1 = Very unlikely | 2 = Somewhat unlikely | 3 = Somewhat likely | 4 = Very likely | 6 = Refused | 8 = Refused | 9 = Don't know",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "71df3fafa1645484800e233ae802835c65e3b1323e5fa2b65a7a8c64d81da519",
+        "inherited": null
+      },
+      "Q90F": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "demographic_core",
+          "var_name": "Q90F",
+          "question_text": "Which of these things do you personally own? [If no, ask:] Does anyone else in your household own one: mobile phone?",
+          "value_label_set": "labels303",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "ordinal",
+          "format": "F8.0",
+          "value_labels_count": "6",
+          "response_options_substantive": "0 = No, no one in the household owns | 1 = Someone else in household owns | 2 = Yes (personally owns)",
+          "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know",
+          "response_options_all": "-1 = Missing | 0 = No, no one in the household owns | 1 = Someone else in household owns | 2 = Yes (personally owns) | 8 = Refused | 9 = Don't know",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "9dfa03ee9fec90198734e290b006c9087a9f12edbb9da094443c8602bc58e180",
+        "inherited": null
+      },
+      "Q90G": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "substantive_module",
+          "var_name": "Q90G",
+          "question_text": "Does your phone have access to the internet?",
+          "value_label_set": "labels304",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "ordinal",
+          "format": "F8.0",
+          "value_labels_count": "6",
+          "response_options_substantive": "0 = No (Does not have internet access) | 1 = Yes (Have internet)",
+          "response_options_special": "-1 = Missing | 7 = Not Applicable | 8 = Refused | 9 = Don't Know",
+          "response_options_all": "-1 = Missing | 0 = No (Does not have internet access) | 1 = Yes (Have internet) | 7 = Not Applicable | 8 = Refused | 9 = Don't Know",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "ad06f2c6073ea4ff7ae654a3da3a0f88ad94eaa1d8d49715ea6be39c68462a91",
+        "inherited": null
+      },
+      "Q105": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "substantive_module",
+          "var_name": "Q105",
+          "question_text": "Were there any other people immediately present who might be listening during the interview?",
+          "value_label_set": "labels326",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "nominal",
+          "format": "F8.0",
+          "value_labels_count": "5",
+          "response_options_substantive": "1 = No one | 2 = Spouse only | 3 = Children only | 4 = A few others | 5 = Small crowd",
+          "response_options_special": "",
+          "response_options_all": "1 = No one | 2 = Spouse only | 3 = Children only | 4 = A few others | 5 = Small crowd",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "519008782d43ec1da406aa934497bdba996e5529f5a36a4db38ae0d2b107a27b",
+        "inherited": null
+      },
+      "Q102": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "demographic_core",
+          "var_name": "Q102",
+          "question_text": "What was the primary language used in the interview?",
+          "value_label_set": "labels323",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "nominal",
+          "format": "F8.0",
+          "value_labels_count": "131",
+          "response_options_substantive": "1 = English | 2 = French | 3 = Portuguese | 4 = Swahili | 5 = Arabic | 100 = Ajagbé | 101 = Baatonum | 102 = Dendi | 103 = Ditamari | 104 = Fongbé | 105 = Fulfuldé | 106 = Yoruba | 140 = Setswana | 180 = Mooré | 181 = Dioula | 182 = Fulfuldé | 183 = Gulmacema | 220 = Creole | 260 = Twi | 261 = Ewe/Anlo | 262 = Ga/Dangbe | 263 = Dagbani | 264 = Dagaare | 300 = Kikuyu | 301 = Luo | 302 = Luhya | 303 = Kamba | 304 = Kalenjin | 310 = Somali | 340 = Sesotho | 380 = Liberian English | 420 = Malgache « officiel » | 460 = Chitumbuka | 461 = Chichewa | 501 = Bambara | 513 = Peul / Fulfulde | 516 = Soninké / Sarakollé | 517 = Sonrhaï | 540 = Sena | 541 = Ndau | 542 = Changana | 543 = Makua | 544 = Chichewa | 580 = Afrikaans | 581 = Oshiwambo | 582 = Otjiherero | 583 = Rukwangali | 620 = Hausa | 621 = Igbo | 622 = Yoruba | 623 = Pidgin English | 660 = Wolof | 661 = Pulaar ou Toucouleur | 665 = Diola | 700 = Afrikaans | 701 = Xhosa | 702 = Pedi | 703 = Sotho | 704 = Tswana | 705 = Venda | 706 = Zulu | 780 = Luganda | 781 = Runyankore/Rukiga | 782 = Runyoro/Rutooro | 783 = Lusoga | 784 = Lumasaaba | 787 = Ateso | 788 = Langi/Acholi | 789 = Alur | 790 = Lugbara | 791 = Japadhola | 792 = Ngakarimojong | 800 = Langi | 820 = Bemba | 821 = Nyanja | 822 = Tonga | 823 = Lozi | 824 = Chewa | 827 = Kaonde | 860 = Ndebele | 861 = Shona | 900 = Creole | 930 = Krio | 931 = Mende | 932 = Themne | 1100 = Haoussa | 1101 = Zarma/Songhay | 1102 = Fulfuldé | 1103 = Tamasheq | 1143 = Ben, Moba | 1144 = Ewé | 1150 = Kabyè | 1160 = Tem, Kotokoli | 1220 = Fufuldé | 1221 = Pidgin | 1276 = Malinké / Dioula | 1301 = Maninka | 1302 = Kpèlè | 1303 = Kissié | 1304 = Poular | 1305 = Soussou | 1340 = Afan Oromo | 1341 = Amharic | 1342 = Somaligna | 1343 = Tigrigna | 1344 = Sidamigna | 1500 = Moroccan Arabic (darija) | 1580 = Tunisian Arabic | 1620 = Siswati | 1680 = Creole | 1740 = Fula | 1741 = Wolof | 1742 = Jola | 1743 = Mandinka | 1750 = Umbundu | 1751 = Kikongo | 1753 = Chokwe | 1754 = Nhaneka | 1755 = Nganguela | 1756 = Ibinda-Fiote | 1757 = Kwanhama | 1780 = Kituba | 1781 = Lingala | 1800 = Mandinka | 1801 = Fula | 1802 = Wolof | 1803 = Jola | 1880 = Arabe /Hassaniya | 1881 = Pular | 1883 = Soninké | 9995 = Other",
+          "response_options_special": "",
+          "response_options_all": "1 = English | 2 = French | 3 = Portuguese | 4 = Swahili | 5 = Arabic | 100 = Ajagbé | 101 = Baatonum | 102 = Dendi | 103 = Ditamari | 104 = Fongbé | 105 = Fulfuldé | 106 = Yoruba | 140 = Setswana | 180 = Mooré | 181 = Dioula | 182 = Fulfuldé | 183 = Gulmacema | 220 = Creole | 260 = Twi | 261 = Ewe/Anlo | 262 = Ga/Dangbe | 263 = Dagbani | 264 = Dagaare | 300 = Kikuyu | 301 = Luo | 302 = Luhya | 303 = Kamba | 304 = Kalenjin | 310 = Somali | 340 = Sesotho | 380 = Liberian English | 420 = Malgache « officiel » | 460 = Chitumbuka | 461 = Chichewa | 501 = Bambara | 513 = Peul / Fulfulde | 516 = Soninké / Sarakollé | 517 = Sonrhaï | 540 = Sena | 541 = Ndau | 542 = Changana | 543 = Makua | 544 = Chichewa | 580 = Afrikaans | 581 = Oshiwambo | 582 = Otjiherero | 583 = Rukwangali | 620 = Hausa | 621 = Igbo | 622 = Yoruba | 623 = Pidgin English | 660 = Wolof | 661 = Pulaar ou Toucouleur | 665 = Diola | 700 = Afrikaans | 701 = Xhosa | 702 = Pedi | 703 = Sotho | 704 = Tswana | 705 = Venda | 706 = Zulu | 780 = Luganda | 781 = Runyankore/Rukiga | 782 = Runyoro/Rutooro | 783 = Lusoga | 784 = Lumasaaba | 787 = Ateso | 788 = Langi/Acholi | 789 = Alur | 790 = Lugbara | 791 = Japadhola | 792 = Ngakarimojong | 800 = Langi | 820 = Bemba | 821 = Nyanja | 822 = Tonga | 823 = Lozi | 824 = Chewa | 827 = Kaonde | 860 = Ndebele | 861 = Shona | 900 = Creole | 930 = Krio | 931 = Mende | 932 = Themne | 1100 = Haoussa | 1101 = Zarma/Songhay | 1102 = Fulfuldé | 1103 = Tamasheq | 1143 = Ben, Moba | 1144 = Ewé | 1150 = Kabyè | 1160 = Tem, Kotokoli | 1220 = Fufuldé | 1221 = Pidgin | 1276 = Malinké / Dioula | 1301 = Maninka | 1302 = Kpèlè | 1303 = Kissié | 1304 = Poular | 1305 = Soussou | 1340 = Afan Oromo | 1341 = Amharic | 1342 = Somaligna | 1343 = Tigrigna | 1344 = Sidamigna | 1500 = Moroccan Arabic (darija) | 1580 = Tunisian Arabic | 1620 = Siswati | 1680 = Creole | 1740 = Fula | 1741 = Wolof | 1742 = Jola | 1743 = Mandinka | 1750 = Umbundu | 1751 = Kikongo | 1753 = Chokwe | 1754 = Nhaneka | 1755 = Nganguela | 1756 = Ibinda-Fiote | 1757 = Kwanhama | 1780 = Kituba | 1781 = Lingala | 1800 = Mandinka | 1801 = Fula | 1802 = Wolof | 1803 = Jola | 1880 = Arabe /Hassaniya | 1881 = Pular | 1883 = Soninké | 9995 = Other",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "08e50fc2f4b3014f5c65602af5946361242abcfdb362ed5f4bc59ae36ad78da5",
+        "inherited": null
+      },
+      "Q100": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "demographic_core",
+          "var_name": "Q100",
+          "question_text": "Respondent's gender",
+          "value_label_set": "labels321",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "nominal",
+          "format": "F8.0",
+          "value_labels_count": "2",
+          "response_options_substantive": "1 = Man | 2 = Woman",
+          "response_options_special": "",
+          "response_options_all": "1 = Man | 2 = Woman",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "130feffb6fc77bf2bd220bedbe808539f8c1e8314f3b39ca091944e3367bbfa7",
+        "inherited": null
+      },
+      "Q39B": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "demographic_core",
+          "var_name": "Q39B",
+          "question_text": "In this country, can ordinary people report incidents of corruption without fear, or do they risk retaliation or other negative consequences if they speak out?",
+          "value_label_set": "labels149",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "nominal",
+          "format": "F8.0",
+          "value_labels_count": "5",
+          "response_options_substantive": "0 = Can report without fear | 1 = Risk retaliation or other negative consequences",
+          "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know",
+          "response_options_all": "-1 = Missing | 0 = Can report without fear | 1 = Risk retaliation or other negative consequences | 8 = Refused | 9 = Don't know",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "dddf3f071b09c9f1f44607239f7f0cfab3ea7d71fe354a311fa5b8ce447ae516",
+        "inherited": null
+      },
+      "Q64A": {
+        "source_metadata": {
+          "source": "Afrobarometer",
+          "wave": "R9",
+          "module_guess": "substantive_module",
+          "var_name": "Q64A",
+          "question_text": "After experiencing the COVID-19 pandemic in [Kenya], how prepared or unprepared do you think the government will be to deal with future public health emergencies?",
+          "value_label_set": "labels234",
+          "storage_type": "numeric",
+          "storage_width": "8",
+          "measure": "ordinal",
+          "format": "F8.0",
+          "value_labels_count": "7",
+          "response_options_substantive": "1 = Very unprepared | 2 = Somewhat unprepared | 3 = Somewhat prepared | 4 = Very prepared",
+          "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know",
+          "response_options_all": "-1 = Missing | 1 = Very unprepared | 2 = Somewhat unprepared | 3 = Somewhat prepared | 4 = Very prepared | 8 = Refused | 9 = Don't know",
+          "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+        },
+        "row_sha256": "21ac3746078c1c817afb0088d5a3ff080624df63e666bb06e972cd7f666931b3",
+        "inherited": null
+      }
+    }
+  },
+  "source_first_comparison": null,
+  "previous_blind_receiving": {
+    "core_status": {
+      "A": "PROJECTED",
+      "B": "PROJECTED",
+      "C": "PROJECTED",
+      "D": "PROJECTED"
+    },
+    "blinded_results": {
+      "0b798e14ad1e": {
+        "status": "MODEL_CONTEXT_REVIEWED",
+        "result": {
+          "assessments": [
+            {
+              "field": "Q48A/Q48B",
+              "criterion": "Distinct referents preserved; no conflation",
+              "source_evidence": "Q48A \"making sure that, once elected, [members of Parliament] do their jobs?\"; Q48B \"making sure that, once elected, the [president] does [his] job?\"",
+              "decision": "ACCEPT",
+              "minimum_repair": "None; candidate C7/C8 keep MP versus president referents separate while noting shared option set."
+            },
+            {
+              "field": "Q48A/Q48B",
+              "criterion": "Special code applicability, not diffuse",
+              "source_evidence": "Q48A \"93 = Not asked in Burkina Faso after 4th of October\" and Q48A \"94 = Not asked in country\"; Q48B only \"94 = Not asked in the country\"",
+              "decision": "ACCEPT_WITH_CAVEAT",
+              "minimum_repair": "Retain HOLD on mapping the Burkina Faso date rule to respondents; verify whether 93 is date-conditional within Burkina Faso, not general non-asking."
+            },
+            {
+              "field": "Q106D/Q106E",
+              "criterion": "No implied observed relationship between felt and physical threat",
+              "source_evidence": "Q106D \"Did you feel threatened during the interview?\"; Q106E \"Were you physically threatened during the interview?\"; both \"0 = No | 1 = Yes\"",
+              "decision": "ACCEPT_WITH_CAVEAT",
+              "minimum_repair": "Candidate C2/C3 describe referents only; inquiries Q1 must not assert a nesting or frequency relationship until RAW counts are qualified."
+            },
+            {
+              "field": "Q106C",
+              "criterion": "Actor attribution: interviewer, not respondent",
+              "source_evidence": "\"Were you approached by community and/or political party representatives?\"",
+              "decision": "ACCEPT",
+              "minimum_repair": "Preserve the interviewer-dyad referent; do not recode as respondent experience."
+            },
+            {
+              "field": "Q28",
+              "criterion": "Forced-choice structure and available special states",
+              "source_evidence": "\"The [president] must always obey the laws and the courts\"; response_options_all includes \"94 = Not asked in the country\"",
+              "decision": "ACCEPT",
+              "minimum_repair": "Keep HOLD because country availability cannot be resolved per respondent from metadata."
+            },
+            {
+              "field": "Q29B",
+              "criterion": "Referent is Kenya-specific wording; country scope unclear",
+              "source_evidence": "\"armed forces should never intervene in the country's political process\"; question_text carries \"[Kenya's]\"",
+              "decision": "ACCEPT_WITH_CAVEAT",
+              "minimum_repair": "Flag Kenya-template residue; confirm whether item is asked outside Kenya before pooling."
+            },
+            {
+              "field": "Q50B",
+              "criterion": "Community-other referent, not respondent attitude",
+              "source_evidence": "\"she will be criticized, called names, or harassed by others in the community?\"",
+              "decision": "ACCEPT",
+              "minimum_repair": "None; keep likelihood framing distinct from should-do items."
+            },
+            {
+              "field": "Q51A/Q51B",
+              "criterion": "Different answer acts not merged",
+              "source_evidence": "Q51A \"should government and elected officials be doing more than they are doing now\"; Q51B \"which of the following issues related to women's rights and equality\"",
+              "decision": "ACCEPT",
+              "minimum_repair": "None; candidate C17 correctly separates likelihood, amount, and nominal prioritization."
+            },
+            {
+              "field": "Q63B",
+              "criterion": "Module filter dependency recognized",
+              "source_evidence": "\"using the police and security forces to enforce public health mandates\"; \"97 = Not applicable (COV1=0, 8 or 9)\"",
+              "decision": "ACCEPT",
+              "minimum_repair": "Keep HOLD on the COV1 filter field; exclude 97 from substantive denominators."
+            },
+            {
+              "field": "Q97/Q98A",
+              "criterion": "No distribution or consent-rate inference",
+              "source_evidence": "Q97 \"Who do you think sent us to do this interview?\"; Q98A \"Willing to participate in follow-up surveys\"; \"7 = Not applicable [Respondent does not have a mobile phone number]\"",
+              "decision": "ACCEPT",
+              "minimum_repair": "Retain HOLD; treat phone non-owners as a separate subgroup with no consent value."
+            },
+            {
+              "field": "Q109F",
+              "criterion": "Interviewer judgment, not respondent self-report",
+              "source_evidence": "\"Was he or she: honest, in between, or misleading?\"",
+              "decision": "ACCEPT",
+              "minimum_repair": "None; do not treat as ground-truth honesty."
+            },
+            {
+              "field": "Q51B",
+              "criterion": "Paraphrase check on no-issue option",
+              "source_evidence": "\"0 = None of these / There are no issues for government to address\"",
+              "decision": "ACCEPT_WITH_CAVEAT",
+              "minimum_repair": "Candidate C11's \"explicit no-issue option\" is supported by the source label; keep quote short and verbatim."
+            }
+          ],
+          "distinctive_contributions": [
+            {
+              "field": "Q48A",
+              "note": "Only Q48A carries the date-conditional Burkina Faso state, making the pair asymmetric despite identical option sets.",
+              "evidence": "\"93 = Not asked in Burkina Faso after 4th of October\""
+            },
+            {
+              "field": "Q106C/D/E",
+              "note": "Three 0/1 items isolate distinct interviewer-level incidents: approach, felt threat, physical threat.",
+              "evidence": "\"0 = No | 1 = Yes\""
+            },
+            {
+              "field": "Q98A",
+              "note": "Mobile-phone non-ownership is a structural non-applicable, not refusal.",
+              "evidence": "\"7 = Not applicable [Respondent does not have a mobile phone number]\""
+            },
+            {
+              "field": "Q63B",
+              "note": "COVID module gating creates an explicit not-applicable state tied to COV1.",
+              "evidence": "\"97 = Not applicable (COV1=0, 8 or 9)\""
+            }
+          ],
+          "shared_risk_candidates": [
+            {
+              "field": "Q28/Q29B",
+              "risk": "Both are forced-choice regime items whose country availability (94) and Kenya template may differ across pooled R9 countries.",
+              "evidence": "\"94 = Not asked in the country\""
+            },
+            {
+              "field": "Q50B/Q51A/Q51B",
+              "risk": "Gender module mixes likelihood, amount, and nominal acts; analysts may average them as one attitude scale.",
+              "evidence": "\"Very unlikely\" | \"Somewhat more\" | \"Gender-based violence\""
+            },
+            {
+              "field": "Q97/Q98A",
+              "risk": "Both are contact/consent items conditioned on phone reachability, so no respondent-wide rate is inferable from metadata.",
+              "evidence": "\"Respondent does not have a mobile phone number\""
+            },
+            {
+              "field": "Q106D/Q106E",
+              "risk": "Analysts may treat felt and physical threat as parallel or independent rather than nested; candidate keeps them referentially separate only.",
+              "evidence": "\"physically threatened during the interview\""
+            }
+          ],
+          "holds": [
+            {
+              "field": "Q48A/Q48B",
+              "reason": "Need country and fieldwork-date fields to apply the Burkina Faso after-4-October rule to respondents.",
+              "evidence": "\"Not asked in Burkina Faso after 4th of October\""
+            },
+            {
+              "field": "Q106C/Q106D/Q106E",
+              "reason": "Need interviewer-level routing and question order to establish whether approach and threat items share a filter.",
+              "evidence": "\"Were you approached by community and/or political party representatives?\""
+            },
+            {
+              "field": "Q28/Q63B",
+              "reason": "Need country identifiers and COV1 filter values to map 94/97 special states per respondent.",
+              "evidence": "\"Not asked in the country\""
+            },
+            {
+              "field": "Q97/Q98A",
+              "reason": "Need response distributions and phone-number availability to make any consent or attribution claim.",
+              "evidence": "\"Willing to participate in follow-up surveys\""
+            }
+          ]
+        }
+      },
+      "191089577cad": {
+        "status": "MODEL_CONTEXT_REVIEWED",
+        "result": {
+          "assessments": [
+            {
+              "field": "Q48A",
+              "criterion": "Actor and answer-domain accuracy",
+              "source_evidence": "Q48A question_text: \"making sure that, once elected, [members of Parliament] do their jobs?\"; options: \"0 = The President / Executive\"",
+              "decision": "CONFIRM",
+              "minimum_repair": "None; retain the normative-owner framing and do not treat it as observed monitoring."
+            },
+            {
+              "field": "Q48B",
+              "criterion": "Distinct referent versus Q48A",
+              "source_evidence": "Q48B question_text: \"making sure that, once elected, the [president] does [his] job?\"; option \"0 = The President / Executive\"",
+              "decision": "CONFIRM with repair",
+              "minimum_repair": "Always name the officeholder target (MPs vs president) whenever the two are compared; do not merge them into one civic-competence scale."
+            },
+            {
+              "field": "Q48A",
+              "criterion": "Code applicability and scoping",
+              "source_evidence": "\"93 = Not asked in Burkina Faso after 4th of October\"",
+              "decision": "HOLD",
+              "minimum_repair": "Record country/date routing before any cross-country or same-respondent use of Q48A; Q48B lacks an analogous 93 code."
+            },
+            {
+              "field": "Q28",
+              "criterion": "Construct: stance versus exposure",
+              "source_evidence": "\"should not be bound by laws or court decisions that [he] thinks are wrong\"; \"94 = Not asked in the country\"",
+              "decision": "CONFIRM with hold",
+              "minimum_repair": "Verify full-wave administration and keep placeholders from being read as a fixed country target."
+            },
+            {
+              "field": "Q29B",
+              "criterion": "Conditional normative judgment, not exposure",
+              "source_evidence": "\"take control of government when elected leaders abuse power\"; \"[Kenya's] armed forces\"",
+              "decision": "CONFIRM with hold",
+              "minimum_repair": "Resolve whether the Kenya wording is universal or template residue before cross-country use."
+            },
+            {
+              "field": "Q106C",
+              "criterion": "Referent: interviewer, not respondent",
+              "source_evidence": "\"Were you approached by community and/or political party representatives?\"; \"0 = No | 1 = Yes\"",
+              "decision": "CONFIRM",
+              "minimum_repair": "Keep the interviewer grain explicit; the merged source category cannot be decomposed."
+            },
+            {
+              "field": "Q106D",
+              "criterion": "Felt versus physical threat separation",
+              "source_evidence": "\"Did you feel threatened during the interview?\" vs Q106E \"Were you physically threatened during the interview?\"",
+              "decision": "CONFIRM with repair",
+              "minimum_repair": "State only that the two codes are logically distinct; do not assert any observed co-occurrence or nesting regularity without cell evidence."
+            },
+            {
+              "field": "Q109F",
+              "criterion": "Middle option semantics",
+              "source_evidence": "\"honest, in between, or misleading?\"; \"2 = In between\"",
+              "decision": "CONFIRM",
+              "minimum_repair": "Do not recode 2 as low candor; refusal/don't-know are structurally absent."
+            },
+            {
+              "field": "Q50B",
+              "criterion": "Projective anticipation versus witnessed sanction",
+              "source_evidence": "\"criticized, called names, or harassed by others in the community\"",
+              "decision": "CONFIRM",
+              "minimum_repair": "None; keep as hypothetical likelihood."
+            },
+            {
+              "field": "Q51A",
+              "criterion": "Effort-demand direction",
+              "source_evidence": "\"should government and elected officials be doing more\"; \"3 = About the right amount\"",
+              "decision": "CONFIRM",
+              "minimum_repair": "Do not equate 'about right' with indifference."
+            },
+            {
+              "field": "Q51B",
+              "criterion": "Capped forced choice",
+              "source_evidence": "\"which of the following issues related to women's rights\"; \"0 = None of these\"",
+              "decision": "CONFIRM",
+              "minimum_repair": "Do not treat nonselection as rating an issue unimportant."
+            },
+            {
+              "field": "Q63B",
+              "criterion": "Routing and conditional endorsement",
+              "source_evidence": "\"temporarily limit democracy or democratic freedoms\"; \"97 = Not applicable (COV1=0, 8 or 9)\"",
+              "decision": "HOLD",
+              "minimum_repair": "Obtain COV1 routing to fix the denominator."
+            },
+            {
+              "field": "Q97",
+              "criterion": "Perceived sponsorship, always-asked",
+              "source_evidence": "\"Who do you think sent us to do this interview?\"; \"10 = God\"",
+              "decision": "CONFIRM with repair",
+              "minimum_repair": "Do not compare it to a routed COVID item as if both had the same denominator."
+            },
+            {
+              "field": "Q98A",
+              "criterion": "Scope state versus non-consent",
+              "source_evidence": "\"Willing to participate in follow-up surveys\"; \"7 = Not applicable [Respondent does not have a mobile phone number]\"",
+              "decision": "HOLD",
+              "minimum_repair": "Separate the mobile-availability scope state from a stated no before interpreting willingness."
+            },
+            {
+              "field": "191089577cad-Q1",
+              "criterion": "Threat-sponsorship inquiry feasibility",
+              "source_evidence": "\"Did you feel threatened\" and \"Who do you think sent us\"",
+              "decision": "HOLD",
+              "minimum_repair": "Qualify interviewer clustering and routing first; assert no numerics."
+            },
+            {
+              "field": "191089577cad-Q2",
+              "criterion": "Sanction-priority inquiry feasibility",
+              "source_evidence": "\"criticized, called names, or harassed\"; \"which of the following issues\"",
+              "decision": "HOLD",
+              "minimum_repair": "Note capped-choice and cross-sectional limits; establish joint administration."
+            },
+            {
+              "field": "191089577cad-Q3",
+              "criterion": "Executive-frame inquiry feasibility",
+              "source_evidence": "\"The President / Executive\" (Q48A) and \"The Parliament / local government council\" (Q48B)",
+              "decision": "HOLD",
+              "minimum_repair": "Establish same-wave co-administration of Q48A/Q48B and Q28/Q29B before comparison."
+            }
+          ],
+          "distinctive_contributions": [
+            "Keeps Q48A and Q48B as target-distinct accountability-owner acts (MPs vs president), explicitly refusing a merged civic-competence reading.",
+            "Treats Q106D and Q106E as separately coded interviewer-side claims (felt vs physical) without asserting any observed relation between them.",
+            "Labels the merged Q106C community/party source as unrecoverable in kind.",
+            "Flags Q28 '94' and Q48A '93' country routing as comparability hazards."
+          ],
+          "shared_risk_candidates": [
+            "Both owner questions carry the executive as an offered option (\"0 = The President / Executive\") for the opposite branch's officeholder, inviting a spurious self-oversight reading.",
+            "Interviewer-grain items Q106C/D/E and Q109F are all fielded without clustering metadata available here.",
+            "Q97 and Q63B differ in routing scope, a denominator trap for any cross-item comparison."
+          ],
+          "holds": [
+            "Q48A/Q48B co-administration not established (\"93 = Not asked in Burkina Faso after 4th of October\" on Q48A only).",
+            "Q63B requires COV1 to fix the denominator.",
+            "Q98A mobile-availability scope state cannot yet be separated from refusal.",
+            "Q106C/D/E and Q109F lack interviewer identity, clustering and region.",
+            "Q28/Q29B cross-country comparability unverified due to placeholders and '94'."
+          ]
+        }
+      },
+      "7aacea282207": {
+        "status": "MODEL_CONTEXT_REVIEWED",
+        "result": {
+          "assessments": [
+            {
+              "field": "Q106D/Q106E",
+              "criterion": "Avoid implying any observed relationship between felt and physical threat",
+              "source_evidence": {
+                "candidate": "Q106E need not coincide with the felt-threat report and is not linked to the approach item",
+                "source": "Were you physically threatened during the interview?"
+              },
+              "decision": "HOLD",
+              "minimum_repair": "Strip the entailment claim (\"a felt-threat report does not entail a physical-threat report\") and the nested-set inference; keep only that the two are separately asked Yes/No interviewer items whose co-occurrence is unobserved in the packet."
+            },
+            {
+              "field": "Q48A/Q48B",
+              "criterion": "Distinct referents correctly maintained",
+              "source_evidence": {
+                "candidate": "Single-choice attribution of which actor should ensure elected legislators do their jobs",
+                "source": "making sure that, once elected, [members of Parliament] do their jobs?"
+              },
+              "decision": "ACCEPT",
+              "minimum_repair": "Retain; both stems and identical option sets are correctly cited, with MP vs president referents kept apart."
+            },
+            {
+              "field": "Q48A",
+              "criterion": "No unwarranted textual typo/overreach",
+              "source_evidence": {
+                "candidate": "includes compartiot political party and voters",
+                "source": "2 = Their Political Party | 3 = The Voters"
+              },
+              "decision": "HOLD",
+              "minimum_repair": "Delete \"compartiot\" (not a source token); cite the exact option strings and state the five substantive actors plus special codes."
+            },
+            {
+              "field": "Q97",
+              "criterion": "Actor list accuracy and provenance framing",
+              "source_evidence": {
+                "candidate": "twelve-plus named sources including Afrobarometer, government, party, media, and God",
+                "source": "10 = God | 95 = Other"
+              },
+              "decision": "ACCEPT",
+              "minimum_repair": "Keep; note Other/Refused/Don't know are non-substantive and \"Afrobarometer\" label is quoted with its native quotation marks."
+            },
+            {
+              "field": "Q50B",
+              "criterion": "Anticipation vs recorded event; non-duplication",
+              "source_evidence": {
+                "candidate": "an anticipation judgment distinct from any recorded harassment event",
+                "source": "she will be criticized, called names, or harassed by others in the community?"
+              },
+              "decision": "ACCEPT",
+              "minimum_repair": "Keep; consolidate the many near-duplicate Q50B claims into one to reduce redundancy."
+            },
+            {
+              "field": "Q51B",
+              "criterion": "Nominal single nomination, none-of-these retained",
+              "source_evidence": {
+                "candidate": "an explicit none-of-these option and an other category",
+                "source": "0 = None of these / There are no issues for government to address"
+              },
+              "decision": "ACCEPT",
+              "minimum_repair": "Keep; explicitly flag code 0 as substantive-but-null and 6 as open other."
+            },
+            {
+              "field": "Q63B",
+              "criterion": "Conditional emergency framing; code 97 applicability",
+              "source_evidence": {
+                "candidate": "carrying a prior-COVID non-applicability code",
+                "source": "97 = Not applicable (COV1=0, 8 or 9)"
+              },
+              "decision": "ACCEPT",
+              "minimum_repair": "Keep; add that 97 keys to an earlier COV1 item not present in packet, so applicability is inherited."
+            },
+            {
+              "field": "Q109F",
+              "criterion": "Interviewer perception not answer validity",
+              "source_evidence": {
+                "candidate": "not a verification of any answer's factual accuracy",
+                "source": "Was he or she: honest, in between, or misleading?"
+              },
+              "decision": "ACCEPT",
+              "minimum_repair": "Keep; note the stem's \"attitude toward you\" makes rapport, not veracity, the nearer referent."
+            },
+            {
+              "field": "Q28",
+              "criterion": "Normative stance not observed conduct",
+              "source_evidence": {
+                "candidate": "records a normative position, not observed presidential conduct",
+                "source": "The [president] must always obey the laws and the courts"
+              },
+              "decision": "ACCEPT",
+              "minimum_repair": "Keep; note bracketed office token and 94 not-asked code."
+            },
+            {
+              "field": "Q29B",
+              "criterion": "Norm statement, not event report",
+              "source_evidence": {
+                "candidate": "agreement with takeover is a stated norm, not evidence that any intervention happened",
+                "source": "take control of government when elected leaders abuse power"
+              },
+              "decision": "ACCEPT",
+              "minimum_repair": "Keep; flag the \"[Kenya's]\" bracket as template residue in a merged file rather than a claim about one country."
+            },
+            {
+              "field": "Q98A",
+              "criterion": "Consent vs ineligibility separation",
+              "source_evidence": {
+                "candidate": "separates respondents without a mobile number from those who declined",
+                "source": "7 = Not applicable [Respondent does not have a mobile phone number]"
+              },
+              "decision": "ACCEPT",
+              "minimum_repair": "Keep; note the malformed label \"-1 = Missing`\" in source options as a data-hygiene flag."
+            },
+            {
+              "field": "Q106C",
+              "criterion": "Approach occurrence without actor/content",
+              "source_evidence": {
+                "candidate": "records only occurrence of such an approach, not who approached or what was communicated",
+                "source": "Were you approached by community and/or political party representatives?"
+              },
+              "decision": "ACCEPT",
+              "minimum_repair": "Keep; deduplicate the four near-identical Q106C claims."
+            }
+          ],
+          "distinctive_contributions": [
+            {
+              "field": "Q106D/Q106E",
+              "contribution": "Candidate isolates felt threat from physical threat as a fieldwork-safety trace rather than respondent exposure.",
+              "source_evidence": {
+                "candidate": "registers a fieldwork-safety trace rather than the respondent's own exposure outside the interview",
+                "source": "Did you feel threatened during the interview?"
+              },
+              "decision": "KEEP",
+              "minimum_repair": "Retain but do not add any co-occurrence or nesting assertion."
+            },
+            {
+              "field": "Q48A/Q48B",
+              "contribution": "Shared-actor-list comparison across two offices without assuming one accountability model.",
+              "source_evidence": {
+                "candidate": "sharing the same actor list lets the two be compared without assuming one accountability model",
+                "source": "making sure that, once elected, the [president] does [his] job"
+              },
+              "decision": "KEEP",
+              "minimum_repair": "Retain."
+            },
+            {
+              "field": "Q50B/Q63B",
+              "contribution": "Explicit separation of anticipated community sanction from state enforcement of health mandates.",
+              "source_evidence": {
+                "candidate": "distinct from Q63B's state enforcement question",
+                "source": "criticized, called names, or harassed"
+              },
+              "decision": "KEEP",
+              "minimum_repair": "Retain."
+            }
+          ],
+          "shared_risk_candidates": [
+            {
+              "field": "Q48A/Q48B",
+              "risk": "Candidate claims paired comparison but supplies no country context, so \"[president]\" cannot be fixed.",
+              "source_evidence": {
+                "candidate": "the two can be compared without assuming a single accountability model",
+                "source": "[president]"
+              },
+              "decision": "HOLD",
+              "minimum_repair": "State the bracket is a template token; restrict to enumerated actor set."
+            },
+            {
+              "field": "Q106D/Q106E",
+              "risk": "Source-first work asserts \"Q106E=1 implies Q106D=1\" (nested pair), an unverified logical entailment.",
+              "source_evidence": {
+                "candidate": "a felt-threat report does not entail a physical-threat report",
+                "source": "0 = No | 1 = Yes"
+              },
+              "decision": "HOLD",
+              "minimum_repair": "Withdraw the nesting claim; treat as two independent No/Yes items pending evidence."
+            },
+            {
+              "field": "Q97/Q98A",
+              "risk": "Follow-up willingness and sponsor attribution linked conceptually with no recontact design or mobile-ownership documentation.",
+              "source_evidence": {
+                "candidate": "Follow-up consent cannot be scaled to any recontact population",
+                "source": "Willing to participate in follow-up surveys"
+              },
+              "decision": "HOLD",
+              "minimum_repair": "Keep as an explicit unflagged gap; do not treat as an association finding."
+            },
+            {
+              "field": "Q63B",
+              "risk": "No documentation of which mandates were contemporaneous, so experienced vs hypothetical is indeterminate.",
+              "source_evidence": {
+                "candidate": "Whether respondents were judging actual enforcement experience or a hypothetical cannot be determined",
+                "source": "temporarily limit democracy or democratic freedoms"
+              },
+              "decision": "HOLD",
+              "minimum_repair": "Retain as an explicit ceiling; do not adjudicate experienced/hypothetical."
+            }
+          ],
+          "holds": [
+            {
+              "field": "Q106D/Q106E",
+              "criterion": "No observed relationship implied",
+              "source_evidence": {
+                "candidate": "a positive felt-threat report need not entail physical threat",
+                "source": "Were you physically threatened during the interview?"
+              },
+              "decision": "HOLD",
+              "minimum_repair": "Remove the entailment sentence; replace with \"separately asked; co-occurrence unobserved.\""
+            },
+            {
+              "field": "Q109F/Q106D/Q106E",
+              "criterion": "No causal reading of threat reports against honesty ratings",
+              "source_evidence": {
+                "candidate": "Any causal reading of threat reports against respondent honesty ratings remains unsupported",
+                "source": "honest, in between, or misleading"
+              },
+              "decision": "HOLD",
+              "minimum_repair": "Retain only as a documentation gap; do not formulate as a relationship inquiry."
+            },
+            {
+              "field": "Q28/Q29B",
+              "criterion": "Historical materiality unanchored",
+              "source_evidence": {
+                "candidate": "rival contextual readings cannot be adjudicated here",
+                "source": "should never intervene in the country's political process"
+              },
+              "decision": "HOLD",
+              "minimum_repair": "Keep as ceiling; no country-history inference."
+            },
+            {
+              "field": "Q48A",
+              "criterion": "Exact code applicability",
+              "source_evidence": {
+                "candidate": "93 = Not asked in Burkina Faso after 4th of October",
+                "source": "93 = Not asked in Burkina Faso after 4th of October"
+              },
+              "decision": "HOLD",
+              "minimum_repair": "Add explicit note that 93 is a country-specific skip absent from Q48B's option set."
+            },
+            {
+              "field": "Q53C",
+              "criterion": "Omission search: overlapping community-sanction constructs not integrated",
+              "source_evidence": {
+                "candidate": "criticized, called names, or harassed",
+                "source": "she will be criticized, harassed, or shamed by others in the community?"
+              },
+              "decision": "HOLD",
+              "minimum_repair": "Acknowledge Q53C as a parallel anticipated-sanction item (reporting GBV) that candidate omitted; either integrate or explicitly exclude."
+            },
+            {
+              "field": "Q22B/Q19A/Q39B",
+              "criterion": "Omission search: nearby governance constructs unused",
+              "source_evidence": {
+                "candidate": "the army comes in to govern the country",
+                "source": "the army comes in to govern the country?"
+              },
+              "decision": "HOLD",
+              "minimum_repair": "Note Q22B, Q19A, Q39B, Q90F as available context fields not claimed; no effect on holds."
+            }
+          ]
+        }
+      },
+      "b40dd1d1c94c": {
+        "status": "MODEL_CONTEXT_REVIEWED",
+        "result": {
+          "assessments": [
+            {
+              "field": "Q48A",
+              "criterion": "Distinct referent: MP oversight vs presidential oversight",
+              "source_evidence": "Q48A asks \"once elected, [members of Parliament] do their jobs?\" while Q48B asks \"the [president] does [his] job?\"; both share \"0 = The President / Executive | 1 = The Parliament / local government council | 2 = Their Political Party | 3 = The Voters | 4 = No One\"",
+              "decision": "ACCEPT candidate claim that Q48A is a normative allocation for MPs; the same option set applied to a different officeholder is correctly characterized as choosing an accountability principal, not a scale position",
+              "minimum_repair": "None for the referent; candidate should not treat the shared option set as evidence of an observed across-office relationship"
+            },
+            {
+              "field": "Q48B",
+              "criterion": "Candidate claim reaches beyond offered categories",
+              "source_evidence": "Candidate C21 states the coded option list \"includes no open-ended other\"; Q48B response_options_all lists \"-1 = Missing | 0 = The President / Executive | 1 = The Parliament / local government council | 2 = Their Political Party | 3 = The Voters | 4 = No One | 8 = Refused | 9 = Don't know | 94 = Not asked in the country\"",
+              "decision": "HOLD: the absence of an open other is supported only by the enumerated codes; the claim should be stated as bounded to the enumerated categories, and the distinguished code 94 (not asked in country) is omitted",
+              "minimum_repair": "Add Q48B code 94 as a distinct missing reason; state the boundedness as 'the enumerated option set contains no open-ended other code' rather than a strong claim about the coding scheme"
+            },
+            {
+              "field": "Q106D",
+              "criterion": "Avoid implying an observed relationship with Q106E",
+              "source_evidence": "Q106D \"Did you feel threatened during the interview?\" offers \"0 = No | 1 = Yes\"; Q106E \"Were you physically threatened during the interview?\" offers \"0 = No | 1 = Yes\"",
+              "decision": "HOLD: candidate's claims that the two \"need not coincide\" and that the pair is \"nested\" presuppose a directional relationship not established by item wording alone; the candidate should not assert nesting or implication",
+              "minimum_repair": "Restate as two separately coded interviewer-report items whose wording differs (felt vs physical); do not assert nesting, implication, or coincidence patterns; treat any relationship as an open empirical question"
+            },
+            {
+              "field": "Q106E",
+              "criterion": "Interviewer-reported actor scope",
+              "source_evidence": "Candidate C16 says the item \"does not record threats reported by the respondent\"; Q106E asks \"Were you physically threatened during the interview?\" in the interviewer-administered block",
+              "decision": "ACCEPT as a scope clarification, but flag that interviewer-side reporting is an inference from module placement in the packet, not from question_text",
+              "minimum_repair": "Cite the module_guess \"substantive_module\" or the surrounding interviewer items as the basis for interviewer-administered status; avoid asserting respondent-side exclusion as certain"
+            },
+            {
+              "field": "Q109F",
+              "criterion": "Three-valued coded meanings and special codes",
+              "source_evidence": "Q109F offers \"1 = Honest | 2 = In between | 3 = Misleading\" and question_text says \"honest, in between, or misleading?\"; response_options_all contains no explicit -1/8/9 specials",
+              "decision": "HOLD: candidate treats the field as \"three-valued\" without acknowledging that no missing/refused/don't-know codes appear in the packet's option list for Q109F, so substantive absence handling is undetermined",
+              "minimum_repair": "State that the packet lists only three substantive codes and no special codes; do not claim three-valued total coverage without verifying missing-value handling in the SAV"
+            },
+            {
+              "field": "Q106C",
+              "criterion": "Who is approached and by whom",
+              "source_evidence": "Q106C asks \"Were you approached by community and/or political party representatives?\" with \"0 = No | 1 = Yes\"; candidate C15 says it \"reports prior approach of the field team\"",
+              "decision": "HOLD: question_text does not specify that the interview team was approached (the 'you' could be the respondent); the candidate's field-team gatekeeping reading is plausible given interviewer administration but is not literal in the wording",
+              "minimum_repair": "Separate the literal wording from the administration-context inference; corroborate respondent-vs-interviewer addressee with adjacent interviewer items before fixing the referent"
+            },
+            {
+              "field": "Q29B",
+              "criterion": "General norm vs specific coup and country specificity",
+              "source_evidence": "Q29B question_text embeds \"[Kenya's] armed forces should never intervene\" in a merged R9 file; source_first_work notes \"[Kenya's] armed forces\" leaves unclear whether the Kenya-specific wording is universal or template residue",
+              "decision": "ACCEPT the general-norm reading; HOLD the country referent as unresolved and reject any specific-coup interpretation as beyond the item",
+              "minimum_repair": "Flag the bracketed [Kenya's] placeholder and do not resolve it from the packet alone"
+            },
+            {
+              "field": "Q28",
+              "criterion": "Forced-choice abstract stance vs observed conduct",
+              "source_evidence": "Q28 offers \"1 = Agree very strongly with 1\" through \"5 = Agree with neither\" on \"[president] must always obey the laws and the courts\"; candidate C5/C32/C46/C60 so characterize it",
+              "decision": "ACCEPT the abstract-constitutional-stance reading; add that the item includes \"5 = Agree with neither\" and \"94 = Not asked in the country\" as distinguished response acts",
+              "minimum_repair": "Note the neither and not-asked-in-country codes so the claim does not imply a binary exemption-vs-obedience choice for all respondents"
+            },
+            {
+              "field": "Q51B",
+              "criterion": "Capped single-priority choice and option set",
+              "source_evidence": "Q51B asks \"which of the following issues related to women's rights and equality do you think is the most important\"; response_options_all lists \"0 = None of these / There are no issues for government to address | 1 = Unequal access to education | ... | 6 = Some other issue\"",
+              "decision": "ACCEPT the capped-priority characterization; candidate correctly notes it cannot be read as independent salience per concern",
+              "minimum_repair": "Include the \"6 = Some other issue\" and \"0 = None of these\" options explicitly so the capped-choice claim is grounded in the full option set"
+            },
+            {
+              "field": "Q50B",
+              "criterion": "Hypothetical anticipation vs observed harassment",
+              "source_evidence": "Q50B asks \"If a woman in your community runs for elected office, how likely or unlikely is it that the following things might occur: she will be criticized, called names, or harassed by others in the community?\"",
+              "decision": "ACCEPT: the conditional hypothetical framing supports anticipated-reaction rather than witnessed-harassment reading",
+              "minimum_repair": "None on substance; keep the conditional 'If' referent explicit in the claim"
+            },
+            {
+              "field": "Q97",
+              "criterion": "Sponsorship attribution vs actual sponsor",
+              "source_evidence": "Q97 asks \"Who do you think sent us to do this interview?\" with options including \"7 = Political party or politician | 8 = Government | 10 = God | 95 = Other\"; candidate characterizes it as belief not audit",
+              "decision": "ACCEPT: the \"do you think\" framing supports perception-of-sponsorship reading and no validation of the true sponsor in the packet",
+              "minimum_repair": "None; optionally note code 0 = No one as a distinct attribution"
+            },
+            {
+              "field": "Q98A",
+              "criterion": "Not-applicable code for no mobile number",
+              "source_evidence": "Q98A question_text \"Q98a. Willing to participate in follow-up surveys\"; options \"-1 = Missing` | 0 = No | 1 = Yes | 7 = Not applicable [Respondent does not have a mobile phone number]\"",
+              "decision": "ACCEPT: the 7 code makes the field non-dichotomous across all respondents",
+              "minimum_repair": "Note that the packet's -1 label contains a stray backtick transcription artifact; do not treat it as meaningful metadata"
+            },
+            {
+              "field": "Q63B",
+              "criterion": "Conditional hypothetical vs observed enforcement",
+              "source_evidence": "Q63B asks justification \"When the country is facing a public health emergency like the COVID-19 pandemic\" for \"using the police and security forces to enforce public health mandates\"",
+              "decision": "ACCEPT conditional hypothetical-endorsement reading; distinguished code \"97 = Not applicable (COV1=0, 8 or 9)\" confirms a routing condition the candidate omits",
+              "minimum_repair": "Add the COV1 routing gate and code 97 so the conditional structure is grounded, and avoid implying all respondents faced the question"
+            }
+          ],
+          "distinctive_contributions": [
+            {
+              "field": "Q109F",
+              "contribution": "Candour as interviewer's global attribution of demeanour rather than verified truthfulness, potentially absorbing language/comprehension/social-distance effects",
+              "source_evidence": "Q109F \"What was the respondent's attitude toward you during the interview? Was he or she: honest, in between, or misleading?\"",
+              "status": "Useful scope caution; should be paired with a caveat that the packet lists no missing-value codes for the item"
+            },
+            {
+              "field": "Q106D-Q106E",
+              "contribution": "Separating interviewer-side felt threat from bodily threat as distinguishable acts rather than one safety composite",
+              "source_evidence": "\"Did you feel threatened during the interview?\" vs \"Were you physically threatened during the interview?\"",
+              "status": "Useful as a measurement distinction, but the candidate's nesting/implication assertions must be withdrawn pending empirical check"
+            },
+            {
+              "field": "Q48A-Q48B",
+              "contribution": "Treating the MP and president items as the same normative allocation applied to two offices, enabling within-option-set comparison",
+              "source_evidence": "\"[members of Parliament] do their jobs?\" vs \"the [president] does [his] job?\" sharing identical substantive codes",
+              "status": "Useful design observation; maintain the caveat that the packet provides no observed link between the two items"
+            },
+            {
+              "field": "Q97-Q98A",
+              "contribution": "Sponsorship misattribution and follow-up willingness as perception/consent constructs not verifiable in the packet",
+              "source_evidence": "Q97 \"Who do you think sent us to do this interview?\" and Q98A \"Willing to participate in follow-up surveys\"",
+              "status": "Useful caution against reading either as an audit or as realized participation"
+            }
+          ],
+          "shared_risk_candidates": [
+            {
+              "risk": "Interviewer-administered items (Q106C/D/E, Q109F) lack any interviewer identifier among the supplied fields, so interviewer composition cannot be separated from encounter variation",
+              "items": [
+                "Q106C",
+                "Q106D",
+                "Q106E",
+                "Q109F"
+              ],
+              "source_evidence": "All four are interviewer-side items; nomination for Q111 is \"Retrieving Q111 would allow interviewer-side reports... to be grouped by fieldworker\"",
+              "minimum_repair": "Do not claim interviewer-effect estimates from the supplied packet; nominate Q111 and any interviewer background fields"
+            },
+            {
+              "risk": "No country/wave/date field among the selected items; bracketed placeholders ([president], [Kenya's], [members of Parliament]) are unresolved",
+              "items": [
+                "Q28",
+                "Q29B",
+                "Q48A",
+                "Q48B",
+                "Q63B"
+              ],
+              "source_evidence": "Q29B question_text \"[Kenya's] armed forces\"; Q48B \"the [president] does [his] job?\"; packet source is a merged multi-country R9 file",
+              "minimum_repair": "Treat constitutional and armed-forces referents as placeholders until country/wave keys are supplied"
+            },
+            {
+              "risk": "No routing/skip documentation showing whether the gender module items were asked of all respondents and whether Q51B was conditioned on prior answers",
+              "items": [
+                "Q50B",
+                "Q51A",
+                "Q51B"
+              ],
+              "source_evidence": "Q51B and Q51A wording does not disclose routing; packet contains no skip field for these items",
+              "minimum_repair": "Obtain routing metadata before treating Q51B as an unconditioned top-priority choice"
+            },
+            {
+              "risk": "No administrative record of the true survey sponsor and no record of follow-up recontact attempts",
+              "items": [
+                "Q97",
+                "Q98A"
+              ],
+              "source_evidence": "Q97 is a belief item; Q98A has code \"7 = Not applicable [Respondent does not have a mobile phone number]\" and no realized-contact variable in the packet",
+              "minimum_repair": "Do not validate sponsor attribution or follow-up consent against actual events without external records"
+            },
+            {
+              "risk": "Q106D/Q106E relationship claims exceed item wording and risk smuggled nesting assumptions",
+              "items": [
+                "Q106D",
+                "Q106E"
+              ],
+              "source_evidence": "Both offer \"0 = No | 1 = Yes\"; the packet does not establish that physical threat implies felt threat or vice versa",
+              "minimum_repair": "Withdraw nesting/implication language; treat the pair as separately coded until joint distributions are inspected"
+            }
+          ],
+          "holds": [
+            "Q48B: HOLD pending addition of code 94 and restatement of the 'no other' claim as bounded to the enumerated option set.",
+            "Q106D/Q106E: HOLD until candidate removes assertions that the two items nest, imply one another, or 'need not coincide'; restate as separate interviewer-report codes with differing referents.",
+            "Q109F: HOLD pending acknowledgment that the packet lists only three substantive codes and no missing/refused/don't-know codes, leaving absence handling undetermined.",
+            "Q106C: HOLD pending corroboration that the 'you' in 'Were you approached...' is the interviewer, since question_text alone does not fix the addressee.",
+            "Q29B: HOLD country referent; bracketed '[Kenya's]' placeholders remain unresolved in the merged file.",
+            "Q63B: HOLD to add the COV1 routing gate and code '97 = Not applicable (COV1=0, 8 or 9)' before the conditional-endorsement claim is treated as covering all respondents.",
+            "Q97/Q98A: HOLD any validation claim; no administrative sponsor record and no recontact trace exist in the packet.",
+            "Q28: Minimum repair required to note '5 = Agree with neither' and '94 = Not asked in the country' so the forced choice is not represented as a universal binary.",
+            "Q51B: Minimum repair to enumerate '0 = None of these' and '6 = Some other issue' in the capped-priority claim."
+          ]
+        }
+      }
+    },
+    "independent_scientific_receiving": false
+  },
+  "candidate_stage_responses": {
+    "C": {
+      "packet_sha256": "42a7b865af1069f116ab2c1bc6a4ef669941b85fc687b0587d13c49d5d3ab8a4",
+      "grade": "EXPLORATORY_METADATA_AUTHOR_CANDIDATE_NOT_ISSUED",
+      "claims": [
+        {
+          "challenges": [],
+          "evidence": [
+            {
+              "field": "Q106C",
+              "quote": "Were you approached by community and/or political party representatives?"
+            }
+          ],
+          "id": "CQ106C",
+          "items": [
+            "Q106C"
+          ],
+          "kind": "ADD",
+          "text": "The stem asks whether community and/or political party representatives approached the interviewer, so the item records contact of the field team rather than the respondent's partisanship or perceived influence."
+        },
+        {
+          "challenges": [],
+          "evidence": [
+            {
+              "field": "Q106E",
+              "quote": "Were you physically threatened during the interview?"
+            }
+          ],
+          "id": "CQ106E",
+          "items": [
+            "Q106E"
+          ],
+          "kind": "ADD",
+          "text": "The item records a physically threatened experience during the interview encounter, so it does not record threats reported by the respondent or events in the enumeration area."
+        },
+        {
+          "challenges": [],
+          "evidence": [
+            {
+              "field": "Q109F",
+              "quote": "honest, in between, or misleading?"
+            }
+          ],
+          "id": "CQ109F",
+          "items": [
+            "Q109F"
+          ],
+          "kind": "ADD",
+          "text": "The interviewer rates the respondent's attitude during the interview on a three-way scale, so the item records demeanour in one encounter rather than a validated measure of truthful answers."
+        },
+        {
+          "challenges": [],
+          "evidence": [
+            {
+              "field": "Q28",
+              "quote": "must always obey the laws and the courts"
+            }
+          ],
+          "id": "CQ28",
+          "items": [
+            "Q28"
+          ],
+          "kind": "ADD",
+          "text": "The forced choice offers presidential exemption from law and courts against obligatory obedience, so it records an abstract constitutional stance and not a verdict on any named court ruling or president."
+        },
+        {
+          "challenges": [],
+          "evidence": [
+            {
+              "field": "Q48A",
+              "quote": "Who should be responsible for"
+            }
+          ],
+          "id": "CQ48A",
+          "items": [
+            "Q48A"
+          ],
+          "kind": "ADD",
+          "text": "The question asks who should be responsible for oversight, so it records a normative allocation of accountability rather than a report that any overseer actually acted."
+        },
+        {
+          "challenges": [],
+          "evidence": [
+            {
+              "field": "Q50B",
+              "quote": "she will be criticized, called names, or harassed"
+            }
+          ],
+          "id": "CQ50B",
+          "items": [
+            "Q50B"
+          ],
+          "kind": "ADD",
+          "text": "The respondent rates the likelihood that a hypothetical woman candidate in the community would be criticized, called names, or harassed, so it records an anticipated social reaction rather than reported experience."
+        },
+        {
+          "challenges": [],
+          "evidence": [
+            {
+              "field": "Q51A",
+              "quote": "should government and elected officials be doing more"
+            }
+          ],
+          "id": "CQ51A",
+          "items": [
+            "Q51A"
+          ],
+          "kind": "ADD",
+          "text": "The item asks whether government and elected officials should be doing more or less on women's rights, so a pro-more answer is an evaluative demand rather than evidence that current effort is deficient in fact."
+        },
+        {
+          "challenges": [],
+          "evidence": [
+            {
+              "field": "Q63B",
+              "quote": "using the police and security forces to enforce public health mandates"
+            }
+          ],
+          "id": "CQ63B",
+          "items": [
+            "Q63B"
+          ],
+          "kind": "ADD",
+          "text": "Agreement is elicited only in the context of a public health emergency about a possible measure, so it endorses a hypothetical emergency policing power rather than describing enforcement that occurred."
+        },
+        {
+          "challenges": [],
+          "evidence": [
+            {
+              "field": "Q97",
+              "quote": "Who do you think sent us to do this interview?"
+            }
+          ],
+          "id": "Q97",
+          "items": [
+            "Q97"
+          ],
+          "kind": "ADD",
+          "text": "The item records the respondent's belief about who sent the interview team, with enumerated responses distinguishing No one; Afrobarometer or national partner; Research Company; Non-government or religious organization; University / School / College; Private company; Media; Political party or politician; Government; International organization or another country; God; and Other, plus Refused to answer and Don't know as special responses; these are the respondent's perceptions, not verification of sponsor identity, and a mistaken attribution remains possible, so it is not an audit of the actual commissioning body."
+        }
+      ],
+      "answer_notes": {},
+      "inquiries": [],
+      "nominations": [],
+      "holds": [
+        {
+          "items": [
+            "Q106C",
+            "Q106D",
+            "Q106E",
+            "Q109F"
+          ],
+          "missing": "No interviewer identifier, interviewer background or visit-level record among the selected items; the locator's Q111-Q113 exist only outside the supplied packet.",
+          "why": "Threat and candour reports cannot be attributed to particular interviewers or separated from interviewer composition effects on the cited fields alone."
+        },
+        {
+          "items": [
+            "Q28",
+            "Q29B",
+            "Q48A",
+            "Q48B",
+            "Q63B"
+          ],
+          "missing": "No wave, country or date field among the selected items, and the bracketed office and place names are unresolved.",
+          "why": "The constitutional referents and the emergency context cannot be fixed from these fields, so cross-national or across-time comparability of the normative items remains undetermined."
+        },
+        {
+          "items": [
+            "Q50B",
+            "Q51A",
+            "Q51B"
+          ],
+          "missing": "No routing or skip documentation showing whether these gender items were asked of all respondents and whether Q51B was conditioned on a prior answer.",
+          "why": "Whether the priority choice is an unconditioned response or a routed subsample cannot be established."
+        },
+        {
+          "items": [
+            "Q97",
+            "Q98A"
+          ],
+          "missing": "No administrative trace of actual survey sponsor and no record of recontact attempts among the selected items.",
+          "why": "An observed sponsor attribution cannot be validated against the true commissioning body, and stated willingness cannot be checked against later participation."
+        },
+        {
+          "items": [
+            "Q29B"
+          ],
+          "missing": "Literal source evidence in this packet does not establish the disputed determination for CQ29B.",
+          "why": "The original candidate wording is preserved in the immutable pre-repair response but is not asserted in this stage response pending the missing comparator/label evidence: This is a general norm toward military involvement in politics; it is not equivalent to the concrete approval item elsewhere asking whether the army should come in to govern, and endorsement of one need not imply the other."
+        },
+        {
+          "items": [
+            "Q48B"
+          ],
+          "missing": "Literal source evidence in this packet does not establish the disputed determination for CQ48B.",
+          "why": "The original candidate wording is preserved in the immutable pre-repair response but is not asserted in this stage response pending the missing comparator/label evidence: The presidential counterpart uses the same fixed option set as the MP item, so a difference between the two offices is measurable only within those offered categories, and the coded option list includes no open-ended other."
+        },
+        {
+          "items": [
+            "Q51B"
+          ],
+          "missing": "Literal source evidence in this packet does not establish the disputed determination for CQ51B.",
+          "why": "The original candidate wording is preserved in the immutable pre-repair response but is not asserted in this stage response pending the missing comparator/label evidence: The stem frames the response as the single issue the respondent deems most important for government and society to address, so Q51B records a capped top-priority choice rather than support or salience for each listed right or equality concern."
+        },
+        {
+          "items": [
+            "Q98A"
+          ],
+          "missing": "Literal source evidence in this packet does not establish the disputed determination for CQ98A.",
+          "why": "The original candidate wording is preserved in the immutable pre-repair response but is not asserted in this stage response pending the missing comparator/label evidence: Follow-up willingness carries a separate not-applicable code for respondents without a mobile number, so the three-valued field cannot be read as simple refusal versus consent across all respondents."
+        }
+      ]
+    },
+    "R": {
+      "packet_sha256": "cae2f5b52e43b85afe467a1e833af6910701217f93f7e8a027f4b00547a826e3",
+      "grade": "EXPLORATORY_METADATA_AUTHOR_CANDIDATE_NOT_ISSUED",
+      "claims": [
+        {
+          "challenges": [],
+          "evidence": [
+            {
+              "field": "Q106C",
+              "quote": "Were you approached by community and/or political party representatives?"
+            },
+            {
+              "field": "Q97",
+              "quote": "Who do you think sent us to do this interview?"
+            }
+          ],
+          "id": "RQ106C97",
+          "items": [
+            "Q106C",
+            "Q97"
+          ],
+          "kind": "ADD",
+          "text": "Q106C records an interviewer-side event of being approached by representatives, while Q97 records the respondent's attributed sender of the survey; pairing them separates observed field contact from the respondent's sponsorship belief, since an approach by representatives need not mean the respondent names a party as sender, and losing Q97 would leave the approach with no counterpart attribution."
+        },
+        {
+          "challenges": [],
+          "evidence": [
+            {
+              "field": "Q106D",
+              "quote": "Did you feel threatened during the interview?"
+            },
+            {
+              "field": "Q106E",
+              "quote": "Were you physically threatened during the interview?"
+            }
+          ],
+          "id": "RQ106DE",
+          "items": [
+            "Q106D",
+            "Q106E"
+          ],
+          "kind": "ADD",
+          "text": "Q106E narrows the felt-threat item Q106D to bodily threat, so a felt danger can be reported without a physical threat; dropping Q106E would conceal that distinction and make the two-word difference between them unreadable."
+        },
+        {
+          "challenges": [],
+          "evidence": [
+            {
+              "field": "Q109F",
+              "quote": "honest, in between, or misleading?"
+            }
+          ],
+          "id": "RQ109F",
+          "items": [
+            "Q109F"
+          ],
+          "kind": "ADD",
+          "text": "Q109F is a three-point interviewer judgment of respondent candor during the encounter, an attributed demeanour rather than a verified check of answer accuracy or a respondent self-report."
+        },
+        {
+          "challenges": [],
+          "evidence": [
+            {
+              "field": "Q28",
+              "quote": "must always obey the laws and the courts"
+            },
+            {
+              "field": "Q29B",
+              "quote": "never intervene in the country's political process"
+            }
+          ],
+          "id": "RQ2829B",
+          "items": [
+            "Q28",
+            "Q29B"
+          ],
+          "kind": "ADD",
+          "text": "Q28 asks whether the president is bound by law and courts while Q29B asks whether the armed forces may take control when leaders abuse power; the two share the lawful-limits frame but differ in the actor constrained and in whether the alternative is exemption or takeover, so treating one as a proxy for the other would erase that difference."
+        },
+        {
+          "challenges": [],
+          "evidence": [
+            {
+              "field": "Q48A",
+              "quote": "Who should be responsible for"
+            },
+            {
+              "field": "Q48B",
+              "quote": "the [president] does [his] job?"
+            }
+          ],
+          "id": "RQ484AB",
+          "items": [
+            "Q48A",
+            "Q48B"
+          ],
+          "kind": "ADD",
+          "text": "Q48A and Q48B pose the same normative oversight-allocation question for MPs and for the president; the shared wording makes the office the varying element, and without Q48B the MP answer could not be placed against the presidential counterpart."
+        },
+        {
+          "challenges": [],
+          "evidence": [
+            {
+              "field": "Q50B",
+              "quote": "she will be criticized, called names, or harassed"
+            },
+            {
+              "field": "Q51A",
+              "quote": "should government and elected officials be doing more"
+            }
+          ],
+          "id": "RQ50B51A",
+          "items": [
+            "Q50B",
+            "Q51A"
+          ],
+          "kind": "ADD",
+          "text": "Q50B is an anticipated community reaction to a hypothetical woman candidate, while Q51A is a demand about government effort on women's rights; the first describes expected social sanction and the second a desired state action, so consent to more government action need not imply belief that harassment is likely, and dropping Q50B would leave the demand without its social-condition counterpart."
+        },
+        {
+          "challenges": [],
+          "evidence": [
+            {
+              "field": "Q51B",
+              "quote": "which of the following issues related to women's rights and equality"
+            }
+          ],
+          "id": "RQ51B",
+          "items": [
+            "Q51B"
+          ],
+          "kind": "ADD",
+          "text": "Q51B forces a single most-important choice among an offered women's-rights list, so it yields a capped priority ranking that is not independent salience for each listed issue; the option set bounds what can be named."
+        },
+        {
+          "challenges": [],
+          "evidence": [
+            {
+              "field": "Q63B",
+              "quote": "using the police and security forces to enforce public health mandates"
+            }
+          ],
+          "id": "RQ63B",
+          "items": [
+            "Q63B"
+          ],
+          "kind": "ADD",
+          "text": "Q63B solicits agreement that emergency policing of health mandates is justified, which endorses a possible temporary measure rather than reporting that police enforcement occurred or was experienced."
+        },
+        {
+          "challenges": [],
+          "evidence": [
+            {
+              "field": "Q98A",
+              "quote": "Willing to participate in follow-up surveys"
+            }
+          ],
+          "id": "RQ98A",
+          "items": [
+            "Q98A"
+          ],
+          "kind": "ADD",
+          "text": "Q98A records stated willingness to be recontacted for follow-up, and its special not-applicable category for respondents without a mobile number means a missing-route value is not the same as a refusal."
+        }
+      ],
+      "answer_notes": {},
+      "inquiries": [],
+      "nominations": [
+        {
+          "field": "Q111",
+          "reason": "Retrieval would supply the interviewer identifier needed to attribute Q106D, Q106E and Q109F reports to particular fieldworkers rather than treating them as unattributed encounter judgments."
+        }
+      ],
+      "holds": [
+        {
+          "items": [
+            "Q106C",
+            "Q106D",
+            "Q106E",
+            "Q109F"
+          ],
+          "missing": "No interviewer identifier or interviewer background among the selected fields; Q111-Q113 exist only in the locator.",
+          "why": "Threat and candor reports cannot be attributed to specific interviewers or tested for interviewer composition effects from the cited fields alone."
+        },
+        {
+          "items": [
+            "Q28",
+            "Q29B",
+            "Q48A",
+            "Q48B",
+            "Q63B"
+          ],
+          "missing": "No wave, country or date field among the selected items to resolve the bracketed office and place names.",
+          "why": "The specific president, armed forces, parliament and emergency referents cannot be fixed from these fields, so comparability of the normative items remains undetermined."
+        },
+        {
+          "items": [
+            "Q50B",
+            "Q51A",
+            "Q51B"
+          ],
+          "missing": "No routing or skip evidence showing whether Q51B was conditioned on any prior answer.",
+          "why": "Whether the priority choice is an unconditioned response or a routed subsample cannot be established from the selected fields."
+        },
+        {
+          "items": [
+            "Q97",
+            "Q98A"
+          ],
+          "missing": "No administrative record of the actual commissioning body and no record of later recontact attempts.",
+          "why": "A reported sponsor attribution cannot be validated, and stated willingness cannot be checked against subsequent participation."
+        }
+      ]
+    },
+    "I": {
+      "packet_sha256": "a498eb5ec603378d87679f81e01202775c143b3377e320db42f997c86e0bc4df",
+      "grade": "EXPLORATORY_METADATA_AUTHOR_CANDIDATE_NOT_ISSUED",
+      "claims": [
+        {
+          "id": "IQ106C",
+          "kind": "ADD",
+          "items": [
+            "Q106C"
+          ],
+          "evidence": [
+            {
+              "field": "Q106C",
+              "quote": "Were you approached by community and/or political party representatives?"
+            }
+          ],
+          "text": "Records whether the field team was approached by community or party representatives; an approached status is contact, not proof the respondent holds party views.",
+          "challenges": []
+        },
+        {
+          "id": "IQ106D",
+          "kind": "ADD",
+          "items": [
+            "Q106D"
+          ],
+          "evidence": [
+            {
+              "field": "Q106D",
+              "quote": "Did you feel threatened during the interview?"
+            }
+          ],
+          "text": "Reports the interviewer's felt threat during this interview, distinct from bodily threat and from the respondent's attitude.",
+          "challenges": []
+        },
+        {
+          "id": "IQ106E",
+          "kind": "ADD",
+          "items": [
+            "Q106E"
+          ],
+          "evidence": [
+            {
+              "field": "Q106E",
+              "quote": "Were you physically threatened during the interview?"
+            }
+          ],
+          "text": "Specifies physical threat in the encounter, so a felt danger without bodily threat can be expressed as felt-yes and physical-no.",
+          "challenges": []
+        },
+        {
+          "id": "IQ109F",
+          "kind": "ADD",
+          "items": [
+            "Q109F"
+          ],
+          "evidence": [
+            {
+              "field": "Q109F",
+              "quote": "honest, in between, or misleading?"
+            }
+          ],
+          "text": "Three-point interviewer judgment of respondent candor; an attributed demeanour, not a verified accuracy check of answers.",
+          "challenges": []
+        },
+        {
+          "id": "IQ28",
+          "kind": "ADD",
+          "items": [
+            "Q28"
+          ],
+          "evidence": [
+            {
+              "field": "Q28",
+              "quote": "must always obey the laws and the courts"
+            }
+          ],
+          "text": "Forced choice between presidential exemption from law and courts versus obligatory obedience; records a general stance, not a verdict on a named ruling.",
+          "challenges": []
+        },
+        {
+          "id": "IQ29B",
+          "kind": "ADD",
+          "items": [
+            "Q29B"
+          ],
+          "evidence": [
+            {
+              "field": "Q29B",
+              "quote": "never intervene in the country's political process"
+            }
+          ],
+          "text": "Elicits a norm about military intervention in politics generally, not approval of any specific takeover or event.",
+          "challenges": []
+        },
+        {
+          "id": "IQ48A",
+          "kind": "ADD",
+          "items": [
+            "Q48A"
+          ],
+          "evidence": [
+            {
+              "field": "Q48A",
+              "quote": "Who should be responsible for"
+            }
+          ],
+          "text": "Asks who ought to oversee elected MPs, a normative allocation rather than a report of actual oversight action.",
+          "challenges": []
+        },
+        {
+          "id": "IQ48B",
+          "kind": "ADD",
+          "items": [
+            "Q48B"
+          ],
+          "evidence": [
+            {
+              "field": "Q48B",
+              "quote": "the [president] does [his] job?"
+            }
+          ],
+          "text": "Parallel allocation for overseeing the president with the same offered categories; permits office comparison only within those bounded options.",
+          "challenges": []
+        },
+        {
+          "id": "IQ50B",
+          "kind": "ADD",
+          "items": [
+            "Q50B"
+          ],
+          "evidence": [
+            {
+              "field": "Q50B",
+              "quote": "she will be criticized, called names, or harassed"
+            }
+          ],
+          "text": "Hypothetical likelihood that others would sanction a woman candidate; an anticipated social reaction, not reported harassment.",
+          "challenges": []
+        },
+        {
+          "id": "IQ51A",
+          "kind": "ADD",
+          "items": [
+            "Q51A"
+          ],
+          "evidence": [
+            {
+              "field": "Q51A",
+              "quote": "should government and elected officials be doing more"
+            }
+          ],
+          "text": "Evaluative demand about desired state effort on women's equality; more-request does not establish that current effort is deficient.",
+          "challenges": []
+        },
+        {
+          "id": "IQ51B",
+          "kind": "ADD",
+          "items": [
+            "Q51B"
+          ],
+          "evidence": [
+            {
+              "field": "Q51B",
+              "quote": "most important for our government and society to address"
+            }
+          ],
+          "text": "Single capped priority choice among offered women's-rights issues; not independent salience for each listed issue.",
+          "challenges": []
+        },
+        {
+          "id": "IQ63B",
+          "kind": "ADD",
+          "items": [
+            "Q63B"
+          ],
+          "evidence": [
+            {
+              "field": "Q63B",
+              "quote": "using the police and security forces to enforce public health mandates"
+            }
+          ],
+          "text": "Endorses a possible emergency policing power as justified; a conditional justification, not a report that enforcement occurred.",
+          "challenges": []
+        },
+        {
+          "id": "IQ97",
+          "kind": "ADD",
+          "items": [
+            "Q97"
+          ],
+          "evidence": [
+            {
+              "field": "Q97",
+              "quote": "Who do you think sent us to do this interview?"
+            }
+          ],
+          "text": "Respondent's attributed sponsor of the survey; a perception that may diverge from the actual commissioning body.",
+          "challenges": []
+        },
+        {
+          "id": "IQ98A",
+          "kind": "ADD",
+          "items": [
+            "Q98A"
+          ],
+          "evidence": [
+            {
+              "field": "Q98A",
+              "quote": "Willing to participate in follow-up surveys"
+            }
+          ],
+          "text": "Stated willingness to be recontacted for follow-up, with a separate not-applicable route for respondents lacking a mobile number so absence is not refusal.",
+          "challenges": []
+        }
+      ],
+      "answer_notes": {},
+      "inquiries": [
+        {
+          "id": "INTHREAT",
+          "items": [
+            "Q106D",
+            "Q106E",
+            "Q109F"
+          ],
+          "route": "S04 existing observation-scope and asked-eligible RAW owner; only after source route, design and roles qualified.",
+          "question": "Among interviews where the fieldworker reported felt threat, does the physical-threat report separate a bodily-danger encounter from a merely uneasy one, and does the candor judgment move independently of both?",
+          "alternatives": "Configuration A: felt-threat yes with physical-threat no and candid demeanor, suggesting unease without bodily risk. Configuration B: both threat items yes with misleading demeanor, suggesting danger plus guarded answers. Configuration C: felt-threat no but misleading demeanor, separating unease from judged candor.",
+          "ceiling": "Requires archived interview-level records with consistent interviewer attribution; establishes co-reporting patterns only, not whether answers were actually inaccurate or whether threat caused candor, and no causal or prevalence inference."
+        },
+        {
+          "id": "INCONST",
+          "items": [
+            "Q28",
+            "Q29B"
+          ],
+          "route": "S04 existing observation-scope and asked-eligible RAW owner; only after source route, design and roles qualified.",
+          "question": "Do respondents who insist the president must obey law and courts also reject military intervention when leaders abuse power, or does the lawful-limits norm attach only to the elected executive?",
+          "alternatives": "Configuration A: strict legal-obedience stance paired with firm anti-intervention, a single lawful-process norm. Configuration B: strict legal-obedience paired with accepting a takeover on abuse grounds, showing the norm is actor-specific. Counterexample C: neither-agree responses, indicating the forced choice does not capture a committed position.",
+          "ceiling": "Depends on the country and constitution resolving bracket placeholders; establishes consistency of expressed stances only, not actual constitutional behavior; no causal claim linking the two items."
+        },
+        {
+          "id": "INWOMEN",
+          "items": [
+            "Q50B",
+            "Q51A",
+            "Q51B"
+          ],
+          "route": "S04 existing observation-scope and asked-eligible RAW owner; only after source route, design and roles qualified.",
+          "question": "Does a demand that government do more on women's equality travel with anticipated community harassment of a woman candidate or with a specific priority issue, and can the two diverge?",
+          "alternatives": "Configuration A: high harassment likelihood plus a more-action demand, coupling perceived social barrier with state remedy. Configuration B: high harassment likelihood but about-right effort, implying the barrier is seen as communal rather than governmental. Configuration C: low harassment likelihood and a priority choice, separating perceived climate from issue salience.",
+          "ceiling": "Requires documentation that all three gender items were asked of the same eligible respondents; establishes response-act configurations only, not whether harassment occurred and not the effectiveness of government action."
+        },
+        {
+          "id": "INSPONSOR",
+          "items": [
+            "Q97",
+            "Q98A"
+          ],
+          "route": "S04 existing observation-scope and asked-eligible RAW owner; only after source route, design and roles qualified.",
+          "question": "Do respondents who attribute the survey to a party or government differ in follow-up willingness from those naming a research or international body, and does the no-mobile route confound the comparison?",
+          "alternatives": "Configuration A: party-or-government attribution with declining follow-up, implying suspicion of the sponsor. Configuration B: research-body attribution with accepting follow-up, implying trust in academic sponsor. Counterexample C: not-applicable cases concentrated among a sponsor group, making apparent refusal a coverage artifact.",
+          "ceiling": "Depends on qualifying the not-applicable route before reading willingness; establishes attribution and stated willingness only, not true sponsor identity and not later participation; no causal claim about trust."
+        }
+      ],
+      "nominations": [],
+      "holds": [
+        {
+          "items": [
+            "Q106D",
+            "Q106E",
+            "Q109F"
+          ],
+          "missing": "No interviewer identifier or interviewer background among the selected fields; Q111-Q113 exist only in the locator.",
+          "why": "Threat and candor reports cannot be tied to particular fieldworkers or checked for interviewer-composition effects from the cited fields alone."
+        },
+        {
+          "items": [
+            "Q28",
+            "Q29B",
+            "Q48A",
+            "Q48B",
+            "Q63B"
+          ],
+          "missing": "No wave, country or date field among the selected items to resolve the bracketed office and place names.",
+          "why": "The specific president, armed forces, parliament and emergency referents cannot be fixed, leaving comparability of the normative items undetermined."
+        },
+        {
+          "items": [
+            "Q50B",
+            "Q51A",
+            "Q51B"
+          ],
+          "missing": "No routing or skip record showing whether these gender items were asked of all respondents and whether Q51B was conditioned on a prior answer.",
+          "why": "Whether the priority choice is an unconditioned response or a routed subsample cannot be established."
+        },
+        {
+          "items": [
+            "Q97",
+            "Q98A"
+          ],
+          "missing": "No administrative trace of the actual commissioning body and no record of later recontact attempts among the selected fields.",
+          "why": "A reported sponsor attribution cannot be validated, and stated willingness cannot be checked against subsequent participation."
+        }
+      ]
+    },
+    "S": {
+      "packet_sha256": "163f3b7ae5272cfda98b6d89fb993e63eaeb3bf7664e4a7ff0a9ae0281c9c5eb",
+      "grade": "EXPLORATORY_METADATA_AUTHOR_CANDIDATE_NOT_ISSUED",
+      "claims": [
+        {
+          "id": "STQ106C",
+          "kind": "ADD",
+          "items": [
+            "Q106C"
+          ],
+          "evidence": [
+            {
+              "field": "Q106C",
+              "quote": "Were you approached by community and/or political party representatives?"
+            }
+          ],
+          "text": "The stem asks the interviewer whether representatives approached the field team, so the item records an encounter initiated by outsiders against the interview visit, not the respondent's own partisan attachment and not whether anyone actually influenced answers.",
+          "challenges": []
+        },
+        {
+          "id": "STQ106D",
+          "kind": "ADD",
+          "items": [
+            "Q106D"
+          ],
+          "evidence": [
+            {
+              "field": "Q106D",
+              "quote": "Did you feel threatened during the interview?"
+            }
+          ],
+          "text": "Records the interviewer's own felt exposure to threat during this specific interview, an affective report from the fieldworker's position rather than a respondent trait or a verified security incident.",
+          "challenges": []
+        },
+        {
+          "id": "STQ106E",
+          "kind": "ADD",
+          "items": [
+            "Q106E"
+          ],
+          "evidence": [
+            {
+              "field": "Q106E",
+              "quote": "Were you physically threatened during the interview?"
+            }
+          ],
+          "text": "Narrows the threat report to bodily threat in the same encounter, so a felt-threat yes with a physical-threat no expresses unease without bodily danger rather than contradiction.",
+          "challenges": []
+        },
+        {
+          "id": "STQ109F",
+          "kind": "ADD",
+          "items": [
+            "Q109F"
+          ],
+          "evidence": [
+            {
+              "field": "Q109F",
+              "quote": "honest, in between, or misleading?"
+            }
+          ],
+          "text": "The three-point scale records the interviewer's attributed assessment of the respondent's candor during the encounter, a demeanour judgment rather than a validated accuracy check of the answers given.",
+          "challenges": []
+        },
+        {
+          "id": "STQ28",
+          "kind": "ADD",
+          "items": [
+            "Q28"
+          ],
+          "evidence": [
+            {
+              "field": "Q28",
+              "quote": "must always obey the laws and the courts"
+            }
+          ],
+          "text": "Forced choice between presidential exemption from law and courts and obligatory obedience, capturing a stated general constitutional stance rather than a verdict on any named ruling or observed executive conduct.",
+          "challenges": []
+        },
+        {
+          "id": "STQ29B",
+          "kind": "ADD",
+          "items": [
+            "Q29B"
+          ],
+          "evidence": [
+            {
+              "field": "Q29B",
+              "quote": "armed forces should never intervene in the country's political process"
+            }
+          ],
+          "text": "Elicits a general norm about military non-intervention in politics, set against a conditional takeover claim, so it registers a stance on the abstract design rather than approval of any concrete coup or event.",
+          "challenges": []
+        },
+        {
+          "id": "STQ48A",
+          "kind": "ADD",
+          "items": [
+            "Q48A"
+          ],
+          "evidence": [
+            {
+              "field": "Q48A",
+              "quote": "Who should be responsible for"
+            }
+          ],
+          "text": "Asks the respondent to allocate oversight responsibility normatively, naming a should-be overseer for elected MPs rather than reporting whether any overseer actually acted.",
+          "challenges": []
+        },
+        {
+          "id": "STQ48B",
+          "kind": "ADD",
+          "items": [
+            "Q48B"
+          ],
+          "evidence": [
+            {
+              "field": "Q48B",
+              "quote": "the [president] does [his] job?"
+            }
+          ],
+          "text": "Repeats the normative oversight-allocation question for the presidency with a shared option set, letting the office vary while the response act stays fixed, so differences are readable only within those offered categories.",
+          "challenges": []
+        },
+        {
+          "id": "STQ50B",
+          "kind": "ADD",
+          "items": [
+            "Q50B"
+          ],
+          "evidence": [
+            {
+              "field": "Q50B",
+              "quote": "she will be criticized, called names, or harassed"
+            }
+          ],
+          "text": "Respondent estimates the likelihood that a hypothetical woman candidate would face community sanction, an anticipated social reaction about a possible candidacy rather than a report of harassment experienced.",
+          "challenges": []
+        },
+        {
+          "id": "STQ51A",
+          "kind": "ADD",
+          "items": [
+            "Q51A"
+          ],
+          "evidence": [
+            {
+              "field": "Q51A",
+              "quote": "should government and elected officials be doing more"
+            }
+          ],
+          "text": "Records an evaluative demand about the desired direction and amount of state effort on women's rights, so a more-request is a claim about what ought to be done rather than evidence that current effort is deficient in fact.",
+          "challenges": []
+        },
+        {
+          "id": "STQ51B",
+          "kind": "ADD",
+          "items": [
+            "Q51B"
+          ],
+          "evidence": [
+            {
+              "field": "Q51B",
+              "quote": "which of the following issues related to women's rights and equality"
+            }
+          ],
+          "text": "Single-choice priority among an offered issue list, yielding a capped top pick whose option set bounds what can be named rather than independent salience ratings for each concern.",
+          "challenges": []
+        },
+        {
+          "id": "STQ63B",
+          "kind": "ADD",
+          "items": [
+            "Q63B"
+          ],
+          "evidence": [
+            {
+              "field": "Q63B",
+              "quote": "using the police and security forces to enforce public health mandates"
+            }
+          ],
+          "text": "Agreement is solicited about a possible emergency policing power as conditionally justified, so a high answer endorses a hypothetical temporary measure rather than reporting that enforcement was experienced.",
+          "challenges": []
+        },
+        {
+          "id": "STQ97",
+          "kind": "ADD",
+          "items": [
+            "Q97"
+          ],
+          "evidence": [
+            {
+              "field": "Q97",
+              "quote": "Who do you think sent us to do this interview?"
+            }
+          ],
+          "text": "Respondent's attribution of who commissioned the survey, a perception with enumerated sponsor categories plus God and Other that need not match the actual commissioning body, so a mistaken attribution remains fully possible.",
+          "challenges": []
+        },
+        {
+          "id": "STQ98A",
+          "kind": "ADD",
+          "items": [
+            "Q98A"
+          ],
+          "evidence": [
+            {
+              "field": "Q98A",
+              "quote": "Willing to participate in follow-up surveys"
+            }
+          ],
+          "text": "Records stated willingness to be recontacted, with a separate not-applicable category for respondents lacking a mobile number, so absence of consent is not the same as refusal and willingness need not predict later participation.",
+          "challenges": []
+        }
+      ],
+      "answer_notes": {},
+      "inquiries": [
+        {
+          "id": "STHREAT",
+          "items": [
+            "Q106D",
+            "Q106E",
+            "Q109F"
+          ],
+          "question": "Among interviews where the fieldworker reported felt threat, does the physical-threat report separate bodily danger from mere unease, and does the candor judgment move independently of both?",
+          "alternatives": "Configuration A: felt-threat yes with physical-threat no plus honest demeanor, indicating unease without bodily risk. Configuration B: both threat items yes with misleading demeanor, indicating danger plus guarded answers. Configuration C: felt-threat no with misleading demeanor, separating unease from judged candor.",
+          "ceiling": "Requires archived interview-level records with interviewer attribution and route documentation; establishes co-reporting patterns only, not actual answer accuracy, not whether threat caused candor, and no prevalence or causal inference.",
+          "route": "S04 existing observation-scope and asked-eligible RAW owner; only after source route, design and roles qualified."
+        },
+        {
+          "id": "STCONST",
+          "items": [
+            "Q28",
+            "Q29B"
+          ],
+          "question": "Do respondents who insist the president must obey law and courts also reject military intervention when elected leaders abuse power, or does the lawful-limits norm attach only to the elected executive?",
+          "alternatives": "Configuration A: firm anti-exemption paired with firm anti-intervention, a single lawful-process norm. Configuration B: firm anti-exemption paired with accepting takeover on abuse grounds, showing the norm is actor-specific. Configuration C: neither-agree responses showing the forced choice captures no committed position.",
+          "ceiling": "Depends on country and constitution resolving the bracketed office names, and takes expressed stances as evidence of stated norms only; no claim that either attitude predicts actual constitutional behaviour.",
+          "route": "S04 existing observation-scope and asked-eligible RAW owner; only after source route, design and roles qualified."
+        },
+        {
+          "id": "STWOMEN",
+          "items": [
+            "Q50B",
+            "Q51A",
+            "Q51B"
+          ],
+          "question": "Does a demand that government do more on women's equality travel with anticipated community harassment of a woman candidate or with a specific priority issue, and can the two diverge?",
+          "alternatives": "Configuration A: high harassment likelihood plus a more-action demand, coupling a perceived social barrier with a state remedy. Configuration B: high harassment likelihood but about-right effort, implying the barrier is seen as communal rather than governmental. Configuration C: low harassment likelihood with a priority choice, separating perceived climate from issue salience.",
+          "ceiling": "Requires documentation that all three gender items were asked of the same eligible respondents and that Q51B was not conditioned on a prior answer; establishes response-act configurations only, not whether harassment occurred and not the effect of government action.",
+          "route": "S04 existing observation-scope and asked-eligible RAW owner; only after source route, design and roles qualified."
+        },
+        {
+          "id": "STSPONSOR",
+          "items": [
+            "Q97",
+            "Q98A"
+          ],
+          "question": "Do respondents who attribute the survey to a party or government differ in follow-up willingness from those naming a research or international body, and does the no-mobile route confound the comparison?",
+          "alternatives": "Configuration A: party-or-government attribution with declining follow-up, implying suspicion of the sponsor. Configuration B: research-body attribution with accepting follow-up, implying trust in an academic sponsor. Counterexample C: not-applicable cases concentrated among a sponsor group, making apparent refusal a coverage artifact.",
+          "ceiling": "Depends on qualifying the not-applicable route before reading willingness; establishes attributed sponsorship and stated willingness only, not true sponsor identity and not later participation, with no causal claim about trust.",
+          "route": "S04 existing observation-scope and asked-eligible RAW owner; only after source route, design and roles qualified."
+        }
+      ],
+      "nominations": [],
+      "holds": [
+        {
+          "items": [
+            "Q106C",
+            "Q106D",
+            "Q106E",
+            "Q109F"
+          ],
+          "missing": "No interviewer identifier or interviewer background among the selected fields; the locator's Q111-Q113 sit outside the supplied packet.",
+          "why": "Threat and candor reports cannot be attributed to particular fieldworkers or checked for interviewer-composition effects from the cited fields alone."
+        },
+        {
+          "items": [
+            "Q28",
+            "Q29B",
+            "Q48A",
+            "Q48B",
+            "Q63B"
+          ],
+          "missing": "No wave, country or date field among the selected items, and the bracketed office and place names are unresolved.",
+          "why": "The specific president, armed forces, parliament and emergency context cannot be fixed, so comparability of these normative items remains undetermined."
+        },
+        {
+          "items": [
+            "Q50B",
+            "Q51A",
+            "Q51B"
+          ],
+          "missing": "No routing or skip record showing whether the gender items were asked of all eligible respondents and whether Q51B was conditioned on a prior answer.",
+          "why": "Whether the priority choice is an unconditioned response or a routed subsample cannot be established."
+        },
+        {
+          "items": [
+            "Q97",
+            "Q98A"
+          ],
+          "missing": "No administrative trace of the actual commissioning body and no record of later recontact attempts.",
+          "why": "A reported sponsor attribution cannot be validated against the true commissioner, and stated willingness cannot be checked against subsequent participation."
+        }
+      ]
+    }
+  },
+  "stage_packet_hashes": {
+    "C": "42a7b865af1069f116ab2c1bc6a4ef669941b85fc687b0587d13c49d5d3ab8a4",
+    "R": "cae2f5b52e43b85afe467a1e833af6910701217f93f7e8a027f4b00547a826e3",
+    "I": "a498eb5ec603378d87679f81e01202775c143b3377e320db42f997c86e0bc4df",
+    "S": "163f3b7ae5272cfda98b6d89fb993e63eaeb3bf7664e4a7ff0a9ae0281c9c5eb"
+  },
+  "stage_response_hashes": {
+    "C": "65e7347f7d7af2a10a35a55f1ddaff268678c9f4839f757625154c035c35c027",
+    "R": "46bca662f716813ec2c23d57cf14b12afa9959738cbd4bba59498293d6af3f9b",
+    "I": "5f83fa588853f1473c556e57eaeb99e5f593c2ccc4d48773622f61aea25a906f",
+    "S": "1aa9f090fe56a8e33f7f5ee48e6ba5c14e6bfd60abdf27fdc8763b9525715e9d"
+  },
+  "required_boundary": "An independent source/engineering receiving result only; no general scientific or native acceptance."
+}

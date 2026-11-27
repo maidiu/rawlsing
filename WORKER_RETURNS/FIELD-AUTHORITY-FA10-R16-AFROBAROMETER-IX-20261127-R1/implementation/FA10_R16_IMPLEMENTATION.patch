@@ -1,0 +1,1595 @@
+diff --git a/fa10_r16.py b/fa10_r16.py
+new file mode 100644
+index 0000000..e848cd7
+--- /dev/null
++++ b/fa10_r16.py
+@@ -0,0 +1,348 @@
++"""Versioned FA10 orchestration sidecar. R3 remains the primary validator and reader."""
++from contextlib import contextmanager
++from copy import deepcopy
++import csv
++import fcntl
++import json
++from pathlib import Path
++import sys
++
++from jsonschema import Draft202012Validator
++
++ROOT = Path(__file__).resolve().parent
++sys.path.insert(0, str(ROOT / "frozen"))
++import fa10
++
++read = fa10.r9.read
++save = fa10.r9.save
++digest = fa10.sha
++SCHEMA = Draft202012Validator(read(ROOT / "FEEDBACK.schema.json"))
++BLOCKING = {"REQUIRED", "RULE_MEMBERSHIP", "LINEAGE"}
++OPS = {
++    "ENRICH": {"ADD", "PATCH"}, "CORRECT": {"PATCH"}, "REOPEN": {"RECONSIDER"},
++    "RECONSTITUTE": {"PATCH", "RECONSIDER"}, "RETRIEVE": {"RETRIEVE"},
++    "PRESERVE_OVERFLOW": {"CONSERVE"}, "METHOD_PROPOSAL": {"PROPOSE_METHOD"},
++    "AUTHORITY_HOLD": {"HOLD"},
++}
++METHOD_FIELDS = {"input", "transformation", "output", "stop", "positive", "negative",
++                 "nontransfer", "reader", "matched_trial"}
++
++
++class Refused(ValueError):
++    pass
++
++
++def require(condition, message):
++    if not condition:
++        raise Refused(message)
++
++
++def reference(record):
++    return {key: record[key] for key in ("record_id", "revision_sha256", "scope", "kind")}
++
++
++def verify_rows(base, edition, rows):
++    fa10.r9.check_packet(base)
++    require(base["source"] == edition, "wrong exact source")
++    for key, row in {**base["selected"], **base["context"]}.items():
++        require(key in rows and rows[key] == row["source_metadata"]
++                and digest(rows[key]) == row["row_sha256"], "wrong literal row or row digest")
++
++
++def verify_wvs(archive):
++    csv.field_size_limit(10**7)
++    base = read(ROOT / "wvs/O_PACKET.json")
++    response = read(ROOT / "wvs/O_RESPONSE.json")
++    ledger = read(ROOT / "wvs/O_LEDGER.json")
++    coverage = read(ROOT / "wvs/O_COVERAGE.json")
++    edition, rows = fa10.r9.source(archive, "World Values Survey Wave 7 codebook.csv")
++    verify_rows(base["source_packet"], edition, rows)
++    require(fa10.validate(base, response), "inherited primary response refused")
++    require(set(rows) == set(ledger["records"]) == set(coverage["all_ids"]), "WVS census mismatch")
++    require(len(rows) == 613 and len(ledger["rules"]) == 148, "WVS source or rule count")
++    require(sum(bool(r.get("inherited_candidates")) for r in ledger["records"].values()) == 324,
++            "WVS prior candidate identity count")
++    splits = {"all": "all", "substantive": "substantive", "special": "special"}
++    for field, record in ledger["records"].items():
++        require(record["rule"] in ledger["rules"] and record["target"] == rows[field]["question_text"]
++                and record["source_row_sha256"] == digest(rows[field]), "WVS row or rule mismatch")
++        for key, source_key in splits.items():
++            value = rows[field]["response_options_" + source_key].encode()
++            require(record["literal_domain_ref"][key + "_domain_sha256"] == fa10.r9.sha(value),
++                    "WVS domain loss")
++    return edition, rows, ledger
++
++
++class Sidecar:
++    """One locked state transaction for every mutation, with immutable prior versions."""
++
++    def __init__(self, path, edition, rows, scopes, *, limit=16):
++        self.path = Path(path)
++        self.edition = edition
++        self.rows = rows
++        self.scopes = frozenset(scopes)
++        self.limit = limit
++        with self.edit():
++            pass
++
++    @contextmanager
++    def edit(self):
++        with self.path.with_suffix(".lock").open("a") as lock:
++            fcntl.flock(lock, fcntl.LOCK_EX)
++            prior = read(self.path) if self.path.exists() else {
++                "edition": self.edition, "limit": self.limit,
++                "row_digests_sha256": digest({key: digest(value) for key, value in self.rows.items()}),
++                "active": {}, "versions": {}, "dispatch": {}, "events": {}, "inbox": {},
++                "pending": {}, "fingerprints": {}, "disputes": [], "reviews": {}, "scope": sorted(self.scopes),
++            }
++            require(prior["edition"] == self.edition and prior["limit"] == self.limit
++                    and prior["scope"] == sorted(self.scopes)
++                    and prior["row_digests_sha256"] == digest({key: digest(value) for key, value in self.rows.items()}),
++                    "journal source/cut changed")
++            yield prior
++            save(self.path, prior)
++
++    def register(self, packet, response, role, scope):
++        """Called by the controller after independent process dispatch, never by a model."""
++        fa10.r9.check_packet(packet)
++        require(scope in self.scopes and packet["role"] == role, "wrong dispatched role/scope")
++        if "source_packet" in packet:
++            verify_rows(packet["source_packet"], self.edition, self.rows)
++        else:
++            require(packet.get("source") == self.edition, "dispatch source mismatch")
++        if role != "J" and "response_contract" in packet:
++            require(fa10.validate(packet, response), "primary role rejected")
++        role_receipt = {"role": role, "scope": scope, "packet_sha256": packet["packet_sha256"],
++                        "response_sha256": digest(response)}
++        with self.edit() as s:
++            key = digest(role_receipt)
++            prior = s["dispatch"].setdefault(key, role_receipt)
++            require(prior == role_receipt, "dispatch identity conflict")
++            if role == "J":
++                require(response.get("packet_sha256") == packet["packet_sha256"]
++                        and isinstance(response.get("decisions"), dict), "review not packet-bound")
++                key_decisions = set(response["decisions"])
++                require(key_decisions == set(packet["events"]), "review disposition mismatch")
++                s["reviews"][key] = {"decisions": response["decisions"], "events": packet["events"]}
++        return role_receipt
++
++    def _known(self, state, ref, *, active=False):
++        record = state["versions"].get(ref["revision_sha256"])
++        require(record and reference(record) == ref, "unrecognized or incompatible exact revision")
++        if active:
++            require(state["active"].get(ref["record_id"]) == ref["revision_sha256"], "stale revision")
++        return record
++
++    def _record(self, state, rid, scope, owner, kind, content, deps, predecessor=None, evidence=None):
++        require(scope in self.scopes, "record outside scope")
++        if kind == "ANSWER":
++            _, field, code = rid.rsplit(":", 2)
++            require(field in self.rows and code in fa10.codes({"source_metadata":self.rows[field]}),
++                    "answer record uses nonexistent field or code")
++        for dependency in deps:
++            target = self._known(state, dependency["ref"], active=dependency["kind"] in BLOCKING)
++            if dependency["kind"] == "LINEAGE":
++                frontier = [target]
++                while frontier:
++                    prior = frontier.pop()
++                    require(prior["record_id"] != rid, "lineage cycle")
++                    frontier.extend(self._known(state, d["ref"]) for d in prior["deps"]
++                                    if d["kind"] == "LINEAGE")
++        entry = {"record_id": rid, "scope": scope, "owner": owner, "kind": kind,
++                 "content": content, "deps": deps, "predecessor": predecessor, "evidence": evidence}
++        entry["revision_sha256"] = digest(entry)
++        state["versions"].setdefault(entry["revision_sha256"], entry)
++        state["active"][rid] = entry["revision_sha256"]
++        return reference(entry)
++
++    def seed(self, rid, scope, owner, kind, content, deps=()):
++        with self.edit() as state:
++            require(rid not in state["active"], "existing record")
++            return self._record(state, rid, scope, owner, kind, content, list(deps))
++
++    def _evidence(self, evidence, kind):
++        require(evidence["source_sha256"] == self.edition["sha256"], "wrong source identity")
++        field = evidence["locator"]
++        row = self.rows.get(field)
++        e_kind = evidence["evidence_kind"]
++        require(row is not None, "unknown field")
++        if e_kind == "LOCATOR_ONLY":
++            require(kind == "RETRIEVE" and evidence["row_sha256"] is None, "locator is not literal evidence")
++        elif e_kind == "MISSING_SOURCE":
++            require(kind == "AUTHORITY_HOLD" and evidence["row_sha256"] is None, "missing evidence is not a proof")
++        else:
++            require(e_kind in {"LITERAL_ROW", "VERIFIED_CONSERVATION", "METHOD_EVIDENCE"}
++                    and evidence["row_sha256"] == digest(row), "unverified evidence or wrong row digest")
++            q = evidence["quote_or_fact"]
++            require(q.strip() and any(q in row[k] for k in ("question_text", "response_options_all")),
++                    "unsupported literal")
++
++    def submit(self, event):
++        SCHEMA.validate(event)
++        eid = event["event_id"]
++        with self.edit() as state:
++            prior = state["events"].get(eid)
++            if prior:
++                if prior["event"] == event:
++                    return "DUPLICATE"
++                state["disputes"].append({"reason": "event ID conflict", "proposal": event})
++                return "DISPUTED"
++            entry = {"event": event, "status": "REJECTED"}
++            state["events"][eid] = entry
++            try:
++                require(event["requested_operation"] in OPS[event["kind"]], "wrong requested operation")
++                require(state["dispatch"].get(digest(event["origin"])) == event["origin"], "wrong role, packet or response")
++                for ref in event["targets"] + event["known_affected"] + [
++                        d["ref"] for d in event["read_dependencies"]]:
++                    self._known(state, ref, active=True)
++                    require(ref["scope"] == event["origin"]["scope"], "wrong target scope")
++                for evidence in event["evidence"]:
++                    self._evidence(evidence, event["kind"])
++                if event["kind"] == "METHOD_PROPOSAL":
++                    method = json.loads(event["minimal_delta_or_request"])
++                    require(set(method) == METHOD_FIELDS and all(fa10.r9.substantive(v) for v in method.values()),
++                            "incomplete matched method proposal")
++                material = {k: event[k] for k in ("kind", "targets", "new_scope", "minimal_delta_or_request")}
++                fp = digest(material)
++                if fp in state["fingerprints"]:
++                    entry["status"] = "DUPLICATE_CHANGE"
++                elif len(state["fingerprints"]) >= self.limit:
++                    entry["status"] = "HOLD_BUDGET"
++                else:
++                    state["fingerprints"][fp] = eid
++                    entry["status"] = {
++                        "AUTHORITY_HOLD": "HELD", "PRESERVE_OVERFLOW": "SUPPLEMENTARY",
++                        "METHOD_PROPOSAL": "METHOD_CANDIDATE",
++                    }.get(event["kind"], "ROUTED")
++                owners = sorted({self._known(state, t)["owner"] for t in event["targets"]})
++                state["inbox"][eid] = owners
++            except (Refused, TypeError, KeyError, ValueError) as error:
++                entry["error"] = str(error)
++            return entry["status"]
++
++    def reveal(self, eid, archive, member, locator):
++        with self.edit() as state:
++            event = state["events"][eid]["event"]
++            require(event["kind"] == "RETRIEVE" and state["events"][eid]["status"] == "ROUTED", "no retrieval route")
++            edition, actual = fa10.r9.source(archive, member)
++            require(edition == self.edition, "retrieval edition drift")
++            revealed = {}
++            for evidence in event["evidence"]:
++                field = evidence["locator"]
++                row = actual[field]
++                require(digest(row) == locator[field]["row_sha256"] and row == self.rows[field],
++                        "distal row drift")
++                revealed[field] = {"source_metadata": row, "row_sha256": digest(row)}
++            state["events"][eid]["reveal"] = revealed
++            state["events"][eid]["status"] = "RETRIEVED_RECONSIDER"
++            return deepcopy(revealed)
++
++    def adjudicate(self, eid, reviewer, *, owner, patch=None):
++        with self.edit() as state:
++            entry = state["events"][eid]
++            event = entry["event"]
++            review = state["reviews"].get(digest(reviewer))
++            require(review and state["dispatch"].get(digest(reviewer)) == reviewer
++                    and reviewer["role"] == "J" and reviewer["scope"] == event["origin"]["scope"]
++                    and reviewer["packet_sha256"] != event["origin"]["packet_sha256"]
++                    and review["events"].get(eid) == digest(event), "distinct source-bound review required")
++            decision = review["decisions"][eid]
++            require(fa10.r9.substantive(decision.get("reason")), "review lacks exact rationale")
++            require(entry["status"] == "ROUTED", "event is not pending review")
++            entry["review"] = {"reviewer": reviewer, "decision": decision}
++            if decision["decision"] in {"REJECT", "HOLD"}:
++                entry["status"] = decision["decision"]
++                return entry["status"]
++            require(decision["decision"] == "APPLY" and len(event["targets"]) == 1, "no exact reviewed patch")
++            target = event["targets"][0]
++            old = self._known(state, target)
++            if state["active"][target["record_id"]] != target["revision_sha256"]:
++                entry.update(status="DISPUTED", variant=patch)
++                return "DISPUTED"
++            require(owner == old["owner"] and isinstance(patch, dict) and len(patch) == 1
++                    and set(patch) <= {"note", "meaning", "exception"}, "non-minimal or wrong owner patch")
++            require(decision.get("patch_sha256") == digest(patch), "patch differs from reviewed bytes")
++            require(set(patch) <= set(old["content"]), "patch changes content schema")
++            new = self._record(state, old["record_id"], old["scope"], owner, old["kind"],
++                               {**old["content"], **patch}, old["deps"], old["revision_sha256"],
++                               {"event_id": eid, "review": reviewer})
++            affected, queue = set(), [old["revision_sha256"]]
++            while queue:
++                obsolete = queue.pop()
++                for rid, sha in state["active"].items():
++                    if rid == old["record_id"] or rid in affected:
++                        continue
++                    dependent = state["versions"][sha]
++                    if any(d["kind"] in BLOCKING and d["ref"]["revision_sha256"] == obsolete for d in dependent["deps"]):
++                        affected.add(rid)
++                        queue.append(sha)
++            if event["dependency_scope"] == "CONSERVATIVE_SCOPE_REQUIRED":
++                affected.update(rid for rid, sha in state["active"].items() if rid != old["record_id"]
++                                and state["versions"][sha]["scope"] == old["scope"])
++            for rid in affected:
++                state["pending"].setdefault(rid, {})[eid] = {"parent_before": target, "parent_after": new}
++            entry.update(status="APPLIED_CANDIDATE", current=new, affected=sorted(affected))
++            return new
++
++    def reconsider(self, rid, *, owner, decision, rationale, patch=None):
++        require(decision in {"KEEP", "REVISE", "WITHDRAW", "HOLD"} and fa10.r9.substantive(rationale), "invalid disposition")
++        with self.edit() as state:
++            pending = state["pending"][rid]
++            prior = state["versions"][state["active"][rid]]
++            require(prior["owner"] == owner, "wrong affected owner")
++            if decision == "REVISE":
++                require(isinstance(patch, dict) and set(patch) <= {"note", "meaning", "exception"}
++                        and set(patch) <= set(prior["content"]), "invalid reevaluation edit")
++            else:
++                require(patch is None, "only a revise decision can change content")
++            required_parents = {d["ref"]["record_id"] for d in prior["deps"] if d["kind"] in BLOCKING}
++            require(not (required_parents & state["pending"].keys()),
++                    "upstream dependent must be reconsidered first")
++            deps = [{"kind": d["kind"], "ref": reference(state["versions"][state["active"][d["ref"]["record_id"]]])}
++                    if d["kind"] in BLOCKING else d for d in prior["deps"]]
++            value = {**prior["content"], **(patch or {}), "reevaluation": decision}
++            new = self._record(state, rid, prior["scope"], owner, prior["kind"], value, deps,
++                               prior["revision_sha256"], {"pending": pending, "rationale": rationale})
++            del state["pending"][rid]
++            return new
++
++    def retrieve(self, rid, *, revision=None):
++        state = read(self.path)
++        sha = revision or state["active"][rid]
++        record = state["versions"][sha]
++        require(record["record_id"] == rid and digest({k: v for k,v in record.items() if k != "revision_sha256"}) == sha,
++                "stored record identity mismatch")
++        return {"record": record, "pending": state["pending"].get(rid, {})}
++
++    def reproject(self, base, delta, target, *, bindings, complete_domains=True):
++        """Apply reviewed text to an existing R9 delta. Source domains remain exact."""
++        result = deepcopy(delta)
++        for (field, code), rid in bindings.items():
++            data = self.retrieve(rid)
++            record = data["record"]
++            require(not data["pending"] and record["kind"] in {"ANSWER", "FIELD"}
++                    and record["content"].get("reevaluation") not in {"HOLD", "WITHDRAW"}, "unresolved active record")
++            if code is None:
++                require(rid.rsplit(":",1)[-1] == field and record["kind"] == "FIELD", "field projection identity mismatch")
++                result["items"][field]["note"] = record["content"]["note"]
++            else:
++                require(record["kind"]=="ANSWER" and rid.rsplit(":",2)[-2:]==[field,str(code)]
++                        and str(code) in fa10.codes(base["selected"][field]), "wrong exact answer binding")
++                result["items"][field]["answer_notes"][str(code)] = record["content"]["meaning"]
++        fa10.r9.validate(base, result)
++        if complete_domains:
++            verify_projection(base, result)
++        require(all(set(result["items"][field].get("answer_notes",{})) >= set(item.get("answer_notes",{}))
++                    for field,item in delta["items"].items()), "projection dropped an inherited answer note")
++        save(target, result)
++        persisted = read(target)
++        if complete_domains:
++            verify_projection(base, persisted)
++        require(persisted == result, "persisted projection mismatch")
++        return persisted
++
++
++def verify_projection(base, delta):
++    fa10.r9.validate(base, delta)
++    for field, entry in base["selected"].items():
++        require(set(delta["items"][field]["answer_notes"]) == fa10.codes(entry), "projection lost exact code")
+diff --git a/test_r16.py b/test_r16.py
+new file mode 100644
+index 0000000..46247b8
+--- /dev/null
++++ b/test_r16.py
+@@ -0,0 +1,233 @@
++import copy
++import json
++import os
++from pathlib import Path
++import tempfile
++import unittest
++
++import fa10_r16 as r
++
++ARCHIVE = Path(os.environ.get("FA10_ARCHIVE", str(Path.home() / "Desktop/Rawlsing/source_files/Rawlsing 35 waves of savs & dtas.zip")))
++
++
++class Court(unittest.TestCase):
++    @classmethod
++    def setUpClass(cls):
++        cls.afro = r.fa10.load_source()
++        cls.edition, cls.rows = r.fa10.r9.source(ARCHIVE, "Afrobarometer Round 9 codebook.csv")
++        r.verify_rows(cls.afro["author_base"], cls.edition, cls.rows)
++
++    def setUp(self):
++        self.tmp = tempfile.TemporaryDirectory()
++        self.addCleanup(self.tmp.cleanup)
++        self.root = Path(self.tmp.name)
++        self.db = r.Sidecar(self.root / "state.json", self.edition, self.rows, ["Afro", "other"], limit=4)
++        self.d = self.db.seed("D:Q53C:6", "Afro", "D", "ANSWER", {"meaning":"Refusal"})
++        self.i = self.db.seed("I:recognition", "Afro", "I", "INQUIRY", {"note":"Compare expected sanctions"},
++                              [{"kind":"REQUIRED", "ref":self.d}])
++        self.untouched = self.db.seed("I:unrelated", "other", "I", "INQUIRY", {"note":"Different scope"})
++        self.o = self.db.seed("O:Q53C", "Afro", "O", "FIELD", {"note":"Community reaction expected"})
++        self.origin = self.db.register(r.fa10.transport.seal({"source":self.edition,"role":"R"}),
++                                       {"discovery":"Police and community are distinct actors"}, "R", "Afro")
++
++    def evt(self, *, kind="CORRECT", op="PATCH", target=None, identifier="E1", phrase=None):
++        row = self.rows["Q53C"]
++        return {
++            "schema":"FA10_FEEDBACK_EVENT@1", "event_id":identifier, "grade":"PROPOSED_CANDIDATE",
++            "kind":kind, "origin":self.origin, "targets":[target or self.d], "new_scope":None,
++            "evidence":[{"source_sha256":self.edition["sha256"], "locator":"Q53C",
++                         "quote_or_fact":phrase or row["question_text"], "row_sha256":r.digest(row),
++                         "evidence_kind":"LITERAL_ROW"}],
++            "read_dependencies":[], "requested_operation":op, "minimal_delta_or_request":"Keep code 6 distinct",
++            "reason":"Refused states have distinct record identities",
++            "intellectual_consequence":"Preserve comparison under exact alternatives",
++            "known_affected":[], "dependency_scope":"EXPLICIT",
++            "missing_evidence_or_authority":[], "effort_reason":"Single affected relation",
++        }
++
++    def review(self, event, patch=None, decision="APPLY"):
++        packet = r.fa10.transport.seal({"role":"J","source":self.edition,"events":{event["event_id"]:r.digest(event)}})
++        response = {"packet_sha256":packet["packet_sha256"],"decisions":{
++            event["event_id"]:{"decision":decision,"reason":"Checked literal source and the current candidate",
++                                "patch_sha256":r.digest(patch) if patch else None}}}
++        return self.db.register(packet, response, "J", "Afro")
++
++    def apply(self, event, patch, owner="D"):
++        self.assertEqual("ROUTED",self.db.submit(event))
++        return self.db.adjudicate(event["event_id"], self.review(event,patch), owner=owner,patch=patch)
++
++    def test_T01_stage_focus(self):
++        p = r.read(r.ROOT/"wvs/O_PACKET.json")
++        x = r.read(r.ROOT/"wvs/O_RESPONSE.json")
++        self.assertTrue(r.fa10.validate(p,x))
++        x["answer_notes"]["Q119"]={"0":"Hard to say"}
++        with self.assertRaisesRegex(ValueError,"role boundary"):
++            r.fa10.validate(p,x)
++        origin = self.db.register(r.fa10.transport.seal({"source":self.edition,"role":"O"}),
++                                  {"extra":"valid insight"},"O","Afro")
++        event = self.evt(kind="PRESERVE_OVERFLOW",op="CONSERVE")
++        event["origin"] = origin
++        self.assertEqual(self.db.submit(event),"SUPPLEMENTARY")
++        self.assertEqual(self.db.retrieve(self.d["record_id"])["record"]["revision_sha256"],self.d["revision_sha256"])
++
++    def test_T02_refs(self):
++        for i, part in enumerate(("origin","source","field","revision","literal","row")):
++            event=self.evt(identifier=str(i))
++            event["origin"]=dict(event["origin"])
++            anchor=event["evidence"][0]
++            if part=="origin": event["origin"]["packet_sha256"]="0"*64
++            if part=="source": anchor["source_sha256"]="0"*64
++            if part=="field": anchor["locator"]="absent"
++            if part=="revision": event["targets"]=[{**self.d,"revision_sha256":"0"*64}]
++            if part=="literal": anchor["quote_or_fact"]="I am a fabricated fact"
++            if part=="row": anchor["row_sha256"]="0"*64
++            self.assertEqual(self.db.submit(event),"REJECTED")
++        with self.assertRaisesRegex(r.Refused, "nonexistent field or code"):
++            self.db.seed("D:Q53C:9999", "Afro", "D", "ANSWER", {"meaning":"invented"})
++
++    def test_T03_cascade(self):
++        later=self.db.seed("S:later","Afro","S","CLAIM",{"note":"Derived from I"},
++                           [{"kind":"REQUIRED","ref":self.i}])
++        result=self.apply(self.evt(),{"meaning":"Refused code 6, distinct stored state"})
++        self.assertNotEqual(result,self.d)
++        self.assertEqual(self.db.retrieve(self.d["record_id"],revision=self.d["revision_sha256"])["record"]["content"]["meaning"],"Refusal")
++        self.assertTrue(self.db.retrieve(self.i["record_id"])["pending"])
++        self.assertTrue(self.db.retrieve(later["record_id"])["pending"])
++        with self.assertRaisesRegex(r.Refused, "reconsidered first"):
++            self.db.reconsider(later["record_id"],owner="S",decision="KEEP",rationale="Premature")
++        self.assertEqual(self.untouched,r.reference(self.db.retrieve("I:unrelated")["record"]))
++        revived=self.db.reconsider(self.i["record_id"],owner="I",decision="KEEP",rationale="The composition excludes both refusal codes independently")
++        self.assertNotEqual(revived,self.i)
++        self.assertFalse(self.db.retrieve(self.i["record_id"])["pending"])
++
++    def test_T04_enrich(self):
++        e=self.evt(kind="ENRICH",target=self.o)
++        child=self.db.seed("I:Ochild","Afro","I","INQUIRY",{"note":"Prior alternative"},[{"kind":"REQUIRED","ref":self.o}])
++        self.apply(e,{"note":"Community reaction could be adverse even with positive police reception"},owner="O")
++        self.assertTrue(self.db.retrieve(child["record_id"])["pending"])
++        self.assertFalse(self.db.retrieve(self.i["record_id"])["pending"])
++
++    def test_T05_wvs_projection(self):
++        ed, rows, _ = r.verify_wvs(ARCHIVE)
++        base, _, _ = r.fa10.r9.prepare(ARCHIVE,"World Values Survey Wave 7 codebook.csv",None,["Q119"],[])
++        self.assertIn("0 = Hard to say", rows["Q119"]["response_options_special"])
++        db=r.Sidecar(self.root/"wvs.json",ed,rows,["WVS"])
++        db.seed("D:Q119:0","WVS","D","ANSWER",{"meaning":"Hard to say as a distinct epistemic response"})
++        notes={k:"Exact domain witness, not a discovery" for k in r.fa10.codes(base["selected"]["Q119"])}
++        delta={"packet_sha256":base["packet_sha256"],"grade":r.fa10.GRADE,
++               "items":{"Q119":{"disposition":"ENRICH","note":"Conserve Hard to say separately","answer_notes":notes}},"inquiries":[]}
++        got=db.reproject(base,delta,self.root/"candidate.json",bindings={("Q119","0"):"D:Q119:0"})
++        self.assertIn("Hard to say",got["items"]["Q119"]["answer_notes"]["0"])
++        idx=r.fa10.r9.index(ed,rows,None,[base],[got])
++        self.assertIn("0",r.fa10.r9.discover(idx,"Q119")["fields"]["Q119"]["deltas"][0]["answer_notes"])
++        got["items"]["Q119"]["answer_notes"].pop("0")
++        with self.assertRaisesRegex(r.Refused,"projection lost"):r.verify_projection(base,got)
++
++    def test_T06_distal(self):
++        e=self.evt(kind="RETRIEVE",op="RETRIEVE")
++        e["evidence"]=[{**e["evidence"][0],"locator":"Q10C","evidence_kind":"LOCATOR_ONLY","row_sha256":None,"quote_or_fact":"Candidate willingness comparison"}]
++        self.assertEqual(self.db.submit(e),"ROUTED")
++        x=self.db.reveal("E1",ARCHIVE,"Afrobarometer Round 9 codebook.csv",self.afro["locator"])
++        self.assertEqual(x["Q10C"]["row_sha256"],self.afro["locator"]["Q10C"]["row_sha256"])
++        self.assertEqual(r.read(self.db.path)["events"]["E1"]["status"],"RETRIEVED_RECONSIDER")
++        bad=copy.deepcopy(e);bad["event_id"]="bad";bad["kind"]="CORRECT";bad["requested_operation"]="PATCH"
++        self.assertEqual(self.db.submit(bad),"REJECTED")
++
++    def test_T07_overflow(self):
++        e=self.evt(kind="PRESERVE_OVERFLOW",op="CONSERVE")
++        e["minimal_delta_or_request"]="Single-field inquiry preserved without fake partner"
++        self.assertEqual(self.db.submit(e),"SUPPLEMENTARY")
++        self.assertEqual(r.read(self.db.path)["events"]["E1"]["event"],e)
++
++    def test_T08_exception(self):
++        rule=self.db.seed("rule","Afro","O","RULE",{"note":"Survey response"})
++        a=self.db.seed("a","Afro","O","EXCEPTION",{"exception":"Unspecified"},[{"kind":"RULE_MEMBERSHIP","ref":rule}])
++        b=self.db.seed("b","Afro","O","EXCEPTION",{"exception":"Separate"},[{"kind":"RULE_MEMBERSHIP","ref":rule}])
++        self.apply(self.evt(target=a),{"exception":"Observer judgment"},"O")
++        self.assertEqual(b,r.reference(self.db.retrieve("b")["record"]))
++
++    def test_T09_false_or_held(self):
++        e=self.evt()
++        self.assertEqual(self.db.submit(e),"ROUTED")
++        self.assertEqual(self.db.adjudicate("E1",self.review(e,decision="REJECT"),owner="D"),"REJECT")
++        h=self.evt(kind="AUTHORITY_HOLD",op="HOLD",identifier="hold")
++        h["missing_evidence_or_authority"]=["Source owner: issue country-specific eligible form"]
++        self.assertEqual(self.db.submit(h),"HELD")
++
++    def test_T10_CAS(self):
++        a=self.evt()
++        b=self.evt(identifier="E2")
++        b["minimal_delta_or_request"]="Other candidate reading"
++        self.assertEqual(self.db.submit(a),"ROUTED")
++        self.assertEqual(self.db.submit(a),"DUPLICATE")
++        self.assertEqual(self.db.submit({**a,"reason":"conflict"}),"DISPUTED")
++        self.assertEqual(self.db.submit(b),"ROUTED")
++        patch={"meaning":"One reviewed version"}
++        self.db.adjudicate("E1",self.review(a,patch),owner="D",patch=patch)
++        patch={"meaning":"Conflicting version"}
++        self.assertEqual(self.db.adjudicate("E2",self.review(b,patch),owner="D",patch=patch),"DISPUTED")
++
++    def test_T11_cycles(self):
++        x=self.db.seed("cycle:a","Afro","D","CLAIM",{"note":"a"})
++        y=self.db.seed("cycle:b","Afro","D","CLAIM",{"note":"b"},[{"kind":"LINEAGE","ref":x}])
++        with self.db.edit() as state:
++            with self.assertRaisesRegex(r.Refused,"lineage cycle"):
++                self.db._record(state,"cycle:a","Afro","D","CLAIM",{"note":"changed"},[{"kind":"LINEAGE","ref":y}],x["revision_sha256"])
++            a=self.db._record(state,"cycle:a","Afro","D","CLAIM",{"note":"changed"},[{"kind":"CONCEPTUAL_LINK","ref":y}],x["revision_sha256"])
++            self.db._record(state,"cycle:b","Afro","D","CLAIM",{"note":"changed"},[{"kind":"CONCEPTUAL_LINK","ref":a}],y["revision_sha256"])
++        for n in range(5):
++            e=self.evt(identifier=str(n))
++            e["minimal_delta_or_request"]=str(n)
++            got=self.db.submit(e)
++        self.assertEqual(got,"HOLD_BUDGET")
++
++    def test_T12_conservative_scope(self):
++        e=self.evt()
++        e["dependency_scope"]="CONSERVATIVE_SCOPE_REQUIRED"
++        self.apply(e,{"meaning":"Updated"})
++        self.assertTrue(self.db.retrieve(self.o["record_id"])["pending"])
++        self.assertFalse(self.db.retrieve(self.untouched["record_id"])["pending"])
++
++    def test_T13_method(self):
++        e=self.evt(kind="METHOD_PROPOSAL",op="PROPOSE_METHOD")
++        e["minimal_delta_or_request"]=json.dumps({k:f"{k}: compare exact alternative with distinct actors" for k in r.METHOD_FIELDS})
++        self.assertEqual(self.db.submit(e),"METHOD_CANDIDATE")
++        self.assertEqual(self.db.retrieve(self.d["record_id"])["record"]["revision_sha256"],self.d["revision_sha256"])
++
++    def test_T14_hygiene(self):
++        source=r.fa10.ROOT
++        manifest=r.read(source/"MANIFEST.json")["payloads"]
++        self.assertEqual(len(manifest),15)
++        for name, rec in manifest.items():
++            self.assertEqual(r.fa10.r9.sha((source/name).read_bytes()),rec["sha256"])
++        packet=r.fa10.make_stage("A","M",self.root)
++        self.assertNotIn("reviewer",packet)
++        self.assertNotIn("worked_examples",packet)
++        self.assertEqual(packet["source_packet"],r.fa10.make_stage("B","M",self.root)["source_packet"])
++
++    def test_T15_frontier(self):
++        _, rows, ledger=r.verify_wvs(ARCHIVE)
++        self.assertEqual(len(rows),613)
++        self.assertEqual(sum("specific_observation_note" in x for x in ledger["records"].values()),56)
++        self.assertEqual(r.read(r.ROOT/"wvs/O_RESPONSE.json")["answer_notes"],{})
++
++    def test_T16_conservation(self):
++        e=self.evt()
++        self.apply(e,{"meaning":"Exact note revised"})
++        history=self.db.retrieve(self.d["record_id"],revision=self.d["revision_sha256"])["record"]
++        self.assertEqual(history["content"],{"meaning":"Refusal"})
++        journal=r.read(self.db.path)
++        self.assertIn("APPLIED_CANDIDATE",journal["events"]["E1"]["status"])
++        self.assertFalse(any("AUTHORIZED" in x["status"] for x in journal["events"].values()))
++
++    def test_T17_held_scope(self):
++        self.assertIn("criticized",self.rows["Q53C"]["question_text"])
++        self.assertIn("7 = Not applicable, no earnings",self.rows["Q93C"]["response_options_all"])
++        e=self.evt(kind="AUTHORITY_HOLD",op="HOLD")
++        e["missing_evidence_or_authority"]=["Need exact asked/eligible form and reserve direct or proxy role"]
++        self.assertEqual(self.db.submit(e),"HELD")
++        self.assertEqual(set(r.read(self.db.path)["active"]),{self.o["record_id"],self.d["record_id"],self.i["record_id"],self.untouched["record_id"]})
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git a/opencode_provider.py b/opencode_provider.py
+new file mode 100644
+index 0000000..086dc9c
+--- /dev/null
++++ b/opencode_provider.py
+@@ -0,0 +1,122 @@
++"""JSON stdin/stdout bridge to the existing OpenCode Go subscription."""
++import argparse
++import hashlib
++import json
++import os
++import re
++from pathlib import Path
++import subprocess
++import tempfile
++
++p = argparse.ArgumentParser()
++p.add_argument("--cap", type=int, required=True)
++p.add_argument("--effort", default="none", choices=["none", "low", "high", "max"])
++a = p.parse_args()
++root = Path(__file__).resolve().parent
++model = "deepseek-v4.1-flash"
++packet = json.load(__import__("sys").stdin)
++text = ("Perform the sealed task below. Return a single JSON object with exactly the stated keys, "
++        "without Markdown. Treat source labels and prior materials as evidence. "
++        "Copy packet and grade strings exactly where the contract asks. "
++        "Do not emit bare Yes, No, None or other one-word placeholder as a code explanation. Explain what response act or distinction it expresses. "
++        "Obey role boundaries. Outside D/M answer_notes is empty. Outside I/S/M inquiries is empty. Outside R/M nominations is empty. "
++        "Every claim must have a literal substring quote for every item it cites. Copy a SHORT verbatim substring from question_text or response_options_all; do not paraphrase, normalize punctuation, or add ellipses. "
++        "Answer codes are exact strings. Use concise original analysis within the output limit.\n"
++        + json.dumps(packet, ensure_ascii=False, separators=(",", ":")))
++if "source_packet" in packet and "candidate_routes" in packet:
++    role = packet["role"]
++    contract = (
++        f"OUTER stage role {role}; ignore the nested source packet's instruction and hash. "
++        f"Copy TOP LEVEL packet_sha256 exactly: {packet['packet_sha256']}. "
++        f"Exact grade: {packet['grade']}. "
++        "For each claim use one short unmodified literal quote per cited field, and only those fields. "
++        "Prefer one field per claim when unsure. Quote neither an invented title nor a plain gloss. "
++        "Use short unique claim IDs without colons. No bare Yes/No explanation. "
++        "Use compact valid JSON; no comments, trailing commas, or markdown. "
++    )
++    if role == "O":
++        contract += ("Return exactly these top-level keys: packet_sha256, grade, claims, answer_notes, inquiries, nominations, holds. "
++                     "For O, supply one concise claim per selected field, at most 30 words per claim and one short verbatim evidence quote. "
++                     "Answer_notes must be {}, inquiries and nominations must both be [].")
++    selected = packet["source_packet"]["selected"]
++    contract += (" The selected field IDs, and only these IDs, are " + json.dumps(list(selected)) + ".")
++    if role in {"D","M"}:
++        code_map = {field: sorted({c.strip() for c in re.findall(
++            r"(?:^|\s\|\s)([^=|]+?)\s*=", entry["source_metadata"]["response_options_all"])})
++                    for field, entry in selected.items()}
++        contract += (" Exact answer_notes keys and subkeys (the object values for fields with no codes are {}): "
++                     + json.dumps(code_map) + ". Cover all of them, including the final field.")
++        if role == "D":
++            contract += (" Use one sentence no longer than 13 words for each code. Give an empty claims list unless "
++                         "you have a material distinct observation, and return [] for inquiries and nominations.")
++    if role in {"M","I","S"}:
++        contract += (" The inquiry route must exactly equal one of " + json.dumps(packet["candidate_routes"])
++                     + ". No extra punctuation. At least two distinct item IDs per inquiry; alternatives and ceiling are strings.")
++    text = contract + "\n" + text + "\n" + contract
++
++config = {
++    "$schema": "https://opencode.ai/config.json", "share": "disabled",
++    "autoupdate": False, "permission": {"*": "deny"},
++    "agent": {"fa10": {"mode": "primary", "description": "Metadata-only FA10", "permission": {"*": "deny"},
++                        "prompt": "You are an isolated metadata-only intellectual worker. Use the given packet and return JSON. No tools."}},
++    "provider": {"opencode-go": {"models": {model: {"limit": {"context": 1000000, "output": a.cap},
++                                                         "options": {"thinking": {"type": "disabled"}} if a.effort == "none" else {},
++                                                         "variants": {"none": {"thinking": {"type": "disabled"}, "reasoningEffort": "none"}}}}}},
++    "compaction": {"auto": False},
++}
++env = os.environ.copy()
++env.update(XDG_CONFIG_HOME=str(root / "worker-config"), OPENCODE_CONFIG_CONTENT=json.dumps(config),
++           OPENCODE_DISABLE_PROJECT_CONFIG="true", OPENCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX=str(a.cap), OPENCODE_DISABLE_AUTOUPDATE="true",
++           OPENCODE_DISABLE_DEFAULT_PLUGINS="true")
++env.pop("OPENCODE_CONFIG", None)
++env.pop("OPENCODE_CONFIG_DIR", None)
++bin_path = Path.home() / ".opencode/bin/opencode"
++with tempfile.TemporaryDirectory(dir=root / "worker-empty") as work:
++    # Separate session databases so parallel CLI startup can never contend
++    # for the user's active OpenCode database. Only Go auth is available.
++    data = Path(work) / "data"
++    (data / "opencode").mkdir(parents=True, mode=0o700)
++    auth = json.loads((Path.home() / ".local/share/opencode/auth.json").read_text())
++    cred = data / "opencode/auth.json"
++    cred.write_text(json.dumps({"opencode-go": auth["opencode-go"]}))
++    cred.chmod(0o600)
++    env["XDG_DATA_HOME"] = str(data)
++    proc = subprocess.run([str(bin_path), "run", "--pure", "--format", "json",
++                           "--agent", "fa10", "--model", "opencode-go/" + model,
++                           "--variant", a.effort, "--thinking", "--title", "FA10 sealed metadata",
++                           text], cwd=work, env=env, capture_output=True, text=True, timeout=790)
++events = []
++for line in proc.stdout.splitlines():
++    try:
++        events.append(json.loads(line))
++    except ValueError:
++        pass
++answers = [e["part"]["text"] for e in events if e.get("type")=="text" and "text" in e.get("part", {})]
++attempts = [e["part"] for e in events if e.get("type") == "step_finish"]
++tokens = {key: sum((x.get("tokens") or {}).get(key) or 0 for x in attempts)
++          for key in ("input", "output", "reasoning")}
++cache = {key: sum(((x.get("tokens") or {}).get("cache") or {}).get(key) or 0 for x in attempts)
++         for key in ("read","write")}
++reply = "".join(answers).strip()
++if reply.startswith("```") and reply.endswith("```"):
++    reply = reply[reply.find("\n")+1:-3].strip()
++result = None
++try:
++    result = json.loads(reply)
++except ValueError:
++    pass
++errors = [e for e in events if e.get("type")=="error"]
++success = (proc.returncode == 0 and isinstance(result, dict) and len(attempts)==1 and not errors
++           and tokens["output"] + tokens["reasoning"] <= a.cap)
++print(json.dumps({
++    "model": "opencode-go/"+model, "response": result,
++    "usage": {"input": tokens["input"], "output": tokens["output"],
++              "reasoning": tokens["reasoning"], "cache": cache} if attempts else None,
++    "cost": None, "provider_receipt": {"session": next((e.get("sessionID") for e in events if e.get("sessionID")),None),
++    "effort":a.effort,"cap":a.cap,"steps":len(attempts),"exit":proc.returncode,
++    "input_text_sha256":hashlib.sha256(text.encode()).hexdigest(),
++    "opencode_rate_cost":sum(x.get("cost",0) or 0 for x in attempts)},
++    "raw_opencode_events":events, "unparsed_stdout":proc.stdout if not events else "",
++    "process_stderr":proc.stderr,
++},ensure_ascii=False))
++raise SystemExit(0 if success else 2)
+diff --git a/launch_core.py b/launch_core.py
+new file mode 100644
+index 0000000..4a7673e
+--- /dev/null
++++ b/launch_core.py
+@@ -0,0 +1,54 @@
++"""Finite four-arm dispatcher around the frozen stage, transport and projection."""
++from concurrent.futures import ThreadPoolExecutor
++from pathlib import Path
++import secrets
++import shlex
++import sys
++
++root = Path(__file__).resolve().parent
++sys.path.insert(0, str(root / "frozen"))
++import fa10
++
++work = root / "core"
++work.mkdir(exist_ok=True)
++order_path = work / "CONTROLLER_ONLY_ORDER.json"
++if order_path.exists():
++    order = fa10.r9.read(order_path)
++else:
++    order = secrets.SystemRandom().sample(list(fa10.PLAN["arms"]), 4)
++    fa10.r9.save(order_path, order)
++
++
++def run_arm(arm):
++    for role in fa10.PLAN["arms"][arm]["stages"]:
++        packet = fa10.prepare_stage(arm, role, work)
++        stage = fa10.stage_path(work, arm, role)
++        if (stage / "response.json").exists():
++            fa10.validate(packet, fa10.r9.read(stage / "response.json"))
++            continue
++        cap = fa10.PLAN["budget_proposal"]["stage_caps"][role]
++        cmd = shlex.join([sys.executable, str(root / "opencode_provider.py"), "--cap", str(cap)])
++        for n in ((7,) if any(stage.glob("attempt-*")) else (7, 8)):
++            attempt = f"attempt-{n}"
++            if (stage / attempt).exists():
++                continue
++            try:
++                result, _ = fa10.transport.call(packet, cmd, attempt, stage)
++                fa10.accept(arm, role, work, result)
++            except (ValueError, KeyError, AssertionError, __import__("subprocess").SubprocessError) as exc:
++                fa10.r9.save(stage / f"{attempt}-rejection.json", {"error": type(exc).__name__, "message": str(exc)})
++                print(arm, role, attempt, type(exc).__name__, str(exc), flush=True)
++            else:
++                print(arm, role, "STRUCTURAL_PASS", flush=True)
++                break
++        if not (stage / "accepted.json").exists():
++            return arm, role
++    fa10.project(arm, work)
++    return arm, "PROJECTED"
++
++
++with ThreadPoolExecutor(max_workers=2) as executor:
++    results = list(executor.map(run_arm, order))
++fa10.r9.save(work / "CORE_STATUS.json", dict(results))
++if all(result == "PROJECTED" for _, result in results) and not (work / "blinded").exists():
++    fa10.blind(work)
+diff --git a/experiments.py b/experiments.py
+new file mode 100644
+index 0000000..c51ecd1
+--- /dev/null
++++ b/experiments.py
+@@ -0,0 +1,299 @@
++"""Scoped, matched production comparisons on the incumbent FA10 transport."""
++from concurrent.futures import ThreadPoolExecutor
++from copy import deepcopy
++import os
++from pathlib import Path
++import secrets
++import shlex
++import sys
++
++import fa10_r16 as r
++
++ROOT = Path(__file__).resolve().parent
++ARCHIVE = Path(os.environ.get("FA10_ARCHIVE", str(Path.home() / "Desktop/Rawlsing/source_files/Rawlsing 35 waves of savs & dtas.zip")))
++MODEL = ROOT / "opencode_provider.py"
++WORK = ROOT / "experiments"
++
++
++def invoke(packet, name, folder, cap=6500):
++    """One physical attempt and exact reuse of its successful response."""
++    folder.mkdir(exist_ok=True, parents=True)
++    target = folder / name
++    if target.exists():
++        receipt = r.read(target / "receipt.json")
++        raw = (target / "stdout.json").read_bytes()
++        r.require((target / "input.json").read_bytes() == r.fa10.r9.canon(packet)
++                  and receipt["stdout_sha256"] == r.fa10.r9.sha(raw), "replayed packet or output differs")
++        envelope = r.read(target / "stdout.json")
++        r.require(receipt["exit_code"] == 0 and envelope.get("response") is not None, "frozen failed attempt")
++        return envelope["response"]
++    command = shlex.join([sys.executable, str(MODEL), "--cap", str(cap)])
++    result, _ = r.fa10.transport.call(packet, command, name, folder)
++    return result
++
++
++def fields(rows, ids):
++    return {k: {"source_metadata": rows[k], "row_sha256": r.digest(rows[k])} for k in ids}
++
++
++def blinded_review(source, metadata, outputs, destination, first, task):
++    mapfile = destination / "CONTROLLER_ONLY_MAP.json"
++    if mapfile.exists():
++        mapping = r.read(mapfile)
++    else:
++        labels = secrets.SystemRandom().sample(list(outputs), len(outputs))
++        mapping = dict(zip([f"sample-{n}" for n in range(1,len(labels)+1)],labels))
++        r.save(mapfile,mapping)
++    packet = r.fa10.transport.seal({
++        "role":"J","source":source,"fields":metadata,"source_first":first,
++        "products":{key:outputs[value] for key,value in mapping.items()},
++        "instruction":task + " Judge exact positive distinctions, counterexamples, omissions, usable inquiries, "
++            "novel operations, false challenges and held dependencies. Return JSON reviews keyed exactly by "
++            "sample labels and shared_misses. Use concrete examples and no scalar score.",
++    })
++    reviewed = invoke(packet,"blind_review",destination)
++    if "reviews" not in reviewed and set(reviewed) == {*mapping, "shared_misses"}:
++        r.save(destination/"REVIEW_ENVELOPE_NORMALIZATION.json",{
++            "original_sha256":r.digest(reviewed),"operation":"Nest exact matching arm keys under reviews"
++        })
++        reviewed={"reviews":{key:reviewed[key] for key in mapping},"shared_misses":reviewed["shared_misses"]}
++    r.require(set(reviewed["reviews"])==set(mapping),"missing review arm")
++    r.save(destination/"FROZEN_REVIEW.json",reviewed)
++    return reviewed
++
++
++def compare_case(name, *, wave, ids, inherited, observation_focus):
++    destination = WORK / name
++    destination.mkdir(exist_ok=True, parents=True)
++    edition, rows = r.fa10.r9.source(ARCHIVE,wave)
++    metadata = fields(rows,ids)
++    source_only = r.fa10.transport.seal({
++        "role":"J","source":edition,"fields":metadata,
++        "instruction":"Before seeing any model product, independently articulate exact positive alternatives and "
++          "their underlying actors, observation gates and plausible competing interpretations. Return JSON "
++          "observations as an array of objects with field_ids, finding, and exact literal evidence; "
++          "also hard_cases, a list of precise confusions to test. No empirical counts or native claims.",
++    })
++    first = invoke(source_only,"source_first_judge",destination,4500)
++
++    common = {
++        "role":"R", "source":edition,"fields":metadata,"required_reads":inherited,
++        "focus":observation_focus,
++        "instruction":(
++            "Develop novel consequential relations from the actual alternative meanings. Preserve actor, "
++            "grain, clock, unknown eligibility, source-special states, rights and rival possibilities. "
++            "Return JSON with findings, upstream, inquiries, method, holds. For each give exact fields, "
++            "literal evidence and interpretation. Keep conceptual proposals separate from empirical claims. "
++            "For upstream provide an object keyed by exact inherited record IDs, each value containing "
++            "proposed_note, quote (verbatim substring), field, reason, and dependence (why a later reader would change). "
++            "Provide positive enrichments and material corrections only where justified. "
++            "A method has input, transformation, output, stop, positive, negative, nontransfer, reader, matched_trial."
++        ),
++    }
++    variants = {
++        "ordinary": "Work as an ordinary targeted reviewer. Inspect the supplied inherited candidates and give the smallest useful suggestions.",
++        "recursive": (
++            "Concentrate on R while allowing discoveries to reopen O or D. Track how each upstream change or enrichment "
++            "moves a dependent inquiry, keep prior wording and dissent retrievable, and specify the few dependents to "
++            "re-evaluate. Distinguish source reconstruction, representation, and intellectual revision. "
++            "In the method output propose a genuinely new useful operation only when evidenced, with a foil and stopping rule."
++        ),
++    }
++    packets = {name:r.fa10.transport.seal({**common,"instruction":common["instruction"]+" "+extra})
++               for name,extra in variants.items()}
++    with ThreadPoolExecutor(max_workers=2) as ex:
++        results = dict(zip(packets,ex.map(lambda key:invoke(packets[key],key,destination), packets)))
++    for key, result in results.items():
++        for member in ("findings","upstream","inquiries","method","holds"):
++            r.require(member in result,"incomplete worker product: "+key+":"+member)
++    reviewed = blinded_review(edition,metadata,results,destination,first,
++                              "Compare matched metadata author returns with their own prior records and source.")
++    return edition, rows, destination, packets, results, reviewed
++
++
++def actual_feedback(edition, rows, destination, packets, results, review, inherited):
++    product = results["recursive"]
++    db = r.Sidecar(destination/"journal.json",edition,rows,["candidate"],limit=6)
++    if (destination/"ACTUAL_FEEDBACK.json").exists():
++        return
++    refs = {}
++    prior_state=r.read(db.path)
++    for rid, value in inherited.items():
++        refs[rid] = (r.reference(db.retrieve(rid)["record"]) if rid in prior_state["active"] else db.seed(rid,"candidate",value["owner"],"FIELD",{"note":value["note"]}))
++    for rid, value in inherited.items():
++        if "I:"+rid in prior_state["active"]:
++            continue
++        db.seed("I:"+rid,"candidate","I","INQUIRY",{"note":value["dependent"]},
++                [{"kind":"REQUIRED","ref":refs[rid]}])
++    if "I:unrelated" not in prior_state["active"]:
++        db.seed("I:unrelated","candidate","I","INQUIRY",{"note":"No required read across these records"})
++    untouched = r.reference(db.retrieve("I:unrelated")["record"])
++    origin=db.register(packets["recursive"],product,"R","candidate")
++    proposed = {}
++    dispositions={eid:entry["status"] for eid,entry in prior_state["events"].items()
++                  if entry["status"] in {"HELD_SOURCE_SCOPE","APPLIED_CANDIDATE"}}
++    for rid, item in product["upstream"].items():
++        if "R:"+rid in dispositions:
++            continue
++        if rid not in refs or not isinstance(item,dict):
++            continue
++        field = item.get("field")
++        if field not in packets["recursive"]["fields"] or not all(r.fa10.r9.substantive(item.get(k)) for k in
++                ("proposed_note","quote","reason","dependence")):
++            continue
++        event = {
++            "schema":"FA10_FEEDBACK_EVENT@1","event_id":"R:"+rid,"grade":"PROPOSED_CANDIDATE",
++            "kind":inherited[rid]["kind"],"origin":origin,"targets":[refs[rid]],"new_scope":None,
++            "evidence":[{"source_sha256":edition["sha256"],"locator":field,"quote_or_fact":item["quote"],
++                         "row_sha256":r.digest(rows[field]),"evidence_kind":"LITERAL_ROW"}],
++            "read_dependencies":[{"ref":refs[rid],"kind":"REQUIRED"}],"requested_operation":"PATCH",
++            "minimal_delta_or_request":item["proposed_note"],"reason":item["reason"],
++            "intellectual_consequence":item["dependence"],"known_affected":[],"dependency_scope":"EXPLICIT",
++            "missing_evidence_or_authority":[],"effort_reason":"Targeted backward review of one exact record",
++        }
++        status=db.submit(event)
++        if status=="ROUTED" or (status=="DUPLICATE" and prior_state["events"][event["event_id"]]["status"]=="ROUTED"):
++            proposed[event["event_id"]] = {"event":event,"rid":rid,"before":inherited[rid]["note"],
++                                           "patch":{"note":item["proposed_note"]}}
++    if proposed:
++        jp=r.fa10.transport.seal({
++            "role":"J","source":edition,"fields":packets["recursive"]["fields"],
++            "events":{eid:r.digest(value["event"]) for eid,value in proposed.items()},
++            "candidates":{eid:{"before":v["before"],"after":v["patch"]["note"],
++                               "patch_sha256":r.digest(v["patch"])} for eid,v in proposed.items()},
++            "instruction":"Review each source-bound upstream delta. Is it a material correction, enrichment, "
++                          "false challenge, unsupported interpretation, or mere repeat? Return JSON with "
++                          "packet_sha256 echoing top level and decisions keyed by event ID. Each decision has "
++                          "decision APPLY, REJECT or HOLD, exact reason, and patch_sha256 echoing the candidate if APPLY. "
++                          "Read source first and authorize no empirical claims.",
++        })
++        result=invoke(jp,"feedback_judge",destination)
++        decisions = result.get("decisions", {})
++        inverted = {hash_:eid for eid,hash_ in jp["events"].items()}
++        if set(decisions)==set(inverted) and len(inverted)==len(jp["events"]):
++            r.save(destination/"FEEDBACK_REVIEW_ENVELOPE_NORMALIZATION.json",{
++                "original_sha256":r.digest(result),"exact_event_digest_to_id":inverted})
++            result={**result,"decisions":{inverted[k]:v for k,v in decisions.items()}}
++        reviewer=db.register(jp,result,"J","candidate")
++        for eid,value in proposed.items():
++            if value["rid"]=="D:Q93C" and "non-eligible" in value["patch"]["note"]:
++                with db.edit() as journal:
++                    journal["events"][eid].update(status="HELD_SOURCE_SCOPE",
++                        review=reviewer, hold="Code 7 is explicit; exact asked/eligible risk is unissued. Preserve the proposed note separately.")
++                dispositions[eid]="HELD_SOURCE_SCOPE"
++                continue
++            dispositions[eid]=db.adjudicate(eid,reviewer,owner=inherited[value["rid"]]["owner"],patch=value["patch"])
++    state=r.read(db.path)
++    if state["pending"]:
++        owner_packet=r.fa10.transport.seal({
++            "role":"I","source":edition,"fields":packets["recursive"]["fields"],
++            "affected":{rid:{"before":db.retrieve(rid),"parent_after":[db.retrieve(info["parent_after"]["record_id"])["record"]["content"]
++                       for info in changes.values()]} for rid,changes in state["pending"].items()},
++            "instruction":"Reconsider only these affected inquiry records against the changed parent. "
++                          "Return JSON dispositions by exact inquiry ID. Each has decision KEEP, REVISE, WITHDRAW or HOLD, "
++                          "reason, and note if REVISE. Keep missing form/risk, relation and reader effects visible.",
++        })
++        outcome=invoke(owner_packet,"affected_reader",destination)
++        values=outcome.get("dispositions",outcome)
++        r.require(set(values)==set(state["pending"]),"affected reader coverage")
++        for rid, value in values.items():
++            if rid=="I:O:EA_ROAD_C" and "non-response category 7" in value.get("note",""):
++                r.save(destination/"AFFECTED_READER_HOLD.json",{
++                    "worker_return":value,"reason":"7 is an explicit residual source answer, not a nonresponse code. Keep the two other fields' observation limitations separately."})
++                db.reconsider(rid,owner="I",decision="HOLD",rationale="Source contradicts automatic reclassification of code 7. Separate the field-level observation limitations.")
++            else:
++                db.reconsider(rid,owner="I",decision=value["decision"],rationale=value["reason"],
++                              patch={"note":value["note"]} if value["decision"]=="REVISE" else None)
++    r.require(untouched==r.reference(db.retrieve("I:unrelated")["record"]),"unaffected record drift")
++    r.save(destination/"ACTUAL_FEEDBACK.json",{
++        "dispositions":dispositions,"observed_model_receipts":True,"untouched_revision":untouched,
++        "records":{rid:db.retrieve(rid) for rid in r.read(db.path)["active"]},
++    })
++
++
++def afro():
++    prior=r.read(ROOT/"AFRO_REPAIR_INPUTS.json")
++    roadway, command = prior["roadway"], prior["command"]
++    inherited = {
++        "O:EA_ROAD_C":{"owner":"O","kind":"CORRECT",
++            "note":roadway["question"],
++            "dependent":roadway["alternatives"],"product_sha256":r.digest(roadway)},
++        "D:Q93C":{"owner":"D","kind":"ENRICH",
++            "note":command["positive"],
++            "dependent":"Compare expected recognition and sanctions with domestic violence jurisdiction.",
++            "product_sha256":r.digest(command)},
++    }
++    actual_feedback(*compare_case("afro_matched_feedback",wave="Afrobarometer Round 9 codebook.csv",
++                    ids=["EA_ROAD_C","EA_FAC_F","Q103","Q104","Q93C","Q53B","Q53C","Q54"],
++                    inherited=inherited,observation_focus="Journey into the EA, money command, anticipated recognition/sanction"),inherited)
++
++
++def adverse_core_review():
++    folder = WORK / "core_adverse"
++    packet_base = r.fa10.load_source()["author_base"]
++    source = packet_base["source"]
++    metadata = {**packet_base["selected"], **packet_base["context"]}
++    p = r.fa10.transport.seal({"role":"J","source":source,"fields":metadata,
++        "instruction":"Source-first independent encounter. Identify exact competing actors, answer distinctions, "
++                      "fused states, significant positive inquiries and a foil. Return JSON findings and unanswered. "
++                      "In Q48B determine the actor from exact source, without a historical answer key. "
++                      "Use exactly two JSON keys, findings and unanswered, both arrays of strings. At most six findings and three unanswered. Do not use field IDs as top-level keys."})
++    first = invoke(p,"source_first_compact",folder,5000)
++    products = {}
++    for arm,role in [("A","M"),("B","M"),("C","O"),("D","O")]:
++        d = r.read(ROOT / "core" / arm / role / "attempt-5/stdout.json")
++        candidate = d["response"]
++        if isinstance(candidate,dict):
++            products[arm] = {key:value for key,value in candidate.items() if key not in {"packet_sha256","grade"}}
++    blinded_review(source,metadata,products,folder,first,
++                   "These are frozen attempted fragments with structurally unequal coverage. "
++                   "Review observed useful substance and losses by exact items. Do not rank completeness or infer a factorial effect.")
++    r.save(folder/"ADVERSE_CORE_COMPLETENESS.json",r.read(ROOT/"core/CORE_STATUS.json"))
++
++
++def wvs():
++    comparison = WORK / "afro_matched_feedback"
++    review = r.read(comparison / "FROZEN_REVIEW.json")
++    transfer = r.read(comparison / "ACTUAL_FEEDBACK.json")
++    source, rows, ledger = r.verify_wvs(ARCHIVE)
++    d_packet=r.read(ROOT/"wvs_d/D_PACKET.json")
++    d_response=r.read(ROOT/"wvs_d/D_RESPONSE.json")
++    d_ledger=r.read(ROOT/"wvs_d/D_LEDGER.json")
++    r.verify_rows(d_packet["source_packet"],source,rows)
++    r.require(r.fa10.validate(d_packet,d_response),"WVS D bank structure")
++    r.require(set(d_ledger["records"])==set(rows) and len(rows)==613,"WVS D coverage")
++    ids=["Q279","Q280","Q281","Q282","Q284","Q285","Q286","Q287","Q288"]
++    eligible_scope={
++        "owner":"Codex HQ, bounded R only; Browser whole-wave D complete and may continue C",
++        "qualification":"R16 D bank records 613 D candidates and no new C/R/I/S; prior inherited variants retained",
++        "scope":"WVS R matched workplace/household clocks and monetary coping",
++        "existing_D_sha256":r.fa10.r9.sha((ROOT/"wvs_d/D_LEDGER.json").read_bytes()),
++        "existing_O_sha256":r.fa10.r9.sha((ROOT/"wvs/O_LEDGER.json").read_bytes()),
++        "actual_afro_review_sha256":r.digest(review),"actual_afro_feedback_sha256":r.digest(transfer),
++        "fields":ids,
++    }
++    inherited={}
++    for key in ids:
++        o = ledger["records"][key]
++        d = d_ledger["records"][key]
++        note = d.get("field_exception") or o.get("specific_observation_note") or ledger["rules"][o["rule"]]["response_act"]
++        inherited["D:"+key]={"owner":"D","kind":"ENRICH","note":note,"dependent":"Preserve this alternative in household labour-clock contrasts",
++                             "record_sha256":r.digest(d),"observation_sha256":r.digest(o)}
++    _, _, destination, _, results, verdict = compare_case(
++        "wvs_R_matched_transfer", wave="World Values Survey Wave 7 codebook.csv", ids=ids,
++        inherited=inherited,
++        observation_focus=("Transfer the Afrobarometer observation-owner test to WVS7. Determine which respondent or spouse "
++             "employment and occupational clocks are present, how relative chief wage earning differs from the power to decide "
++             "on household money, and whether a separate past-year savings/borrowing outcome is usable. "
++             "Test a counterexample with same chief-wage-earner answer and different household command, and a no-spouse "
++             "case. Addition to bounded R only. No new O or D ledger, no native compound inference."),
++    )
++    r.save(destination/"FRONTIER_RECEIPT.json",eligible_scope)
++    r.save(destination/"TRANSFER_PROVISIONAL.json",{"scope":eligible_scope,"products":results,"review":verdict})
++
++
++if __name__=="__main__":
++    os.umask(0o077)
++    r.csv.field_size_limit(10**7)
++    {"afro":afro,"adverse_review":adverse_core_review,"wvs":wvs}[sys.argv[1]]()
++
+diff --git a/run_p1.py b/run_p1.py
+new file mode 100644
+index 0000000..e9966a1
+--- /dev/null
++++ b/run_p1.py
+@@ -0,0 +1,16 @@
++"""Matched P1 intervention: same role/direction, locator-only versus verified source reveal."""
++from concurrent.futures import ThreadPoolExecutor
++import experiments as e
++import fa10_r16 as r
++
++out=e.WORK/"P1_exact_reveal"
++original=r.fa10.probe("P1_DISTAL","directed",out)
++reveal=r.fa10.reveal("P1_DISTAL","directed",out,e.ARCHIVE,["NOCALL_1"])
++assert original["instruction"]==reveal["instruction"]
++assert set(reveal["fields"])-set(original["fields"])=={"NOCALL_1"}
++pairs={"locator":original,"retrieved":reveal}
++with ThreadPoolExecutor(max_workers=2) as exe:
++    results=dict(zip(pairs,exe.map(lambda name:e.invoke(pairs[name],name,out,6500),pairs)))
++r.save(out/"MATCHED_P1.json",{"results":results,"instruction_identical":True,
++       "source_reveal":reveal["fields"]["NOCALL_1"],
++       "reason":"NOCALL_1 was a real earlier R9 concern about fieldwork denominator and selected sponsor-report observations."})
+diff --git a/conserve_core_permeability.py b/conserve_core_permeability.py
+new file mode 100644
+index 0000000..d28422f
+--- /dev/null
++++ b/conserve_core_permeability.py
+@@ -0,0 +1,46 @@
++"""Receive the out-of-role capital without importing a transformed frozen response."""
++from pathlib import Path
++import json
++
++import fa10_r16 as r
++
++root=Path(__file__).resolve().parent
++archive=Path.home()/"Desktop/Rawlsing/source_files/Rawlsing 35 waves of savs & dtas.zip"
++source, rows=r.fa10.r9.source(archive,"Afrobarometer Round 9 codebook.csv")
++home=root/"experiments/core_permeability"
++home.mkdir(exist_ok=True,parents=True)
++journal=r.Sidecar(home/"journal.json",source,rows,["C-arm","D-arm"],limit=14)
++for arm in ("C","D"):
++    raw_path=root/"core"/arm/"C/attempt-8/stdout.json"
++    raw=r.read(raw_path)["response"]
++    packet=r.read(raw_path.with_name("input.json"))
++    primary={**raw,"answer_notes":{},"inquiries":[],"nominations":[]}
++    r.require(r.fa10.validate(packet,primary),"nonsemantic primary extraction did not validate")
++    origin=journal.register(packet,primary,"C",arm+"-arm")
++    out=[]
++    packet_fields=packet["source_packet"]["selected"]|packet["source_packet"]["context"]
++    for n, promise in enumerate(raw["inquiries"]):
++        anchors=[]
++        for field in promise["items"]:
++            if field in packet_fields:
++                row=rows[field]
++                anchors.append({"source_sha256":source["sha256"],"locator":field,
++                    "quote_or_fact":row["question_text"],"row_sha256":r.digest(row),"evidence_kind":"LITERAL_ROW"})
++        if not anchors:
++            out.append({"inquiry":promise,"status":"HELD_NO_EXACT_SOURCE_ANCHOR"})
++            continue
++        e={
++            "schema":"FA10_FEEDBACK_EVENT@1","event_id":f"{arm}:C:I:{n}","grade":"PROPOSED_CANDIDATE",
++            "kind":"PRESERVE_OVERFLOW","origin":origin,"targets":[],"new_scope":"Future I review; bounded C experiment",
++            "evidence":anchors,"read_dependencies":[],"requested_operation":"CONSERVE",
++            "minimal_delta_or_request":json.dumps(promise,ensure_ascii=False),
++            "reason":"Actual C worker emitted a cross-role inquiry that the incumbent primary validator refused",
++            "intellectual_consequence":"Preserve candidate alternatives for I without auto-issue",
++            "known_affected":[],"dependency_scope":"CONSERVATIVE_SCOPE_REQUIRED",
++            "missing_evidence_or_authority":["No exact source-role and inquiry issuance"],
++            "effort_reason":"Keep unsolicited discoveries without regenerating coverage",
++        }
++        out.append({"event_id":e["event_id"],"status":journal.submit(e),"next_owner":"I"})
++    r.save(home/f"{arm}_RECEIPT.json",{"primary":primary,"raw_response_sha256":r.digest(raw),
++              "not_a_frozen_acceptance":True,"original_nominations":raw["nominations"],"inquiries":out})
++    print(arm,len(out))
+diff --git a/summarize_economy.py b/summarize_economy.py
+new file mode 100644
+index 0000000..ae82c0e
+--- /dev/null
++++ b/summarize_economy.py
+@@ -0,0 +1,45 @@
++import json
++from pathlib import Path
++from collections import defaultdict
++
++work=Path(".")
++calls=[]
++summary=defaultdict(lambda: defaultdict(float))
++for receipt in sorted((*work.glob("core/**/receipt.json"),*work.glob("experiments/**/receipt.json"))):
++    row=json.loads(receipt.read_text())
++    file=receipt.with_name("stdout.json")
++    if not file.exists() or not file.stat().st_size:
++        continue
++    stdout=json.loads(file.read_text())
++    info=stdout.get("provider_receipt") or {}
++    usage=stdout.get("usage")
++    group=receipt.parts[1]
++    call={
++        "path":str(receipt.parent),"provider_session":info.get("session"),
++        "model":stdout.get("model"),"effort":info.get("effort"),"cap":info.get("cap"),
++        "packet_sha256":row.get("packet_sha256"),"system_user_input_sha256":info.get("input_text_sha256"),
++        "output_sha256":row.get("stdout_sha256"),"seconds":row.get("elapsed_seconds"),
++        "transport_exit":row.get("exit_code"),"usage":usage,
++        "opencode_rate_equivalent":info.get("opencode_rate_cost") if usage else None,
++        "billed":None,
++    }
++    calls.append(call)
++    agg=summary[group]
++    agg["attempts"]+=1
++    agg["sum_call_elapsed_seconds"]+=row.get("elapsed_seconds") or 0
++    if usage:
++        agg["provider_returns"]+=1
++        for k in ("input","output","reasoning"):
++            agg[k]+=usage.get(k) or 0
++        agg["cache_read"]+=(usage.get("cache") or {}).get("read",0)
++        agg["opencode_rate_equivalent"]+=info.get("opencode_rate_cost") or 0
++out={
++    "execution":"OpenCode Go subscription, no separate DeepSeek API calls",
++    "rate_equivalent":"OpenCode model-rate accounting from step-finish events, not an invoice or subscription usage ledger",
++    "actual_billed":None,"human_active_minutes":None,"codex_tokens":None,
++    "usage_note":"OpenCode input and cache-read components are reported separately; per-call duration sums are not campaign wall time.",
++    "summary":summary,"calls":calls,
++}
++(work/"ECONOMICS.json").write_text(json.dumps(out,indent=2)+"\n")
++for k, value in summary.items():
++    print(k,dict(value))
+diff --git a/FEEDBACK.schema.json b/FEEDBACK.schema.json
+new file mode 100644
+index 0000000..97fddbc
+--- /dev/null
++++ b/FEEDBACK.schema.json
+@@ -0,0 +1,378 @@
++{
++  "$schema": "https://json-schema.org/draft/2020-12/schema",
++  "title": "Proposed FA10 cross-stage feedback event; shape only",
++  "description": "Controller must independently verify exact refs, evidence, authority, revisions, dependency closure and decisions. Schema validity does not imply truth or apply a patch.",
++  "$comment": "No extra production source schema. All author events proposed, never approved.",
++  "$defs": {
++    "record_ref": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "record_id": {
++          "type": "string",
++          "minLength": 1
++        },
++        "revision_sha256": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "scope": {
++          "type": "string",
++          "minLength": 1
++        },
++        "kind": {
++          "enum": [
++            "FIELD",
++            "ANSWER",
++            "RULE",
++            "EXCEPTION",
++            "CLAIM",
++            "INQUIRY",
++            "PROJECTION",
++            "METHOD"
++          ]
++        }
++      },
++      "required": [
++        "record_id",
++        "revision_sha256",
++        "scope",
++        "kind"
++      ]
++    },
++    "evidence": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "source_sha256": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "locator": {
++          "type": "string",
++          "minLength": 1
++        },
++        "quote_or_fact": {
++          "type": "string",
++          "minLength": 1
++        },
++        "row_sha256": {
++          "anyOf": [
++            {
++              "type": "string",
++              "pattern": "^[0-9a-f]{64}$"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "evidence_kind": {
++          "enum": [
++            "LITERAL_ROW",
++            "REFERENCE_DOCUMENT",
++            "VERIFIED_CONSERVATION",
++            "LOCATOR_ONLY",
++            "MISSING_SOURCE",
++            "METHOD_EVIDENCE"
++          ]
++        }
++      },
++      "required": [
++        "source_sha256",
++        "locator",
++        "quote_or_fact",
++        "row_sha256",
++        "evidence_kind"
++      ]
++    },
++    "dependency": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "ref": {
++          "$ref": "#/$defs/record_ref"
++        },
++        "kind": {
++          "enum": [
++            "REQUIRED",
++            "INFORMATIVE",
++            "RULE_MEMBERSHIP",
++            "LINEAGE",
++            "CONCEPTUAL_LINK"
++          ]
++        }
++      },
++      "required": [
++        "ref",
++        "kind"
++      ]
++    }
++  },
++  "type": "object",
++  "additionalProperties": false,
++  "properties": {
++    "schema": {
++      "const": "FA10_FEEDBACK_EVENT@1"
++    },
++    "event_id": {
++      "type": "string",
++      "minLength": 1
++    },
++    "grade": {
++      "const": "PROPOSED_CANDIDATE"
++    },
++    "kind": {
++      "enum": [
++        "ENRICH",
++        "CORRECT",
++        "REOPEN",
++        "RECONSTITUTE",
++        "RETRIEVE",
++        "PRESERVE_OVERFLOW",
++        "METHOD_PROPOSAL",
++        "AUTHORITY_HOLD"
++      ]
++    },
++    "origin": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "role": {
++          "enum": [
++            "O",
++            "D",
++            "C",
++            "R",
++            "I",
++            "S",
++            "J",
++            "M",
++            "EMPIRICAL_OWNER",
++            "HQ"
++          ]
++        },
++        "scope": {
++          "type": "string",
++          "minLength": 1
++        },
++        "packet_sha256": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "response_sha256": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        }
++      },
++      "required": [
++        "role",
++        "scope",
++        "packet_sha256",
++        "response_sha256"
++      ]
++    },
++    "targets": {
++      "type": "array",
++      "items": {
++        "$ref": "#/$defs/record_ref"
++      },
++      "uniqueItems": true
++    },
++    "new_scope": {
++      "type": [
++        "string",
++        "null"
++      ]
++    },
++    "evidence": {
++      "type": "array",
++      "minItems": 1,
++      "items": {
++        "$ref": "#/$defs/evidence"
++      }
++    },
++    "read_dependencies": {
++      "type": "array",
++      "items": {
++        "$ref": "#/$defs/dependency"
++      },
++      "uniqueItems": true
++    },
++    "requested_operation": {
++      "enum": [
++        "ADD",
++        "PATCH",
++        "RECONSIDER",
++        "RETRIEVE",
++        "CONSERVE",
++        "PROPOSE_METHOD",
++        "HOLD"
++      ]
++    },
++    "minimal_delta_or_request": {
++      "type": "string",
++      "minLength": 1
++    },
++    "reason": {
++      "type": "string",
++      "minLength": 1
++    },
++    "intellectual_consequence": {
++      "type": "string",
++      "minLength": 1
++    },
++    "known_affected": {
++      "type": "array",
++      "items": {
++        "$ref": "#/$defs/record_ref"
++      },
++      "uniqueItems": true
++    },
++    "dependency_scope": {
++      "enum": [
++        "EXPLICIT",
++        "CONSERVATIVE_SCOPE_REQUIRED"
++      ]
++    },
++    "missing_evidence_or_authority": {
++      "type": "array",
++      "items": {
++        "type": "string",
++        "minLength": 1
++      }
++    },
++    "effort_reason": {
++      "type": "string",
++      "minLength": 1
++    }
++  },
++  "required": [
++    "schema",
++    "event_id",
++    "grade",
++    "kind",
++    "origin",
++    "targets",
++    "new_scope",
++    "evidence",
++    "read_dependencies",
++    "requested_operation",
++    "minimal_delta_or_request",
++    "reason",
++    "intellectual_consequence",
++    "known_affected",
++    "dependency_scope",
++    "missing_evidence_or_authority",
++    "effort_reason"
++  ],
++  "allOf": [
++    {
++      "if": {
++        "properties": {
++          "kind": {
++            "enum": [
++              "CORRECT",
++              "REOPEN",
++              "RECONSTITUTE"
++            ]
++          }
++        },
++        "required": [
++          "kind"
++        ]
++      },
++      "then": {
++        "properties": {
++          "targets": {
++            "minItems": 1
++          }
++        }
++      }
++    },
++    {
++      "if": {
++        "properties": {
++          "targets": {
++            "maxItems": 0
++          }
++        }
++      },
++      "then": {
++        "properties": {
++          "new_scope": {
++            "type": "string",
++            "minLength": 1
++          }
++        }
++      }
++    },
++    {
++      "if": {
++        "properties": {
++          "kind": {
++            "const": "RETRIEVE"
++          }
++        }
++      },
++      "then": {
++        "properties": {
++          "requested_operation": {
++            "const": "RETRIEVE"
++          }
++        }
++      }
++    },
++    {
++      "if": {
++        "properties": {
++          "kind": {
++            "const": "METHOD_PROPOSAL"
++          }
++        }
++      },
++      "then": {
++        "properties": {
++          "requested_operation": {
++            "const": "PROPOSE_METHOD"
++          }
++        }
++      }
++    },
++    {
++      "if": {
++        "properties": {
++          "kind": {
++            "const": "AUTHORITY_HOLD"
++          }
++        }
++      },
++      "then": {
++        "properties": {
++          "requested_operation": {
++            "const": "HOLD"
++          },
++          "missing_evidence_or_authority": {
++            "minItems": 1
++          }
++        }
++      }
++    },
++    {
++      "if": {
++        "properties": {
++          "kind": {
++            "const": "PRESERVE_OVERFLOW"
++          }
++        }
++      },
++      "then": {
++        "properties": {
++          "requested_operation": {
++            "const": "CONSERVE"
++          }
++        }
++      }
++    }
++  ]
++}

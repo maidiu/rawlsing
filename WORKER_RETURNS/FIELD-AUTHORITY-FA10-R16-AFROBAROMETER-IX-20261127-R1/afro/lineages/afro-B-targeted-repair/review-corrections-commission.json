@@ -1,0 +1,207 @@
+{
+  "commission": "Afrobarometer IX only. One bounded completion after exact review; no WVS7 work. Patch exactly claim M-C63B97 and inquiries M-I-THREATSPONS and M-I-OWNERCONSIST. For C63B97, quote the supplied literal code-97 option for Q63B and state only that the option list does not establish actual respondent routing or denominator; Q97 options likewise do not establish the administration universe. Do not call it a measured route or claim every-respondent administration. For THREATSPONS, explicitly retain cross-sectional limits and that association would not establish causation in question/alternatives/ceiling; preserve prerequisites on interviewer identity/clustering, ambiguous addressee, and Q97 administration. For OWNERCONSIST, include the exact Q48A special-code text 93 = Not asked in Burkina Faso after 4th of October as a country/date gate, preserve Q48B's 94-only distinction, and require verified joint administration/linkage for both item pairs. Do not alter any other text or ID. Return JSON exactly with keys claim_text_patches (one {id,text}), inquiry_patches (two {id,question,alternatives,ceiling}), and notes. No markdown.",
+  "packet_sha256": "60a36c2fb27a94f20d2f439291dd76c1e535b5e46846dc8dac9891f4de9ff154",
+  "source_metadata": {
+    "Q48A": {
+      "source": "Afrobarometer",
+      "wave": "R9",
+      "module_guess": "substantive_module",
+      "var_name": "Q48A",
+      "question_text": "Who should be responsible for: making sure that, once elected, [members of Parliament] do their jobs?",
+      "value_label_set": "labels199",
+      "storage_type": "numeric",
+      "storage_width": "8",
+      "measure": "nominal",
+      "format": "F8.0",
+      "value_labels_count": "10",
+      "response_options_substantive": "0 = The President / Executive | 1 = The Parliament / local government council | 2 = Their Political Party | 3 = The Voters | 4 = No One",
+      "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know | 93 = Not asked in Burkina Faso after 4th of October | 94 = Not asked in country",
+      "response_options_all": "-1 = Missing | 0 = The President / Executive | 1 = The Parliament / local government council | 2 = Their Political Party | 3 = The Voters | 4 = No One | 8 = Refused | 9 = Don't know | 93 = Not asked in Burkina Faso after 4th of October | 94 = Not asked in country",
+      "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+    },
+    "Q48B": {
+      "source": "Afrobarometer",
+      "wave": "R9",
+      "module_guess": "substantive_module",
+      "var_name": "Q48B",
+      "question_text": "Who should be responsible for: making sure that, once elected, the [president] does [his] job?",
+      "value_label_set": "labels200",
+      "storage_type": "numeric",
+      "storage_width": "8",
+      "measure": "nominal",
+      "format": "F8.0",
+      "value_labels_count": "9",
+      "response_options_substantive": "0 = The President / Executive | 1 = The Parliament / local government council | 2 = Their Political Party | 3 = The Voters | 4 = No One",
+      "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know | 94 = Not asked in the country",
+      "response_options_all": "-1 = Missing | 0 = The President / Executive | 1 = The Parliament / local government council | 2 = Their Political Party | 3 = The Voters | 4 = No One | 8 = Refused | 9 = Don't know | 94 = Not asked in the country",
+      "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+    },
+    "Q63B": {
+      "source": "Afrobarometer",
+      "wave": "R9",
+      "module_guess": "demographic_core",
+      "var_name": "Q63B",
+      "question_text": "When the country is facing a public health emergency like the COVID-19 pandemic, do you agree or disagree that it is justified for the government to temporarily limit democracy or democratic freedoms by taking the following measures: using the police and security forces to enforce public health mandates like restrictions on public gatherings or wearing face masks?",
+      "value_label_set": "labels232",
+      "storage_type": "numeric",
+      "storage_width": "8",
+      "measure": "ordinal",
+      "format": "F8.0",
+      "value_labels_count": "10",
+      "response_options_substantive": "1 = Strongly disagree | 2 = Disagree | 3 = Neither agree nor disagree | 4 = Agree | 5 = Strongly agree",
+      "response_options_special": "-1 = Missing | 8 = Refused | 9 = Don't know | 94 = Not asked in the country | 97 = Not applicable (COV1=0, 8 or 9)",
+      "response_options_all": "-1 = Missing | 1 = Strongly disagree | 2 = Disagree | 3 = Neither agree nor disagree | 4 = Agree | 5 = Strongly agree | 8 = Refused | 9 = Don't know | 94 = Not asked in the country | 97 = Not applicable (COV1=0, 8 or 9)",
+      "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+    },
+    "Q97": {
+      "source": "Afrobarometer",
+      "wave": "R9",
+      "module_guess": "substantive_module",
+      "var_name": "Q97",
+      "question_text": "Who do you think sent us to do this interview?",
+      "value_label_set": "labels318",
+      "storage_type": "numeric",
+      "storage_width": "8",
+      "measure": "nominal",
+      "format": "F8.0",
+      "value_labels_count": "15",
+      "response_options_substantive": "0 = No one | 1 = “Afrobarometer\" or national partner | 2 = Research Company | 3 = Non-government or religious organization | 4 = University / School / College | 5 = Private company | 6 = Media | 7 = Political party or politician | 8 = Government | 9 = International organization or another country | 10 = God | 95 = Other",
+      "response_options_special": "-1 = Missing | 98 = Refused to answer | 99 = Don't know",
+      "response_options_all": "-1 = Missing | 0 = No one | 1 = “Afrobarometer\" or national partner | 2 = Research Company | 3 = Non-government or religious organization | 4 = University / School / College | 5 = Private company | 6 = Media | 7 = Political party or politician | 8 = Government | 9 = International organization or another country | 10 = God | 95 = Other | 98 = Refused to answer | 99 = Don't know",
+      "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+    }
+  },
+  "current_claim": {
+    "id": "M-C63B97",
+    "kind": "ADD",
+    "items": [
+      "Q63B",
+      "Q97"
+    ],
+    "challenges": [],
+    "text": "The two fields differ in routing scope, not both in the same way: Q63B's 97 label is non-applicable when COV1=0,8,9 (routing not established by this packet), while Q97's response options do not establish every-respondent administration; comparing them would conflate a routed COVID judgment with a sponsorship belief of unverified denominator.",
+    "evidence": [
+      {
+        "field": "Q63B",
+        "quote": "Not applicable (COV1=0, 8 or 9)"
+      },
+      {
+        "field": "Q97",
+        "quote": "Refused to answer"
+      }
+    ]
+  },
+  "current_inquiries": [
+    {
+      "id": "M-I-THREATSPONS",
+      "items": [
+        "Q106D",
+        "Q106E",
+        "Q97"
+      ],
+      "question": "Only if interviewer identity and any clustering are verified, and only if the threat items' unverified addressee and Q97's unverified administration are qualified: does co-variation between a felt or physical threat report and the respondent's attributed sponsorship distinguish a pressure environment from misattribution or random interviewer distress?",
+      "alternatives": "If sponsor attribution and threat reports were shown to co-vary after interviewer identity and clustering are verified, that pattern would be consistent with (but not establish) an environment-of-pressure reading; flatness across sponsor categories, or concentration among Afrobarometer-attributors, would count against the pressure interpretation. The cross-sectional packet cannot adjudicate between these.",
+      "ceiling": "Candidate hypothesis only: source route, design, and roles must be qualified first; interviewer identity and clustering, the addressee of the threat items, and actual Q97 administration are all unverified here; no numerics are asserted and nothing establishes intimidation causation.",
+      "route": "S04 existing observation-scope and asked-eligible RAW owner; only after source route, design and roles qualified."
+    },
+    {
+      "id": "M-I-OWNERCONSIST",
+      "items": [
+        "Q48A",
+        "Q48B",
+        "Q28",
+        "Q29B"
+      ],
+      "question": "Only if same-wave co-administration of Q48A with Q48B, and of Q28 with Q29B, is verified: do respondents who assign legislative oversight to the executive also endorse presidential non-bindingness or conditional military takeover, indicating an executive-centered accountability frame, or do the items dissociate?",
+      "alternatives": "A coherent executive-centered configuration would be consistent with a single frame; dissociation would show that owner designation about MPs is not a proxy for authoritarian legality. Because joint administration and same-respondent linkage are unverified, neither pattern is currently established.",
+      "ceiling": "Candidate hypothesis only: owner targets (MPs vs president) stay separate and Q48A's Burkina Faso date code bars same-respondent use unless co-administration is verified; no causal inference and no claim that owner answers predict behavior or that the four items share a denominator.",
+      "route": "S04 existing observation-scope and asked-eligible RAW owner; only after source route, design and roles qualified."
+    }
+  ],
+  "independent_findings": [
+    {
+      "claim_or_inquiry": "M-O106C",
+      "decision": "CONFIRM",
+      "source_evidence": "Were you approached by community and/or political party representatives?",
+      "required_change": "Retain the unresolved-addressee framing. Note in scope text that the prior 'interviewer grain confirmed' reading is withdrawn; do not restore an interviewer/addressee assumption without packet evidence."
+    },
+    {
+      "claim_or_inquiry": "M-O106D",
+      "decision": "CONFIRM",
+      "source_evidence": "Did you feel threatened during the interview?",
+      "required_change": "Retain felt-state wording with reporter grain unsettled; keep explicit denial that this is an observed act. Flag that prior 'interviewer's own feeling' attribution is now unsupported."
+    },
+    {
+      "claim_or_inquiry": "M-O106E",
+      "decision": "CONFIRM",
+      "source_evidence": "Were you physically threatened during the interview?",
+      "required_change": "Retain the no-nesting/no-co-occurrence disclaimer; do not infer any relation to felt threat from stems alone."
+    },
+    {
+      "claim_or_inquiry": "M-O109F",
+      "decision": "CORRECTION_REQUIRED",
+      "source_evidence": "honest, in between, or misleading?",
+      "required_change": "The revised claim is acceptable (three substantive labels, no special codes, no claim about design). Ensure the earlier assertion that refusal/don't-know are 'absent by design' is not carried forward anywhere; absence of labels does not establish design. Keep code 2 as an uncommitted judgment."
+    },
+    {
+      "claim_or_inquiry": "M-O48A",
+      "decision": "CONFIRM",
+      "source_evidence": "once elected, [members of Parliament] do their jobs?",
+      "required_change": "Retain normative-owner framing, code 93/94 listing, and avoid observed-monitoring reading. Ensure 93 (Burkina Faso after 4th of October) is never collapsed with 94 (not asked in country)."
+    },
+    {
+      "claim_or_inquiry": "M-O48B",
+      "decision": "CONFIRM",
+      "source_evidence": "once elected, the [president] does [his] job?",
+      "required_change": "Retain target distinction, 94-only code note, and the statement that co-administration is not established. Do not attribute a 93 code to Q48B."
+    },
+    {
+      "claim_or_inquiry": "M-O63B",
+      "decision": "CONFIRM",
+      "source_evidence": "temporarily limit democracy or democratic freedoms",
+      "required_change": "Retain 'like the COVID-19 pandemic' (not a declared emergency), the 97 non-applicability label, and the explicit statement that actual routing and denominator are not established."
+    },
+    {
+      "claim_or_inquiry": "M-O98A",
+      "decision": "CONFIRM",
+      "source_evidence": "Willing to participate in follow-up surveys",
+      "required_change": "Retain code 7 as mobile-absence inapplicability held distinct from No, Yes, and Missing; do not treat willingness as participation."
+    },
+    {
+      "claim_or_inquiry": "M-C109FTOPO",
+      "decision": "CONFIRM",
+      "source_evidence": "Was he or she: honest",
+      "required_change": "Retain the referent-difference and unsettled-grain caution against a single interview-quality factor."
+    },
+    {
+      "claim_or_inquiry": "M-C48OWNER",
+      "decision": "CONFIRM",
+      "source_evidence": "The President / Executive",
+      "required_change": "Retain the gate that person-level frame claims require verified same-respondent administration and linkage; do not infer joint administration."
+    },
+    {
+      "claim_or_inquiry": "M-C63B97",
+      "decision": "CORRECTION_REQUIRED",
+      "source_evidence": "Refused to answer",
+      "required_change": "The claim correctly avoids asserting Q97 is asked of every respondent, but 'Refused to answer' alone does not evidence administration scope. Add a literal-valid quote tied to the administration point if one exists; otherwise weaken to state only that option lists do not fix the denominator. Do not reinstate the prior 'asked of every respondent' claim."
+    },
+    {
+      "claim_or_inquiry": "M-I-THREATSPONS",
+      "decision": "CORRECTION_REQUIRED",
+      "source_evidence": "Who do you think sent us to do this interview?",
+      "required_change": "Conditioning on verified interviewer identity/clustering, threat addressee, and Q97 administration is present and acceptable. Add explicit retention of cross-sectional and no-causal limits in the question/alternatives, and do not introduce numerics."
+    },
+    {
+      "claim_or_inquiry": "M-I-WOMENSANCTION",
+      "decision": "CONFIRM",
+      "source_evidence": "criticized, called names, or harassed by others in the community",
+      "required_change": "Retain same-respondent verification prerequisite, capped-choice nonselection limit, and no-causation ceiling. Ensure Q50B remains hypothetical likelihood."
+    },
+    {
+      "claim_or_inquiry": "M-I-OWNERCONSIST",
+      "decision": "CORRECTION_REQUIRED",
+      "source_evidence": "93 = Not asked in Burkina Faso after 4th of October",
+      "required_change": "Ceiling invokes the Burkina Faso date code but the inquiry cites only Q48A/Q48B/Q28/Q29B at packet level. Add a literal-valid quote supporting the Q48A country-date routing from the packet text used, and keep gate on verified Q48A/Q48B and Q28/Q29B co-administration."
+    }
+  ]
+}

@@ -1,0 +1,643 @@
+{
+  "scope": "Afrobarometer IX A/B/C/D targeted repairs, relineage and scoped independent receiving in this continuation only",
+  "arms": {
+    "A": {
+      "input": 7960,
+      "output": 943,
+      "reasoning": 0,
+      "cache_read": 0,
+      "opencode_rate_equivalent": 0.0017598000000000002,
+      "actual_billed": "UNOBSERVED",
+      "codex_tokens": "UNOBSERVED"
+    },
+    "B": {
+      "input": 47588,
+      "output": 4788,
+      "reasoning": 0,
+      "cache_read": 768,
+      "opencode_rate_equivalent": 0.010013304,
+      "actual_billed": "UNOBSERVED",
+      "codex_tokens": "UNOBSERVED"
+    },
+    "C": {
+      "input": 24997,
+      "output": 3243,
+      "reasoning": 0,
+      "cache_read": 0,
+      "opencode_rate_equivalent": 0.00569535,
+      "actual_billed": "UNOBSERVED",
+      "codex_tokens": "UNOBSERVED"
+    },
+    "D": {
+      "provider_returns": 12,
+      "input": 284766,
+      "output": 13291,
+      "reasoning": 0,
+      "cache_read": 512,
+      "opencode_rate_equivalent": 0.05069103599999999,
+      "actual_billed": "UNOBSERVED",
+      "codex_tokens": "UNOBSERVED"
+    }
+  },
+  "totals": {
+    "provider_returns": 25,
+    "input": 365311,
+    "output": 22265,
+    "reasoning": 0,
+    "cache_read": 1280,
+    "opencode_rate_equivalent": 0.06815948999999999,
+    "actual_billed": "UNOBSERVED",
+    "codex_tokens": "UNOBSERVED"
+  },
+  "call_details": [
+    {
+      "path": "afro-A-targeted-repair/worker_return_raw.json",
+      "session": "ses_de0fc7db1ffeXs09ekzN5ZKwAj",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 1700,
+      "provider_exit": 0,
+      "input_text_sha256": "f4c45c034e5e6b8bec74c9bd9fafd0afb59083ce2019d107fc3bb8b0270cc285",
+      "usage": {
+        "input": 4203,
+        "output": 445,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00089745,
+      "actual_billed": null,
+      "verdict": null,
+      "arm": "A"
+    },
+    {
+      "path": "afro-A-repaired-v1/A/M/independent-receiving/worker_return_raw.json",
+      "session": "ses_de0fbaacaffestzWERb7z4cMRf",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 2000,
+      "provider_exit": 0,
+      "input_text_sha256": "71bd0e79a7e7387534575c1fc35ef704dea4c877825819fd10952797eae81125",
+      "usage": {
+        "input": 3757,
+        "output": 498,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00086235,
+      "actual_billed": null,
+      "verdict": "PASS_SCOPED",
+      "arm": "A"
+    },
+    {
+      "path": "afro-B-targeted-repair/worker_return_raw.json",
+      "role": "author",
+      "task": "initial B/M source-bound repair",
+      "session": "ses_de107bb10ffeE3SvUuXJ4iq3Mz",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 3300,
+      "provider_exit": 0,
+      "input_text_sha256": "b7ae776238dd937740d5ee3994b1d24cd0932386e36d04f110635bb413dfae4a",
+      "usage": {
+        "input": 8710,
+        "output": 1220,
+        "reasoning": 0,
+        "cache": {
+          "read": 256,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.002039268,
+      "actual_billed": null,
+      "verdict": null,
+      "arm": "B"
+    },
+    {
+      "path": "afro-B-targeted-repair/completion-return.json",
+      "role": "author",
+      "task": "completion of three omitted corrections",
+      "session": "ses_de1068ecfffep5L22csVjC7ew2",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 1200,
+      "provider_exit": 0,
+      "input_text_sha256": "ddc756593b8ad73bcd595b10b1108322f63c561367fd74582aaf9d834d14d08e",
+      "usage": {
+        "input": 3609,
+        "output": 429,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00079875,
+      "actual_billed": null,
+      "verdict": null,
+      "arm": "B"
+    },
+    {
+      "path": "afro-B-repaired-v1/B/M/independent-receiving/worker_return_raw.json",
+      "role": "reviewer",
+      "task": "first exact candidate receiving; correction required",
+      "session": "ses_de1057e84ffefTqhqtv3yf3BDb",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 2500,
+      "provider_exit": 0,
+      "input_text_sha256": "fdb34da92a111ca7a0e3f4b882fe7bd38009465a9975f8e756135fdda1584ad4",
+      "usage": {
+        "input": 9467,
+        "output": 1216,
+        "reasoning": 0,
+        "cache": {
+          "read": 256,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.002150418,
+      "actual_billed": null,
+      "verdict": "CORRECTION_REQUIRED",
+      "arm": "B"
+    },
+    {
+      "path": "afro-B-targeted-repair/review-corrections-return.json",
+      "role": "author",
+      "task": "repair of three receiving findings",
+      "session": "ses_de1043763ffeLkLOTrKrmkXis3",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 1600,
+      "provider_exit": 0,
+      "input_text_sha256": "b0c3475ebe6d72592d2615d548858866080150b718ef82640c2d354d3a9d8c12",
+      "usage": {
+        "input": 3877,
+        "output": 766,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00104115,
+      "actual_billed": null,
+      "verdict": null,
+      "arm": "B"
+    },
+    {
+      "path": "afro-B-targeted-repair/denominator-wording-return.json",
+      "role": "author",
+      "task": "narrow denominator wording repair",
+      "session": "ses_de102de04ffemW5rwilo8bGSAF",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 600,
+      "provider_exit": 0,
+      "input_text_sha256": "c45e71064325cf797bdbe354e6a1fdc92598151dfca261bd70bc6b0e77e57b0b",
+      "usage": {
+        "input": 1151,
+        "output": 79,
+        "reasoning": 0,
+        "cache": {
+          "read": 256,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.000220818,
+      "actual_billed": null,
+      "verdict": null,
+      "arm": "B"
+    },
+    {
+      "path": "afro-B-repaired-v3/B/M/independent-receiving/worker_return_raw.json",
+      "role": "reviewer",
+      "task": "final exact candidate receiving",
+      "session": "ses_de101b1a5ffeI534QZW1SFQ6cn",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 2600,
+      "provider_exit": 0,
+      "input_text_sha256": "389617049724f056704c18ce5a1031bcaa37ecaaf17f1c37a7312bcbe2b2c982",
+      "usage": {
+        "input": 20774,
+        "output": 1078,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.0037629,
+      "actual_billed": null,
+      "verdict": "PASS_SCOPED",
+      "arm": "B"
+    },
+    {
+      "path": "afro-C-targeted-repair/worker_return_raw.json",
+      "task": "initial source-bound claim/hold repair",
+      "session": "ses_de1139480ffeQnqEVkY2RlwD2a",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 2600,
+      "provider_exit": 0,
+      "input_text_sha256": "3864ddbd34fc2fd16f0e27b499897897e34e81059dd358d69c4eb7baaa53c6f4",
+      "usage": {
+        "input": 4533,
+        "output": 928,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00123675,
+      "actual_billed": null,
+      "arm": "C"
+    },
+    {
+      "path": "afro-C-targeted-repair/addressee-completion-return.json",
+      "task": "complete exact addressee repairs across stage outputs",
+      "session": "ses_de110da7effeH3AWkRnzpP0IfM",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 2400,
+      "provider_exit": 0,
+      "input_text_sha256": "49cf15e7c40f0ec7434c58a91ab1c38a184220bfcc7b76f50784ece5503a86bc",
+      "usage": {
+        "input": 3423,
+        "output": 965,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00109245,
+      "actual_billed": null,
+      "arm": "C"
+    },
+    {
+      "path": "afro-C-repaired-v2/C/independent-receiving/worker_return_raw.json",
+      "task": "independent source-bound exact-candidate receiving",
+      "session": "ses_de10bdc3cffez1xtPitu60UCnd",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 3200,
+      "provider_exit": 0,
+      "input_text_sha256": "c2fb51cf9154637824b28aa30fff4501528473c5e42588b2fc31d8192fffd87c",
+      "usage": {
+        "input": 7987,
+        "output": 205,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00132105,
+      "actual_billed": null,
+      "verdict": "PASS_SCOPED",
+      "arm": "C"
+    },
+    {
+      "path": "afro-C-targeted-repair/c3-wording-repair-return.json",
+      "task": "replace ambiguous unobserved phrasing",
+      "session": "ses_de10ce4f1ffeEBzJw26vVcRMoe",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 900,
+      "provider_exit": 0,
+      "input_text_sha256": "f39773a07798a427e6f759eb31cc688904aebc063f0362d1a2bbe7881845bc9a",
+      "usage": {
+        "input": 1015,
+        "output": 64,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00019065,
+      "actual_billed": null,
+      "arm": "C"
+    },
+    {
+      "path": "afro-C-repaired-v1/C/independent-receiving/worker_return_raw.json",
+      "task": "independent exact-candidate source-bound receiving; correction required",
+      "session": "ses_de10dbae9ffetLJYiUc3r1eGkC",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 3200,
+      "provider_exit": 0,
+      "input_text_sha256": "4a8f76a26ddf4dcd3df08614eb9749644b75089ab4ccc0d84587f838282531a5",
+      "usage": {
+        "input": 8039,
+        "output": 1081,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00185445,
+      "actual_billed": null,
+      "verdict": "CORRECTION_REQUIRED",
+      "arm": "C"
+    },
+    {
+      "path": "core/D/C/repair-literal-evidence-1/stdout.json",
+      "session": "ses_de1309440ffeGRd5dTBPO7j70D",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 1800,
+      "step_elapsed_seconds": 6.875,
+      "provider_exit": 0,
+      "input_text_sha256": "81229a4a9d7b113e18299e6add5ced55338ba874e9805d5d3b6135ec4729c735",
+      "usage": {
+        "input": 6718,
+        "output": 1150,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.0016977,
+      "actual_billed": null,
+      "response_present": true,
+      "stdout_sha256": "629249a16942488b1da6ad78d3c48db2466030c6ec05c4a110d5a0f2bf7d8f84",
+      "arm": "D"
+    },
+    {
+      "path": "core/D/C/repair-literal-evidence-1-independent-review/stdout.json",
+      "session": "ses_de12fac1fffeA7PjyLcENCjWql",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 2500,
+      "step_elapsed_seconds": 6.174,
+      "provider_exit": 0,
+      "input_text_sha256": "224a46f4590617f8fa83284824ef62ff53de32f53948d283dce209673d385082",
+      "usage": {
+        "input": 8071,
+        "output": 986,
+        "reasoning": 0,
+        "cache": {
+          "read": 256,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.001803018,
+      "actual_billed": null,
+      "response_present": true,
+      "stdout_sha256": "e8843ebe12fef8a6da7f79eaeec8adb3f5314b8dc0b8ae12981dc72affc0933a",
+      "arm": "D"
+    },
+    {
+      "path": "core/D/C/repair-literal-evidence-2-CQ97/stdout.json",
+      "session": "ses_de12d810fffeyIGdkpGcfFSiKf",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 500,
+      "step_elapsed_seconds": 1.488,
+      "provider_exit": 0,
+      "input_text_sha256": "9f2a2d20731a2821b79bfecf63d0143fb24a88c574860cf43b3d8b696a099aa2",
+      "usage": {
+        "input": 1207,
+        "output": 194,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00029745,
+      "actual_billed": null,
+      "response_present": true,
+      "stdout_sha256": "b48cd8b02719160ba9a7678b22b76a8e1f209e6b44d62279262df03a26ce44f0",
+      "arm": "D"
+    },
+    {
+      "path": "core/D/C/repair-literal-evidence-2-CQ97-independent-review/stdout.json",
+      "session": "ses_de12d0867ffezu5yHlJk0VZ8Az",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 900,
+      "step_elapsed_seconds": 3.526,
+      "provider_exit": 0,
+      "input_text_sha256": "d5f55d4824d7b95f39360ecc372928517343de1deabda2a70da686b9af1829a0",
+      "usage": {
+        "input": 1231,
+        "output": 536,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00050625,
+      "actual_billed": null,
+      "response_present": true,
+      "stdout_sha256": "ed4de627b755385efdb6098b6a1b27d0cf6c74b3d919c7d5f56db987deeef119",
+      "arm": "D"
+    },
+    {
+      "path": "afro-D-repaired/core/D/R/attempt-afro-r-rebased/stdout.json",
+      "session": "ses_de1284bd6ffeGO6FL2lJLIJuy0",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 4000,
+      "step_elapsed_seconds": 11.111,
+      "provider_exit": 0,
+      "input_text_sha256": "842e1b7557e7c01afc28e1aabe31e781d0f552bf4db618e2826a83068a5abe4a",
+      "usage": {
+        "input": 54487,
+        "output": 1711,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00919965,
+      "actual_billed": null,
+      "response_present": true,
+      "stdout_sha256": "1167e71113d908ca9fcd7453ec77960f4be0e864a2efb35d9618d3faaa42fcb6",
+      "arm": "D"
+    },
+    {
+      "path": "afro-D-repaired/core/D/R/repair-invalid-nominations/stdout.json",
+      "session": "ses_de1272c12ffeSjWmZGOVGPrfhs",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 1200,
+      "step_elapsed_seconds": 5.512,
+      "provider_exit": 0,
+      "input_text_sha256": "5b6213ee9731a0c3dc11181e2ddc7857dbe1dacb692938009abe71dc143f1c19",
+      "usage": {
+        "input": 55608,
+        "output": 1200,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.0090612,
+      "actual_billed": null,
+      "response_present": false,
+      "stdout_sha256": "17c448d0a963c3aa26d6fdce3fbef6d21873603a3a75ecf5907a296bcb757eeb",
+      "arm": "D"
+    },
+    {
+      "path": "afro-D-repaired/core/D/R/repair-invalid-nominations-r2/stdout.json",
+      "session": "ses_de12678f9ffe7BtU2crAASzGjI",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 500,
+      "step_elapsed_seconds": 0.809,
+      "provider_exit": 0,
+      "input_text_sha256": "8a572fb977a23b151fe56bad0b877fe9bc68fa54aff3997fe1da7ea29afaf1a8",
+      "usage": {
+        "input": 2983,
+        "output": 52,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00047865,
+      "actual_billed": null,
+      "response_present": true,
+      "stdout_sha256": "8c926565189cd0c89fc49a50db2a1d482873dee942631684bb55ef3718c25e7e",
+      "arm": "D"
+    },
+    {
+      "path": "afro-D-repaired/core/D/I/attempt-afro-i-rebased/stdout.json",
+      "session": "ses_de12569a3ffec42RbqQ3klQniQ",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 4000,
+      "step_elapsed_seconds": 13.32,
+      "provider_exit": 0,
+      "input_text_sha256": "bd239ddda19f3262b13306344beac7b1efb2602a2e2905dd72887b144e6b7440",
+      "usage": {
+        "input": 56311,
+        "output": 2105,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00970965,
+      "actual_billed": null,
+      "response_present": true,
+      "stdout_sha256": "4fc127f96fd59e4fd5f6911952053a56eec639d3d10ea38138290765d4c767fb",
+      "arm": "D"
+    },
+    {
+      "path": "afro-D-repaired/core/D/S/attempt-afro-s-rebased/stdout.json",
+      "session": "ses_de1249330ffeDmx12QkQSqPBHs",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 3500,
+      "step_elapsed_seconds": 14.192,
+      "provider_exit": 0,
+      "input_text_sha256": "4a458ca85c376c9f52c10a24d50838acc508c978a3aa451f1da48827049431f4",
+      "usage": {
+        "input": 58903,
+        "output": 2336,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.01023705,
+      "actual_billed": null,
+      "response_present": true,
+      "stdout_sha256": "747ef245edfeada10e6ece813b30f67bdbd250c52f99fd8fe34d772128dacec3",
+      "arm": "D"
+    },
+    {
+      "path": "afro-D-repaired/independent-receiving/stdout.json",
+      "session": "ses_de11f4923ffeQzyMgjZD1UlBiy",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 3500,
+      "step_elapsed_seconds": 8.59,
+      "provider_exit": 0,
+      "input_text_sha256": "500535209d6c7a4455ee6946ed415b44ce9f9084baaf4e03be640bb452fb8227",
+      "usage": {
+        "input": 30283,
+        "output": 1312,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00532965,
+      "actual_billed": null,
+      "response_present": true,
+      "stdout_sha256": "bfa1e66ae6687c5677ae455c05a27a3c8706437c26ac99eb30c80f8ba73af5bd",
+      "arm": "D"
+    },
+    {
+      "path": "afro-D-repaired/targeted-repair-interviewer-threat/stdout.json",
+      "session": "ses_de11d3da8ffeMaE0gX9reEdtk7",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 1500,
+      "step_elapsed_seconds": 7.711,
+      "provider_exit": 0,
+      "input_text_sha256": "4783e4b574337368ed44a832d3bb0b91f3b42a0343e927c3d7b5956175b63f67",
+      "usage": {
+        "input": 4760,
+        "output": 1317,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.0015042,
+      "actual_billed": null,
+      "response_present": true,
+      "stdout_sha256": "fe3874112ca7cd6ee042955ad3ab64a63abf2f2bcaffa0fdbb89b1d597f001b8",
+      "arm": "D"
+    },
+    {
+      "path": "afro-D-repaired/targeted-repair-interviewer-threat-independent-review/stdout.json",
+      "session": "ses_de11ca7abffeVBLWCn0wTfzs5O",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 1800,
+      "step_elapsed_seconds": 3.157,
+      "provider_exit": 0,
+      "input_text_sha256": "b13e2d17e1fd53a5db094f34af23b1355627a73c585c7df91235c1d33f96ca76",
+      "usage": {
+        "input": 4204,
+        "output": 392,
+        "reasoning": 0,
+        "cache": {
+          "read": 256,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.000866568,
+      "actual_billed": null,
+      "response_present": true,
+      "stdout_sha256": "78d3ba3b3f48c5fe3093a9358bdef6945d285f59784cd441f5999f2c0e34fdc2",
+      "arm": "D"
+    }
+  ],
+  "interpretation": "Cost is usage to correct and independently receive the listed scoped evidence. It is not a price/quality ratio for the full R16 campaign and does not indicate scientific/native acceptance. WVS7 calls and earlier campaign calls are excluded."
+}

@@ -1,0 +1,6 @@
+{
+  "worker": "DeepSeek via isolated OpenCode Go",
+  "task": "select at most two R16 diagnostics from frozen blind evidence",
+  "commission": "Single task: using only the frozen blind review returns and actual blinded candidate products, choose at most two of P1_DISTAL through P7_OPERATION for the next bounded diagnostic work. Select only tests tied to an exact material miss or positive discovery in these records; if no test is warranted, return an empty selections list. Do not reveal arm identities, consult controller-only maps, run experiments, invent results, issue permissions, or claim general incapacity. For each selected case return probe_id, exact candidate/review IDs and affected fields, the exact evidence motivating selection, neutral/direct contrast from the supplied probe definition, a non-transfer foil, one-step worker task, and a falsifiable outcome. Return JSON exactly {\"selections\": [...], \"deferred\": [...]}.",
+  "excluded_controller_only_mapping": true
+}

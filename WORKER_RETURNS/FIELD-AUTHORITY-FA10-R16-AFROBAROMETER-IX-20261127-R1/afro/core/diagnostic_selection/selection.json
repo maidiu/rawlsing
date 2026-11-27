@@ -1,0 +1,58 @@
+{
+  "selections": [
+    {
+      "probe_id": "P4_AMBIGUITY",
+      "candidate_id": "b40dd1d1c94c",
+      "reviewer_id": "7aacea282207",
+      "fields": [
+        "Q106C",
+        "Q106D",
+        "Q106E",
+        "Q109F"
+      ],
+      "evidence": "b40dd1d1c94c-C57: \"need not imply any bodily act or respondent-side fear.\" Reviewer 7aacea282207 assessment 'Avoid implying any observed relationship between felt and physical threat' = HOLD: \"Strip the entailment claim ... keep only that the two are separately asked Yes/No interviewer items whose co-occurrence is unobserved in the packet.\" Source: Q106D \"Did you feel threatened during the interview?\" / Q106E \"Were you physically threatened during the interview?\", both \"0 = No | 1 = Yes\".",
+      "contrast": "Neutral: \"Interpret these observations and their limits.\" Directed: \"Identify rival source-consistent readings, exact evidence that would decide, and which positive disclosure survives either reading. Separate resolvable wording from missing form/history/route. If evidence cannot settle a claim, stop and specify the dependency.\"",
+      "non_transfer_foil": "Q109F lists only \"1 = Honest | 2 = In between | 3 = Misleading\" with no special codes in packet, so missing-value handling cannot be resolved by the same wording-vs-route split; a worker applying the protocol to Q109F should stop and specify the dependency rather than infer an entailment about absence.",
+      "worker_task": "Given only the packet fields and the reviewer's HOLD, revise candidate C57 and any Q106D/Q106E/Q109F claim that asserts nesting or implication between felt and physical threat. Preserve only wording-level, separately-coded distinctions plus an explicit dependency statement for missing routing/incidence.",
+      "falsifiable_outcome": "Pass if the revised text contains no nesting, entailment, or coincidence assertion between Q106D and Q106E and does contain an explicit statement that co-occurrence is unobserved in the packet; fail if any such relation remains or if the revised text drops the interviewer-vs-respondent referent distinction."
+    },
+    {
+      "probe_id": "P2_SUBTLE",
+      "candidate_id": "b40dd1d1c94c",
+      "reviewer_id": "7aacea282207",
+      "fields": [
+        "Q48A",
+        "Q48B",
+        "Q28",
+        "Q29B"
+      ],
+      "evidence": "Reviewer 7aacea282207 'No unwarranted textual typo/overreach' = HOLD on Q48A: \"Delete \\\"compartiot\\\" (not a source token); cite the exact option strings\". Candidate b40dd1d1c94c-C21 claims Q48B option list \"includes no open-ended other\"; source Q48B has \"94 = Not asked in the country\" which candidate omits while Q48A has \"93 = Not asked in Burkina Faso after 4th of October\".",
+      "contrast": "Neutral: \"Explain what these questions make investigable.\" Directed: \"Construct two source-consistent configurations that would be falsely merged by a common label; then reconstruct the actual response act, actor, condition and referent. Identify meaningful nontransfer between superficially similar questions.\"",
+      "non_transfer_foil": "Q28 and Q29B share a forced-choice-plus-strength format but Q28 permits \"94 = Not asked in the country\" while Q29B lacks it and carries \"[Kenya's]\" bracket residue; a worker should not transfer the Q48A/Q48B special-code asymmetry repair as a general template and must report Q29B's country scope as unresolved.",
+      "worker_task": "For the Q48A/Q48B pair, cite exact option strings, distinguish the Q48A-only \"93 = Not asked in Burkina Faso after 4th of October\" from both fields' \"94 = Not asked in the country\", and delete the unsupported \"compartiot\" token. Then state one nontransfer from Q48A/Q48B to the Q28/Q29B pair.",
+      "falsifiable_outcome": "Pass if the output quotes both 93 and 94 verbatim where they occur, removes \"compartiot\", and names at least one concrete special-code or referent asymmetry that blocks a shared label across the two pairs; fail if it merges the pairs, reuses the phantom token, or asserts 93 applies to Q48B."
+    }
+  ],
+  "deferred": [
+    {
+      "probe_id": "P5_FRAME",
+      "reason": "Reviewer 7aacea282207 notes Q53C as an omitted parallel anticipated-sanction item, and the P5 foil (nominal reports compared without scalarization) could test overzealous rejection, but no frozen candidate is recorded as having produced an unwarranted civic-orientation ranking, so the material miss is not yet evidenced."
+    },
+    {
+      "probe_id": "P1_DISTAL",
+      "reason": "Candidate 0b798e14ad1e raises Q97/Q98A/Q90F linkage in inquiry Q4 but no reviewer records a lost distinction or an exact distant observation whose inclusion changed a focal claim, so no material miss or discovery is evidenced."
+    },
+    {
+      "probe_id": "P3_CONTEXT",
+      "reason": "Candidate 7aacea282207 holds repeatedly that no country/period record accompanies the packet; without independently sourced historical evidence supplied in the contrast, this probe cannot be run within the sealed, evidence-only envelope."
+    },
+    {
+      "probe_id": "P6_THEORY",
+      "reason": "No unexpected unprecedented theoretical claim appears in the frozen records; the candidate distinctions recorded are already recovered by reviewers as scope cautions, so novelty payoff is not evidenced."
+    },
+    {
+      "probe_id": "P7_OPERATION",
+      "reason": "No frozen product records a recurring method failure with two source-legal examples; the packet's only repeated defects are per-field text hygiene issues already covered by the two selections above."
+    }
+  ]
+}

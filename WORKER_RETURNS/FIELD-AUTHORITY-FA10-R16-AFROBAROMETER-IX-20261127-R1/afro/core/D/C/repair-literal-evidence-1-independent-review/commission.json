@@ -1,0 +1,19 @@
+{
+  "commission": "Independent source-first receiving of one Afrobarometer D/C literal-evidence repair proposal.",
+  "task": "Review only this repair proposal against the exact selected R9 source metadata. Check that replacement quotes are literal in the cited field and that replacement claims do not exceed the source. Check whether HOLD dispositions actually preserve the original determinations as held rather than silently erasing them. Return PASS_SCOPED, CORRECTION_REQUIRED, or HOLD_SCOPED per patch. Do not author a replacement, run another trial, or claim scientific/native/protected acceptance.",
+  "packet_sha256": "42a7b865af1069f116ab2c1bc6a4ef669941b85fc687b0587d13c49d5d3ab8a4",
+  "required_output": {
+    "overall": "PASS_SCOPED, CORRECTION_REQUIRED, or HOLD_SCOPED",
+    "decisions": [
+      {
+        "claim_id": "existing claim ID",
+        "verdict": "PASS/CORRECTION_REQUIRED/HOLD",
+        "exact_quote": "literal quote",
+        "reason": "brief"
+      }
+    ],
+    "unsupported_or_overheld_claims": [],
+    "smallest_next_action": "one action or none",
+    "scope_boundary": "explicit limits"
+  }
+}
