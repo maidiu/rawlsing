@@ -48,7 +48,7 @@ from .institutional_procedure_learning import (
 )
 from .material_dependency_history import conserve_sensed_material_nonperformance
 from .livelihood_history import (
-    conserve_incomplete_work, possible_recurrent_work_orientation,
+    conserve_incomplete_work, possible_recurrent_work_orientation, possible_relief_reconstitution,
 )
 from .psychic_genesis import (
     conserve_lived_episode,possible_contrast_end,possible_dependency_project_takeups,
@@ -1293,6 +1293,9 @@ class ConstitutiveRuntime:
                         actors[aid],experience)),
                 'historically_possible_recurrent_livelihood_orientation':copy(
                     recurrent_work),
+                **({'historically_possible_relief_reconstitution':copy(relief_changes)}
+                   if (relief_changes:=possible_relief_reconstitution(
+                       actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_lived_directional_orientation':copy(
                     lived_directional_orientation),
                 'historically_possible_counterhistory_release':copy(
