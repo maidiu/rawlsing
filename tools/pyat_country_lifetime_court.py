@@ -10,7 +10,7 @@ from pathlib import Path
 from statistics import median
 from unittest.mock import patch
 
-BASE="c129e5cad7545bdd2c63a81e15959148b45c7bda"
+BASE="724b1595187cab6f1074b6e1c2233ef954096e52"
 
 def worker(root,mode,report):
     from tools.pyat_country_preparation_court import read,write,geometry,target_domains
@@ -88,8 +88,19 @@ def worker(root,mode,report):
             checked+=1
         return checked
     evidence=[];times=[];group_receipt=None
+    capture_receipts=[]
+    original_capture=issued._NonRoutingEnvelopePin.capture
+    def capture_with_receipt(obj,budget):
+        details={}
+        pin=original_capture(obj,budget,diagnostics=details)
+        details["root_type"]=type(obj).__name__
+        capture_receipts.append(details)
+        return pin
     from contextlib import ExitStack
     with ExitStack() as stack:
+        if "diagnostics" in inspect.signature(original_capture).parameters:
+            stack.enter_context(patch.object(issued._NonRoutingEnvelopePin,"capture",
+                                              side_effect=capture_with_receipt))
         for owner,name,label in (
             (facade,"_validate_country_produced_release","I02"),
             (CarrierNeutralResearchExecutor,"execute_i03","I03"),
@@ -120,11 +131,18 @@ def worker(root,mode,report):
             if scope is not None:group_receipt=dict(scope.receipt())
             pin=session.preparation_pin
         assert counts["I02"]==1 and counts["I03"]>=161 and counts["I05"]==1,counts
+        if capture_receipts:
+            workloads=[x for x in capture_receipts if x["root_type"]=="NativeWorkload"]
+            assert len(workloads)==4 and all(x["reason"]=="CAPTURED" for x in workloads),workloads
+            # The scale-dependent economic claim requires actually reaching
+            # the private R4 fast path, not simply compacting a witness.
+            assert counts["admission"]<=8,counts
     if mode=="save":write(report.parent/"pin.json",asdict(pin))
     write(report,{"mode":mode,"issuance_s":issuance,"all_issuance_s":issue_all,
         "country_bytes":db.stat().st_size,"routing_payload_bytes":workload.projection.routing.payload_bytes,
         "preparation_bytes":prepared.stat().st_size,"counts":counts,"inclusive_s":phases,
-        "investigations":times,"group_receipt":group_receipt,"evidence":evidence})
+        "investigations":times,"group_receipt":group_receipt,
+        "capture_receipts":capture_receipts,"evidence":evidence})
     print("LIFETIME_WORKER",json.dumps({k:v for k,v in read(report).items() if k!="evidence"}),flush=True)
 
 def court(rows):

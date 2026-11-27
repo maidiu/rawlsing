@@ -457,6 +457,27 @@ class CountryNativeEconomics(unittest.TestCase):
             self.assertEqual(packed_prepared.digest(),record.envelope_sha256)
             self.assertLess(packed.payload_bytes,packed_prepared.encoded_routing_bytes//3)
             self.assertIsNotNone(packed_prepared.nonrouting_pin)
+            details={}
+            compact=issued._NonRoutingEnvelopePin.capture(workload,8*1024*1024,diagnostics=details)
+            self.assertIsNotNone(compact)
+            self.assertTrue(compact.matches())
+            self.assertEqual(details["reason"],"CAPTURED")
+            self.assertLess(details["estimated_capture_bytes"],details["legacy_estimated_capture_bytes"])
+            # Mutating an equal-valued leaf is still a different actual
+            # reference instance or leaf, even with unchanged wire content.
+            target=workload.requests[0].query_ref
+            prior=target.content_hash
+            replacement=(" "+prior)[1:]
+            self.assertEqual(prior,replacement);self.assertIsNot(prior,replacement)
+            try:
+                object.__setattr__(target,"content_hash",replacement)
+                self.assertFalse(compact.matches())
+            finally:object.__setattr__(target,"content_hash",prior)
+            self.assertTrue(compact.matches())
+            refuse={}
+            self.assertIsNone(issued._NonRoutingEnvelopePin.capture(workload,1024,diagnostics=refuse))
+            self.assertEqual(refuse["reason"],"BUDGET")
+            del compact
             # Full initial admission already established jobs/catalog joins.
             # Fresh resolver currentness and unchanged complete preimage
             # suffice for this private sourcefree transaction only.
