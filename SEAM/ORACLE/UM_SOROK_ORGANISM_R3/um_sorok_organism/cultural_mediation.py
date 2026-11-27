@@ -265,3 +265,100 @@ def admit_reference_revision(actor,experience,event_ref,proposal):
     return {"kind":proposal["kind"],"reference_ref":record["id"],
             "status":"SUSPENDED_BY_ACTOR_FAILED_INQUIRY_NOT_FALSE_MEANING",
             "grade":GRADE}
+
+
+def qualified_exercised_cultural_sources(actor_id, clock, practices, demos, encounters):
+    """Common historical qualification for R55 formation and R56 recruitment.
+
+    A source is an admitted cultural reference with its own earlier heard
+    demonstration and actual investigation, not a recalled proposition.
+    No assertion that an analyst's historical relation is the actor's concept.
+    """
+    for practice in practices:
+        acquired=practice.get('origin_clock')
+        old=practice.get('object_ref')
+        events=practice.get('source_event_refs',[])
+        if (practice.get('actor')!=actor_id or practice.get('status')!=ACQUIRED
+                or type(old) is not str or type(acquired) is not int
+                or acquired>=clock or len(events)!=2 or len(set(events))!=2):
+            continue
+        source=[d for d in demos if d.get('id')==practice.get('source_demonstration_ref')
+                and d.get('actor')==actor_id and d.get('object_ref')==old
+                and d.get('event_ref')==events[0]
+                and d.get('heard_source_actor')==practice.get('particular_speaker_ref')
+                and type(d.get('clock')) is int and d['clock']<acquired]
+        exercised=[e for e in encounters if e.get('actor')==actor_id
+                   and e.get('event_ref')==events[1]
+                   and e.get('material_object_ref')==old
+                   and e.get('perceived_cue_ref')==practice.get('source_investigation_ref')
+                   and e.get('personally_attempted_operation')=='INSPECT']
+        if len(source)==len(exercised)==1:
+            yield practice,source[0],exercised[0]
+
+
+def recruit_cross_object_attention(constitution,access):
+    """An exercised social way of attending can mediate a NEW material thing.
+
+    A current accessible sign of that particular Other actually making a
+    different visible object can recruit a former way of attending. This is
+    a provisional contextual transfer, not semantic equivalence, inferred
+    teaching intention, recognition of ownership, or a new acquired end.
+    One bounded focal nomination; retain actual sign and source identities.
+    """
+    if constitution.actor!=access.actor:
+        raise ValueError('CULTURE_ATTENTION_FOREIGN_ACTOR')
+    if ('INSPECT' not in access.affordances
+            or not eligible(constitution.body,'INSPECT')[0]):
+        return []
+    present={c.get('material_object_ref'):c for c in access.cues
+             if c.get('kind')=='material_object_present'
+             and c.get('location')==access.location
+             and c.get('clock')==access.world_clock}
+    signs=[c for c in access.cues
+           if c.get('kind')=='performed_make_object'
+           and c.get('modality')=='visual'
+           and c.get('clock')==access.world_clock
+           and c.get('location')==access.location
+           and c.get('material_object_ref') in present
+           and type(c.get('source_actor')) is str
+           and c['source_actor']!=constitution.actor]
+    if not signs:return []
+    sources=list(qualified_exercised_cultural_sources(
+        constitution.actor,constitution.clock,
+        constitution.cultural_reference_practices,
+        constitution.cultural_demonstrations,constitution.object_encounters))
+    out=[]
+    for practice,demo,exercised in sources:
+        for sign in signs:
+            obj=sign['material_object_ref']
+            if (obj==practice['object_ref']
+                    or sign['source_actor']!=demo['heard_source_actor']):
+                continue
+            # Do not grant a novel orientation after the actor has already
+            # independently investigated this particular object. Mere prior
+            # passive reception of its making is not a completed inquiry.
+            if any(e.get('actor')==constitution.actor
+                   and e.get('material_object_ref')==obj
+                   and e.get('source_kind')=='performed_inspect'
+                   and e.get('personally_attempted_operation')=='INSPECT'
+                   for e in constitution.object_encounters):
+                continue
+            basis={'actor':constitution.actor,'as_of_clock':access.world_clock,
+                   'location':access.location,'source_practice_ref':practice['id'],
+                   'source_demonstration_ref':demo['id'],
+                   'source_exercised_encounter_ref':exercised['id'],
+                   'earlier_material_object_ref':practice['object_ref'],
+                   'new_material_object_ref':obj,
+                   'current_making_sign_ref':sign['id'],
+                   'current_visible_object_cue_ref':present[obj]['id'],
+                   'particular_other_ref':sign['source_actor']}
+            out.append({**basis,
+                'recruitment_ref':stable_id('cross_object_attention',basis),
+                'kind':'ACQUIRED_SOCIAL_ATTENTION_RECRUITED_ACROSS_OBJECTS',
+                'not_a_conscious_analogy_or_motive':True,
+                'not_actual_attention_or_material_permission':True,
+                'grade':GRADE})
+    # Ambiguity remains a real limitation; pick a bounded historically
+    # qualified occasion, without a numeric strength or ranking of desires.
+    return sorted(out,key=lambda x:(x['current_making_sign_ref'],
+                                    x['source_practice_ref']))[:1]

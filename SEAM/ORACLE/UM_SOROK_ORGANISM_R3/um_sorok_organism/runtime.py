@@ -33,7 +33,8 @@ from .practical_powers import retain_exercised_power, possible_repair_technique
 from .practical_inquiry import retain_personal_notice_exposure
 from .material_investments import (
     retain_personal_object_encounter, possible_object_investments)
-from .unintended_goods import possible_unintended_goods, qualify_incidental_object_takeup
+from .unintended_goods import (possible_unintended_goods, qualify_incidental_object_takeup,
+                               possible_cross_object_significance)
 from .expectation_afterlife import (source_qualified_appraisal_candidates,
                                     possible_activity_affects, own_vocal_reception,
                                     possible_expressive_practices)
@@ -398,8 +399,13 @@ class ConstitutiveRuntime:
                 if requesting_actor is None and any(o['action']=='ORIENT' for o in options) else [])
             correspondence_options=(offer_correspondence_attention(actor,world,e)
                 if requesting_actor is None and any(o['action']=='ORIENT' for o in options) else [])
+            # Query one committed tail row only for a potentially receivable
+            # directed human utterance; no whole-history hydration per beat.
             focal_options=(offer_focal_encounters(actor,e,
-                situated.get('attention_frame',{}).get('focally_eligible_cue_refs',[]))
+                situated.get('attention_frame',{}).get('focally_eligible_cue_refs',[]),
+                world=world,ledger_event=(self.ledger.latest_event()
+                    if any(c.get('visitor_speech_addressed_to_recipient') is True
+                           for c in e.cues) else None))
                 if requesting_actor is None and any(o['action']=='ORIENT' for o in options) else [])
             proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role'],
                 'body':copy(actor['body'])},
@@ -705,6 +711,11 @@ class ConstitutiveRuntime:
                     raise ValueError('INTERACTIVITY_CONFLICTING_SELECTION')
                 practical['interactivity_deferral']=qualify_interactivity_deferral(
                     flat_alternatives,selected_alternative,proposed['defer_course_option_id'],e.location)
+            if (selected_alternative and proposed.get('practical_option_id')==
+                    selected_alternative['option_id'] and trial_choice is None
+                    and selected_alternative.get('cross_object_attention_analytic_only')):
+                practical['cross_object_attention_analytic_only']=copy(
+                    selected_alternative['cross_object_attention_analytic_only'])
             if selected_alternative and selected_alternative.get('productive_witness_attention'):
                 practical['productive_witness_attention']=copy(selected_alternative['productive_witness_attention'])
             if 'interactivity_relation_ref' in proposed:
@@ -1036,6 +1047,10 @@ class ConstitutiveRuntime:
                    if (experience.get('own_practical_selection') or {}).get('interactivity_deferral') else {}),
                 **({'undertaking_attention':copy(attention_receipt)} if attention_receipt else {}),
                 **({'correspondence_attention':copy(correspondence_receipt)} if correspondence_receipt else {}),
+                **({'selected_cross_object_attention_analytic_only':copy(
+                        experience['own_practical_selection']['cross_object_attention_analytic_only'])}
+                   if (experience.get('own_practical_selection') or {}).get(
+                       'cross_object_attention_analytic_only') else {}),
                 **({'focal_encounter':copy(focal_receipt)} if focal_receipt else {}),
                 **({'directed_encounter':copy(directed_receipt)} if directed_receipt else {}),
                 **({'notice_expectation':copy(experience['own_practical_selection']['notice_expectation'])}
@@ -1239,6 +1254,9 @@ class ConstitutiveRuntime:
                     material_meaning_proposals),
                 'historically_possible_incidental_goods':copy(
                     possible_incidental_goods),
+                **({'historically_possible_cross_object_significance':copy(cross_object)}
+                   if (cross_object:=possible_cross_object_significance(
+                       actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_incidental_takeup':[
                     q for end in actors[aid].get('possible_ends',[])
                     if end.get('status')=='POSSIBLE_NOT_ACQUIRED_MOTIVE'
@@ -1330,6 +1348,7 @@ class ConstitutiveRuntime:
             expression_access['own_practical_selection'].pop('private_rehearsal',None)
             expression_access['own_practical_selection'].pop('undertaking_attention',None)
             expression_access['own_practical_selection'].pop('focal_encounter',None)
+            expression_access['own_practical_selection'].pop('cross_object_attention_analytic_only',None)
             expression_access['own_practical_selection'].pop('productive_witness_attention',None)
             expression_access['own_practical_selection'].pop('notice_expectation',None)
             expression_access['own_practical_selection'].pop('interactivity_deferral',None)

@@ -56,6 +56,22 @@ def _public_material_projection(world: dict, location: str) -> dict:
     """
     view = {}
     for ref, row in world.get('material_objects', {}).items():
+        # An already exposed physical face is not a public institutional
+        # assertion or an act of entrusting. Only explicitly staged fictional
+        # face text is eligible. Never expose the interior, even at close.
+        if type(row) is dict and row.get('kind') == 'INCIDENTALLY_EXPOSED_DOCUMENT':
+            face = row.get('exposed_face')
+            if (type(ref) is str and row.get('id') == ref
+                    and row.get('location') == location
+                    and row.get('visible') is True
+                    and row.get('grade') == 'SOURCEFREE_TEST_ONLY'
+                    and type(face) is str and face.strip() and len(face) <= 500):
+                view[ref] = {'location': location,
+                             'public_glance': 'An exposed document lies here.',
+                             'public_close': face,
+                             'grade': 'SOURCEFREE_TEST_ONLY',
+                             'source_kind': 'INCIDENTALLY_EXPOSED_DOCUMENT'}
+            continue
         if (type(ref) is str and type(row) is dict
                 and row.get('location') == location
                 and row.get('visible') is not False
@@ -447,7 +463,7 @@ class NeighborEncounter:
         elif target_object_ref is not None or cover_text is not None:
             raise EncounterRefusal('UNAUTHORED_LOOK_OR_COVER')
         if target_actor_ref is not None:
-            if operation not in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
+            if operation not in ('SAY', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
                 raise EncounterRefusal('UNAUTHORED_VOCAL_ADDRESSEE')
             target_actor_ref = _text(target_actor_ref, 'VOCAL_ADDRESSEE', 100)
         if operation in ('OFFER_FEED','PLEDGE_OFFER') and target_actor_ref is None:
@@ -467,6 +483,8 @@ class NeighborEncounter:
                                    cover_text=cover_text)
         elif operation == 'REPAIR':
             request_payload['target_object_ref'] = target_object_ref
+        elif operation == 'SAY' and target_actor_ref is not None:
+            request_payload['target_actor_ref'] = target_actor_ref
         elif operation in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
             request_payload['target_actor_ref'] = target_actor_ref
             if operation=='PLEDGE_OFFER':
@@ -546,7 +564,7 @@ class NeighborEncounter:
                 candidate.get('location') != loc or
                 type(candidate.get('public_glance')) is not str):
                 status = 'BLOCKED'
-        elif operation in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER') and target_actor_ref is not None:
+        elif operation in ('SAY', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER') and target_actor_ref is not None:
             # Unaddressed singing is ordinary activity; only an explicitly
             # authored, presently accessible addressee can qualify a joint
             # occasion. The visitor cannot bind the addressee's response.
@@ -656,6 +674,22 @@ class NeighborEncounter:
                         location=loc, modality=sign['modality'],
                         description=sign['description'], source_actor=None,
                         private_to=actor_id)
+                    if operation == 'SAY' and target_actor_ref is not None:
+                        # The utterance is not the MII reader, and even a truthful
+                        # acknowledgement is not evidence that the speaker heard
+                        # the earlier sign. No private exposure/ref enters CO.
+                        cue['visitor_event_ref'] = ref
+                        sight = _bound_source(world)['actor_conditions'][actor_id]
+                        visible_speaker = (sight.get('visual') is True
+                            and sight.get('light') == 'lit'
+                            and sight.get('sightline') == 'unobstructed'
+                            and sight.get('facing') == 'entrance')
+                        if (visible_speaker and actor['body'].get('language',0)>=.35):
+                            cue['visitor_ref'] = self.user_id
+                            if actor_id == target_actor_ref:
+                                cue['visitor_speech_addressed_to_recipient'] = True
+                        cue['lexical_comprehension'] = sign['lexical_comprehension']
+                        cue['not_proof_of_speaker_recognition_or_claim_truth'] = True
                     if operation=='MAKE_OBJECT':
                         # Link the actual authored occurrence for audit;
                         # no inferred maker recognition or actor attention.
@@ -698,7 +732,8 @@ class NeighborEncounter:
             event.update(target_object_ref=target_object_ref,
                          material_outcome=material_outcome,
                          actor_meaning_not_established=True)
-        if operation in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
+        if (operation in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER')
+                or (operation=='SAY' and target_actor_ref is not None)):
             event['target_actor_ref'] = target_actor_ref
         if operation=='PLEDGE_OFFER':
             event['due_clock']=due_clock
@@ -1082,6 +1117,26 @@ class NeighborEncounter:
             'grade': 'SOURCEFREE_RESEARCH_PROVISIONAL',
         }
 
+    def _actual_look_receipt(self, world, history, selected, ref, clock, location):
+        """Existing one-world outward LOOK identity, not a claim of reading."""
+        rows = [e for e in world.get('neighbor_user_events', [])
+                if e.get('event_ref') == ref and e.get('user') == self.user_id
+                and e.get('clock') == clock and e.get('destination') == location
+                and e.get('operation') == 'LOOK' and e.get('status') == 'PERFORMED'
+                and e.get('target_object_ref') == selected]
+        if len(rows) != 1:
+            return None
+        event = rows[0]
+        receipts = [e for e in history
+                    if e.get('kind') == 'NEIGHBOR_USER_CONTRIBUTION'
+                    and e.get('clock') == clock
+                    and e.get('envelope', {}).get('world') == self.runtime.world_id
+                    and e.get('envelope', {}).get('payload', {}).get('user_event_ref') == ref
+                    and e['envelope']['payload'].get('user') == self.user_id
+                    and e['envelope']['payload'].get('payload_hash') == event.get('payload_hash')
+                    and e['envelope']['payload'].get('performed') is True]
+        return receipts[0]['id'] if len(receipts) == 1 else None
+
     def _presented_recognition(self, world, history, profile, selected, offered,
                                committed_look, close_granted):
         """Bridge the existing P6 earned-recognition contract to CO LOOK
@@ -1094,7 +1149,7 @@ class NeighborEncounter:
         obj=world.get('material_objects',{}).get(selected,{})
         mark=obj.get('public_recognition')
         if (obj.get('grade')!='SOURCEFREE_TEST_ONLY'
-                or obj.get('kind')=='WORKED_MATERIAL_ARTIFACT'
+                or obj.get('kind') in ('WORKED_MATERIAL_ARTIFACT', 'INCIDENTALLY_EXPOSED_DOCUMENT')
                 or type(mark) is not dict
                 or set(mark)!= {'identity','marking','evidence'}
                 or any(type(v) is not str or not v.strip() or len(v)>200
@@ -1106,22 +1161,7 @@ class NeighborEncounter:
         # A changed marking/label cannot inherit an old inspection.
         fingerprint=self.mii.digest({'object':selected, 'recognition':mark})
         def actual_look(ref,clock,location):
-            rows=[e for e in world.get('neighbor_user_events',[])
-                  if e.get('event_ref')==ref and e.get('user')==self.user_id
-                  and e.get('clock')==clock and e.get('destination')==location
-                  and e.get('operation')=='LOOK' and e.get('status')=='PERFORMED'
-                  and e.get('target_object_ref')==selected]
-            if len(rows)!=1:return None
-            event=rows[0]
-            receipts=[e for e in history
-                      if e.get('kind')=='NEIGHBOR_USER_CONTRIBUTION'
-                      and e.get('clock')==clock
-                      and e.get('envelope',{}).get('world')==self.runtime.world_id
-                      and e.get('envelope',{}).get('payload',{}).get('user_event_ref')==ref
-                      and e['envelope']['payload'].get('user')==self.user_id
-                      and e['envelope']['payload'].get('payload_hash')==event.get('payload_hash')
-                      and e['envelope']['payload'].get('performed') is True]
-            return receipts[0]['id'] if len(receipts)==1 else None
+            return self._actual_look_receipt(world, history, selected, ref, clock, location)
         receipt=None; exposure_ref=None; origin_clock=None
         if close_granted and committed_look is not None:
             origin_clock=committed_look['clock']
@@ -1218,9 +1258,17 @@ class NeighborEncounter:
             and event.get('destination') == loc
             and event.get('clock') == world['clock']
         ), None) if command == 'look' and target == selected else None
+        history = self.runtime.ledger.events()
+        look_receipt = None
+        if committed_look is not None and selected in offered:
+            look_receipt = self._actual_look_receipt(
+                world, history, selected, committed_look['event_ref'],
+                committed_look['clock'], loc)
         if (committed_look is not None and selected in offered
                 and published[selected].get('grade') == 'SOURCEFREE_TEST_ONLY'
                 and type(published[selected].get('public_close')) is str
+                and (published[selected].get('source_kind') != 'INCIDENTALLY_EXPOSED_DOCUMENT'
+                     or look_receipt is not None)
                 and self.mii.close_available(mii_house, self.user_id, selected)):
             offered[selected] = published[selected]['public_close']
         visible_identity = (self.mii.glance_available(mii_house, self.user_id)
@@ -1236,7 +1284,6 @@ class NeighborEncounter:
         # not the process-local generated prose. This is a finite MII exposure
         # of the present occurrence, NOT historical reconstruction or a new
         # sensory world. The sound itself does not encode words or identity.
-        history = self.runtime.ledger.events()
         last_event = history[-1]
         envelope = last_event.get('envelope', {})
         actual = envelope.get('payload', {}).get('actual', {})
@@ -1575,6 +1622,24 @@ class NeighborEncounter:
                 type(published[selected].get('public_close')) is str and
                 self.mii.close_available(mii_house, self.user_id, selected))
             view['optional']['institutional_truth'] = 'NOT_ESTABLISHED'
+        # Preserve how a particular textual presentation was obtained in
+        # the existing private exposure ledger, not as a new world fact,
+        # assertion of human knowledge, or an actor's representation of it.
+        if selected in offered and close_granted and look_receipt is not None:
+            kind = published[selected].get('source_kind')
+            if kind in ('CO_PUBLIC_NOTICE', 'INCIDENTALLY_EXPOSED_DOCUMENT'):
+                view['optional']['acquisition_provenance'] = {
+                    'route': ('PUBLIC_INSTITUTIONAL_DISPLAY' if kind == 'CO_PUBLIC_NOTICE'
+                              else 'INCIDENTALLY_EXPOSED_MATERIAL_FACE'),
+                    'look_receipt': look_receipt,
+                    'target_ref': selected,
+                    'presentation_clock': world['clock'],
+                    'content_truth': 'NOT_ESTABLISHED',
+                    'human_comprehension': 'NOT_ESTABLISHED',
+                    'personal_entrusting': 'NOT_ESTABLISHED',
+                }
+                if kind == 'INCIDENTALLY_EXPOSED_DOCUMENT':
+                    view['optional']['acquisition_provenance']['further_access'] = 'NOT_GRANTED'
         prior_offered = (profile['exposures'][-1].get('offered', {})
                          if profile.get('exposures') else {})
         before = len(profile.get('exposures', []))
