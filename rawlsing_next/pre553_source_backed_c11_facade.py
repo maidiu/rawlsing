@@ -307,16 +307,44 @@ class _RoutingColumnBuilder:
 
     def finish(self):
         if self.dictionary is None:
-            return (bytes(self.blob),_routing_le(self.offsets),b"")
+            return _compact_direct_routing_column(self.blob,self.offsets)
+        # Select the actual informational grain. One rule field repeated
+        # for the entire roster needs no per-incidence code at all. A
+        # sequence of rule runs needs only (exclusive end, dictionary code).
+        n=len(self.codes)
+        if len(self.values)==1 and n:
+            self._direct(self.values[0])
+            return (bytes(self.blob),_routing_le(self.offsets),b"",b"C")
+        width=1 if len(self.values)<=256 else 2 if len(self.values)<=65536 else 4
+        dense_cost=width*n
+        runs=array("I")
+        prior=None
+        if n<2**32:
+            for i,code in enumerate(self.codes):
+                if prior is not None and code!=prior:
+                    runs.extend((i,prior))
+                    if len(runs)*4>=dense_cost:
+                        runs=array("I")
+                        break
+                prior=code
+            else:
+                if prior is not None:runs.extend((n,prior))
+        use_runs=bool(runs) and len(runs)*4<dense_cost
+        code_cost=len(runs)*4 if use_runs else dense_cost
         direct_cost=sum(len(self.values[code])+8 for code in self.codes)
-        dict_cost=sum(len(v)+8 for v in self.values)+4*len(self.codes)
+        dict_cost=sum(len(v)+8 for v in self.values)+code_cost
         if dict_cost<direct_cost:
-            for value in self.values:
-                self._direct(value)
-            return (bytes(self.blob),_routing_le(self.offsets),_routing_le(self.codes))
-        for code in self.codes:
-            self._direct(self.values[code])
-        return (bytes(self.blob),_routing_le(self.offsets),b"")
+            for value in self.values:self._direct(value)
+            blob,offsets=bytes(self.blob),_routing_le(self.offsets)
+            if use_runs:
+                return (blob,offsets,_routing_le(runs),b"R")
+            if width==1:
+                return (blob,offsets,bytes(self.codes),b"B")
+            if width==2:
+                return (blob,offsets,_routing_le(array("H",self.codes)),b"S")
+            return (blob,offsets,_routing_le(self.codes))
+        for code in self.codes:self._direct(self.values[code])
+        return _compact_direct_routing_column(self.blob,self.offsets)
 
 
 def _routing_le(values):
@@ -326,12 +354,74 @@ def _routing_le(values):
     return values.tobytes()
 
 
+# Canonical exact reference wire often contains one high-entropy digest
+# and a long shared source/rule prefix. Store the digest as its 32 actual
+# bytes and the shared suffix prefix once, not as repeated JSON text.
+_REF_WIRE_PREFIX=b'{"content_hash":"'
+_REF_HEX_LEN=64
+def _compact_direct_routing_column(blob,offsets):
+    n=len(offsets)-1
+    start=len(_REF_WIRE_PREFIX)
+    prefix=None
+    if n:
+        for lo,hi in zip(offsets,offsets[1:]):
+            if (hi-lo<start+64+2 or blob[lo:lo+start]!=_REF_WIRE_PREFIX
+                    or blob[lo+start+64:lo+start+66]!=b'","'):
+                prefix=None;break
+            text=blob[lo+start:lo+start+64]
+            try:digest=bytes.fromhex(text.decode("ascii"))
+            except (ValueError,UnicodeError):prefix=None;break
+            if len(digest)!=32 or digest.hex().encode("ascii")!=text:
+                prefix=None;break
+            tail=bytes(blob[lo+start+64:hi])
+            if prefix is None:prefix=tail
+            else:
+                end=min(len(prefix),len(tail))
+                while end and prefix[:end]!=tail[:end]:end-=1
+                prefix=prefix[:end]
+        if prefix is not None:
+            compact=bytearray();bounds=array("Q",[0])
+            for lo,hi in zip(offsets,offsets[1:]):
+                compact.extend(bytes.fromhex(blob[lo+start:lo+start+64].decode("ascii")))
+                compact.extend(blob[lo+start+64+len(prefix):hi])
+                bounds.append(len(compact))
+            if len(compact)+len(prefix)+1<len(blob):
+                return (bytes(compact),_routing_le(bounds),b"",b"H"+prefix)
+    return (bytes(blob),_routing_le(offsets),b"")
+
+
 def _routing_column_value(column,row):
-    blob,offsets,codes=column
-    if codes:
-        row=struct.unpack_from("<I",codes,4*row)[0]
+    blob,offsets,codes=column[:3]
+    layout=column[3] if len(column)==4 else b""
+    if layout==b"C":row=0
+    elif layout==b"B":row=codes[row]
+    elif layout==b"S":row=struct.unpack_from("<H",codes,2*row)[0]
+    elif layout==b"R":
+        lo,hi=0,len(codes)//8
+        while lo<hi:
+            mid=(lo+hi)//2
+            if row<struct.unpack_from("<I",codes,8*mid)[0]:hi=mid
+            else:lo=mid+1
+        row=struct.unpack_from("<I",codes,8*lo+4)[0]
+    elif codes:row=struct.unpack_from("<I",codes,4*row)[0]
     lo,hi=struct.unpack_from("<QQ",offsets,8*row)
-    return blob[lo:hi]
+    value=blob[lo:hi]
+    if layout.startswith(b"H"):
+        return _REF_WIRE_PREFIX+value[:32].hex().encode("ascii")+layout[1:]+value[32:]
+    return value
+
+
+@lru_cache(maxsize=4096)
+def _routing_selector_template(raw):
+    """Pure canonical-byte decoding; not a cache of authority decisions."""
+    from rawlsing_next._pre553_c11_execution_view import _ref_identity
+    typed,routing,applicability,question,risk,member,auth=map(json.loads,raw)
+    if type(routing) is not str or type(applicability) is not str:
+        return None
+    return (typed,routing,applicability,_ref_identity(exact_ref(question)),
+            _ref_identity(exact_ref(risk)),_ref_identity(exact_ref(member)),
+            tuple((a.authority_id,a.authority_version,a.authority_content_hash)
+                  for a in map(authority_ref,auth)))
 
 
 @lru_cache(maxsize=256)
@@ -472,22 +562,42 @@ class _PackedRoutingFacts(Sequence):
             if end!=count:
                 refuse()
             for col in columns:
-                if type(col) is not tuple or len(col)!=3 or any(type(x) is not bytes for x in col):
+                if type(col) is not tuple or len(col) not in (3,4) or any(type(x) is not bytes for x in col):
                     refuse()
-                blob,offsets,codes=col
-                if len(offsets)<16 or len(offsets)%8 or len(codes)%4:
+                blob,offsets,codes=col[:3]
+                layout=col[3] if len(col)==4 else b""
+                if len(offsets)<16 or len(offsets)%8:
                     refuse()
                 entries=len(offsets)//8-1
-                if (codes and len(codes)!=4*rows) or (not codes and entries!=rows):
+                if layout==b"C":
+                    if codes or entries!=1:refuse()
+                elif layout in (b"B",b"S"):
+                    width=1 if layout==b"B" else 2
+                    if len(codes)!=width*rows or entries>256**width:refuse()
+                    if any(x>=entries for x, in struct.iter_unpack("<B" if width==1 else "<H",codes)):refuse()
+                elif layout==b"R":
+                    if not codes or len(codes)%8:refuse()
+                    previous=0
+                    for end,code in struct.iter_unpack("<II",codes):
+                        if not previous<end<=rows or code>=entries:refuse()
+                        previous=end
+                    if previous!=rows:refuse()
+                elif layout.startswith(b"H"):
+                    if codes or entries!=rows:refuse()
+                elif layout or len(col)!=3 or len(codes)%4:
+                    refuse()
+                elif (codes and len(codes)!=4*rows) or (not codes and entries!=rows):
                     refuse()
                 prior=-1
                 for offset, in struct.iter_unpack("<Q",offsets):
                     if (prior<0 and offset!=0) or offset<=prior or offset>len(blob):
                         refuse()
+                    if prior>=0 and layout.startswith(b"H") and offset-prior<32:
+                        refuse()
                     prior=offset
                 if prior!=len(blob):
                     refuse()
-                if codes and any(code>=entries for code, in struct.iter_unpack("<I",codes)):
+                if not layout and codes and any(code>=entries for code, in struct.iter_unpack("<I",codes)):
                     refuse()
         return storage
 
@@ -553,19 +663,20 @@ class _PackedRoutingFacts(Sequence):
         run,row=self._location(index)
         keys,columns,_=run
         def value(name):
-            return json.loads(_routing_column_value(columns[len(self._top)+keys.index(name)],row))
+            return _routing_column_value(columns[len(self._top)+keys.index(name)],row)
         def top(name):
-            return json.loads(_routing_column_value(columns[self._top.index(name)],row))
-        routing,applicability=value("routing_state"),value("applicability_state")
-        if type(routing) is not str or type(applicability) is not str:
-            # Preserve incumbent behavior for unusual admissible preimages.
-            return self[index]
-        auths=tuple(authority_ref(a) for a in top("authority_snapshot_refs"))
-        return _RoutingRead(_ref_identity(self.row_ref(index)),top("typed_state"),routing,applicability,
-            _ref_identity(exact_ref(value("question_or_target_ref"))),
-            _ref_identity(exact_ref(value("risk_set_ref"))),
-            _ref_identity(exact_ref(value("member_set_replay_ref"))),
-            tuple((a.authority_id,a.authority_version,a.authority_content_hash) for a in auths))
+            return _routing_column_value(columns[self._top.index(name)],row)
+        material=(top("typed_state"),value("routing_state"),value("applicability_state"),
+                  value("question_or_target_ref"),value("risk_set_ref"),
+                  value("member_set_replay_ref"),top("authority_snapshot_refs"))
+        # Shared semantics are still decoded from the exact selected row.
+        # Cache only small immutable parser inputs, not respondent evidence.
+        if sum(map(len,material))<=8192:
+            template=_routing_selector_template(material)
+        else:
+            template=_routing_selector_template.__wrapped__(material)
+        if template is None:return self[index]
+        return _RoutingRead(_ref_identity(self.row_ref(index)),*template)
 
     def __getitem__(self,index):
         if isinstance(index,slice):
