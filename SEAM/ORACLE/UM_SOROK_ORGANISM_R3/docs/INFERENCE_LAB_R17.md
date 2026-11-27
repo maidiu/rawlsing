@@ -52,6 +52,34 @@ owners, never silently weaken context. A live comparison with different
 proposals does not establish adequate development until owner review and
 actual admitted continuation.
 
+## Local admission witnesses (R18)
+
+Capture an optional separate witness bundle from the actual owner admission
+boundary. It contains complete pre-admission actor state, exact issued trial
+and committed event/effect references. It is NOT a provider packet. Keep it
+local; no extra witness data is supplied to remote inference. Each baseline
+is replayed through the existing admission owner and compared with the
+committed actor digest/effects. The scratch evaluator never writes a world,
+chooses a winning model, or asserts that accepting a candidate makes it
+psychologically adequate. An admitted proposal can still be impoverished or
+unreasonable. Actual subsequent independent life requires an owner court.
+
+```sh
+python inference_lab_cli.py capture --released --out "$LAB/r54-local.json" \
+  --admissions-out "$LAB/r54-local-admissions.json"
+python inference_lab_cli.py compare-fixture --workload "$LAB/r54-local.json" \
+  --task development --per-task 2 --out "$LAB/r54-local-compare.json"
+python inference_lab_cli.py evaluate-admissions --workload "$LAB/r54-local.json" \
+  --witness "$LAB/r54-local-admissions.json" --comparison "$LAB/r54-local-compare.json" \
+  --out "$LAB/r54-local-admission-report.json"
+```
+
+The same local evaluator accepts an explicitly authorized live proposal-only
+comparison, without sending the witness file remotely. It distinguishes
+owner refusal, scratch acceptance, evaluation error and no proposal.
+Retain the original issued-trial record assembly, refuse invalid candidate
+operations, preserve unknown spend and owner limitations.
+
 ## Live comparison: only after explicit authorization
 
 No model endpoint or expenditure is implicit. The existing HTTPS chat JSON

@@ -17,6 +17,7 @@ from um_sorok_organism.inference_lab import (
 from um_sorok_organism.live_psychological_llm import ExplicitJSONLLMProvider
 from um_sorok_organism.semantics import CallbackLLMProvider
 from um_sorok_organism.types import canonical, copy, digest
+from um_sorok_organism.inference_lab_admission import evaluate_admissions, verify_admissions
 
 HEAD="a"*40
 
@@ -39,7 +40,8 @@ def provider(b):
 
 class InferenceLab(unittest.TestCase):
     def test_actual_owner_course_capture_cold_exact_replay_and_frozen_comparison(self):
-        doc,actual=capture_course(True,HEAD)
+        doc,actual,witness=capture_course(True,HEAD,with_admissions=True)
+        self.assertEqual(len(witness["payload"]["rows"]),182)
         self.assertEqual(len(doc["payload"]["rows"]),225)
         self.assertTrue(actual["audit"]["valid"])
         self.assertEqual(doc["payload"]["owner_state_sha256"],digest(actual))
@@ -65,10 +67,29 @@ class InferenceLab(unittest.TestCase):
             full=sum(x["request_bytes"] for k,x in result["totals"].items() if k.startswith("F/"))
             comp=sum(x["request_bytes"] for k,x in result["totals"].items() if k.startswith("E/"))
             self.assertLess(comp,full)
+            # The local scratch court uses the actual original admission owner.
+            before=digest(witness)
+            evaluated=evaluate_admissions(cold,witness,result)
+            self.assertEqual(len(evaluated["observations"]),4)
+            self.assertTrue(all(x["matches_recorded_admission"] for x in evaluated["observations"]))
+            dev=next(x for x in result["observations"] if x["task"]=="development")
+            forged=copy(result);forged["observations"]=[copy(dev)]
+            item=forged["observations"][0]
+            item["proposal"]={"task":"development","candidates":[{"kind":"NOT_AN_OWNER_OPERATION"}]}
+            item["proposal_digest"]=digest(item["proposal"])
+            refused=evaluate_admissions(cold,witness,forged)["observations"][0]
+            self.assertEqual(refused["outcome"],"OWNER_REFUSED_SCRATCH")
+            self.assertFalse(refused["actor_changed"])
+            self.assertEqual(digest(witness),before)
+            self.assertEqual(digest(actual),doc["payload"]["owner_state_sha256"])
             print("INFERENCE_LAB_R17 "+canonical({
                 "workload_rows":len(doc["payload"]["rows"]),
                 "tape_bytes":path.stat().st_size,"actual_complete_history_equal":True,
                 "frozen_calls":len(result["observations"]),
+                "admission_witnesses":len(witness["payload"]["rows"]),
+                "admission_witness_bytes":len(canonical(witness).encode("utf-8")),
+                "matched_scratch_admissions":len(evaluated["observations"]),
+                "forged_scratch_refused":True,
                 "F_request_bytes":full,"E_request_bytes":comp,
                 "provider_tokens":None,"network_calls":0}))
 

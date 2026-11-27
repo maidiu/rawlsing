@@ -4,6 +4,7 @@ Run from the R3 directory. This is research tooling, never an app/runtime defaul
 No live calls in capture or replay; no data from real people/survey respondents.
 """
 import argparse
+from contextlib import nullcontext
 import json
 import os
 from pathlib import Path
@@ -15,7 +16,9 @@ from unittest.mock import patch
 from um_sorok_organism.inference_lab import (
     WorkloadCapture, CaptureProvider, ExactTapeProvider, verify_workload,
     load_workload, compare_frozen, save_report, LiveBudget, BudgetedLiveProvider,
-    BudgetStop, selected_rows)
+    BudgetStop, selected_rows, _local_read)
+from um_sorok_organism import runtime as runtime_module
+from um_sorok_organism.inference_lab_admission import AdmissionCapture, evaluate_admissions
 from um_sorok_organism.live_psychological_llm import (
     ExplicitJSONLLMProvider, _expand_exact_aliases, _expand_structured_fields)
 from um_sorok_organism.runtime import ConstitutiveRuntime
@@ -45,6 +48,9 @@ def owner_course(release,provider_factory):
         db=Path(tmp)/"life.sqlite"
         with patch.object(owner,"CallbackLLMProvider",side_effect=provider_factory):
             first=owner.ReleasedAttentionR54().run_arm(db,release)
+        # The owner's test observation is a set, not committed runtime state.
+        # Canonicalize only this documented fixture observation for the lab.
+        first={**first,"focus":sorted(first["focus"])}
         rt=ConstitutiveRuntime(db)
         try:
             audit=rt.verify()
@@ -55,13 +61,21 @@ def owner_course(release,provider_factory):
         finally:rt.close()
 
 
-def capture_course(release,head):
+def capture_course(release,head,*,with_admissions=False):
     owner=_owner()
     original=owner.CallbackLLMProvider
     cap=WorkloadCapture(source_head=head,fixture="R54_RELEASED" if release else "R54_RETAINED",
                         sourcefree_fixture_attested=True)
-    actual=owner_course(release,lambda cb:CaptureProvider(original(cb),cap))
-    return cap.document(owner_state_sha256=digest(actual)),actual
+    observer=AdmissionCapture(cap) if with_admissions else None
+    admit=runtime_module.admit
+    def observe(*args,**kwargs):
+        return observer.invoke(admit,*args,**kwargs)
+    context=patch.object(runtime_module,"admit",side_effect=observe) if observer else nullcontext()
+    with context:
+        actual=owner_course(release,lambda cb:CaptureProvider(original(cb),cap))
+    doc=cap.document(owner_state_sha256=digest(actual))
+    if observer:return doc,actual,observer.document(doc,actual)
+    return doc,actual
 
 
 def replay_course(document,head):
@@ -130,7 +144,10 @@ def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
     subs=parser.add_subparsers(dest="mode",required=True)
     c=subs.add_parser("capture");c.add_argument("--released",action="store_true")
-    c.add_argument("--out",required=True)
+    c.add_argument("--out",required=True);c.add_argument("--admissions-out")
+    p=subs.add_parser("evaluate-admissions")
+    p.add_argument("--workload",required=True);p.add_argument("--witness",required=True)
+    p.add_argument("--comparison",required=True);p.add_argument("--out",required=True)
     for mode in ("replay","compare-fixture","compare-live"):
         p=subs.add_parser(mode);p.add_argument("--workload",required=True)
         if mode!="replay":
@@ -141,13 +158,23 @@ def main(argv=None):
             p.add_argument("--authorize-sourcefree-live",action="store_true")
     a=parser.parse_args(argv);head=checkout_head()
     if a.mode=="capture":
-        doc,state=capture_course(a.released,head)
+        if Path(a.out).exists() or (a.admissions_out and Path(a.admissions_out).exists()):
+            raise ValueError("LAB_OUTPUT_ALREADY_EXISTS")
+        result=capture_course(a.released,head,with_admissions=bool(a.admissions_out))
+        doc,state=result[:2]
         save_report(a.out,doc)
+        if a.admissions_out:save_report(a.admissions_out,result[2])
         print(canonical({"workload_sha256":doc["sha256"],"source_head":head,
                          "rows":len(doc["payload"]["rows"]),"state_digest":digest(state),
+                         "admission_witnesses":len(result[2]["payload"]["rows"]) if a.admissions_out else 0,
                          "network_calls":0}))
         return
     doc=load_workload(a.workload,source_head=head)
+    if a.mode=="evaluate-admissions":
+        result=evaluate_admissions(doc,_local_read(a.witness),_local_read(a.comparison))
+        save_report(a.out,result)
+        print(canonical({"scope":result["scope"],"totals":result["totals"],"network_calls":0}))
+        return
     if a.mode=="replay":
         state=replay_course(doc,head)
         print(canonical({"workload_sha256":doc["sha256"],"state_digest":digest(state),
