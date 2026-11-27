@@ -184,6 +184,19 @@ class ExpressiveReentryR35(unittest.TestCase):
                     self.assertEqual(rt.ledger.latest_event(),rt.ledger.events()[-1])
                     event=rt.ledger.world()[1]['neighbor_user_events'][-1]
                     self.assertEqual(event['target_actor_ref'],'worker')
+                    # No candidate can be minted by changing a world row or
+                    # a claimed receipt independently of the committed act.
+                    a0=rt.ledger.actor('worker')[1];w0=rt.ledger.world()[1]
+                    acc=actor_access(a0,w0);refs=[x['id'] for x in acc.cues]
+                    real=rt.ledger.latest_event()
+                    forged=deepcopy(real)
+                    forged['envelope']['payload']['payload_hash']='forged'
+                    self.assertEqual(offer_focal_encounters(a0,acc,refs,
+                        world=w0,ledger_event=forged),[])
+                    bad_world=deepcopy(w0)
+                    bad_world['neighbor_user_events'][-1]['authored_text']='different words'
+                    self.assertEqual(offer_focal_encounters(a0,acc,refs,
+                        world=bad_world,ledger_event=real),[])
                     self.assertNotIn('exposure_id',canonical(event))
                     # Overhearer can hear the words, cannot acquire the
                     # recipient's exact addressed focal source.
@@ -191,7 +204,7 @@ class ExpressiveReentryR35(unittest.TestCase):
                     rt.plan('hearer')
                     self.assertEqual(seen['hearer'],[])
                     self.assertFalse(any(x.get('visitor_speech_addressed_to_recipient')
-                        for x in actor_access(rt.snapshot('hearer'),rt.ledger.world()[1]).cues))
+                        for x in actor_access(rt.ledger.actor('hearer')[1],rt.ledger.world()[1]).cues))
                 else:
                     n.contribute('silence','WAIT')
                     speech=None
