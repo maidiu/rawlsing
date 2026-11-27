@@ -1,0 +1,457 @@
+{
+  "commission": "Afrobarometer IX FA10 exact-source targeted repair of interviewer addressee and threat/candor claims",
+  "task": "Return a compact patch set for only claims/inquiries whose assertions about who is addressed, felt threat versus physical threat, or interviewer candor exceed the supplied source. Keep all results candidate-level. For Q106C/E, the literal \"you\" does not identify respondent vs interviewer; preserve that ambiguity and do not exclude respondent attribution. For Q106D/E, they are separately worded/coded yes/no reports; do not claim nesting, implication, co-occurrence or psychological meaning of a hypothetical cross-tab. For Q109F, say the supplied metadata lists only three labels and no special response codes, so missing/response handling is undetermined; do not claim total three-value coverage. Do not change claims about other topics, do not change inquiries outside this threat/candor group, and do not assert fielding, empirical distribution or causal results. Return only JSON with replacement entries keyed by stage and exact claim/inquiry ID; include new text and exact literal source quotes for each referenced item. If an inquiry is not responsibly expressible under the unresolved administration/linkage conditions, return HOLD for that inquiry, with the missing evidence.",
+  "source_metadata": {
+    "Q106C": {
+      "source": "Afrobarometer",
+      "wave": "R9",
+      "module_guess": "substantive_module",
+      "var_name": "Q106C",
+      "question_text": "Were you approached by community and/or political party representatives?",
+      "value_label_set": "labels329",
+      "storage_type": "numeric",
+      "storage_width": "8",
+      "measure": "ordinal",
+      "format": "F8.0",
+      "value_labels_count": "2",
+      "response_options_substantive": "0 = No | 1 = Yes",
+      "response_options_special": "",
+      "response_options_all": "0 = No | 1 = Yes",
+      "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+    },
+    "Q106D": {
+      "source": "Afrobarometer",
+      "wave": "R9",
+      "module_guess": "substantive_module",
+      "var_name": "Q106D",
+      "question_text": "Did you feel threatened during the interview?",
+      "value_label_set": "labels330",
+      "storage_type": "numeric",
+      "storage_width": "8",
+      "measure": "ordinal",
+      "format": "F8.0",
+      "value_labels_count": "2",
+      "response_options_substantive": "0 = No | 1 = Yes",
+      "response_options_special": "",
+      "response_options_all": "0 = No | 1 = Yes",
+      "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+    },
+    "Q106E": {
+      "source": "Afrobarometer",
+      "wave": "R9",
+      "module_guess": "substantive_module",
+      "var_name": "Q106E",
+      "question_text": "Were you physically threatened during the interview?",
+      "value_label_set": "labels331",
+      "storage_type": "numeric",
+      "storage_width": "8",
+      "measure": "ordinal",
+      "format": "F8.0",
+      "value_labels_count": "2",
+      "response_options_substantive": "0 = No | 1 = Yes",
+      "response_options_special": "",
+      "response_options_all": "0 = No | 1 = Yes",
+      "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+    },
+    "Q109F": {
+      "source": "Afrobarometer",
+      "wave": "R9",
+      "module_guess": "substantive_module",
+      "var_name": "Q109F",
+      "question_text": "What was the respondent's attitude toward you during the interview? Was he or she: honest, in between, or misleading?",
+      "value_label_set": "labels338",
+      "storage_type": "numeric",
+      "storage_width": "8",
+      "measure": "ordinal",
+      "format": "F8.0",
+      "value_labels_count": "3",
+      "response_options_substantive": "1 = Honest | 2 = In between | 3 = Misleading",
+      "response_options_special": "",
+      "response_options_all": "1 = Honest | 2 = In between | 3 = Misleading",
+      "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+    }
+  },
+  "current_records": {
+    "claims": [
+      {
+        "stage": "C",
+        "challenges": [],
+        "evidence": [
+          {
+            "field": "Q106C",
+            "quote": "Were you approached by community and/or political party representatives?"
+          }
+        ],
+        "id": "CQ106C",
+        "items": [
+          "Q106C"
+        ],
+        "kind": "ADD",
+        "text": "The stem asks whether community and/or political party representatives approached the interviewer, so the item records contact of the field team rather than the respondent's partisanship or perceived influence."
+      },
+      {
+        "stage": "C",
+        "challenges": [],
+        "evidence": [
+          {
+            "field": "Q106E",
+            "quote": "Were you physically threatened during the interview?"
+          }
+        ],
+        "id": "CQ106E",
+        "items": [
+          "Q106E"
+        ],
+        "kind": "ADD",
+        "text": "The item records a physically threatened experience during the interview encounter, so it does not record threats reported by the respondent or events in the enumeration area."
+      },
+      {
+        "stage": "C",
+        "challenges": [],
+        "evidence": [
+          {
+            "field": "Q109F",
+            "quote": "honest, in between, or misleading?"
+          }
+        ],
+        "id": "CQ109F",
+        "items": [
+          "Q109F"
+        ],
+        "kind": "ADD",
+        "text": "The interviewer rates the respondent's attitude during the interview on a three-way scale, so the item records demeanour in one encounter rather than a validated measure of truthful answers."
+      },
+      {
+        "stage": "R",
+        "challenges": [],
+        "evidence": [
+          {
+            "field": "Q106C",
+            "quote": "Were you approached by community and/or political party representatives?"
+          },
+          {
+            "field": "Q97",
+            "quote": "Who do you think sent us to do this interview?"
+          }
+        ],
+        "id": "RQ106C97",
+        "items": [
+          "Q106C",
+          "Q97"
+        ],
+        "kind": "ADD",
+        "text": "Q106C records an interviewer-side event of being approached by representatives, while Q97 records the respondent's attributed sender of the survey; pairing them separates observed field contact from the respondent's sponsorship belief, since an approach by representatives need not mean the respondent names a party as sender, and losing Q97 would leave the approach with no counterpart attribution."
+      },
+      {
+        "stage": "R",
+        "challenges": [],
+        "evidence": [
+          {
+            "field": "Q106D",
+            "quote": "Did you feel threatened during the interview?"
+          },
+          {
+            "field": "Q106E",
+            "quote": "Were you physically threatened during the interview?"
+          }
+        ],
+        "id": "RQ106DE",
+        "items": [
+          "Q106D",
+          "Q106E"
+        ],
+        "kind": "ADD",
+        "text": "Q106E narrows the felt-threat item Q106D to bodily threat, so a felt danger can be reported without a physical threat; dropping Q106E would conceal that distinction and make the two-word difference between them unreadable."
+      },
+      {
+        "stage": "R",
+        "challenges": [],
+        "evidence": [
+          {
+            "field": "Q109F",
+            "quote": "honest, in between, or misleading?"
+          }
+        ],
+        "id": "RQ109F",
+        "items": [
+          "Q109F"
+        ],
+        "kind": "ADD",
+        "text": "Q109F is a three-point interviewer judgment of respondent candor during the encounter, an attributed demeanour rather than a verified check of answer accuracy or a respondent self-report."
+      },
+      {
+        "stage": "I",
+        "id": "IQ106C",
+        "kind": "ADD",
+        "items": [
+          "Q106C"
+        ],
+        "evidence": [
+          {
+            "field": "Q106C",
+            "quote": "Were you approached by community and/or political party representatives?"
+          }
+        ],
+        "text": "Records whether the field team was approached by community or party representatives; an approached status is contact, not proof the respondent holds party views.",
+        "challenges": []
+      },
+      {
+        "stage": "I",
+        "id": "IQ106D",
+        "kind": "ADD",
+        "items": [
+          "Q106D"
+        ],
+        "evidence": [
+          {
+            "field": "Q106D",
+            "quote": "Did you feel threatened during the interview?"
+          }
+        ],
+        "text": "Reports the interviewer's felt threat during this interview, distinct from bodily threat and from the respondent's attitude.",
+        "challenges": []
+      },
+      {
+        "stage": "I",
+        "id": "IQ106E",
+        "kind": "ADD",
+        "items": [
+          "Q106E"
+        ],
+        "evidence": [
+          {
+            "field": "Q106E",
+            "quote": "Were you physically threatened during the interview?"
+          }
+        ],
+        "text": "Specifies physical threat in the encounter, so a felt danger without bodily threat can be expressed as felt-yes and physical-no.",
+        "challenges": []
+      },
+      {
+        "stage": "I",
+        "id": "IQ109F",
+        "kind": "ADD",
+        "items": [
+          "Q109F"
+        ],
+        "evidence": [
+          {
+            "field": "Q109F",
+            "quote": "honest, in between, or misleading?"
+          }
+        ],
+        "text": "Three-point interviewer judgment of respondent candor; an attributed demeanour, not a verified accuracy check of answers.",
+        "challenges": []
+      },
+      {
+        "stage": "S",
+        "id": "STQ106C",
+        "kind": "ADD",
+        "items": [
+          "Q106C"
+        ],
+        "evidence": [
+          {
+            "field": "Q106C",
+            "quote": "Were you approached by community and/or political party representatives?"
+          }
+        ],
+        "text": "The stem asks the interviewer whether representatives approached the field team, so the item records an encounter initiated by outsiders against the interview visit, not the respondent's own partisan attachment and not whether anyone actually influenced answers.",
+        "challenges": []
+      },
+      {
+        "stage": "S",
+        "id": "STQ106D",
+        "kind": "ADD",
+        "items": [
+          "Q106D"
+        ],
+        "evidence": [
+          {
+            "field": "Q106D",
+            "quote": "Did you feel threatened during the interview?"
+          }
+        ],
+        "text": "Records the interviewer's own felt exposure to threat during this specific interview, an affective report from the fieldworker's position rather than a respondent trait or a verified security incident.",
+        "challenges": []
+      },
+      {
+        "stage": "S",
+        "id": "STQ106E",
+        "kind": "ADD",
+        "items": [
+          "Q106E"
+        ],
+        "evidence": [
+          {
+            "field": "Q106E",
+            "quote": "Were you physically threatened during the interview?"
+          }
+        ],
+        "text": "Narrows the threat report to bodily threat in the same encounter, so a felt-threat yes with a physical-threat no expresses unease without bodily danger rather than contradiction.",
+        "challenges": []
+      },
+      {
+        "stage": "S",
+        "id": "STQ109F",
+        "kind": "ADD",
+        "items": [
+          "Q109F"
+        ],
+        "evidence": [
+          {
+            "field": "Q109F",
+            "quote": "honest, in between, or misleading?"
+          }
+        ],
+        "text": "The three-point scale records the interviewer's attributed assessment of the respondent's candor during the encounter, a demeanour judgment rather than a validated accuracy check of the answers given.",
+        "challenges": []
+      }
+    ],
+    "inquiries": [
+      {
+        "stage": "I",
+        "id": "INTHREAT",
+        "items": [
+          "Q106D",
+          "Q106E",
+          "Q109F"
+        ],
+        "route": "S04 existing observation-scope and asked-eligible RAW owner; only after source route, design and roles qualified.",
+        "question": "Among interviews where the fieldworker reported felt threat, does the physical-threat report separate a bodily-danger encounter from a merely uneasy one, and does the candor judgment move independently of both?",
+        "alternatives": "Configuration A: felt-threat yes with physical-threat no and candid demeanor, suggesting unease without bodily risk. Configuration B: both threat items yes with misleading demeanor, suggesting danger plus guarded answers. Configuration C: felt-threat no but misleading demeanor, separating unease from judged candor.",
+        "ceiling": "Requires archived interview-level records with consistent interviewer attribution; establishes co-reporting patterns only, not whether answers were actually inaccurate or whether threat caused candor, and no causal or prevalence inference."
+      },
+      {
+        "stage": "S",
+        "id": "STHREAT",
+        "items": [
+          "Q106D",
+          "Q106E",
+          "Q109F"
+        ],
+        "question": "Among interviews where the fieldworker reported felt threat, does the physical-threat report separate bodily danger from mere unease, and does the candor judgment move independently of both?",
+        "alternatives": "Configuration A: felt-threat yes with physical-threat no plus honest demeanor, indicating unease without bodily risk. Configuration B: both threat items yes with misleading demeanor, indicating danger plus guarded answers. Configuration C: felt-threat no with misleading demeanor, separating unease from judged candor.",
+        "ceiling": "Requires archived interview-level records with interviewer attribution and route documentation; establishes co-reporting patterns only, not actual answer accuracy, not whether threat caused candor, and no prevalence or causal inference.",
+        "route": "S04 existing observation-scope and asked-eligible RAW owner; only after source route, design and roles qualified."
+      }
+    ]
+  },
+  "independent_receipt": [
+    {
+      "stage": "D/C",
+      "disposition": "CORRECTION_REQUIRED",
+      "ids": [
+        "CQ106C",
+        "CQ106E",
+        "CQ109F",
+        "CQ28",
+        "CQ48A",
+        "CQ50B",
+        "CQ51A",
+        "CQ63B",
+        "Q97"
+      ],
+      "quotes": [
+        "Were you approached by community and/or political party representatives?",
+        "Were you physically threatened during the interview?",
+        "honest, in between, or misleading?",
+        "must always obey the laws and the courts",
+        "Who should be responsible for",
+        "she will be criticized, called names, or harassed",
+        "should government and elected officials be doing more",
+        "using the police and security forces to enforce public health mandates",
+        "Who do you think sent us to do this interview?"
+      ],
+      "finding": "CQ106C and CQ106E assert the addressee and respondent-exclusion as literal facts, but the stem alone does not fix 'you' as interviewer; these overreach and must be restated as an administration-context reading. CQ109F correctly renders interviewer attribution but omits that only '1 = Honest | 2 = In between | 3 = Misleading' appear with no special code, leaving absence handling undetermined. CQ28, CQ48A, CQ50B, CQ51A, CQ63B and Q97 are source-consistent: normative allocation, anticipated sanction, evaluative demand, conditional endorsement and perceived sponsorship are correctly demarcated from observed conduct. Holds remain visible for interviewer identity, country office tokens, gender routing and recontact records.",
+      "next_action": "Restate CQ106C/CQ106E as administration-inferred addressee with no respondent-exclusion certainty, and append the Q109F no-special-code caveat; retain all listed holds."
+    },
+    {
+      "stage": "D/R",
+      "disposition": "CORRECTION_REQUIRED",
+      "ids": [
+        "RQ106C97",
+        "RQ106DE",
+        "RQ109F",
+        "RQ2829B",
+        "RQ484AB",
+        "RQ50B51A",
+        "RQ51B",
+        "RQ63B",
+        "RQ98A",
+        "Q111"
+      ],
+      "quotes": [
+        "Did you feel threatened during the interview?",
+        "Were you physically threatened during the interview?",
+        "never intervene in the country's political process",
+        "the [president] does [his] job?",
+        "she will be criticized, called names, or harassed",
+        "should government and elected officials be doing more",
+        "which of the following issues related to women's rights and equality",
+        "Willing to participate in follow-up surveys"
+      ],
+      "finding": "RQ106DE's phrase 'narrows ... to bodily threat' smuggles a nesting implication between two separately coded '0 = No | 1 = Yes' items; it must be reduced to separately asked items whose co-occurrence is unobserved. RQ484AB's 'the office the varying element' is a defensible wording contrast only within '0 = The President / Executive | 1 = The Parliament / local government council'. RQ2829B correctly distinguishes constrained actor and alternative. The Q111 nomination is an appropriately framed retrieval request to attribute the threat and candor items, not an empirical assertion.",
+      "next_action": "Withdraw the nesting/entailment language from RQ106DE and keep the Q111 retrieval nomination pending; if corrected otherwise, the stage can return to PASS_SCOPED."
+    },
+    {
+      "stage": "D/I",
+      "disposition": "HOLD",
+      "ids": [
+        "IQ106C",
+        "IQ106D",
+        "IQ106E",
+        "IQ109F",
+        "IQ28",
+        "IQ29B",
+        "IQ48A",
+        "IQ48B",
+        "IQ50B",
+        "IQ51A",
+        "IQ51B",
+        "IQ63B",
+        "IQ97",
+        "IQ98A",
+        "INTHREAT",
+        "INCONST",
+        "INWOMEN",
+        "INSPONSOR"
+      ],
+      "quotes": [
+        "a felt danger without bodily threat can be expressed as felt-yes and physical-no",
+        "most important for our government and society to address",
+        "armed forces should never intervene in the country's political process",
+        "most important for our government and society to address",
+        "Requires documentation that all three gender items were asked of the same eligible respondents"
+      ],
+      "finding": "The claim texts stay referential, but IQ106E and ST-analogue wording imply a joint distribution pattern across the threat pair, and the four inquiries are candidate hypotheses that presuppose joint administration and interview-level linkage not established by the metadata. INWOMEN depends on the gender routing gap, INSPONSOR depends on the Q98A not-applicable route, and INTHREAT depends on interviewer attribution. None are issued empirical claims, and none assert prevalence, risk-set or causal structure, so this is a scoped hold rather than a defect requiring correction.",
+      "next_action": "Keep all four inquiries as candidates and do not route to the RAW owner until interviewer identity, gender-module routing and mobile-availability scope fields are retrieved or declared unavailable."
+    },
+    {
+      "stage": "D/S",
+      "disposition": "CORRECTION_REQUIRED",
+      "ids": [
+        "STQ106E",
+        "STQ48B",
+        "STHREAT",
+        "STCONST",
+        "STWOMEN",
+        "STSPONSOR"
+      ],
+      "quotes": [
+        "a felt-threat yes with a physical-threat no expresses unease without bodily danger rather than contradiction",
+        "the office vary while the response act stays fixed",
+        "does the physical-threat report separate bodily danger from mere unease",
+        "Requires documentation that all three gender items were asked of the same eligible respondents"
+      ],
+      "finding": "STQ106E and STHREAT convert the two threat items into an asserted complementary pattern rather than separately asked reports, which exceeds the wording. STQ48B is acceptable only as a within-option-set wording contrast; the bracketed '[president]' is a template token that remains unresolved. STCONST, STWOMEN and STSPONSOR correctly state ceilings against causal, prevalence and realized-participation inference, though all inherit the unresolved country, routing and recontact holds.",
+      "next_action": "Reduce STQ106E and STHREAT to 'separately asked; co-occurrence unobserved', keep the STQ48B bracket caveat, and leave all holds in force."
+    }
+  ],
+  "output_scope": [
+    "D/C claims CQ106C,CQ106E,CQ109F",
+    "D/R claims RQ106C97,RQ106DE,RQ109F",
+    "D/I claims IQ106C,IQ106D,IQ106E,IQ109F and INTHREAT only",
+    "D/S claims STQ106C,STQ106D,STQ106E,STQ109F and STHREAT only"
+  ]
+}

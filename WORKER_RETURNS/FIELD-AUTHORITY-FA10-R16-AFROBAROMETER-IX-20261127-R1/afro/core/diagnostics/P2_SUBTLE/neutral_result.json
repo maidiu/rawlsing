@@ -1,0 +1,96 @@
+{
+  "field_accounts": [
+    {
+      "field_id": "Q22B",
+      "quote": "the army comes in to govern the country",
+      "account": "Ordinal approval item on military rule as one governing alternative; distinguishes strong disapprove through strong approve plus neutral and special codes."
+    },
+    {
+      "field_id": "Q28",
+      "quote": "should not be bound by laws or court decisions",
+      "account": "Forced-choice item pitting executive exemption from law (Statement 1) against executive obedience to law/courts (Statement 2), with strength and neither options."
+    },
+    {
+      "field_id": "Q29B",
+      "quote": "armed forces should never intervene in the country's political process",
+      "account": "Forced-choice item between military non-intervention (Statement 1) and military takeover as legitimate (Statement 2); ordinal with strength and neither."
+    },
+    {
+      "field_id": "Q48A",
+      "quote": "once elected, [members of Parliament] do their jobs",
+      "account": "Nominal accountability-attribution item for MPs, options spanning executive, parliament/local council, party, voters, no one."
+    },
+    {
+      "field_id": "Q48B",
+      "quote": "once elected, the [president] does [his] job",
+      "account": "Parallel nominal accountability-attribution item for the president, same option structure as Q48A."
+    },
+    {
+      "field_id": "Q63B",
+      "quote": "using the police and security forces to enforce public health mandates",
+      "account": "Ordinal agreement item on limiting democratic freedoms via security enforcement during a health emergency; includes not-applicable code tied to COV1."
+    }
+  ],
+  "observed_contrasts": [
+    {
+      "contrast": "Q22B vs Q29B",
+      "quote": "the army comes in to govern the country",
+      "distinction": "Q22B asks approval of army governing; Q29B frames a conditional legitimacy of takeover when leaders abuse power, plus a non-intervention pole. Related military-role domain but different task format and premise."
+    },
+    {
+      "contrast": "Q28 vs Q29B",
+      "quote": "must always obey the laws and the courts",
+      "distinction": "Q28 is executive legal constraint; Q29B is military political intervention. Both are forced-choice but concern different actors and norms."
+    },
+    {
+      "contrast": "Q48A vs Q48B",
+      "quote": "Who should be responsible for",
+      "distinction": "Near-parallel attribution items differing only in target officeholder (MPs vs president); enables comparing who is named accountable, not frequency claims."
+    },
+    {
+      "contrast": "Q22B/Q29B vs Q63B",
+      "quote": "temporarily limit democracy or democratic freedoms",
+      "distinction": "Military-role items concern permanent governing alternatives; Q63B concerns time-bound emergency limits, a different referent despite shared democracy theme."
+    }
+  ],
+  "candidate_relations": [
+    {
+      "relation": "Accountability attributions for MPs and president can be compared as parallel nominal measures.",
+      "quote": "once elected",
+      "items": [
+        "Q48A",
+        "Q48B"
+      ]
+    },
+    {
+      "relation": "Military-governance attitudes can be examined across approval and forced-choice formats.",
+      "quote": "armed forces",
+      "items": [
+        "Q22B",
+        "Q29B"
+      ]
+    },
+    {
+      "relation": "Executive legal constraint and military intervention are distinct but adjacent democratic-norm indicators.",
+      "quote": "obey the laws and the courts",
+      "items": [
+        "Q28",
+        "Q29B"
+      ]
+    },
+    {
+      "relation": "Emergency policing of mandates is conditionally applicable, distinguishing it from unconditional items.",
+      "quote": "Not applicable (COV1=0, 8 or 9)",
+      "items": [
+        "Q63B"
+      ]
+    }
+  ],
+  "source_limits": [
+    "Packet supplies only variable metadata and value labels; no respondent frequencies or distributions can be inferred.",
+    "Literal quotes show Kenya and Burkina Faso country-specific wording/codes; cross-country comparability beyond supplied form is not established.",
+    "Q63B applicability depends on COV1, which is not in the packet, so conditions on that gate cannot be reconstructed.",
+    "No cross-field co-occurrence, causality, or administration details are supported by this metadata alone."
+  ],
+  "foil_transfer_check": "Distinguish claim types: these fields make investigable stated attitudes and attribution structures (approval of army rule; executive-law tradeoff; military intervention legitimacy; who should hold MPs/president accountable; emergency freedom limits), not measured frequencies, causal effects, or cross-item correlations."
+}

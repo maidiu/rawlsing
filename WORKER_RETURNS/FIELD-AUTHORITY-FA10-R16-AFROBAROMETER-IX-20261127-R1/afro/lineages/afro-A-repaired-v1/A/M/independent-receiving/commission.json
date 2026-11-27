@@ -1,0 +1,291 @@
+{
+  "commission": "Independent source-bound exact-candidate review, Afrobarometer IX A/M only. Do not perform WVS7 work. Review the five changed items against supplied source-native row metadata. A prior review accepted an interviewer-dyad reading, while later B/C/D reviews found “you” addressee/report role not fixed by supplied row metadata. Determine whether the conservative A/M repair faithfully resolves that conflict, preserves valid source information, and correctly gates M-I1 on verified role, same-interview linkage, asked/eligible route and denominator. Check no unsupported interviewer/respondent attribution, relational result, physical exposure, or causal claim remains. Do not make sample claims or grant whole-arm scientific/native/protected acceptance. Return JSON exactly {\"verdict\":\"PASS_SCOPED|CORRECTION_REQUIRED|HOLD\",\"candidate_sha256\":\"...\",\"findings\":[{\"claim_or_inquiry\":\"id\",\"decision\":\"...\",\"source_evidence\":\"...\",\"required_change\":\"...\"}],\"scope_limit\":\"...\"}.",
+  "candidate_sha256": "e5bf5df9e08a17521ff9f9de36dd52a106663e55674d0a3677ffd90c8f0b1909",
+  "candidate_identity": {
+    "arm": "A",
+    "role": "M",
+    "packet_sha256": "58c73963ac30f8771bac08848d212c73c767ab451dd55aae6b537d252a336a67",
+    "response_sha256": "a2b1523e03e9007a11cc654cc07951ec1f9f4b1dfe371896d2067dc08ba53ec5",
+    "projection_sha256": "7e0f3966f57e33e8a7607a52e852e3097e29840f2ed12d5a47e41b53f6adbc8a"
+  },
+  "source_metadata": {
+    "Q106C": {
+      "source": "Afrobarometer",
+      "wave": "R9",
+      "module_guess": "substantive_module",
+      "var_name": "Q106C",
+      "question_text": "Were you approached by community and/or political party representatives?",
+      "value_label_set": "labels329",
+      "storage_type": "numeric",
+      "storage_width": "8",
+      "measure": "ordinal",
+      "format": "F8.0",
+      "value_labels_count": "2",
+      "response_options_substantive": "0 = No | 1 = Yes",
+      "response_options_special": "",
+      "response_options_all": "0 = No | 1 = Yes",
+      "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+    },
+    "Q106D": {
+      "source": "Afrobarometer",
+      "wave": "R9",
+      "module_guess": "substantive_module",
+      "var_name": "Q106D",
+      "question_text": "Did you feel threatened during the interview?",
+      "value_label_set": "labels330",
+      "storage_type": "numeric",
+      "storage_width": "8",
+      "measure": "ordinal",
+      "format": "F8.0",
+      "value_labels_count": "2",
+      "response_options_substantive": "0 = No | 1 = Yes",
+      "response_options_special": "",
+      "response_options_all": "0 = No | 1 = Yes",
+      "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+    },
+    "Q106E": {
+      "source": "Afrobarometer",
+      "wave": "R9",
+      "module_guess": "substantive_module",
+      "var_name": "Q106E",
+      "question_text": "Were you physically threatened during the interview?",
+      "value_label_set": "labels331",
+      "storage_type": "numeric",
+      "storage_width": "8",
+      "measure": "ordinal",
+      "format": "F8.0",
+      "value_labels_count": "2",
+      "response_options_substantive": "0 = No | 1 = Yes",
+      "response_options_special": "",
+      "response_options_all": "0 = No | 1 = Yes",
+      "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+    }
+  },
+  "changed_claims": [
+    {
+      "candidate": {
+        "id": "M-106C-obs",
+        "kind": "ADD",
+        "challenges": [],
+        "items": [
+          "Q106C"
+        ],
+        "text": "Records the literal source item stem asking whether 'you' were approached by community and/or political party representatives; the addressee and report role (respondent vs interviewer, or other) are unresolved from the supplied metadata, which provides only the stem and 0/1 No/Yes labels.",
+        "evidence": [
+          {
+            "field": "Q106C",
+            "quote": "Were you approached by community and/or political party representatives?"
+          }
+        ]
+      },
+      "original_text": "Records the interviewer's report that the interviewer was approached by community and/or political party representatives; the referent is the interviewer and the dyad he/she is in, not the respondent's own action."
+    },
+    {
+      "candidate": {
+        "id": "M-106D-obs",
+        "kind": "ADD",
+        "challenges": [],
+        "items": [
+          "Q106D"
+        ],
+        "text": "Records the literal source item stem asking whether 'you' felt threatened during the interview; addressee and report role are unresolved from the supplied metadata, and the stem concerns felt threat rather than an observed physical act.",
+        "evidence": [
+          {
+            "field": "Q106D",
+            "quote": "Did you feel threatened during the interview?"
+          }
+        ]
+      },
+      "original_text": "Records whether the interviewer felt threatened during the interview, a subjective interviewer state distinct from any physical act."
+    },
+    {
+      "candidate": {
+        "id": "M-106E-obs",
+        "kind": "ADD",
+        "challenges": [],
+        "items": [
+          "Q106E"
+        ],
+        "text": "Records the literal source item stem asking whether 'you' were physically threatened during the interview; addressee and report role are unresolved from the supplied metadata, and the item is distinct from felt threat, with no nesting or co-occurrence relation inferred.",
+        "evidence": [
+          {
+            "field": "Q106E",
+            "quote": "Were you physically threatened during the interview?"
+          }
+        ]
+      },
+      "original_text": "Records whether the interviewer reports physical threat during the interview, separating physical threat from felt threat."
+    },
+    {
+      "candidate": {
+        "id": "M-int-binary",
+        "kind": "ADD",
+        "challenges": [],
+        "items": [
+          "Q106C",
+          "Q106D",
+          "Q106E"
+        ],
+        "text": "All three items share a 0/1 No/Yes response act, but the literal stems use 'you' with different referents (third-party approach, felt threat, physical threat); addressee and report role are unresolved from the supplied metadata that provides only stems and labels.",
+        "evidence": [
+          {
+            "field": "Q106C",
+            "quote": "0 = No | 1 = Yes"
+          },
+          {
+            "field": "Q106D",
+            "quote": "0 = No | 1 = Yes"
+          },
+          {
+            "field": "Q106E",
+            "quote": "0 = No | 1 = Yes"
+          }
+        ]
+      },
+      "original_text": "All three interviewer-risk items share a 0/1 no/yes response act, but each carries a different referent: third-party approach, felt threat, physical threat."
+    }
+  ],
+  "changed_inquiries": [
+    {
+      "id": "M-I1",
+      "items": [
+        "Q106C",
+        "Q106D",
+        "Q106E"
+      ],
+      "question": "As a future conditional candidate only, if verified administration role and same-interview linkage hold: among asked-eligible interviews where the approach stem was answered in the affirmative, how do responses to the felt-threat and physical-threat stems diverge?",
+      "route": "S04 existing observation-scope and asked-eligible RAW owner; only after source route, design and roles qualified.",
+      "alternatives": "Approach without threat vs approach with felt-only threat vs approach with physical threat; payoff would be separating access pressure from felt and physical-threat reports, subject to verified administration role, same-interview linkage, asked/eligible route and denominator, and with no cross-sectional or causal claims.",
+      "ceiling": "Only after verified administration role, same-interview linkage, asked/eligible route and denominator are established; no claim about respondent risk, observed relation, physical exposure, or event cause; physical threat wording is not treated as actual endangerment."
+    }
+  ],
+  "existing_holds": [
+    {
+      "items": [
+        "Q106C",
+        "Q106D",
+        "Q106E"
+      ],
+      "missing": "Interviewer-level incident routing, any question order and any follow-up verbatim on threats",
+      "why": "Cannot establish whether approach and threat items share a filter or whether threat reports are independently recorded."
+    },
+    {
+      "items": [
+        "Q48A",
+        "Q48B"
+      ],
+      "missing": "Exact country-level routing table and the Burkina Faso date rule application",
+      "why": "The special not-asked state cannot be mapped to specific respondents without country and fieldwork-date fields."
+    },
+    {
+      "items": [
+        "Q97",
+        "Q98A"
+      ],
+      "missing": "Any response distribution or phone-number availability indicator",
+      "why": "No claim about consent rates or sponsor attribution patterns can be established from metadata alone."
+    },
+    {
+      "items": [
+        "Q28",
+        "Q29B",
+        "Q63B"
+      ],
+      "missing": "Country-specific item availability and COVID-19 module filter field",
+      "why": "Special states 94 and 97 cannot be evaluated per respondent without the filter and country identifiers."
+    }
+  ],
+  "prior_A_review_finding": {
+    "field": "Q106C",
+    "criterion": "Actor attribution: interviewer, not respondent",
+    "source_evidence": "\"Were you approached by community and/or political party representatives?\"",
+    "decision": "ACCEPT",
+    "minimum_repair": "Preserve the interviewer-dyad referent; do not recode as respondent experience."
+  },
+  "later_B_review_findings": [
+    {
+      "claim_or_inquiry": "M-O106C",
+      "decision": "CONFIRM",
+      "source_evidence": "Were you approached by community and/or political party representatives?",
+      "required_change": "Retain the unresolved-addressee framing. Note in scope text that the prior 'interviewer grain confirmed' reading is withdrawn; do not restore an interviewer/addressee assumption without packet evidence."
+    },
+    {
+      "claim_or_inquiry": "M-O106D",
+      "decision": "CONFIRM",
+      "source_evidence": "Did you feel threatened during the interview?",
+      "required_change": "Retain felt-state wording with reporter grain unsettled; keep explicit denial that this is an observed act. Flag that prior 'interviewer's own feeling' attribution is now unsupported."
+    },
+    {
+      "claim_or_inquiry": "M-O106E",
+      "decision": "CONFIRM",
+      "source_evidence": "Were you physically threatened during the interview?",
+      "required_change": "Retain the no-nesting/no-co-occurrence disclaimer; do not infer any relation to felt threat from stems alone."
+    },
+    {
+      "claim_or_inquiry": "M-O109F",
+      "decision": "CORRECTION_REQUIRED",
+      "source_evidence": "honest, in between, or misleading?",
+      "required_change": "The revised claim is acceptable (three substantive labels, no special codes, no claim about design). Ensure the earlier assertion that refusal/don't-know are 'absent by design' is not carried forward anywhere; absence of labels does not establish design. Keep code 2 as an uncommitted judgment."
+    },
+    {
+      "claim_or_inquiry": "M-O48A",
+      "decision": "CONFIRM",
+      "source_evidence": "once elected, [members of Parliament] do their jobs?",
+      "required_change": "Retain normative-owner framing, code 93/94 listing, and avoid observed-monitoring reading. Ensure 93 (Burkina Faso after 4th of October) is never collapsed with 94 (not asked in country)."
+    },
+    {
+      "claim_or_inquiry": "M-O48B",
+      "decision": "CONFIRM",
+      "source_evidence": "once elected, the [president] does [his] job?",
+      "required_change": "Retain target distinction, 94-only code note, and the statement that co-administration is not established. Do not attribute a 93 code to Q48B."
+    },
+    {
+      "claim_or_inquiry": "M-O63B",
+      "decision": "CONFIRM",
+      "source_evidence": "temporarily limit democracy or democratic freedoms",
+      "required_change": "Retain 'like the COVID-19 pandemic' (not a declared emergency), the 97 non-applicability label, and the explicit statement that actual routing and denominator are not established."
+    },
+    {
+      "claim_or_inquiry": "M-O98A",
+      "decision": "CONFIRM",
+      "source_evidence": "Willing to participate in follow-up surveys",
+      "required_change": "Retain code 7 as mobile-absence inapplicability held distinct from No, Yes, and Missing; do not treat willingness as participation."
+    },
+    {
+      "claim_or_inquiry": "M-C109FTOPO",
+      "decision": "CONFIRM",
+      "source_evidence": "Was he or she: honest",
+      "required_change": "Retain the referent-difference and unsettled-grain caution against a single interview-quality factor."
+    },
+    {
+      "claim_or_inquiry": "M-C48OWNER",
+      "decision": "CONFIRM",
+      "source_evidence": "The President / Executive",
+      "required_change": "Retain the gate that person-level frame claims require verified same-respondent administration and linkage; do not infer joint administration."
+    },
+    {
+      "claim_or_inquiry": "M-C63B97",
+      "decision": "CORRECTION_REQUIRED",
+      "source_evidence": "Refused to answer",
+      "required_change": "The claim correctly avoids asserting Q97 is asked of every respondent, but 'Refused to answer' alone does not evidence administration scope. Add a literal-valid quote tied to the administration point if one exists; otherwise weaken to state only that option lists do not fix the denominator. Do not reinstate the prior 'asked of every respondent' claim."
+    },
+    {
+      "claim_or_inquiry": "M-I-THREATSPONS",
+      "decision": "CORRECTION_REQUIRED",
+      "source_evidence": "Who do you think sent us to do this interview?",
+      "required_change": "Conditioning on verified interviewer identity/clustering, threat addressee, and Q97 administration is present and acceptable. Add explicit retention of cross-sectional and no-causal limits in the question/alternatives, and do not introduce numerics."
+    },
+    {
+      "claim_or_inquiry": "M-I-WOMENSANCTION",
+      "decision": "CONFIRM",
+      "source_evidence": "criticized, called names, or harassed by others in the community",
+      "required_change": "Retain same-respondent verification prerequisite, capped-choice nonselection limit, and no-causation ceiling. Ensure Q50B remains hypothetical likelihood."
+    },
+    {
+      "claim_or_inquiry": "M-I-OWNERCONSIST",
+      "decision": "CORRECTION_REQUIRED",
+      "source_evidence": "93 = Not asked in Burkina Faso after 4th of October",
+      "required_change": "Ceiling invokes the Burkina Faso date code but the inquiry cites only Q48A/Q48B/Q28/Q29B at packet level. Add a literal-valid quote supporting the Q48A country-date routing from the packet text used, and keep gate on verified Q48A/Q48B and Q28/Q29B co-administration."
+    }
+  ]
+}

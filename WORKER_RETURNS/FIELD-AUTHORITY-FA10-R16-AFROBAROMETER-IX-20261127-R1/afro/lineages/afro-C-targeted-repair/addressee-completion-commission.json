@@ -1,0 +1,348 @@
+{
+  "commission": "AFRO IX ONLY. Complete one narrow repair pass for unresolved literal-addressee overclaims in the existing C-arm outputs. Do not do WVS7 work. The independent review says the stem pronoun “you” does not itself identify interviewer versus respondent; separate literal wording from administration inference. Across the listed stage/claim IDs, replace any assertion that Q106C/D/E is definitely interviewer-side, an interviewer report, field-team exposure, or respondent exposure unless the supplied source itself establishes it. State that the literal stem uses “you” and addressee is unresolved in the supplied item wording; preserve only the distinct question wording and exact Yes/No options where the claim already covers codes. For Q106D/Q106E do not assert nesting, implication, co-occurrence, non-coincidence or directional relationship. No other stages, claims, holds, inquiries, theory or fields. Return JSON exactly {\"patches\":[{\"stage\":\"O|C|R|I|S\",\"claim_id\":\"...\",\"replacement_text\":\"...\"}],\"notes\":[]} . Include every requested ID and no extras.",
+  "required_ids": {
+    "O": [
+      "Oc106c",
+      "Oc106d",
+      "Oc106e"
+    ],
+    "C": [
+      "C2"
+    ],
+    "R": [
+      "Rc106c",
+      "Rc106d",
+      "Rc106e"
+    ],
+    "I": [
+      "Ic106c",
+      "Ic106d",
+      "Ic106e"
+    ],
+    "S": [
+      "S106c",
+      "S106d",
+      "S106e"
+    ]
+  },
+  "source_metadata": {
+    "Q106C": {
+      "source": "Afrobarometer",
+      "wave": "R9",
+      "module_guess": "substantive_module",
+      "var_name": "Q106C",
+      "question_text": "Were you approached by community and/or political party representatives?",
+      "value_label_set": "labels329",
+      "storage_type": "numeric",
+      "storage_width": "8",
+      "measure": "ordinal",
+      "format": "F8.0",
+      "value_labels_count": "2",
+      "response_options_substantive": "0 = No | 1 = Yes",
+      "response_options_special": "",
+      "response_options_all": "0 = No | 1 = Yes",
+      "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+    },
+    "Q106D": {
+      "source": "Afrobarometer",
+      "wave": "R9",
+      "module_guess": "substantive_module",
+      "var_name": "Q106D",
+      "question_text": "Did you feel threatened during the interview?",
+      "value_label_set": "labels330",
+      "storage_type": "numeric",
+      "storage_width": "8",
+      "measure": "ordinal",
+      "format": "F8.0",
+      "value_labels_count": "2",
+      "response_options_substantive": "0 = No | 1 = Yes",
+      "response_options_special": "",
+      "response_options_all": "0 = No | 1 = Yes",
+      "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+    },
+    "Q106E": {
+      "source": "Afrobarometer",
+      "wave": "R9",
+      "module_guess": "substantive_module",
+      "var_name": "Q106E",
+      "question_text": "Were you physically threatened during the interview?",
+      "value_label_set": "labels331",
+      "storage_type": "numeric",
+      "storage_width": "8",
+      "measure": "ordinal",
+      "format": "F8.0",
+      "value_labels_count": "2",
+      "response_options_substantive": "0 = No | 1 = Yes",
+      "response_options_special": "",
+      "response_options_all": "0 = No | 1 = Yes",
+      "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+    }
+  },
+  "current_response_excerpts": {
+    "O": [
+      {
+        "id": "Oc106c",
+        "kind": "ADD",
+        "challenges": [],
+        "items": [
+          "Q106C"
+        ],
+        "text": "Interviewer-recorded report of whether community or party representatives approached the interviewer; binary No/Yes only.",
+        "evidence": [
+          {
+            "field": "Q106C",
+            "quote": "Were you approached by community and/or political party representatives?"
+          }
+        ]
+      },
+      {
+        "id": "Oc106d",
+        "kind": "ADD",
+        "challenges": [],
+        "items": [
+          "Q106D"
+        ],
+        "text": "Interviewer-recorded report of feeling threatened during the interview; two values, No or Yes.",
+        "evidence": [
+          {
+            "field": "Q106D",
+            "quote": "Did you feel threatened during the interview?"
+          }
+        ]
+      },
+      {
+        "id": "Oc106e",
+        "kind": "ADD",
+        "challenges": [],
+        "items": [
+          "Q106E"
+        ],
+        "text": "Separate interviewer-recorded item on physical threats specifically; narrower referent than felt threat.",
+        "evidence": [
+          {
+            "field": "Q106E",
+            "quote": "Were you physically threatened during the interview?"
+          }
+        ]
+      }
+    ],
+    "C": [
+      {
+        "id": "C2",
+        "kind": "ADD",
+        "items": [
+          "Q106D"
+        ],
+        "evidence": [
+          {
+            "field": "Q106D",
+            "quote": "Did you feel threatened during the interview?"
+          }
+        ],
+        "challenges": [],
+        "text": "Felt threat is recorded as an interviewer report about the interview itself, so it is a fieldwork-safety trace rather than a measure of the respondent's own exposure."
+      }
+    ],
+    "R": [
+      {
+        "challenges": [],
+        "evidence": [
+          {
+            "field": "Q106C",
+            "quote": "Were you approached by community and/or political party representatives?"
+          }
+        ],
+        "id": "Rc106c",
+        "items": [
+          "Q106C"
+        ],
+        "kind": "ADD",
+        "text": "Interviewer-side report of whether community or political party representatives approached the fieldwork team; the two-level coding records occurrence only, not who approached or what was said."
+      },
+      {
+        "challenges": [],
+        "evidence": [
+          {
+            "field": "Q106D",
+            "quote": "Did you feel threatened during the interview?"
+          }
+        ],
+        "id": "Rc106d",
+        "items": [
+          "Q106D"
+        ],
+        "kind": "ADD",
+        "text": "Felt threat is recorded from the interviewer's perspective about this interview; it traces fieldwork safety rather than respondent risk exposure."
+      },
+      {
+        "challenges": [],
+        "evidence": [
+          {
+            "field": "Q106E",
+            "quote": "Were you physically threatened during the interview?"
+          }
+        ],
+        "id": "Rc106e",
+        "items": [
+          "Q106E"
+        ],
+        "kind": "ADD",
+        "text": "The physical-threat item is a narrower companion to felt threat; a felt-threat report does not entail a physical-threat report, and neither is source-linked to Q106C in metadata."
+      }
+    ],
+    "I": [
+      {
+        "id": "Ic106c",
+        "kind": "ADD",
+        "items": [
+          "Q106C"
+        ],
+        "evidence": [
+          {
+            "field": "Q106C",
+            "quote": "Were you approached by community and/or political party representatives?"
+          }
+        ],
+        "challenges": [],
+        "text": "Interviewer-side occurrence report on pre-interview approach by community or party representatives; the field records only occurrence of such an approach, not who approached or what was communicated."
+      },
+      {
+        "id": "Ic106d",
+        "kind": "ADD",
+        "items": [
+          "Q106D"
+        ],
+        "evidence": [
+          {
+            "field": "Q106D",
+            "quote": "Did you feel threatened during the interview?"
+          }
+        ],
+        "challenges": [],
+        "text": "Felt threat is asked of the interviewer about the interview encounter itself, so it registers a fieldwork-safety trace rather than the respondent's own exposure outside the interview."
+      },
+      {
+        "id": "Ic106e",
+        "kind": "ADD",
+        "items": [
+          "Q106E"
+        ],
+        "evidence": [
+          {
+            "field": "Q106E",
+            "quote": "Were you physically threatened during the interview?"
+          }
+        ],
+        "challenges": [],
+        "text": "Separate physical-threat item specifies the narrower act of bodily threat; it need not coincide with the felt-threat report and is not linked to the approach item in the metadata."
+      }
+    ],
+    "S": [
+      {
+        "challenges": [],
+        "evidence": [
+          {
+            "field": "Q106C",
+            "quote": "Were you approached by community and/or political party representatives?"
+          }
+        ],
+        "id": "S106c",
+        "items": [
+          "Q106C"
+        ],
+        "kind": "ADD",
+        "text": "An ordinal binary record where an approach by community and/or political party representatives is either denied or affirmed, with no detail on who approached or what was said."
+      },
+      {
+        "challenges": [],
+        "evidence": [
+          {
+            "field": "Q106D",
+            "quote": "Did you feel threatened during the interview?"
+          }
+        ],
+        "id": "S106d",
+        "items": [
+          "Q106D"
+        ],
+        "kind": "ADD",
+        "text": "An interviewer-side binary registering the interviewer's own felt threat at the interview, an exposure state narrower than any physical act."
+      },
+      {
+        "challenges": [],
+        "evidence": [
+          {
+            "field": "Q106E",
+            "quote": "Were you physically threatened during the interview?"
+          }
+        ],
+        "id": "S106e",
+        "items": [
+          "Q106E"
+        ],
+        "kind": "ADD",
+        "text": "A binary on bodily threat specifically, separately asked from the felt-threat item, so the two can diverge in a single interview."
+      }
+    ]
+  },
+  "prior_repair_return": {
+    "patches": [
+      {
+        "stage": "C",
+        "claim_id": "C1",
+        "replacement_text": "The literal stem asks whether \"you\" were approached by community and/or political party representatives; the question text does not identify who \"you\" is, so the addressee (interviewer or other administration-side reporter) is unresolved and must not be inferred. The field records only whether such an approach occurred, not who approached or what was said."
+      },
+      {
+        "stage": "C",
+        "claim_id": "C3",
+        "replacement_text": "The physical-threat item is separately worded from the felt-threat item; the packet gives only these distinct stems and the co-occurrence of the two reports within any interview is unobserved, so no nesting, implication, or directional relation is asserted."
+      },
+      {
+        "stage": "O",
+        "claim_id": "Oc106e",
+        "replacement_text": "Separate interviewer-side item worded around physical threats specifically, distinct in wording from the felt-threat stem; co-occurrence is unobserved."
+      },
+      {
+        "stage": "R",
+        "claim_id": "Rc106e",
+        "replacement_text": "The physical-threat item is separately worded from the felt-threat item; co-occurrence of the two reports is unobserved, and no relation to Q106C is established in metadata."
+      },
+      {
+        "stage": "O",
+        "claim_id": "Oc48a",
+        "replacement_text": "Single-choice attribution of who should ensure elected members of Parliament do their jobs, with substantive options 0 = The President / Executive, 1 = The Parliament / local government council, 2 = Their Political Party, 3 = The Voters, 4 = No One, and special codes -1 = Missing, 8 = Refused, 9 = Don't know, 93 = Not asked in Burkina Faso after 4th of October, 94 = Not asked in country."
+      },
+      {
+        "stage": "R",
+        "claim_id": "Rc48a",
+        "replacement_text": "Single-choice attribution of which actor should ensure elected legislators do their jobs, with substantive options 0 = The President / Executive, 1 = The Parliament / local government council, 2 = Their Political Party, 3 = The Voters, 4 = No One, and special codes -1 = Missing, 8 = Refused, 9 = Don't know, 93 = Not asked in Burkina Faso after 4th of October, 94 = Not asked in country; Q48B is a separate item and is not merged here."
+      },
+      {
+        "stage": "I",
+        "claim_id": "Ic48a",
+        "replacement_text": "Single-choice attribution of which actor should ensure elected legislators do their jobs, drawn from the fixed actor list: 0 = The President / Executive, 1 = The Parliament / local government council, 2 = Their Political Party, 3 = The Voters, 4 = No One, with special codes -1 = Missing, 8 = Refused, 9 = Don't know, 93 = Not asked in Burkina Faso after 4th of October, 94 = Not asked in country."
+      },
+      {
+        "stage": "S",
+        "claim_id": "S48a",
+        "replacement_text": "A single actor nomination from a fixed list assigning who should ensure elected MPs do their jobs, with options 0 = The President / Executive, 1 = The Parliament / local government council, 2 = Their Political Party, 3 = The Voters, 4 = No One, and special codes -1 = Missing, 8 = Refused, 9 = Don't know, 93 = Not asked in Burkina Faso after 4th of October, 94 = Not asked in country."
+      },
+      {
+        "stage": "C",
+        "claim_id": "C7",
+        "replacement_text": "The two attribution items are separately worded: Q48A asks who should ensure that, once elected, [members of Parliament] do their jobs, and Q48B asks who should ensure that, once elected, the [president] does [his] job. The packet supports only these separate stems and does not support a shared-actor inference, so the two are described as distinct items and are not merged."
+      }
+    ],
+    "added_holds": [
+      {
+        "stage": "C",
+        "items": [
+          "Q53C"
+        ],
+        "missing": "No source-bound integration documentation linking the anticipated-community-sanction item to the current narrower candidate.",
+        "why": "A related available item exists on expected community sanction for a woman reporting gender-based violence, but it is explicitly held and excluded from the current candidate; no relationship or co-membership is inferred."
+      }
+    ],
+    "notes": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "status": "REPAIR_CANDIDATE_AWAITING_EXACT_SCOPE_RECEIVING",
+  "source_scope": "Q28 source quote; Q22B code-3 description only",
+  "parent_response_sha256": "66d3c1f17669417246ed456da1a3936c809bbad61fdca8a3c3d3c8eeaf8296e4",
+  "repaired_response_sha256": "1303221b750c810188f5b970c7fa3dc2ea8c4e75c827e6c86a3d597660002de7",
+  "patches": [
+    {
+      "path": "/field_findings/0/source_quote",
+      "old_value": "the [president] should not be bound by laws or court decisions",
+      "new_value": "should not be bound by laws or court decisions that [he] thinks are wrong"
+    },
+    {
+      "path": "/field_findings/2/limits",
+      "old_value": "The scale midpoint is a mixed response, so its meaning to respondents is unknown; no answers or frequencies are given.",
+      "new_value": "Code 3 is the exact source label “Neither approve nor disapprove,” an explicit neutral midpoint position; it is not a mixed response, and the scale's midpoint meaning to respondents is unknown; no answers or frequencies are given."
+    }
+  ],
+  "quote_literal_verification": {
+    "Q28_substring_in_exact_question_text": true,
+    "Q22B_code_3_label_in_exact_options": true
+  },
+  "source_packet_sha256": "d2eb6a0fba607ac23cc4b577cb4aeba23d3102891a3d3b759b441a84d125959a",
+  "repair_worker_sessions": [
+    "ses_de0ed4051ffeOv6fIHc1VuWUhg",
+    "ses_de0ec5db7ffec3tfuQJtzv7E4n"
+  ],
+  "integration_note": "Only the two authorized JSON paths were merged. The failed first Q28 replacement and unsolicited Q48A edit in that worker response are preserved in its raw return but excluded."
+}

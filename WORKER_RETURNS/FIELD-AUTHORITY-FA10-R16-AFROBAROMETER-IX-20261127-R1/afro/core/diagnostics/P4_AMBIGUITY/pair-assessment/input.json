@@ -1,0 +1,360 @@
+{
+  "task": "FA10 P4 matched-pair assessment",
+  "source": {
+    "member": "Rawlsing 35 waves of savs & dtas/Codebooks/Afrobarometer Round 9 codebook.csv",
+    "sha256": "ed3a72796825cc905976da503426d5ce238f6a872bc8018c2a2cc4f832aa3c6c",
+    "source": "Afrobarometer",
+    "wave": "R9"
+  },
+  "source_fields": {
+    "Q106C": {
+      "source_metadata": {
+        "source": "Afrobarometer",
+        "wave": "R9",
+        "module_guess": "substantive_module",
+        "var_name": "Q106C",
+        "question_text": "Were you approached by community and/or political party representatives?",
+        "value_label_set": "labels329",
+        "storage_type": "numeric",
+        "storage_width": "8",
+        "measure": "ordinal",
+        "format": "F8.0",
+        "value_labels_count": "2",
+        "response_options_substantive": "0 = No | 1 = Yes",
+        "response_options_special": "",
+        "response_options_all": "0 = No | 1 = Yes",
+        "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+      },
+      "row_sha256": "14c69c58e9f0ef4ecb790b5e0b8a630fc02b436dffde544624b37d4b166158f2",
+      "inherited": null
+    },
+    "Q106D": {
+      "source_metadata": {
+        "source": "Afrobarometer",
+        "wave": "R9",
+        "module_guess": "substantive_module",
+        "var_name": "Q106D",
+        "question_text": "Did you feel threatened during the interview?",
+        "value_label_set": "labels330",
+        "storage_type": "numeric",
+        "storage_width": "8",
+        "measure": "ordinal",
+        "format": "F8.0",
+        "value_labels_count": "2",
+        "response_options_substantive": "0 = No | 1 = Yes",
+        "response_options_special": "",
+        "response_options_all": "0 = No | 1 = Yes",
+        "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+      },
+      "row_sha256": "f2bd91221fb1a5358c345eb9a915e7e6b2aed12b8095be92ee6e7798669209cf",
+      "inherited": null
+    },
+    "Q106E": {
+      "source_metadata": {
+        "source": "Afrobarometer",
+        "wave": "R9",
+        "module_guess": "substantive_module",
+        "var_name": "Q106E",
+        "question_text": "Were you physically threatened during the interview?",
+        "value_label_set": "labels331",
+        "storage_type": "numeric",
+        "storage_width": "8",
+        "measure": "ordinal",
+        "format": "F8.0",
+        "value_labels_count": "2",
+        "response_options_substantive": "0 = No | 1 = Yes",
+        "response_options_special": "",
+        "response_options_all": "0 = No | 1 = Yes",
+        "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+      },
+      "row_sha256": "fa91490c57412bf598d3224329edb922cc2e3a5bd5b1feaca5eac0983c9b1a31",
+      "inherited": null
+    },
+    "Q109F": {
+      "source_metadata": {
+        "source": "Afrobarometer",
+        "wave": "R9",
+        "module_guess": "substantive_module",
+        "var_name": "Q109F",
+        "question_text": "What was the respondent's attitude toward you during the interview? Was he or she: honest, in between, or misleading?",
+        "value_label_set": "labels338",
+        "storage_type": "numeric",
+        "storage_width": "8",
+        "measure": "ordinal",
+        "format": "F8.0",
+        "value_labels_count": "3",
+        "response_options_substantive": "1 = Honest | 2 = In between | 3 = Misleading",
+        "response_options_special": "",
+        "response_options_all": "1 = Honest | 2 = In between | 3 = Misleading",
+        "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+      },
+      "row_sha256": "b5bdcbaa5e33e41cb576620238ee4cd454e5c534d936094274d0fe88172cb6e5",
+      "inherited": null
+    }
+  },
+  "probe_definition": {
+    "id": "P4_AMBIGUITY",
+    "capacity": "Evaluating genuinely ambiguous evidence",
+    "fields": [
+      "Q106C",
+      "Q106D",
+      "Q106E",
+      "Q109F",
+      "Q105",
+      "Q97",
+      "Q63B"
+    ],
+    "neutral": "Interpret these observations and their limits.",
+    "directed": "Identify rival source-consistent readings, exact evidence that would decide, and which positive disclosure survives either reading. Separate resolvable wording from missing form/history/route. If evidence cannot settle a claim, stop and specify the dependency.",
+    "intervention": "decision protocol; optional separately authorized reference-form reveal to compare pre/post response. Do not provide missing evidence in control."
+  },
+  "neutral_output": {
+    "field_accounts": {
+      "Q106C": {
+        "account": "Interviewer-side record of whether community or party representatives approached the respondent. The wording 'Were you approached by community and/or political party representatives?' is addressed to the respondent but the metadata-native notes flag it as an ordinal f8.0 indicator with no explicit interviewer tag. It expresses a reported contact event, not a respondent-level attitude.",
+        "quote": "Were you approached by community and/or political party representatives?"
+      },
+      "Q106D": {
+        "account": "Reports a felt threat during the interview. The stem 'Did you feel threatened during the interview?' is phrased in first person, so it encodes respondent-side affect rather than an interviewer action.",
+        "quote": "Did you feel threatened during the interview?"
+      },
+      "Q106E": {
+        "account": "Reports physical threat during the interview. 'Were you physically threatened during the interview?' is a yes/no event indicator distinguishing non-physical threat (Q106D) from physical threat.",
+        "quote": "Were you physically threatened during the interview?"
+      },
+      "Q109F": {
+        "account": "Interviewer judgment of respondent demeanor: 'What was the respondent's attitude toward you' explicitly frames the item as an interviewer-side assessment on a three-point 'Honest | In between | Misleading' scale.",
+        "quote": "What was the respondent's attitude toward you during the interview?"
+      }
+    },
+    "rival_readings": [
+      {
+        "reading": "Q106C as respondent-reported approach",
+        "support": "The second-person stem 'Were you approached' frames it as respondent experience, supporting a respondent-side reading.",
+        "quote": "Were you approached"
+      },
+      {
+        "reading": "Q106C as an interviewer-relayed contact indicator",
+        "support": "The note 'Source-native SAV metadata reconciled to official merged codebook' treats it as a coded administrative indicator with no respondent-level depth.",
+        "quote": "Source-native SAV metadata reconciled to official merged codebook"
+      },
+      {
+        "reading": "Q106D and Q106E as overlapping threat measures",
+        "support": "Both use 'during the interview' and the same binary '0 = No | 1 = Yes' scale, so they may read as a single threat construct split into felt vs physical.",
+        "quote": "0 = No | 1 = Yes"
+      }
+    ],
+    "surviving_positive": [
+      "All four fields ship as ordinal numeric indicators with explicit value labels, so each has a determinate coding frame.",
+      "Q109F provides a three-level demeanor ordinal '1 = Honest | 2 = In between | 3 = Misleading' that is distinct in wording from the binary Q106 items.",
+      "Q106C is the only field naming external actors 'community and/or political party representatives'."
+    ],
+    "exact_discriminants": [
+      {
+        "discriminant": "Q106C vs Q106D/Q106E subject",
+        "detail": "Q106C indexes external approach by representatives; Q106D and Q106E index felt and physical threat. The stems separate these: 'Were you approached' vs 'Did you feel threatened'.",
+        "quote": "Did you feel threatened"
+      },
+      {
+        "discriminant": "Q106D vs Q106E threat type",
+        "detail": "The added adverb 'physically' in Q106E splits general threat from physical threat.",
+        "quote": "Were you physically threatened"
+      },
+      {
+        "discriminant": "Q109F response architecture",
+        "detail": "Q109F is a three-category demeanor scale, unlike the binary items; options are '1 = Honest | 2 = In between | 3 = Misleading'.",
+        "quote": "2 = In between"
+      }
+    ],
+    "limits": [
+      "Metadata only: no respondent-level co-occurrence among Q106C, Q106D, Q106E, and Q109F can be inferred.",
+      "No causal relation between approach (Q106C) and threat (Q106D/Q106E) is observable from these rows.",
+      "Actual administration and routing, including whether Q106D and Q106E were asked to everyone, are not stated.",
+      "Missing routing cannot be derived; absence of a value is not evidence of non-administration.",
+      "Interviewer-side coding of Q109F is preserved as interviewer-reported, not respondent experience."
+    ],
+    "foil_transfer_check": {
+      "status": "held",
+      "note": "A foil might claim approach caused felt threat or that Q106D/Q106E capture interviewer fear. Neither is supported: the stems use 'you' addressing the respondent (\"Did you feel threatened\"), and Q109F is the only item explicitly interviewer-judged (\"the respondent's attitude toward you\"). No co-occurrence or causal link is asserted.",
+      "quote": "the respondent's attitude toward you"
+    }
+  },
+  "directed_output": {
+    "field_accounts": [
+      {
+        "field": "Q106C",
+        "quote": "Were you approached by community and/or political party representatives?",
+        "account": "Respondent-facing yes/no contact item with options '0 = No | 1 = Yes'; records whether any approach by community or party representatives occurred, without specifying which actor, timing, or who initiated."
+      },
+      {
+        "field": "Q106D",
+        "quote": "Did you feel threatened during the interview?",
+        "account": "Respondent-reported feeling of threat tied to the interview episode; '0 = No | 1 = Yes' cannot distinguish feeling threatened from being threatened, nor identify source or severity."
+      },
+      {
+        "field": "Q106E",
+        "quote": "Were you physically threatened during the interview?",
+        "account": "Respondent-reported physical-threat item; framing as a question to the respondent ('Were you physically threatened') implies respondent-side report, distinct from Q106D's felt-threat wording and from any interviewer observation."
+      },
+      {
+        "field": "Q109F",
+        "quote": "What was the respondent's attitude toward you during the interview?",
+        "account": "Interviewer-reported evaluation of respondent demeanor, three-way '1 = Honest | 2 = In between | 3 = Misleading'; it is an interviewer judgment about the respondent, not a respondent self-report."
+      }
+    ],
+    "rival_readings": [
+      {
+        "reading": "Q106C contact was with community representatives only, not political party representatives.",
+        "status": "unresolved from wording",
+        "why": "The stem uses 'community and/or political party representatives', so the metadata permits either or both actors, but the single dichotomy cannot separate them."
+      },
+      {
+        "reading": "Q106C contact was initiated by the respondent versus imposed on the respondent.",
+        "status": "unresolved from wording",
+        "why": "'Were you approached by' describes being approached without direction of initiative or consent, and no follow-up item is supplied."
+      },
+      {
+        "reading": "Q106D and Q106E are redundant measures of the same threat.",
+        "status": "unresolved from wording",
+        "why": "'Did you feel threatened' versus 'Were you physically threatened' differ in modality (felt vs physical) yet the packet supplies no routing to establish independence or nesting."
+      },
+      {
+        "reading": "Q109F reflects an actual truthfulness outcome rather than an interviewer impression.",
+        "status": "unresolved from wording",
+        "why": "The item asks the interviewer 'What was the respondent's attitude toward you', an evaluative perception with 'In between' as a middle option; it does not record verified honesty."
+      },
+      {
+        "reading": "Q109F could be treated as parallel to the Q106 threat items as a respondent experience.",
+        "status": "rejected on role grounds",
+        "why": "The Q109F stem is interviewer-addressed ('toward you during the interview'), so it must remain interviewer-side; the Q106D/E items are respondent-addressed ('Did you feel'/'Were you')."
+      }
+    ],
+    "surviving_positive": [
+      {
+        "field": "Q109F",
+        "claim": "An interviewer-side evaluative record exists: the respondent's demeanor was rated on the 'Honest | 2 = In between | 3 = Misleading' scale.",
+        "quote": "What was the respondent's attitude toward you during the interview?",
+        "survives": "Both readings",
+        "note": "Survives because the interviewer-side role and three-point evaluation are explicit in the stem and options, independent of whether the rating is accurate."
+      },
+      {
+        "field": "Q106C",
+        "claim": "A binary reporter of approach-contact exists at the respondent level.",
+        "quote": "Were you approached by community and/or political party representatives?",
+        "survives": "Both readings",
+        "note": "What survives is only that some approach is dichotomously coded '0 = No | 1 = Yes'; actor identity and initiative remain open."
+      }
+    ],
+    "exact_discriminants": [
+      {
+        "dependency": "actor separation within Q106C",
+        "would_decide": "A subgroup or separate item distinguishing community representatives from political party representatives.",
+        "quote": "community and/or political party representatives",
+        "present_in_packet": "no"
+      },
+      {
+        "dependency": "felt versus physical threat linkage",
+        "would_decide": "Routing or filter text showing whether Q106E is asked conditional on Q106D, or an independent overlap item.",
+        "quote": "physically threatened",
+        "present_in_packet": "no"
+      },
+      {
+        "dependency": "interviewer- versus respondent-report boundary",
+        "would_decide": "Explicit respondent-addressed versus interviewer-addressed wording.",
+        "quote": "the respondent's attitude toward you",
+        "present_in_packet": "yes"
+      },
+      {
+        "dependency": "scale midpoint meaning in Q109F",
+        "would_decide": "Codebook note defining 'In between' as uncertainty versus partial honesty.",
+        "quote": "2 = In between",
+        "present_in_packet": "no"
+      },
+      {
+        "dependency": "temporal/route relation between contact and interview items",
+        "would_decide": "Interview-sequence or form metadata placing Q106C before or after the interview episode.",
+        "quote": "during the interview",
+        "present_in_packet": "no"
+      }
+    ],
+    "limits": [
+      "Metadata only: no respondent-level co-occurrence, frequencies, or cross-tabulations are supplied, so no association between Q106C contact and any threat or honesty item is observed.",
+      "No routing or skip logic is in the packet; whether Q106E was asked only after Q106D, and whether any item was asked of all respondents, is unobserved and stated as such.",
+      "Absence of a discriminating item in the packet is not evidence that the construct is unmeasured in the full R9 instrument; it is only unobserved here.",
+      "Q109F must not be relabeled as respondent experience because the stem is interviewer-addressed; any merged scale mixing Q109F with Q106D/E would cross role boundaries."
+    ],
+    "foil_transfer_check": {
+      "check": "Would a plainly plausible foil survive the same packet?",
+      "foil": "Respondent-reported fear item, parallel in role to Q106D.",
+      "result": "Transfers only for Q106D, not Q109F",
+      "quote_used": "Did you feel threatened during the interview?",
+      "explanation": "The foil's role logic matches the respondent-addressed Q106D wording ('Did you feel'), while Q109F's interviewer-addressed stem ('the respondent's attitude toward you') blocks transfer; this confirms role identity is decided by wording, not by topic proximity."
+    }
+  },
+  "provider_receipts": {
+    "neutral": {
+      "stage": "neutral-worker",
+      "packet_sha256": "8f8368ef0eadefff01a2269cca498041d81256e6b3dc32bd7c3596c0360b3e8a",
+      "elapsed_seconds": 26.7044182430036,
+      "exit_code": 0,
+      "stdout_sha256": "1cffbae1ed1fb244d44d6b37afbfd49d92ef1e509dbbd1172a8e1c048b37d5c2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "PROVIDER_ENVELOPE_PARSED_NOT_ACCEPTED",
+      "independent_reviewer_authenticated": false,
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "usage": {
+        "input": 1555,
+        "output": 1071,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "provider_receipt": {
+        "session": "ses_de1524638ffeWNXCsVShHy9VMe",
+        "effort": "none",
+        "cap": 4500,
+        "steps": 1,
+        "exit": 0,
+        "input_text_sha256": "ee32c15e488730308fe82916e8e28e5bb866ce4bc7e366a6689598f23e752493",
+        "opencode_rate_cost": 0.00087585
+      },
+      "reported_cost": null,
+      "cost_currency": null
+    },
+    "directed": {
+      "stage": "directed-worker",
+      "packet_sha256": "89519055c91da27e871f728907e06afb80d992b04b3822b95ecf4621be460e1d",
+      "elapsed_seconds": 80.87722854000458,
+      "exit_code": 0,
+      "stdout_sha256": "dc37afa96bc2b4c6885b57815fdfc789036c123b6932e70c278e6afa7697e9d0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "PROVIDER_ENVELOPE_PARSED_NOT_ACCEPTED",
+      "independent_reviewer_authenticated": false,
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "usage": {
+        "input": 1592,
+        "output": 1267,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "provider_receipt": {
+        "session": "ses_de151822affeMSeKs7rFgPCdur",
+        "effort": "none",
+        "cap": 4500,
+        "steps": 1,
+        "exit": 0,
+        "input_text_sha256": "b1966781879adbe23768c0b3f39d41fc4c6fb0f894d0201deb7844209983ed43",
+        "opencode_rate_cost": 0.000999
+      },
+      "reported_cost": null,
+      "cost_currency": null
+    }
+  },
+  "instruction": "Single task: independently compare this matched P4 neutral/directed pair on the exact supplied Afrobarometer metadata. Identify observed change attributable only to the directed task, what positive distinctions were preserved or lost, remaining errors/holds and whether any source evidence could settle them, and whether the result is case-specific. Do not infer respondent frequencies, causal effects, native administration, general model capacity, or scientific acceptance. Return JSON exactly with keys: observed_change, improvements, regressions, remaining_holds, source_sufficiency, case_disposition, next_step. Cite exact field IDs/quotes. No scalar quality score.",
+  "packet_sha256": "13087d0b0fc3183df902e7d0594fc273aabaecbc4aa84ae1fd3043c0bcc1ea10"
+}

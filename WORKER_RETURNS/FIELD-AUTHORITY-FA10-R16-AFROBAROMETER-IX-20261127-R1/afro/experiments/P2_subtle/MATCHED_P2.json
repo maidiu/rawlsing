@@ -1,0 +1,223 @@
+{
+  "experiment": "FA10_R16_P2_SUBTLE_AFROR9",
+  "status": "EXECUTED_BLINDLY_REVIEWED; NEUTRAL_TWO_PATH_CORRECTION_SEPARATELY_RECEIVED",
+  "scope": "Afrobarometer Round 9, six source-metadata fields Q28 Q29B Q22B Q48A Q48B Q63B. No respondent-level observations or WVS7 work.",
+  "source": {
+    "source_sha256": "ed3a72796825cc905976da503426d5ce238f6a872bc8018c2a2cc4f832aa3c6c",
+    "neutral_input_packet_sha256": "d2eb6a0fba607ac23cc4b577cb4aeba23d3102891a3d3b759b441a84d125959a",
+    "directed_input_packet_sha256": "ad7bb4a0d8406e96c690de722b6d4d4b4a631ee25f0763ede1d1e8bfbdb26e90"
+  },
+  "intervention": "Only the task instruction varied: neutral baseline (“Explain what these questions make investigable.”) versus P2 contrastive instruction to construct source-consistent configurations, reconstruct response act/actor/condition/referent, and identify nontransfer. Same exact six rows, empty prior context, constraints, output shape, OpenCode Go model, effort none, one call each, output cap 3500.",
+  "arms": {
+    "neutral": {
+      "input_packet_sha256": "d2eb6a0fba607ac23cc4b577cb4aeba23d3102891a3d3b759b441a84d125959a",
+      "response_sha256": "66d3c1f17669417246ed456da1a3936c809bbad61fdca8a3c3d3c8eeaf8296e4",
+      "provider_receipt": {
+        "session": "ses_de0f38792ffeReRtYL4VAaSCn5",
+        "effort": "none",
+        "cap": 3500,
+        "steps": 1,
+        "exit": 0,
+        "input_text_sha256": "347d16913cb7be1483046dc5f2383376372d5407087cc50a856b8300370c8e1c",
+        "opencode_rate_cost": 0.00084345
+      },
+      "usage": {
+        "input": 2987,
+        "output": 659,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      }
+    },
+    "directed": {
+      "input_packet_sha256": "ad7bb4a0d8406e96c690de722b6d4d4b4a631ee25f0763ede1d1e8bfbdb26e90",
+      "response_sha256": "fa8d04ac633146c5f83a46fffe0d056c87a43114c66e172506c402a35b7171b5",
+      "provider_receipt": {
+        "session": "ses_de0f2ca7ffferWAQ9hniPnejT0",
+        "effort": "none",
+        "cap": 3500,
+        "steps": 1,
+        "exit": 0,
+        "input_text_sha256": "5656cf6a223dbeb391b4831774ad96cce7f8058c65ae9be14c4b26c354a32852",
+        "opencode_rate_cost": 0.0010662
+      },
+      "usage": {
+        "input": 3044,
+        "output": 1016,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      }
+    }
+  },
+  "blind_review": {
+    "disposition": "PASS_SCOPED",
+    "session": "ses_de0f05fc8ffea62yh433UY1PIT",
+    "response_sha256": "c5b997c15f1b7e8dc6f493f679fdf525c9b4630806edd0267a677c35ffe29d09",
+    "input_tokens": 5122,
+    "output_tokens": 1732,
+    "blinded_candidates": {
+      "X": "66d3c1f17669417246ed456da1a3936c809bbad61fdca8a3c3d3c8eeaf8296e4",
+      "Y": "fa8d04ac633146c5f83a46fffe0d056c87a43114c66e172506c402a35b7171b5"
+    },
+    "source_first_phase_in_blind_review": {
+      "field_records": [
+        {
+          "field_id": "Q28",
+          "source_conclusion": "Forced choice between two statements about a president: Statement 1 says the president \"should not be bound by laws or court decisions\" he thinks wrong; Statement 2 says the president \"must always obey the laws and the courts\"; responses are ordinal 1-5 by degree of agreement with Statement 1 or Statement 2 plus \"Agree with neither\".",
+          "material_distinction": "Presidential constraint by law is the object; the rating is agreement with a stated position, not a free nomination of who governs.",
+          "source_limit": "Bracketed referents ([president], [he]) and no respondent data, country coverage, or frequencies."
+        },
+        {
+          "field_id": "Q29B",
+          "source_conclusion": "Forced choice: Statement 1 \"armed forces should never intervene in the country's political process\" versus Statement 2 that military control is \"legitimate ... when elected leaders abuse power\"; ordinal 1-5 agreement scale plus neither.",
+          "material_distinction": "Tolerance for military takeover conditioned on an abuse-of-power justification; binary side-picking on civil supremacy.",
+          "source_limit": "Country name in brackets; meaning of \"abuse power\" and actual routing unknown."
+        },
+        {
+          "field_id": "Q22B",
+          "source_conclusion": "Single-stimulus approval item \"the army comes in to govern the country\" rated 1 = Strongly disapprove through 5 = Strongly approve, with a neither midpoint.",
+          "material_distinction": "Unconditional approval of army governance; a rating, not a forced choice between two statements.",
+          "source_limit": "Midpoint meaning to respondents unknown; no counts or frequencies."
+        },
+        {
+          "field_id": "Q48A",
+          "source_conclusion": "Nominal nomination of who should be responsible for \"making sure that, once elected, [members of Parliament] do their jobs\"; codes 0-4 for President/Executive, Parliament/local council, party, voters, no one.",
+          "material_distinction": "Accountability attribution for legislators; includes \"0 = The President / Executive\" and \"4 = No One\" codes.",
+          "source_limit": "Body bracket; no shares; code 93 country-specific not-asked note."
+        },
+        {
+          "field_id": "Q48B",
+          "source_conclusion": "Same nominal actor set applied to \"once elected, the [president] does [his] job\".",
+          "material_distinction": "Referent is the president, not legislators; special codes list only 94, not the Q48A 93 note.",
+          "source_limit": "Office and pronoun bracketed; no shares or routing."
+        },
+        {
+          "field_id": "Q63B",
+          "source_conclusion": "Conditional justification item on whether it is justified for government to \"temporarily limit democracy or democratic freedoms\" by \"using the police and security forces to enforce public health mandates\"; 1-5 disagree-agree scale.",
+          "material_distinction": "Conditioned on a public health emergency and on police/security enforcement; consent to rights restriction, not approval of army rule.",
+          "source_limit": "Gated by COVID premise; code 97 \"Not applicable (COV1=0, 8 or 9)\" routing details and frequencies unknown."
+        }
+      ],
+      "source_warranted_differences": [
+        "Q28 constrains presidential obedience to law/courts; Q48B attributes who oversees the president — constraint versus accountability attribution.",
+        "Q29B is a forced choice on military intervention with an abuse-of-power clause; Q22B is a five-point approval scale on army governance — different response acts.",
+        "Q48A (legislators) and Q48B (president) share the actor code set but differ in referent, so voter or party codes are not transferable across offices.",
+        "Q63B concerns police/security enforcement under a health emergency and is not the same as Q22B army-governance approval.",
+        "Q22B and Q63B both use 1-5 scales but one runs disapprove-to-approve and the other disagree-to-agree; direction and stimulus differ."
+      ],
+      "not_established": [
+        "No respondent counts, distributions, percentages, or cross-tabs.",
+        "No country administration, co-administration, or routing beyond supplied option labels.",
+        "No empirical association or causal claim between items.",
+        "Meaning of bracketed substitutions per country and of scale midpoints to respondents.",
+        "Per-country frequencies or treatment of -1/8/9/93/94/97 special codes."
+      ]
+    },
+    "condition_guess_before_unblind": {
+      "X": {
+        "X": "uncertain",
+        "confidence": "medium",
+        "basis": "Field findings are literal, quoted, and cautious; no sign of induced distortion toward a preferred answer."
+      },
+      "Y": {
+        "Y": "uncertain",
+        "confidence": "low",
+        "basis": "Expanded cross-item labor and explicit tests of merge risks could indicate either a directed comparative intent or simply more thorough neutral work; no dispositional signal is decisive."
+      }
+    }
+  },
+  "unblinded_mapping": {
+    "X": "neutral",
+    "Y": "directed"
+  },
+  "review_finding": "Both candidates accurately reconstruct the response acts, actors, conditions, and referents and both preserve nontransferability. Y is stronger on cross-item label-reuse analysis: it explicitly warns against merging Q22B with Q29B and Q48A with Q48B and labels its code-configuration examples as logical rather than observed. X is compact and accurate but omits the Q48A/Q48B code-asymmetry and the Q22B/Q63B scale-direction contrast. Neither candidate asserts respondent data, frequencies, or causal links, so no source-grounded winner is decisive on accuracy; Y has modestly better source-grounded coverage on the false-merge risks.",
+  "observed_method_result": {
+    "neutral_spontaneous_distinctions": [
+      "Q29B and Q22B both concern military involvement in government, but the first uses a forced binary with a stated abuse-of-power condition while the second uses an approval scale on army governance; they are distinct response acts, not the same measure.",
+      "Q28 and Q48B both address the president, but Q28 constrains presidential adherence to law while Q48B assigns who oversees the president, separating constraint from accountability attribution."
+    ],
+    "directed_distinctions": [
+      "The label-reuse false-merge risk differs by type. Q29B and Q22B both concern the army but ask different response acts: Q29B asks respondents to pick a side in a direct conflict between civil supremacy and military takeover, while Q22B asks for approval of army rule as one alternative among many. A shared label such as support for the army ruling would collapse a comparative endorsement and an unopposed approval rating.",
+      "Q48A and Q48B share one actor code set but assign responsibility to different referents: legislators versus the president. An accountability label that merges them would conflate who oversees Parliament with who oversees the executive, so the answers are not transferable.",
+      "Q28 and Q29B are two different forced-choice grids, one on the rule of law applied to the president and one on military intervention. They cannot be read as one latent attitude toward executive constraint because the actors and conflict clauses differ.",
+      "Q22B and Q63B both involve approval of state coercion, but Q22B concerns the army as governor while Q63B conditions approval on a health emergency and concerns the police and security forces. Transfer between them is unsupported because no source wording ties them.",
+      "The quadruple administrative codes (-1, 8, 9, and 94 or 97) are present in the special-option lists, but the packet does not state their per-country frequencies or routing, so any treat-as-missing assumption is not evidence-backed.",
+      "The Q48A code 93 mentions a country-specific date, while Q48B has 94 only; this asymmetry in not-asked codes is a metadata difference, not evidence about answers.",
+      "Two source-consistent configurations that a common label could merge are as follows. (a) Q22B codes 4 or 5 labeled approve while Q29B codes 3 or 4 are labeled agree with Statement 2, which would merge army-rule approval with military-takeover legitimacy. (b) Q48A and Q48B code 3 for voters would merge voter oversight of Parliament and of the president into one code. These are logical code configurations, not observed respondents."
+    ],
+    "interpretation": "The directed condition generated more explicit source-grounded false-merge examples and surfaced the Q48A/Q48B 93-versus-94 metadata asymmetry. The blinded reviewer judged its coverage modestly stronger, but found no decisive accuracy winner. The neutral condition already spontaneously differentiated Q29B/Q22B and Q28/Q48B. This is a six-field, one-block diagnostic, not a general causal or capacity estimate."
+  },
+  "reviewer_and_output_limits": [
+    "The neutral Q22B note calls code 3 a “mixed response”; the exact source label is “Neither approve nor disapprove,” so that wording is imprecise and was not caught by the blind reviewer.",
+    "No source metadata establishes actual co-administration, routing beyond the code-97 label, respondent answers, distributions, or empirical relations.",
+    "No theory-card, new historical evidence, respondent data, or native execution was used.",
+    "The source-first reviewer separately missed that Q48A has both 93 and 94 special codes in its field finding, though its limits mentioned the country-specific 93 note; the blind comparative reviewer independently flagged the 93/94 distinction in directed candidate Y."
+  ],
+  "automated_checks": {
+    "neutral": {
+      "exact_six_field_coverage": true,
+      "duplicate_field_ids": false,
+      "literal_quotes": {
+        "Q28": false,
+        "Q29B": true,
+        "Q22B": true,
+        "Q48A": true,
+        "Q48B": true,
+        "Q63B": true
+      },
+      "all_source_quote_substrings": false
+    },
+    "directed": {
+      "exact_six_field_coverage": true,
+      "duplicate_field_ids": false,
+      "literal_quotes": {
+        "Q28": true,
+        "Q29B": true,
+        "Q22B": true,
+        "Q48A": true,
+        "Q48B": true,
+        "Q63B": true
+      },
+      "all_source_quote_substrings": true
+    }
+  },
+  "economics": {
+    "calls": 4,
+    "input_tokens": 14140,
+    "output_tokens": 4494,
+    "reported_reasoning_tokens": 0,
+    "cache_read_tokens": 0,
+    "rate_equivalent_usd": 0.0048174,
+    "actual_billed_subscription_cost": "UNOBSERVED",
+    "codex_cost": "UNOBSERVED",
+    "active_human_minutes": "UNMEASURED",
+    "total_calls_including_separate_repair_and_receiving": 7,
+    "total_input_tokens_including_repairs": 20158,
+    "total_output_tokens_including_repairs": 5685,
+    "total_rate_equivalent_usd_including_repairs": 0.0064347
+  },
+  "authority": "Method candidate only. No scientific acceptance, no observed relational effect, no respondent-level result, no native permissions, and no protected adoption.",
+  "post_review_audit": {
+    "finding": "Blind reviewer returned PASS_SCOPED, but exact local verification found the neutral Q28 source_quote is not a literal substring of Q28 question_text and neutral Q22B labels code 3 a “mixed response” although the supplied source label is “Neither approve nor disapprove.” This corrects the review disposition for these two neutral-output details; it does not alter the frozen blinded comparison or directed arm.",
+    "affected_fields": [
+      "neutral.Q28.source_quote",
+      "neutral.Q22B.limits"
+    ],
+    "required_action": "Completed as a separate exact two-path candidate; original pair outputs/review remain unchanged."
+  },
+  "neutral_output_correction": {
+    "candidate_sha256": "1303221b750c810188f5b970c7fa3dc2ea8c4e75c827e6c86a3d597660002de7",
+    "review_verdict": "PASS_SCOPED",
+    "review_session": "ses_de0eb7bbcffee0D9EfS3orTQoI",
+    "review_sha256": "c22071c41de081d48c5e07ce9acf43a05385b7c40fd05464da5ceff104b610d2",
+    "scope": "exact two-path source repair only",
+    "pair_comparison_changed": false,
+    "preserved_original_parent_sha256": "66d3c1f17669417246ed456da1a3936c809bbad61fdca8a3c3d3c8eeaf8296e4",
+    "review_note": "The first repair worker returned a generic Q28 introduction quote and also changed Q48A outside scope; neither was admitted. A separate quote-only worker supplied a source-supporting literal substring; deterministic integration excluded the unsolicited change. The exact two-path candidate then passed independent source-bound review."
+  }
+}

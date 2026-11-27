@@ -1,0 +1,214 @@
+{
+  "packet_sha256": "077a7d9847d2b9a17ed72aeec550c35c9d16b0123b14bce57f481ddddc4892b2",
+  "grade": "EXPLORATORY_METADATA_AUTHOR_CANDIDATE_NOT_ISSUED",
+  "claims": [
+    {
+      "challenges": [],
+      "evidence": [
+        {
+          "field": "Q106C",
+          "quote": "Were you approached by community and/or political party representatives?"
+        },
+        {
+          "field": "Q97",
+          "quote": "Who do you think sent us to do this interview?"
+        }
+      ],
+      "id": "RQ106C97",
+      "items": [
+        "Q106C",
+        "Q97"
+      ],
+      "kind": "ADD",
+      "text": "Q106C records an approach report whose 'you' is ambiguous between respondent and interviewer, while Q97 records the respondent's attributed sender of the survey; pairing them juxtaposes an ambiguous approach report with the respondent's sponsorship belief, without asserting that one implies the other."
+    },
+    {
+      "challenges": [],
+      "evidence": [
+        {
+          "field": "Q106D",
+          "quote": "Did you feel threatened during the interview?"
+        },
+        {
+          "field": "Q106E",
+          "quote": "Were you physically threatened during the interview?"
+        }
+      ],
+      "id": "RQ106DE",
+      "items": [
+        "Q106D",
+        "Q106E"
+      ],
+      "kind": "ADD",
+      "text": "Q106D and Q106E are separately worded, separately coded yes/no reports ('0 = No | 1 = Yes' for each); their co-occurrence is unobserved and the metadata supplies no nesting, implication, or psychological reading of a hypothetical cross-tab; dropping Q106E would still remove a distinct report."
+    },
+    {
+      "challenges": [],
+      "evidence": [
+        {
+          "field": "Q109F",
+          "quote": "honest, in between, or misleading?"
+        }
+      ],
+      "id": "RQ109F",
+      "items": [
+        "Q109F"
+      ],
+      "kind": "ADD",
+      "text": "Q109F is a three-point interviewer judgment of respondent candor during the encounter, an attributed demeanour rather than a verified check of answer accuracy or a respondent self-report; the metadata lists only three labels and no special codes, so missing handling is undetermined."
+    },
+    {
+      "challenges": [],
+      "evidence": [
+        {
+          "field": "Q28",
+          "quote": "must always obey the laws and the courts"
+        },
+        {
+          "field": "Q29B",
+          "quote": "never intervene in the country's political process"
+        }
+      ],
+      "id": "RQ2829B",
+      "items": [
+        "Q28",
+        "Q29B"
+      ],
+      "kind": "ADD",
+      "text": "Q28 asks whether the president is bound by law and courts while Q29B asks whether the armed forces may take control when leaders abuse power; the two share the lawful-limits frame but differ in the actor constrained and in whether the alternative is exemption or takeover, so treating one as a proxy for the other would erase that difference."
+    },
+    {
+      "challenges": [],
+      "evidence": [
+        {
+          "field": "Q48A",
+          "quote": "Who should be responsible for"
+        },
+        {
+          "field": "Q48B",
+          "quote": "the [president] does [his] job?"
+        }
+      ],
+      "id": "RQ484AB",
+      "items": [
+        "Q48A",
+        "Q48B"
+      ],
+      "kind": "ADD",
+      "text": "Q48A and Q48B pose the same normative oversight-allocation question for MPs and for the president; the shared wording makes the office the varying element, and without Q48B the MP answer could not be placed against the presidential counterpart."
+    },
+    {
+      "challenges": [],
+      "evidence": [
+        {
+          "field": "Q50B",
+          "quote": "she will be criticized, called names, or harassed"
+        },
+        {
+          "field": "Q51A",
+          "quote": "should government and elected officials be doing more"
+        }
+      ],
+      "id": "RQ50B51A",
+      "items": [
+        "Q50B",
+        "Q51A"
+      ],
+      "kind": "ADD",
+      "text": "Q50B is an anticipated community reaction to a hypothetical woman candidate, while Q51A is a demand about government effort on women's rights; the first describes expected social sanction and the second a desired state action, so consent to more government action need not imply belief that harassment is likely, and dropping Q50B would leave the demand without its social-condition counterpart."
+    },
+    {
+      "challenges": [],
+      "evidence": [
+        {
+          "field": "Q51B",
+          "quote": "which of the following issues related to women's rights and equality"
+        }
+      ],
+      "id": "RQ51B",
+      "items": [
+        "Q51B"
+      ],
+      "kind": "ADD",
+      "text": "Q51B forces a single most-important choice among an offered women's-rights list, so it yields a capped priority ranking that is not independent salience for each listed issue; the option set bounds what can be named."
+    },
+    {
+      "challenges": [],
+      "evidence": [
+        {
+          "field": "Q63B",
+          "quote": "using the police and security forces to enforce public health mandates"
+        }
+      ],
+      "id": "RQ63B",
+      "items": [
+        "Q63B"
+      ],
+      "kind": "ADD",
+      "text": "Q63B solicits agreement that emergency policing of health mandates is justified, which endorses a possible temporary measure rather than reporting that police enforcement occurred or was experienced."
+    },
+    {
+      "challenges": [],
+      "evidence": [
+        {
+          "field": "Q98A",
+          "quote": "Willing to participate in follow-up surveys"
+        }
+      ],
+      "id": "RQ98A",
+      "items": [
+        "Q98A"
+      ],
+      "kind": "ADD",
+      "text": "Q98A records stated willingness to be recontacted for follow-up, and its special not-applicable category for respondents without a mobile number means a missing-route value is not the same as a refusal."
+    }
+  ],
+  "answer_notes": {},
+  "inquiries": [],
+  "nominations": [
+    {
+      "field": "Q111",
+      "reason": "Retrieval would supply the interviewer identifier needed to attribute Q106D, Q106E and Q109F reports to particular fieldworkers rather than treating them as unattributed encounter judgments."
+    }
+  ],
+  "holds": [
+    {
+      "items": [
+        "Q106C",
+        "Q106D",
+        "Q106E",
+        "Q109F"
+      ],
+      "missing": "No interviewer identifier or interviewer background among the selected fields; Q111-Q113 exist only in the locator.",
+      "why": "Threat and candor reports cannot be attributed to specific interviewers or tested for interviewer composition effects from the cited fields alone."
+    },
+    {
+      "items": [
+        "Q28",
+        "Q29B",
+        "Q48A",
+        "Q48B",
+        "Q63B"
+      ],
+      "missing": "No wave, country or date field among the selected items to resolve the bracketed office and place names.",
+      "why": "The specific president, armed forces, parliament and emergency referents cannot be fixed from these fields, so comparability of the normative items remains undetermined."
+    },
+    {
+      "items": [
+        "Q50B",
+        "Q51A",
+        "Q51B"
+      ],
+      "missing": "No routing or skip evidence showing whether Q51B was conditioned on any prior answer.",
+      "why": "Whether the priority choice is an unconditioned response or a routed subsample cannot be established from the selected fields."
+    },
+    {
+      "items": [
+        "Q97",
+        "Q98A"
+      ],
+      "missing": "No administrative record of the actual commissioning body and no record of later recontact attempts.",
+      "why": "A reported sponsor attribution cannot be validated, and stated willingness cannot be checked against subsequent participation."
+    }
+  ]
+}

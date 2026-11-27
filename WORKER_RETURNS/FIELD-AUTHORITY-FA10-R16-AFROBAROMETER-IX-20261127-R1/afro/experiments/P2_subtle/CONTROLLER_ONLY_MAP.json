@@ -1,0 +1,88 @@
+{
+  "experiment": "FA10_R16_P2_SUBTLE_AFROR9",
+  "source_sha256": "ed3a72796825cc905976da503426d5ce238f6a872bc8018c2a2cc4f832aa3c6c",
+  "fields": [
+    "Q28",
+    "Q29B",
+    "Q22B",
+    "Q48A",
+    "Q48B",
+    "Q63B"
+  ],
+  "neutral": {
+    "arm": "neutral",
+    "experiment": "FA10_R16_P2_SUBTLE_AFROR9",
+    "input_path": "neutral/input.json",
+    "input_packet_sha256": "d2eb6a0fba607ac23cc4b577cb4aeba23d3102891a3d3b759b441a84d125959a",
+    "response_path": "neutral/response.json",
+    "response_sha256": "66d3c1f17669417246ed456da1a3936c809bbad61fdca8a3c3d3c8eeaf8296e4",
+    "provider_receipt": {
+      "session": "ses_de0f38792ffeReRtYL4VAaSCn5",
+      "effort": "none",
+      "cap": 3500,
+      "steps": 1,
+      "exit": 0,
+      "input_text_sha256": "347d16913cb7be1483046dc5f2383376372d5407087cc50a856b8300370c8e1c",
+      "opencode_rate_cost": 0.00084345
+    },
+    "usage": {
+      "input": 2987,
+      "output": 659,
+      "reasoning": 0,
+      "cache": {
+        "read": 0,
+        "write": 0
+      }
+    },
+    "process_exit": 0,
+    "json_response": true,
+    "scope": "Afrobarometer Round 9 metadata-only; six fields Q28 Q29B Q22B Q48A Q48B Q63B",
+    "created_at_local": "2026-11-27T17:08:04.717744-05:00"
+  },
+  "directed": {
+    "arm": "directed",
+    "experiment": "FA10_R16_P2_SUBTLE_AFROR9",
+    "input_path": "directed/input.json",
+    "input_packet_sha256": "ad7bb4a0d8406e96c690de722b6d4d4b4a631ee25f0763ede1d1e8bfbdb26e90",
+    "response_path": "directed/response.json",
+    "response_sha256": "fa8d04ac633146c5f83a46fffe0d056c87a43114c66e172506c402a35b7171b5",
+    "provider_receipt": {
+      "session": "ses_de0f2ca7ffferWAQ9hniPnejT0",
+      "effort": "none",
+      "cap": 3500,
+      "steps": 1,
+      "exit": 0,
+      "input_text_sha256": "5656cf6a223dbeb391b4831774ad96cce7f8058c65ae9be14c4b26c354a32852",
+      "opencode_rate_cost": 0.0010662
+    },
+    "usage": {
+      "input": 3044,
+      "output": 1016,
+      "reasoning": 0,
+      "cache": {
+        "read": 0,
+        "write": 0
+      }
+    },
+    "process_exit": 0,
+    "json_response": true,
+    "scope": "Afrobarometer Round 9 metadata-only; six fields Q28 Q29B Q22B Q48A Q48B Q63B",
+    "created_at_local": "2026-11-27T17:09:26.364669-05:00"
+  },
+  "matched_conditions": {
+    "source_rows_identical": true,
+    "prior_context_identical": true,
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "effort": "none",
+    "output_cap": 3500,
+    "provider_calls_each": 1
+  },
+  "blind_mapping": {
+    "X": "neutral",
+    "Y": "directed"
+  },
+  "blinded_candidate_hashes": {
+    "X": "66d3c1f17669417246ed456da1a3936c809bbad61fdca8a3c3d3c8eeaf8296e4",
+    "Y": "fa8d04ac633146c5f83a46fffe0d056c87a43114c66e172506c402a35b7171b5"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "commission": "Afrobarometer R16 D/C first-fault repair; one role-stage response only.",
+  "task": "Repair only the exact D/C sourcebound claims rejected by the incumbent validator with “not literal source evidence”. Compare every quote with the exact selected source fields and correct only claims whose evidence is not an exact source substring. Do not add historical facts, external sources, new inquiries, or new thematic architecture. If a disputed interpretation has no literal support, return it as a HOLD instruction instead of asserting it. Preserve all unaffected claims and the original response. Return a compact patch list keyed by claim ID with exact replacement claim or HOLD, exact copied source quote and one-sentence reason; do not return a full regenerated stage.",
+  "packet_sha256": "42a7b865af1069f116ab2c1bc6a4ef669941b85fc687b0587d13c49d5d3ab8a4",
+  "role": "C",
+  "grade": "EXPLORATORY_METADATA_AUTHOR_CANDIDATE_NOT_ISSUED",
+  "validator_rejection": {
+    "error": "ValueError",
+    "reason": "not literal source evidence",
+    "start_utc": "2026-11-27T19:59:28.725292+00:00"
+  },
+  "required_output": {
+    "packet_sha256": "exact input hash",
+    "patches": [
+      {
+        "claim_id": "exact existing ID",
+        "disposition": "REPLACE or HOLD",
+        "replacement_claim": "object or null",
+        "exact_source_quote": "literal source substring or null",
+        "reason": "brief"
+      }
+    ],
+    "unaffected_claims": "array of IDs only",
+    "scope": "D_C_LITERAL_EVIDENCE_PATCH_ONLY"
+  }
+}

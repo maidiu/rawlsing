@@ -1,0 +1,61 @@
+{
+  "commission": "Afrobarometer IX only; one minimal author repair. Do not do WVS7 work. Replace only arm-C stage-C claim C3 text. The prior independent review found that “co-occurrence ... is unobserved” could imply a measured datum; say instead that the supplied metadata packet contains no co-occurrence evidence and make no relation claim. Preserve literal wording and claim identity. Return exactly {\"stage\":\"C\",\"claim_id\":\"C3\",\"replacement_text\":\"...\"} as JSON, no markdown.",
+  "source_metadata": {
+    "Q106D": {
+      "source": "Afrobarometer",
+      "wave": "R9",
+      "module_guess": "substantive_module",
+      "var_name": "Q106D",
+      "question_text": "Did you feel threatened during the interview?",
+      "value_label_set": "labels330",
+      "storage_type": "numeric",
+      "storage_width": "8",
+      "measure": "ordinal",
+      "format": "F8.0",
+      "value_labels_count": "2",
+      "response_options_substantive": "0 = No | 1 = Yes",
+      "response_options_special": "",
+      "response_options_all": "0 = No | 1 = Yes",
+      "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+    },
+    "Q106E": {
+      "source": "Afrobarometer",
+      "wave": "R9",
+      "module_guess": "substantive_module",
+      "var_name": "Q106E",
+      "question_text": "Were you physically threatened during the interview?",
+      "value_label_set": "labels331",
+      "storage_type": "numeric",
+      "storage_width": "8",
+      "measure": "ordinal",
+      "format": "F8.0",
+      "value_labels_count": "2",
+      "response_options_substantive": "0 = No | 1 = Yes",
+      "response_options_special": "",
+      "response_options_all": "0 = No | 1 = Yes",
+      "note": "Source-native SAV metadata reconciled to official merged codebook; packet-reviewed."
+    }
+  },
+  "current_claim": {
+    "id": "C3",
+    "kind": "ADD",
+    "items": [
+      "Q106E"
+    ],
+    "evidence": [
+      {
+        "field": "Q106E",
+        "quote": "Were you physically threatened during the interview?"
+      }
+    ],
+    "challenges": [],
+    "text": "The physical-threat item is separately worded from the felt-threat item; the packet gives only these distinct stems and the co-occurrence of the two reports within any interview is unobserved, so no nesting, implication, or directional relation is asserted."
+  },
+  "independent_finding": {
+    "stage": "C",
+    "claim_id": "C3",
+    "decision": "HOLD",
+    "evidence": "Were you physically threatened during the interview?",
+    "required_change": "Syntactically states no nesting/direction and the prior entailment sentence is gone, but \"the co-occurrence of the two reports within any interview is unobserved\" adds a context-mode datum the packet does not supply; phrase as absent rather than observed-unobserved or drop, since packet has only stems and No/Yes codes."
+  }
+}

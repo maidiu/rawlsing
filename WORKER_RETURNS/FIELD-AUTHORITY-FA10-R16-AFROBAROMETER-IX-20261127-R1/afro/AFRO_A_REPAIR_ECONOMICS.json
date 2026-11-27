@@ -1,0 +1,56 @@
+{
+  "scope": "Afrobarometer IX A/M addressee and inquiry repair/receiving",
+  "calls": [
+    {
+      "path": "afro-A-targeted-repair/worker_return_raw.json",
+      "session": "ses_de0fc7db1ffeXs09ekzN5ZKwAj",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 1700,
+      "provider_exit": 0,
+      "input_text_sha256": "f4c45c034e5e6b8bec74c9bd9fafd0afb59083ce2019d107fc3bb8b0270cc285",
+      "usage": {
+        "input": 4203,
+        "output": 445,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00089745,
+      "actual_billed": null,
+      "verdict": null
+    },
+    {
+      "path": "afro-A-repaired-v1/A/M/independent-receiving/worker_return_raw.json",
+      "session": "ses_de0fbaacaffestzWERb7z4cMRf",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "none",
+      "cap": 2000,
+      "provider_exit": 0,
+      "input_text_sha256": "71bd0e79a7e7387534575c1fc35ef704dea4c877825819fd10952797eae81125",
+      "usage": {
+        "input": 3757,
+        "output": 498,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "opencode_rate_equivalent": 0.00086235,
+      "actual_billed": null,
+      "verdict": "PASS_SCOPED"
+    }
+  ],
+  "totals": {
+    "input": 7960,
+    "output": 943,
+    "reasoning": 0,
+    "cache_read": 0,
+    "opencode_rate_equivalent": 0.0017598000000000002,
+    "actual_billed": "UNOBSERVED",
+    "codex_tokens": "UNOBSERVED"
+  }
+}
