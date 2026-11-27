@@ -552,6 +552,9 @@ class NeighborEncounter:
             try:meeting=qualify_meeting_checkin(world,self.user_id,target_commitment_ref,loc)
             except ValueError as exc:raise EncounterRefusal(str(exc)) from exc
             # Authored presence at the agreed site; not evidence the actor is here.
+            if not any(x['id']==target_commitment_ref and x['status']=='ACCEPTED'
+                       for x in self.own_meetings()):
+                raise EncounterRefusal('MEETING_CHECKIN_NO_QUALIFIED_ASSENT')
             target_actor_ref=meeting['recipient']
         # Reuse CO's objective, source-qualified conjunction reader. Thin
         # worlds need no upstream packet; richer worlds may actually alter
@@ -844,6 +847,95 @@ class NeighborEncounter:
                 **({'made_object_ref':made_object_ref} if made_object_ref is not None else {}),
                 **({'human_offer_commitment_ref':commitment_ref}
                    if commitment_ref is not None else {})}
+
+    def own_meetings(self):
+        """Own structured agreements, not privileged observation of another life.
+
+        The existing ledger must contain the particular performed proposal,
+        actor-authored assent, and any later check-in/meeting. Administrative
+        readback is not sensory exposure, perceived motive, waiting or blame.
+        No information about the other's competing activity is returned.
+        """
+        from um_sorok_organism.continuity_clock import MEETING_KIND
+        _,world=self._world()
+        rows=[r for r in world.get('scheduled_obligations',[])
+              if r.get('kind')==MEETING_KIND and r.get('responsible_actor')==self.user_id]
+        if not rows:return []
+        history=[e for e in self.runtime.ledger.events()
+                 if e.get('envelope',{}).get('world')==world['id']]
+        def user_source(row,op,ref,clock):
+            matches=[e for e in world.get('neighbor_user_events',[])
+                     if e.get('event_ref')==ref]
+            receipts=[e for e in history if e.get('kind')=='NEIGHBOR_USER_CONTRIBUTION'
+                      and e['envelope']['payload'].get('user_event_ref')==ref]
+            if len(matches)!=1 or len(receipts)!=1:return False
+            e=matches[0];receipt=receipts[0];p=receipt['envelope']['payload']
+            authored={'user':self.user_id,'operation':op,'text':None,'destination':None}
+            if op=='PROPOSE_MEETING':
+                authored.update(target_actor_ref=row['recipient'],due_clock=row['due_clock'])
+            else:authored.update(target_commitment_ref=row['id'])
+            return (e.get('user')==self.user_id and p.get('user')==self.user_id
+                    and e.get('status')=='PERFORMED' and p.get('performed') is True
+                    and e.get('operation')==op and e.get('destination')==row['location']
+                    and e.get('meeting_ref')==row['id'] and p.get('meeting_ref')==row['id']
+                    and e.get('target_actor_ref')==row['recipient']
+                    and e.get('clock')==receipt.get('clock')==clock
+                    and e.get('payload_hash')==p.get('payload_hash')==digest(authored)
+                    and ref==stable_id('neighbor_user',{'user':self.user_id,
+                         'request_id':e.get('request_id'),'payload_hash':e['payload_hash']}))
+        def actor_source(row,op,ref,clock):
+            matches=[]
+            for e in history:
+                if e.get('kind')!='ACTOR_LIFE_TRANSITION' or e.get('actor_id')!=row['recipient']:
+                    continue
+                p=e['envelope']['payload'];a=p.get('actual',{});attempt=p.get('attempt',{})
+                sel=attempt.get('practical_selection',{}).get('selected_meeting',{})
+                if (a.get('meeting_ref')==row['id'] and a.get('action')==op
+                        and a.get('status')=='PERFORMED'
+                        and a.get('actor')==row['recipient'] and a.get('target')==self.user_id
+                        and a.get('human_meeting_event_ref')==ref
+                        and p.get('actor_selection_grade')=='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+                        and sel.get('meeting_ref')==row['id']
+                        and sel.get('meeting_source_user_event_ref')==ref
+                        and e.get('clock')==a.get('clock')==clock):
+                    matches.append(e)
+            return len(matches)==1
+        result=[]
+        for row in rows:
+            origin=row['source_user_event_ref'];status=row['status']
+            if (row['id']!=stable_id('meeting_window',{'world':world['id'],'proposal':origin})
+                    or row['meeting_clock']!=row['due_clock']-1
+                    or row['checkin_clock']!=row['due_clock']-2
+                    or not user_source(row,'PROPOSE_MEETING',origin,row['origin_clock'])):
+                raise EncounterRefusal('MEETING_UNQUALIFIED_PROPOSAL')
+            accepted=status in ('ACCEPTED','CHECKED_IN','MEETING_PERFORMED',
+                                'ELAPSED_WITHOUT_ACTUAL_CHECK_IN','ELAPSED_WITHOUT_ACTUAL_MEETING')
+            checked=status in ('CHECKED_IN','MEETING_PERFORMED','ELAPSED_WITHOUT_ACTUAL_MEETING')
+            if accepted and (row.get('acceptance_source_user_event_ref')!=origin
+                    or row.get('accepted_at_clock')!=row['origin_clock']+1
+                    or not actor_source(row,'ACCEPT_MEETING',origin,row['accepted_at_clock'])):
+                raise EncounterRefusal('MEETING_UNQUALIFIED_ASSENT')
+            if checked and not user_source(row,'CHECK_IN_MEETING',
+                    row.get('checkin_user_event_ref'),row['checkin_clock']):
+                raise EncounterRefusal('MEETING_UNQUALIFIED_CHECKIN')
+            if status=='MEETING_PERFORMED' and not actor_source(row,'MEET_VISITOR',
+                    row['checkin_user_event_ref'],row['meeting_clock']):
+                raise EncounterRefusal('MEETING_UNQUALIFIED_PERFORMANCE')
+            if status not in ('PROPOSED','ACCEPTED','CHECKED_IN','MEETING_PERFORMED',
+                              'ELAPSED_WITHOUT_ACTOR_ASSENT','ELAPSED_WITHOUT_ACTUAL_CHECK_IN',
+                              'ELAPSED_WITHOUT_ACTUAL_MEETING'):
+                raise EncounterRefusal('MEETING_UNQUALIFIED_STATUS')
+            if status in ('PROPOSED','ACCEPTED','CHECKED_IN'):
+                if world['clock']>=row['meeting_clock']:
+                    raise EncounterRefusal('MEETING_UNSETTLED_ELAPSED_WINDOW')
+            elif row.get('settled_at_clock')!=row['meeting_clock'] or world['clock']<row['meeting_clock']:
+                raise EncounterRefusal('MEETING_UNQUALIFIED_SETTLEMENT_CLOCK')
+            result.append({**{k:deepcopy(row[k]) for k in (
+                'id','recipient','location','origin_clock','checkin_clock','meeting_clock',
+                'due_clock','status','accepted_at_clock','settled_at_clock',
+                'source_user_event_ref','checkin_user_event_ref') if k in row},
+                'administrative_readback_not_perception_or_appraisal':True})
+        return result
 
     def own_food_commitments(self):
         """Own authored contract history, not another person's private life.

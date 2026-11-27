@@ -77,9 +77,12 @@ class MeetingTimeR38(unittest.TestCase):
             with self.subTest(choice=choice):
                 rt,n,db,state,sem,ref,due=self.build(choice)
                 self.assertEqual(self.row(rt,ref)['status'],'PROPOSED')
+                self.assertEqual(n.own_meetings()[0]['status'],'PROPOSED')
+                self.assertEqual(NeighborEncounter(rt,'outsider',mii_module=mii).own_meetings(),[])
                 a=n.independent_actor_beat('worker')
                 self.assertEqual((a['attempt'],a['status']),('ACCEPT_MEETING','PERFORMED'))
                 self.assertEqual(self.row(rt,ref)['status'],'ACCEPTED')
+                self.assertEqual(n.own_meetings()[0]['status'],'ACCEPTED')
                 dep=n.contribute('depart','LEAVE')['event_ref']
                 state['phase']='wait'
                 n.continue_absent_life_until(dep,due-4)
@@ -113,6 +116,9 @@ class MeetingTimeR38(unittest.TestCase):
                     nn.contribute('retroactive-checkin','CHECK_IN_MEETING',target_commitment_ref=ref)
                 self.assertEqual(cold.ledger.world(),before)
                 self.assertEqual(self.row(cold,ref),row)
+                read=nn.own_meetings()[0]
+                self.assertEqual(read['status'],row['status'])
+                self.assertNotIn('WORK',str(read))
                 self.assertNotIn('visitor',cold.ledger.actors())
                 self.assertTrue(cold.verify()['valid'])
 
@@ -128,6 +134,7 @@ class MeetingTimeR38(unittest.TestCase):
             self.assertEqual(row['status'],'ELAPSED_WITHOUT_ACTUAL_CHECK_IN'
                             if mode=='absent' else 'ELAPSED_WITHOUT_ACTOR_ASSENT')
             self.assertEqual(row['waiting_breach_or_actor_appraisal'],'NOT_ESTABLISHED')
+            self.assertEqual(n.own_meetings()[0]['status'],row['status'])
             self.assertFalse(any(e['operation']=='CHECK_IN_MEETING'
                          for e in rt.ledger.world()[1]['neighbor_user_events']))
             self.assertTrue(rt.verify()['valid'])
