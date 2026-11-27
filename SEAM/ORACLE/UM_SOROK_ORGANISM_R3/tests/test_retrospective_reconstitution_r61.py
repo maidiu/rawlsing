@@ -43,7 +43,7 @@ class RetrospectiveReconstitution(unittest.TestCase):
                 if state['stage']=='repair':
                     if state.get('first'):
                         return {'task':task,'candidates':[
-                            {'kind':'MEMORY','content':'I kept working and put the meal aside.',
+                            {'kind':'MEMORY','content':'The repair felt like something I must keep doing.',
                              'cue_terms':['repair']},
                             {'kind':'ACQUIRE_HISTORICAL_ORIENTATION','operation':'EAT',
                              'orientation_mode':'WITHHOLD'}]}
@@ -66,7 +66,9 @@ class RetrospectiveReconstitution(unittest.TestCase):
             w=blank_world();w['sites']['home']['stock']=30
             a=adult('worker','Mara')
             a['projects']=[{'id':'repair_training','object':'maintain things',
-                            'means':['REPAIR'],'status':'active','priority':.5}]
+                            'means':['REPAIR'],'status':'active','priority':.5},
+                           {'id':'ordinary_meal','object':'eat a meal',
+                            'means':['EAT'],'status':'active','priority':.4}]
             rt.ledger.initialize(w,[a])
             src=rt.register_historical_routine_source({
                 'kind':'QUALIFIED_ROUTINE_PRACTICE','actor':'worker','location':'home',
