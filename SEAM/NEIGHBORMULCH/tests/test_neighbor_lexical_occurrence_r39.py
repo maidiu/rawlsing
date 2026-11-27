@@ -47,7 +47,6 @@ class LexicalOccurrenceR39(unittest.TestCase):
         speaker['projects']=[{'id':'talk','object':'speak','means':['SPEAK'],'priority':.6,'status':'active'}]
         speaker['self_model']={'private':PRIVATE}
         people=[speaker,adult('hearer','Hearer'),adult('deaf','Deaf'),newborn('child','Child'),adult('unknown','Unknown')]
-        for person in people:w['positions'][person['id']]='home'
         def path(observer,hearing,visual):
             return {'observer':observer,'source_actor':'speaker','location':'home','from_clock':0,
                 'through_clock':30,'hearing':hearing,'sound_path':'audible' if hearing else 'blocked',
