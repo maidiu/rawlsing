@@ -518,6 +518,50 @@ class CountryNumeric(unittest.TestCase):
                         self.assertNotIn(event.ref.key,compact_repo._objects)
                         self.assertNotIn(event.ref.key,compact_repo._country_object_guards)
                     self.assertEqual(constructs.call_count,len(events))
+                # Actual validated producer -> independently pinned compact
+                # preparation -> fresh reader -> exact complete public bodies.
+                # Group omission is private, never a fabricated group value.
+                from rawlsing_next import _pre553_country_preparation as prep
+                from rawlsing_next.pre553_c11_integrity import (
+                    _validate_restored_country_occurrences,ensure_distinct_event_occurrences)
+                artifact=Path(d)/"elided.gz"
+                owner=prep._CountryPreparation(artifact,None,omit_groups=True)
+                with CountryReader(path,rec,require_current=lambda:None) as saving:
+                    with patch.object(prep,"_encode_headers",wraps=prep._encode_headers) as encoder:
+                        _,saved_release=facade._build_source_backed_c11_repository(
+                            saving._native_stream(subset),subset,
+                            current_authorities=fx["authorities"],_country_preparation=owner)
+                    full_headers=encoder.call_args.args[1]
+                pin=owner.pin
+                decoded=prep._decode_headers(artifact.read_bytes(),pin.facade_key)
+                self.assertTrue(all(h.group_identity is None for h in decoded))
+                self.assertEqual([h.ref for h in decoded],[h.ref for h in full_headers])
+                with CountryReader(path,rec,require_current=lambda:None) as restoring:
+                    restored_repo,restored_release=facade._build_source_backed_c11_repository(
+                        restoring._native_stream(subset),subset,current_authorities=fx["authorities"],
+                        _country_preparation=prep._CountryPreparation(artifact,pin))
+                    self.assertEqual(restored_release.release_ref,direct.release_ref)
+                    self.assertEqual(restored_release.replay_manifest.ref,direct.replay_manifest.ref)
+                    for event in events:
+                        self.assertEqual(restored_repo.resolve_object_exact(event.ref),event)
+                # A repeated occurrence identifier may legally have another
+                # group. Preserve the complete fallback instead of collapsing it.
+                from io import BytesIO
+                import gzip
+                exceptional=(full_headers[0],replace(full_headers[1],
+                    occurrence_identity=full_headers[0].occurrence_identity))
+                out=BytesIO()
+                with gzip.GzipFile(fileobj=out,mode="wb",mtime=0) as gz:
+                    prep._encode_headers(gz,exceptional,pin.facade_key,omit_groups=True)
+                full_again=prep._decode_headers(out.getvalue(),pin.facade_key)
+                self.assertEqual([h.group_identity for h in full_again],
+                                 [h.group_identity for h in exceptional])
+                with self.assertRaises(C11IntegrityError):
+                    _validate_restored_country_occurrences((decoded[0],decoded[0]))
+                with self.assertRaises(C11IntegrityError):
+                    _validate_restored_country_occurrences((decoded[0],full_headers[1]))
+                with self.assertRaises(ValueError):
+                    ensure_distinct_event_occurrences(decoded)
                 # Compare the inherited expanded-event compatibility
                 # reconstruction on the identical reader and exact events.
                 enumerating=_CountryEventBodies(reader,subset,tuple(events))
