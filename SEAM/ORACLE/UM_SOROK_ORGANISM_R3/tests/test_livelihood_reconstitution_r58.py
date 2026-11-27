@@ -34,7 +34,9 @@ class ReliefReconstitution(unittest.TestCase):
                 if phase['stage']=='later':
                     # Actual historical recruitment, not an invented mandatory refusal.
                     options=p.get('practical_options',[])
-                    if any(x.get('operation')=='WORK' for x in options) and phase.get('work_pressure'):
+                    if any(x.get('operation')=='WORK' for x in options) and any(
+                            c.get('action')=='WORK' and c.get('kind')=='HISTORICALLY_RECRUITED_PRE_CUE_PRESSURE'
+                            for c in p['situated']['currents']):
                         return {'task':task,'action':'WORK'}
                 return {'task':task,'action':'WAIT'}
             raise AssertionError(task)
@@ -48,10 +50,15 @@ class ReliefReconstitution(unittest.TestCase):
                 rt.step(a,requested_action='INSPECT',object_ref=spec['terms_notice_ref'])
                 self.assertEqual(rt.step(a,requested_action='ACCEPT_WORK_TERMS')['status'],'PERFORMED')
             for i in range(3):
+                rt.step('mother',requested_action='REST')
+                rt.step('mother',requested_action='REST')
                 self.assertEqual(rt.step('mother',requested_action='WORK')['status'],'PERFORMED')
             old=deepcopy(rt.snapshot('mother')['historical_orientations'][0])
             self.assertEqual(old['orientation_mode'],'APPROACH')
             phase['stage']='quiet'
+            rt.step('mother',requested_action='REST')
+            rt.step('mother',requested_action='REST')
+            rt.step('father',requested_action='REST')
             rt.step('father',requested_action='WORK')
             self.assertEqual(rt.step('father',requested_action='CONTRIBUTE_WAGE_RELIEF')['status'],'PERFORMED')
             self.assertEqual(rt.step('father',requested_action='SUSPEND_WAGE_WORK',target='mother')['status'],'PERFORMED')
@@ -75,7 +82,7 @@ class ReliefReconstitution(unittest.TestCase):
                              {k:v for k,v in old.items() if k!='revisions'})
             self.assertEqual(len(row['revisions']),int(nominate))
             phase['stage']='quiet'
-            for _ in range(5):rt.step('father',requested_action='WAIT')
+            for _ in range(5):rt.step('mother',requested_action='REST')
             self.assertTrue(rt.verify()['valid'])
         finally:rt.close()
         cold=ConstitutiveRuntime(str(db),semantic=svc)
@@ -87,7 +94,7 @@ class ReliefReconstitution(unittest.TestCase):
             self.assertEqual(bool(currents),not nominate)
             # Fresh actor selection remains lawful in both cases, even after
             # the old historical pressure is suspended.
-            phase['stage']='later';phase['work_pressure']=bool(currents)
+            phase['stage']='later'
             self.assertEqual(cold.step('mother')['attempt'],'WAIT' if nominate else 'WORK')
             self.assertTrue(cold.verify()['valid'])
         finally:cold.close()
