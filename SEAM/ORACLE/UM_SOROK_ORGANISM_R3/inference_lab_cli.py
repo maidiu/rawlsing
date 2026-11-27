@@ -105,6 +105,13 @@ def replay_course(document,head):
     return actual
 
 
+def replay_owner_course(document,head):
+    if document["payload"]["fixture"]=="R34_ACQUIRED_LIFE_F":
+        from inference_lab_r34 import replay_r34
+        return replay_r34(document,head)
+    return replay_course(document,head)
+
+
 def fixture_arms(document):
     """Frozen exact-proposal replay, measuring actual adapter request sizes.
 
@@ -136,7 +143,9 @@ def fixture_arms(document):
 def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
     subs=parser.add_subparsers(dest="mode",required=True)
-    c=subs.add_parser("capture");c.add_argument("--released",action="store_true")
+    c=subs.add_parser("capture");fixture=c.add_mutually_exclusive_group()
+    fixture.add_argument("--released",action="store_true")
+    fixture.add_argument("--r34",action="store_true",help="executed R34 full acquired-life course")
     c.add_argument("--out",required=True);c.add_argument("--admissions-out")
     p=subs.add_parser("evaluate-admissions")
     p.add_argument("--workload",required=True);p.add_argument("--witness",required=True)
@@ -159,7 +168,11 @@ def main(argv=None):
     if a.mode=="capture":
         if Path(a.out).exists() or (a.admissions_out and Path(a.admissions_out).exists()):
             raise ValueError("LAB_OUTPUT_ALREADY_EXISTS")
-        result=capture_course(a.released,head,with_admissions=bool(a.admissions_out))
+        if a.r34:
+            from inference_lab_r34 import capture_r34
+            result=capture_r34(head,with_admissions=bool(a.admissions_out))
+        else:
+            result=capture_course(a.released,head,with_admissions=bool(a.admissions_out))
         doc,state=result[:2]
         save_report(a.out,doc)
         if a.admissions_out:save_report(a.admissions_out,result[2])
@@ -187,7 +200,7 @@ def main(argv=None):
         print(canonical({"scope":result["scope"],"totals":result["totals"],"network_calls":0}))
         return
     if a.mode=="replay":
-        state=replay_course(doc,head)
+        state=replay_owner_course(doc,head)
         print(canonical({"workload_sha256":doc["sha256"],"state_digest":digest(state),
                          "exact_tape_replay":True,"network_calls":0}))
         return
@@ -198,11 +211,11 @@ def main(argv=None):
         result["mode"]="HERMETIC_EXACT_TAPE_NOT_LIVE"
     else:
         if not a.authorize_sourcefree_live:raise ValueError("LAB_LIVE_AUTHORIZATION_REQUIRED")
-        if doc["payload"]["fixture"] not in ("R54_RELEASED","R54_RETAINED"):
+        if doc["payload"]["fixture"] not in ("R54_RELEASED","R54_RETAINED","R34_ACQUIRED_LIFE_F"):
             raise ValueError("LAB_LIVE_UNRECOGNIZED_FIXTURE")
         # Reexecute the known owner course with exact tape inputs before any
         # remote disclosure. This is an integrity check, not human-data detection.
-        replay_course(doc,head)
+        replay_owner_course(doc,head)
         with open(a.config,encoding="utf-8") as f:config=json.load(f)
         result=execute_plan(doc,config,_local_read(a.plan),journal=a.budget_journal,
             observation_log=a.observation_log,sourcefree_live_authorized=True)

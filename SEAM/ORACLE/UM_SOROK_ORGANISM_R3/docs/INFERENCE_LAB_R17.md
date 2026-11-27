@@ -174,3 +174,29 @@ No psychological adequacy claim follows from matching the recorded proposal,
 passing transport or local admission. The owner must judge formation and
 subsequent life. No real-person, survey, or production data is authorized.
 No paid call is made in the automated sourcefree regression.
+
+## R20 — existing R34 acquired-life workload intake
+
+The executed R34 full (F) household course, inherited through the exact R35
+owner lineage, is an additional fixture. The original CourseWire callback,
+owner assertions and committed ledger remain unchanged. Capture all original
+semantic packets and optional local admission witnesses, compare frozen F/E,
+and replay with the original fixture callback required to agree exactly with
+the recorded decision. This is an exact hermetic control, not a competent
+history-only comparison. The owner course's final state digest is checked
+against cold readback. No R35-specific or R57-specific workload is inferred.
+
+```sh
+python inference_lab_cli.py capture --r34 --out "$LAB/r34-full.json" \
+  --admissions-out "$LAB/r34-admissions.json"
+python inference_lab_cli.py replay --workload "$LAB/r34-full.json"
+python inference_lab_cli.py plan-live --workload "$LAB/r34-full.json" \
+  --config "$LAB/approved-local-config.json" --per-stratum 2 \
+  --out "$LAB/r34-plan.json"
+```
+
+The existing sourcefree owner R34 P/Lbad comparison is not promoted to a live
+projection. Its callback reads named offers and the acquired flag influences
+later controlled selection. Equal outcomes under P establish that particular
+controlled course, not competent-model sufficiency or autonomous causal
+identification. No paid provider access or new authority is implied.
