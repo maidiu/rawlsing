@@ -1,7 +1,7 @@
 name: PYAT storage relay matched courts
 on:
   push:
-    branches: [agent/pyat-forge-ddm-agent-a-storage-relay-r2, agent/pyat-forge-ddm-agent-b-storage-relay-r3, agent/pyat-forge-ddm-agent-a-storage-relay-r4, agent/pyat-forge-ddm-agent-b-storage-relay-r5, agent/pyat-forge-ddm-country-continuity-r6, agent/pyat-forge-ddm-agent-a-storage-relay-r7, agent/pyat-forge-ddm-agent-b-storage-relay-r8, agent/pyat-forge-ddm-agent-a-storage-relay-r9, agent/pyat-forge-ddm-agent-b-storage-relay-r10, agent/pyat-forge-ddm-agent-a-storage-relay-r11, agent/pyat-forge-ddm-agent-b-storage-relay-r12, agent/pyat-forge-ddm-agent-a-storage-relay-r13, agent/pyat-forge-ddm-agent-b-storage-relay-r14, agent/pyat-forge-ddm-agent-a-storage-relay-r15]
+    branches: [agent/pyat-forge-ddm-agent-a-storage-relay-r2, agent/pyat-forge-ddm-agent-b-storage-relay-r3, agent/pyat-forge-ddm-agent-a-storage-relay-r4, agent/pyat-forge-ddm-agent-b-storage-relay-r5, agent/pyat-forge-ddm-country-continuity-r6, agent/pyat-forge-ddm-agent-a-storage-relay-r7, agent/pyat-forge-ddm-agent-b-storage-relay-r8, agent/pyat-forge-ddm-agent-a-storage-relay-r9, agent/pyat-forge-ddm-agent-b-storage-relay-r10, agent/pyat-forge-ddm-agent-a-storage-relay-r11, agent/pyat-forge-ddm-agent-b-storage-relay-r12, agent/pyat-forge-ddm-agent-a-storage-relay-r13, agent/pyat-forge-ddm-agent-b-storage-relay-r14, agent/pyat-forge-ddm-agent-a-storage-relay-r15, agent/pyat-forge-ddm-agent-b-storage-relay-r16]
   workflow_dispatch:
 concurrency:
   group: pyat-storage-relay-${{ github.ref }}

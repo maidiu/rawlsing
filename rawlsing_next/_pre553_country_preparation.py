@@ -13,6 +13,7 @@ import gzip
 import json
 import os
 import stat
+import struct
 import tempfile
 
 from .pre553_empirical_objects import (
@@ -23,7 +24,13 @@ from ._pre553_c11_execution_view import (
     _COUNTRY_OCCURRENCE_PREFIX, _COUNTRY_GROUP_PREFIX,
 )
 
-SCHEMA="PYAT_COUNTRY_PREPARED_HEADERS@1"
+SCHEMA_V1="PYAT_COUNTRY_PREPARED_HEADERS@1"
+SCHEMA="PYAT_COUNTRY_PREPARED_HEADERS@2"
+# Three independent SHA256 identities, six uint32 locators/dictionary
+# indices and one dependency-count byte. Neither digest is regenerated
+# from another, and arbitrary/noncompact headers retain the JSON path.
+_BINARY_HEADER=struct.Struct("<32s32s32s6IB")
+_U32=struct.Struct("<I")
 MAX_COMPRESSED=128*1024**2
 MAX_EXPANDED=512*1024**2
 MAX_LINE=8*1024**2
@@ -84,16 +91,17 @@ def _read_pinned(path,pin):
         raise _error("external artifact digest mismatch")
     return data
 
-def _encode_headers(out,headers,key):
+def _encode_headers(out,headers,key,*,legacy=False):
     total=0
-    def line(value):
+    def emit(raw):
         nonlocal total
-        raw=(canonical_json(value)+"\n").encode()
         total+=len(raw)
         if len(raw)>MAX_LINE or total>MAX_EXPANDED:
             raise _error("expanded preparation cap")
         out.write(raw)
-    line([SCHEMA,key,len(headers)])
+    def line(value):
+        emit((canonical_json(value)+"\n").encode())
+    line([SCHEMA_V1 if legacy else SCHEMA,key,len(headers)])
     # Compact records refer to already emitted shared payload and reference
     # dictionaries. No expanded response body, per-event selector object,
     # or repeated long question/respondent IDs retained on disk.
@@ -115,33 +123,62 @@ def _encode_headers(out,headers,key):
         respondent=ref_code(header.scoped_respondent_ref)
         deps=[ref_code(x) for x in header.dependency_refs]
         event=header.event_identity
-        line(["h",event.hex() if type(event) is bytes else list(event),
-              header.response_event_id_or_deterministic_index,
-              header.event_group_id,payloads[pkey],u,respondent,deps,
-              header.source_coordinates])
+        occ=header.occurrence_identity
+        group=header.group_identity
+        coords=header.source_coordinates
+        nums=(payloads[pkey],u,respondent,*coords)
+        # Shared dictionary rows are still exact canonical JSON. The
+        # per-occurrence high-entropy plane is binary instead of hex text.
+        # Only the canonical compact identity form takes this fast path.
+        if (not legacy and all(type(x) is bytes and len(x)==32 for x in (event,occ,group))
+                and type(coords) is tuple and len(coords)==3 and len(deps)<=255
+                and all(type(x) is int and 0<=x<2**32 for x in (*nums,*deps))):
+            emit(b"H"+_BINARY_HEADER.pack(event,occ,group,*nums,len(deps))
+                 +b"".join(_U32.pack(i) for i in deps))
+        else:
+            line(["h",event.hex() if type(event) is bytes else list(event),
+                  header.response_event_id_or_deterministic_index,
+                  header.event_group_id,payloads[pkey],u,respondent,deps,coords])
     line(["end",len(headers)])
 
 def _decode_headers(data,key):
     refs=[]; payloads=[]; headers=[]; total=0
     with gzip.GzipFile(fileobj=BytesIO(data),mode="rb") as stream:
-        def read():
+        def account(raw):
             nonlocal total
-            raw=stream.readline(MAX_LINE+1)
             total+=len(raw)
             if len(raw)>MAX_LINE or total>MAX_EXPANDED:
                 raise _error("expanded preparation cap")
-            return None if not raw else json.loads(raw)
-        start=read()
-        if (type(start) is not list or len(start)!=3 or start[:2]!=[SCHEMA,key]
-                or type(start[2]) is not int or start[2]<1):
+            return raw
+        def exact(n):
+            raw=account(stream.read(n))
+            if len(raw)!=n:
+                raise _error("truncated binary preparation")
+            return raw
+        def at(items,i):
+            if type(i) is not int or not 0<=i<len(items):
+                raise _error("invalid preparation dictionary index")
+            return items[i]
+        start=json.loads(account(stream.readline(MAX_LINE+1)))
+        if (type(start) is not list or len(start)!=3 or start[0] not in (SCHEMA,SCHEMA_V1)
+                or start[1]!=key or type(start[2]) is not int or start[2]<1):
             raise _error("preparation schema/binding mismatch")
         count=start[2]
         while True:
-            row=read()
+            lead=account(stream.read(1))
+            if lead==b"H" and start[0]==SCHEMA:
+                if len(headers)>=count:
+                    raise _error("preparation census overflow")
+                event,occ,group,p,u,respondent,r,s,o,n=_BINARY_HEADER.unpack(exact(_BINARY_HEADER.size))
+                deps=tuple(at(refs,i) for i, in struct.iter_unpack("<I",exact(4*n)))
+                headers.append(_CountryEventHeader(event,occ,at(payloads,p),
+                    at(refs,u),at(refs,respondent),deps,group,(r,s,o)))
+                continue
+            row=None if not lead else json.loads(lead+account(stream.readline(MAX_LINE)))
             if type(row) is not list or not row:
                 raise _error("truncated preparation")
             if row[0]=="end":
-                if row!=["end",count] or len(headers)!=count or read() is not None:
+                if row!=["end",count] or len(headers)!=count or account(stream.read(1)):
                     raise _error("preparation census mismatch")
                 return tuple(headers)
             if row[0]=="r" and len(row)==4:
@@ -155,10 +192,6 @@ def _decode_headers(data,key):
                     *(_freeze_semantic_descendants(x) for x in p[5:])))
             elif row[0]=="h" and len(row)==9 and len(headers)<count:
                 _,event,occ,group,p,u,respondent,deps,coords=row
-                def at(items,i):
-                    if type(i) is not int or not 0<=i<len(items):
-                        raise _error("invalid preparation dictionary index")
-                    return items[i]
                 identity=bytes.fromhex(event) if type(event) is str else tuple(event)
                 if type(identity) is bytes and len(identity)!=32:
                     raise _error("invalid event digest")
