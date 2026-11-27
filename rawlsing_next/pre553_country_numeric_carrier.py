@@ -1300,7 +1300,7 @@ class CountryWorkloadSession:
             raise CountryCarrierError("query preparation repository drift")
         if self._query_scope is None:
             from .pre553_empirical_query import I03GroupedExecutionScope
-            self._query_scope=I03GroupedExecutionScope()
+            self._query_scope=I03GroupedExecutionScope(rolling_groups=True)
         return self._query_scope
 
     def _repository(self,source,projection,authorities):
