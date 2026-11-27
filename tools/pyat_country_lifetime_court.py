@@ -10,7 +10,7 @@ from pathlib import Path
 from statistics import median
 from unittest.mock import patch
 
-BASE="30d014b5b8ea8d51526dfcc7acb51cd7e9ba9589"
+BASE="52723ef25c5b9bf757aa8daf1925b2a3591be6c3"
 
 def worker(root,mode,report):
     from tools.pyat_country_preparation_court import read,write,geometry,target_domains
@@ -53,6 +53,8 @@ def worker(root,mode,report):
     kwargs=dict(require_current=lambda:True,preparation_path=prepared)
     if "reuse_query_preparation" in inspect.signature(carrier.CountryWorkloadSession).parameters:
         kwargs["reuse_query_preparation"]=True
+    if "omit_preparation_group_plane" in inspect.signature(carrier.CountryWorkloadSession).parameters:
+        kwargs["omit_preparation_group_plane"]=True
     if mode=="restore":
         from rawlsing_next._pre553_country_preparation import CountryPreparationPin
         kwargs["preparation_pin"]=CountryPreparationPin(**read(report.parent/"pin.json"))
