@@ -339,7 +339,7 @@ class _RoutingColumnBuilder:
             if use_runs:
                 return (blob,offsets,_routing_le(runs),b"R")
             if width==1:
-                return (blob,offsets,bytes(self.codes),b"B")
+                return (blob,offsets,bytes(array("B",self.codes)),b"B")
             if width==2:
                 return (blob,offsets,_routing_le(array("H",self.codes)),b"S")
             return (blob,offsets,_routing_le(self.codes))
@@ -366,7 +366,7 @@ def _compact_direct_routing_column(blob,offsets):
     if n:
         for lo,hi in zip(offsets,offsets[1:]):
             if (hi-lo<start+64+2 or blob[lo:lo+start]!=_REF_WIRE_PREFIX
-                    or blob[lo+start+64:lo+start+66]!=b'","'):
+                    or blob[lo+start+64:lo+start+67]!=b'","'):
                 prefix=None;break
             text=blob[lo+start:lo+start+64]
             try:digest=bytes.fromhex(text.decode("ascii"))
@@ -411,7 +411,7 @@ def _routing_column_value(column,row):
     return value
 
 
-@lru_cache(maxsize=4096)
+@lru_cache(maxsize=1024)
 def _routing_selector_template(raw):
     """Pure canonical-byte decoding; not a cache of authority decisions."""
     from rawlsing_next._pre553_c11_execution_view import _ref_identity
@@ -671,7 +671,7 @@ class _PackedRoutingFacts(Sequence):
                   value("member_set_replay_ref"),top("authority_snapshot_refs"))
         # Shared semantics are still decoded from the exact selected row.
         # Cache only small immutable parser inputs, not respondent evidence.
-        if sum(map(len,material))<=8192:
+        if sum(map(len,material))<=4096:
             template=_routing_selector_template(material)
         else:
             template=_routing_selector_template.__wrapped__(material)
