@@ -484,6 +484,109 @@ F3 normalized-enrichment remains a candidate, now sharpened by actual inherited 
 
 **Governance and evidence:** PRE-MAIN live 827714e83743056939894a39736d72ea16bdc6dd rev23; #1327 parent b408c4b7f103bac29a021c1c7e1ada3450479d63, #1342 R24 candidate 1cffe72f6c3aaf0a3fc6c8326fbdec5d1dd07b22. Canonical OATH, G4 first-look, four tables 782/150/62/82, S01/S04/S06, paired rev23, open #960/#1097 consulted. No code/production records, population analyses, native grant, regression suite or protected receiving. Proposed existing PP26-03/13/15/17/18/19/21, S01/S04/S06/S10 and paired R24 receipt: actual inherited serializer and frozen binding recovery, specific already-corrected historical labels and scoped blocks, response/projection/query/result distinctions and concrete crosswalk recipes. No new obligations or status promotion, no P0 diversion. HQ_CURRENTNESS_HOLD on original packet/option body and full default authority, native risk/form/design/rights, current issuer/receiver and distinct review/protected receiving. Preserve this provisional work in PRELIMINARIES, not a competing authority registry.
 
+
+### 5-H. ArabBar1 laboratory round 3 — constructed representations and executed metadata loss court (2026-11-26)
+
+**Aim:** actually compare representations, not add another taxonomy. The user has selected ArabBar1 as the methodological laboratory. G6's four selected batteries form the primary case; Afro9 and Arab8 are limited portability pressure cases, not harmonized data. The laboratory does not issue native authority or replace any existing QSM/QRA/response-contract/source or empirical machinery.
+
+#### H1. Execution and exact source
+
+Local container available this turn (unlike G2). Actual Python read of user-held archive `Rawlsing 35 waves of savs & dtas.zip`; no SAV case stream or respondent records read. Derived CSV members:
+- Arab Barometer Wave 1 codebook.csv, SHA256 8ad1af17b782d1ff3beb84c2d2331977195ac3bb48dbcc94a94a08ca725b288f: q2131–5, q2471–6, q248withoutpalestine, q248donlypalestine, q249withoutpalestine, q249onlypalestine, q2501/2, q2311/2 (19).
+- Afrobarometer Round 9 codebook.csv, ed3a72796825cc905976da503426d5ce238f6a872bc8018c2a2cc4f832aa3c6c: Q43A–E (5).
+- Arab Barometer Wave 8 codebook.csv, 6f5fbf0676c1cd2df85a8cee602f9bf02f3031aa8cb310f41ab066209652a0ba: Q601_3/Q630/Q631 (3).
+
+Executed local `field_authority_round3_lab.py` (SHA256 7336d27b54b6c9e545c16ec8e34388e6ac1b674b86e8b03a56c26f31cc6b9cc9). Private user deliverables: `field_authority_round3_private_prototype.json` SHA256 5a25c86f818f78b38a382ed782538f23de8248a9cdf6e792e1aee628d72c533c; `field_authority_round3_metadata_receipt.json` SHA256 2d1d301dfc3630f487842d941823163a748be5892d495bcb620818f06f41ee38. These include exact derived labels in the prototype and are supplied privately, not deposited as public raw data. Script/receipts are not a protected runtime or independent execution. Source text, exact original option packet, source rights, country form and native route/eligibility still held. The private script can be rerun with positional archive and output-directory arguments; the default is the mounted lab archive and /mnt/data. This section conserves the substantive result and the complete recipe of the comparison even if the local attachment ceases to be accessible.
+
+Reopened historical QSM applied blob 99dedf0da459f18b1ac0d112837671a19a12de67 at 25830fe7462bb9e29bc4087e6ae14f3f84cec377. Actual rows for all 27 selected codes at exact historical scopes YE (AB1), SZ (AF9), LB (AB8), read in this turn. Private prototype links exact row key (family/wave from source identity, country scope and variable code) and artifact blob, not a replacement authority. Positive/negative inherited statuses below retain their exact scope. No country applicability is inferred from historical YE/LB/SZ rows. No new independent position role issued.
+
+#### H2. Three actual representations compared
+
+The same observed metadata content in all three arms: source member/hash, exact physical source+item, derived question label, exact code→label map, ordered lists of codes in source-derived substantive and special buckets. Option lists were parsed from all/substantive/special columns; each source item was checked for disjoint bucket keys and exact union of maps. This is a comparison of a bounded metadata payload, not the size of a complete FIELD-AUTHORITY resource or database.
+
+| Representation | Canonical UTF-8 JSON bytes | Result |
+|---|---:|---|
+| Flat: full exact option domain repeated per item | 10,452 | Reference representation |
+| Normalized: domain dictionary keyed by full SHA256, item holds hash | 10,303 | Exact roundtrip; 1.43% smaller |
+| Normalized: same exact dictionary, short local IDs d01–d14 | 7,802 | Exact roundtrip; 25.35% smaller |
+
+27 items, 205 option occurrences, 14 exact distinct domains, 104 option entries in the domain dictionary (49.27% fewer stored option entries). Canonical serialization: Python json.dumps(ensure_ascii=False, separators=(',',':'), sort_keys=True). SHA256 of flat payload d077f3e68cdc52745859295327f23169d788bc1571b3fd2945eb96028caf86b1; full-hash normalized payload 37b91dc4629a70a3ee27e64028d063f192708ee9321e7fc2cb47a6ba26657e1c. Bytes measured before adding candidate views, dependencies, inquiry recipes and historical pointers. No storage or runtime benchmark; compression, indexes, update burden and cross-release migration not measured. Do not extrapolate the savings to all35.
+
+**Actual implementation of the comparison:** for each source record, form the domain object {options: exact map, substantive: ordered code list, special: ordered code list}; digest its canonical bytes, intern the exact object into dictionary, replace only those three fields with a reference. Expand by copying the item fields and joining its domain object; assert exact equality of every item and source metadata record against the flat reference. In short-ID arm, assign d01..d14 by sorted digest order of the local fixture and remap references; assert the same equality. The short IDs are only local pointers to exact domain objects, NOT stable cross-release IDs, source identity or the certified response_semantics_contract_hash. A change in dictionary membership can change short IDs; no ID is meaningful outside its versioned carrier. Preserve distinct frozen V550/V551 contract identity in existing authority; numerical or display equivalence does not authorize merging it. A flat materialized view may be convenient for LLM review; normalized storage and denormalized consumption are not mutually exclusive.
+
+Executed six negative domain substitution checks, each detected by inequality against actual reference: Palestine/non-Palestine choice; first/second non-Palestine special code difference; q2501/2 code100 difference; q2133/q2474; q2134/Afro Q43B; AB8 Q601_3/Q630. Four positive shared-domain but different-question checks: q2131/q2135, q2474/q2475, q2311/q2312, Q43C/Q43E. Three exact label/code assertions: nonattempt, explicit responsibility denial, q2502-only code100. 27 candidate view partitions checked for no dropped or duplicate code; seven dependency records and five inquiry-reference sets checked for local item-reference existence. Both roundtrips passed. The partition and link checks test representation only, not the truth of proposed semantics or route rules. Actual code ran locally; no production regression suite or native query executed.
+
+#### H3. What the actual battery construction looks like
+
+The following is a durable compact projection of the private prototype. Codes and source-derived buckets are conserved; paraphrased option meanings are not a new certified map. These 14 domains are *exact within the three derived CSVs*; domain identity is local only. Source label maps stay in source authorities, not reproduced wholesale here.
+
+| Local domain | Item membership | Ordered substantive codes | Ordered special codes | Meaning-bearing difference |
+|---|---|---|---|---|
+| d14 | AB1 q2131–5 | 1,2,3,4 | 5,98,99 | 5 nonattempt, an informative reported state outside difficulty rating |
+| d01 | AB1 q2471–6 | 1,2,3,4,5 | 97,98,99 | 5 explicit responsibility denial, not fifth performance level |
+| d05 | AB1 q248withoutpalestine | 1–6 | 97,98,99,100 | 4 Iraq occupation, 5 Arab–Israeli conflict; first rank |
+| d13 | AB1 q248donlypalestine, q249onlypalestine | 1–6 | 99,100 | 4 occupation, 5 security chaos; identical list, different rank |
+| d07 | AB1 q249withoutpalestine | 1–6 | 98,99,100 | second rank; no 97 in this dictionary |
+| d08 | AB1 q2501 | 1–4 | 98,99 | first-ranked problem expectation |
+| d04 | AB1 q2502 | 1–4 | 98,99,100 | second-ranked problem expectation |
+| d03 | AB1 q2311/2 | 1–5 | 97,98,99,100 | same option set, first/second preference |
+| d12 | AF9 Q43A | 0,1 | -1,8,9 | requested assistance; yes/no report |
+| d06 | AF9 Q43B | 1–4 | -1,7,8,9 | difficulty of needed assistance; 7 not applicable |
+| d11 | AF9 Q43C/D/E | 0–3 | -1,7,8,9 | equal frequency lists but distinct acts/ends |
+| d10 | AB8 Q601_3 | 1–4 | 98,99 | own comparative judgment |
+| d02 | AB8 Q630 | 1–5 | 98,99 | intervals of believed other-citizen agreement |
+| d09 | AB8 Q631 | 1–4 | 98,99 | believed extent of efficacy |
+
+No assumption that source-derived substantive/special is itself a lawful operational policy. d14's code5 is in the derived special bucket but empirically important; d01's code5 is substantive but not a performance rating. Both original buckets and separately defined inquiry-specific views survive. Source-defined numeric order is not permission to assign a psychological distance.
+
+**Exact inherited distinctions kept on individual items** (QSM historical YE/SZ/LB scopes): q2131–5 same bureaucratic_service_access axis, five separate targets identity_document, education_system, health_care_system, police, rights_violation_complaint_official. q2471 government_economic_management_performance→working_of_the_economy; q2472 government_service_performance→employment_opportunity_creation; q2473 redistributive_performance→class_differences; q2474/5 government_service_performance→health_care_system/education_system; q2476 state_problem_solving_capacity→deteriorating_moral_values. Do not promote those axis strings into a shared battery ontology. q248/q249 and q231 pairs all non-directional; q2501/2 governed state_problem_solving_capacity with distinct first-/second-ranked problem targets. Afro Q43B governed needed_assistance_access_ease→needed_assistance, others non-directional; Arab8 Q601_3 male_political_leadership_superiority_norm→women, Q631 women_leadership_rights_advancement→women, Q630 non-directional. Exact source identity and original status govern permissible operation. No historical permission rewritten.
+
+The private prototype uses the following small machine-readable pattern (example with source label map represented by reference rather than reprinting):
+```json
+{
+  "item": "AB1/q2474",
+  "domain": "d01",
+  "inherited_lookup": {
+    "artifact_blob": "99dedf0da459f18b1ac0d112837671a19a12de67",
+    "country_scope": "YE",
+    "var_code": "q2474"
+  },
+  "candidate_views": {
+    "graded_performance": ["1","2","3","4"],
+    "explicit_responsibility_denial": ["5"],
+    "unresolved": ["97","98","99"]
+  }
+}
+```
+The corresponding q2133 uses d14, graded_difficulty 1..4, reported_nonattempt 5, unresolved 98/99. The prototype preserves the raw domain AND partitions it for a selected question; a partition is not a new universal encoding. If inquiry wants all exact answers it must return them, not merely the partition labels.
+
+**Dependent referents:** q2501 has rank1 and alternative selectors q248withoutpalestine/q248donlypalestine; q2502 rank2 and q249withoutpalestine/q249onlypalestine. Form/route status HELD. q2312 links preceding q2311, duplicate/selection rule HELD; an observed repeated answer is not silently rejected. A hypothetical resolver must return an unbound state if form/previous choice is absent or unresolved. No code resolver or native rule implemented. Option6 other is a meaningful selected category but its specific target remains unelaborated. Generic likelihood is not converted to target-specific evidence from a label alone.
+
+#### H4. Cross-wave portability pressure cases
+
+Afro9 Q43C, Q43D and Q43E share *exact* derived response domains; their propositions differ: exchange for assistance, frequency of other police encounters, exchange to avoid adverse consequences. No shared attitude score. Q43B's 7 is not applicable; AB1 q2134's 5 is never tried. The response domain and the underlying source event/route are distinct. Q43A is candidate predecessor of B/C, Q43D of E, but native routing not certified. The proposed grammar preserves distinct report modes and explicit not-applicable state rather than assuming it means never. Native source law must still settle eligibility.
+
+AB8 Q630 references the proposition in Q601_3, but **not the respondent's answer to Q601_3**. This is different from q2501 whose concrete referent depends on the actual earlier answer. Q630 has a reference population and interval answer, q631 an efficacy attribution, Q601_3 a comparative judgment. This pressure case forces two different link meanings: proposition reference vs answer binding. No implied common scale. The first 27-item prototype supports both as data; it has not established a general compositional relation language. Do not require every link to be executable or classify all possible link types in advance.
+
+#### H5. The first structured inquiry recipes
+
+Five actual candidate inquiry records in the private prototype, with exact selected item refs, outputs, and held scope:
+- AB1 q2133×q2474: graded difficulty × performance in qualified raters, explicit denial by access state, nonattempt/unresolved retained; possible q703/q704 independent conditions subject to issuer.
+- AB1 q248 form alternatives × q2501: selected problem × expectation within exact form; pooled first-priority likelihood is a separate weaker question.
+- AB1 q2311×q2312: ordered priority pair; retain actual repeated selections pending native rule.
+- AF9 Q43A–E: distinct assistance/other encounter and exchange states, never versus N/A.
+- AB8 Q601_3×Q630×Q631: comparative judgment × believed others' agreement × attributed efficacy.
+
+They are concrete inputs for a prospective catalog author and the existing R14–16 / I03 / I05 / S04 machinery, NOT actual issued queries. The candidate item refs are not typed catalog refs. Selection should bind exact source, admitted roles, response view, risk and estimand; only the existing competent issuer can produce an executable query. No new statistical algorithm. An analytical question must not be equated with a discovered relationship or an interpretation of a person.
+
+#### H6. Decision from this round and next discriminating work
+
+The earlier normalized-enrichment direction now has a bounded executed positive and several actual negative cases. Keep **separate source identity, shared exact display/domain, independently governed response/projection identity, use-specific views, and sparse relationship/inquiry records**. Keep local compact references and immutable exact authority references distinct. Do not force a single representation for storage and semantic authoring. The private prototype is concrete exploratory material, not selected final schema. This comparison measures information conservation and small-payload size, not user review cost or final scientific utility. We must not choose a normalized database simply because it saved 2,650 bytes on a selected fixture.
+
+Most valuable next laboratory question is no longer whether domain normalization is feasible, but **what precisely must be authored for an inquiry to be valuable**, and how to economize LLM labor. Select a different full battery with overlapping/compound propositions and a structural position family (e.g. q401–402 and q704–710); compare flat prose authoring against a sparse relation/inquiry layer, preserving the complete source and existing authority. Ask a concrete discriminating empirical question with alternative explanations, rank what a qualified query could tell us, and identify which distinctions change the actual question or lawful receiver. Challenge using actual matched-person configurations only privately; no publication. The resource must allow unexpected empirical discoveries outside authored crosswalks. We still need an actual source/role/issuer join, actual first reader and native empirical test before production selection; those belong to the existing owners. Do not wait for a universal semantic ontology before making further worked cases. Do not redo historical inventory. No all35 campaign selected.
+
+**Exact governance:** PRE-MAIN 827714e83743056939894a39736d72ea16bdc6dd rev23; #1327 parent 913310056e1e96d39fae0d26921752b259f87530; #1342 R24 candidate initially 8ceb9d3a7b5aedfa46a3ef73086e6afd4be694ae. OATH, protected first-look/four G4 tables 782/150/62/82, S01/S04/S06 and paired rev23 plus open #960/#1097 consulted. Existing PP26-03/13/15/17/18/19/21 and S01/S04/S06/S10 and paired R24 receipt proposed at exploratory metadata-construction grade only. HQ_CURRENTNESS_HOLD on original option packet/full historical default authority, exact native form/risk/design/rights, qualified issuer/reader, independent review and protected receiving. No production code/authority, respondent analysis, scientific grant or P0 diversion. Prior sections remain historical exact records; this section is the latest laboratory decision.
+
 ## 6. What to develop BEFORE the authority resource is created
 
 This is the work programme for the preliminary phase. Outputs are reasoning, evidence-linked examples, competing candidate formulations and explicit unresolved questions **inside this campaign space**. Do not generate a populated registry, mass candidate labels, new schema/production code, classification dataset, automated classifier or synthetic world, even if a few examples appear easy. Read existing populated resources and inspect their structure, coverage and selected decisions as evidence, not as permission to extend them now. A few carefully reasoned example judgments are permitted as nonbinding thought experiments, clearly distinct from issued rows. No bulk coding pilot disguised as preliminary work.
