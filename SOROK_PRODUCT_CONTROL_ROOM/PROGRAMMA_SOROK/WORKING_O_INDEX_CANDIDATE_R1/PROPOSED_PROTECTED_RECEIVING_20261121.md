@@ -504,3 +504,44 @@ JSON additive proposed field `sorok_g4_r34_r18_bank_candidate`:
 MD: #1371 exact 646f5745910a2196fad358c5f57b7320df52a394 L937 owner-recorded user-confirmed coordination mandate, G4 existing functional accounting, CO HQ theoretical consequence/scope, no new engineering owner or universal gate. Protected PRE-MAIN unchanged; R34/R18 proposal remains candidate. Ledger de9c73fd1b388f8b1f6f96e47ee4d5d44b831426; CIC 98e6295e73f7b88018756e2a009b4f747165ebf7.
 
 JSON proposed additive field `sorok_g4_co_coordination_candidate`: `{"protected_parent":"827714e83743056939894a39736d72ea16bdc6dd","head":"646f5745910a2196fad358c5f57b7320df52a394","pr":1371,"line":937,"ledger_blob":"de9c73fd1b388f8b1f6f96e47ee4d5d44b831426","cic_blob":"98e6295e73f7b88018756e2a009b4f747165ebf7","status":"PROPOSED_ONLY_HQ_CURRENTNESS_HOLD","new_authority":false,"owner_incorporation":"NOT_VERIFIED","protected_receiving":"NOT_RECEIVED"}`.
+
+
+## 2026-11-27 — constructive realization first tranche matching proposed pair
+
+MD: Protected pair unchanged. Existing CIC adds six provisional scoped construction judgments, five partial clusters; remaining 181 criteria/53 clusters unexamined on this dimension. R57 exact direct job 140614403169 722/mode; bounded expressive-self-reception/affective recruitment first draft, parent criteria partial; full O-Index intake pending. R34 exact joined sourcefree criterion NEIGHBOR-CIC-024.01 integrated first draft; no whole cluster, independent, scientific, native or protected acceptance. Candidate CIC e469bf36ffec4c1d45aed5e17b0c84bd09259096. Competent PROGRAMMA owner retains receiving. No aggregate completion percentage.
+
+JSON proposed additive field `sorok_g4_constructive_realization_candidate`:
+```json
+{
+  "protected_parent": "827714e83743056939894a39736d72ea16bdc6dd",
+  "protected_md_blob": "a565e6239ee730bf8aae796d1c5afb35207b1e93",
+  "protected_json_blob": "f2081d41452a5fb5d7061fcf340af725e4ee07af",
+  "status": "PROPOSED_ONLY_HQ_CURRENTNESS_HOLD",
+  "cic_blob": "e469bf36ffec4c1d45aed5e17b0c84bd09259096",
+  "ledger_blob": "de9c73fd1b388f8b1f6f96e47ee4d5d44b831426",
+  "criteria": 187,
+  "clusters": 58,
+  "assessed_criteria": 6,
+  "assessed_clusters": 5,
+  "unexamined_criteria": 181,
+  "unexamined_clusters": 53,
+  "r57": {
+    "head": "87831a61c3b06786ad5bc0ae32282412ae03d9e0",
+    "pr": 1399,
+    "job": 140614403169,
+    "normal": 722,
+    "optimized": 722,
+    "bounded_operation": "FIRST_DRAFT_IMPLEMENTED",
+    "parent_criteria": "PARTIAL_CONSTRUCTION",
+    "ordinary_o_index_intake": "PENDING"
+  },
+  "r34": {
+    "head": "5c8fc6fbb0d8c6f9697e474894d58d2f438fe3a4",
+    "criterion": "NEIGHBOR-CIC-024.01",
+    "status": "INTEGRATED_FIRST_DRAFT_AT_EXACT_SOURCEFREE_CUT"
+  },
+  "review": "UNCHANGED_HELD",
+  "owner_incorporation": "NOT_VERIFIED",
+  "protected_receiving": "NOT_RECEIVED"
+}
+```

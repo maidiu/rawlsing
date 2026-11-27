@@ -1,5 +1,9 @@
 # SOROK PROGRAMMA — O-INDEX LIVE RECEIVING START_HERE
 
+## Constructive realization — builder first consultation (2026-11-27)
+
+[Existing CIC constructive realization](CONSTITUTIVE_IMPLEMENTATION_COVERAGE_R1.md#constructive-realization--first-consultation-2026-11-27) now separates bounded operative first drafts, criterion realization and whole constitutive obligations from evidence/validation/authority. First scoped intake: six criteria and five clusters; remaining unexamined, not absent. R57 exact 722/mode self-expression-to-affective-recruitment witness, parent criteria partial; R34 exact joined encounter first draft. Full R57 O-Index intake still pending. CO HQ coordinates theoretical consequence, existing G4 owns accounting, builders own construction; no new gate or percentage. Use whole-HOME comparison and point-of-use feedback to select work.
+
 ## Latest point-of-use intake — 2026-11-27
 
 [R55/R56 acquired attention, novel objects and exact bank validation](#2026-11-27--r55r56-acquired-attention-novel-objects-and-exact-bank-validation). 184 observations; latest CO R56, separate NEIGHBOR R33. Bank-specific execution now established at 45e659c6.
