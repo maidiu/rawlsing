@@ -4,7 +4,7 @@
 
 **Shared ref:** `coordination/sorok-pm` in `maidiu/rawlsing`. Read from this moving ref (resolve exact head); do not assume the directory exists in your own construction branch or PRE-MAIN. Do not merge construction branches into this ref. Only coordination documents belong here. The protected base is not changed.
 
-Start with [MANDATE](MANDATE.md), [CURRENT_ROUND](CURRENT_ROUND.md), and your lane. The first round is R001.
+New SOROK-PM successor: enter through [00_START_HERE — economical accession and continuity](00_START_HERE.md). Workers should start with [MANDATE](MANDATE.md), [CURRENT_ROUND](CURRENT_ROUND.md), and your lane. The first round is R001.
 
 - [CO-HQ](CO-HQ/README.md)
 - [CO-MULCHINEER](CO-MULCHINEER/README.md)
