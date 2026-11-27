@@ -241,15 +241,25 @@ def worker(root,mode,counts,report):
                 try:fn(candidate,registry)
                 except (ValueError,TypeError):pass
                 else:raise AssertionError("routing corruption accepted by "+fn.__name__)
-        # Both malformed and stale row cases must refuse in either sort order.
+        # Deliberately place the valid same-template representative first:
+        # malformed incidence must refuse even AFTER shared closure succeeds.
+        def after_representative(doc):
+            initial=lane([first]).row_ref(0).content_hash
+            # Alter only a varying replay locator, not the shared rule.
+            for i in range(4096):
+                test=copy.deepcopy(doc)
+                test["producer_replay_locator_or_reference_root"]="r17-negative-"+str(i)
+                if lane([test]).row_ref(0).content_hash>initial:
+                    return lane([first,test])
+            # Extreme digest ordering must not silently skip a negative.
+            raise AssertionError("could not order negative after representative")
         changed=copy.deepcopy(first)
         changed["semantic_fields"]["scoped_respondent_ref"]={"kind":"wrong"}
-        malformed=lane([first,changed])
-        refuses(malformed)
+        refuses(after_representative(changed))
         refuses(lane([first,first],stale=True))
         changed=copy.deepcopy(first)
         changed["dependency_refs"]=[{"kind":"wrong"}]
-        refuses(lane([first,changed]))
+        refuses(after_representative(changed))
         changed=copy.deepcopy(first)
         changed["producer_replay_locator_or_reference_root"]=""
         refuses(lane([first,changed]))
@@ -264,6 +274,42 @@ def worker(root,mode,counts,report):
         assert original_routes(lane([unusual]),registry)["materialized"]==1
         routing_comparison["incidence_and_nested_negative_controls"]=5
         routing_comparison["unusual_shape_fallback"]=True
+        # Real scope refs, explicit selected rows, mixed typed administration
+        # states and nonempty dependencies/parent predicates. The producer
+        # must not turn missing/unknown into eligible or invent complement
+        # rows. This is representation parity, not questionnaire adjudication.
+        from rawlsing_next.pre553_empirical_objects import RoutingEligibilityFact,exact_ref
+        people=[]
+        for fact in routes:
+            ref=exact_ref(fact.scoped_respondent_ref)
+            if ref not in people:people.append(ref)
+            if len(people)==4:break
+        assert len(people)==4
+        fields=first["semantic_fields"]
+        parent=exact_ref(fields["member_set_replay_ref"])
+        expected=[]
+        rule_runs=[]
+        for k,state in enumerate(("ELIGIBLE_APPLICABLE","NOT_ASKED","ROUTING_UNKNOWN","NOT_ELIGIBLE")):
+            selected=(people[k],people[(k+2)%4])
+            def make(person,replay):
+                return RoutingEligibilityFact(typed_state=state,
+                    authority_snapshot_refs=first["authority_snapshot_refs"],
+                    dependency_refs=(person,parent),
+                    producer_replay_locator_or_reference_root=replay,
+                    **{**fields,"scoped_respondent_ref":person,"routing_state":state,
+                       "applicability_state":state,"parent_predicate_refs":(parent,)})
+            incidences=tuple((person,(person,parent),"r17-replay-"+str(k)+"-"+str(j))
+                             for j,person in enumerate(selected))
+            expected.extend(make(person,replay) for person,_,replay in incidences)
+            rule_runs.append((make(incidences[0][0],incidences[0][2]),incidences))
+        compiled=_PackedRoutingFacts.from_rule_incidence(rule_runs)
+        legacy=_PackedRoutingFacts(expected)
+        assert tuple(compiled.canonical_rows())==tuple(legacy.canonical_rows())
+        assert len(compiled)==8
+        compiled_sorted=_SortedPackedRoutingFacts.build(compiled)
+        assert original_routes(compiled_sorted,registry)["materialized"]==4
+        ingest._validate_packed_routing_expanded(compiled_sorted,registry)
+        routing_comparison["explicit_incidence_mixed_states_exact"]=True
         return original_routes(routes,registry)
     def compare_wire(data,key):
         nonlocal wire_comparison
