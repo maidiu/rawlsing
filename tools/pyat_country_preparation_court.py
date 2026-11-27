@@ -172,7 +172,103 @@ def worker(root,mode,counts,report):
     from rawlsing_next import pre553_c11_ingest as ingest
     from rawlsing_next import pre553_c11_integrity as integrity
     from rawlsing_next import _pre553_country_preparation as preparation
-    phases={}; occurrence_comparison=None
+    phases={}; occurrence_comparison=None; wire_comparison=None; routing_comparison=None
+    original_routes=ingest._validate_packed_routing_authorities
+    def compare_routes(routes,registry):
+        nonlocal routing_comparison
+        if mode!="compare":
+            return original_routes(routes,registry)
+        def incumbent():
+            for obj in routes:
+                ingest.validate_public_carrier_object(obj,registry)
+                for ref in ingest._walk_authority_refs(obj.semantic_fields):
+                    registry.resolve_exact(ref)
+        times={"incumbent":[],"fresh_constructor":[]}
+        for order in (("incumbent","fresh_constructor"),("fresh_constructor","incumbent")):
+            for kind in order:
+                t=time.monotonic()
+                if kind=="incumbent":incumbent()
+                else:original_routes(routes,registry)
+                times[kind].append(time.monotonic()-t)
+        routing_comparison={"rows":len(routes),"both_accepted":True,
+            "seconds":times,"median_seconds":{k:median(v) for k,v in times.items()}}
+        # Same freshly materialized bodies still need authority resolution.
+        from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
+        from rawlsing_next.pre553_c11_integrity import C11IntegrityError
+        class Refuse:
+            def resolve_exact(self,ref):
+                raise Pre553AuthorityError("intentional unresolved routing authority")
+        for fn in (lambda:original_routes(routes,Refuse()),):
+            try:fn()
+            except (Pre553AuthorityError,C11IntegrityError):pass
+            else:raise AssertionError("routing authority refusal escaped")
+        routing_comparison["unresolved_authority_refused"]=True
+        return original_routes(routes,registry)
+    def compare_wire(data,key):
+        nonlocal wire_comparison
+        headers=original_decode(data,key)
+        if mode!="compare":
+            return headers
+        # Same authenticated header population, same gzip implementation and
+        # compression level; only the row representation changes. Alternate
+        # order and separate this from primary end-to-end timing.
+        from io import BytesIO
+        import gzip
+        from rawlsing_next.pre553_empirical_objects import canonical_json
+        timings={k:{"encode":[],"decode":[],"bytes":[]} for k in ("json","binary")}
+        def exact_headers(left,right):
+            assert len(left)==len(right)
+            for a,b in zip(left,right):
+                assert (a.event_identity,a.occurrence_identity,a.group_identity,
+                        a.empirical_universe_ref,a.scoped_respondent_ref,
+                        a.dependency_refs,a.source_coordinates)==(
+                        b.event_identity,b.occurrence_identity,b.group_identity,
+                        b.empirical_universe_ref,b.scoped_respondent_ref,
+                        b.dependency_refs,b.source_coordinates)
+                assert canonical_json(a.payload)==canonical_json(b.payload)
+        for order in (("json","binary"),("binary","json")):
+            for kind in order:
+                out=BytesIO();t=time.monotonic()
+                with gzip.GzipFile(fileobj=out,mode="wb",mtime=0,filename="") as gz:
+                    preparation._encode_headers(gz,headers,key,legacy=kind=="json")
+                wire=out.getvalue()
+                timings[kind]["encode"].append(time.monotonic()-t)
+                timings[kind]["bytes"].append(len(wire))
+                t=time.monotonic()
+                decoded=original_decode(wire,key)
+                timings[kind]["decode"].append(time.monotonic()-t)
+                exact_headers(headers,decoded)
+                del decoded,wire,out
+        assert max(timings["binary"]["bytes"])<min(timings["json"]["bytes"])
+        # Direct parser controls (no forged independent producer pin):
+        # authenticated-bytes test above is separate from format validation.
+        raw=BytesIO()
+        with gzip.GzipFile(fileobj=raw,mode="wb",mtime=0,filename="") as gz:
+            gz.write((canonical_json([preparation.SCHEMA,key,1])+"\n").encode())
+            gz.write(b"H"+b"\x00"*20)
+        try:original_decode(raw.getvalue(),key)
+        except carrier.CountryCarrierError:pass
+        else:raise AssertionError("truncated binary header accepted")
+        bad=BytesIO()
+        with gzip.GzipFile(fileobj=bad,mode="wb",mtime=0,filename="") as gz:
+            gz.write((canonical_json([preparation.SCHEMA,key,1])+"\n").encode())
+            gz.write(b"H"+preparation._BINARY_HEADER.pack(
+                b"a"*32,b"b"*32,b"c"*32,0,0,0,1,1,0,0))
+        try:original_decode(bad.getvalue(),key)
+        except carrier.CountryCarrierError:pass
+        else:raise AssertionError("unissued binary dictionary index accepted")
+        # Same producer's noncompact shape must stay available rather than
+        # truncating the locator into uint32 or inferring a digest spelling.
+        fallback=(replace(headers[0],source_coordinates=(2**32,1,0)),)
+        out=BytesIO()
+        with gzip.GzipFile(fileobj=out,mode="wb",mtime=0,filename="") as gz:
+            preparation._encode_headers(gz,fallback,key)
+        exact_headers(fallback,original_decode(out.getvalue(),key))
+        wire_comparison={"events":len(headers),"same_exact_headers":True,
+            "truncated_binary_refused":True,"invalid_dictionary_refused":True,
+            "wide_locator_fallback_exact":True,"arms":timings}
+        return headers
+    original_decode=preparation._decode_headers
     def instrument(owner,name,label):
         fn=getattr(owner,name)
         def timed(*args,**kw):
@@ -227,6 +323,9 @@ def worker(root,mode,counts,report):
                 (carrier._CountryPhysicalStream,"compact_events","compact_view")):
                 stack.enter_context(instrument(owner,name,label))
             stack.enter_context(patch.object(ingest,"ensure_distinct_event_occurrences",compared))
+            if mode=="compare":
+                stack.enter_context(patch.object(preparation,"_decode_headers",compare_wire))
+                stack.enter_context(patch.object(ingest,"_validate_packed_routing_authorities",compare_routes))
             result=original(*args,**kw)
         calls.append({"wall_s":time.monotonic()-start,"response_event_constructions":count})
         return result
@@ -279,7 +378,8 @@ def worker(root,mode,counts,report):
         write(root/"external-producer-pin.json",asdict(pin))
     write(report,{"mode":mode,"pid":os.getpid(),"issuance_seconds":issuance_seconds,
                   "preparation":calls[0],"investigations":result_rows,
-                  "inclusive_preparation_phases":phases,"occurrence_comparison":occurrence_comparison})
+                  "inclusive_preparation_phases":phases,"occurrence_comparison":occurrence_comparison,
+                  "wire_comparison":wire_comparison,"routing_comparison":routing_comparison})
 
 def supervise(root,command):
     start=time.monotonic();peak={};samples=0

@@ -53,7 +53,7 @@ from rawlsing_next.pre553_c11_integrity import (
     canonical_section_refs,
     ensure_distinct_event_occurrences,
     make_m01_m18_coverage,
-    validate_public_carrier_object,
+    validate_public_carrier_object, _validate_public_carrier_fields,
 )
 from rawlsing_next.pre553_c11_repository import (
     C11LogicalRelease, C11Repository, _make_validated_release,
@@ -656,6 +656,25 @@ class _CountryEventCollector:
         return self.finished
 
 
+def _validate_packed_routing_authorities(routes,registry):
+    """Consume exact packed rows through their incumbent constructor.
+
+    Each row is independently materialized from its full supplied canonical
+    body, content hash and ID. The constructor checks those exact identities.
+    No external object, detached prior authority or cached verdict is used.
+    Keep the carrier-specific field and all nested authority checks.
+    """
+    from rawlsing_next.pre553_source_backed_c11_facade import _SortedPackedRoutingFacts
+    if type(routes) is not _SortedPackedRoutingFacts:
+        raise C11IntegrityError("exact sorted packed routing owner required")
+    for obj in routes:
+        if type(obj) is not RoutingEligibilityFact:
+            raise C11IntegrityError("packed routing materialized wrong family")
+        _validate_public_carrier_fields(obj,registry)
+        for ref in _walk_authority_refs(obj.semantic_fields):
+            registry.resolve_exact(ref)
+
+
 def _validate_authorities(candidate: C11SourceReleaseCandidate, *, country_collector=None) -> AuthorityRegistry:
     try:
         for snapshot in candidate.authority_snapshots:
@@ -667,13 +686,18 @@ def _validate_authorities(candidate: C11SourceReleaseCandidate, *, country_colle
                 raise C11IntegrityError("country construction authority/header scope changed")
             # Both registries independently validate snapshot identities.
             # The collector used detached exact snapshot preimages.
+        from rawlsing_next.pre553_source_backed_c11_facade import _SortedPackedRoutingFacts
+        routes=candidate.routing_eligibility_facts_or_exact_rules
+        packed=country_collector is not None and type(routes) is _SortedPackedRoutingFacts
         objects=(_iter_public_objects(candidate) if country_collector is None
                  else chain(_iter_public_objects(candidate,include_events=False,include_routing=False),
-                            candidate.routing_eligibility_facts_or_exact_rules))
+                            () if packed else routes))
         for obj in objects:
             validate_public_carrier_object(obj, registry)
             for ref in _walk_authority_refs(obj.semantic_fields):
                 registry.resolve_exact(ref)
+        if packed:
+            _validate_packed_routing_authorities(routes,registry)
         for record in _iter_internal_records(candidate):
             for ref in _walk_authority_refs(record.semantic_projection()):
                 registry.resolve_exact(ref)
