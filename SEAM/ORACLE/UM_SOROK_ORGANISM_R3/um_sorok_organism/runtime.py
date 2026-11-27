@@ -710,6 +710,13 @@ class ConstitutiveRuntime:
                            selected_alternative.get('origin_orientation_ref')
                            if selected_alternative else None),
                        'material_object_not_automatically_owned_by_actor':True}
+            if action in ('ACCEPT_MEETING','MEET_VISITOR'):
+                if (trial_choice is not None or not selected_alternative
+                        or selected_alternative.get('binding_status')!='EXACT_CURRENT_HUMAN_MEETING_SIGN'
+                        or proposed.get('practical_option_id')!=selected_alternative['option_id']):
+                    raise ValueError('MEETING_REQUIRES_EXACT_ACTOR_SELECTED_OPTION')
+                practical['selected_meeting']={k:copy(selected_alternative[k]) for k in (
+                    'meeting_ref','meeting_source_user_event_ref','meeting_source_cue_ref')}
             if (selected_alternative and selected_alternative.get('selected_feeding_source')
                     and proposed.get('practical_option_id')==selected_alternative['option_id']
                     and trial_choice is None):
@@ -866,7 +873,7 @@ class ConstitutiveRuntime:
         # A caller never supplies another actor's response. The world owner
         # obtains it from the installed independently constituted actor policy.
         human_vocal = None
-        if (principal.action in ('SING','SIGNAL','REFUSE') and principal.target in
+        if (principal.action in ('SING','SIGNAL','REFUSE','ACCEPT_MEETING','MEET_VISITOR') and principal.target in
                 world.get('neighbor_users', {}) and requested_action is None):
             history = self.ledger.events()
             human_vocal = qualified_human_vocal_receipt(
@@ -968,7 +975,8 @@ class ConstitutiveRuntime:
             if (aid == actor_id and personally_done and human_vocal is not None
                     and (summary.get('human_vocal_event_ref') or
                          summary.get('human_food_offer_event_ref') or
-                         summary.get('human_food_offer_refused_event_ref')) == human_vocal['user_event_ref']
+                         summary.get('human_food_offer_refused_event_ref') or
+                         summary.get('human_meeting_event_ref')) == human_vocal['user_event_ref']
                     and personally_done['status'] == 'PERFORMED'):
                 # The human act was personally accessible immediately before
                 # the actor's own settlement, not an omniscient reconstruction.
@@ -1359,6 +1367,7 @@ class ConstitutiveRuntime:
         expression_access=copy(observed)
         expression_access.pop('performed_repair_technique_ref_analytic_only',None)
         if expression_access.get('own_practical_selection'):
+            expression_access['own_practical_selection'].pop('selected_meeting',None)
             expression_access['own_practical_selection'].pop('private_rehearsal',None)
             expression_access['own_practical_selection'].pop('undertaking_attention',None)
             expression_access['own_practical_selection'].pop('focal_encounter',None)

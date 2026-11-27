@@ -217,6 +217,9 @@ def qualified_human_vocal_receipt(world, actor, attempt, ledger_event):
     No caller-supplied future consent or other-actor Attempt is accepted.
     Adjacent turn coordination only, not simultaneous singing.
     """
+    if attempt.action in ('ACCEPT_MEETING','MEET_VISITOR'):
+        from .continuity_clock import qualified_meeting_receipt
+        return qualified_meeting_receipt(world,actor,attempt,ledger_event)
     human_operation = {'SING':'SING', 'SIGNAL':'OFFER_FEED', 'REFUSE':'OFFER_FEED'}.get(attempt.action)
     if (human_operation is None or attempt.intention !=
             'ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
@@ -411,6 +414,7 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     care_labor_receipt=None
     material_feeding_ref=None
     future_care_obligation_ref=None
+    actual_meeting_ref=None
     inspected_public_notice=None
     inspected_material_object=None
     worked_material_object=None
@@ -598,6 +602,9 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         members=_qualified_members(world['institutions']['hall_board'],'members','INVALID_INSTITUTION_MEMBERSHIP')
         if aid not in members:status='BLOCKED';output='NO_INSTITUTIONAL_AUTHORITY'
         else:world['sites']['hall']['access']='controlled';output='HALL_ACCESS_RESTRICTED'
+    elif attempt.action in ('ACCEPT_MEETING','MEET_VISITOR'):
+        from .continuity_clock import perform_meeting_action
+        status,output,actual_meeting_ref=perform_meeting_action(world,attempt,human_vocal)
     elif attempt.action=='PLEDGE_CARE':
         # The pledge is this actor's act, not the recipient's promise to
         # accept it, nor any claim that future care has already happened.
@@ -888,8 +895,9 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     else:output='ACT_COMPLETED'
     performed[0]['status']=status
     world['clock']+=1
-    from .continuity_clock import settle_human_offer_deadlines
+    from .continuity_clock import settle_human_offer_deadlines, settle_meeting_deadlines
     settle_human_offer_deadlines(world)
+    settle_meeting_deadlines(world)
     # A receipt may only identify a material claim if this action really
     # produced one; a blocked WORK attempt or a non-employer site does not.
     last_claim=world.get('material_claims',[])[-1] if world.get('material_claims') else None
@@ -916,6 +924,9 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                         inspected_material_object['id']
                         if inspected_material_object else None),
                    'co_present_not_verified_witnessing':True}
+    if actual_meeting_ref is not None:
+        event_summary['meeting_ref']=actual_meeting_ref
+        event_summary['human_meeting_event_ref']=human_vocal['user_event_ref']
     if human_vocal is not None and output == 'JOINT_ACTIVITY_PERFORMED':
         event_summary['human_food_offer_event_ref' if human_vocal.get('operation')=='OFFER_FEED'
                       else 'human_vocal_event_ref'] = human_vocal['user_event_ref']
