@@ -1619,6 +1619,28 @@ class NeighborEncounter:
                                 and cue.get('description') == CADENCES[cadence]
                                 and ('vocal_cadence:' + cadence.lower()) in cue.get('tags', [])):
                             text = CADENCES[cadence]
+                    lexical={}
+                    if (action=='SPEAK'
+                            and actual.get('utterance_grade')=='SOURCEFREE_REALIZED_LEXICAL_OCCURRENCE'
+                            and envelope.get('payload',{}).get('actor_selection_grade')
+                                =='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+                            and type(envelope['payload'].get('attempt',{}).get(
+                                'practical_selection',{}).get('prospective_speech_intent')) is str
+                            and actual.get('utterance_cue_ref')==cue['id']
+                            and cue.get('utterance_cue_ref')==cue['id']
+                            and cue.get('utterance_grade')==actual['utterance_grade']
+                            and type(cue.get('spoken_text')) is str
+                            and 0<len(cue['spoken_text'])<=500 and cue['spoken_text'].strip()
+                            and cue.get('utterance_text_hash')==actual.get('utterance_text_hash')
+                                ==digest(cue['spoken_text'])
+                            and all(historical_public.get(k)==actual.get(k) for k in
+                                    ('utterance_cue_ref','utterance_text_hash','utterance_grade'))):
+                        # Actual words, not a generated description or a
+                        # claim that the visitor understood/trusted them.
+                        lexical={'spoken_text':cue['spoken_text'],
+                            'lexical_content':'ACTUAL_REALIZED_WORDS',
+                            'utterance_claim_truth':'NOT_ESTABLISHED',
+                            'human_comprehension':'NOT_ESTABLISHED'}
                     mandatory.append({'kind': 'CO_PUBLIC_OCCURRENCE',
                         'text': text, 'modality': 'auditory',
                         'source_event_ref': last_event['id'],
@@ -1626,6 +1648,7 @@ class NeighborEncounter:
                         'source': 'EXISTING_CO_PUBLIC_WORLD_SIGN',
                         'speaker_identity': 'NOT_ESTABLISHED',
                         'lexical_content': 'NOT_CAPTURED_OR_RECONSTRUCTED',
+                        **lexical,
                         'interpretation': 'NONE'})
                 elif (visible_identity and cue.get('modality') == 'visual'
                         and action in movements):
@@ -1753,7 +1776,10 @@ class NeighborEncounter:
             particular_refusal = (type(actual) is dict
                 and actual.get('action')=='REFUSE'
                 and actual.get('human_food_offer_refused_event_ref') is not None)
-            if (not human_signal_attempt and not particular_refusal
+            lexical_attempt=(type(actual) is dict and actual.get('action')=='SPEAK'
+                and type(envelope.get('payload',{}).get('attempt',{}).get(
+                    'practical_selection',{}).get('prospective_speech_intent')) is str)
+            if (not human_signal_attempt and not particular_refusal and not lexical_attempt
                     and visible_identity and actor_location == loc
                     and at_clock == world['clock']
                     and last['id'] == receipt
