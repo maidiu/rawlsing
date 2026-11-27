@@ -87,13 +87,13 @@
     },
     "o_index": {
       "commit": "571a0284222d9d291f427da89419e305128fe98c",
-      "ledger_blob": "de9c73fd1b388f8b1f6f96e47ee4d5d44b831426",
+      "ledger_blob": "88201a2f2ff5db01d2aa21587b2efb76e1bf79a8",
       "registry_blob": "f530cf193cc0f8c3d93324b5e2b865a4efa3bd34",
       "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/LIVE_RECEIVING_LEDGER.json",
       "original_functions": 144,
-      "relationships": 639,
-      "pr_observations": 185,
-      "ledger_intake_parent": "20a3eb67547358a5935ceaccf995d1fba5340520"
+      "relationships": 655,
+      "pr_observations": 189,
+      "ledger_intake_parent": "16a11c0f07384da1c41514e556c27669b1cd80a3"
     },
     "sorokuda": {
       "commit": "9b8fcc86e3614f90f4be560004d77a181ad99d1c",
@@ -1170,7 +1170,12 @@
           "UNEXAMINED": 43,
           "PARTIAL_CONSTRUCTION": 15
         },
-        "scope": "Prior criterion status/review/authority retained. R58/R36 complement not joined; R20 captures R34, not R58/R36. R29/R30 correction via worker contestation."
+        "scope": "Prior criterion status/review/authority retained. R58/R36 complement not joined; R20 captures R34, not R58/R36. R29/R30 correction via worker contestation.",
+        "documentary_correction": {
+          "failed_commit": "16a11c0f07384da1c41514e556c27669b1cd80a3",
+          "job": 140714813087,
+          "reason": "LEDGER_DRIFT_HOLD; current ledger contract and related review receipt navigation omitted during initial intake. Corrected exact ledger blob/counts, paired evidence receipts and current #1378 pointers; historical R18 evidence retained. No status/review/authority promotion."
+        }
       }
     }
   },
@@ -6006,6 +6011,30 @@
                 },
                 "execution_sha": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
                 "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1407,
+                  "original_id": "C7"
+                },
+                "source_head": "8be51ece5456a13188e4ee6e42cf5ed7e8d624a3",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1407,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "Exact related execution only; no independent criterion review established. Historical receipt preserved where superseded.",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1407,
+                  "field": "test"
+                },
+                "execution_sha": "8be51ece5456a13188e4ee6e42cf5ed7e8d624a3",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
             "dimensions": {
@@ -10057,10 +10086,10 @@
             {
               "pr": 1378,
               "original_id": "M21",
-              "observed_head": "7f2ece31f20d85a070abb67cbce0bdda9270cfb5",
+              "observed_head": "a4ac27ff02f1574d8aaba015ab7d7b7a63900e12",
               "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
               "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
-              "test_scope": "839 normal +839 optimized invocations (715 CO/economy +124 NEIGHBOR per mode), direct exact checkout log and 1678 total verified; related bounded proof only, not criterion execution; exact prior R16 execution preserved in ledger event history; current R18 inherits R16 and separately executes 845 each mode, no new constitutive-compression proof.",
+              "test_scope": "Current related R20 exact capture/replay receipt, not independent history-only or complete criterion; historical R18 exact evidence retained separately.",
               "lookup": {
                 "file": "LIVE_RECEIVING_LEDGER.json",
                 "pr": 1378,
@@ -10144,22 +10173,22 @@
                   "pr": 1378,
                   "original_id": "M21"
                 },
-                "source_head": "7f2ece31f20d85a070abb67cbce0bdda9270cfb5",
+                "source_head": "a4ac27ff02f1574d8aaba015ab7d7b7a63900e12",
                 "prior_review_ref": {
                   "file": "LIVE_RECEIVING_LEDGER.json",
                   "pr": 1378,
                   "field": "review"
                 },
                 "prior_review_sha": null,
-                "prior_review_verdict": "NO_SUBMITTED_PR_REVIEW_OBSERVED__INDEPENDENT_SCOPE_HELD",
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED",
                 "prior_review_applied_to_source_head": false,
-                "prior_review_scope": "No independent criterion review",
+                "prior_review_scope": "Exact related execution only; no independent criterion review established. Historical receipt preserved where superseded.",
                 "execution_ref": {
                   "file": "LIVE_RECEIVING_LEDGER.json",
                   "pr": 1378,
                   "field": "test"
                 },
-                "execution_sha": "7f2ece31f20d85a070abb67cbce0bdda9270cfb5",
+                "execution_sha": "a4ac27ff02f1574d8aaba015ab7d7b7a63900e12",
                 "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
@@ -10397,7 +10426,49 @@
               "execution_sha": "90bdcf1099021e3ff59de0722d0f189d2220dd00",
               "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
             }
-          }
+          },
+          "pm_r001_prior_exact_evidence": [
+            {
+              "evidence": {
+                "pr": 1378,
+                "original_id": "M21",
+                "observed_head": "7f2ece31f20d85a070abb67cbce0bdda9270cfb5",
+                "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
+                "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
+                "test_scope": "839 normal +839 optimized invocations (715 CO/economy +124 NEIGHBOR per mode), direct exact checkout log and 1678 total verified; related bounded proof only, not criterion execution; exact prior R16 execution preserved in ledger event history; current R18 inherits R16 and separately executes 845 each mode, no new constitutive-compression proof.",
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1378,
+                  "original_id": "M21"
+                }
+              },
+              "related_review": {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1378,
+                  "original_id": "M21"
+                },
+                "source_head": "7f2ece31f20d85a070abb67cbce0bdda9270cfb5",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1378,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "NO_SUBMITTED_PR_REVIEW_OBSERVED__INDEPENDENT_SCOPE_HELD",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "No independent criterion review",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1378,
+                  "field": "test"
+                },
+                "execution_sha": "7f2ece31f20d85a070abb67cbce0bdda9270cfb5",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+              },
+              "ledger_event": "PR1378-PM-R001-R18-PREVIOUS-CUT"
+            }
+          ]
         }
       ],
       "paragraph_route_grade": "PROVISIONAL_CLUSTER_ROUTE_NOT_INDIVIDUAL_SEMANTIC_RECEIVING",
@@ -10942,6 +11013,30 @@
                 },
                 "execution_sha": "10473d04b7c1d1bf51122e21d0206530f98b9053",
                 "execution_grade": "SOURCEFREE_TREE_EQUIVALENT_EXECUTION_LOG_READBACK"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1399,
+                  "original_id": "N08"
+                },
+                "source_head": "87831a61c3b06786ad5bc0ae32282412ae03d9e0",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1399,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "Exact related execution only; no independent criterion review established. Historical receipt preserved where superseded.",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1399,
+                  "field": "test"
+                },
+                "execution_sha": "87831a61c3b06786ad5bc0ae32282412ae03d9e0",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
             "dimensions": {
@@ -11648,6 +11743,30 @@
                 },
                 "execution_sha": "c47926fa844a7bef77866afe35f6cb4dcc9a4fc6",
                 "execution_grade": "SOURCEFREE_PR_MERGE_CHECKOUT_EXECUTED__HEAD_TREE_IDENTICAL"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1400,
+                  "original_id": "N08"
+                },
+                "source_head": "c462ec138055bcca5bb70c5e5c4d28ff1b70c7bc",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1400,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "Exact related execution only; no independent criterion review established. Historical receipt preserved where superseded.",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1400,
+                  "field": "test"
+                },
+                "execution_sha": "c462ec138055bcca5bb70c5e5c4d28ff1b70c7bc",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
             "dimensions": {
@@ -11851,6 +11970,30 @@
                 },
                 "execution_sha": "c47926fa844a7bef77866afe35f6cb4dcc9a4fc6",
                 "execution_grade": "SOURCEFREE_PR_MERGE_CHECKOUT_EXECUTED__HEAD_TREE_IDENTICAL"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1399,
+                  "original_id": "N08"
+                },
+                "source_head": "87831a61c3b06786ad5bc0ae32282412ae03d9e0",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1399,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "Exact related execution only; no independent criterion review established. Historical receipt preserved where superseded.",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1399,
+                  "field": "test"
+                },
+                "execution_sha": "87831a61c3b06786ad5bc0ae32282412ae03d9e0",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
             "dimensions": {
@@ -14555,6 +14698,30 @@
                 },
                 "execution_sha": "0d6424a8bab82c848e2c561c839956c3af84d49a",
                 "execution_grade": "SOURCEFREE_PR_MERGE_CHECKOUT_EXECUTED__HEAD_COMPARISON_ZERO_CHANGED_FILES"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1378,
+                  "original_id": "E14"
+                },
+                "source_head": "a4ac27ff02f1574d8aaba015ab7d7b7a63900e12",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1378,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "Exact related execution only; no independent criterion review established. Historical receipt preserved where superseded.",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1378,
+                  "field": "test"
+                },
+                "execution_sha": "a4ac27ff02f1574d8aaba015ab7d7b7a63900e12",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
             "dimensions": {
@@ -15775,6 +15942,30 @@
                 },
                 "execution_sha": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
                 "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1407,
+                  "original_id": "C7"
+                },
+                "source_head": "8be51ece5456a13188e4ee6e42cf5ed7e8d624a3",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1407,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "Exact related execution only; no independent criterion review established. Historical receipt preserved where superseded.",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1407,
+                  "field": "test"
+                },
+                "execution_sha": "8be51ece5456a13188e4ee6e42cf5ed7e8d624a3",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
             "dimensions": {
@@ -16891,6 +17082,30 @@
                 },
                 "execution_sha": "e31d4296fa56299dc325ed090577baf9bc91b499",
                 "execution_grade": "SOURCEFREE_PR_MERGE_CHECKOUT_EXECUTED__HEAD_TREE_IDENTICAL"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1407,
+                  "original_id": "M06"
+                },
+                "source_head": "8be51ece5456a13188e4ee6e42cf5ed7e8d624a3",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1407,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "Exact related execution only; no independent criterion review established. Historical receipt preserved where superseded.",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1407,
+                  "field": "test"
+                },
+                "execution_sha": "8be51ece5456a13188e4ee6e42cf5ed7e8d624a3",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
             "dimensions": {
@@ -24973,10 +25188,10 @@
             {
               "pr": 1378,
               "original_id": "C10",
-              "observed_head": "7f2ece31f20d85a070abb67cbce0bdda9270cfb5",
+              "observed_head": "a4ac27ff02f1574d8aaba015ab7d7b7a63900e12",
               "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
               "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
-              "test_scope": "845 normal and 845 optimized invocations, exact direct push checkout; 721 CO/economy +124 NEIGHBOR; all OK; invocations not deduplicated identities; bounded related evidence only, not criterion execution.",
+              "test_scope": "Current related R20 exact capture/replay receipt, not independent history-only or complete criterion; historical R18 exact evidence retained separately.",
               "lookup": {
                 "file": "LIVE_RECEIVING_LEDGER.json",
                 "pr": 1378,
@@ -25049,22 +25264,46 @@
                   "pr": 1378,
                   "original_id": "C10"
                 },
-                "source_head": "7f2ece31f20d85a070abb67cbce0bdda9270cfb5",
+                "source_head": "a4ac27ff02f1574d8aaba015ab7d7b7a63900e12",
                 "prior_review_ref": {
                   "file": "LIVE_RECEIVING_LEDGER.json",
                   "pr": 1378,
                   "field": "review"
                 },
                 "prior_review_sha": null,
-                "prior_review_verdict": "NO_SUBMITTED_PR_REVIEW_OBSERVED__INDEPENDENT_SCOPE_HELD",
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED",
                 "prior_review_applied_to_source_head": false,
-                "prior_review_scope": "No independent criterion review; prior named review debts unchanged.",
+                "prior_review_scope": "Exact related execution only; no independent criterion review established. Historical receipt preserved where superseded.",
                 "execution_ref": {
                   "file": "LIVE_RECEIVING_LEDGER.json",
                   "pr": 1378,
                   "field": "test"
                 },
-                "execution_sha": "7f2ece31f20d85a070abb67cbce0bdda9270cfb5",
+                "execution_sha": "a4ac27ff02f1574d8aaba015ab7d7b7a63900e12",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1378,
+                  "original_id": "C10"
+                },
+                "source_head": "a4ac27ff02f1574d8aaba015ab7d7b7a63900e12",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1378,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "Exact related execution only; no independent criterion review established. Historical receipt preserved where superseded.",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1378,
+                  "field": "test"
+                },
+                "execution_sha": "a4ac27ff02f1574d8aaba015ab7d7b7a63900e12",
                 "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
@@ -25294,7 +25533,49 @@
               }
             ],
             "remaining_construction": "Bounded earlier exact-source proof R34 workload, not R35/R57/R58/R36; callback-backed replay not independent history-only SC07 R0, no alternate committed course, provider tokens/cost."
-          }
+          },
+          "pm_r001_prior_exact_evidence": [
+            {
+              "evidence": {
+                "pr": 1378,
+                "original_id": "C10",
+                "observed_head": "7f2ece31f20d85a070abb67cbce0bdda9270cfb5",
+                "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
+                "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
+                "test_scope": "845 normal and 845 optimized invocations, exact direct push checkout; 721 CO/economy +124 NEIGHBOR; all OK; invocations not deduplicated identities; bounded related evidence only, not criterion execution.",
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1378,
+                  "original_id": "C10"
+                }
+              },
+              "related_review": {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1378,
+                  "original_id": "C10"
+                },
+                "source_head": "7f2ece31f20d85a070abb67cbce0bdda9270cfb5",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1378,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "NO_SUBMITTED_PR_REVIEW_OBSERVED__INDEPENDENT_SCOPE_HELD",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "No independent criterion review; prior named review debts unchanged.",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1378,
+                  "field": "test"
+                },
+                "execution_sha": "7f2ece31f20d85a070abb67cbce0bdda9270cfb5",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+              },
+              "ledger_event": "PR1378-PM-R001-R18-PREVIOUS-CUT"
+            }
+          ]
         },
         {
           "id": "CO-CIC-032.02",
@@ -33319,6 +33600,30 @@
                 },
                 "execution_sha": "cc8312440f9a2b63628a99811170387ca4f6c026",
                 "execution_grade": "SOURCEFREE_BRANCH_CHECKOUT_EXECUTED_AT_SHA"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1400,
+                  "original_id": "N08"
+                },
+                "source_head": "c462ec138055bcca5bb70c5e5c4d28ff1b70c7bc",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1400,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "Exact related execution only; no independent criterion review established. Historical receipt preserved where superseded.",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1400,
+                  "field": "test"
+                },
+                "execution_sha": "c462ec138055bcca5bb70c5e5c4d28ff1b70c7bc",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
             "dimensions": {
@@ -37133,6 +37438,30 @@
                 },
                 "execution_sha": "7d2b2e323ba99c115b7b154df9665994d0736d70",
                 "execution_grade": "SOURCEFREE_PR_MERGE_CHECKOUT_EXECUTED__HEAD_TREE_IDENTICAL"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1408,
+                  "original_id": "C6"
+                },
+                "source_head": "d803ad894f60dfe0548c3a96fccbd2db58ea699b",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1408,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "Exact related execution only; no independent criterion review established. Historical receipt preserved where superseded.",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1408,
+                  "field": "test"
+                },
+                "execution_sha": "d803ad894f60dfe0548c3a96fccbd2db58ea699b",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
             "dimensions": {
@@ -37672,6 +38001,30 @@
                   "field": "test"
                 },
                 "execution_sha": "9155676523685b421ac0b862ac73fb5e683f795d",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1408,
+                  "original_id": "C6"
+                },
+                "source_head": "d803ad894f60dfe0548c3a96fccbd2db58ea699b",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1408,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "Exact related execution only; no independent criterion review established. Historical receipt preserved where superseded.",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1408,
+                  "field": "test"
+                },
+                "execution_sha": "d803ad894f60dfe0548c3a96fccbd2db58ea699b",
                 "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
@@ -38463,6 +38816,30 @@
                 },
                 "execution_sha": null,
                 "execution_grade": "NO_OPERATIONAL_ACCEPTANCE"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1408,
+                  "original_id": "S14"
+                },
+                "source_head": "d803ad894f60dfe0548c3a96fccbd2db58ea699b",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1408,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "Exact related execution only; no independent criterion review established. Historical receipt preserved where superseded.",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1408,
+                  "field": "test"
+                },
+                "execution_sha": "d803ad894f60dfe0548c3a96fccbd2db58ea699b",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
             "dimensions": {
@@ -38835,6 +39212,30 @@
                   "field": "test"
                 },
                 "execution_sha": "208f33bfed0df4c1b084b1d06f22daa93cfa7828",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1408,
+                  "original_id": "C10"
+                },
+                "source_head": "d803ad894f60dfe0548c3a96fccbd2db58ea699b",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1408,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "Exact related execution only; no independent criterion review established. Historical receipt preserved where superseded.",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1408,
+                  "field": "test"
+                },
+                "execution_sha": "d803ad894f60dfe0548c3a96fccbd2db58ea699b",
                 "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
@@ -39958,6 +40359,30 @@
                 },
                 "execution_sha": "a4ec2ff6c65e39351b67850969014e2ddb0c993d",
                 "execution_grade": "SOURCEFREE_BRANCH_CHECKOUT_EXECUTED_AT_SHA"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1408,
+                  "original_id": "N02"
+                },
+                "source_head": "d803ad894f60dfe0548c3a96fccbd2db58ea699b",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1408,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "Exact related execution only; no independent criterion review established. Historical receipt preserved where superseded.",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1408,
+                  "field": "test"
+                },
+                "execution_sha": "d803ad894f60dfe0548c3a96fccbd2db58ea699b",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
             "dimensions": {
@@ -41988,6 +42413,30 @@
                   "field": "test"
                 },
                 "execution_sha": "5870da029f904a0efe8c2df490c562ae70c6b01f",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1378,
+                  "original_id": "C12"
+                },
+                "source_head": "a4ac27ff02f1574d8aaba015ab7d7b7a63900e12",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1378,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "Exact related execution only; no independent criterion review established. Historical receipt preserved where superseded.",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1378,
+                  "field": "test"
+                },
+                "execution_sha": "a4ac27ff02f1574d8aaba015ab7d7b7a63900e12",
                 "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],

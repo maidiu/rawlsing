@@ -622,3 +622,6 @@ JSON proposed additive field `sorok_pm_r001_candidate`:
   "protected_receiving": "NOT_RECEIVED"
 }
 ```
+
+
+**R001 documentary correction:** Initial [job 140714813087](https://github.com/maidiu/rawlsing/actions/runs/46060958818/job/140714813087) refused at LEDGER_DRIFT_HOLD after functional-link check passed. Current ledger contract and related review-navigation receipts now reconciled; old R18 criterion evidence retained with historical event. No new independent review, no criterion or authority promotion. Current CIC `11a6eacd1c515f7e4abfdbbd1dce2b3eada1cc3c`, ledger `88201a2f2ff5db01d2aa21587b2efb76e1bf79a8`. Successor documentary CI required.
