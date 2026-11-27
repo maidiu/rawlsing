@@ -32,7 +32,8 @@ from .cultural_mediation import (
     admit_cultural_reference,admit_reference_revision)
 from .social_vocal_development import admit_vocal_coordination
 from .prospective_horizon import record_possible_end_trial
-from .unintended_goods import possible_unintended_goods, qualify_incidental_object_takeup
+from .unintended_goods import (possible_unintended_goods, qualify_incidental_object_takeup,
+                               possible_cross_object_significance)
 from .functional_correspondence import (admit_functional_correspondence,
                                          admit_functional_revision)
 from .material_investments import admit_material_investment
@@ -522,8 +523,9 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                  'grade':GRADE}
             if c.get('incidental_object_end_basis') is not None:
                 matches=[q['incidental_object_end_basis'] for q in
-                    possible_unintended_goods(actor,experience,
+                    (possible_unintended_goods(actor,experience,
                         experience.get('own_practical_selection'),event_ref)
+                     + possible_cross_object_significance(actor,experience,event_ref))
                     if q.get('incidental_object_end_basis')==c['incidental_object_end_basis']
                     and q['source_cue_ref']==ref
                     and q['world_material_object_ref']==origin_object]

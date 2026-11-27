@@ -33,7 +33,8 @@ from .practical_powers import retain_exercised_power, possible_repair_technique
 from .practical_inquiry import retain_personal_notice_exposure
 from .material_investments import (
     retain_personal_object_encounter, possible_object_investments)
-from .unintended_goods import possible_unintended_goods, qualify_incidental_object_takeup
+from .unintended_goods import (possible_unintended_goods, qualify_incidental_object_takeup,
+                               possible_cross_object_significance)
 from .expectation_afterlife import (source_qualified_appraisal_candidates,
                                     possible_activity_affects, own_vocal_reception,
                                     possible_expressive_practices)
@@ -1239,6 +1240,9 @@ class ConstitutiveRuntime:
                     material_meaning_proposals),
                 'historically_possible_incidental_goods':copy(
                     possible_incidental_goods),
+                **({'historically_possible_cross_object_significance':copy(cross_object)}
+                   if (cross_object:=possible_cross_object_significance(
+                       actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_incidental_takeup':[
                     q for end in actors[aid].get('possible_ends',[])
                     if end.get('status')=='POSSIBLE_NOT_ACQUIRED_MOTIVE'
