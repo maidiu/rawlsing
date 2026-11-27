@@ -327,6 +327,7 @@ def perform_one_actual_feeding(world,actors,giver,recipient,location,
     if selected_food_source is not None:
         if (human_offer or actor_selection_source!=
                 "ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE"
+                or type(selected_food_source) is not str
                 or selected_food_source not in ORIGINS
                 or selected_food_source not in current_feeding_sources(world,giver,location)):
             return {"status":"BLOCKED","outcome":"SELECTED_FEEDING_SOURCE_UNAVAILABLE",

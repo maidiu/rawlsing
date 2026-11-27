@@ -165,5 +165,10 @@ class ReproductiveCostR37(unittest.TestCase):
             selected_food_source='MUTUAL_AID_FOOD')
         self.assertEqual(result['status'],'BLOCKED')
         self.assertEqual((w,actors),before)
+        result=perform_one_actual_feeding(w,actors,'carer','dependent','home',
+            'ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE',
+            selected_food_source=['GIVER_HELD_FOOD'])
+        self.assertEqual(result['status'],'BLOCKED')
+        self.assertEqual((w,actors),before)
 
 if __name__=='__main__':unittest.main()
