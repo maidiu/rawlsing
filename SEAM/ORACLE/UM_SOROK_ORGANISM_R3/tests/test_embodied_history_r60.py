@@ -33,7 +33,7 @@ class EmbodiedHistoricalReadiness(unittest.TestCase):
         child=newborn('nadia','Nadia')
         child['projects']=[{'id':'movement','object':'explore movement and sound',
                             'means':['PRACTICE','SING'],'status':'active','priority':.5}]
-        w=blank_world();w['positions']['nadia']='home'
+        w=blank_world()
         rt.ledger.initialize(w,[child])
 
     def arm(self,db,practiced):
