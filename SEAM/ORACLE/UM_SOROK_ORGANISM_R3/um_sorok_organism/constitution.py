@@ -696,6 +696,8 @@ def compose(constitution,access,limit=50):
     # original access; only deliberate means/beneficiary binding uses the
     # presently nominated, scarce attentional field.
     attention=situate_attention(constitution,access,historical=historical)
+    cross_object=attention['frame'].get('cross_object_attention',[])
+    currents+=copy(cross_object)
     # Attach actor/clock/project-specific practical ALTERNATIVES beneath the
     # existing physical action grammar. Psychodynamic inhibition still acts
     # first; an inhibited operation cannot be revived by an option ID.
@@ -726,6 +728,13 @@ def compose(constitution,access,limit=50):
         option['practical_alternatives']+=situated_suspension_targets(
             constitution,attention['focus_access'],option)
         annotate_material_alternatives(option,invested)
+        if option['action']=='INSPECT':
+            for alt in option['practical_alternatives']:
+                for row in cross_object:
+                    if (alt.get('grounds_status')=='PRESENT_MATERIAL_OBJECT_NOT_ASSUMED_MOTIVE'
+                            and alt['world_request'].get('material_object_ref')==
+                            row['new_material_object_ref']):
+                        alt['cross_object_attention_analytic_only']=copy(row)
         if option['action']=='INSPECT' and option.get('candidate_notice_refs'):
             option['practical_alternatives'] += [
                 {'option_id':'inquiry:'+constitution.actor+':'+
@@ -769,6 +778,10 @@ def compose(constitution,access,limit=50):
        readset=sorted(set(list(active)+list(vetoed)+relational['readset']+
                            historical['readset']+preproject['readset']+exercised['readset']+
                            attention['frame'].get('monitoring_orientation_refs',[])+
+                           [row[k] for row in cross_object for k in
+                            ('source_practice_ref','source_demonstration_ref',
+                             'source_exercised_encounter_ref','current_making_sign_ref',
+                             'current_visible_object_cue_ref')]+
                            invested['recruitment']['readset']+
                            material['readset']+
                            historical_care['readset']+
