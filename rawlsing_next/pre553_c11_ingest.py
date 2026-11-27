@@ -627,6 +627,7 @@ class _CountryEventCollector:
         self.builder=_CountryHeaderBuilder()
         self.headers=[]
         self.finished=None
+        self.restored=False
 
     def add(self,event,*,source_coordinates):
         if self.finished is not None or type(event) is not RespondentEvent:
@@ -857,7 +858,7 @@ def _validate_universe_and_respondent_scope(candidate: C11SourceReleaseCandidate
             )
 
 
-def _validate_questions_and_events(candidate: C11SourceReleaseCandidate) -> None:
+def _validate_questions_and_events(candidate: C11SourceReleaseCandidate,*,country_collector=None) -> None:
     question_keys: set[tuple[str, str]] = set()
     for binding in candidate.question_variable_bindings:
         universe_ref = exact_ref(binding.empirical_universe_ref)
@@ -872,7 +873,16 @@ def _validate_questions_and_events(candidate: C11SourceReleaseCandidate) -> None
                 "response event lacks exact native question/topology binding",
             )
     try:
-        ensure_distinct_event_occurrences(candidate.respondent_events)
+        from rawlsing_next._pre553_c11_execution_view import _CountryEventHeader
+        events=candidate.respondent_events
+        if any(type(e) is _CountryEventHeader and e.group_identity is None for e in events):
+            if (country_collector is None or not country_collector.restored
+                    or country_collector.finished is not events):
+                raise C11IntegrityError("group elision requires private restored producer headers")
+            from rawlsing_next.pre553_c11_integrity import _validate_restored_country_occurrences
+            _validate_restored_country_occurrences(events)
+        else:
+            ensure_distinct_event_occurrences(events)
     except C11IntegrityError as exc:
         raise C11IngestValidationError(
             IngestDisposition.REJECTED_EVENT_IDENTITY_COLLAPSE, str(exc)) from exc
@@ -1004,6 +1014,7 @@ def _validate_country_produced_release(*,produce,authority_snapshots,compact_bui
             raise C11IntegrityError("restored country headers required")
         collector.finished=_restored_headers
         collector.builder=None
+        collector.restored=True
     candidate=produce(collector)
     if collector.finished is None or candidate.respondent_events is not collector.finished:
         raise C11IntegrityError("country producer did not return its exact event census")
@@ -1018,7 +1029,7 @@ def _validate_c11_source_release(candidate,*,country_collector=None,compact_buil
     _validate_declared_manifest(candidate)
     registry = _validate_authorities(candidate,country_collector=country_collector)
     _validate_universe_and_respondent_scope(candidate)
-    _validate_questions_and_events(candidate)
+    _validate_questions_and_events(candidate,country_collector=country_collector)
     _validate_question_authorities(candidate, registry)
     _validate_source_relations(candidate)
     replay_manifest = _validate_replay(candidate, registry,
