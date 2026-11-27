@@ -1,0 +1,1593 @@
+{
+  "actual_grade": "S2_NATIVE_SYNTHETIC_FIXTURE_EXECUTION",
+  "assertion_summary": {
+    "failed": 0,
+    "passed": 116,
+    "total": 116
+  },
+  "assertions": [
+    {
+      "actual": 38858,
+      "assertion_id": "GLOBAL.SOURCE.BYTES",
+      "case": "GLOBAL",
+      "description": "historical F03 source byte count equals pinned blob size",
+      "expected": 38858,
+      "pass": true
+    },
+    {
+      "actual": "2fb0851d8bac6f3d381fdf11749f7e04e676de914d643e5be1ad4603cc39f63c",
+      "assertion_id": "GLOBAL.SOURCE.SHA256",
+      "case": "GLOBAL",
+      "description": "historical F03 source SHA-256 equals pinned runner bytes",
+      "expected": "2fb0851d8bac6f3d381fdf11749f7e04e676de914d643e5be1ad4603cc39f63c",
+      "pass": true
+    },
+    {
+      "actual": "62084cbed10a5975f79bd504bf4fb99025e4e64e",
+      "assertion_id": "GLOBAL.SOURCE.GIT_BLOB_SHA1",
+      "case": "GLOBAL",
+      "description": "historical F03 source Git blob SHA-1 equals commissioned blob",
+      "expected": "62084cbed10a5975f79bd504bf4fb99025e4e64e",
+      "pass": true
+    },
+    {
+      "actual": 1119028,
+      "assertion_id": "GLOBAL.REGISTRY.BYTES",
+      "case": "GLOBAL",
+      "description": "selected active registry byte count equals pinned selected registry",
+      "expected": 1119028,
+      "pass": true
+    },
+    {
+      "actual": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+      "assertion_id": "GLOBAL.REGISTRY.SHA256",
+      "case": "GLOBAL",
+      "description": "selected active registry SHA-256 equals commissioned selected registry",
+      "expected": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+      "pass": true
+    },
+    {
+      "actual": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "assertion_id": "GLOBAL.FIXTURE.FILE_SHA256",
+      "case": "GLOBAL",
+      "description": "immutable fixture file SHA-256 equals pinned synthetic fixture",
+      "expected": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "pass": true
+    },
+    {
+      "actual": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "assertion_id": "GLOBAL.FIXTURE.CANONICAL_SHA256",
+      "case": "GLOBAL",
+      "description": "immutable fixture canonical JSON SHA-256 equals pinned synthetic fixture",
+      "expected": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "pass": true
+    },
+    {
+      "actual": true,
+      "assertion_id": "GLOBAL.FIXTURE.SIX_NONEMPTY_COORDINATES",
+      "case": "GLOBAL",
+      "description": "all six synthetic structural coordinates are nonempty strings",
+      "expected": true,
+      "pass": true
+    },
+    {
+      "actual": 6,
+      "assertion_id": "GLOBAL.FIXTURE.SIX_DISTINCT_COORDINATES",
+      "case": "GLOBAL",
+      "description": "all six synthetic structural coordinates are distinguishable",
+      "expected": 6,
+      "pass": true
+    },
+    {
+      "actual": {
+        "allowed_as_v551_relation_evidence": true,
+        "current_directional_atom_eligible": true,
+        "semantic_role": "RELATION_EVIDENCE",
+        "semantic_role_authority_status": "CERTIFIED",
+        "structural_mapping_status": "COMPLETE"
+      },
+      "assertion_id": "GLOBAL.FIXTURE.FIVE_INBOUND_CONDITIONS",
+      "case": "GLOBAL",
+      "description": "fixture carries the five commissioned inbound conditions",
+      "expected": {
+        "allowed_as_v551_relation_evidence": true,
+        "current_directional_atom_eligible": true,
+        "semantic_role": "RELATION_EVIDENCE",
+        "semantic_role_authority_status": "CERTIFIED",
+        "structural_mapping_status": "COMPLETE"
+      },
+      "pass": true
+    },
+    {
+      "actual": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1/data/ddm_build_copy/ddm_v550_question_relation_authority.py",
+      "assertion_id": "GLOBAL.FUNCTION.SOURCE_FILE",
+      "case": "GLOBAL",
+      "description": "test-time function object resolves to the pinned historical source file",
+      "expected": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1/data/ddm_build_copy/ddm_v550_question_relation_authority.py",
+      "pass": true
+    },
+    {
+      "actual": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1",
+      "assertion_id": "GLOBAL.FUNCTION.MODULE_ROOT",
+      "case": "GLOBAL",
+      "description": "historical module ROOT resolves to the execution repository root",
+      "expected": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1",
+      "pass": true
+    },
+    {
+      "actual": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+      "assertion_id": "GLOBAL.REGISTRY.LOADED_SHA256",
+      "case": "GLOBAL",
+      "description": "historical loader independently reports the pinned selected registry SHA-256",
+      "expected": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+      "pass": true
+    },
+    {
+      "actual": 700,
+      "assertion_id": "GLOBAL.REGISTRY.ROW_COUNT",
+      "case": "GLOBAL",
+      "description": "historical loader accepts the selected registry row count",
+      "expected": 700,
+      "pass": true
+    },
+    {
+      "actual": 0,
+      "assertion_id": "GLOBAL.NO_MATCH.DIRECT_SCAN",
+      "case": "GLOBAL",
+      "description": "no selected-registry row shares the synthetic family/wave/country scope",
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "actual": "BLOCKED_MISSING_AUTHORITY",
+      "assertion_id": "GLOBAL.NO_MATCH.RESOLVER_STATUS",
+      "case": "GLOBAL",
+      "description": "historical resolver returns BLOCKED_MISSING_AUTHORITY for the synthetic identity",
+      "expected": "BLOCKED_MISSING_AUTHORITY",
+      "pass": true
+    },
+    {
+      "actual": 0,
+      "assertion_id": "GLOBAL.NO_MATCH.RESOLVER_COUNT",
+      "case": "GLOBAL",
+      "description": "historical resolver finds zero matching authority rows",
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "actual": false,
+      "assertion_id": "GLOBAL.NO_MATCH.REGISTRY_MATCH_FALSE",
+      "case": "GLOBAL",
+      "description": "historical resolver does not resolve an authority row",
+      "expected": false,
+      "pass": true
+    },
+    {
+      "actual": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "assertion_id": "A_POSITIVE.FIXTURE.FILE_UNCHANGED",
+      "case": "A_POSITIVE",
+      "description": "immutable fixture file bytes remain unchanged during execution",
+      "expected": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "pass": true
+    },
+    {
+      "actual": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "assertion_id": "A_POSITIVE.FIXTURE.CANONICAL_UNCHANGED",
+      "case": "A_POSITIVE",
+      "description": "immutable fixture canonical JSON remains unchanged during execution",
+      "expected": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "pass": true
+    },
+    {
+      "actual": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "assertion_id": "A_POSITIVE.INPUT.IMMUTABLE",
+      "case": "A_POSITIVE",
+      "description": "historical function did not mutate the immutable synthetic input",
+      "expected": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "pass": true
+    },
+    {
+      "actual": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "assertion_id": "A_POSITIVE.FIXTURE.FILE_UNCHANGED",
+      "case": "A_POSITIVE",
+      "description": "immutable fixture file bytes remain unchanged during execution",
+      "expected": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "pass": true
+    },
+    {
+      "actual": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "assertion_id": "A_POSITIVE.FIXTURE.CANONICAL_UNCHANGED",
+      "case": "A_POSITIVE",
+      "description": "immutable fixture canonical JSON remains unchanged during execution",
+      "expected": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "pass": true
+    },
+    {
+      "actual": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "assertion_id": "B_DENIED_PERMISSION.FIXTURE.FILE_UNCHANGED",
+      "case": "B_DENIED_PERMISSION",
+      "description": "immutable fixture file bytes remain unchanged during execution",
+      "expected": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "pass": true
+    },
+    {
+      "actual": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "assertion_id": "B_DENIED_PERMISSION.FIXTURE.CANONICAL_UNCHANGED",
+      "case": "B_DENIED_PERMISSION",
+      "description": "immutable fixture canonical JSON remains unchanged during execution",
+      "expected": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "pass": true
+    },
+    {
+      "actual": "cde28b9b7fd16e9938cba934494a43a4626f57266d776fdb89484c2b4e7312dd",
+      "assertion_id": "B_DENIED_PERMISSION.INPUT.IMMUTABLE",
+      "case": "B_DENIED_PERMISSION",
+      "description": "historical function did not mutate the immutable synthetic input",
+      "expected": "cde28b9b7fd16e9938cba934494a43a4626f57266d776fdb89484c2b4e7312dd",
+      "pass": true
+    },
+    {
+      "actual": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "assertion_id": "B_DENIED_PERMISSION.FIXTURE.FILE_UNCHANGED",
+      "case": "B_DENIED_PERMISSION",
+      "description": "immutable fixture file bytes remain unchanged during execution",
+      "expected": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "pass": true
+    },
+    {
+      "actual": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "assertion_id": "B_DENIED_PERMISSION.FIXTURE.CANONICAL_UNCHANGED",
+      "case": "B_DENIED_PERMISSION",
+      "description": "immutable fixture canonical JSON remains unchanged during execution",
+      "expected": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "pass": true
+    },
+    {
+      "actual": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "assertion_id": "C_PARTIAL_MAPPING.FIXTURE.FILE_UNCHANGED",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "immutable fixture file bytes remain unchanged during execution",
+      "expected": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "pass": true
+    },
+    {
+      "actual": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "assertion_id": "C_PARTIAL_MAPPING.FIXTURE.CANONICAL_UNCHANGED",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "immutable fixture canonical JSON remains unchanged during execution",
+      "expected": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "pass": true
+    },
+    {
+      "actual": "63c16c96d893cf493d4fbdfcbc021013a3a81720627381587a07f8032fab6dc7",
+      "assertion_id": "C_PARTIAL_MAPPING.INPUT.IMMUTABLE",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "historical function did not mutate the immutable synthetic input",
+      "expected": "63c16c96d893cf493d4fbdfcbc021013a3a81720627381587a07f8032fab6dc7",
+      "pass": true
+    },
+    {
+      "actual": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "assertion_id": "C_PARTIAL_MAPPING.FIXTURE.FILE_UNCHANGED",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "immutable fixture file bytes remain unchanged during execution",
+      "expected": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "pass": true
+    },
+    {
+      "actual": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "assertion_id": "C_PARTIAL_MAPPING.FIXTURE.CANONICAL_UNCHANGED",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "immutable fixture canonical JSON remains unchanged during execution",
+      "expected": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "pass": true
+    },
+    {
+      "actual": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "assertion_id": "D_RESTORED.FIXTURE.FILE_UNCHANGED",
+      "case": "D_RESTORED",
+      "description": "immutable fixture file bytes remain unchanged during execution",
+      "expected": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "pass": true
+    },
+    {
+      "actual": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "assertion_id": "D_RESTORED.FIXTURE.CANONICAL_UNCHANGED",
+      "case": "D_RESTORED",
+      "description": "immutable fixture canonical JSON remains unchanged during execution",
+      "expected": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "pass": true
+    },
+    {
+      "actual": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "assertion_id": "D_RESTORED.INPUT.IMMUTABLE",
+      "case": "D_RESTORED",
+      "description": "historical function did not mutate the immutable synthetic input",
+      "expected": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "pass": true
+    },
+    {
+      "actual": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "assertion_id": "D_RESTORED.FIXTURE.FILE_UNCHANGED",
+      "case": "D_RESTORED",
+      "description": "immutable fixture file bytes remain unchanged during execution",
+      "expected": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "pass": true
+    },
+    {
+      "actual": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "assertion_id": "D_RESTORED.FIXTURE.CANONICAL_UNCHANGED",
+      "case": "D_RESTORED",
+      "description": "immutable fixture canonical JSON remains unchanged during execution",
+      "expected": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "pass": true
+    },
+    {
+      "actual": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "assertion_id": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED.FIXTURE.FILE_UNCHANGED",
+      "case": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED",
+      "description": "immutable fixture file bytes remain unchanged during execution",
+      "expected": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "pass": true
+    },
+    {
+      "actual": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "assertion_id": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED.FIXTURE.CANONICAL_UNCHANGED",
+      "case": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED",
+      "description": "immutable fixture canonical JSON remains unchanged during execution",
+      "expected": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "pass": true
+    },
+    {
+      "actual": "c2bb654a40d1243ed63df585429db73125d87b17a82c635973a0dfa208a85c6c",
+      "assertion_id": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED.INPUT.IMMUTABLE",
+      "case": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED",
+      "description": "historical function did not mutate the immutable synthetic input",
+      "expected": "c2bb654a40d1243ed63df585429db73125d87b17a82c635973a0dfa208a85c6c",
+      "pass": true
+    },
+    {
+      "actual": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "assertion_id": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED.FIXTURE.FILE_UNCHANGED",
+      "case": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED",
+      "description": "immutable fixture file bytes remain unchanged during execution",
+      "expected": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "pass": true
+    },
+    {
+      "actual": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "assertion_id": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED.FIXTURE.CANONICAL_UNCHANGED",
+      "case": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED",
+      "description": "immutable fixture canonical JSON remains unchanged during execution",
+      "expected": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "pass": true
+    },
+    {
+      "actual": "SYNTH_DRIVER_ZAK01_S2_A",
+      "assertion_id": "A_POSITIVE.COORD.driver_id",
+      "case": "A_POSITIVE",
+      "description": "positive branch preserves incoming driver_id",
+      "expected": "SYNTH_DRIVER_ZAK01_S2_A",
+      "pass": true
+    },
+    {
+      "actual": "SYNTH_FACET_ZAK01_S2_B",
+      "assertion_id": "A_POSITIVE.COORD.driver_facet_id",
+      "case": "A_POSITIVE",
+      "description": "positive branch preserves incoming driver_facet_id",
+      "expected": "SYNTH_FACET_ZAK01_S2_B",
+      "pass": true
+    },
+    {
+      "actual": "SYNTH_BLOCK_ZAK01_S2_C",
+      "assertion_id": "A_POSITIVE.COORD.question_block_id",
+      "case": "A_POSITIVE",
+      "description": "positive branch preserves incoming question_block_id",
+      "expected": "SYNTH_BLOCK_ZAK01_S2_C",
+      "pass": true
+    },
+    {
+      "actual": "SYNTH_DOMAIN_ZAK01_S2_D",
+      "assertion_id": "A_POSITIVE.COORD.structural_domain_id",
+      "case": "A_POSITIVE",
+      "description": "positive branch preserves incoming structural_domain_id",
+      "expected": "SYNTH_DOMAIN_ZAK01_S2_D",
+      "pass": true
+    },
+    {
+      "actual": "SYNTH_AXIS_ZAK01_S2_E",
+      "assertion_id": "A_POSITIVE.COORD.relation_axis_id",
+      "case": "A_POSITIVE",
+      "description": "positive branch preserves incoming relation_axis_id",
+      "expected": "SYNTH_AXIS_ZAK01_S2_E",
+      "pass": true
+    },
+    {
+      "actual": "SYNTH_TARGET_ZAK01_S2_F",
+      "assertion_id": "A_POSITIVE.COORD.target_entity_id",
+      "case": "A_POSITIVE",
+      "description": "positive branch preserves incoming target_entity_id",
+      "expected": "SYNTH_TARGET_ZAK01_S2_F",
+      "pass": true
+    },
+    {
+      "actual": "QUC_AUTHORITY_PRESERVED_ACTIVE_REGISTRY_NO_MATCH",
+      "assertion_id": "A_POSITIVE.RESOLUTION",
+      "case": "A_POSITIVE",
+      "description": "positive branch reports the no-match preservation resolution",
+      "expected": "QUC_AUTHORITY_PRESERVED_ACTIVE_REGISTRY_NO_MATCH",
+      "pass": true
+    },
+    {
+      "actual": false,
+      "assertion_id": "A_POSITIVE.REGISTRY_MATCH",
+      "case": "A_POSITIVE",
+      "description": "positive branch explicitly reports no selected-registry match",
+      "expected": false,
+      "pass": true
+    },
+    {
+      "actual": true,
+      "assertion_id": "A_POSITIVE.COVERAGE",
+      "case": "A_POSITIVE",
+      "description": "positive branch marks coverage eligible",
+      "expected": true,
+      "pass": true
+    },
+    {
+      "actual": true,
+      "assertion_id": "A_POSITIVE.PRESSURE",
+      "case": "A_POSITIVE",
+      "description": "positive branch marks pressure eligible",
+      "expected": true,
+      "pass": true
+    },
+    {
+      "actual": true,
+      "assertion_id": "A_POSITIVE.CURRENT_DIRECTIONAL",
+      "case": "A_POSITIVE",
+      "description": "positive branch retains inbound directional eligibility",
+      "expected": true,
+      "pass": true
+    },
+    {
+      "actual": true,
+      "assertion_id": "A_POSITIVE.V551_EVIDENCE",
+      "case": "A_POSITIVE",
+      "description": "positive branch retains inbound V551 relation-evidence permission",
+      "expected": true,
+      "pass": true
+    },
+    {
+      "actual": "CERTIFIED",
+      "assertion_id": "A_POSITIVE.SEMANTIC_ROLE_AUTHORITY_STATUS",
+      "case": "A_POSITIVE",
+      "description": "positive branch preserves the inbound certified status",
+      "expected": "CERTIFIED",
+      "pass": true
+    },
+    {
+      "actual": "RELATION_EVIDENCE",
+      "assertion_id": "A_POSITIVE.SEMANTIC_ROLE",
+      "case": "A_POSITIVE",
+      "description": "positive branch preserves the inbound relation-evidence role",
+      "expected": "RELATION_EVIDENCE",
+      "pass": true
+    },
+    {
+      "actual": "COMPLETE",
+      "assertion_id": "A_POSITIVE.STRUCTURAL_MAPPING",
+      "case": "A_POSITIVE",
+      "description": "positive branch preserves the inbound COMPLETE mapping label",
+      "expected": "COMPLETE",
+      "pass": true
+    },
+    {
+      "actual": "BLOCKED_MISSING_AUTHORITY",
+      "assertion_id": "A_POSITIVE.NO_MATCH_METADATA",
+      "case": "A_POSITIVE",
+      "description": "positive output separately records the underlying missing-authority status",
+      "expected": "BLOCKED_MISSING_AUTHORITY",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "A_POSITIVE.NO_AUTHORITY_PAYLOAD_HASH",
+      "case": "A_POSITIVE",
+      "description": "positive preservation branch does not acquire a signed authority row payload hash",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "A_POSITIVE.NO_RELATION_USE_STATUS",
+      "case": "A_POSITIVE",
+      "description": "positive preservation branch does not acquire a relation_use_status",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "A_POSITIVE.NO_AUTHORITY_STATUS",
+      "case": "A_POSITIVE",
+      "description": "positive preservation branch does not acquire an authority_status",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "B_DENIED_PERMISSION.CLEARED.driver_id",
+      "case": "B_DENIED_PERMISSION",
+      "description": "denied-permission branch clears driver_id",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "B_DENIED_PERMISSION.CLEARED.driver_facet_id",
+      "case": "B_DENIED_PERMISSION",
+      "description": "denied-permission branch clears driver_facet_id",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "B_DENIED_PERMISSION.CLEARED.question_block_id",
+      "case": "B_DENIED_PERMISSION",
+      "description": "denied-permission branch clears question_block_id",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "B_DENIED_PERMISSION.CLEARED.structural_domain_id",
+      "case": "B_DENIED_PERMISSION",
+      "description": "denied-permission branch clears structural_domain_id",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "B_DENIED_PERMISSION.CLEARED.relation_axis_id",
+      "case": "B_DENIED_PERMISSION",
+      "description": "denied-permission branch clears relation_axis_id",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "B_DENIED_PERMISSION.CLEARED.target_entity_id",
+      "case": "B_DENIED_PERMISSION",
+      "description": "denied-permission branch clears target_entity_id",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": false,
+      "assertion_id": "B_DENIED_PERMISSION.CURRENT_DIRECTIONAL",
+      "case": "B_DENIED_PERMISSION",
+      "description": "denied-permission branch sets directional eligibility false",
+      "expected": false,
+      "pass": true
+    },
+    {
+      "actual": false,
+      "assertion_id": "B_DENIED_PERMISSION.V551_EVIDENCE",
+      "case": "B_DENIED_PERMISSION",
+      "description": "denied-permission branch sets V551 relation-evidence eligibility false",
+      "expected": false,
+      "pass": true
+    },
+    {
+      "actual": false,
+      "assertion_id": "B_DENIED_PERMISSION.COVERAGE",
+      "case": "B_DENIED_PERMISSION",
+      "description": "denied-permission branch sets coverage eligibility false",
+      "expected": false,
+      "pass": true
+    },
+    {
+      "actual": false,
+      "assertion_id": "B_DENIED_PERMISSION.PRESSURE",
+      "case": "B_DENIED_PERMISSION",
+      "description": "denied-permission branch sets pressure eligibility false",
+      "expected": false,
+      "pass": true
+    },
+    {
+      "actual": "UNKNOWN",
+      "assertion_id": "B_DENIED_PERMISSION.SEMANTIC_ROLE",
+      "case": "B_DENIED_PERMISSION",
+      "description": "denied-permission branch does not retain relation-evidence role",
+      "expected": "UNKNOWN",
+      "pass": true
+    },
+    {
+      "actual": "NOT_CERTIFIED",
+      "assertion_id": "B_DENIED_PERMISSION.SEMANTIC_ROLE_AUTHORITY_STATUS",
+      "case": "B_DENIED_PERMISSION",
+      "description": "denied-permission branch does not retain certified status",
+      "expected": "NOT_CERTIFIED",
+      "pass": true
+    },
+    {
+      "actual": null,
+      "assertion_id": "B_DENIED_PERMISSION.NO_PRESERVATION_LABEL",
+      "case": "B_DENIED_PERMISSION",
+      "description": "denied-permission branch does not take the no-match preservation label",
+      "expected": null,
+      "pass": true
+    },
+    {
+      "actual": "BLOCKED_MISSING_AUTHORITY",
+      "assertion_id": "B_DENIED_PERMISSION.STRUCTURAL_MAPPING",
+      "case": "B_DENIED_PERMISSION",
+      "description": "denied-permission branch records the missing-authority status as mapping status",
+      "expected": "BLOCKED_MISSING_AUTHORITY",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "B_DENIED_PERMISSION.NO_AUTHORITY_PAYLOAD_HASH",
+      "case": "B_DENIED_PERMISSION",
+      "description": "denied-permission output does not acquire a signed authority row payload hash",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "B_DENIED_PERMISSION.NO_RELATION_USE_STATUS",
+      "case": "B_DENIED_PERMISSION",
+      "description": "denied-permission output does not acquire a relation_use_status",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "B_DENIED_PERMISSION.NO_AUTHORITY_STATUS",
+      "case": "B_DENIED_PERMISSION",
+      "description": "denied-permission output does not acquire an authority_status",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "C_PARTIAL_MAPPING.CLEARED.driver_id",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "PARTIAL-mapping branch clears driver_id",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "C_PARTIAL_MAPPING.CLEARED.driver_facet_id",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "PARTIAL-mapping branch clears driver_facet_id",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "C_PARTIAL_MAPPING.CLEARED.question_block_id",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "PARTIAL-mapping branch clears question_block_id",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "C_PARTIAL_MAPPING.CLEARED.structural_domain_id",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "PARTIAL-mapping branch clears structural_domain_id",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "C_PARTIAL_MAPPING.CLEARED.relation_axis_id",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "PARTIAL-mapping branch clears relation_axis_id",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "C_PARTIAL_MAPPING.CLEARED.target_entity_id",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "PARTIAL-mapping branch clears target_entity_id",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": null,
+      "assertion_id": "C_PARTIAL_MAPPING.NO_PRESERVATION_LABEL",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "PARTIAL mapping does not take the no-match preservation label",
+      "expected": null,
+      "pass": true
+    },
+    {
+      "actual": false,
+      "assertion_id": "C_PARTIAL_MAPPING.CURRENT_DIRECTIONAL",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "PARTIAL mapping sets directional eligibility false",
+      "expected": false,
+      "pass": true
+    },
+    {
+      "actual": false,
+      "assertion_id": "C_PARTIAL_MAPPING.V551_EVIDENCE",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "PARTIAL mapping does not authorize V551 relation evidence",
+      "expected": false,
+      "pass": true
+    },
+    {
+      "actual": false,
+      "assertion_id": "C_PARTIAL_MAPPING.COVERAGE",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "PARTIAL mapping sets coverage eligibility false",
+      "expected": false,
+      "pass": true
+    },
+    {
+      "actual": false,
+      "assertion_id": "C_PARTIAL_MAPPING.PRESSURE",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "PARTIAL mapping sets pressure eligibility false",
+      "expected": false,
+      "pass": true
+    },
+    {
+      "actual": "UNKNOWN",
+      "assertion_id": "C_PARTIAL_MAPPING.SEMANTIC_ROLE",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "PARTIAL mapping does not retain relation-evidence role",
+      "expected": "UNKNOWN",
+      "pass": true
+    },
+    {
+      "actual": "NOT_CERTIFIED",
+      "assertion_id": "C_PARTIAL_MAPPING.SEMANTIC_ROLE_AUTHORITY_STATUS",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "PARTIAL mapping does not retain certified status",
+      "expected": "NOT_CERTIFIED",
+      "pass": true
+    },
+    {
+      "actual": "BLOCKED_MISSING_AUTHORITY",
+      "assertion_id": "C_PARTIAL_MAPPING.STRUCTURAL_MAPPING",
+      "case": "C_PARTIAL_MAPPING",
+      "description": "PARTIAL mapping is normalised to the missing-authority status",
+      "expected": "BLOCKED_MISSING_AUTHORITY",
+      "pass": true
+    },
+    {
+      "actual": "SYNTH_DRIVER_ZAK01_S2_A",
+      "assertion_id": "D_RESTORED.COORD.driver_id",
+      "case": "D_RESTORED",
+      "description": "restored exact positive input preserves driver_id",
+      "expected": "SYNTH_DRIVER_ZAK01_S2_A",
+      "pass": true
+    },
+    {
+      "actual": "SYNTH_FACET_ZAK01_S2_B",
+      "assertion_id": "D_RESTORED.COORD.driver_facet_id",
+      "case": "D_RESTORED",
+      "description": "restored exact positive input preserves driver_facet_id",
+      "expected": "SYNTH_FACET_ZAK01_S2_B",
+      "pass": true
+    },
+    {
+      "actual": "SYNTH_BLOCK_ZAK01_S2_C",
+      "assertion_id": "D_RESTORED.COORD.question_block_id",
+      "case": "D_RESTORED",
+      "description": "restored exact positive input preserves question_block_id",
+      "expected": "SYNTH_BLOCK_ZAK01_S2_C",
+      "pass": true
+    },
+    {
+      "actual": "SYNTH_DOMAIN_ZAK01_S2_D",
+      "assertion_id": "D_RESTORED.COORD.structural_domain_id",
+      "case": "D_RESTORED",
+      "description": "restored exact positive input preserves structural_domain_id",
+      "expected": "SYNTH_DOMAIN_ZAK01_S2_D",
+      "pass": true
+    },
+    {
+      "actual": "SYNTH_AXIS_ZAK01_S2_E",
+      "assertion_id": "D_RESTORED.COORD.relation_axis_id",
+      "case": "D_RESTORED",
+      "description": "restored exact positive input preserves relation_axis_id",
+      "expected": "SYNTH_AXIS_ZAK01_S2_E",
+      "pass": true
+    },
+    {
+      "actual": "SYNTH_TARGET_ZAK01_S2_F",
+      "assertion_id": "D_RESTORED.COORD.target_entity_id",
+      "case": "D_RESTORED",
+      "description": "restored exact positive input preserves target_entity_id",
+      "expected": "SYNTH_TARGET_ZAK01_S2_F",
+      "pass": true
+    },
+    {
+      "actual": {
+        "allowed_as_v551_relation_evidence": true,
+        "authority_artifact_path": "data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv",
+        "authority_artifact_sha256": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+        "authority_review_notes": "",
+        "authority_review_status": "",
+        "authority_row_payload_hash": "",
+        "authority_rule_id": "",
+        "authority_status": "",
+        "authority_version": "",
+        "canonical_wave": "W7",
+        "country_code": "US",
+        "current_directional_atom_eligible": true,
+        "driver_facet_id": "SYNTH_FACET_ZAK01_S2_B",
+        "driver_id": "SYNTH_DRIVER_ZAK01_S2_A",
+        "evidence_disposition": "",
+        "fixture_id": "ZAK01-S2-F03-SYNTHETIC-001",
+        "item_reversal": false,
+        "question_block_id": "SYNTH_BLOCK_ZAK01_S2_C",
+        "question_id": "zak01_s2_synthetic_no_match_q1",
+        "question_relation_authority_country_code": "US",
+        "question_relation_authority_joined": false,
+        "question_relation_authority_lookup_key": "wvs|w7|us|zak01_s2_synthetic_no_match_v1;wvs|w7|us|zak01_s2_synthetic_no_match_q1",
+        "question_relation_authority_match_count": 0,
+        "question_relation_authority_reason": "no exact active country-scoped question-relation authority row",
+        "question_relation_authority_resolution": "QUC_AUTHORITY_PRESERVED_ACTIVE_REGISTRY_NO_MATCH",
+        "question_relation_authority_resolution_status": "BLOCKED_MISSING_AUTHORITY",
+        "question_relation_coverage_eligible": true,
+        "question_relation_pressure_eligible": true,
+        "question_relation_registry_match": false,
+        "relation_axis_id": "SYNTH_AXIS_ZAK01_S2_E",
+        "relation_projection_polarity": "positive",
+        "relation_use_status": "",
+        "semantic_role": "RELATION_EVIDENCE",
+        "semantic_role_authority_status": "CERTIFIED",
+        "source_family": "WVS",
+        "source_response_polarity": "positive",
+        "structural_domain_id": "SYNTH_DOMAIN_ZAK01_S2_D",
+        "structural_mapping_status": "COMPLETE",
+        "synthetic_fixture": true,
+        "target_entity_id": "SYNTH_TARGET_ZAK01_S2_F",
+        "var_code": "zak01_s2_synthetic_no_match_v1"
+      },
+      "assertion_id": "D_RESTORED.OUTPUT_DICT_EQUALITY",
+      "case": "D_RESTORED",
+      "description": "restored output is equal to the original positive output as a data structure",
+      "expected": {
+        "allowed_as_v551_relation_evidence": true,
+        "authority_artifact_path": "data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv",
+        "authority_artifact_sha256": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+        "authority_review_notes": "",
+        "authority_review_status": "",
+        "authority_row_payload_hash": "",
+        "authority_rule_id": "",
+        "authority_status": "",
+        "authority_version": "",
+        "canonical_wave": "W7",
+        "country_code": "US",
+        "current_directional_atom_eligible": true,
+        "driver_facet_id": "SYNTH_FACET_ZAK01_S2_B",
+        "driver_id": "SYNTH_DRIVER_ZAK01_S2_A",
+        "evidence_disposition": "",
+        "fixture_id": "ZAK01-S2-F03-SYNTHETIC-001",
+        "item_reversal": false,
+        "question_block_id": "SYNTH_BLOCK_ZAK01_S2_C",
+        "question_id": "zak01_s2_synthetic_no_match_q1",
+        "question_relation_authority_country_code": "US",
+        "question_relation_authority_joined": false,
+        "question_relation_authority_lookup_key": "wvs|w7|us|zak01_s2_synthetic_no_match_v1;wvs|w7|us|zak01_s2_synthetic_no_match_q1",
+        "question_relation_authority_match_count": 0,
+        "question_relation_authority_reason": "no exact active country-scoped question-relation authority row",
+        "question_relation_authority_resolution": "QUC_AUTHORITY_PRESERVED_ACTIVE_REGISTRY_NO_MATCH",
+        "question_relation_authority_resolution_status": "BLOCKED_MISSING_AUTHORITY",
+        "question_relation_coverage_eligible": true,
+        "question_relation_pressure_eligible": true,
+        "question_relation_registry_match": false,
+        "relation_axis_id": "SYNTH_AXIS_ZAK01_S2_E",
+        "relation_projection_polarity": "positive",
+        "relation_use_status": "",
+        "semantic_role": "RELATION_EVIDENCE",
+        "semantic_role_authority_status": "CERTIFIED",
+        "source_family": "WVS",
+        "source_response_polarity": "positive",
+        "structural_domain_id": "SYNTH_DOMAIN_ZAK01_S2_D",
+        "structural_mapping_status": "COMPLETE",
+        "synthetic_fixture": true,
+        "target_entity_id": "SYNTH_TARGET_ZAK01_S2_F",
+        "var_code": "zak01_s2_synthetic_no_match_v1"
+      },
+      "pass": true
+    },
+    {
+      "actual": "9741e4a21d089e0e99cf715878cee07a9184bdbe09d05091612f4dcf5177546b",
+      "assertion_id": "D_RESTORED.CANONICAL_HASH_EQUALITY",
+      "case": "D_RESTORED",
+      "description": "restored output canonical hash equals the positive canonical hash",
+      "expected": "9741e4a21d089e0e99cf715878cee07a9184bdbe09d05091612f4dcf5177546b",
+      "pass": true
+    },
+    {
+      "actual": "e53c74d719451d8d326724851368ed84f56d2929a6c6d667a301484ea40fd8b7",
+      "assertion_id": "D_RESTORED.FILE_HASH_EQUALITY",
+      "case": "D_RESTORED",
+      "description": "restored output file SHA-256 equals the positive output file SHA-256",
+      "expected": "e53c74d719451d8d326724851368ed84f56d2929a6c6d667a301484ea40fd8b7",
+      "pass": true
+    },
+    {
+      "actual": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "assertion_id": "D_RESTORED.INPUT_HASH_EQUALITY",
+      "case": "D_RESTORED",
+      "description": "restored input canonical hash equals the immutable positive fixture hash",
+      "expected": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "pass": true
+    },
+    {
+      "actual": false,
+      "assertion_id": "D_RESTORED.REGISTRY_MATCH",
+      "case": "D_RESTORED",
+      "description": "restored output still reports no selected-registry match",
+      "expected": false,
+      "pass": true
+    },
+    {
+      "actual": "QUC_AUTHORITY_PRESERVED_ACTIVE_REGISTRY_NO_MATCH",
+      "assertion_id": "D_RESTORED.RESOLUTION",
+      "case": "D_RESTORED",
+      "description": "restored output still reports the no-match preservation resolution",
+      "expected": "QUC_AUTHORITY_PRESERVED_ACTIVE_REGISTRY_NO_MATCH",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "HOSTILE_CONTROL.CLEARED.driver_id",
+      "case": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED",
+      "description": "removing inbound certification clears driver_id",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "HOSTILE_CONTROL.CLEARED.driver_facet_id",
+      "case": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED",
+      "description": "removing inbound certification clears driver_facet_id",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "HOSTILE_CONTROL.CLEARED.question_block_id",
+      "case": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED",
+      "description": "removing inbound certification clears question_block_id",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "HOSTILE_CONTROL.CLEARED.structural_domain_id",
+      "case": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED",
+      "description": "removing inbound certification clears structural_domain_id",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "HOSTILE_CONTROL.CLEARED.relation_axis_id",
+      "case": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED",
+      "description": "removing inbound certification clears relation_axis_id",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": "",
+      "assertion_id": "HOSTILE_CONTROL.CLEARED.target_entity_id",
+      "case": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED",
+      "description": "removing inbound certification clears target_entity_id",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "actual": null,
+      "assertion_id": "HOSTILE_CONTROL.NO_PRESERVATION_LABEL",
+      "case": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED",
+      "description": "removing inbound certification prevents the no-match preservation branch",
+      "expected": null,
+      "pass": true
+    },
+    {
+      "actual": "NOT_CERTIFIED",
+      "assertion_id": "HOSTILE_CONTROL.SEMANTIC_ROLE_AUTHORITY_STATUS",
+      "case": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED",
+      "description": "F03 does not manufacture certification from its own no-match path",
+      "expected": "NOT_CERTIFIED",
+      "pass": true
+    },
+    {
+      "actual": false,
+      "assertion_id": "HOSTILE_CONTROL.V551_EVIDENCE",
+      "case": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED",
+      "description": "F03 does not manufacture V551 relation evidence without inbound certification",
+      "expected": false,
+      "pass": true
+    },
+    {
+      "actual": false,
+      "assertion_id": "HOSTILE_CONTROL.CURRENT_DIRECTIONAL",
+      "case": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED",
+      "description": "F03 does not manufacture directional eligibility without inbound certification",
+      "expected": false,
+      "pass": true
+    },
+    {
+      "actual": "017fdbb6f2d273bfe2cb22fc64783ee85c672fcbee0fc7933a3d2bac1387db3b",
+      "assertion_id": "B_DENIED_PERMISSION.OUTPUT_CONVERGES_WITH_PARTIAL",
+      "case": "B_DENIED_PERMISSION",
+      "description": "denied-permission and PARTIAL inputs converge on the same normalised fail-closed output",
+      "expected": "017fdbb6f2d273bfe2cb22fc64783ee85c672fcbee0fc7933a3d2bac1387db3b",
+      "pass": true
+    }
+  ],
+  "case_convergence": {
+    "cases_with_equal_output": [
+      "B_DENIED_PERMISSION",
+      "C_PARTIAL_MAPPING",
+      "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED"
+    ],
+    "explanation": "The three inputs are distinct, as their input hashes show. B changes only allowed_as_v551_relation_evidence, C changes only structural_mapping_status, and the supplemental control changes only semantic_role_authority_status. Each fails the same quc_is_certified gate, and the historical function normalises all three into the same fail-closed cleared-coordinate output. The equal output hashes are therefore an observed property of the historical branch, not duplicated case execution.",
+    "input_canonical_sha256": {
+      "B_DENIED_PERMISSION": "cde28b9b7fd16e9938cba934494a43a4626f57266d776fdb89484c2b4e7312dd",
+      "C_PARTIAL_MAPPING": "63c16c96d893cf493d4fbdfcbc021013a3a81720627381587a07f8032fab6dc7",
+      "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED": "c2bb654a40d1243ed63df585429db73125d87b17a82c635973a0dfa208a85c6c"
+    },
+    "output_canonical_sha256": "017fdbb6f2d273bfe2cb22fc64783ee85c672fcbee0fc7933a3d2bac1387db3b"
+  },
+  "cases": [
+    {
+      "case_id": "A_POSITIVE",
+      "input": {
+        "allowed_as_v551_relation_evidence": true,
+        "canonical_wave": "W7",
+        "country_code": "US",
+        "current_directional_atom_eligible": true,
+        "driver_facet_id": "SYNTH_FACET_ZAK01_S2_B",
+        "driver_id": "SYNTH_DRIVER_ZAK01_S2_A",
+        "fixture_id": "ZAK01-S2-F03-SYNTHETIC-001",
+        "item_reversal": false,
+        "question_block_id": "SYNTH_BLOCK_ZAK01_S2_C",
+        "question_id": "zak01_s2_synthetic_no_match_q1",
+        "relation_axis_id": "SYNTH_AXIS_ZAK01_S2_E",
+        "relation_projection_polarity": "positive",
+        "semantic_role": "RELATION_EVIDENCE",
+        "semantic_role_authority_status": "CERTIFIED",
+        "source_family": "WVS",
+        "source_response_polarity": "positive",
+        "structural_domain_id": "SYNTH_DOMAIN_ZAK01_S2_D",
+        "structural_mapping_status": "COMPLETE",
+        "synthetic_fixture": true,
+        "target_entity_id": "SYNTH_TARGET_ZAK01_S2_F",
+        "var_code": "zak01_s2_synthetic_no_match_v1"
+      },
+      "input_canonical_sha256": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "input_file_sha256": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "mutation": {},
+      "output": {
+        "allowed_as_v551_relation_evidence": true,
+        "authority_artifact_path": "data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv",
+        "authority_artifact_sha256": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+        "authority_review_notes": "",
+        "authority_review_status": "",
+        "authority_row_payload_hash": "",
+        "authority_rule_id": "",
+        "authority_status": "",
+        "authority_version": "",
+        "canonical_wave": "W7",
+        "country_code": "US",
+        "current_directional_atom_eligible": true,
+        "driver_facet_id": "SYNTH_FACET_ZAK01_S2_B",
+        "driver_id": "SYNTH_DRIVER_ZAK01_S2_A",
+        "evidence_disposition": "",
+        "fixture_id": "ZAK01-S2-F03-SYNTHETIC-001",
+        "item_reversal": false,
+        "question_block_id": "SYNTH_BLOCK_ZAK01_S2_C",
+        "question_id": "zak01_s2_synthetic_no_match_q1",
+        "question_relation_authority_country_code": "US",
+        "question_relation_authority_joined": false,
+        "question_relation_authority_lookup_key": "wvs|w7|us|zak01_s2_synthetic_no_match_v1;wvs|w7|us|zak01_s2_synthetic_no_match_q1",
+        "question_relation_authority_match_count": 0,
+        "question_relation_authority_reason": "no exact active country-scoped question-relation authority row",
+        "question_relation_authority_resolution": "QUC_AUTHORITY_PRESERVED_ACTIVE_REGISTRY_NO_MATCH",
+        "question_relation_authority_resolution_status": "BLOCKED_MISSING_AUTHORITY",
+        "question_relation_coverage_eligible": true,
+        "question_relation_pressure_eligible": true,
+        "question_relation_registry_match": false,
+        "relation_axis_id": "SYNTH_AXIS_ZAK01_S2_E",
+        "relation_projection_polarity": "positive",
+        "relation_use_status": "",
+        "semantic_role": "RELATION_EVIDENCE",
+        "semantic_role_authority_status": "CERTIFIED",
+        "source_family": "WVS",
+        "source_response_polarity": "positive",
+        "structural_domain_id": "SYNTH_DOMAIN_ZAK01_S2_D",
+        "structural_mapping_status": "COMPLETE",
+        "synthetic_fixture": true,
+        "target_entity_id": "SYNTH_TARGET_ZAK01_S2_F",
+        "var_code": "zak01_s2_synthetic_no_match_v1"
+      },
+      "output_canonical_sha256": "9741e4a21d089e0e99cf715878cee07a9184bdbe09d05091612f4dcf5177546b",
+      "output_file": "OUTPUT_A_POSITIVE.json",
+      "output_file_sha256": "e53c74d719451d8d326724851368ed84f56d2929a6c6d667a301484ea40fd8b7"
+    },
+    {
+      "case_id": "B_DENIED_PERMISSION",
+      "input": {
+        "allowed_as_v551_relation_evidence": false,
+        "canonical_wave": "W7",
+        "country_code": "US",
+        "current_directional_atom_eligible": true,
+        "driver_facet_id": "SYNTH_FACET_ZAK01_S2_B",
+        "driver_id": "SYNTH_DRIVER_ZAK01_S2_A",
+        "fixture_id": "ZAK01-S2-F03-SYNTHETIC-001",
+        "item_reversal": false,
+        "question_block_id": "SYNTH_BLOCK_ZAK01_S2_C",
+        "question_id": "zak01_s2_synthetic_no_match_q1",
+        "relation_axis_id": "SYNTH_AXIS_ZAK01_S2_E",
+        "relation_projection_polarity": "positive",
+        "semantic_role": "RELATION_EVIDENCE",
+        "semantic_role_authority_status": "CERTIFIED",
+        "source_family": "WVS",
+        "source_response_polarity": "positive",
+        "structural_domain_id": "SYNTH_DOMAIN_ZAK01_S2_D",
+        "structural_mapping_status": "COMPLETE",
+        "synthetic_fixture": true,
+        "target_entity_id": "SYNTH_TARGET_ZAK01_S2_F",
+        "var_code": "zak01_s2_synthetic_no_match_v1"
+      },
+      "input_canonical_sha256": "cde28b9b7fd16e9938cba934494a43a4626f57266d776fdb89484c2b4e7312dd",
+      "input_file_sha256": "6ab7b23b583f1e443f4e88b725fc6fa189fe584514a78ce368dfd54ee3eda464",
+      "mutation": {
+        "allowed_as_v551_relation_evidence": false
+      },
+      "output": {
+        "allowed_as_v551_relation_evidence": false,
+        "authority_artifact_path": "data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv",
+        "authority_artifact_sha256": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+        "authority_review_notes": "",
+        "authority_review_status": "",
+        "authority_row_payload_hash": "",
+        "authority_rule_id": "",
+        "authority_status": "",
+        "authority_version": "",
+        "canonical_wave": "W7",
+        "country_code": "US",
+        "current_directional_atom_eligible": false,
+        "driver_facet_id": "",
+        "driver_id": "",
+        "evidence_disposition": "",
+        "fixture_id": "ZAK01-S2-F03-SYNTHETIC-001",
+        "item_reversal": false,
+        "manual_review_flag": true,
+        "manual_review_reason": "no exact active country-scoped question-relation authority row",
+        "mapping_status": "blocked_missing_authority",
+        "question_block_id": "",
+        "question_id": "zak01_s2_synthetic_no_match_q1",
+        "question_relation_authority_country_code": "US",
+        "question_relation_authority_joined": false,
+        "question_relation_authority_lookup_key": "wvs|w7|us|zak01_s2_synthetic_no_match_v1;wvs|w7|us|zak01_s2_synthetic_no_match_q1",
+        "question_relation_authority_match_count": 0,
+        "question_relation_authority_reason": "no exact active country-scoped question-relation authority row",
+        "question_relation_authority_resolution_status": "BLOCKED_MISSING_AUTHORITY",
+        "question_relation_coverage_eligible": false,
+        "question_relation_pressure_eligible": false,
+        "relation_axis_id": "",
+        "relation_projection_polarity": "",
+        "relation_use_status": "",
+        "semantic_role": "UNKNOWN",
+        "semantic_role_authority_status": "NOT_CERTIFIED",
+        "source_family": "WVS",
+        "source_response_polarity": "",
+        "structural_domain_id": "",
+        "structural_mapping_status": "BLOCKED_MISSING_AUTHORITY",
+        "synthetic_fixture": true,
+        "target_entity_id": "",
+        "v551_visible": true,
+        "var_code": "zak01_s2_synthetic_no_match_v1"
+      },
+      "output_canonical_sha256": "017fdbb6f2d273bfe2cb22fc64783ee85c672fcbee0fc7933a3d2bac1387db3b",
+      "output_file": "OUTPUT_B_DENIED_PERMISSION.json",
+      "output_file_sha256": "0309c7ac8a3cc20501ef36d5efebb96f085c164113c442fb910e5dddf1a73cae"
+    },
+    {
+      "case_id": "C_PARTIAL_MAPPING",
+      "input": {
+        "allowed_as_v551_relation_evidence": true,
+        "canonical_wave": "W7",
+        "country_code": "US",
+        "current_directional_atom_eligible": true,
+        "driver_facet_id": "SYNTH_FACET_ZAK01_S2_B",
+        "driver_id": "SYNTH_DRIVER_ZAK01_S2_A",
+        "fixture_id": "ZAK01-S2-F03-SYNTHETIC-001",
+        "item_reversal": false,
+        "question_block_id": "SYNTH_BLOCK_ZAK01_S2_C",
+        "question_id": "zak01_s2_synthetic_no_match_q1",
+        "relation_axis_id": "SYNTH_AXIS_ZAK01_S2_E",
+        "relation_projection_polarity": "positive",
+        "semantic_role": "RELATION_EVIDENCE",
+        "semantic_role_authority_status": "CERTIFIED",
+        "source_family": "WVS",
+        "source_response_polarity": "positive",
+        "structural_domain_id": "SYNTH_DOMAIN_ZAK01_S2_D",
+        "structural_mapping_status": "PARTIAL",
+        "synthetic_fixture": true,
+        "target_entity_id": "SYNTH_TARGET_ZAK01_S2_F",
+        "var_code": "zak01_s2_synthetic_no_match_v1"
+      },
+      "input_canonical_sha256": "63c16c96d893cf493d4fbdfcbc021013a3a81720627381587a07f8032fab6dc7",
+      "input_file_sha256": "5be6aa145a27c5206692d44f17fe1a8d468b1a74a96afb5dcb2dbb326cecb3a8",
+      "mutation": {
+        "structural_mapping_status": "PARTIAL"
+      },
+      "output": {
+        "allowed_as_v551_relation_evidence": false,
+        "authority_artifact_path": "data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv",
+        "authority_artifact_sha256": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+        "authority_review_notes": "",
+        "authority_review_status": "",
+        "authority_row_payload_hash": "",
+        "authority_rule_id": "",
+        "authority_status": "",
+        "authority_version": "",
+        "canonical_wave": "W7",
+        "country_code": "US",
+        "current_directional_atom_eligible": false,
+        "driver_facet_id": "",
+        "driver_id": "",
+        "evidence_disposition": "",
+        "fixture_id": "ZAK01-S2-F03-SYNTHETIC-001",
+        "item_reversal": false,
+        "manual_review_flag": true,
+        "manual_review_reason": "no exact active country-scoped question-relation authority row",
+        "mapping_status": "blocked_missing_authority",
+        "question_block_id": "",
+        "question_id": "zak01_s2_synthetic_no_match_q1",
+        "question_relation_authority_country_code": "US",
+        "question_relation_authority_joined": false,
+        "question_relation_authority_lookup_key": "wvs|w7|us|zak01_s2_synthetic_no_match_v1;wvs|w7|us|zak01_s2_synthetic_no_match_q1",
+        "question_relation_authority_match_count": 0,
+        "question_relation_authority_reason": "no exact active country-scoped question-relation authority row",
+        "question_relation_authority_resolution_status": "BLOCKED_MISSING_AUTHORITY",
+        "question_relation_coverage_eligible": false,
+        "question_relation_pressure_eligible": false,
+        "relation_axis_id": "",
+        "relation_projection_polarity": "",
+        "relation_use_status": "",
+        "semantic_role": "UNKNOWN",
+        "semantic_role_authority_status": "NOT_CERTIFIED",
+        "source_family": "WVS",
+        "source_response_polarity": "",
+        "structural_domain_id": "",
+        "structural_mapping_status": "BLOCKED_MISSING_AUTHORITY",
+        "synthetic_fixture": true,
+        "target_entity_id": "",
+        "v551_visible": true,
+        "var_code": "zak01_s2_synthetic_no_match_v1"
+      },
+      "output_canonical_sha256": "017fdbb6f2d273bfe2cb22fc64783ee85c672fcbee0fc7933a3d2bac1387db3b",
+      "output_file": "OUTPUT_C_PARTIAL_MAPPING.json",
+      "output_file_sha256": "0309c7ac8a3cc20501ef36d5efebb96f085c164113c442fb910e5dddf1a73cae"
+    },
+    {
+      "case_id": "D_RESTORED",
+      "input": {
+        "allowed_as_v551_relation_evidence": true,
+        "canonical_wave": "W7",
+        "country_code": "US",
+        "current_directional_atom_eligible": true,
+        "driver_facet_id": "SYNTH_FACET_ZAK01_S2_B",
+        "driver_id": "SYNTH_DRIVER_ZAK01_S2_A",
+        "fixture_id": "ZAK01-S2-F03-SYNTHETIC-001",
+        "item_reversal": false,
+        "question_block_id": "SYNTH_BLOCK_ZAK01_S2_C",
+        "question_id": "zak01_s2_synthetic_no_match_q1",
+        "relation_axis_id": "SYNTH_AXIS_ZAK01_S2_E",
+        "relation_projection_polarity": "positive",
+        "semantic_role": "RELATION_EVIDENCE",
+        "semantic_role_authority_status": "CERTIFIED",
+        "source_family": "WVS",
+        "source_response_polarity": "positive",
+        "structural_domain_id": "SYNTH_DOMAIN_ZAK01_S2_D",
+        "structural_mapping_status": "COMPLETE",
+        "synthetic_fixture": true,
+        "target_entity_id": "SYNTH_TARGET_ZAK01_S2_F",
+        "var_code": "zak01_s2_synthetic_no_match_v1"
+      },
+      "input_canonical_sha256": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+      "input_file_sha256": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+      "mutation": {},
+      "output": {
+        "allowed_as_v551_relation_evidence": true,
+        "authority_artifact_path": "data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv",
+        "authority_artifact_sha256": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+        "authority_review_notes": "",
+        "authority_review_status": "",
+        "authority_row_payload_hash": "",
+        "authority_rule_id": "",
+        "authority_status": "",
+        "authority_version": "",
+        "canonical_wave": "W7",
+        "country_code": "US",
+        "current_directional_atom_eligible": true,
+        "driver_facet_id": "SYNTH_FACET_ZAK01_S2_B",
+        "driver_id": "SYNTH_DRIVER_ZAK01_S2_A",
+        "evidence_disposition": "",
+        "fixture_id": "ZAK01-S2-F03-SYNTHETIC-001",
+        "item_reversal": false,
+        "question_block_id": "SYNTH_BLOCK_ZAK01_S2_C",
+        "question_id": "zak01_s2_synthetic_no_match_q1",
+        "question_relation_authority_country_code": "US",
+        "question_relation_authority_joined": false,
+        "question_relation_authority_lookup_key": "wvs|w7|us|zak01_s2_synthetic_no_match_v1;wvs|w7|us|zak01_s2_synthetic_no_match_q1",
+        "question_relation_authority_match_count": 0,
+        "question_relation_authority_reason": "no exact active country-scoped question-relation authority row",
+        "question_relation_authority_resolution": "QUC_AUTHORITY_PRESERVED_ACTIVE_REGISTRY_NO_MATCH",
+        "question_relation_authority_resolution_status": "BLOCKED_MISSING_AUTHORITY",
+        "question_relation_coverage_eligible": true,
+        "question_relation_pressure_eligible": true,
+        "question_relation_registry_match": false,
+        "relation_axis_id": "SYNTH_AXIS_ZAK01_S2_E",
+        "relation_projection_polarity": "positive",
+        "relation_use_status": "",
+        "semantic_role": "RELATION_EVIDENCE",
+        "semantic_role_authority_status": "CERTIFIED",
+        "source_family": "WVS",
+        "source_response_polarity": "positive",
+        "structural_domain_id": "SYNTH_DOMAIN_ZAK01_S2_D",
+        "structural_mapping_status": "COMPLETE",
+        "synthetic_fixture": true,
+        "target_entity_id": "SYNTH_TARGET_ZAK01_S2_F",
+        "var_code": "zak01_s2_synthetic_no_match_v1"
+      },
+      "output_canonical_sha256": "9741e4a21d089e0e99cf715878cee07a9184bdbe09d05091612f4dcf5177546b",
+      "output_file": "OUTPUT_D_RESTORED.json",
+      "output_file_sha256": "e53c74d719451d8d326724851368ed84f56d2929a6c6d667a301484ea40fd8b7"
+    },
+    {
+      "case_id": "HOSTILE_CONTROL_INBOUND_CERTIFICATION_REMOVED",
+      "input": {
+        "allowed_as_v551_relation_evidence": true,
+        "canonical_wave": "W7",
+        "country_code": "US",
+        "current_directional_atom_eligible": true,
+        "driver_facet_id": "SYNTH_FACET_ZAK01_S2_B",
+        "driver_id": "SYNTH_DRIVER_ZAK01_S2_A",
+        "fixture_id": "ZAK01-S2-F03-SYNTHETIC-001",
+        "item_reversal": false,
+        "question_block_id": "SYNTH_BLOCK_ZAK01_S2_C",
+        "question_id": "zak01_s2_synthetic_no_match_q1",
+        "relation_axis_id": "SYNTH_AXIS_ZAK01_S2_E",
+        "relation_projection_polarity": "positive",
+        "semantic_role": "RELATION_EVIDENCE",
+        "semantic_role_authority_status": "NOT_CERTIFIED",
+        "source_family": "WVS",
+        "source_response_polarity": "positive",
+        "structural_domain_id": "SYNTH_DOMAIN_ZAK01_S2_D",
+        "structural_mapping_status": "COMPLETE",
+        "synthetic_fixture": true,
+        "target_entity_id": "SYNTH_TARGET_ZAK01_S2_F",
+        "var_code": "zak01_s2_synthetic_no_match_v1"
+      },
+      "input_canonical_sha256": "c2bb654a40d1243ed63df585429db73125d87b17a82c635973a0dfa208a85c6c",
+      "input_file_sha256": "24a90de1299a0aae9fcf0626d84d19b2063fe7190d613077a37b5043c4a14f98",
+      "mutation": {
+        "semantic_role_authority_status": "NOT_CERTIFIED"
+      },
+      "output": {
+        "allowed_as_v551_relation_evidence": false,
+        "authority_artifact_path": "data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv",
+        "authority_artifact_sha256": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+        "authority_review_notes": "",
+        "authority_review_status": "",
+        "authority_row_payload_hash": "",
+        "authority_rule_id": "",
+        "authority_status": "",
+        "authority_version": "",
+        "canonical_wave": "W7",
+        "country_code": "US",
+        "current_directional_atom_eligible": false,
+        "driver_facet_id": "",
+        "driver_id": "",
+        "evidence_disposition": "",
+        "fixture_id": "ZAK01-S2-F03-SYNTHETIC-001",
+        "item_reversal": false,
+        "manual_review_flag": true,
+        "manual_review_reason": "no exact active country-scoped question-relation authority row",
+        "mapping_status": "blocked_missing_authority",
+        "question_block_id": "",
+        "question_id": "zak01_s2_synthetic_no_match_q1",
+        "question_relation_authority_country_code": "US",
+        "question_relation_authority_joined": false,
+        "question_relation_authority_lookup_key": "wvs|w7|us|zak01_s2_synthetic_no_match_v1;wvs|w7|us|zak01_s2_synthetic_no_match_q1",
+        "question_relation_authority_match_count": 0,
+        "question_relation_authority_reason": "no exact active country-scoped question-relation authority row",
+        "question_relation_authority_resolution_status": "BLOCKED_MISSING_AUTHORITY",
+        "question_relation_coverage_eligible": false,
+        "question_relation_pressure_eligible": false,
+        "relation_axis_id": "",
+        "relation_projection_polarity": "",
+        "relation_use_status": "",
+        "semantic_role": "UNKNOWN",
+        "semantic_role_authority_status": "NOT_CERTIFIED",
+        "source_family": "WVS",
+        "source_response_polarity": "",
+        "structural_domain_id": "",
+        "structural_mapping_status": "BLOCKED_MISSING_AUTHORITY",
+        "synthetic_fixture": true,
+        "target_entity_id": "",
+        "v551_visible": true,
+        "var_code": "zak01_s2_synthetic_no_match_v1"
+      },
+      "output_canonical_sha256": "017fdbb6f2d273bfe2cb22fc64783ee85c672fcbee0fc7933a3d2bac1387db3b",
+      "output_file": "OUTPUT_HOSTILE_CONTROL.json",
+      "output_file_sha256": "0309c7ac8a3cc20501ef36d5efebb96f085c164113c442fb910e5dddf1a73cae"
+    }
+  ],
+  "contract_id": "ZAK01-MCR-AF-INVESTIGATION-20261110",
+  "environment": {
+    "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1",
+    "hostname": "mainMac.lan",
+    "machine": "x86_64",
+    "pandas_version": "2.3.1",
+    "platform": "macOS-13.2.1-x86_64-i386-64bit",
+    "process_id": 44644,
+    "python_executable": "/usr/local/bin/python3",
+    "python_version": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "python_version_info": [
+      3,
+      11,
+      3,
+      "final",
+      0
+    ],
+    "release": "22.3.0",
+    "relevant_env": {
+      "DDM_AUTHORITY_ROOT": null,
+      "PYTHONHASHSEED": null,
+      "RAWLSING_QUESTION_RELATION_AUTHORITY_PATH": null
+    },
+    "runner_user": "matthewsmith",
+    "system": "Darwin",
+    "timezone": "EST",
+    "utc_observation": "2026-11-11T06:19:58.025412+00:00"
+  },
+  "excluded_scope": [
+    "S3",
+    "original respondent-data execution",
+    "original historical production first reader",
+    "independent semantic/scientific/source issuance",
+    "independent receiving"
+  ],
+  "execution": {
+    "canonical_serialization": "json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(',', ':'), allow_nan=False).encode('utf-8')",
+    "command": [
+      "/usr/local/bin/python3",
+      "WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/run_f03_s2_native.py",
+      "--repo-root",
+      ".",
+      "--out-dir",
+      "WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03"
+    ],
+    "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1",
+    "first_reader_caveat": "The test-time invocation path and first reader prove only how this author-side synthetic experiment called and read the historical function. They are not proof of the original historical production first reader, its call site, its inputs, or its authority.",
+    "function": "ddm_v550_question_relation_authority.apply_question_relation_authority",
+    "function_source_end_line": 858,
+    "function_source_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1/data/ddm_build_copy/ddm_v550_question_relation_authority.py",
+    "function_source_sha256": "8007fafeab112a5ddf24342da8e04f4ec8137dd4e9809fecba54271151154ff0",
+    "function_source_start_line": 727,
+    "module_import_method": "importlib.util.spec_from_file_location",
+    "module_import_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1/data/ddm_build_copy/ddm_v550_question_relation_authority.py",
+    "original_historical_production_first_reader": "NOT_PROVED",
+    "pretty_serialization": "json.dumps(value, sort_keys=True, ensure_ascii=False, indent=2, allow_nan=False) + '\\n'",
+    "test_script": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1/WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/run_f03_s2_native.py",
+    "test_time_first_reader": "run_f03_s2_native.py::execute_case and the assertion checks in AssertionLog are the first code that reads the returned output",
+    "test_time_invocation_path": "run_f03_s2_native.py::execute_case -> ddm_v550_question_relation_authority.apply_question_relation_authority",
+    "test_time_reader_is_not_original_first_reader": true
+  },
+  "failures": [],
+  "fixture": {
+    "canonical_bytes": 790,
+    "canonical_sha256": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+    "file_sha256": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+    "git_blob_sha1": "09d7d6c027c0adf293051004318bac9714b1a0c1",
+    "no_match_proof": {
+      "direct_scan": {
+        "country_key": "us",
+        "family_key": "wvs",
+        "matching_rows": [],
+        "rows_matching_family_wave_country": 0,
+        "truncated": false,
+        "wave_key": "w7"
+      },
+      "resolver_lookup_key": "wvs|w7|us|zak01_s2_synthetic_no_match_v1;wvs|w7|us|zak01_s2_synthetic_no_match_q1",
+      "resolver_match_count": 0,
+      "resolver_resolved": false,
+      "resolver_status": "BLOCKED_MISSING_AUTHORITY"
+    },
+    "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1/WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/fixture.json",
+    "question_identity": {
+      "canonical_wave": "W7",
+      "country_code": "US",
+      "question_id": "zak01_s2_synthetic_no_match_q1",
+      "source_family": "WVS",
+      "var_code": "zak01_s2_synthetic_no_match_v1"
+    }
+  },
+  "hostile_interpretation": {
+    "conclusion": "The preservation branch conditionally preserves six already-present inbound coordinates and the inbound CERTIFIED/RELATION_EVIDENCE labels. It explicitly reports question_relation_registry_match=false and question_relation_authority_resolution_status=BLOCKED_MISSING_AUTHORITY. It does not establish who certified the source, whether that issuer was competent, or whether original source/scientific permissions exist.",
+    "inbound_certification_removed_control": {
+      "allowed_as_v551_relation_evidence": false,
+      "output_canonical_sha256": "017fdbb6f2d273bfe2cb22fc64783ee85c672fcbee0fc7933a3d2bac1387db3b",
+      "output_file": "OUTPUT_HOSTILE_CONTROL.json",
+      "preservation_label": null,
+      "semantic_role_authority_status": "NOT_CERTIFIED"
+    },
+    "limitation": "The supplemental control removes inbound certification and shows F03 fails closed; this is consistent with F03 consuming, not creating, semantic authority. It does not by itself prove the provenance of the inbound flags in the original historical production run.",
+    "positive_output_authority_row_payload_hash": "",
+    "positive_output_authority_status": "",
+    "positive_output_registry_match": false,
+    "positive_output_registry_match_is_false": true,
+    "positive_output_relation_use_status": "",
+    "positive_output_underlying_resolution_status": "BLOCKED_MISSING_AUTHORITY",
+    "rejected": true,
+    "rejected_conclusion": "Because F03 preserved six coordinates and marked the inbound row certified, F03 itself established original source authority."
+  },
+  "independent_receiving": "PENDING",
+  "minimum_grade_required": "S2",
+  "not_an_independent_reviewer": true,
+  "obligation_id": "ZAK01-HOSTILE",
+  "receipt_kind": "AUTHOR_SIDE_CANDIDATE_EVIDENCE_ONLY",
+  "registry_pin": {
+    "bytes": 1119028,
+    "executed_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1/data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv",
+    "historical_commit": "9253064bc9423a0f0ccda4fbdea43c2f54f800c6",
+    "input_head_blob_sha1": "daac001bb8da645c7d99408e2239f4e04b6e9f9b",
+    "loaded_index_sha256": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+    "observed_bytes": 1119028,
+    "observed_git_blob_sha1": "daac001bb8da645c7d99408e2239f4e04b6e9f9b",
+    "observed_sha256": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+    "path": "data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv",
+    "sha256": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b"
+  },
+  "restoration": {
+    "canonical_hashes_equal": true,
+    "documented_serialization": "json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(',', ':'), allow_nan=False).encode('utf-8')",
+    "file_hashes_equal": true,
+    "output_dicts_equal": true,
+    "positive_case": "A_POSITIVE",
+    "positive_output_canonical_sha256": "9741e4a21d089e0e99cf715878cee07a9184bdbe09d05091612f4dcf5177546b",
+    "positive_output_file_sha256": "e53c74d719451d8d326724851368ed84f56d2929a6c6d667a301484ea40fd8b7",
+    "restored_case": "D_RESTORED",
+    "restored_output_canonical_sha256": "9741e4a21d089e0e99cf715878cee07a9184bdbe09d05091612f4dcf5177546b",
+    "restored_output_file_sha256": "e53c74d719451d8d326724851368ed84f56d2929a6c6d667a301484ea40fd8b7"
+  },
+  "result_code": "F03_S2_POSITIVE_DENIED_PARTIAL_RESTORED_PROVED__PENDING_INDEPENDENT_RECEIVING",
+  "scope": "S2 synthetic-fixture execution of the actual historical apply_question_relation_authority function. No respondent data, no S3, and no original production first-reader proof.",
+  "source_pin": {
+    "bytes": 38858,
+    "executed_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1/data/ddm_build_copy/ddm_v550_question_relation_authority.py",
+    "git_blob_sha1": "62084cbed10a5975f79bd504bf4fb99025e4e64e",
+    "historical_commit": "9253064bc9423a0f0ccda4fbdea43c2f54f800c6",
+    "input_head_blob_sha1": "62084cbed10a5975f79bd504bf4fb99025e4e64e",
+    "input_head_commit": "52206dc889e094c48c610e30f72824630c697560",
+    "loaded_index_sha256": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+    "observed_bytes": 38858,
+    "observed_git_blob_sha1": "62084cbed10a5975f79bd504bf4fb99025e4e64e",
+    "observed_sha256": "2fb0851d8bac6f3d381fdf11749f7e04e676de914d643e5be1ad4603cc39f63c",
+    "path": "data/ddm_build_copy/ddm_v550_question_relation_authority.py",
+    "sha256": "2fb0851d8bac6f3d381fdf11749f7e04e676de914d643e5be1ad4603cc39f63c"
+  },
+  "status": "PASS",
+  "witness_id": "ZAK01-S2-F03-NATIVE-20261111-R1"
+}

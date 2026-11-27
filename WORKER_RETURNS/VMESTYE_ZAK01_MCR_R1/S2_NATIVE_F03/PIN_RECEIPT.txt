@@ -1,0 +1,66 @@
+# ZAK01-S2-F03 PIN RECEIPT
+# generated UTC: 2026-11-11T06:19:42Z
+# runner: Darwin 22.3.0 x86_64; python: 3.11.3 /usr/local/bin/python3; pandas: 2.3.1
+
+## Canonical clone (object source)
+$ git -C /Users/matthewsmith/Desktop/as2b-lits1-DiSDJn/repository -c gc.auto=0 rev-parse HEAD
+923f2c00b6145182a5e2be5038f579845951da19
+$ git -C /Users/matthewsmith/Desktop/as2b-lits1-DiSDJn/repository -c gc.auto=0 cat-file -t 9253064bc9423a0f0ccda4fbdea43c2f54f800c6
+commit
+$ git -C /Users/matthewsmith/Desktop/as2b-lits1-DiSDJn/repository -c gc.auto=0 rev-parse 9253064bc9423a0f0ccda4fbdea43c2f54f800c6:data/ddm_build_copy/ddm_v550_question_relation_authority.py
+62084cbed10a5975f79bd504bf4fb99025e4e64e
+$ git -C /Users/matthewsmith/Desktop/as2b-lits1-DiSDJn/repository -c gc.auto=0 cat-file -s 9253064bc9423a0f0ccda4fbdea43c2f54f800c6:data/ddm_build_copy/ddm_v550_question_relation_authority.py
+38858
+$ git -C /Users/matthewsmith/Desktop/as2b-lits1-DiSDJn/repository -c gc.auto=0 rev-parse 9253064bc9423a0f0ccda4fbdea43c2f54f800c6:data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv
+daac001bb8da645c7d99408e2239f4e04b6e9f9b
+$ git -C /Users/matthewsmith/Desktop/as2b-lits1-DiSDJn/repository -c gc.auto=0 cat-file -s 9253064bc9423a0f0ccda4fbdea43c2f54f800c6:data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv
+1119028
+$ git -C /Users/matthewsmith/Desktop/as2b-lits1-DiSDJn/repository -c gc.auto=0 rev-parse 52206dc889e094c48c610e30f72824630c697560:data/ddm_build_copy/ddm_v550_question_relation_authority.py
+62084cbed10a5975f79bd504bf4fb99025e4e64e
+$ git -C /Users/matthewsmith/Desktop/as2b-lits1-DiSDJn/repository -c gc.auto=0 rev-parse 52206dc889e094c48c610e30f72824630c697560:data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv
+daac001bb8da645c7d99408e2239f4e04b6e9f9b
+$ git -C /Users/matthewsmith/Desktop/as2b-lits1-DiSDJn/repository -c gc.auto=0 diff --stat 9253064bc9423a0f0ccda4fbdea43c2f54f800c6 52206dc889e094c48c610e30f72824630c697560 -- data/ddm_build_copy/ddm_v550_question_relation_authority.py data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv
+(no output above means the two pinned paths are unchanged between historical commit and input head)
+
+## Evidence worktree / branch
+$ git -C /Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1 -c gc.auto=0 rev-parse --abbrev-ref HEAD
+agent/vmestye-zak01-s2-native-20261111-r1
+$ git -C /Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1 -c gc.auto=0 rev-parse HEAD
+52206dc889e094c48c610e30f72824630c697560
+$ git -C /Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1 -c gc.auto=0 status --short --untracked-files=all
+?? WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/OUTPUT_A_POSITIVE.json
+?? WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/OUTPUT_B_DENIED_PERMISSION.json
+?? WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/OUTPUT_C_PARTIAL_MAPPING.json
+?? WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/OUTPUT_D_RESTORED.json
+?? WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/OUTPUT_HOSTILE_CONTROL.json
+?? WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/PIN_RECEIPT.txt
+?? WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/WITNESS.json
+?? WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/fixture.json
+?? WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/run_f03_s2_native.py
+?? data/ddm_build_copy/__pycache__/ddm_v550_question_relation_authority.cpython-311.pyc
+
+## Executed bytes (worktree)
+$ shasum -a 256 /Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1/data/ddm_build_copy/ddm_v550_question_relation_authority.py
+2fb0851d8bac6f3d381fdf11749f7e04e676de914d643e5be1ad4603cc39f63c  /Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1/data/ddm_build_copy/ddm_v550_question_relation_authority.py
+$ shasum -a 256 /Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1/data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv
+a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b  /Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1/data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv
+$ wc -c /Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1/data/ddm_build_copy/ddm_v550_question_relation_authority.py /Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1/data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv
+   38858 /Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1/data/ddm_build_copy/ddm_v550_question_relation_authority.py
+ 1119028 /Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1/data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv
+ 1157886 total
+
+## Actual execution command
+$ cd /Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak01-s2-native-20261111-r1 && /usr/local/bin/python3 WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/run_f03_s2_native.py --repo-root . --out-dir WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03
+
+## Result summary (recorded by the run)
+status=PASS
+result_code=F03_S2_POSITIVE_DENIED_PARTIAL_RESTORED_PROVED__PENDING_INDEPENDENT_RECEIVING
+source_sha256=2fb0851d8bac6f3d381fdf11749f7e04e676de914d643e5be1ad4603cc39f63c
+registry_sha256=a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b
+fixture_canonical_sha256=bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38
+A_POSITIVE_canonical_sha256=9741e4a21d089e0e99cf715878cee07a9184bdbe09d05091612f4dcf5177546b
+B_DENIED_canonical_sha256=017fdbb6f2d273bfe2cb22fc64783ee85c672fcbee0fc7933a3d2bac1387db3b
+C_PARTIAL_canonical_sha256=017fdbb6f2d273bfe2cb22fc64783ee85c672fcbee0fc7933a3d2bac1387db3b
+D_RESTORED_canonical_sha256=9741e4a21d089e0e99cf715878cee07a9184bdbe09d05091612f4dcf5177546b
+restoration_equal=true
+assertions=116/116 PASS

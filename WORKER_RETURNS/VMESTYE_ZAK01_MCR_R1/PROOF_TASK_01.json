@@ -1,0 +1,41 @@
+{
+  "contract_id": "ZAK01-MCR-AF-INVESTIGATION-20261110",
+  "obligation_id": "ZAK01-TASK-01",
+  "receipt_kind": "AUTHOR_SIDE_CANDIDATE_EVIDENCE_ONLY",
+  "status": "INCOMPLETE",
+  "minimum_grade_required": "S1",
+  "actual_author_grade": "S1_DOCUMENTARY_STATIC_INSPECTION",
+  "not_an_independent_reviewer": true,
+  "source_pin": {
+    "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N020_LONG_MEMORY/VMESTYE/DATA/LEGACY_AR58_SEED.tsv",
+    "commit": "256d46bf425cc37e114465cddbe3c60e535766ab",
+    "blob": "49513d3040ca4f8c3ccc17f0abd5092260fa2463"
+  },
+  "output_path": "WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/SOURCE_RESOURCE_SELECTION_AND_RULE_PAYLOAD.tsv",
+  "output_sha256": "193b8cc12019fee907ee31e69e1527ddedb68d914675e1f5f9ae4b3d4791d849",
+  "observed_source_bounded_check": "S1_58_ID_C6_01_AR58_SAME_SET_42_SELECTED_EDGES_AND_13_DIRECT_RESOURCE_REHASHES",
+  "pending_exact_defect": "29 selected resource payloads not independently rehashed (2 large repo, 23 historical local, 4 bundle); original native first reader unknown",
+  "candidate_branch": "agent/vmestye-zak01-mcr-20261110-r1",
+  "protected_source_cut": "9366b42a61a383808071106d70aa1255a769390a",
+  "first_current_reader": "NOT_PROVED",
+  "native_execution": "NOT_RUN",
+  "original_source_issuer": "NOT_GRANTED",
+  "independent_receiving": "NOT_RUN",
+  "consumer": "ZAK05 authority-placement synthesis after separate ZAK02/ZAK03 evidence",
+  "acceptance_boundary": "DELIVERED_PENDING_RECEIVING__NO_AUTHORITY_PROMOTION",
+  "candidate_revision": "R2_SOURCE_LOCATOR_AND_SCOPED_PRECEDENCE_REPAIR",
+  "prior_independent_review": "R1_FROZEN_957021eb4845c3a316dc0f922a9b2e2692c6ca4d__REVISE; R2 NOT_INDEPENDENTLY_RECEIVED",
+  "additional_frozen_source_pins": [
+    {
+      "path": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl",
+      "commit": "aed1a0ae13c58f11f4dabd07c818b62f72adf989",
+      "blob": "4fc18855909e848d6bc80c3ec6ff34657326cb6a"
+    }
+  ],
+  "selected_locator_receipt": "42/42 inherited C6 03 edges; 15 repository,23 historical local,4 historical bundle",
+  "repository_selected_resource_receipt": "13/15 protected repo content SHA256+bytes directly rehashed; remaining AR0005 large and AR0006 contents body unavailable",
+  "executable_first_consumer": "NOT_PROVED",
+  "native_S2_F03_positive_denied_restore": "RUN__PASS__116_OF_116_ASSERTIONS__PENDING_INDEPENDENT_RECEIVING",
+  "native_s2_witness_path": "WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/WITNESS.json",
+  "native_s2_witness_sha256": "602b7f7970701db36b989838262315ed437c4ddb79e9a74a3e8827b9de680cd4"
+}
