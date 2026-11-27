@@ -124,6 +124,7 @@ def build_plan(document,config,*,per_stratum=3,tasks=None):
     p=verify_workload(document);cfg=normalize_config(config);b=cfg["budget"]
     cases,coverage=select_cases(document,per_stratum=per_stratum,tasks=tasks)
     arms=cfg["arms"];schedule=[];totals={}
+    if len(cases)*len(arms)>100000:raise ValueError("LAB_CAMPAIGN_PLAN_SIZE_CAP")
     for i,case in enumerate(cases):
         row=p["rows"][case["seq"]];shift=i%len(arms)
         for a in arms[shift:]+arms[:shift]:
@@ -222,5 +223,5 @@ def execute_plan(document,config,plan,*,journal,observation_log,sourcefree_live_
             t["known_usage_nanos"]+=x*a["input_nanos_per_token"]+y*a["output_nanos_per_token"]
         else:t["unknown_usage_calls"]+=1
     result["declared_model_rate_estimates"]=costs
-    result["all_planned_requests_consumed"]=all(x.cursor==len(x.expected) for x in arms.values())
+    result["all_planned_wire_checks_consumed"]=all(x.cursor==len(x.expected) for x in arms.values())
     return result

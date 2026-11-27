@@ -106,8 +106,32 @@ The local plan hash is integrity evidence, not a signature or proof of rights.
 
 ### Configuration (illustrative only)
 
-Use the existing configuration shape above, with one approved endpoint/model
-per arm. The same completion cap applies to all arms. Optionally specify
+Use one approved endpoint/model per arm. Example only, with an intentionally
+unreachable endpoint and illustrative rates/limits; no expenditure authorized.
+
+```json
+{
+  "arms": [
+    {"name":"model-a-full","endpoint":"https://example.invalid/v1/chat/completions","model":"approved-model","key_env":"RAWLSING_LAB_KEY","compiled":false},
+    {"name":"model-a-exact","endpoint":"https://example.invalid/v1/chat/completions","model":"approved-model","key_env":"RAWLSING_LAB_KEY","compiled":true}
+  ],
+  "budget": {
+    "max_calls": 20,
+    "max_wire_bytes": 2000000,
+    "input_token_ceiling": 40000,
+    "completion_token_limit": 1000,
+    "input_nanos_per_token": 1000,
+    "output_nanos_per_token": 4000,
+    "max_budget_nanos": 880000000
+  }
+}
+```
+
+One USD per million tokens equals 1000 nanodollars/token. The illustrative
+reservation is USD 0.044 per call, at most USD 0.88 across twenty reservations.
+Not actual provider rates, a billing guarantee or an approved budget.
+Keys are read from named environment variables, never from the plan.
+ The same completion cap applies to all arms. Optionally specify
 `input_nanos_per_token` and `output_nanos_per_token` per arm; both must be
 no greater than the shared conservative budget rates. These are user-supplied
 rates, not fetched prices or provider invoices. Cached token discounts,
