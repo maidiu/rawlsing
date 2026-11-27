@@ -33,7 +33,9 @@ ARMS = ('F', 'E', 'P', 'Lbad', 'F_abstain')
 SEED = {'source_ref':'SOURCEFREE_R34_PARENT_NOT_PYAT',
         'answers':{'fictional':'not survey evidence'},
         'fictional_seed':{'projects':[{'object':'ordinary speech',
-            'means':['SPEAK'],'priority':.2,'cue_terms':['home']}]}}
+            'means':['SPEAK'],'priority':.2,'cue_terms':['home']},
+            {'object':'ordinary material production','means':['MAKE_OBJECT'],
+             'priority':.5,'cue_terms':['home']}]}}
 MOTHER = {'source_ref':'SOURCEFREE_R34_MOTHER_NOT_PYAT',
           'answers':{'fictional':'not survey evidence'},
           'fictional_seed':{'projects':[{'object':'vocal practice',
