@@ -545,3 +545,6 @@ JSON proposed additive field `sorok_g4_constructive_realization_candidate`:
   "protected_receiving": "NOT_RECEIVED"
 }
 ```
+
+
+**Constructive-realization candidate successor receipt:** CIC blob `ec934bda3c40d61dbe6deeaa45e27d91c271e471`; prior exact candidate 60f32b7b24976376b1a942e23c1104d967157113 documentary job 140619088565 PASS; owner feedback and HOME-local proposal routes recorded in machine method, notification only. R37 initial EAT requested/performed; R57 later WAIT/SPEAK attempt, not complete utterance. Prior pair remains unchanged. Proposed JSON field `sorok_g4_constructive_realization_followup`: `{"cic_blob":"ec934bda3c40d61dbe6deeaa45e27d91c271e471","prior_candidate":"60f32b7b24976376b1a942e23c1104d967157113","prior_documentary_job":140619088565,"owner_feedback_routes":{"CO_HQ":"https://github.com/maidiu/rawlsing/pull/1371#issuecomment-7223098015","NEIGHBOR_HOME":"https://github.com/maidiu/rawlsing/pull/1332#issuecomment-7223098523","CO_MULCHINEER":"https://github.com/maidiu/rawlsing/pull/1399#issuecomment-7223099020","NEIGHBOR_MULCHINEER":"https://github.com/maidiu/rawlsing/pull/1398#issuecomment-7223099540","INFERENCE_ECONOMY":"https://github.com/maidiu/rawlsing/pull/1378#issuecomment-7223099994"},"owner_incorporation":"NOT_VERIFIED","protected_receiving":"NOT_RECEIVED","status":"PROPOSED_ONLY_HQ_CURRENTNESS_HOLD"}`.
