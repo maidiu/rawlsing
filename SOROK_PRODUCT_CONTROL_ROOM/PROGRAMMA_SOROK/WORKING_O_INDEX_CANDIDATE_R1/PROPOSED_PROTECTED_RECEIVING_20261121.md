@@ -548,3 +548,77 @@ JSON proposed additive field `sorok_g4_constructive_realization_candidate`:
 
 
 **Constructive-realization candidate successor receipt:** CIC blob `ec934bda3c40d61dbe6deeaa45e27d91c271e471`; prior exact candidate 60f32b7b24976376b1a942e23c1104d967157113 documentary job 140619088565 PASS; owner feedback and HOME-local proposal routes recorded in machine method, notification only. R37 initial EAT requested/performed; R57 later WAIT/SPEAK attempt, not complete utterance. Prior pair remains unchanged. Proposed JSON field `sorok_g4_constructive_realization_followup`: `{"cic_blob":"ec934bda3c40d61dbe6deeaa45e27d91c271e471","prior_candidate":"60f32b7b24976376b1a942e23c1104d967157113","prior_documentary_job":140619088565,"owner_feedback_routes":{"CO_HQ":"https://github.com/maidiu/rawlsing/pull/1371#issuecomment-7223098015","NEIGHBOR_HOME":"https://github.com/maidiu/rawlsing/pull/1332#issuecomment-7223098523","CO_MULCHINEER":"https://github.com/maidiu/rawlsing/pull/1399#issuecomment-7223099020","NEIGHBOR_MULCHINEER":"https://github.com/maidiu/rawlsing/pull/1398#issuecomment-7223099540","INFERENCE_ECONOMY":"https://github.com/maidiu/rawlsing/pull/1378#issuecomment-7223099994"},"owner_incorporation":"NOT_VERIFIED","protected_receiving":"NOT_RECEIVED","status":"PROPOSED_ONLY_HQ_CURRENTNESS_HOLD"}`.
+
+## 2026-11-27 — SOROK-PM R001 receiving
+
+Three attributed worker returns at [PM exact cut](https://github.com/maidiu/rawlsing/tree/1871a6e4233050db856e22542d87e914d13727f4/SOROK_PRODUCT_CONTROL_ROOM/SOROK-PM); CO HQ missing at designated path. 189 PR observations, 655 scoped links; 187 criteria, 58 clusters, 719 routes conserved. Construction: {"UNEXAMINED":167,"FIRST_DRAFT_IMPLEMENTED":2,"PARTIAL_CONSTRUCTION":17,"INTEGRATED_FIRST_DRAFT":1}; clusters {"UNEXAMINED":43,"PARTIAL_CONSTRUCTION":15}. No completion percentage. Prior criterion evidence classifications, review and authority dimensions unchanged. R18 prior exact record and R19 intermediate execution preserved.
+
+| PR | Exact head | Actual scope and residual | Execution |
+|---|---|---|---|
+| [#1399](https://github.com/maidiu/rawlsing/pull/1399) | `87831a61c3b06786ad5bc0ae32282412ae03d9e0` | R57 acquired actual vocal expression -> self receipt -> optional second-order affect -> cold later WAIT/SPEAK attempt; own/hearer/blocked distinct, parent retained, forged receipt refused. **Residual:** One site/practice, later attempt not full utterance, no new NEIGHBOR execution. | [722 each mode](https://github.com/maidiu/rawlsing/actions/runs/46030984310/job/140614403169) |
+| [#1400](https://github.com/maidiu/rawlsing/pull/1400) | `c462ec138055bcca5bb70c5e5c4d28ff1b70c7bc` | R35 actual learned vocal occurrence and finite visitor exposure; separately authored addressed SAY -> selected ORIENT receipt -> optional MEMORY -> private rehearsal -> actual REST trial; receipt not truth or observer knowledge. **Residual:** Controlled callback, no general repertoire or human comprehension; R18 join reported, no R57 join. | [726 each mode](https://github.com/maidiu/rawlsing/actions/runs/46031699096/job/140616861695) |
+| [#1407](https://github.com/maidiu/rawlsing/pull/1407) | `8be51ece5456a13188e4ee6e42cf5ed7e8d624a3` | R58 repeated work -> acquired APPROACH; father's actual wage contribution and delegated sanction, mother's blocked WORK and selected relief draw (.25 transfer, contract ACTIVE) -> optional INHIBIT revision -> cold later WORK available both, same policy selects WAIT vs WORK attempt. Forged lineage rollback; prior fatigue failure corrected via actual REST. **Residual:** One actor/orientation/site; objective dependence survives; no father psychic afterlife, actual food purchase, permanent emancipation or R36/R20 join. | [724 each mode](https://github.com/maidiu/rawlsing/actions/runs/46057801985/job/140704431739) |
+| [#1408](https://github.com/maidiu/rawlsing/pull/1408) | `d803ad894f60dfe0548c3a96fccbd2db58ea699b` | R36 own pending undertaking explicitly withdrawn while absent, exclusive cutoff; objective change without actor evidence. Separate no message/revoked/delivered unopened/opened -> actual selected receipt may become MEMORY -> cold EAT vs WAIT and actual stock difference; ordinary care continues, fresh undertaking retains prior periods. Replay/foreign/late/fulfilled refusal. **Residual:** One modeled tick; no general assent/counteroffer, cancellation-caused third-party substitution, calendar collision or R58/R20 join. | [726 each mode](https://github.com/maidiu/rawlsing/actions/runs/46057762544/job/140704300819) |
+| [#1378](https://github.com/maidiu/rawlsing/pull/1378) | `a4ac27ff02f1574d8aaba015ab7d7b7a63900e12` | R20 actual R34 F owner-course capture/replay through R35 lineage; retains original hermetic callback agreement; optional local admission witnesses, cold digest, three actual project exercises and maternal ORIENT, F/E preflight and scratch admission. R19 exact preregistered mock-wire/budget instrument. R34 66 vs 78 calls arm-dependent; no isolated causal labor saving. **Residual:** R34 workload, not R35/R57/R58/R36; callback-backed replay not independent history-only SC07 R0, no alternate committed course, provider tokens/cost. | [730 each mode](https://github.com/maidiu/rawlsing/actions/runs/46057791652/job/140704397368) |
+
+**Historical correction:** R29/R30 already have operative correspondence and permission-surrender readers; NEIGHBOR-018.01 first draft at historical cut, .02 partial. R36 changes objective commitment independently of notice/receipt; R58 loosens acquired work orientation without ending material dependence. Potential integration: objective cost/access -> independent actor receipt -> changed power/orientation -> later actual activity and third-party reproduction. No compulsory psychical outcome or actual R36/R58 join. R20 uses R35 lineage but measures actual R34 course, not R36/R58; economy needs case strata and qualified actual continuation, not blanket join. Compare with maturation/use-time and other whole-HOME deficits. CO HQ theoretical judgment outstanding. No new function, criterion, review/authority promotion, commission or protected receiving.
+
+Ledger `88201a2f2ff5db01d2aa21587b2efb76e1bf79a8`; CIC `2f84ef464faf241dd11f0501ec7d9dfd0a3d5744`.
+
+JSON proposed additive field `sorok_pm_r001_candidate`:
+```json
+{
+  "protected_parent": "827714e83743056939894a39736d72ea16bdc6dd",
+  "protected_md_blob": "a565e6239ee730bf8aae796d1c5afb35207b1e93",
+  "protected_json_blob": "f2081d41452a5fb5d7061fcf340af725e4ee07af",
+  "ledger_blob": "88201a2f2ff5db01d2aa21587b2efb76e1bf79a8",
+  "cic_blob": "2f84ef464faf241dd11f0501ec7d9dfd0a3d5744",
+  "observations": 189,
+  "links": 655,
+  "criterion_counts": {
+    "UNEXAMINED": 167,
+    "FIRST_DRAFT_IMPLEMENTED": 2,
+    "PARTIAL_CONSTRUCTION": 17,
+    "INTEGRATED_FIRST_DRAFT": 1
+  },
+  "cluster_counts": {
+    "UNEXAMINED": 43,
+    "PARTIAL_CONSTRUCTION": 15
+  },
+  "pr_receipts": [
+    {
+      "pr": 1399,
+      "head": "87831a61c3b06786ad5bc0ae32282412ae03d9e0",
+      "job": 140614403169,
+      "co_tests_per_mode": 722
+    },
+    {
+      "pr": 1400,
+      "head": "c462ec138055bcca5bb70c5e5c4d28ff1b70c7bc",
+      "job": 140616861695,
+      "co_tests_per_mode": 726
+    },
+    {
+      "pr": 1407,
+      "head": "8be51ece5456a13188e4ee6e42cf5ed7e8d624a3",
+      "job": 140704431739,
+      "co_tests_per_mode": 724
+    },
+    {
+      "pr": 1408,
+      "head": "d803ad894f60dfe0548c3a96fccbd2db58ea699b",
+      "job": 140704300819,
+      "co_tests_per_mode": 726
+    },
+    {
+      "pr": 1378,
+      "head": "a4ac27ff02f1574d8aaba015ab7d7b7a63900e12",
+      "job": 140704397368,
+      "co_tests_per_mode": 730
+    }
+  ],
+  "co_hq_return": "MISSING_AT_SAMPLED_CUT",
+  "status": "PROPOSED_ONLY_HQ_CURRENTNESS_HOLD",
+  "protected_receiving": "NOT_RECEIVED"
+}
+```
