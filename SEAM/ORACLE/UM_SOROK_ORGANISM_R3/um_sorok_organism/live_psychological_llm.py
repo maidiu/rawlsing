@@ -269,7 +269,8 @@ class ExplicitJSONLLMProvider:
     def __init__(self,*,endpoint,model,api_key,allow_private_actor_data=False,
                  timeout_seconds=45,transport=None,compact_task_prompt=False,
                  metrics_capacity=0,compact_exact_packet=False,compact_structured_packet=False,
-                 profile_semantic_demand=False):
+                 profile_semantic_demand=False,completion_token_limit=None,
+                 completion_limit_field="max_completion_tokens"):
         u=urlparse(endpoint)
         if (u.scheme!="https" or not u.hostname or u.username or
                 u.password or u.fragment or u.query or
@@ -298,6 +299,13 @@ class ExplicitJSONLLMProvider:
             raise TypeError("MODEL_SEMANTIC_PROFILE_FLAG_INVALID")
         if profile_semantic_demand and not metrics_capacity:
             raise ValueError("MODEL_SEMANTIC_PROFILE_NEEDS_METRICS")
+        if (completion_token_limit is not None and
+                (type(completion_token_limit) is not int or not 1<=completion_token_limit<=131072)):
+            raise ValueError("MODEL_COMPLETION_LIMIT_INVALID")
+        if completion_limit_field not in ("max_completion_tokens","max_tokens"):
+            raise ValueError("MODEL_COMPLETION_LIMIT_FIELD_INVALID")
+        self.completion_token_limit=completion_token_limit
+        self.completion_limit_field=completion_limit_field
         self.profile_semantic_demand=profile_semantic_demand
         self.compact_structured_packet=compact_structured_packet
         self.compact_exact_packet=compact_exact_packet
@@ -568,7 +576,9 @@ class ExplicitJSONLLMProvider:
             return {"model":self.model,
                  "messages":[{"role":"system","content":prompt},
                              {"role":"user","content":canonical(body)}],
-                 "response_format":{"type":"json_object"}}
+                 "response_format":{"type":"json_object"},
+                 **({self.completion_limit_field:self.completion_token_limit}
+                    if self.completion_token_limit is not None else {})}
         body={"task":task,"actor_source_packet":packet}
         req=request(instructions,body)
         if self.compact_exact_packet:
