@@ -729,6 +729,40 @@ class ContinuingLifeCourt(unittest.TestCase):
                 self.assertEqual(len(result["projects"]),1+int(nominate))
 
 
+    def test_R82_familiar_destination_is_actor_local_not_world_permission(self):
+        from modern_generation_port_r28 import ConditionalPolicy
+        from um_sorok_organism.semantics import ValidatingSemanticService
+        with tempfile.TemporaryDirectory() as d:
+            rt=ConstitutiveRuntime(str(Path(d)/"life.sqlite"))
+            try:
+                # Authored starting placement, not a claim of enduring
+                # institutional admission. The actor actually lives there.
+                rt.ledger.initialize(blank_world(),[adult("a","A",location="hall"),adult("b","B")])
+                self.assertEqual(rt.step("a",requested_action="REST")["status"],"PERFORMED")
+                self.assertEqual(rt.step("a",requested_action="MOVE",object_ref="home")["objective_outcome"],"MOVED")
+                rt.step("b",requested_action="REST")
+                def destinations(a):
+                    return [o for q in rt.situated(a)["candidate_actions"]
+                            for o in q.get("practical_alternatives",[])
+                            if o.get("grounds_status")=="HISTORICALLY_FAMILIAR_DESTINATION"]
+                opts=destinations("a");self.assertEqual(len(opts),1)
+                self.assertEqual(opts[0]["world_request"]["material_object_ref"],"hall")
+                self.assertEqual(destinations("b"),[])
+                self.assertNotIn("workshop",[v["world_request"]["material_object_ref"] for v in opts])
+                pol=policy([action("MOVE",{"grounds_status":"HISTORICALLY_FAMILIAR_DESTINATION",
+                                           "world_request":{"material_object_ref":"hall"}})])
+                rt.semantic=ValidatingSemanticService(ConditionalPolicy({"a":pol}))
+                out=rt.step("a")
+                self.assertEqual(out["attempt"],"MOVE")
+                self.assertEqual(out["objective_outcome"],"INSTITUTIONAL_ACCESS_DENIED")
+                self.assertEqual(rt.ledger.actor("a")[1]["location"],"home")
+                path=rt.ledger.actor("a")[1]["evidence_paths"][-1]
+                witness=path["pre_world_operative_policy_witness_analytic_only"]["familiar_destination_choice"]
+                self.assertEqual(witness["source"],opts[0]["familiar_destination_basis"])
+                self.assertTrue(rt.verify()["valid"])
+            finally:rt.close()
+
+
     def test_R81_independent_reciprocal_routine_through_actual_checkpoint_interval_and_revision(self):
         """Same shared semantic compiler and owner; no injected future assent."""
         from copy import deepcopy

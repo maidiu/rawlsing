@@ -57,6 +57,24 @@ def freeze_operative_witness(actor_id,clock,options,chosen_action,proposal,provi
         'not_a_clinical_claim_about_motive':True,
         'grade':GRADE,
     }
+    # The exact issued destination is part of the computational choice,
+    # not an explanation of why the actor wished to go there.
+    if chosen_action=='MOVE' and proposal.get('practical_option_id') is not None:
+        matches=[p for p in chosen[0].get('practical_alternatives',[])
+                 if p['option_id']==proposal['practical_option_id']
+                 and p.get('grounds_status')=='HISTORICALLY_FAMILIAR_DESTINATION']
+        if matches:
+            if len(matches)!=1:
+                raise ValueError('OPERATIVE_AMBIGUOUS_FAMILIAR_DESTINATION')
+            from .types import copy
+            m=matches[0];source=m['familiar_destination_basis']
+            if (m['actor']!=actor_id or m['as_of_clock']!=clock
+                    or m['world_request']['material_object_ref']!=source['site']
+                    or source['experienced_clock']>=clock or selected_projects):
+                raise ValueError('OPERATIVE_UNQUALIFIED_FAMILIAR_DESTINATION')
+            recorded['familiar_destination_choice']={
+                'option_ref':m['option_id'],'source':copy(source),
+                'not_current_permission_or_conscious_reason':True}
     # Never grant an external model the internal offline-policy witness simply
     # because it submitted an identically worded selection_grade string.
     if provider_grade!='SOURCEFREE_RULE_BASED_PLACEHOLDER_NO_LLM':
