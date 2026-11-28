@@ -35,9 +35,30 @@ ANALYTIC_DOMAINS = (
     "possible_ends","functional_bindings","historical_orientations","self_model",
     "expectations","memories","co_regulation_orientations","joint_practices",
     "care_practical_commitments","cultural_reference_practices","vocal_coordination_practices",
-    "material_investments","power_exercises","lived_genesis_episodes","evidence_paths")
+    "material_investments","power_exercises","lived_genesis_episodes","evidence_paths",
+    "activity_history","participation_history","notice_exposures","object_encounters",
+    "practice_exposures","undergone_care_periods","experienced_care_events",
+    "performed_feeding_events","institutional_expectations","material_dependency_encounters",
+    "labor_dependency_encounters","care_contribution_episodes","cultural_demonstrations",
+    "vocal_turn_experiences","traces","other_models","history_refs")
 MAX_ANALYTIC_READS = 12
 MAX_ANALYTIC_BYTES = 256*1024
+MAX_DOMAIN_PAGE=32
+RECENT_ACCESSIBLE_MEMORY=16
+
+def exact_domain_rows(value):
+    """Derived handles, not a second store or a claim of conscious access."""
+    if isinstance(value,dict):
+        return [("key:"+k,v) for k,v in sorted(value.items())]
+    require(isinstance(value,list),"GEN_ROW_DOMAIN_NOT_COLLECTION")
+    return [("id:"+v["id"] if isinstance(v,dict) and text(v.get("id"),512)
+             else "digest:"+digest(v),v) for v in value]
+
+def latest_native_event(runtime):
+    # Joined owner provides a public bounded tail read. Preserve compatibility
+    # with R63 without requiring or modifying its private storage methods.
+    fn=getattr(runtime.ledger,"latest_event",None)
+    return fn() if callable(fn) else runtime.ledger.events()[-1]
 
 def require(ok, code):
     if not ok:
@@ -369,7 +390,7 @@ class ModernDevelopmentOwner:
     """
     grade=GRADE
     def __init__(self,runtime,actor,receipt_path,*,sourcefree_attested=False,period_catalog=None,
-                 family_sources=(),qualified_interval_cuts=False,continuity_link=None):
+                 family_sources=(),qualified_interval_cuts=False,continuity_link=None,selective_memory_context=False):
         require(sourcefree_attested is True,"GEN_SOURCEFREE_ATTESTATION_REQUIRED")
         self.rt=runtime;self.actor=actor
         self.rt.ledger.actor(actor)
@@ -379,6 +400,8 @@ class ModernDevelopmentOwner:
         self.source_ref="SOURCEFREE_MODERN_ROOT:"+self.root
         self.period_catalog=detached(period_catalog or {})
         self.qualified_interval_cuts=qualified_interval_cuts
+        require(type(selective_memory_context) is bool,"GEN_MEMORY_PROFILE")
+        self.selective_memory_context=selective_memory_context
         self.continuity_link=detached(continuity_link)
         if self.continuity_link:
             require(self.continuity_link["root"]==self.root,"GEN_CONTINUITY_ROOT")
@@ -398,7 +421,8 @@ class ModernDevelopmentOwner:
         self.db.execute("CREATE TABLE IF NOT EXISTS checkpoint_attempts (id INTEGER PRIMARY KEY, receipt TEXT NOT NULL)")
         binding=canonical({"root":self.root,"branch":self.branch,"actor":actor,
                            "catalog":self.period_catalog,"family_sources":self.family_sources,"qualified_interval_cuts":self.qualified_interval_cuts,
-                           "continuity_link":self.continuity_link,"grade":GRADE})
+                           "continuity_link":self.continuity_link,"grade":GRADE,
+                           **({"selective_memory_context":True} if self.selective_memory_context else {})})
         row=self.db.execute("SELECT value FROM binding WHERE id=1").fetchone()
         if row is None:self.db.execute("INSERT INTO binding VALUES (1,?)",(binding,))
         else:require(row[0]==binding,"GEN_RECEIPT_BINDING")
@@ -427,18 +451,38 @@ class ModernDevelopmentOwner:
         _,w=self.rt.ledger.world(self.rt.world_id)
         return StateIdentity(self.root,self.actor,self.branch,w["clock"],verified["last_hash"])
 
-    def resolve_analytic_reads(self,reads):
+    def resolve_analytic_reads(self,reads,*,now=None,people=None):
         require(isinstance(reads,list) and len(reads)<=MAX_ANALYTIC_READS,"GEN_ANALYTIC_READ_LIMIT")
-        out=[];seen=set();people=self.rt.ledger.actors();events=None
+        out=[];seen=set();people=self.rt.ledger.actors() if people is None else people;events=None
+        now=now or self.snapshot()
         for read in reads:
             require(isinstance(read,dict) and read.get("actor") in people,"GEN_ANALYTIC_READ_ACTOR")
             aid=read["actor"];kind=read.get("kind")
-            if kind=="ACTOR_DOMAIN":
-                require(exact_keys(read,("kind","actor","domain")) and read["domain"] in ANALYTIC_DOMAINS,
+            if kind in ("ACTOR_DOMAIN","ACTOR_DOMAIN_PAGE","ACTOR_ROW"):
+                extra={"ACTOR_DOMAIN":(),"ACTOR_DOMAIN_PAGE":("offset","limit"),"ACTOR_ROW":("row_ref",)}[kind]
+                require(exact_keys(read,("kind","actor","domain",*extra)) and read["domain"] in ANALYTIC_DOMAINS,
                         "GEN_ANALYTIC_READ_DOMAIN")
                 require(read["domain"] in people[aid],"GEN_ANALYTIC_READ_DOMAIN_ABSENT")
                 value=people[aid][read["domain"]]
-                identity={"current_state":self.snapshot().state_hash,"domain":read["domain"]}
+                identity={"current_state":now.state_hash,"domain":read["domain"],
+                          "domain_digest":digest(value)}
+                if kind!="ACTOR_DOMAIN":
+                    rows=exact_domain_rows(value)
+                    if kind=="ACTOR_DOMAIN_PAGE":
+                        offset,limit=read["offset"],read["limit"]
+                        require(type(offset) is int and 0<=offset<=len(rows) and
+                                type(limit) is int and 1<=limit<=MAX_DOMAIN_PAGE,"GEN_ROW_PAGE_BOUNDS")
+                        counts=Counter(k for k,_ in rows)
+                        value={"count":len(rows),"offset":offset,"limit":limit,
+                               "next_offset":offset+limit if offset+limit<len(rows) else None,
+                               "rows":[{"row_ref":k,"row_digest":digest(v),"bytes":len(canonical(v).encode("utf-8")),
+                                       "unique":counts[k]==1} for k,v in rows[offset:offset+limit]]}
+                    else:
+                        require(text(read["row_ref"],1024),"GEN_ROW_REF")
+                        matches=[v for k,v in rows if k==read["row_ref"]]
+                        require(len(matches)==1,"GEN_ROW_ABSENT_OR_AMBIGUOUS")
+                        identity["row_ref"]=read["row_ref"]
+                        value=matches[0]
             elif kind=="ACTUAL_EXPERIENCE":
                 require(exact_keys(read,("kind","actor","objective_ref")) and text(read["objective_ref"]),
                         "GEN_ANALYTIC_READ_SOURCE")
@@ -454,6 +498,7 @@ class ModernDevelopmentOwner:
                         "value_digest":digest(value),"analyst_only_not_actor_self_knowledge":True})
         require(len(canonical(out).encode("utf-8"))<=MAX_ANALYTIC_BYTES,
                 "GEN_ANALYTIC_EXPANSION_BUDGET_HOLD")
+        require(latest_native_event(self.rt)["chain_hash"]==now.state_hash,"GEN_READ_STATE_MOVED")
         return out
 
     def context(self,analytic_reads=None):
@@ -461,13 +506,29 @@ class ModernDevelopmentOwner:
         Prior actual experience comes separately from inherited RecursionCycle.
         """
         now=self.snapshot()
-        result={}
-        for aid,a in self.rt.ledger.actors().items():
+        result={};people=self.rt.ledger.actors()
+        for aid,a in people.items():
             situated=self.rt.situated(aid)
+            memories=[m for m in a.get("memories",[]) if m.get("status")=="ACTOR_ACCESSIBLE"]
+            working=memories
+            if self.selective_memory_context and len(memories)>RECENT_ACCESSIBLE_MEMORY:
+                # Keep recent accessible memory and all whose exact identity
+                # or origin appears in the current actual tip; other accessible
+                # rows remain canonically conserved and explicitly retrievable.
+                tip=canonical(situated)
+                def relevant(m):
+                    refs=[m.get("id"),*(m.get("origin",[]) if isinstance(m.get("origin"),list) else [])]
+                    return any(isinstance(ref,str) and len(ref)>0 and canonical(ref) in tip for ref in refs)
+                working=[m for i,m in enumerate(memories)
+                         if i>=len(memories)-RECENT_ACCESSIBLE_MEMORY or relevant(m)]
             result[aid]={"role":a["role"],"age_days":a["age_days"],"body":a["body"],
                          "location":a["location"],"projects":a.get("projects",[]),
-                         "accessible_memories":[m for m in a.get("memories",[])
-                                                if m.get("status")=="ACTOR_ACCESSIBLE"],
+                         "accessible_memories":working,
+                         **({"accessible_memory_projection":{"profile":"RECENT_AND_CURRENT_TIP_REFERENCED",
+                              "full_accessible_count":len(memories),"included_count":len(working),
+                              "full_accessible_digest":digest(memories),
+                              "exact_dormant_access_via_domain_page_and_row":True,
+                              "not_a_change_of_actor_accessibility":True}} if self.selective_memory_context else {}),
                          "analyst_only_historical_orientations":a.get("historical_orientations",[]),
                          "current_situated":situated,
                          "exact_analytic_domain_index":{k:{"count":len(a[k]) if isinstance(a[k],(dict,list)) else None,
@@ -498,7 +559,7 @@ class ModernDevelopmentOwner:
                             for p in rows] for key,rows in self.period_catalog.items()},
                          **({"prior_generation_and_live_ancestry":self.continuity_link}
                             if self.continuity_link else {}),
-                         "selected_exact_analytic_reads":self.resolve_analytic_reads(analytic_reads or []),
+                         "selected_exact_analytic_reads":self.resolve_analytic_reads(analytic_reads or [],now=now,people=people),
                          "actor_contexts_are_separate_analyst_only_not_actor_self_report":True})
 
     def validate_proposal(self,p):
@@ -597,7 +658,7 @@ class ModernDevelopmentOwner:
         """
         if not self.qualified_interval_cuts:
             out=self.rt.background(span,processes=processes)
-            return [out],[self.rt.ledger.events()[-1]]
+            return [out],[latest_native_event(self.rt)]
         from um_sorok_organism.continuity_clock import (
             qualify_mixed_history_schedule,mixed_history_interval,next_discontinuity,MAX_HORIZON)
         world=self.rt.ledger.world(self.rt.world_id)[1];target=world["clock"]+span
@@ -619,7 +680,7 @@ class ModernDevelopmentOwner:
                 end=at
             require(end>clock,"GEN_ZERO_INTERVAL")
             out=self.rt.background(end-clock,processes=active)
-            evt=self.rt.ledger.events()[-1]
+            evt=latest_native_event(self.rt)
             require(evt["id"]==out["receipt"] and evt["clock"]==end,"GEN_NATIVE_INTERVAL_RECEIPT")
             receipts.append(out);events.append(evt);world=self.rt.ledger.world(self.rt.world_id)[1]
         return receipts,events
@@ -659,12 +720,12 @@ class ModernDevelopmentOwner:
                 self.rt.semantic=ValidatingSemanticService(policy)
                 if p.operation=="CONTINUE_ACTOR_LIFE":
                     out=self.rt.step(p.participants[0]) # no injected action, target or coactor
-                    step_event=self.rt.ledger.events()[-1]
+                    step_event=latest_native_event(self.rt)
                     require(step_event["id"]==out["receipt"] and step_event["kind"]=="ACTOR_LIFE_TRANSITION",
                             "GEN_NATIVE_RECEIPT")
                 family_result=self.family_transition(c.get("family"))
             finally:self.rt.semantic=old
-            event=self.rt.ledger.events()[-1]
+            event=latest_native_event(self.rt)
             after=self.snapshot()
             require(after.clock==p.event_time,"GEN_NATIVE_CLOCK")
             payload=step_event["envelope"]["payload"] if step_event else {}

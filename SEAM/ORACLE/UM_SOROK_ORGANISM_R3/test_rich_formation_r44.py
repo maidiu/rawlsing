@@ -234,4 +234,66 @@ class RichFormationCourt(unittest.TestCase):
                     finally:g.close()
                 finally:rt.close()
 
+
+    def test_exact_granular_retrieval_and_bounded_working_set_over_continuing_history(self):
+        from modern_generation_port_r28 import RecursionRefusal
+        with tempfile.TemporaryDirectory() as d:
+            f=Path(d);db=f/"life.sqlite";rt=ConstitutiveRuntime(str(db))
+            rt.ledger.initialize(blank_world(),[adult("worker","Mara")])
+            class MemoryCourse:
+                def __init__(self):self.requests=[]
+                def call(self,r):
+                    self.requests.append(r);ctx=r["context"];n=len(self.requests)
+                    if r["mode"]=="TERMINAL":return term(r)
+                    rows=[]
+                    for i in range(5):
+                        rule={"candidate":{"kind":"MEMORY","content":f"Actual ordinary rest {n}:{i}: "+("the afternoon passed. "*12),
+                                           "cue_terms":["rest"]},"when":{"own_action":"REST","status":"PERFORMED"}}
+                        rows.append(own("worker",[action("REST")],[rule]))
+                    result=batch(r,rows,n)
+                    if n==4:
+                        result["prospective"][-1]["circumstances"]["next_analytic_reads"]=[
+                            {"kind":"ACTOR_DOMAIN_PAGE","actor":"worker","domain":"memories","offset":0,"limit":3}]
+                    if n==5:
+                        page=ctx["selected_exact_analytic_reads"][0]["value"]
+                        result["prospective"][-1]["circumstances"]["next_analytic_reads"]=[
+                            {"kind":"ACTOR_ROW","actor":"worker","domain":"memories","row_ref":page["rows"][0]["row_ref"]}]
+                    return result
+            p=MemoryCourse()
+            g=inherited.ModernGenerationCourt.generation(self,rt,f,"worker",p,selective_memory_context=True)
+            try:
+                g.bootstrap()
+                for _ in range(4):g.advance()
+                old=deepcopy(rt.snapshot("worker")["memories"])
+                self.assertEqual(len(old),25)
+            finally:g.close();rt.close()
+            rt=ConstitutiveRuntime(str(db));g=inherited.ModernGenerationCourt.generation(self,rt,f,"worker",p,selective_memory_context=True)
+            try:
+                g.advance();page=p.requests[5]["context"]["selected_exact_analytic_reads"][0]["value"]
+                self.assertEqual(page["count"],25);self.assertEqual(len(page["rows"]),3)
+                g.advance()
+                c=p.requests[6]["context"]
+                got=c["selected_exact_analytic_reads"][0]
+                self.assertEqual(got["value"],old[0])
+                self.assertEqual(got["value_digest"],page["rows"][0]["row_digest"])
+                projection=c["actor_contexts"]["worker"]["accessible_memory_projection"]
+                self.assertEqual(projection["full_accessible_count"],30)
+                self.assertLess(projection["included_count"],30)
+                current=rt.snapshot("worker")["memories"]
+                self.assertEqual(current[:25],old)
+                full=g.owner.resolve_analytic_reads([{"kind":"ACTOR_DOMAIN","actor":"worker","domain":"memories"}])
+                row=g.owner.resolve_analytic_reads([{"kind":"ACTOR_ROW","actor":"worker","domain":"memories",
+                    "row_ref":page["rows"][0]["row_ref"]}])
+                nfull=len(json.dumps(full,separators=(",",":"),sort_keys=True).encode())
+                nrow=len(json.dumps(row,separators=(",",":"),sort_keys=True).encode())
+                self.assertLess(nrow,nfull/3)
+                with self.assertRaises(RecursionRefusal):
+                    g.owner.resolve_analytic_reads([{"kind":"ACTOR_ROW","actor":"worker","domain":"memories",
+                        "row_ref":"id:unissued"}])
+                g.finish();self.assertTrue(rt.verify()["valid"]);self.assertTrue(g.engine.verify())
+                print("R47_GRANULAR",json.dumps({"memories":len(current),"checkpoint_calls":len(p.requests),
+                    "full_accessible_count":projection["full_accessible_count"],"working_count":projection["included_count"],
+                    "full_domain_bytes":nfull,"single_row_bytes":nrow},sort_keys=True))
+            finally:g.close();rt.close()
+
 if __name__=="__main__":unittest.main()
