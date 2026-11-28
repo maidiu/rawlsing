@@ -199,20 +199,6 @@ def practical_alternatives(constitution,access,option):
                     'source_aggregate_ref':early['id'],
                     'not_actor_self_account':True,'not_world_outcome':True,
                     'other_response_not_assumed':True,'source_grade':GRADE})
-    if act=='MOVE':
-        for destination in familiar_destination_rows(constitution,access):
-            site=destination['site']
-            alts.append({'option_id':stable_id('familiar_destination',{
-                'actor':actor,'clock':clock,'source':destination,'from':access.location}),
-                'actor':actor,'as_of_clock':clock,'operation':act,'project_id':None,
-                'grounds_status':'HISTORICALLY_FAMILIAR_DESTINATION',
-                'binding_status':'PAST_SITE_EXPERIENCED_CURRENT_ACCESS_NOT_ESTABLISHED',
-                'world_request':{'operation':act,'addressed_party_ref':None,
-                                 'material_object_ref':site},
-                'familiar_destination_basis':copy(destination),
-                'anticipated_difference':None,'beneficiary_as_apprehended':None,
-                'priority':None,'not_actor_self_account':True,'not_world_outcome':True,
-                'source_grade':GRADE})
     if act=='PLEDGE_CARE':
         # An actual addressee matters: a free-floating promise cannot bind
         # some convenient future person assigned by the world narration.
@@ -241,6 +227,20 @@ def practical_alternatives(constitution,access,option):
         'binding_status':'UNATTRIBUTED_OPERATION',
         'not_actor_self_account':True,'not_world_outcome':True,
         'source_grade':GRADE,'priority':None})
+    if act=='MOVE':
+        for destination in familiar_destination_rows(constitution,access):
+            site=destination['site']
+            alts.append({'option_id':stable_id('familiar_destination',{
+                'actor':actor,'clock':clock,'source':destination,'from':access.location}),
+                'actor':actor,'as_of_clock':clock,'operation':act,'project_id':None,
+                'grounds_status':'HISTORICALLY_FAMILIAR_DESTINATION',
+                'binding_status':'PAST_SITE_EXPERIENCED_CURRENT_ACCESS_NOT_ESTABLISHED',
+                'world_request':{'operation':act,'addressed_party_ref':None,
+                                 'material_object_ref':site},
+                'familiar_destination_basis':copy(destination),
+                'anticipated_difference':None,'beneficiary_as_apprehended':None,
+                'priority':None,'not_actor_self_account':True,'not_world_outcome':True,
+                'source_grade':GRADE})
     return alts
 
 def offer_addressed_lexical_alternatives(access,option,focal_refs):

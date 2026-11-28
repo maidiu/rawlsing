@@ -749,6 +749,9 @@ class ContinuingLifeCourt(unittest.TestCase):
                 self.assertEqual(opts[0]["world_request"]["material_object_ref"],"hall")
                 self.assertEqual(destinations("b"),[])
                 self.assertNotIn("workshop",[v["world_request"]["material_object_ref"] for v in opts])
+                # An action label by itself cannot silently pick a destination.
+                rt.semantic=ValidatingSemanticService(ConditionalPolicy({"a":policy([action("MOVE")])}))
+                self.assertIsNone(rt.plan("a").object_ref)
                 pol=policy([action("MOVE",{"grounds_status":"HISTORICALLY_FAMILIAR_DESTINATION",
                                            "world_request":{"material_object_ref":"hall"}})])
                 rt.semantic=ValidatingSemanticService(ConditionalPolicy({"a":pol}))
