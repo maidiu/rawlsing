@@ -156,8 +156,21 @@ def conserve_compressed_practice(actor, process, start_clock, days):
     fraction=_fraction(process.get('provisional_exposure_fraction'))
     mode=process.get('mode','ARRANGEMENT_UNRESOLVED')
     if mode not in ('SOLO_COMPONENT_PRACTICE','ASSISTED_COMPONENT_PRACTICE',
-                    'ARRANGEMENT_UNRESOLVED'):
+                    'ARRANGEMENT_UNRESOLVED','RECIPROCAL_COMPONENT_PRACTICE'):
         raise ValueError('ROUTINE_UNQUALIFIED_SUPPORT')
+    if mode=='RECIPROCAL_COMPONENT_PRACTICE':
+        confirmation=process.get('source_registry_confirmation') or {}
+        keys=('reciprocal_routine_pair_ref','matched_counterpart_source_ref',
+              'coactivity_partner','routine_project_ref')
+        if (any(type(process.get(k)) is not str or not process[k] for k in keys)
+                or process['matched_counterpart_source_ref']==source
+                or process['coactivity_partner']==actor['id']
+                or confirmation.get('source_ref')!=source
+                or confirmation.get('source_grade')!='SOURCEFREE_ACTOR_LIVED_ROUTINE_PROPOSAL'
+                or process.get('preproject_exercise_ref') is not None
+                or process.get('practice_project_ref') is not None
+                or process.get('project_exercise_ref') is not None):
+            raise ValueError('ROUTINE_UNMATCHED_RECIPROCAL_EXPOSURE')
     if place!=actor.get('location'):
         return None
     prior_ref=process.get('preproject_exercise_ref')
@@ -185,6 +198,15 @@ def conserve_compressed_practice(actor, process, start_clock, days):
         prior=preproject_exercise_basis(actor,op,place,prior_ref,start_clock)
         if prior is None:raise ValueError('PREPROJECT_ROUTINE_NO_ACTUAL_OWN_EXERCISE')
         if fraction==0:return None
+    elif process.get('routine_project_ref') is not None:
+        ps=[p for p in actor.get('projects',[]) if p.get('id')==process['routine_project_ref']
+            and p.get('status','active')=='active' and op in p.get('means',[])]
+        if len(ps)!=1:return None
+        if ps[0].get('ordinary_vocal_genesis_basis'):
+            from .activity import ordinary_vocal_project_site
+            if not ordinary_vocal_project_site(actor,ps[0],place,start_clock):return None
+        if mode=='RECIPROCAL_COMPONENT_PRACTICE' and ps[0].get('addressed_party_ref')!=process['coactivity_partner']:
+            raise ValueError('ROUTINE_UNMATCHED_RECIPROCAL_EXPOSURE')
     elif not any(p.get('status','active')=='active' and op in p.get('means',[])
                  for p in actor.get('projects',[])):
         return None
@@ -203,6 +225,10 @@ def conserve_compressed_practice(actor, process, start_clock, days):
         'start_clock':start_clock,'end_clock':start_clock+days,
         'modeled_participation_days':round(days*fraction,3),
         'support_configuration':mode,
+        **({'reciprocal_routine_pair_ref':process['reciprocal_routine_pair_ref'],
+            'matched_counterpart_source_ref':process['matched_counterpart_source_ref'],
+            'routine_project_ref':process['routine_project_ref']}
+           if mode=='RECIPROCAL_COMPONENT_PRACTICE' else {}),
         'no_claim_all_days_successful':True,
         'individual_microevents_not_invented':True,
         'other_contributions_not_automatically_authorized':True,
@@ -252,7 +278,7 @@ def situated_component_efficacy(actor,operation,location):
     # This is a sourcefree programming policy, not a measured learning law.
     dose=(len(solo)+.35*len(joint)
           +.08*days('SOLO_COMPONENT_PRACTICE')
-          +.025*days('ASSISTED_COMPONENT_PRACTICE')
+          +.025*(days('ASSISTED_COMPONENT_PRACTICE')+days('RECIPROCAL_COMPONENT_PRACTICE'))
           +.008*days('ARRANGEMENT_UNRESOLVED'))
     estimate=round(.12+.70*(1-exp(-dose/14)),4)
     # In particular, 1,000 compressed opportunities are NOT 1,000 witnessed

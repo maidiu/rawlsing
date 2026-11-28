@@ -476,9 +476,35 @@ class ResearchLedger:
                    'envelope':json.loads(p),'envelope_bytes':p,
                    'previous_hash':prev,'chain_hash':h}
 
+    def actor_life_counts_after(self,wid,after_clock,through_clock):
+        """Count committed primary actor opportunities without hydrating tapes."""
+        if (type(after_clock) is not int or type(through_clock) is not int
+                or after_clock<0 or through_clock<after_clock):
+            raise ValueError('ACTOR_LIFE_COUNT_CLOCK_RANGE')
+        return {a:int(n) for a,n in self.conn.execute(
+            "SELECT actor_id,COUNT(*) FROM events WHERE world_id=? "
+            "AND kind='ACTOR_LIFE_TRANSITION' AND clock>? AND clock<=? "
+            "AND actor_id IS NOT NULL GROUP BY actor_id",
+            (wid,after_clock,through_clock))}
+
     def events(self,limit=None):
         # Retain the existing public materialized reader contract.
         return list(self._iter_events(limit))
+
+    def latest_event(self):
+        """Bounded read of the exact existing tail record, not a new cache.
+
+        Same event envelope as events()[-1], without hydrating earlier life.
+        The enclosing step still uses the existing CAS/chain verification.
+        """
+        row=self.conn.execute(
+            'SELECT eid,world_id,clock,actor_id,kind,payload,previous_hash,chain_hash '
+            'FROM events ORDER BY seq DESC LIMIT 1').fetchone()
+        if row is None:return None
+        e,wid,clock,aid,kind,p,prev,h=row
+        return {'id':e,'world_id':wid,'clock':clock,'actor_id':aid,'kind':kind,
+                'envelope':json.loads(p),'envelope_bytes':p,
+                'previous_hash':prev,'chain_hash':h}
 
     def verify_chain(self):
         """Fail closed in ordinary AND Python -O interpreters.

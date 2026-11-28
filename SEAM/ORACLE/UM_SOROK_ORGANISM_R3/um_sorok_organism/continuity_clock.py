@@ -6,7 +6,7 @@ chooses the action. This does not invent unperformed micro-events, pretend a
 scheduling threshold was an experienced violation, or close other actors'
 rights. The actual runtime/world owners still author their own transactions.
 """
-from .types import GRADE, stable_id
+from .types import GRADE, stable_id, copy
 from .material_conjunction import next_material_gate_discontinuity
 
 MAX_HORIZON=3650
@@ -52,6 +52,29 @@ def record_human_offer_commitment(world, user, recipient, location, due, event_r
     return row['id']
 
 
+def withdraw_human_offer_commitment(world,user,commitment_ref,event_ref):
+    """Prospective explicit withdrawal, never a recipient's knowledge.
+
+    This owner settles a previously authored pending OFFER undertaking, not
+    a mutually accepted appointment or a transfer. The actual exclusive
+    modeled deadline and any earlier performance remain binding history.
+    """
+    matches=[r for r in world.get('scheduled_obligations',[])
+        if r.get('id')==commitment_ref and r.get('kind')==HUMAN_OFFER_KIND
+        and r.get('responsible_actor')==user]
+    if len(matches)!=1:
+        raise ValueError('HUMAN_WITHDRAWAL_NO_OWN_COMMITMENT')
+    row=matches[0]
+    if (row.get('status')!='PENDING'
+            or not row['origin_clock']<world['clock']<row['due_clock']):
+        raise ValueError('HUMAN_WITHDRAWAL_WINDOW_NOT_PENDING')
+    row.update(status='WITHDRAWN_BY_AUTHORED_ACT',
+               settled_at_clock=world['clock'],
+               withdrawal_user_event_ref=event_ref,
+               no_recipient_notification_or_appraisal_inferred=True)
+    return row['id']
+
+
 def record_authored_food_offer(world,user,recipient,location,event_ref):
     """Fulfillment is the promised OFFER, not recipient assent or feeding."""
     matches=[r for r in world.get('scheduled_obligations',[])
@@ -66,6 +89,181 @@ def record_authored_food_offer(world,user,recipient,location,event_ref):
                settled_at_clock=world['clock'],fulfillment_user_event_ref=event_ref,
                actual_transfer_not_established=True)
     return row['id']
+
+
+MEETING_KIND='HUMAN_ACTOR_MEETING_WINDOW'
+MEETING_OPEN=frozenset(('PROPOSED','ACCEPTED','CHECKED_IN'))
+MEETING_ACTIONS={'ACCEPT_MEETING':'PROPOSE_MEETING','MEET_VISITOR':'CHECK_IN_MEETING'}
+MEETING_SIGNS={'ACCEPT_MEETING':'visitor_meeting_proposal','MEET_VISITOR':'visitor_meeting_checkin'}
+
+
+def meeting_record(world,ref):
+    rows=[r for r in world.get('scheduled_obligations',[])
+          if r.get('id')==ref and r.get('kind')==MEETING_KIND]
+    if len(rows)!=1:raise ValueError('MEETING_UNKNOWN_OR_AMBIGUOUS')
+    return rows[0]
+
+
+def record_meeting_proposal(world,user,recipient,location,due,event_ref):
+    # Two particular future modeled transitions, not hours or real-human
+    # calendar time. Assent requires an immediate actual proposal encounter.
+    if type(due) is not int or not world['clock']+3<due<=world['clock']+MAX_HORIZON:
+        raise ValueError('MEETING_INVALID_FUTURE_WINDOW')
+    if any(r.get('kind')==MEETING_KIND and r.get('status') in MEETING_OPEN
+           and r.get('responsible_actor')==user and r.get('recipient')==recipient
+           and r.get('due_clock')==due for r in world.get('scheduled_obligations',[])):
+        raise ValueError('MEETING_DUPLICATE_OPEN_WINDOW')
+    row={'id':stable_id('meeting_window',{'world':world['id'],'proposal':event_ref}),
+         'kind':MEETING_KIND,'responsible_actor':user,'recipient':recipient,
+         'location':location,'origin_clock':world['clock'],'due_clock':due,
+         'checkin_clock':due-2,'meeting_clock':due-1,
+         'source_user_event_ref':event_ref,'status':'PROPOSED',
+         'no_actor_assent_or_real_calendar_inferred':True,'grade':GRADE}
+    world.setdefault('scheduled_obligations',[]).append(row)
+    return row['id']
+
+
+def qualify_meeting_checkin(world,user,ref,location):
+    row=meeting_record(world,ref)
+    if (row['responsible_actor']!=user or row['location']!=location
+            or row['status']!='ACCEPTED'
+            or world['clock']+1!=row['checkin_clock']):
+        raise ValueError('MEETING_CHECKIN_NOT_AUTHORIZED_AT_THIS_CLOCK')
+    return row
+
+
+def record_meeting_checkin(world,user,ref,location,event_ref):
+    row=meeting_record(world,ref)
+    if (row['responsible_actor']!=user or row['location']!=location
+            or row['status']!='ACCEPTED' or world['clock']!=row['checkin_clock']):
+        raise ValueError('MEETING_CHECKIN_NOT_AUTHORIZED_AT_THIS_CLOCK')
+    row.update(status='CHECKED_IN',checkin_user_event_ref=event_ref)
+    return row
+
+
+def settle_meeting_deadlines(world):
+    settled=[]
+    for row in world.get('scheduled_obligations',[]):
+        if (row.get('kind')!=MEETING_KIND or row.get('status') not in MEETING_OPEN
+                or world['clock']<row['meeting_clock']):continue
+        row.update(status={'PROPOSED':'ELAPSED_WITHOUT_ACTOR_ASSENT',
+                           'ACCEPTED':'ELAPSED_WITHOUT_ACTUAL_CHECK_IN',
+                           'CHECKED_IN':'ELAPSED_WITHOUT_ACTUAL_MEETING'}[row['status']],
+                   settled_at_clock=row['meeting_clock'],
+                   waiting_breach_or_actor_appraisal='NOT_ESTABLISHED')
+        settled.append(row['id'])
+    return settled
+
+
+def meeting_options(constitution,access,action):
+    """Only a current actor-local qualified sign can issue an exact choice."""
+    if action not in MEETING_ACTIONS:return []
+    out=[]
+    for cue in access.cues:
+        if (cue.get('kind')!=MEETING_SIGNS[action]
+                or cue.get('clock')!=access.world_clock
+                or cue.get('private_to')!=constitution.actor
+                or any(type(cue.get(k)) is not str for k in
+                       ('meeting_ref','visitor_ref','visitor_event_ref'))
+                or any(type(cue.get(k)) is not int for k in
+                       ('checkin_clock','meeting_clock'))):continue
+        out.append({'option_id':stable_id('meeting_choice',{
+            'actor':constitution.actor,'clock':access.world_clock,
+            'action':action,'cue':cue['id'],'meeting':cue['meeting_ref']}),
+            'actor':constitution.actor,'as_of_clock':access.world_clock,
+            'operation':action,'project_id':None,
+            'grounds_status':'ACTUAL_ADDRESSED_MEETING_SIGN',
+            'binding_status':'EXACT_CURRENT_HUMAN_MEETING_SIGN',
+            'world_request':{'operation':action,'addressed_party_ref':cue['visitor_ref'],
+                             'material_object_ref':None},
+            'anticipated_difference':None,'meeting_ref':cue['meeting_ref'],
+            'meeting_source_user_event_ref':cue['visitor_event_ref'],
+            'meeting_source_cue_ref':cue['id'],
+            'meeting_checkin_clock':cue['checkin_clock'],
+            'meeting_clock':cue['meeting_clock'],
+            'not_future_presence_or_shared_motive':True,'grade':GRADE})
+    return out
+
+
+def qualified_meeting_receipt(world,actor,attempt,ledger_event):
+    """Actual user authorship, exact current source, actor selection rechecked."""
+    from .types import digest
+    from .organism import eligible
+    op=MEETING_ACTIONS.get(attempt.action)
+    if op is None or attempt.intention!='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE':
+        return None
+    selected=attempt.practical_selection.get('selected_meeting')
+    if type(selected) is not dict or type(ledger_event) is not dict:return None
+    env=ledger_event.get('envelope',{});payload=env.get('payload',{})
+    loc=world.get('positions',{}).get(actor['id'])
+    visitor=world.get('neighbor_users',{}).get(attempt.target,{})
+    if (ledger_event.get('kind')!='NEIGHBOR_USER_CONTRIBUTION'
+            or env.get('world')!=world['id'] or ledger_event.get('clock')!=world['clock']
+            or payload.get('performed') is not True or payload.get('user')!=attempt.target
+            or visitor.get('present') is not True or visitor.get('location')!=loc
+            or attempt.target in world['positions']
+            or selected.get('meeting_source_user_event_ref')!=payload.get('user_event_ref')
+            or not eligible(actor['body'],attempt.action)[0]):return None
+    events=[e for e in world.get('neighbor_user_events',[])
+            if e.get('event_ref')==payload.get('user_event_ref')]
+    if len(events)!=1:return None
+    e=events[0];ref=selected.get('meeting_ref')
+    try:row=meeting_record(world,ref)
+    except ValueError:return None
+    authored={'user':attempt.target,'operation':op,'text':None,'destination':None}
+    if op=='PROPOSE_MEETING':
+        authored.update(target_actor_ref=actor['id'],due_clock=row['due_clock'])
+        valid=(row['status']=='PROPOSED' and row['origin_clock']==world['clock']
+               and row['source_user_event_ref']==e.get('event_ref')
+               and world['clock']+1<row['checkin_clock'])
+    else:
+        authored.update(target_commitment_ref=ref)
+        valid=(row['status']=='CHECKED_IN' and row['checkin_clock']==world['clock']
+               and row['checkin_user_event_ref']==e.get('event_ref')
+               and row['meeting_clock']==world['clock']+1)
+    if (not valid or row['responsible_actor']!=attempt.target
+            or row['recipient']!=actor['id'] or row['location']!=loc
+            or e.get('operation')!=op or e.get('status')!='PERFORMED'
+            or e.get('user')!=attempt.target or e.get('destination')!=loc
+            or e.get('clock')!=world['clock'] or e.get('meeting_ref')!=ref
+            or payload.get('meeting_ref')!=ref
+            or e.get('payload_hash')!=digest(authored)
+            or payload.get('payload_hash')!=e['payload_hash']
+            or e.get('event_ref')!=stable_id('neighbor_user',{
+                'user':attempt.target,'request_id':e.get('request_id'),
+                'payload_hash':e['payload_hash']})):return None
+    signs=[q for q in world.get('cues',[])
+           if q.get('id')==selected.get('meeting_source_cue_ref')
+           and q.get('id') in payload.get('candidate_cue_refs',[])
+           and q.get('kind')==MEETING_SIGNS[attempt.action]
+           and q.get('private_to')==actor['id'] and q.get('location')==loc
+           and q.get('visitor_ref')==attempt.target
+           and q.get('visitor_event_ref')==e['event_ref']
+           and q.get('meeting_ref')==ref and q.get('clock')==world['clock']
+           and q.get('last_access_clock',-1)>=world['clock']
+           and q.get('checkin_clock')==row['checkin_clock']
+           and q.get('meeting_clock')==row['meeting_clock']
+           and actor['body']['sensor']>=q.get('threshold',.05)]
+    if len(signs)!=1:return None
+    return {'actor':actor['id'],'visitor_ref':attempt.target,'operation':op,
+            'meeting_ref':ref,'user_event_ref':e['event_ref'],
+            'ledger_ref':ledger_event['id'],'clock':world['clock'],
+            'cue':dict(signs[0]),'grade':GRADE}
+
+
+def perform_meeting_action(world,attempt,receipt):
+    if (receipt is None or receipt.get('actor')!=attempt.actor
+            or receipt.get('operation')!=MEETING_ACTIONS.get(attempt.action)):
+        return 'BLOCKED','NO_QUALIFIED_CURRENT_MEETING_OCCASION',None
+    row=meeting_record(world,receipt['meeting_ref'])
+    if attempt.action=='ACCEPT_MEETING':
+        row.update(status='ACCEPTED',accepted_at_clock=world['clock']+1,
+                   acceptance_source_user_event_ref=receipt['user_event_ref'])
+        return 'PERFORMED','PARTICULAR_MEETING_ACCEPTED',row['id']
+    row.update(status='MEETING_PERFORMED',settled_at_clock=world['clock']+1,
+               actual_actor_ref=attempt.actor,
+               no_future_consent_or_shared_motive_inferred=True)
+    return 'PERFORMED','PARTICULAR_MEETING_PERFORMED',row['id']
 
 
 def next_discontinuity(world, actors, horizon):
@@ -83,8 +281,16 @@ def next_discontinuity(world, actors, horizon):
             candidates.append({'at':birth,'kind':'CONDITIONAL_FAMILY_BIRTH','actor':None,
                 'source_ref':family['conception']['id'],'grade':GRADE})
     for obligation in world.get('scheduled_obligations',[]):
-        if not isinstance(obligation,dict) or obligation.get('status')!='PENDING':
+        if not isinstance(obligation,dict):continue
+        if obligation.get('kind')==MEETING_KIND:
+            if (obligation.get('status') in MEETING_OPEN
+                    and clock<obligation['meeting_clock']<=end):
+                candidates.append({'at':obligation['meeting_clock'],
+                    'kind':'MEETING_WINDOW_ELAPSES','actor':None,
+                    'source_ref':obligation['id'],
+                    'not_waiting_breach_or_actor_appraisal':True})
             continue
+        if obligation.get('status')!='PENDING':continue
         due=obligation.get('due_clock')
         actor=obligation.get('responsible_actor')
         if type(due) is not int or due < 0:
@@ -153,7 +359,7 @@ def continue_to_discontinuity(runtime, horizon=30, processes=None):
                 'ordinary_interval_receipt':ordinary['receipt'] if ordinary else None,
                 'high_resolution_actor_event':None,'family_birth_receipt':birth['receipt'],
                 'new_actor':birth['actor'],'unwritten_microevents_remain_unknown':True,'grade':GRADE}
-    if target['kind']=='HUMAN_OFFER_WINDOW_ELAPSES':
+    if target['kind'] in ('HUMAN_OFFER_WINDOW_ELAPSES','MEETING_WINDOW_ELAPSES'):
         return {'historical_discontinuity':target,
                 'ordinary_interval_receipt':ordinary['receipt'] if ordinary else None,
                 'high_resolution_actor_event':None,
@@ -378,3 +584,163 @@ def qualify_contingent_world_notice(world, actors, proposal):
             'offer_id':offer_id,'world_id':world.get('id'),
             'no_world_outcome_or_actor_knowledge_inferred':True,
             'not_an_external_news_source_verification':True}
+
+
+def qualify_mixed_history_schedule(world,processes):
+    """Registered aggregate premises, not an unconditional life script."""
+    from .routine_sources import verify_qualified_period_envelope
+    from .historical_social_reproduction import _typecheck
+    if type(processes) is not list or len(processes)>512:
+        raise ValueError('MIXED_HISTORY_INVALID_ROUTINE_SCHEDULE')
+    result=[];seen=set()
+    for process in processes:
+        _typecheck(process)
+        if process['source_ref'] in seen:
+            raise ValueError('MIXED_HISTORY_DUPLICATE_ROUTINE_SOURCE')
+        seen.add(process['source_ref'])
+        source=world.get('routine_source_registry',{}).get(process['source_ref'])
+        if type(source) is not dict:
+            raise ValueError('HISTORICAL_PROCESS_UNREGISTERED_SOURCE_ENVELOPE')
+        start=source['from_clock'];end=source['through_clock']
+        verify_qualified_period_envelope(world,process,start,1)
+        row=copy(process)
+        row['routine_window_application']='SITUATED_CONDITIONAL_ROUTINE'
+        result.append((start,end,row))
+    return result
+
+
+def mixed_history_interval(schedule,clock,limit):
+    """Cut at the first source boundary; expired/future premises are inactive."""
+    active=[]
+    for start,end,row in schedule:
+        if clock<start:limit=min(limit,start)
+        elif clock<end:
+            limit=min(limit,end);active.append(copy(row))
+    return limit,active
+
+
+def continue_mixed_history(runtime,target_clock,*,cadence_origin=0,
+                           ordinary_span=30,detail_beats=3,max_segments=240,
+                           period_processes=None):
+    """One continuing life before and between actual visitor encounters.
+
+    Alternate aggregate reproduction and genuinely selected detailed activity.
+    The existing continuity owner handles discontinuities and conditional birth;
+    the existing initiative owner selects who, never what. Absolute modeled
+    phase and actual ledger counts, not a new scheduler cursor, permit cold
+    continuation without replaying a person. The cadence is a research
+    resolution choice, not a biological period, human calendar or adult end.
+    """
+    from .initiative import choose_next_actor
+    from .routine_sources import acquired_routine_processes, lived_work_permission_boundaries
+    for value,low,high,code in (
+        (target_clock,0,10**9,'TARGET'),(cadence_origin,0,10**9,'ORIGIN'),
+        (ordinary_span,1,MAX_HORIZON,'SPAN'),(detail_beats,1,24,'DETAIL'),
+        (max_segments,1,240,'SEGMENTS')):
+        if type(value) is not int or not low<=value<=high:
+            raise ValueError('MIXED_HISTORY_INVALID_'+code)
+    world=runtime.ledger.world(runtime.world_id)[1];initial=world['clock']
+    if cadence_origin>initial or target_clock<initial:
+        raise ValueError('MIXED_HISTORY_NONPROSPECTIVE_CLOCK')
+    if any(x.get('present') is True for x in world.get('neighbor_users',{}).values()):
+        raise ValueError('MIXED_HISTORY_PRESENT_VISITOR_REQUIRES_PRESENT_OWNER')
+    schedule=qualify_mixed_history_schedule(world,period_processes if period_processes is not None else [])
+    visitor_history=copy(world.get('neighbor_user_events',[]))
+    entries=[];reason=None;cycle=ordinary_span+detail_beats
+    def read():
+        w=runtime.ledger.world(runtime.world_id)[1]
+        if (any(x.get('present') is True for x in w.get('neighbor_users',{}).values())
+                or w.get('neighbor_user_events',[])!=visitor_history):
+            raise ValueError('MIXED_HISTORY_VISITOR_BOUNDARY_CHANGED')
+        return w
+    while len(entries)<max_segments:
+        world=read();clock=world['clock']
+        family=world.get('family_genesis',{})
+        if family.get('stage')=='CONCEPTION_ADMITTED':
+            birth=family['selected_pathway']['birth_clock']
+            if birth<clock:
+                reason='MISSED_CONDITIONAL_BIRTH_BOUNDARY';break
+            if birth==clock:
+                result=runtime.advance_to_discontinuity(horizon=1,processes=[])
+                if not result.get('family_birth_receipt') or read()['clock']!=clock:
+                    raise ValueError('MIXED_HISTORY_BIRTH_OWNER_RETURN')
+                entries.append({'kind':'CONDITIONAL_BIRTH','from_clock':clock,
+                    'through_clock':clock,'receipt':result['family_birth_receipt']})
+                continue
+        if clock>=target_clock:break
+        actors=runtime.ledger.actors()
+        position=(clock-cadence_origin)%cycle
+        detail_start=clock-position+ordinary_span
+        boundary=next_discontinuity(world,actors,1)
+        if boundary and boundary['kind']=='OBLIGATION_DUE' and boundary['at']==clock:
+            result=runtime.advance_to_discontinuity(horizon=1,processes=[])
+            after=read()['clock']
+            row={'kind':'DUE_ACTOR_OCCASION','source_ref':boundary['source_ref'],
+                'receipt':result.get('high_resolution_actor_event'),'from_clock':clock,
+                'through_clock':after}
+            if not row['receipt']:raise ValueError('MIXED_HISTORY_DUE_OWNER_NO_RECEIPT')
+            entries.append(row)
+            if after!=clock+1:raise ValueError('MIXED_HISTORY_DETAIL_CLOCK_CONTRADICTION')
+            # Stop at an unresolved due act rather than making an actor repeat
+            # the same occasion forever. Prior real progress remains committed.
+            if any(x.get('id')==row['source_ref'] and x.get('status')=='PENDING'
+                   for x in read().get('scheduled_obligations',[])):
+                reason='DUE_OBLIGATION_STILL_UNRESOLVED';break
+        elif position>=ordinary_span:
+            counts=runtime.ledger.actor_life_counts_after(runtime.world_id,detail_start,clock)
+            choice=choose_next_actor(world,actors,counts)
+            if choice is None:reason='NO_SITUATED_ACTOR';break
+            result=runtime.step(choice['actor'])
+            if (result.get('selection_grade')=='INJECTED_NOT_NATIVE_ACTOR_CHOICE'
+                    or not result.get('receipt')):
+                raise ValueError('MIXED_HISTORY_NONINDEPENDENT_ACTOR_RETURN')
+            after=read()['clock']
+            entries.append({'kind':'INDEPENDENT_DETAIL','receipt':result['receipt'],
+                'from_clock':clock,'through_clock':after})
+            if after!=clock+1:raise ValueError('MIXED_HISTORY_DETAIL_CLOCK_CONTRADICTION')
+        else:
+            end=min(target_clock,detail_start,clock+MAX_HORIZON)
+            # The last detailed act may have admitted a new recurring course.
+            # Recover it from the actual source registry at each aggregate cut,
+            # including a cold resume. Explicit fixture premises stay separate.
+            live=acquired_routine_processes(world)
+            explicit_refs={row['source_ref'] for _,_,row in schedule}
+            dynamic=qualify_mixed_history_schedule(world,[p for p in live
+                        if p['source_ref'] not in explicit_refs])
+            end,active=mixed_history_interval(schedule+dynamic,clock,end)
+            # Existing employer sanctions can change material work eligibility
+            # inside a routine window. Cut before that boundary, without
+            # fabricating either a blocked work attempt or renewed assent.
+            for p in active:
+                if p['kind']=='QUALIFIED_WAGE_LABOR':
+                    times=lived_work_permission_boundaries(world,p['actor'],p['location'],clock,end)
+                    if times:end=min(end,times[0])
+            if end<=clock:raise ValueError('MIXED_HISTORY_EMPTY_ROUTINE_INTERVAL')
+            boundary=next_discontinuity(world,actors,end-clock)
+            # Stop exactly at the interruption, not one actor beat beyond it.
+            # The next loop dispatches an actually due act/birth. No retroactive
+            # care, assumed consent or fabricated microscenes.
+            if boundary:end=boundary['at']
+            if end<=clock:raise ValueError('MIXED_HISTORY_ZERO_PROGRESS_BOUNDARY')
+            result=runtime.background(end-clock,processes=active)
+            after=read()['clock']
+            entries.append({'kind':'QUALIFIED_ORDINARY_INTERVAL','receipt':result['receipt'],
+                'from_clock':clock,'through_clock':after,
+                'source_refs':[p['source_ref'] for p in active],
+                'discontinuity':boundary['kind'] if boundary else None})
+            if after!=end:raise ValueError('MIXED_HISTORY_AGGREGATE_CLOCK_CONTRADICTION')
+        if after<=clock or after>target_clock:
+            raise ValueError('MIXED_HISTORY_OWNER_ADVANCED_OUTSIDE_BOUNDARY')
+    final=read();clock=final['clock'];family=final.get('family_genesis',{})
+    unresolved_birth=(family.get('stage')=='CONCEPTION_ADMITTED'
+                      and family['selected_pathway']['birth_clock']<=clock)
+    reached=(clock==target_clock and not unresolved_birth and reason is None)
+    return {'status':'MODELED_HISTORY_CUT_REACHED' if reached else 'HELD_AT_MIXED_HISTORY_BOUNDARY',
+        'hold_reason':None if reached else reason or 'FINITE_SEGMENT_BUDGET',
+        'initial_modeled_clock':initial,'target_modeled_clock':target_clock,
+        'actual_modeled_clock':clock,'segments':entries,
+        'ordinary_intervals':sum(e['kind']=='QUALIFIED_ORDINARY_INTERVAL' for e in entries),
+        'independent_actor_beats':sum(e['kind'] in ('INDEPENDENT_DETAIL','DUE_ACTOR_OCCASION') for e in entries),
+        'conditional_births':sum(e['kind']=='CONDITIONAL_BIRTH' for e in entries),
+        'no_visitor_action_or_reconstructed_microevent':True,
+        'not_real_time_or_developmental_science':True,'grade':GRADE}

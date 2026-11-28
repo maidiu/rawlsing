@@ -21,7 +21,7 @@ def passage(world,actors,days,processes=None):
         world,actors,qualified,start,days)
     effective_iter=iter(allocation['qualified'])
     held={p['input_index'] for k in ('structurally_withheld_processes',
-                                     'bodily_withheld_processes')
+                                     'bodily_withheld_processes','situationally_withheld_processes')
           for p in allocation.get(k,[])}
     effective_processes=[];qindex=0
     for p in processes:
@@ -51,8 +51,9 @@ def passage(world,actors,days,processes=None):
     # microevents. Do not manufacture a daily series of fictitious repairs.
     material_wear=advance_material_wear(world,days,start)
     world['clock']+=days
-    from .continuity_clock import settle_human_offer_deadlines
+    from .continuity_clock import settle_human_offer_deadlines, settle_meeting_deadlines
     elapsed_human_windows=settle_human_offer_deadlines(world)
+    elapsed_meetings=settle_meeting_deadlines(world)
     period={'id':stable_id('period',{'world':world['id'],'start':start,'days':days,'processes':processes}),
        'start':start,'end':world['clock'],'resolution':'AGGREGATE_MODELED',
        'processes':effective_processes,
@@ -60,8 +61,11 @@ def passage(world,actors,days,processes=None):
           if allocation_receipt.get('structurally_withheld_processes') else {}),
        **({'bodily_withheld_processes':copy(allocation_receipt['bodily_withheld_processes'])}
           if allocation_receipt.get('bodily_withheld_processes') else {}),
+       **({'situationally_withheld_processes':copy(allocation_receipt['situationally_withheld_processes'])}
+          if allocation_receipt.get('situationally_withheld_processes') else {}),
        **({'elapsed_human_offer_commitment_refs':elapsed_human_windows}
           if elapsed_human_windows else {}),
+       **({'elapsed_meeting_refs':elapsed_meetings} if elapsed_meetings else {}),
        'qualified_material_time_allocation_ref':allocation_receipt['id'],
        'care_period_refs':allocation_receipt['care_period_refs'],
        'wage_period_refs':allocation_receipt['wage_period_refs'],
@@ -78,5 +82,7 @@ def passage(world,actors,days,processes=None):
        'qualified_aggregate_practice_refs':practice_evidence,
        'cannot_warrant':'UNRECORDED_SPECIFIC_OCCURRENCE',
        'grade':GRADE}
+    from .routine_sources import conserve_routine_period
+    conserve_routine_period(world,actors,period,allocation_receipt)
     world['historical_periods'].append(period)
     return period

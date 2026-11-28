@@ -27,7 +27,7 @@ class EncounterRefusal(ValueError):
 
 
 _ALLOWED = frozenset({'SAY', 'MOVE', 'WAIT', 'LEAVE', 'LOOK', 'REPAIR', 'MAKE_OBJECT',
-                      'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER'})
+                      'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER', 'WITHDRAW_PLEDGE', 'PROPOSE_MEETING', 'CHECK_IN_MEETING'})
 
 
 def _text(value: Any, label: str, maximum: int = 500) -> str:
@@ -200,6 +200,17 @@ def sensory_evidence(world: dict, actor: dict, visitor: dict, operation: str,
                        'modality':'auditory','kind':'visitor_offer_undertaking',
                        'tags':['visitor','food','future_offer'],
                        'description':'A visitor undertakes to offer food later.',
+                       'grade':grade,'visual_identity_eligible':True})
+    if (operation in ('PROPOSE_MEETING','CHECK_IN_MEETING') and visible and sound
+            and actor.get('body',{}).get('language',0)>=.35):
+        result.append({'event_ref':event_ref,'actor':actor['id'],
+                       'modality':'auditory',
+                       'kind':('visitor_meeting_proposal' if operation=='PROPOSE_MEETING'
+                               else 'visitor_meeting_checkin'),
+                       'tags':['visitor','meeting','particular_time'],
+                       'description':('A visitor proposes a particular future meeting.'
+                           if operation=='PROPOSE_MEETING' else
+                           'A visitor checks in for the accepted meeting now.'),
                        'grade':grade,'visual_identity_eligible':True})
     if operation == 'OFFER_FEED' and visible:
         result.append({'event_ref': event_ref, 'actor': actor['id'],
@@ -432,7 +443,8 @@ class NeighborEncounter:
                    destination: str | None = None, target_object_ref: str | None = None,
                    cover_text: str | None = None,
                    target_actor_ref: str | None = None,
-                   due_clock: int | None = None):
+                   due_clock: int | None = None,
+                   target_commitment_ref: str | None = None):
         """One user-authored world event with derived actor-eligible signs.
 
         Retries are idempotent *against the durable world request index*;
@@ -463,16 +475,20 @@ class NeighborEncounter:
         elif target_object_ref is not None or cover_text is not None:
             raise EncounterRefusal('UNAUTHORED_LOOK_OR_COVER')
         if target_actor_ref is not None:
-            if operation not in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
+            if operation not in ('SAY', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER', 'PROPOSE_MEETING'):
                 raise EncounterRefusal('UNAUTHORED_VOCAL_ADDRESSEE')
             target_actor_ref = _text(target_actor_ref, 'VOCAL_ADDRESSEE', 100)
-        if operation in ('OFFER_FEED','PLEDGE_OFFER') and target_actor_ref is None:
+        if operation in ('OFFER_FEED','PLEDGE_OFFER','PROPOSE_MEETING') and target_actor_ref is None:
             raise EncounterRefusal('FOOD_OFFER_REQUIRES_ADDRESSEE')
-        if operation == 'PLEDGE_OFFER':
+        if operation in ('PLEDGE_OFFER','PROPOSE_MEETING'):
             if type(due_clock) is not int or due_clock<0:
                 raise EncounterRefusal('INVALID_HUMAN_OFFER_DEADLINE')
         elif due_clock is not None:
             raise EncounterRefusal('UNAUTHORED_DEADLINE')
+        if operation in ('WITHDRAW_PLEDGE','CHECK_IN_MEETING'):
+            target_commitment_ref=_text(target_commitment_ref,'COMMITMENT_REF',100)
+        elif target_commitment_ref is not None:
+            raise EncounterRefusal('UNAUTHORED_COMMITMENT_TARGET')
         version, world = self._world()
         req_key = self.user_id + ':' + request_id
         request_payload = {'user': self.user_id, 'operation': operation,
@@ -483,10 +499,14 @@ class NeighborEncounter:
                                    cover_text=cover_text)
         elif operation == 'REPAIR':
             request_payload['target_object_ref'] = target_object_ref
-        elif operation in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
+        elif operation == 'SAY' and target_actor_ref is not None:
             request_payload['target_actor_ref'] = target_actor_ref
-            if operation=='PLEDGE_OFFER':
+        elif operation in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER','PROPOSE_MEETING'):
+            request_payload['target_actor_ref'] = target_actor_ref
+            if operation in ('PLEDGE_OFFER','PROPOSE_MEETING'):
                 request_payload['due_clock']=due_clock
+        if operation in ('WITHDRAW_PLEDGE','CHECK_IN_MEETING'):
+            request_payload['target_commitment_ref']=target_commitment_ref
         payload_hash = digest(request_payload)
         prior = world.get('neighbor_user_requests', {}).get(req_key)
         if prior:
@@ -499,6 +519,7 @@ class NeighborEncounter:
                 raise EncounterRefusal('REQUEST_INDEX_WITHOUT_COMMITTED_EVENT')
             return {'status': prior['status'], 'event_ref': prior['event_ref'],
                     'idempotent_replay': True, 'receipt': existing,
+                    **({'meeting_ref':prior['meeting_ref']} if prior.get('meeting_ref') else {}),
                     **({'made_object_ref':prior['made_object_ref']}
                        if prior.get('made_object_ref') is not None else {}),
                     **({'human_offer_commitment_ref':prior['human_offer_commitment_ref']}
@@ -506,13 +527,35 @@ class NeighborEncounter:
         participants = world.setdefault('neighbor_users', {})
         person = deepcopy(participants.get(self.user_id, {'present': False, 'location': None}))
         origin = person['location']
-        if operation != 'MOVE' and operation != 'LEAVE' and not person['present']:
+        if operation not in ('MOVE','LEAVE','WITHDRAW_PLEDGE') and not person['present']:
             raise EncounterRefusal('USER_NOT_PRESENT')
         status = 'PERFORMED'
         material_outcome = None
         made_object_ref = None
         policy_ref = None
-        loc = origin
+        # An explicitly authored administrative withdrawal is possible
+        # during absence, but its historical occurrence is not a bodily
+        # visit, utterance, or recipient-directed communication.
+        loc = None if operation=='WITHDRAW_PLEDGE' else origin
+        if operation=='WITHDRAW_PLEDGE':
+            origin=None
+            owned=[r for r in self.own_food_commitments() if r['id']==target_commitment_ref]
+            if len(owned)!=1:
+                raise EncounterRefusal('HUMAN_WITHDRAWAL_NO_OWN_COMMITMENT')
+            if (owned[0]['status']!='PENDING'
+                    or world['clock']+1>=owned[0]['due_clock']):
+                raise EncounterRefusal('HUMAN_WITHDRAWAL_WINDOW_NOT_PENDING')
+        meeting_ref=None
+        meeting=None
+        if operation=='CHECK_IN_MEETING':
+            from um_sorok_organism.continuity_clock import qualify_meeting_checkin
+            try:meeting=qualify_meeting_checkin(world,self.user_id,target_commitment_ref,loc)
+            except ValueError as exc:raise EncounterRefusal(str(exc)) from exc
+            # Authored presence at the agreed site; not evidence the actor is here.
+            if not any(x['id']==target_commitment_ref and x['status']=='ACCEPTED'
+                       for x in self.own_meetings()):
+                raise EncounterRefusal('MEETING_CHECKIN_NO_QUALIFIED_ASSENT')
+            target_actor_ref=meeting['recipient']
         # Reuse CO's objective, source-qualified conjunction reader. Thin
         # worlds need no upstream packet; richer worlds may actually alter
         # the same authored operation. Unresolved authorization is not an
@@ -562,7 +605,7 @@ class NeighborEncounter:
                 candidate.get('location') != loc or
                 type(candidate.get('public_glance')) is not str):
                 status = 'BLOCKED'
-        elif operation in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER') and target_actor_ref is not None:
+        elif operation in ('SAY', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER','PROPOSE_MEETING') and target_actor_ref is not None:
             # Unaddressed singing is ordinary activity; only an explicitly
             # authored, presently accessible addressee can qualify a joint
             # occasion. The visitor cannot bind the addressee's response.
@@ -639,8 +682,14 @@ class NeighborEncounter:
         if world.get('scheduled_obligations') or operation in ('PLEDGE_OFFER','OFFER_FEED'):
             from um_sorok_organism.continuity_clock import (
                 settle_human_offer_deadlines, record_human_offer_commitment,
-                record_authored_food_offer)
+                record_authored_food_offer, withdraw_human_offer_commitment)
             settle_human_offer_deadlines(world)
+        if (operation in ('PROPOSE_MEETING','CHECK_IN_MEETING')
+                or any(row.get('kind')=='HUMAN_ACTOR_MEETING_WINDOW'
+                       for row in world.get('scheduled_obligations',[]))):
+            from um_sorok_organism.continuity_clock import (
+                settle_meeting_deadlines, record_meeting_proposal, record_meeting_checkin, meeting_record)
+            settle_meeting_deadlines(world)
         ref = stable_id('neighbor_user', {'user': self.user_id,
             'request_id': request_id, 'payload_hash': payload_hash})
         commitment_ref=None
@@ -650,15 +699,24 @@ class NeighborEncounter:
         elif status=='PERFORMED' and operation=='OFFER_FEED':
             commitment_ref=record_authored_food_offer(
                 world,self.user_id,target_actor_ref,loc,ref)
+        elif status=='PERFORMED' and operation=='WITHDRAW_PLEDGE':
+            commitment_ref=withdraw_human_offer_commitment(
+                world,self.user_id,target_commitment_ref,ref)
+        if status=='PERFORMED' and operation=='PROPOSE_MEETING':
+            meeting_ref=record_meeting_proposal(world,self.user_id,target_actor_ref,loc,due_clock,ref)
+            meeting=meeting_record(world,meeting_ref)
+        elif status=='PERFORMED' and operation=='CHECK_IN_MEETING':
+            meeting=record_meeting_checkin(world,self.user_id,target_commitment_ref,loc,ref)
+            meeting_ref=meeting['id']
         evidence = []
-        if status == 'PERFORMED' and operation in ('MOVE', 'SAY', 'LOOK', 'REPAIR', 'MAKE_OBJECT', 'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
+        if status == 'PERFORMED' and operation in ('MOVE', 'SAY', 'LOOK', 'REPAIR', 'MAKE_OBJECT', 'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER','PROPOSE_MEETING','CHECK_IN_MEETING'):
             _bound_source(world)
             for actor_id, actor in self.runtime.ledger.actors().items():
                 eligible = sensory_evidence(world, actor,
                     {'spoken_text': cover_text if operation == 'LOOK' else text},
                     operation, origin, loc, ref)
                 for sign in eligible:
-                    if operation in ('OFFER_FEED','PLEDGE_OFFER') and actor_id != target_actor_ref:
+                    if operation in ('OFFER_FEED','PLEDGE_OFFER','PROPOSE_MEETING','CHECK_IN_MEETING') and actor_id != target_actor_ref:
                         # This scoped implementation only supplies the
                         # addressee's qualified offer; bystander witnessing
                         # remains a separate, unimplemented projection.
@@ -672,6 +730,22 @@ class NeighborEncounter:
                         location=loc, modality=sign['modality'],
                         description=sign['description'], source_actor=None,
                         private_to=actor_id)
+                    if operation == 'SAY' and target_actor_ref is not None:
+                        # The utterance is not the MII reader, and even a truthful
+                        # acknowledgement is not evidence that the speaker heard
+                        # the earlier sign. No private exposure/ref enters CO.
+                        cue['visitor_event_ref'] = ref
+                        sight = _bound_source(world)['actor_conditions'][actor_id]
+                        visible_speaker = (sight.get('visual') is True
+                            and sight.get('light') == 'lit'
+                            and sight.get('sightline') == 'unobstructed'
+                            and sight.get('facing') == 'entrance')
+                        if (visible_speaker and actor['body'].get('language',0)>=.35):
+                            cue['visitor_ref'] = self.user_id
+                            if actor_id == target_actor_ref:
+                                cue['visitor_speech_addressed_to_recipient'] = True
+                        cue['lexical_comprehension'] = sign['lexical_comprehension']
+                        cue['not_proof_of_speaker_recognition_or_claim_truth'] = True
                     if operation=='MAKE_OBJECT':
                         # Link the actual authored occurrence for audit;
                         # no inferred maker recognition or actor attention.
@@ -680,6 +754,11 @@ class NeighborEncounter:
                         cue.update(visitor_event_ref=ref,visitor_ref=self.user_id,
                                    commitment_ref=commitment_ref,due_clock=due_clock,
                                    no_recipient_consent_or_comprehension_established=True)
+                    if operation in ('PROPOSE_MEETING','CHECK_IN_MEETING'):
+                        cue.update(visitor_event_ref=ref,visitor_ref=self.user_id,
+                                   meeting_ref=meeting_ref,checkin_clock=meeting['checkin_clock'],
+                                   meeting_clock=meeting['meeting_clock'],
+                                   no_future_presence_or_actor_consent_inferred=True)
                     if operation in ('SING', 'OFFER_FEED'):
                         # Actual human authorship is not a synthetic actor.
                         # Only a simultaneously eligible visual channel can
@@ -714,10 +793,20 @@ class NeighborEncounter:
             event.update(target_object_ref=target_object_ref,
                          material_outcome=material_outcome,
                          actor_meaning_not_established=True)
-        if operation in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
+        if (operation in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER')
+                or (operation=='SAY' and target_actor_ref is not None)):
             event['target_actor_ref'] = target_actor_ref
         if operation=='PLEDGE_OFFER':
             event['due_clock']=due_clock
+        if operation in ('PROPOSE_MEETING','CHECK_IN_MEETING'):
+            event['target_actor_ref']=target_actor_ref
+            if operation=='PROPOSE_MEETING':event['due_clock']=due_clock
+            else:event['target_commitment_ref']=target_commitment_ref
+            if meeting_ref is not None:event['meeting_ref']=meeting_ref
+        if operation=='WITHDRAW_PLEDGE':
+            event.update(target_commitment_ref=target_commitment_ref,
+                         administrative_act_not_presence=True,
+                         notification='NOT_PERFORMED_BY_WITHDRAWAL')
         if commitment_ref is not None:
             event['human_offer_commitment_ref']=commitment_ref
         if operation == 'SIGN_HALL_PETITION':
@@ -732,6 +821,7 @@ class NeighborEncounter:
         world.setdefault('neighbor_user_requests', {})[req_key] = {
             'event_ref': ref, 'payload_hash': payload_hash, 'status': status,
             'ledger_receipt': None,
+            **({'meeting_ref':meeting_ref} if meeting_ref is not None else {}),
             **({'made_object_ref':made_object_ref} if made_object_ref is not None else {}),
             **({'human_offer_commitment_ref':commitment_ref}
                if commitment_ref is not None else {})}
@@ -741,6 +831,9 @@ class NeighborEncounter:
              'user': self.user_id, 'payload_hash': payload_hash,
              'performed': status == 'PERFORMED',
              'candidate_cue_refs': [e['cue_ref'] for e in evidence],
+             **({'meeting_ref':meeting_ref} if meeting_ref is not None else {}),
+             **({'target_commitment_ref':target_commitment_ref}
+                if operation=='WITHDRAW_PLEDGE' else {}),
              **({'made_object_ref':made_object_ref} if made_object_ref is not None else {}),
              'no_actor_motive_or_consent_issued': True,
              'look_cannot_issue_actor_belief_or_visitor_reading': operation == 'LOOK'})
@@ -750,9 +843,99 @@ class NeighborEncounter:
         return {'status': status, 'event_ref': ref, 'receipt': receipt['id'],
                 'idempotent_replay': False, 'potential_actor_evidence': evidence,
                 'actor_uptake': 'NOT_ESTABLISHED',
+                **({'meeting_ref':meeting_ref} if meeting_ref is not None else {}),
                 **({'made_object_ref':made_object_ref} if made_object_ref is not None else {}),
                 **({'human_offer_commitment_ref':commitment_ref}
                    if commitment_ref is not None else {})}
+
+    def own_meetings(self):
+        """Own structured agreements, not privileged observation of another life.
+
+        The existing ledger must contain the particular performed proposal,
+        actor-authored assent, and any later check-in/meeting. Administrative
+        readback is not sensory exposure, perceived motive, waiting or blame.
+        No information about the other's competing activity is returned.
+        """
+        from um_sorok_organism.continuity_clock import MEETING_KIND
+        _,world=self._world()
+        rows=[r for r in world.get('scheduled_obligations',[])
+              if r.get('kind')==MEETING_KIND and r.get('responsible_actor')==self.user_id]
+        if not rows:return []
+        history=[e for e in self.runtime.ledger.events()
+                 if e.get('envelope',{}).get('world')==world['id']]
+        def user_source(row,op,ref,clock):
+            matches=[e for e in world.get('neighbor_user_events',[])
+                     if e.get('event_ref')==ref]
+            receipts=[e for e in history if e.get('kind')=='NEIGHBOR_USER_CONTRIBUTION'
+                      and e['envelope']['payload'].get('user_event_ref')==ref]
+            if len(matches)!=1 or len(receipts)!=1:return False
+            e=matches[0];receipt=receipts[0];p=receipt['envelope']['payload']
+            authored={'user':self.user_id,'operation':op,'text':None,'destination':None}
+            if op=='PROPOSE_MEETING':
+                authored.update(target_actor_ref=row['recipient'],due_clock=row['due_clock'])
+            else:authored.update(target_commitment_ref=row['id'])
+            return (e.get('user')==self.user_id and p.get('user')==self.user_id
+                    and e.get('status')=='PERFORMED' and p.get('performed') is True
+                    and e.get('operation')==op and e.get('destination')==row['location']
+                    and e.get('meeting_ref')==row['id'] and p.get('meeting_ref')==row['id']
+                    and e.get('target_actor_ref')==row['recipient']
+                    and e.get('clock')==receipt.get('clock')==clock
+                    and e.get('payload_hash')==p.get('payload_hash')==digest(authored)
+                    and ref==stable_id('neighbor_user',{'user':self.user_id,
+                         'request_id':e.get('request_id'),'payload_hash':e['payload_hash']}))
+        def actor_source(row,op,ref,clock):
+            matches=[]
+            for e in history:
+                if e.get('kind')!='ACTOR_LIFE_TRANSITION' or e.get('actor_id')!=row['recipient']:
+                    continue
+                p=e['envelope']['payload'];a=p.get('actual',{});attempt=p.get('attempt',{})
+                sel=attempt.get('practical_selection',{}).get('selected_meeting',{})
+                if (a.get('meeting_ref')==row['id'] and a.get('action')==op
+                        and a.get('status')=='PERFORMED'
+                        and a.get('actor')==row['recipient'] and a.get('target')==self.user_id
+                        and a.get('human_meeting_event_ref')==ref
+                        and p.get('actor_selection_grade')=='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+                        and sel.get('meeting_ref')==row['id']
+                        and sel.get('meeting_source_user_event_ref')==ref
+                        and e.get('clock')==a.get('clock')==clock):
+                    matches.append(e)
+            return len(matches)==1
+        result=[]
+        for row in rows:
+            origin=row['source_user_event_ref'];status=row['status']
+            if (row['id']!=stable_id('meeting_window',{'world':world['id'],'proposal':origin})
+                    or row['meeting_clock']!=row['due_clock']-1
+                    or row['checkin_clock']!=row['due_clock']-2
+                    or not user_source(row,'PROPOSE_MEETING',origin,row['origin_clock'])):
+                raise EncounterRefusal('MEETING_UNQUALIFIED_PROPOSAL')
+            accepted=status in ('ACCEPTED','CHECKED_IN','MEETING_PERFORMED',
+                                'ELAPSED_WITHOUT_ACTUAL_CHECK_IN','ELAPSED_WITHOUT_ACTUAL_MEETING')
+            checked=status in ('CHECKED_IN','MEETING_PERFORMED','ELAPSED_WITHOUT_ACTUAL_MEETING')
+            if accepted and (row.get('acceptance_source_user_event_ref')!=origin
+                    or row.get('accepted_at_clock')!=row['origin_clock']+1
+                    or not actor_source(row,'ACCEPT_MEETING',origin,row['accepted_at_clock'])):
+                raise EncounterRefusal('MEETING_UNQUALIFIED_ASSENT')
+            if checked and not user_source(row,'CHECK_IN_MEETING',
+                    row.get('checkin_user_event_ref'),row['checkin_clock']):
+                raise EncounterRefusal('MEETING_UNQUALIFIED_CHECKIN')
+            if status=='MEETING_PERFORMED' and not actor_source(row,'MEET_VISITOR',
+                    row['checkin_user_event_ref'],row['meeting_clock']):
+                raise EncounterRefusal('MEETING_UNQUALIFIED_PERFORMANCE')
+            if status not in ('PROPOSED','ACCEPTED','CHECKED_IN','MEETING_PERFORMED',
+                              'ELAPSED_WITHOUT_ACTOR_ASSENT','ELAPSED_WITHOUT_ACTUAL_CHECK_IN',
+                              'ELAPSED_WITHOUT_ACTUAL_MEETING'):
+                raise EncounterRefusal('MEETING_UNQUALIFIED_STATUS')
+            if status in ('PROPOSED','ACCEPTED','CHECKED_IN'):
+                if world['clock']>=row['meeting_clock']:
+                    raise EncounterRefusal('MEETING_UNSETTLED_ELAPSED_WINDOW')
+            elif row.get('settled_at_clock')!=row['meeting_clock'] or world['clock']<row['meeting_clock']:
+                raise EncounterRefusal('MEETING_UNQUALIFIED_SETTLEMENT_CLOCK')
+            result.append({**{k:deepcopy(row[k]) for k in (
+                'id','recipient','location','origin_clock','checkin_clock','meeting_clock',
+                'due_clock','status','accepted_at_clock','settled_at_clock',
+                'source_user_event_ref','checkin_user_event_ref') if k in row},
+                'administrative_readback_not_perception_or_appraisal':True})
+        return result
 
     def own_food_commitments(self):
         """Own authored contract history, not another person's private life.
@@ -795,10 +978,24 @@ class NeighborEncounter:
                         or not row['origin_clock']<row['settled_at_clock']<row['due_clock']
                         or matching[0].get('payload_hash')!=f['envelope']['payload'].get('payload_hash')):
                     raise EncounterRefusal('UNQUALIFIED_HUMAN_OFFER_FULFILLMENT')
+            if row['status']=='WITHDRAWN_BY_AUTHORED_ACT':
+                f=committed.get(row.get('withdrawal_user_event_ref'))
+                matching=[e for e in world.get('neighbor_user_events',[])
+                          if e.get('event_ref')==row.get('withdrawal_user_event_ref')]
+                if (f is None or len(matching)!=1
+                        or matching[0].get('operation')!='WITHDRAW_PLEDGE'
+                        or matching[0].get('target_commitment_ref')!=row['id']
+                        or matching[0].get('human_offer_commitment_ref')!=row['id']
+                        or matching[0].get('clock')!=row['settled_at_clock']
+                        or not row['origin_clock']<row['settled_at_clock']<row['due_clock']
+                        or matching[0].get('payload_hash')!=f['envelope']['payload'].get('payload_hash')
+                        or f['envelope']['payload'].get('target_commitment_ref')!=row['id']
+                        or matching[0].get('perceptual_candidates')!=[]):
+                    raise EncounterRefusal('UNQUALIFIED_HUMAN_OFFER_WITHDRAWAL')
             result.append({k:deepcopy(row[k]) for k in (
                 'id','recipient','location','origin_clock','due_clock','status',
                 'source_user_event_ref','settled_at_clock',
-                'fulfillment_user_event_ref') if k in row})
+                'fulfillment_user_event_ref','withdrawal_user_event_ref') if k in row})
         return result
 
     def independent_actor_beat(self, actor_id: str):
@@ -1014,7 +1211,7 @@ class NeighborEncounter:
 
     def continue_absent_life_until(self, departure_ref: str, target_clock: int,
                                    *, max_segments: int = 24,
-                                   period_processes=None):
+                                   period_processes=None,historical_cadence=None):
         """Owner-side bounded absence continuation, NOT a visitor action.
 
         The target is an absolute modeled-world clock, not real wall time or
@@ -1059,6 +1256,31 @@ class NeighborEncounter:
 
         require_no_visitors(world)
         initial = world['clock']
+        if historical_cadence is not None:
+            if (type(historical_cadence) is not dict or
+                    set(historical_cadence)!={'cadence_origin','ordinary_span','detail_beats'}):
+                raise EncounterRefusal('INVALID_ABSENCE_HISTORICAL_CADENCE')
+            if target_clock<=initial:
+                return {'status':'AT_OR_PAST_ABSENCE_TARGET','departure_event_ref':departure_ref,
+                    'target_modeled_clock':target_clock,'actual_modeled_clock':initial,
+                    'modeled_clock_advance_this_call':0,'segments_executed_this_call':0,
+                    'new_world_events':False,'unseen_life_not_a_visitor_report':True,
+                    'real_calendar_elapsed_not_established':True,'grade':'SOURCEFREE_RESEARCH_PROVISIONAL'}
+            actual=self.runtime.continue_mixed_history(target_clock,
+                max_segments=max_segments,period_processes=period_processes,**historical_cadence)
+            final=self._world()[1]['clock']
+            return {'status':('AT_OR_PAST_ABSENCE_TARGET'
+                             if actual['status']=='MODELED_HISTORY_CUT_REACHED'
+                             else 'HELD_AT_BOUNDED_ABSENCE_CONTINUATION'),
+                'departure_event_ref':departure_ref,
+                'target_modeled_clock':target_clock,'actual_modeled_clock':final,
+                'modeled_clock_advance_this_call':final-initial,
+                'segments_executed_this_call':len(actual['segments']),
+                'independent_actor_beats':actual['independent_actor_beats'],
+                'ordinary_intervals':actual['ordinary_intervals'],
+                'hold_reason':actual['hold_reason'],'new_world_events':bool(actual['segments']),
+                'unseen_life_not_a_visitor_report':True,
+                'real_calendar_elapsed_not_established':True,'grade':'SOURCEFREE_RESEARCH_PROVISIONAL'}
         segments = 0
         while world['clock'] < target_clock and segments < max_segments:
             require_no_visitors(world)
@@ -1422,6 +1644,44 @@ class NeighborEncounter:
                                 and cue.get('description') == CADENCES[cadence]
                                 and ('vocal_cadence:' + cadence.lower()) in cue.get('tags', [])):
                             text = CADENCES[cadence]
+                    lexical={}
+                    if (action=='SPEAK'
+                            and actual.get('utterance_grade')=='SOURCEFREE_REALIZED_LEXICAL_OCCURRENCE'
+                            and envelope.get('payload',{}).get('actor_selection_grade')
+                                =='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+                            and type(envelope['payload'].get('attempt',{}).get(
+                                'practical_selection',{}).get('prospective_speech_intent')) is str
+                            and actual.get('utterance_cue_ref')==cue['id']
+                            and cue.get('utterance_cue_ref')==cue['id']
+                            and cue.get('utterance_grade')==actual['utterance_grade']
+                            and type(cue.get('spoken_text')) is str
+                            and 0<len(cue['spoken_text'])<=500 and cue['spoken_text'].strip()
+                            and cue.get('utterance_text_hash')==actual.get('utterance_text_hash')
+                                ==digest(cue['spoken_text'])
+                            and all(historical_public.get(k)==actual.get(k) for k in
+                                    ('utterance_cue_ref','utterance_text_hash','utterance_grade'))):
+                        # Actual words, not a generated description or a
+                        # claim that the visitor understood/trusted them.
+                        lexical={'spoken_text':cue['spoken_text'],'text':cue['spoken_text'],
+                            'sound_description':text,
+                            'lexical_content':'ACTUAL_REALIZED_WORDS',
+                            'utterance_claim_truth':'NOT_ESTABLISHED',
+                            'human_comprehension':'NOT_ESTABLISHED'}
+                        selected_address=envelope['payload']['attempt']['practical_selection'].get(
+                            'selected_speech_address')
+                        addressed=actual.get('target')
+                        if (visible_identity and type(selected_address) is dict and type(addressed) is str
+                                and selected_address.get('recipient')==addressed
+                                and historical_public.get('target')==addressed
+                                and cue.get('voluntary_addressed_party_ref')==addressed
+                                and cue.get('voluntary_address_ref')==actual.get('voluntary_address_ref')
+                                    ==historical_public.get('voluntary_address_ref')
+                                    ==stable_id('voluntary_lexical_address',{
+                                        'cue':cue['id'],'actor':actual['actor'],'recipient':addressed})):
+                            lexical['lexical_acquisition_route']=(
+                                'VOLUNTARILY_ADDRESSED_TO_SELF' if addressed==self.user_id else
+                                'AUDIBLE_NOT_ADDRESSED_TO_SELF')
+                            lexical['address_does_not_establish_trust_or_confidentiality']=True
                     mandatory.append({'kind': 'CO_PUBLIC_OCCURRENCE',
                         'text': text, 'modality': 'auditory',
                         'source_event_ref': last_event['id'],
@@ -1429,6 +1689,7 @@ class NeighborEncounter:
                         'source': 'EXISTING_CO_PUBLIC_WORLD_SIGN',
                         'speaker_identity': 'NOT_ESTABLISHED',
                         'lexical_content': 'NOT_CAPTURED_OR_RECONSTRUCTED',
+                        **lexical,
                         'interpretation': 'NONE'})
                 elif (visible_identity and cue.get('modality') == 'visual'
                         and action in movements):
@@ -1556,7 +1817,10 @@ class NeighborEncounter:
             particular_refusal = (type(actual) is dict
                 and actual.get('action')=='REFUSE'
                 and actual.get('human_food_offer_refused_event_ref') is not None)
-            if (not human_signal_attempt and not particular_refusal
+            lexical_attempt=(type(actual) is dict and actual.get('action')=='SPEAK'
+                and type(envelope.get('payload',{}).get('attempt',{}).get(
+                    'practical_selection',{}).get('prospective_speech_intent')) is str)
+            if (not human_signal_attempt and not particular_refusal and not lexical_attempt
                     and visible_identity and actor_location == loc
                     and at_clock == world['clock']
                     and last['id'] == receipt

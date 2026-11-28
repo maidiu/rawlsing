@@ -11,7 +11,8 @@ from .material_objects import (
     produce_artifact, repair_artifact, material_objects_present)
 from .mediated_efficacy import objective_arrangement
 from .expectation_afterlife import realized_vocal_cadence, CADENCES
-from .material_provisioning import perform_one_actual_feeding, visitor_held_food_available
+from .material_provisioning import (perform_one_actual_feeding, visitor_held_food_available,
+                                   settle_selected_self_meal)
 from .food_access_struggle import (
     contribute_food_petition,can_draw_shared_food)
 from .food_power_reproduction import (
@@ -139,6 +140,48 @@ def recursive_encounter_channels(world, observer, source, location):
                 and p['sightline']=='unobstructed' and p['facing']=='source'}
 
 
+def attach_actual_utterance(world,attempt,summary,text):
+    """Attach exact lexical content to the existing uncommitted SPEAK sign.
+
+    Runtime is the sole caller in the same world transaction, before personal
+    receipts. No second writer, new action, new voice claim or semantic truth.
+    A malformed renderer reply aborts the entire transaction.
+    """
+    if type(text) is not str or not text.strip() or len(text)>500:
+        raise ValueError('LEXICAL_REALIZATION_INVALID_SPEECH')
+    cue=world['cues'][-1];public=world['public_history'][-1]
+    if (attempt.action!='SPEAK'
+            or attempt.intention!='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+            or type(attempt.practical_selection.get('prospective_speech_intent')) is not str
+            or summary.get('action')!='SPEAK' or summary.get('actor')!=attempt.actor
+            or summary.get('status')!='PERFORMED'
+            or summary.get('clock')!=world['clock']
+            or any(public.get(k)!=summary.get(k) for k in ('actor','action','status','clock'))
+            or cue.get('kind')!='performed_speak' or cue.get('modality')!='auditory'
+            or cue.get('source_actor')!=attempt.actor or cue.get('private_to') is not None
+            or cue.get('clock')!=world['clock']
+            or cue.get('location')!=world['positions'].get(attempt.actor)
+            or 'spoken_text' in cue):
+        raise ValueError('LEXICAL_REALIZATION_NOT_ACTUAL_SPEAK')
+    binding={'utterance_cue_ref':cue['id'],'utterance_text_hash':digest(text),
+             'utterance_grade':'SOURCEFREE_REALIZED_LEXICAL_OCCURRENCE'}
+    address=attempt.practical_selection.get('selected_speech_address')
+    if address is not None:
+        if (address.get('recipient')!=attempt.target or summary.get('target')!=attempt.target
+                or public.get('target')!=attempt.target):
+            raise ValueError('LEXICAL_ADDRESS_TARGET_MISMATCH')
+        binding['voluntary_address_ref']=stable_id('voluntary_lexical_address',{
+            'cue':cue['id'],'actor':attempt.actor,'recipient':attempt.target})
+        cue['voluntary_addressed_party_ref']=attempt.target
+    cue.update(binding,spoken_text=text,utterance_claim_truth='NOT_ESTABLISHED')
+    # The earlier object-demonstration branch did not encode words; this
+    # opt-in lexical realization supersedes only those absence flags.
+    cue.pop('spoke_about_material_object_without_encoded_word',None)
+    cue.pop('unobserved_semantic_content',None)
+    summary.update(binding)
+    public.update(binding)
+
+
 def project_recursive_actor_sign(world, actor, cue, location):
     """Adapt NEIGHBOR's auditory/visual distinction to CO's existing cue read.
 
@@ -147,6 +190,64 @@ def project_recursive_actor_sign(world, actor, cue, location):
     referent. This is not proof of actor attention or speaker recognition.
     """
     source=cue.get('source_actor')
+    if cue.get('utterance_grade')=='SOURCEFREE_REALIZED_LEXICAL_OCCURRENCE':
+        # Typed lexical realization uses the existing directional access
+        # owner. A sound without a qualified language/path is not words;
+        # audible words do not automatically identify a hidden speaker.
+        channels=recursive_encounter_channels(world,actor['id'],source,location)
+        own=source==actor['id']
+        if not own and channels is not None and not channels['audible']:return None
+        text=cue.get('spoken_text')
+        qualified=(type(text) is str and bool(text.strip()) and len(text)<=500
+            and cue.get('utterance_cue_ref')==cue.get('id')
+            and cue.get('utterance_text_hash')==digest(text))
+        language=actor.get('body',{}).get('language',0)
+        lexical=(qualified and (own or (channels is not None and channels['audible']))
+                 and type(language) in (int,float) and .35<=language<=1)
+        visible=own or (channels is not None and channels['visible'])
+        result={k:copy(cue[k]) for k in (
+            'id','clock','last_access_clock','location','modality','threshold','private_to')
+            if k in cue}
+        result.update(kind='performed_speak' if visible else 'heard_voice',
+            tags=['speech'] if lexical else ['voice','speech_sound'],
+            description='Speech sounds nearby.',
+            source_actor=source if visible else None,
+            lexical_comprehension=('SOURCEFREE_CAPACITY_ELIGIBLE' if lexical else 'NOT_ESTABLISHED'),
+            speaker_identity_visually_eligible_not_recognition=bool(visible),
+            not_actor_attention_or_understanding=True)
+        if channels is not None:result['encounter_path_ref']=channels['path_ref']
+        if cue.get('vocal_cadence') in CADENCES:
+            result['vocal_cadence']=cue['vocal_cadence']
+            result['description']=CADENCES[cue['vocal_cadence']]
+            result['tags'].append('vocal_cadence:'+cue['vocal_cadence'].lower())
+        if visible and cue.get('actual_spoken_object_demonstration') is True:
+            # Preserve the inherited cultural-reference route for an actual
+            # visible object, not anonymous acoustic access to its identity.
+            for key in ('material_object_ref','actual_spoken_object_demonstration',
+                        'spoke_about_material_object_without_encoded_word',
+                        'unobserved_semantic_content'):
+                if key in cue:result[key]=copy(cue[key])
+            result['tags']+=['public_object_reference','object_present']
+        if lexical and visible and cue.get('voluntary_address_ref'):
+            target=cue.get('voluntary_addressed_party_ref')
+            if (type(target) is str and cue['voluntary_address_ref']==stable_id(
+                    'voluntary_lexical_address',{'cue':cue['id'],'actor':source,'recipient':target})):
+                # Only the recipient's own qualified receipt establishes
+                # directedness. An overhearer gets words, not another's identity.
+                result['lexical_acquisition_route']=(
+                    'OWN_ADDRESSED_SPEECH' if own else
+                    'VOLUNTARILY_ADDRESSED_TO_SELF' if target==actor['id'] else
+                    'AUDIBLE_NOT_ADDRESSED_TO_SELF')
+                result['address_does_not_establish_trust_or_confidentiality']=True
+        if lexical:
+            # There now are words; do not falsely claim they were absent.
+            result.pop('spoke_about_material_object_without_encoded_word',None)
+            result.pop('unobserved_semantic_content',None)
+            result['spoken_text']=text
+            result['utterance_claim_truth']='NOT_ESTABLISHED'
+            result['utterance_grade']=cue['utterance_grade']
+            result['utterance_text_hash']=cue['utterance_text_hash']
+        return result
     if source==actor['id']:
         return copy(cue)
     channels=recursive_encounter_channels(world,actor['id'],source,location)
@@ -217,6 +318,9 @@ def qualified_human_vocal_receipt(world, actor, attempt, ledger_event):
     No caller-supplied future consent or other-actor Attempt is accepted.
     Adjacent turn coordination only, not simultaneous singing.
     """
+    if attempt.action in ('ACCEPT_MEETING','MEET_VISITOR'):
+        from .continuity_clock import qualified_meeting_receipt
+        return qualified_meeting_receipt(world,actor,attempt,ledger_event)
     human_operation = {'SING':'SING', 'SIGNAL':'OFFER_FEED', 'REFUSE':'OFFER_FEED'}.get(attempt.action)
     if (human_operation is None or attempt.intention !=
             'ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
@@ -410,7 +514,9 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     policy_receipt=None
     care_labor_receipt=None
     material_feeding_ref=None
+    selected_self_meal_receipt=None
     future_care_obligation_ref=None
+    actual_meeting_ref=None
     inspected_public_notice=None
     inspected_material_object=None
     worked_material_object=None
@@ -440,6 +546,9 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                 output='MOVED'
             else:status='BLOCKED';output='INSTITUTIONAL_ACCESS_DENIED'
         else:status='BLOCKED';output='UNKNOWN_DESTINATION'
+    elif attempt.action=='EAT' and attempt.practical_selection.get('selected_self_meal_source') is not None:
+        status,output,selected_self_meal_receipt=settle_selected_self_meal(
+            world,aid,loc,attempt.practical_selection['selected_self_meal_source'],attempt.intention)
     elif attempt.action=='EAT':
         site=_site(world,aid)
         inventory=world.get('holdings',{}).get(aid,{'food':0})
@@ -598,6 +707,9 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         members=_qualified_members(world['institutions']['hall_board'],'members','INVALID_INSTITUTION_MEMBERSHIP')
         if aid not in members:status='BLOCKED';output='NO_INSTITUTIONAL_AUTHORITY'
         else:world['sites']['hall']['access']='controlled';output='HALL_ACCESS_RESTRICTED'
+    elif attempt.action in ('ACCEPT_MEETING','MEET_VISITOR'):
+        from .continuity_clock import perform_meeting_action
+        status,output,actual_meeting_ref=perform_meeting_action(world,attempt,human_vocal)
     elif attempt.action=='PLEDGE_CARE':
         # The pledge is this actor's act, not the recipient's promise to
         # accept it, nor any claim that future care has already happened.
@@ -694,7 +806,8 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     elif attempt.action=='FEED':
         resolved_food=perform_one_actual_feeding(
             world,actors,aid,target,loc,
-            attempt.intention)
+            attempt.intention,
+            selected_food_source=attempt.practical_selection.get('selected_feeding_source'))
         status=resolved_food['status']
         output=resolved_food['outcome']
         material_feeding_ref=resolved_food['material_feeding_ref']
@@ -786,9 +899,19 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                 # The responder's autonomous FEED is not merely consent to
                 # a signal: objective food stock and bodily eligibility still
                 # decide what material assistance actually happened.
-                supported=perform_one_actual_feeding(
-                    world,actors,partner_attempt.actor,aid,loc,
-                    partner_attempt.intention)
+                selected_source=partner_attempt.practical_selection.get('selected_feeding_source')
+                # Explicit source-bound coactor means may not bypass the
+                # giver's own objective FEED gate because the principal
+                # operation happens to be SIGNAL.
+                partner_gate=(evaluate_material_conjunction(
+                    world,partner_attempt.actor,loc,'FEED') if selected_source is not None else None)
+                if partner_gate is not None and partner_gate['decision'] in ('BLOCKED','UNRESOLVED'):
+                    supported={'status':'BLOCKED','outcome':'COACTOR_FEED_GATE_NOT_ALLOWED',
+                               'material_feeding_ref':None}
+                else:
+                    supported=perform_one_actual_feeding(
+                        world,actors,partner_attempt.actor,aid,loc,
+                        partner_attempt.intention,selected_food_source=selected_source)
                 material_feeding_ref=supported['material_feeding_ref']
                 if supported['status']=='PERFORMED':
                     effects[aid]['received_assistance']=True
@@ -828,6 +951,23 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     elif attempt.action=='SIGNAL':
         output='NONVERBAL_SIGNAL'
     elif attempt.action=='SPEAK':
+        address=attempt.practical_selection.get('selected_speech_address')
+        if address is not None:
+            other=attempt.target
+            actor_target=(type(other) is str and other!=aid and other in actors
+                          and world['positions'].get(other)==loc)
+            channels=(recursive_encounter_channels(world,aid,other,loc)
+                      if actor_target else None)
+            human_target=other in visible_vocal_visitors(world,actor,loc)
+            present=(actor_target and (channels is None or channels['visible'])) or human_target
+            expected=(('presence:' if actor_target else 'visitor_vocal_presence:')+
+                      str(other)+':'+str(world['clock']))
+            if (attempt.intention!='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+                    or type(address) is not dict or address.get('recipient')!=other
+                    or address.get('presence_cue_ref')!=expected or not present
+                    or type(attempt.practical_selection.get('prospective_speech_intent')) is not str
+                    or attempt.object_ref is not None):
+                raise ValueError('VOLUNTARY_ADDRESS_NO_LONGER_QUALIFIED')
         if attempt.object_ref is None:
             output='SPEECH_PERFORMED'
         else:
@@ -877,8 +1017,9 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     else:output='ACT_COMPLETED'
     performed[0]['status']=status
     world['clock']+=1
-    from .continuity_clock import settle_human_offer_deadlines
+    from .continuity_clock import settle_human_offer_deadlines, settle_meeting_deadlines
     settle_human_offer_deadlines(world)
+    settle_meeting_deadlines(world)
     # A receipt may only identify a material claim if this action really
     # produced one; a blocked WORK attempt or a non-employer site does not.
     last_claim=world.get('material_claims',[])[-1] if world.get('material_claims') else None
@@ -905,6 +1046,9 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                         inspected_material_object['id']
                         if inspected_material_object else None),
                    'co_present_not_verified_witnessing':True}
+    if actual_meeting_ref is not None:
+        event_summary['meeting_ref']=actual_meeting_ref
+        event_summary['human_meeting_event_ref']=human_vocal['user_event_ref']
     if human_vocal is not None and output == 'JOINT_ACTIVITY_PERFORMED':
         event_summary['human_food_offer_event_ref' if human_vocal.get('operation')=='OFFER_FEED'
                       else 'human_vocal_event_ref'] = human_vocal['user_event_ref']
@@ -916,7 +1060,12 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     # must not publish the actor's private financial/material explanation.
     # A blocked act is observable as an unfinished attempt, not an accounting diagnosis.
     perceptible_outcome=(output if status=='PERFORMED' else 'ATTEMPT_NOT_COMPLETED')
-    public_event={**event_summary,'outcome':perceptible_outcome}
+    if selected_self_meal_receipt is not None:
+        # The objective debit is not another person's view of the meal.
+        event_summary['selected_self_meal_receipt']=selected_self_meal_receipt
+        perceptible_outcome='ATE_FOOD'
+    public_event={k:v for k,v in event_summary.items() if k!='selected_self_meal_receipt'}
+    public_event['outcome']=perceptible_outcome
     world['public_history'].append(public_event)
     # New cues are actual public world consequences, not actor introspection.
     # World effects persist even when no participant currently perceives them.
