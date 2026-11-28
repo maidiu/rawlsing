@@ -17,6 +17,14 @@ Input PM 27a8612b5757bc360785ed6d8bb3bc4547c63655; exact CO b9972af9911c5eb07d53
 
 **Next successor:** recheck exact heads, CI, actual HOME/PROGRAMMA/SOROKUDA receiving and new R005 returns, then whole-HOME compare. R61 admitted actual reconstitution, R39 actual lexical event, R23 older R35 capture complementary not joined. No new source authority or automatic spend.
 
+
+### R004 post-publication verification
+
+- #1302 b1e2c5e3db9339512e8585baa39f1918948a664e exact head verified; documentary CI [46088803280](https://github.com/maidiu/rawlsing/actions/runs/46088803280) and [46088799509](https://github.com/maidiu/rawlsing/actions/runs/46088799509) both success. Corrected crosswalk failure remains conserved above.
+- R005 three briefs read back at f06428f807e01d6a74d8790cd884664db90343fc, blobs CO 558c99a995673b9b7293de3c00cf4ac0d49b7366, NEIGHBOR e5a1a7ab053d21985f79fba15978a5fe7a572f7f, economy 064ff3548d161fb789a1fdb45a4caefd325193ab. All unchanged by this verification.
+- SOROKUDA e72d7eb7a18c7c4dcbda4984a21b8efad9a93d63, blob 21e8e1f5db007c7e27163e98b653c9ee89197e23, exact head and content read back; no separate CI run observed. No new source slots.
+- Actual reciprocal notifications: [CO HOME](https://github.com/maidiu/rawlsing/pull/1371#issuecomment-7231057238), [NEIGHBOR HOME](https://github.com/maidiu/rawlsing/pull/1332#issuecomment-7231057641), [PROGRAMMA](https://github.com/maidiu/rawlsing/pull/1333#issuecomment-7231058107), [G4](https://github.com/maidiu/rawlsing/pull/1302#issuecomment-7231058586). No actual owner incorporation verified. R24 full CI still in progress at last observation; full archive audit NOT_RUN. No protected changes, paid work or independent review.
+
 ## Conserved R003 close (historical)
 
 Input PM `f03dafc8128122e0be5860ce80d1f9e003f26d88`: CO HQ blob `29bd428294479620654ecfc2cd0568bbf3a2f4a5`, CO `25f6aa1e4a98a6c5965a497fc1714e37f0125bc7`, NEIGHBOR `fe8258cb19cc1deb05ab50aacd0c98b332ac54b8`, economy `7b178c88b6bea3232a70fd60567897d5687ff4e2`. All attributed actual returns read, selected exact source/tests and raw direct logs read.
