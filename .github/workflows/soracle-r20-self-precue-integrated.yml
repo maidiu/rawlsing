@@ -36,6 +36,7 @@ on:
       - agent/soracle-co-mulchineer-embodied-history-20261127-r1
       - agent/soracle-co-mulchineer-retrospective-reconstitution-20261127-r1
       - agent/soracle-co-mulchineer-existing-family-continuity-20261127-r1
+      - agent/soracle-co-mulchineer-reproductive-continuity-20261127-r1
     paths:
       - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/**'
       - '.github/workflows/soracle-r20-self-precue-integrated.yml'
@@ -110,6 +111,12 @@ jobs:
         if: github.ref_name == 'agent/soracle-co-mulchineer-existing-family-continuity-20261127-r1'
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_existing_family_continuity_r62.py' -v
+      - name: R63 reproductive continuity
+        if: github.ref_name == 'agent/soracle-co-mulchineer-reproductive-continuity-20261127-r1'
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest discover -s tests -p 'test_reproductive_workload_r59.py' -v
+          python -m unittest discover -s tests -p 'test_reproductive_continuity_r63.py' -v
       - name: R20 historical self and pre-cue focus
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_historical_self_precue_r19.py' -v
