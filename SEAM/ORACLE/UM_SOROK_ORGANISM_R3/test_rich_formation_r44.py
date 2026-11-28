@@ -269,16 +269,16 @@ class RichFormationCourt(unittest.TestCase):
             finally:g.close();rt.close()
             rt=ConstitutiveRuntime(str(db));g=inherited.ModernGenerationCourt.generation(self,rt,f,"worker",p,selective_memory_context=True)
             try:
-                g.advance();page=p.requests[5]["context"]["selected_exact_analytic_reads"][0]["value"]
-                self.assertEqual(page["count"],25);self.assertEqual(len(page["rows"]),3)
+                page=p.requests[4]["context"]["selected_exact_analytic_reads"][0]["value"]
+                self.assertEqual(page["count"],20);self.assertEqual(len(page["rows"]),3)
                 g.advance()
-                c=p.requests[6]["context"]
+                c=p.requests[5]["context"]
                 got=c["selected_exact_analytic_reads"][0]
                 self.assertEqual(got["value"],old[0])
                 self.assertEqual(got["value_digest"],page["rows"][0]["row_digest"])
                 projection=c["actor_contexts"]["worker"]["accessible_memory_projection"]
-                self.assertEqual(projection["full_accessible_count"],30)
-                self.assertLess(projection["included_count"],30)
+                self.assertEqual(projection["full_accessible_count"],25)
+                self.assertLess(projection["included_count"],25)
                 current=rt.snapshot("worker")["memories"]
                 self.assertEqual(current[:25],old)
                 full=g.owner.resolve_analytic_reads([{"kind":"ACTOR_DOMAIN","actor":"worker","domain":"memories"}])
@@ -290,7 +290,7 @@ class RichFormationCourt(unittest.TestCase):
                 with self.assertRaises(RecursionRefusal):
                     g.owner.resolve_analytic_reads([{"kind":"ACTOR_ROW","actor":"worker","domain":"memories",
                         "row_ref":"id:unissued"}])
-                g.finish();self.assertTrue(rt.verify()["valid"]);self.assertTrue(g.engine.verify())
+                g.advance();g.finish();self.assertTrue(rt.verify()["valid"]);self.assertTrue(g.engine.verify())
                 print("R47_GRANULAR",json.dumps({"memories":len(current),"checkpoint_calls":len(p.requests),
                     "full_accessible_count":projection["full_accessible_count"],"working_count":projection["included_count"],
                     "full_domain_bytes":nfull,"single_row_bytes":nrow},sort_keys=True))
