@@ -355,7 +355,7 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                              self.expressive_arm(Path(d)/'abstain.db',False))
 
 
-    def productive_ordinary_arm(self,db,admit_end,forge=False,practice=None,witness=None,transfer=None,affect=None,local_period=None,private=None,antecedent=False):
+    def productive_ordinary_arm(self,db,admit_end,forge=False,practice=None,witness=None,transfer=None,affect=None,local_period=None,private=None,antecedent=False,material_period=None):
         """From ordinary infancy through plural response to self-generated end.
         Same acquired capacity in both arms; a later trial is not a project.
         No joint SING, no actual deficit/relief required, no injected child act.
@@ -382,6 +382,14 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                 return {'task':task,'surface':'Ordinary life.'}
             if task=='development':
                 if aid!='nadia':
+                    if material_period is not None and phase['name']=='care_binding':
+                        ex=p['experience']
+                        if ex.get('own_action')=='CARE' and ex.get('status')=='PERFORMED' and any(
+                                c.get('kind')=='coactor_present' and c.get('source_actor')=='nadia'
+                                for c in ex['perceived_cues']):
+                            return {'task':task,'candidates':[{'kind':'ADD_PROJECT','project':{
+                                'id':'care:'+aid,'object':'particular care for the now encountered child',
+                                'means':['CARE'],'addressed_party_ref':'nadia','priority':.6}}]}
                     if antecedent and aid=='father' and phase['name']=='antecedent_memory':
                         phase['name']='antecedent'
                         return {'task':task,'candidates':[{'kind':'MEMORY',
@@ -396,6 +404,10 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                         return {'task':task,'candidates':p.get('historically_possible_cultural_references',[])}
                     return {'task':task,'candidates':[]}
                 candidates=p.get('historically_possible_social_vocal_development',[])
+                if material_period is not None and phase['name']=='care_orientation':
+                    from um_sorok_organism.plural_care_paths import choose_one_grounded_plural_acquisition
+                    candidates=candidates+choose_one_grounded_plural_acquisition(
+                        p.get('historically_possible_plural_care',[]))
                 if private is not None:
                     candidates=candidates+p.get('historically_possible_cultural_references',[])
                 ends=[x for x in p.get('historically_possible_genetic_ends',[])
@@ -457,6 +469,7 @@ class EarlyOrdinaryPractice(unittest.TestCase):
             if task=='actor_attempt':
                 if aid!='nadia':
                     if p.get('requesting_actor'):
+                        if phase['name']=='care_address':return {'task':task,'action':'REFUSE'}
                         if phase.get('reply')=='FEED':
                             return {'task':task,'action':'FEED'}
                         if witness is not None:
@@ -464,6 +477,12 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                             self.assertEqual(len(opts),1)
                             return {'task':task,'practical_option_id':opts[0]['option_id']}
                         return {'task':task,'action':'SPEAK'}
+                    if material_period is not None and phase['name']=='care_now':
+                        rows=[o for o in p['practical_options'] if o['operation']=='CARE'
+                              and o.get('project_id')=='care:'+aid
+                              and o['world_request']['addressed_party_ref']=='nadia']
+                        if rows:return {'task':task,'practical_option_id':rows[0]['option_id']}
+                        return {'task':task,'action':'WAIT'}
                     if antecedent and aid=='father' and phase['name']=='material_work':
                         from um_sorok_organism.types import stable_id
                         work=stable_id('seed_project',{'actor':'father','p':
@@ -496,6 +515,22 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                     self.assertEqual(len(a),1)
                     self.assertTrue(a[0]['not_current_external_sign_or_present_other_required'])
                     return {'task':task,'possible_end_trial_id':a[0]['trial_id']}
+                if phase['name']=='care_orientation':
+                    return {'task':task,'action':'ORIENT'}
+                if phase['name']=='care_address':
+                    rows=[o for o in p['practical_options'] if o.get('grounds_status')=='HISTORICALLY_ACQUIRED_CO_REGULATION']
+                    ranked=[]
+                    for o in rows:
+                        clocks=[x['event_clock'] for x in o.get('personally_sensed_support_history',[])
+                                if x.get('bodily_regulation_sensed') is True]
+                        if clocks:ranked.append((max(clocks),o))
+                    self.assertTrue(ranked)
+                    return {'task':task,'practical_option_id':max(ranked,key=lambda x:x[0])[1]['option_id']}
+                if phase['name']=='material_practice':
+                    a=[o for o in p['practical_options'] if o['operation']=='SING'
+                       and o.get('project_id')]
+                    self.assertEqual(len(a),1)
+                    return {'task':task,'practical_option_id':a[0]['option_id']}
                 if phase['name']=='private_rehearsal':
                     rows=[o for o in p['private_rehearsal_options'] if o.get('ordinary_affect_memory')]
                     self.assertEqual(len(rows),int(bool(private)))
@@ -831,6 +866,96 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                             self.assertTrue(self.child(rt)['experienced_care_events'])
                             self.assertNotIn('private adult uncertainty',str(self.child(rt)))
                             self.assertTrue(rt.verify()['valid'])
+                            if material_period is not None:
+                                self.assertEqual(rt.step('mother',requested_action='MOVE',object_ref='workshop')['objective_outcome'],'MOVED')
+                                phase['name']='recovery'
+                                rt.step('father');rt.step('mother')
+                                phase['name']='care_binding'
+                                for parent in ('father','mother'):
+                                    self.assertEqual(rt.step(parent,requested_action='CARE',target='nadia')['status'],'PERFORMED')
+                                phase['name']='care_orientation'
+                                rt.step('nadia');rt.step('nadia')
+                                child=self.child(rt)
+                                self.assertEqual({x['caregiver_ref'] for x in child['co_regulation_orientations']},
+                                                 {'mother','father'})
+                                self.assertTrue(all(x['scope_location']=='workshop' for x in child['co_regulation_orientations']))
+                                phase['name']='material_practice'
+                                self.assertEqual(rt.step('nadia')['attempt'],'SING')
+                                phase['name']='recovery'
+                                # Actual replenishment before a new source-qualified
+                                # period; no assumption of recovery in unmodeled hours.
+                                rt.step('father');rt.step('mother');rt.step('nadia')
+                                prior=self.child(rt)
+                                proj=prior['projects'][0]
+                                ex=[x for x in prior['power_exercises'] if x['operation']=='SING'
+                                    and x['encounter_location']=='workshop'][-1]
+                                clock=rt.ledger.world()[1]['clock'];days=800
+                                practice_spec={'kind':'QUALIFIED_ROUTINE_PRACTICE','actor':'nadia','location':'workshop',
+                                    'start_clock':clock,'end_clock':clock+days,'max_hours_per_active_day':1,
+                                    'description':'continuing actual locally exercised concern','operation':'SING',
+                                    'practice_project_ref':proj['id'],'project_exercise_ref':ex['id']}
+                                wage_spec={'kind':'QUALIFIED_WAGE_LABOR','actor':'father','location':'workshop',
+                                    'start_clock':clock,'end_clock':clock+days,'max_hours_per_active_day':8,
+                                    'description':'continuing actual wage undertaking, sourcefree stress interval'}
+                                practice_src=rt.register_historical_routine_source(practice_spec)
+                                wage_src=rt.register_historical_routine_source(wage_spec)
+                                procs=[{'kind':practice_spec['kind'],'actor':'nadia','location':'workshop',
+                                    'source_ref':practice_src['source_ref'],'hours_per_active_day':1,
+                                    'provisional_exposure_fraction':.5,'operation':'SING',
+                                    'mode':'SOLO_COMPONENT_PRACTICE','practice_project_ref':proj['id'],
+                                    'project_exercise_ref':ex['id']}]
+                                if material_period:procs.append({'kind':wage_spec['kind'],'actor':'father','location':'workshop',
+                                    'source_ref':wage_src['source_ref'],'hours_per_active_day':8,
+                                    'provisional_exposure_fraction':1.})
+                                before_world=rt.ledger.world()[1]
+                                period=rt.background(days,procs)['period']
+                                later=self.child(rt);w=rt.ledger.world()[1]
+                                self.assertEqual(later['age_days'],prior['age_days']+days)
+                                self.assertEqual(later['projects'],prior['projects'])
+                                self.assertEqual(later['memories'],prior['memories'])
+                                self.assertEqual(later['expectations'],prior['expectations'])
+                                self.assertEqual(later['experienced_care_events'],prior['experienced_care_events'])
+                                self.assertEqual(later['power_exercises'],prior['power_exercises'])
+                                self.assertEqual(period['project_practice_loads'][0]['modeled_hours'],400)
+                                self.assertEqual(len(period['wage_period_refs']),int(material_period))
+                                if material_period:
+                                    self.assertGreater(w['accounts']['father'],before_world['accounts']['father'])
+                                    self.assertGreater(w['wage_labor_periods'][-1]['wage_arrears'],0)
+                                self.assertEqual(eligible(rt.ledger.actor('father')[1]['body'],'CARE')[0],not material_period)
+                                self.assertTrue(eligible(rt.ledger.actor('mother')[1]['body'],'CARE')[0])
+                                rt.close();rt=runtime()
+                                phase['name']='care_now'
+                                # Relief is not inferable merely from performed
+                                # CARE. Allow actual ordinary bodily change
+                                # before each encounter rather than assert a
+                                # gain at the saturation ceiling.
+                                for _ in range(3):
+                                    self.assertEqual(rt.step('nadia',requested_action='WAIT')['status'],'PERFORMED')
+                                before_care=self.child(rt)
+                                care=rt.step('mother')
+                                self.assertEqual(care['attempt'],'CARE')
+                                self.assertEqual(care['status'],'PERFORMED',care)
+                                after_care=self.child(rt)
+                                self.assertGreater(after_care['body']['comfort'],before_care['body']['comfort'],
+                                                   (before_care['body'],after_care['body'],care))
+                                self.assertEqual(after_care['experienced_care_events'][-1]['giver_ref'],'mother',
+                                                 (after_care['evidence_paths'][-2:],care))
+                                for _ in range(3):
+                                    self.assertEqual(rt.step('nadia',requested_action='WAIT')['status'],'PERFORMED')
+                                father=rt.step('father')
+                                self.assertEqual(father['attempt'],'WAIT' if material_period else 'CARE')
+                                self.assertEqual(father['status'],'PERFORMED',father)
+                                expected='mother' if material_period else 'father'
+                                self.assertEqual(self.child(rt)['experienced_care_events'][-1]['giver_ref'],expected,
+                                                 (self.child(rt)['evidence_paths'][-3:],father))
+                                phase['name']='care_address'
+                                self.assertEqual(rt.plan('nadia').target,expected)
+                                signal=rt.step('nadia')
+                                self.assertEqual(signal['attempt'],'SIGNAL')
+                                self.assertEqual(signal['status'],'PARTIAL')
+                                phase['name']='private_conduct'
+                                self.assertEqual(rt.step('nadia')['attempt'],'REST')
+                                self.assertTrue(rt.verify()['valid'])
                         self.assertTrue(rt.verify()['valid'])
                         return self.child(rt)
                     self.assertEqual(rt.step('father',requested_action='MOVE',object_ref='workshop')['objective_outcome'],'MOVED')
@@ -1043,3 +1168,17 @@ class EarlyOrdinaryPractice(unittest.TestCase):
             self.assertTrue(child['cultural_reference_practices'])
             self.assertTrue(child['memories'][0]['private_rehearsals'])
             self.assertGreater(child['age_days'],450)
+
+
+    def test_continuing_child_private_and_cultural_life_under_actual_material_reproductive_contradiction(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)
+            yes=self.productive_ordinary_arm(p/'wage.db',True,transfer=True,affect=True,private=True,
+                                              antecedent=True,material_period=True)
+            no=self.productive_ordinary_arm(p/'no_wage.db',True,transfer=True,affect=True,private=True,
+                                             antecedent=True,material_period=False)
+            self.assertEqual(yes['age_days'],no['age_days'])
+            self.assertEqual(len(yes['projects']),2)
+            self.assertEqual(len(no['projects']),2)
+            self.assertEqual(yes['experienced_care_events'][-1]['giver_ref'],'mother')
+            self.assertEqual(no['experienced_care_events'][-1]['giver_ref'],'father')
