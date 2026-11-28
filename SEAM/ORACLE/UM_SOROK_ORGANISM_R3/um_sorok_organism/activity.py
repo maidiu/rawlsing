@@ -44,20 +44,21 @@ def possible_productive_witness_reorganizations(actor,experience,event_ref):
     if len(paths)!=1:return []
     out=[]
     for p in actor.get('projects',[])[-128:]:
-        if (p.get('status')!='active' or p.get('means')!=['SING']
+        if (p.get('status')!='active' or p.get('means') not in (['SING'],['SPEAK'])
                 or p.get('addressed_party_ref') is not None
                 or p.get('productive_witness_means') or p.get('dependency_conditional_means')
                 or p.get('incidental_takeup_basis')):continue
+        source_op=p['means'][0]
         matches=[]
         for h in p.get('operational_history',[]):
-            if (h.get('project')!=p['id'] or h.get('operation')!='SING'
+            if (h.get('project')!=p['id'] or h.get('operation')!=source_op
                     or h.get('performed_status')!='PERFORMED'
                     or h.get('selected_at_actor_attempt') is not True
                     or h.get('intent_attribution')!='ACTOR_POLICY_SELECTED_PROJECT_COURSE'
                     or h.get('event')==event_ref):continue
             parts=[x for x in actor.get('participation_history',[])
                    if x.get('actor')==aid and x.get('event_ref')==h.get('event')
-                   and x.get('own_attempted_operation')=='SING'
+                   and x.get('own_attempted_operation')==source_op
                    and x.get('own_status')=='PERFORMED'
                    and x.get('joint_participation_perceived') is True
                    and x.get('reciprocated_partner_actor_visible')==other
@@ -69,19 +70,21 @@ def possible_productive_witness_reorganizations(actor,experience,event_ref):
                       if x.get('actor')==aid and x.get('event_ref')==h['event']
                       and x.get('experience_ref')==part.get('experience_ref')
                       and x.get('clock')==part['experienced_clock']
-                      and x.get('location')==loc and x.get('actor_felt_attempt')=='SING'
+                      and x.get('location')==loc and x.get('actor_felt_attempt')==source_op
                       and x.get('selected_project_refs')==[p['id']]
                       and x.get('selected_possible_end_trial_ref') is None
                       and not x.get('unfinished_own_activity')
-                      and any(z.get('kind')=='performed_sing'
-                              and z.get('source_actor') in (aid,other)
+                      and any(((source_op=='SING' and z.get('kind')=='performed_sing'
+                                and z.get('source_actor') in (aid,other))
+                               or (source_op=='SPEAK' and z.get('kind')=='performed_signal'
+                                   and z.get('source_actor')==other))
                               and z.get('cue_ref') in part.get('received_cue_refs',[])
                               for z in x.get('personally_perceived_sign_sources',[]))]
             if len(episodes)!=1:continue
             ep=episodes[0]
             lived=[x for x in p.get('lived_attempt_history',[])
                    if x.get('event')==h['event'] and x.get('project')==p['id']
-                   and x.get('attempted_operation')=='SING'
+                   and x.get('attempted_operation')==source_op
                    and set(x.get('accessible_cue_refs',[]))&set(ep.get('received_sign_refs',[]))]
             if len(lived)==1:matches.append((part,ep))
         if not matches:continue
@@ -91,8 +94,12 @@ def possible_productive_witness_reorganizations(actor,experience,event_ref):
                'joint_participation_ref':part['id'],'solo_event_ref':event_ref,
                'solo_experience_ref':experience['ref'],'solo_sign_ref':sign['id'],
                'no_other_motive_or_approval_inferred':True}
+        if source_op=='SPEAK':
+            basis.update({'source_route':'ACTUAL_RESPONSIVE_SPEECH_THEN_OTHER_SOLO_SOUND',
+                          'source_response_operation':source_op,
+                          'no_other_acquired_capacity_or_learning_inferred':True})
         out.append({'kind':'REORGANIZE_PROJECT','project_id':p['id'],
-                    'means':['SING','ORIENT'],'productive_witness_basis':basis})
+                    'means':[source_op,'ORIENT'],'productive_witness_basis':basis})
     return out[:3]
 
 

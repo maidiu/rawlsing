@@ -355,7 +355,7 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                              self.expressive_arm(Path(d)/'abstain.db',False))
 
 
-    def productive_ordinary_arm(self,db,admit_end,forge=False,practice=None):
+    def productive_ordinary_arm(self,db,admit_end,forge=False,practice=None,witness=None):
         """From ordinary infancy through plural response to self-generated end.
         Same acquired capacity in both arms; a later trial is not a project.
         No joint SING, no actual deficit/relief required, no injected child act.
@@ -368,7 +368,14 @@ class EarlyOrdinaryPractice(unittest.TestCase):
             aid=p.get('actor',{}).get('id')
             if task=='expression':return {'task':task,'surface':'Ordinary life.'}
             if task=='development':
-                if aid!='nadia':return {'task':task,'candidates':[]}
+                if aid!='nadia':
+                    if aid=='mother' and phase['name']=='own' and witness is not None:
+                        choices=p.get('historically_possible_productive_witness_reorganizations',[])
+                        self.assertEqual(len(choices),1)
+                        self.assertEqual(choices[0]['productive_witness_basis']['source_route'],
+                                         'ACTUAL_RESPONSIVE_SPEECH_THEN_OTHER_SOLO_SOUND')
+                        return {'task':task,'candidates':choices if witness else []}
+                    return {'task':task,'candidates':[]}
                 candidates=p.get('historically_possible_social_vocal_development',[])
                 ends=[x for x in p.get('historically_possible_genetic_ends',[])
                       if x.get('productive_vocal_basis',{}).get('source_route')==
@@ -383,7 +390,17 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                 return {'task':task,'candidates':candidates}
             if task=='actor_attempt':
                 if aid!='nadia':
-                    return {'task':task,'action':'SPEAK' if p.get('requesting_actor') else 'REST'}
+                    if p.get('requesting_actor'):
+                        if witness is not None:
+                            opts=[o for o in p['practical_options'] if o['operation']=='SPEAK' and o.get('project_id')]
+                            self.assertEqual(len(opts),1)
+                            return {'task':task,'practical_option_id':opts[0]['option_id']}
+                        return {'task':task,'action':'SPEAK'}
+                    if aid=='mother' and phase['name']=='witness':
+                        opts=[o for o in p['practical_options'] if o.get('productive_witness_attention')]
+                        self.assertEqual(len(opts),int(witness))
+                        if opts:return {'task':task,'practical_option_id':opts[0]['option_id']}
+                    return {'task':task,'action':'REST'}
                 if phase['name']=='signal':
                     if phase['other'] is None:return {'task':task,'action':'SIGNAL'}
                     a=[x for x in p['practical_options']
@@ -478,6 +495,26 @@ class EarlyOrdinaryPractice(unittest.TestCase):
             phase['name']='project'
             self.assertEqual(rt.step('nadia')['attempt'],'SING' if admit_end else 'WAIT')
             self.assertTrue(rt.verify()['valid'])
+            if witness is not None:
+                mother=rt.ledger.actor('mother')[1]
+                self.assertEqual(mother['projects'][0]['means'],['SPEAK','ORIENT'] if witness else ['SPEAK'])
+                self.assertEqual(rt.ledger.actor('father')[1]['projects'][0]['means'],['SPEAK'])
+                self.assertEqual(len(mother['projects'][0]['operational_history']),1)
+                # Continue from the committed actual child sound, with a cold
+                # parent projection. No access to the child's end or motive.
+                rt.close()
+                rt=runtime()
+                phase['name']='witness'
+                result=rt.step('mother')
+                self.assertEqual(result['attempt'],'ORIENT' if witness else 'REST')
+                self.assertTrue(rt.verify()['valid'])
+                m=rt.ledger.actor('mother')[1]
+                if witness:
+                    self.assertEqual(m['projects'][0]['operational_history'][-1]['operation'],'ORIENT')
+                    self.assertEqual(m['projects'][0]['productive_witness_means']['counterpart_ref'],'nadia')
+                    self.assertFalse(any(o.get('productive_witness_attention')
+                        for a in rt.situated('mother')['candidate_actions'] for o in a.get('practical_alternatives',[])))
+                return m
             if practice is None:return self.child(rt)
             child=self.child(rt)
             project=child['projects'][0]
@@ -553,3 +590,15 @@ class EarlyOrdinaryPractice(unittest.TestCase):
             self.assertEqual(active['age_days'],absent['age_days'])
             self.assertEqual(active['projects'],absent['projects'])
             self.assertLess(active['body']['rest'],absent['body']['rest'])
+
+
+    def test_independently_responsive_adult_can_reorganize_own_project_through_child_sound(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)
+            yes=self.productive_ordinary_arm(p/'hear.db',True,witness=True)
+            no=self.productive_ordinary_arm(p/'abstain.db',True,witness=False)
+            self.assertEqual(yes['projects'][0]['object'],no['projects'][0]['object'])
+            self.assertEqual(yes['projects'][0]['operational_history'][0],
+                             no['projects'][0]['operational_history'][0])
+            self.assertEqual(yes['projects'][0]['means'],['SPEAK','ORIENT'])
+            self.assertEqual(no['projects'][0]['means'],['SPEAK'])
