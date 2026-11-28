@@ -586,12 +586,12 @@ def match_reciprocal_routine_claims(world,claims):
     joint={i:raw for i,raw,lived,_ in claims
            if lived and raw.get('coactivity_partner')}
     matched={};held={}
-    for i,a in sorted(joint.items()):
-        if i in matched or i in held:continue
+    edges={}
+    for i,a in joint.items():
         sa=registry[a['source_ref']]
-        eligible=[]
+        options=[]
         for j,b in joint.items():
-            if j==i or j in matched or j in held:continue
+            if j==i:continue
             if (b['actor']!=a['coactivity_partner'] or b['coactivity_partner']!=a['actor']
                     or a['location']!=b['location']
                     or b['operation'] not in JOINT_ROUTINE_COMPLEMENTS.get(a['operation'],set())
@@ -599,20 +599,17 @@ def match_reciprocal_routine_claims(world,claims):
                 continue
             sb=registry[b['source_ref']]
             common=sorted(set(sa['basis_event_refs']) & set(sb['basis_event_refs']))
-            if len(common)>=3:eligible.append((j,b,common))
-        if len(eligible)!=1:
-            held[i]='NO_UNAMBIGUOUS_INDEPENDENT_RECIPROCAL_ROUTINE'
-            continue
-        j,b,common=eligible[0]
-        # The mirror must also have a unique compatible source. Never choose
-        # amongst rival partners/courses or merge unshared source histories.
-        reverse=[k for k,c in joint.items() if k!=j and k not in matched and k not in held
-                 and c['actor']==b['coactivity_partner']
-                 and c['coactivity_partner']==b['actor'] and c['location']==b['location']
-                 and c['operation'] in JOINT_ROUTINE_COMPLEMENTS.get(b['operation'],set())
-                 and len(set(registry[c['source_ref']]['basis_event_refs']) &
-                         set(registry[b['source_ref']]['basis_event_refs']))>=3]
-        if reverse!=[i]:
+            if len(common)>=3:options.append((j,common))
+        edges[i]=options
+    for i,a in sorted(joint.items()):
+        if i in matched:continue
+        if len(edges[i])!=1:
+            held[i]='NO_UNAMBIGUOUS_INDEPENDENT_RECIPROCAL_ROUTINE';continue
+        j,common=edges[i][0];b=joint[j]
+        # Both degrees computed on the original graph, not a graph shrunk
+        # by iteration order. An ambiguous source cannot become eligible
+        # merely because a competitor was withheld first.
+        if len(edges[j])!=1 or edges[j][0][0]!=i:
             held[i]='NO_UNAMBIGUOUS_INDEPENDENT_RECIPROCAL_ROUTINE';continue
         hours=min(a['hours_per_active_day'],b['hours_per_active_day'])
         fraction=min(a['provisional_exposure_fraction'],b['provisional_exposure_fraction'])
