@@ -9,7 +9,7 @@ from pathlib import Path
 import tempfile
 import unittest
 import test_neighbor_material_support_r17 as inherited
-from constitutive_life_campaign import CourseWire
+from constitutive_life_campaign import CourseWire, run_course
 from um_sorok_organism.runtime import ConstitutiveRuntime
 from um_sorok_organism.types import adult,newborn,blank_world
 from um_sorok_organism.organism import mature
@@ -178,6 +178,25 @@ class RecurrentLife(unittest.TestCase):
             self.assertEqual(yes['clock'],no['clock'])
             self.assertEqual((yes['meal'],no['meal']),('BLOCKED','PERFORMED'))
             print('R008_RECURRENT_HOUSEHOLD',yes,no)
+
+    def test_actual_childhood_acquisition_becomes_recurrent_practice_and_later_choice(self):
+        with tempfile.TemporaryDirectory() as d:
+            a=run_course(Path(d)/'acquired.sqlite','E',routine_admission=True)
+            b=run_course(Path(d)/'abstain.sqlite','E',routine_admission=False)
+            yes=a['acquired_routine_course'];no=b['acquired_routine_course']
+            self.assertEqual(a['new_material_project'],1)
+            self.assertEqual(b['new_material_project'],1)
+            self.assertEqual(a['mother_means'],['SING','ORIENT'])
+            self.assertEqual(a['mother_means'],b['mother_means'])
+            self.assertEqual(yes['project_id'],no['project_id'])
+            self.assertEqual(yes['facility_before'],no['facility_before'])
+            self.assertEqual(yes['body_age_days'],no['body_age_days'])
+            self.assertEqual(yes['individual_exercises_after_period'],no['individual_exercises_after_period'])
+            self.assertGreater(yes['facility_after'],no['facility_after'])
+            self.assertEqual((yes['actual_later_operation'],no['actual_later_operation']),('SING','WAIT'))
+            self.assertGreater(yes['aggregate_practice_periods'],0)
+            self.assertEqual(no['aggregate_practice_periods'],0)
+            print('R008_ACQUIRED_CHILDHOOD_ROUTINE',yes,no)
 
     def test_forged_history_and_process_are_atomic_and_location_requalifies(self):
         with tempfile.TemporaryDirectory() as d:
