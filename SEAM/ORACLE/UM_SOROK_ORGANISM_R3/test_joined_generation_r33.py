@@ -114,6 +114,10 @@ class JoinedGenerationCourt(unittest.TestCase):
                  "visual":True,"light":"lit","sightline":"unobstructed","facing":"source"}]})
         return rt,sid,{"care":procs},calls
     def test_joined_historical_and_live_modes_same_ledger(self):
+        self.joined_course(False)
+    def test_joined_historical_and_one_response_live_same_ledger(self):
+        self.joined_course(True)
+    def joined_course(self,one_response):
         with tempfile.TemporaryDirectory() as d:
             root=Path(d);db=root/"life.sqlite";rt,sid,catalog,constructors=self.setup(db)
             p=LifeCheckpoint(sid);args={"family_sources":(sid,),"period_catalog":catalog,"qualified_interval_cuts":True}
@@ -164,7 +168,30 @@ class JoinedGenerationCourt(unittest.TestCase):
             # Existing exact owner transport, hermetic; no per-event generation.
             wire=ExplicitJSONLLMProvider(endpoint="https://example.invalid/chat/completions",model="fixture",
                   api_key="not-a-key",allow_private_actor_data=True,transport=mock,metrics_capacity=20)
+            if one_response:
+                from live_turn_port_r38 import LiveTurnSession
+                from importlib.util import spec_from_file_location,module_from_spec
+                spec=spec_from_file_location("um_sorok_organism.specialist_live_transport",
+                    Path(__file__).parent/"um_sorok_organism"/"live_psychological_llm.py")
+                module=module_from_spec(spec);spec.loader.exec_module(module)
+                def combined_mock(req):
+                    doc=json.loads(req["messages"][1]["content"]);packet=doc["principal_packet"]
+                    self.assertEqual(doc["principal"],"father")
+                    opts=[q for q in packet.get("addressed_lexical_options",[]) if
+                        q.get("world_request",{}).get("addressed_party_ref")=="visitor" and q.get("project_id")]
+                    acts=([{"action":"SPEAK","pool":"addressed_lexical_options","option_match":{
+                         "project_id":opts[0]["project_id"],"world_request":{"addressed_party_ref":"visitor"}},
+                         "speech_intent":"Greet the actual visitor."}] if len(opts)==1 else [])
+                    pol=policy(acts+[action("REST"),action("WAIT")])
+                    pol["expression"]={"speech":WORDS,"surface":"Ordinary life."}
+                    policies={a:policy([]) for a in doc["peer_tips"]}
+                    policies["father"]=pol
+                    return {"choices":[{"message":{"content":json.dumps({"policies":policies})}}]}
+                wire=module.ExplicitLiveTurnProvider(endpoint="https://example.invalid/chat/completions",
+                    model="fixture",api_key="not-a-key",allow_private_actor_data=True,
+                    sourcefree_live_attested=True,transport=combined_mock,metrics_capacity=20)
             rt=ConstitutiveRuntime(str(db),semantic=ValidatingSemanticService(wire))
+            live=LiveTurnSession(rt,wire,root/"live_receipts.sqlite",sourcefree_attested=True) if one_response else None
             try:
                 world=rt.ledger.world()[1];registry=world["routine_source_registry"]
                 for period in world["historical_periods"]:
@@ -188,14 +215,20 @@ class JoinedGenerationCourt(unittest.TestCase):
                 attempts=[];expression_calls=None
                 for _ in range(3):
                     old_count=wire.usage_snapshot()["total"]
-                    out=n.independent_actor_beat("father");attempts.append(out["attempt"])
+                    out=live.owner_actor_beat(n,"father") if live else n.independent_actor_beat("father")
+                    attempts.append(out["attempt"])
                     if out["attempt"]=="SPEAK":
-                        expression_calls=sum(x["task"]=="expression" for x in wire.usage_snapshot()["receipts"][old_count:])
+                        expression_calls=(live.custody.receipts()[-1]["local_semantic_tasks"]["expression"] if live else
+                            sum(x["task"]=="expression" for x in wire.usage_snapshot()["receipts"][old_count:]))
                         break
                 self.assertEqual(attempts[0],"REST")
                 self.assertEqual(out["attempt"],"SPEAK")
                 self.assertEqual(out["status"],"PERFORMED")
                 self.assertEqual(expression_calls,1)
+                if live:
+                    self.assertEqual(wire.usage_snapshot()["total"],len(attempts))
+                    self.assertTrue(all(x["outcome"]=="ACTUAL_TURN_COMMITTED" and
+                        x["transport_receipt"]["attempts"]==1 for x in live.custody.receipts()))
                 surface=n.private_surface(n.new_private_profile())
                 self.assertTrue(any(x.get("spoken_text")==WORDS and
                     x.get("lexical_acquisition_route")=="VOLUNTARILY_ADDRESSED_TO_SELF" for x in surface["mandatory"]))
@@ -207,7 +240,9 @@ class JoinedGenerationCourt(unittest.TestCase):
                 self.assertTrue(any(x["kind"]=="ACTOR_LIFE_TRANSITION" for x in link["events"]))
                 self.assertNotIn("visitor",rt.ledger.actors())
                 self.assertTrue(rt.verify()["valid"])
-            finally:rt.close()
+            finally:
+                if live:live.close()
+                rt.close()
             # Explicit new checkpoint epoch on exactly the same actual owner root.
             rt=ConstitutiveRuntime(str(db));after=root/"after-visitor"
             p2=LifeCheckpoint(sid,resumed=True);g=self.generation(rt,after,p2,continuity_link=link,**args)
@@ -234,7 +269,8 @@ class JoinedGenerationCourt(unittest.TestCase):
                 print("R33_JOINED_LIFE "+json.dumps({"age_days":440,"historical_calls":len(p.requests),
                     "post_live_calls":len(p2.requests),"live_task_calls":wire.usage_snapshot()["total"],
                     "native_events":rt.verify()["events"],"routine_periods":len(world["reproductive_labor_periods"]),
-                    "actual_live_link_events":len(link["events"]),"actors":sorted(rt.ledger.actors())},sort_keys=True))
+                    "actual_live_link_events":len(link["events"]),"one_response_live":one_response,
+                    "live_wire_bytes":sum(x["request_bytes"] for x in wire.usage_snapshot()["receipts"]),"actors":sorted(rt.ledger.actors())},sort_keys=True))
             finally:g.close();rt.close()
 
     def test_qualified_lexical_policy_matches_actual_owner_offer(self):
