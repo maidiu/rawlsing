@@ -74,11 +74,48 @@ class LifeCheckpoint:
                 {"kind":"ACTUAL_EXPERIENCE","actor":"father","objective_ref":refs[-1]["objective_ref"]}]
         return {"retrospective":ret,"prospective":out}
 
+class CulturalCheckpoint:
+    def __init__(self,old,acquire,maker_project='make'):
+        self.requests=[];self.old=old;self.acquire=acquire;self.maker_project=maker_project
+    def call(self,r):
+        self.requests.append(r);ctx=r["context"];t=ctx["clock"];old=self.old;acquire=self.acquire
+        if r["mode"]=="TERMINAL":return {"retrospective":retro(r),"prospective":None}
+        if r["mode"]=="BOOTSTRAP":
+            learn=[{"offer":"historically_possible_cultural_references"}] if acquire else []
+            meaning=[{"offer":"historically_possible_cross_object_significance",
+                "construct":"CROSS_OBJECT_POSSIBLE_END","augment":{
+                "possible_object":"discover how different made things can be cared for",
+                "possible_means":["INSPECT"],"cue_terms":["material_object"]}}] if acquire else []
+            rows=[
+                event(ctx,"inspect-old",t+1,"nadia",{"nadia":policy([
+                    action("INSPECT",{"project_id":None,"world_request":{"material_object_ref":old},
+                        "grounds_status":"PRESENT_MATERIAL_OBJECT_NOT_ASSUMED_MOTIVE"})],learn)}),
+                event(ctx,"make-new",t+2,"father",{"father":policy([{"action":"MAKE_OBJECT","project_id":self.maker_project}])}),
+                event(ctx,"new-interest",t+3,"nadia",{"nadia":policy([
+                    action("INSPECT",{"cross_object_attention_analytic_only":{}}),action("WAIT")],meaning)})]
+        else:
+            ends=ctx["actor_contexts"]["nadia"]["possible_ends"]
+            if ends:
+                ref=ends[0]["origin_material_object_ref"]
+                acts=[{"action":"INSPECT","pool":"possible_end_trials",
+                     "option_match":{"source_material_object_ref":ref}},action("WAIT")]
+                take=[action("INSPECT",{"project_id":None,"world_request":{"material_object_ref":ref},
+                      "grounds_status":"PRESENT_MATERIAL_OBJECT_NOT_ASSUMED_MOTIVE"}),action("WAIT")]
+                takeup=[{"offer":"historically_possible_incidental_takeup",
+                        "construct":"INCIDENTAL_END_TAKEUP","augment":{"means":["INSPECT"]}}]
+                exercise=[action("INSPECT",{"world_request":{"material_object_ref":ref},
+                        "grounds_status":"AVAILABLE_SINGLE_PROJECT_COURSE"}),action("WAIT")]
+            else:acts=take=exercise=[action("WAIT")];takeup=[]
+            rows=[event(ctx,"trial",t+1,"nadia",{"nadia":policy(acts)}),
+                event(ctx,"takeup",t+2,"nadia",{"nadia":policy(take,takeup)}),
+                event(ctx,"exercise",t+3,"nadia",{"nadia":policy(exercise)})]
+        return {"retrospective":retro(r),"prospective":rows}
+
 class JoinedGenerationCourt(unittest.TestCase):
     def generation(self,rt,folder,p,**kw):
         folder.mkdir(exist_ok=True)
         return ModernGenerationCourt.generation(self,rt,folder,"mother",p,**kw)
-    def setup(self,db):
+    def setup(self,db,extra_projects=None):
         calls=[]
         class Constructor(HeuristicSemanticProvider):
             def propose(self,task,p):
@@ -91,6 +128,7 @@ class JoinedGenerationCourt(unittest.TestCase):
                       {"object":"care for Nadia if present","means":["CARE"],"addressed_party_ref":"nadia","priority":.7}]
             if aid=="father":projects.append({"object":"care for Mother","means":["CARE"],
                                                  "addressed_party_ref":"mother","priority":.8})
+            projects.extend(deepcopy((extra_projects or {}).get(aid,[])))
             return {"input_kind":"THIN_BIOGRAPHY","source_grade":"EXPLICIT_FICTIONAL_HISTORICAL_INPUT",
                  "source_ref":"fictional:joined:"+aid,"biographical_context":{"ordinary_life":aid},
                  "fictional_seed":{"projects":projects}}
@@ -343,42 +381,7 @@ class JoinedGenerationCourt(unittest.TestCase):
                     self.assertEqual(rt.step("father",requested_action="SPEAK",object_ref=old)["status"],"PERFORMED")
                     self.assertTrue(rt.ledger.actor("nadia")[1]["cultural_demonstrations"])
                     self.assertFalse(rt.ledger.actor("nadia")[1]["possible_ends"])
-                    class CulturalCheckpoint:
-                        def __init__(self):self.requests=[]
-                        def call(self,r):
-                            self.requests.append(r);ctx=r["context"];t=ctx["clock"]
-                            if r["mode"]=="TERMINAL":return {"retrospective":retro(r),"prospective":None}
-                            if r["mode"]=="BOOTSTRAP":
-                                learn=[{"offer":"historically_possible_cultural_references"}] if acquire else []
-                                meaning=[{"offer":"historically_possible_cross_object_significance",
-                                    "construct":"CROSS_OBJECT_POSSIBLE_END","augment":{
-                                    "possible_object":"discover how different made things can be cared for",
-                                    "possible_means":["INSPECT"],"cue_terms":["material_object"]}}] if acquire else []
-                                rows=[
-                                    event(ctx,"inspect-old",t+1,"nadia",{"nadia":policy([
-                                        action("INSPECT",{"project_id":None,"world_request":{"material_object_ref":old},
-                                            "grounds_status":"PRESENT_MATERIAL_OBJECT_NOT_ASSUMED_MOTIVE"})],learn)}),
-                                    event(ctx,"make-new",t+2,"father",{"father":policy([{"action":"MAKE_OBJECT","project_id":"make"}])}),
-                                    event(ctx,"new-interest",t+3,"nadia",{"nadia":policy([
-                                        action("INSPECT",{"cross_object_attention_analytic_only":{}}),action("WAIT")],meaning)})]
-                            else:
-                                ends=ctx["actor_contexts"]["nadia"]["possible_ends"]
-                                if ends:
-                                    ref=ends[0]["origin_material_object_ref"]
-                                    acts=[{"action":"INSPECT","pool":"possible_end_trials",
-                                         "option_match":{"source_material_object_ref":ref}},action("WAIT")]
-                                    take=[action("INSPECT",{"project_id":None,"world_request":{"material_object_ref":ref},
-                                          "grounds_status":"PRESENT_MATERIAL_OBJECT_NOT_ASSUMED_MOTIVE"}),action("WAIT")]
-                                    takeup=[{"offer":"historically_possible_incidental_takeup",
-                                            "construct":"INCIDENTAL_END_TAKEUP","augment":{"means":["INSPECT"]}}]
-                                    exercise=[action("INSPECT",{"world_request":{"material_object_ref":ref},
-                                            "grounds_status":"AVAILABLE_SINGLE_PROJECT_COURSE"}),action("WAIT")]
-                                else:acts=take=exercise=[action("WAIT")];takeup=[]
-                                rows=[event(ctx,"trial",t+1,"nadia",{"nadia":policy(acts)}),
-                                    event(ctx,"takeup",t+2,"nadia",{"nadia":policy(take,takeup)}),
-                                    event(ctx,"exercise",t+3,"nadia",{"nadia":policy(exercise)})]
-                            return {"retrospective":retro(r),"prospective":rows}
-                    p=CulturalCheckpoint()
+                    p=CulturalCheckpoint(old,acquire)
                     g=ModernGeneration(ModernDevelopmentOwner(rt,"nadia",folder/"ops.sqlite",
                         sourcefree_attested=True),p,folder/"batch.sqlite",folder/"cycle.json")
                     try:

@@ -141,7 +141,7 @@ class RichFormationCourt(unittest.TestCase):
         from modern_generation_port_r28 import link_actual_live_interval
         for nominate in (True,False):
             with self.subTest(nominate=nominate),tempfile.TemporaryDirectory() as d:
-                root=Path(d);db=root/"life.sqlite";rt,sid,catalog,constructors=joined.JoinedGenerationCourt.setup(self,db)
+                root=Path(d);db=root/"life.sqlite";rt,sid,catalog,constructors=joined.JoinedGenerationCourt.setup(self,db,extra_projects={"father":[{"object":"make things","means":["MAKE_OBJECT"],"priority":.6}]})
                 args={"family_sources":(sid,),"period_catalog":catalog,"qualified_interval_cuts":True}
                 first=root/"first";first.mkdir()
                 p=joined.LifeCheckpoint(sid)
@@ -224,13 +224,94 @@ class RichFormationCourt(unittest.TestCase):
                     p4=joined.LifeCheckpoint(sid,resumed=True)
                     g=inherited.ModernGenerationCourt.generation(self,rt,tail,"mother",p4,continuity_link=link3,**args)
                     try:
-                        g.bootstrap();g.finish()
+                        g.bootstrap();g.finish();handoff=g.terminal_handoff()
                         self.assertEqual(rt.snapshot("nadia")["age_days"],70)
                         self.assertEqual(rt.ledger.events()[:len(prefix)],prefix)
                         self.assertTrue(rt.verify()["valid"]);self.assertTrue(g.engine.verify())
                         print("R46_FAMILY_LIVELIHOOD",json.dumps({"nominate":nominate,"later":r["records"][1]["objective"]["attempt"],
                             "child_age_days":70,"native_events":len(rt.ledger.events()),"checkpoint_calls":
                             sum(len(x.requests) for x in (p,p2,p3,p4)),"constructors":len(constructors)},sort_keys=True))
+                    finally:g.close()
+                    # Same historical child. Object-directed SPEAK remains
+                    # an explicitly stipulated research act in this course.
+                    for _ in range(2):rt.step("father",requested_action="REST")
+                    rt.step("nadia",requested_action="REST")
+                    self.assertEqual(rt.step("father",requested_action="MAKE_OBJECT")["status"],"PERFORMED")
+                    obj=next(iter(rt.ledger.world()[1]["material_objects"]))
+                    self.assertEqual(rt.step("father",requested_action="SPEAK",object_ref=obj)["status"],"PERFORMED")
+                    self.assertTrue(rt.snapshot("nadia")["cultural_demonstrations"])
+                    link4=link_actual_live_interval(rt,handoff,tail/"cycle.json")
+                    folder=root/"culture";folder.mkdir()
+                    maker=next(p["id"] for p in rt.snapshot("father")["projects"] if p["object"]=="make things")
+                    p5=joined.CulturalCheckpoint(obj,True,maker)
+                    g=inherited.ModernGenerationCourt.generation(self,rt,folder,"mother",p5,continuity_link=link4,**args)
+                    try:
+                        g.bootstrap();rs=g.advance()
+                        self.assertEqual(rs["records"][2]["objective"]["attempt"],"INSPECT")
+                        project=deepcopy(rt.snapshot("nadia")["projects"][0])
+                        self.assertTrue(project["operational_history"])
+                        g.finish();handoff=g.terminal_handoff()
+                    finally:g.close()
+                    # Actual one-response owner beat consumes the historical
+                    # project. The visitor does not author the child's act.
+                    from live_turn_port_r38 import LiveTurnSession
+                    from neighbor_runtime import NeighborEncounter
+                    import mii
+                    class Live:
+                        def __init__(self):self.calls=0
+                        def call(self,request):
+                            self.calls+=1
+                            return {"policies":{"nadia":policy([action("INSPECT",{
+                                "project_id":project["id"],"world_request":{"material_object_ref":project["material_object_ref"]}}),
+                                action("REST"),action("WAIT")])}}
+                    provider=Live()
+                    live=LiveTurnSession(rt,provider,root/"live.sqlite",sourcefree_attested=True)
+                    try:
+                        visitor=NeighborEncounter(rt,"visitor",mii_module=mii)
+                        visitor.install_sourcefree_conditions({"grade":"SOURCEFREE_TEST_ONLY",
+                            "user_conditions":{"home":{"light":"lit","sightline":"unobstructed","hearing":True,
+                                "sound_path":"audible","legibility":"readable"}},
+                            "actor_conditions":{a:{"facing":"entrance","visual":True,"light":"lit",
+                                "sightline":"unobstructed","hearing":True,"sound_path":"audible"}
+                                for a in ("father","mother","nadia")}},request_id="geometry")
+                        self.assertEqual(visitor.contribute("entry","MOVE",destination="home")["status"],"PERFORMED")
+                        for _ in range(3):
+                            outcome=live.owner_actor_beat(visitor,"nadia")
+                            if outcome["attempt"]=="INSPECT":break
+                        self.assertEqual(outcome["attempt"],"INSPECT")
+                        self.assertEqual(outcome["status"],"PERFORMED")
+                        self.assertEqual(provider.calls,len(live.custody.receipts()))
+                        self.assertEqual(visitor.contribute("exit","LEAVE")["status"],"PERFORMED")
+                        human_history=deepcopy(rt.ledger.world()[1]["neighbor_user_events"])
+                        link5=link_actual_live_interval(rt,handoff,folder/"cycle.json")
+                    finally:live.close()
+                    class Later:
+                        def __init__(self):self.requests=[]
+                        def call(self,r):
+                            self.requests.append(r);ctx=r["context"];clock=ctx["clock"]
+                            if r["mode"]=="TERMINAL":return term(r)
+                            first=event(ctx,"elapsed",clock+231,"nadia",{"nadia":policy([action("REST")])},span=230)
+                            first["circumstances"]["period_ref"]="care"
+                            return {"retrospective":retro(r),"prospective":[first,
+                                event(ctx,"care",clock+232,"father",{"father":policy([joined.care("nadia"),action("REST")])}),
+                                event(ctx,"object",clock+233,"nadia",{"nadia":policy([action("INSPECT",{
+                                    "project_id":project["id"],"world_request":{"material_object_ref":project["material_object_ref"]}}),
+                                    action("REST"),action("WAIT")])]}
+                    p6=Later();folder2=root/"post-visit";folder2.mkdir()
+                    g=inherited.ModernGenerationCourt.generation(self,rt,folder2,"mother",p6,continuity_link=link5,**args)
+                    try:
+                        rs=g.bootstrap()
+                        self.assertEqual(rt.snapshot("nadia")["age_days"],300)
+                        self.assertEqual(rs["records"][2]["objective"]["attempt"],"INSPECT")
+                        self.assertEqual(rt.ledger.world()[1]["neighbor_user_events"],human_history)
+                        self.assertEqual(rt.ledger.events()[:len(prefix)],prefix)
+                        self.assertEqual(constructors,["mother","father"])
+                        self.assertTrue(any(p["id"]==project["id"] for p in rt.snapshot("nadia")["projects"]))
+                        g.finish();self.assertTrue(rt.verify()["valid"]);self.assertTrue(g.engine.verify())
+                        print("R49_JOINED_RICH_LIFE",json.dumps({"nominate":nominate,
+                            "age_days":300,"native_events":len(rt.ledger.events()),"live_calls":provider.calls,
+                            "checkpoints":sum(len(x.requests) for x in (p,p2,p3,p4,p5,p6)),
+                            "later_project_activity":rs["records"][2]["objective"]["attempt"]},sort_keys=True))
                     finally:g.close()
                 finally:rt.close()
 
