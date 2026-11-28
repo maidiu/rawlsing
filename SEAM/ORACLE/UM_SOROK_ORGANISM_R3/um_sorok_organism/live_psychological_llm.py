@@ -616,6 +616,15 @@ class ExplicitJSONLLMProvider:
                 "compliance, consent, permission, skill or a claim of every day. "
                 "Choose a conservative window and dose; current owner requalifies actual "
                 "site, body, project, scarcity and other material constraints.")
+        if task=="development" and packet.get("historically_possible_routine_revisions"):
+            instructions+=(" For historically_possible_routine_revisions optionally "
+                "emit REVISE_RECURRENT_ROUTINE with exact issued basis, mode from allowed_modes, "
+                "and nonblank interpretive_hypothesis at most 512 characters. For RESIZE "
+                "also supply dose with exactly the numeric fields of original_ceiling "
+                "(omit state), strictly positive and within original ceilings. FEED "
+                "food units retain five decimals. PAUSE/RESUME/RETIRE require no dose. "
+                "Do not rewrite earlier activity, extend the window, infer the Other's "
+                "motive or require continued assent. Abstention retains the earlier premise.")
         def request(prompt,body):
             return {"model":self.model,
                  "messages":[{"role":"system","content":prompt},

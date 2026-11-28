@@ -42,7 +42,8 @@ from .expectation_afterlife import (source_qualified_appraisal_candidates,
                                     possible_activity_affects, own_vocal_reception,
                                     possible_expressive_practices, possible_self_expression_affects)
 from .routine_sources import (register_sourcefree_period_envelope, routine_exercise_receipt,
-    possible_recurrent_routines, register_admitted_routine)
+    possible_recurrent_routines, register_admitted_routine,
+    possible_routine_revisions, register_routine_revision)
 from .caregiving_practice import retain_performed_material_feeding
 from .material_provisioning import offer_feeding_source_alternatives, offer_self_meal_source_alternatives
 from .food_access_struggle import configure_food_power
@@ -1360,6 +1361,9 @@ class ConstitutiveRuntime:
                 **({'historically_possible_recurrent_routines':routine_candidates}
                    if (routine_candidates:=possible_recurrent_routines(
                        actors[aid],experience,objective_ref)) else {}),
+                **({'historically_possible_routine_revisions':routine_revisions}
+                   if (routine_revisions:=possible_routine_revisions(
+                       actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_productive_witness_reorganizations':copy(
                     possible_productive_witness_reorganizations(actors[aid],experience,objective_ref)),
                 'historically_possible_dependency_project_reorganizations':copy(
@@ -1486,6 +1490,8 @@ class ConstitutiveRuntime:
             for report in developmental[aid]:
                 if report.get('kind')=='ACQUIRE_RECURRENT_ROUTINE':
                     report['source_ref']=register_admitted_routine(world,actors[aid],report,objective_ref)
+                elif report.get('kind')=='REVISE_RECURRENT_ROUTINE':
+                    report['source_ref']=register_routine_revision(world,actors[aid],report,objective_ref)
         observed=subjective.get(actor_id,{})
         # A privileged world audit outcome is NOT automatically what this
         # person saw or can disclose. The event's public sign is deliberately
