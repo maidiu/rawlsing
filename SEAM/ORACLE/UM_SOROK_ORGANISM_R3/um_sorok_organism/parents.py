@@ -11,7 +11,7 @@ from .development import validate_activity_priority
 from .relational_metabolism import validate_motif, refuse_unissued_cross_context_history
 from .practical_difference import validate_expected_difference
 from .historical_parent_bridge import (historically_conditioned_entrances, adult_conditioning_input,
-    situated_family_pathways, FAMILY_GRADE)
+    situated_family_pathways, FAMILY_GRADE, _existing_counterpart)
 from .mediated_efficacy import seed_fictional_adult_training
 
 
@@ -114,8 +114,8 @@ def interview_readout(person,instrument):
         'grade':GRADE}
 
 
-def select_staged_counterpart(world,mother,source,semantic):
-    offers=situated_family_pathways(world,mother,source)
+def select_staged_counterpart(world,mother,source,semantic,existing_actors=None):
+    offers=situated_family_pathways(world,mother,source,existing_actors)
     if not offers:raise ValueError('FAMILY_NO_SITUATED_PATHWAY')
     selection=semantic.proposal('family_pathway_selection',{
         'mother':copy(mother),'selection_clock':world['clock'],
@@ -127,6 +127,10 @@ def select_staged_counterpart(world,mother,source,semantic):
     matches=[x for x in offers if x['id']==selection.get('pathway_id')]
     if len(matches)!=1:raise ValueError('FAMILY_UNISSUED_PATHWAY_SELECTION')
     x=next(x for x in source['candidates'] if x['id']==matches[0]['id'])
+    if x['prior_shared_effects']=='RETAIN_EXISTING_ACTUAL_HISTORY':
+        father=_existing_counterpart(world,x,existing_actors)
+        if father is None:raise ValueError('FAMILY_EXISTING_COUNTERPART_NOT_SITUATED')
+        return x,father
     father=construct_parent(x['counterpart_id'],x['counterpart_name'],
                             x['counterpart_packet'],semantic)
     father['location']=x['intersection_site']

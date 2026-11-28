@@ -75,7 +75,7 @@ from .functional_correspondence import (propose_actor_lived_correspondences,
 from .initiative import continue_life
 from .continuity_clock import continue_to_discontinuity, continue_pre_encounter, qualify_contingent_world_notice
 from .historical_parent_bridge import (render_blind_interview, qualify_family_pathways,
-    family_encounter_evidence, FAMILY_SOURCE, FAMILY_GRADE)
+    family_encounter_evidence, FAMILY_SOURCE, FAMILY_GRADE, existing_family_binding)
 from .material_conjunction import admit_authored_structural_history
 from .operative_witness import freeze_operative_witness
 from .parents import construct_parent, interview_readout, select_staged_counterpart
@@ -166,22 +166,29 @@ class ConstitutiveRuntime:
         self.ledger.initialize(world,parents+[child],source_seals=source_seals)
         return {'world':self.world_id,'actors':[a['id'] for a in parents+[child]],'grade':GRADE}
 
-    def initialize_antecedent_adult(self,actor_id,name,packet,*,authored_structural_history=None):
-        """Alternative entrance: one actually continuing adult, no precreated child."""
+    def initialize_antecedent_adult(self,actor_id,name,packet,*,authored_structural_history=None,
+                                    other_adults=()):
+        """Antecedent adult life, optionally with independently constructed adults.
+        No precreated child or inferred relationship between the adults.
+        """
         world=blank_world(self.world_id)
+        entries=[(actor_id,name,packet),*other_adults]
+        ids=[a for a,_,_ in entries]
+        if len(set(ids))!=len(ids):raise ValueError('DUPLICATE_ANTECEDENT_ACTOR')
         if authored_structural_history is not None:
-            admit_authored_structural_history(world,{actor_id},authored_structural_history)
-        person=construct_parent(actor_id,name,packet,self.semantic)
-        seals=[('fictional_source:'+actor_id,'CONDITIONING_NOT_REAL_PERSON',packet)]
+            admit_authored_structural_history(world,set(ids),authored_structural_history)
+        people=[construct_parent(a,n,p,self.semantic) for a,n,p in entries]
+        seals=[('fictional_source:'+a,'CONDITIONING_NOT_REAL_PERSON',p) for a,_,p in entries]
         if authored_structural_history is not None:
             seals.append(('authored_structural_history','FICTIONAL_WORLD_CONDITIONING',authored_structural_history))
-        self.ledger.initialize(world,[person],source_seals=seals)
-        return {'world':self.world_id,'actors':[actor_id],'grade':GRADE}
+        self.ledger.initialize(world,people,source_seals=seals)
+        return {'world':self.world_id,'actors':ids,'grade':GRADE}
 
     def register_family_pathways(self,mother_id,candidates):
         version,world=self.ledger.world(self.world_id)
         mother=self.ledger.actor(mother_id)[1]
-        source=qualify_family_pathways(world,mother,candidates)
+        actors={a:self.ledger.actor(a)[1] for a in world['positions']}
+        source=qualify_family_pathways(world,mother,candidates,actors)
         sid='family_pathways:'+mother_id
         self.ledger.seal_source(sid,FAMILY_SOURCE,source,expected_world=version)
         return {'source_seal_id':sid,'proposal_clock':source['proposal_clock'],
@@ -209,9 +216,18 @@ class ConstitutiveRuntime:
         version,world=self.ledger.world(self.world_id)
         source,sha=self._family_source(source_seal_id)
         mother=self.ledger.actor(source['mother'])[1]
-        selected=select_staged_counterpart(world,mother,source,self.semantic)
+        actors={a:self.ledger.actor(a)[1] for a in world['positions']}
+        selected=select_staged_counterpart(world,mother,source,self.semantic,actors)
         if selected is None:return {'status':'ABSTAINED','grade':FAMILY_GRADE}
         path,father=selected
+        if path['prior_shared_effects']=='RETAIN_EXISTING_ACTUAL_HISTORY':
+            family=existing_family_binding(world,mother,source,path,actors,source_seal_id,sha)
+            world['family_genesis']=copy(family)
+            result=self.ledger.commit(self.world_id,version,world,{}, {},
+                    'FAMILY_EXISTING_COUNTERPART_BOUND',father['id'],
+                    {'family_genesis':family,'no_automatic_actor_experience':True,'grade':FAMILY_GRADE})
+            return {'receipt':result['id'],'actor':father['id'],
+                    'stage':family['stage'],'grade':FAMILY_GRADE}
         row={k:copy(path[k]) for k in ('id','source_ref','intersection_clock','intersection_site',
                  'conception_clock','birth_clock','child_id','child_name')}
         row.update({'mother':mother['id'],'counterpart':father['id'],'admitted_clock':world['clock'],
