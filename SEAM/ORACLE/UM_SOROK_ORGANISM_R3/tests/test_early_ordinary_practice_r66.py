@@ -594,6 +594,8 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                 self.assertEqual(child['projects'][0]['id'],project['id'])
                 self.assertEqual(len(child['projects'][0].get('ordinary_vocal_context_transfers',[])),int(bool(transfer)))
                 rt.close();rt=runtime()
+                # Historical acquisition becomes usable at a strictly later cut.
+                self.assertEqual(rt.step('mother',requested_action='REST')['status'],'PERFORMED')
                 phase['name']='transferred'
                 self.assertEqual(rt.step('nadia')['attempt'],'SING' if transfer else 'WAIT')
                 self.assertTrue(rt.verify()['valid'])
