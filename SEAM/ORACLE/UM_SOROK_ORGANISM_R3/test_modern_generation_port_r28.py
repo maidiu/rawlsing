@@ -112,6 +112,35 @@ class GenealogyCheckpoint:
                   {"father":policy([pledge(first),action("REST"),action("WAIT")],base="LOCAL")}),
             event(ctx,"period-mother",t+6,"mother",{"mother":policy([action("REST"),action("WAIT")],base="LOCAL")},span=3)]}
 
+
+class ReproductiveCheckpoint:
+    """One identical conditional policy in materially divergent actual worlds."""
+    def __init__(self):self.requests=[]
+    def call(self,r):
+        self.requests.append(r);ctx=r["context"];t=ctx["clock"]
+        n=len(self.requests)
+        def care(a):return action("CARE",{"project_id":"care:"+a,
+                                         "world_request":{"addressed_party_ref":"nadia"}})
+        def child(actions):
+            return policy(actions,[{"offer":"historically_possible_plural_care",
+                         "resolver":"EXISTING_PLURAL_CARE_SOURCE_RESOLUTION"}])
+        if r["mode"]=="BOOTSTRAP":
+            return {"retrospective":None,"prospective":[
+                event(ctx,"first-father",t+1,"father",{"father":policy([care("father")]),"nadia":child([])}),
+                event(ctx,"first-mother",t+2,"mother",{"mother":policy([care("mother")]),"nadia":child([])}),
+                event(ctx,"first-orient",t+3,"nadia",{"nadia":child([action("ORIENT"),action("WAIT")])}),
+                event(ctx,"second-orient",t+4,"nadia",{"nadia":child([action("ORIENT"),action("WAIT")])})]}
+        if r["mode"]=="TERMINAL":return {"retrospective":retro(r),"prospective":None}
+        first=event(ctx,f"father{n}",t+101,"father",
+                    {"father":policy([care("father"),action("WAIT")]),"nadia":child([])},span=100)
+        first["circumstances"]["period_ref"]="reproduction"
+        return {"retrospective":retro(r),"prospective":[first,
+            event(ctx,f"mother{n}",t+102,"mother",{"mother":policy([care("mother"),action("WAIT")]),"nadia":child([])}),
+            event(ctx,f"address{n}",t+103,"nadia",
+                  {"nadia":child([{"action":"SIGNAL","option_match":{"grounds_status":"HISTORICALLY_ACQUIRED_CO_REGULATION"},
+                                    "rank_by":"LATEST_PERSONALLY_SENSED_REGULATION"},action("WAIT")]),
+                   "father":policy([action("REFUSE")]),"mother":policy([action("REFUSE")])})]}
+
 class ModernGenerationCourt(unittest.TestCase):
     def setup_repair(self,db):
         rt=ConstitutiveRuntime(str(db));w=blank_world();w["sites"]["home"]["stock"]=30
@@ -279,6 +308,60 @@ class ModernGenerationCourt(unittest.TestCase):
                        "native_family_stages":[r["objective"]["family"]["status"] for r in first["records"] if r["objective"]["family"]],
                        "initial_adult_constructors":local.calls.count("adult_constructor")},sort_keys=True))
                 finally:g.close();rt.close()
+
+    def test_300_day_ordinary_life_material_contradiction_and_independent_others(self):
+        for work in (True,False):
+            with self.subTest(work=work),tempfile.TemporaryDirectory() as tmp:
+                folder=Path(tmp);rt=ConstitutiveRuntime(str(folder/"life.sqlite"))
+                m=adult("mother","Mother","workshop");m["body"]["rest"]=.35
+                f=adult("father","Father","workshop")
+                n=newborn("nadia","Nadia","workshop");n["body"]["comfort"]=.2
+                for a in (m,f):
+                    a["projects"]=[{"id":"care:"+a["id"],"object":"care for Nadia","means":["CARE"],
+                        "addressed_party_ref":"nadia","priority":.6,"status":"active"}]
+                m["projects"].append({"id":"wage","object":"subsistence","means":["WORK"],"priority":.5,"status":"active"})
+                rt.ledger.initialize(blank_world(),[m,f,n])
+                src=rt.register_historical_routine_source({"kind":"QUALIFIED_WAGE_LABOR","actor":"mother",
+                    "location":"workshop","start_clock":0,"end_clock":400,"max_hours_per_active_day":8,
+                    "description":"bounded aggregate material labor history"})
+                proc={"kind":"QUALIFIED_WAGE_LABOR","actor":"mother","location":"workshop",
+                    "source_ref":src["source_ref"],"hours_per_active_day":8,"provisional_exposure_fraction":1.}
+                catalog={"reproduction":[proc] if work else []}
+                p=ReproductiveCheckpoint();g=self.generation(rt,folder,"nadia",p,period_catalog=catalog)
+                try:
+                    boot=g.bootstrap();records=boot["records"]
+                    self.assertEqual([x["objective"]["attempt"] for x in records],["CARE","CARE","ORIENT","ORIENT"])
+                    self.assertEqual({x["caregiver_ref"] for x in rt.ledger.actor("nadia")[1]["co_regulation_orientations"]},
+                                     {"mother","father"})
+                finally:g.close();rt.close()
+                first_address=None
+                for cycle in range(3):
+                    rt=ConstitutiveRuntime(str(folder/"life.sqlite"));g=self.generation(rt,folder,"nadia",p,period_catalog=catalog)
+                    try:
+                        batch=g.advance();rs=batch["records"];records+=rs
+                        child=rt.ledger.actor("nadia")[1]
+                        self.assertEqual(child["age_days"],100*(cycle+1))
+                        self.assertEqual(len(p.requests),cycle+2)
+                        if cycle==0:
+                            self.assertEqual(rs[0]["objective"]["attempt"],"CARE")
+                            self.assertEqual(rs[1]["objective"]["attempt"],"WAIT" if work else "CARE")
+                            self.assertEqual(rs[2]["objective"]["attempt"],"SIGNAL")
+                            self.assertEqual(rs[2]["objective"]["status"],"PARTIAL")
+                            first_address=rs[2]["objective"]["actual"]["target"]
+                            self.assertEqual(first_address,"father" if work else "mother")
+                        self.assertTrue(g.engine.verify());self.assertTrue(rt.verify()["valid"])
+                        if cycle==2:
+                            g.finish()
+                            self.assertEqual(len(p.requests),5)
+                            self.assertEqual(len(records),13)
+                            self.assertEqual(len(rt.ledger.world()[1]["wage_labor_periods"]),3 if work else 0)
+                            print("R31_REPRODUCTION "+json.dumps({"work":work,"child_age_days":child["age_days"],
+                              "checkpoints":len(p.requests),"ordinary_calls":3,"surfaces":len(records),
+                              "first_address":first_address,"actual_received_care_events":len(child["experienced_care_events"]),
+                              "local_semantic_tasks":sum(sum(r["consequences"]["local_semantic_tasks"].values()) for r in records),
+                              "canonical_checkpoint_bytes":sum(len(json.dumps(r,sort_keys=True,separators=(",",":")).encode()) for r in p.requests),
+                              "wage_periods":len(rt.ledger.world()[1]["wage_labor_periods"])},sort_keys=True))
+                    finally:g.close();rt.close()
     def test_foreign_retrospective_and_unbound_carrier_refused(self):
         req={"mode":"ORDINARY","context":{},"previous":{"batch_id":"b","history_hash":"h",
              "events":[{"event_id":"e","accessible":{"objective_ref":"o","by_actor":{"a":{}}}}]}}

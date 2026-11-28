@@ -752,7 +752,11 @@ genealogy/birth. Every actual next event will recheck current eligibility.
 actor_policy may contain actions (ordered conditional alternatives),
 formation, expression. actions:[{action:operation name, option_match?:{project_id?,
 world_request?:{material_object_ref?,addressed_party_ref?,operation?},binding_status?,
-grounds_status?,operation?},project_id?:id,speech_intent?:nonblank <=500}].
+grounds_status?,operation?},project_id?:id,speech_intent?:nonblank <=500,rank_by?}].
+For SIGNAL with option_match.grounds_status HISTORICALLY_ACQUIRED_CO_REGULATION
+only, rank_by LATEST_PERSONALLY_SENSED_REGULATION selects a uniquely latest
+actual personally sensed relief (ties/absence unresolved). This is an optional
+particular policy, not a universal caregiver-preference law.
 Use action names that may be offered by current_situated.candidate_actions
 or become relevant through actual next life; no fake option ids or guaranteed
 outcomes. An option_match must uniquely bind a fresh exact practical option.
@@ -781,6 +785,9 @@ historically_possible_dependency_project_reorganizations,
 historically_possible_functional_revisions, historically_possible_retrospective_orientation_revisions,
 historically_possible_lexical_project_revaluations where supported.
 Nominate only where current actual packet has exactly one matching offer.
+The existing plural-care source resolver is available only as {offer:
+"historically_possible_plural_care",resolver:"EXISTING_PLURAL_CARE_SOURCE_RESOLUTION"};
+it uses the existing owner helper, not a new relationship law or forced winner.
 Augment only missing interpretive_hypothesis, personal_significance,
 personal_sense, affect_name, course_orientation, priority, anticipated_availability,
 revision, new_relation or new_polarity; never overwrite source basis, operation

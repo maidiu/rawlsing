@@ -23,6 +23,7 @@ from developmental_recursion.model_cycle import RecursionCycle
 from um_sorok_organism.semantics import HeuristicSemanticProvider, ValidatingSemanticService
 from um_sorok_organism.historical_parent_bridge import (
     FAMILY_SOURCE, situated_family_pathways, family_encounter_evidence)
+from um_sorok_organism.plural_care_paths import choose_one_grounded_plural_acquisition
 
 GRADE = "PROVISIONAL_SOURCEFREE_MODERN_GENERATION_PORT_NOT_NATIVE_OR_MODEL_ADEQUACY"
 MAX_TEXT = 512
@@ -46,13 +47,18 @@ def policy_check(policy):
     actions=policy.get("actions",[])
     require(isinstance(actions,list) and len(actions)<=MAX_POLICY_ITEMS,"GEN_ACTION_POLICY_SIZE")
     for rule in actions:
-        require(exact_keys(rule,("action",),("option_match","project_id","speech_intent")) and
+        require(exact_keys(rule,("action",),("option_match","project_id","speech_intent","rank_by")) and
                 text(rule["action"],80),"GEN_ACTION_RULE")
         if "option_match" in rule:
             require(isinstance(rule["option_match"],dict) and bool(rule["option_match"]) and
                     set(rule["option_match"])<= {"project_id","world_request","binding_status",
                                                "grounds_status","operation"},
                     "GEN_ACTION_MATCH")
+        if "rank_by" in rule:
+            require(rule["rank_by"]=="LATEST_PERSONALLY_SENSED_REGULATION" and
+                    rule["action"]=="SIGNAL" and
+                    rule.get("option_match",{}).get("grounds_status")=="HISTORICALLY_ACQUIRED_CO_REGULATION",
+                    "GEN_REGULATION_RANK_SCOPE")
         if "project_id" in rule:
             require(rule["project_id"] is None or text(rule["project_id"]),"GEN_PROJECT_REF")
         if "speech_intent" in rule:
@@ -81,11 +87,15 @@ def policy_check(policy):
                     set(rule.get("when",{}))<= {"own_action","status","participated"},
                     "GEN_DIRECT_CONDITION")
         else:
-            require(exact_keys(rule,("offer",),("match","augment")) and
+            require(exact_keys(rule,("offer",),("match","augment","resolver")) and
                     isinstance(rule["offer"],str) and
                     rule["offer"].startswith(("historically_possible_","historically_proposed_")) and
                     isinstance(rule.get("match",{}),dict) and isinstance(rule.get("augment",{}),dict),
                     "GEN_NOMINATION_RULE")
+            if "resolver" in rule:
+                require(rule["offer"]=="historically_possible_plural_care" and
+                        rule["resolver"]=="EXISTING_PLURAL_CARE_SOURCE_RESOLUTION" and
+                        not rule.get("augment"),"GEN_RESOLVER_SCOPE")
             # Only semantic fields, never an invented source ref or owner basis.
             allowed={"interpretive_hypothesis","personal_significance","personal_sense",
                      "affect_name","course_orientation","priority","anticipated_availability",
@@ -136,6 +146,18 @@ class ConditionalPolicy:
                 if "option_match" in rule:
                     rows=[o for o in packet.get("practical_options",[])
                           if o.get("operation")==action and subset(o,rule["option_match"])]
+                    if rule.get("rank_by")=="LATEST_PERSONALLY_SENSED_REGULATION":
+                        # A declared conditional selection, not a universal
+                        # psychological preference law. Actual personal relief
+                        # is the only eligible rank; ties leave it unresolved.
+                        ranked=[]
+                        for o in rows:
+                            clocks=[x["event_clock"] for x in o.get("personally_sensed_support_history",[])
+                                    if x.get("bodily_regulation_sensed") is True and
+                                    type(x.get("event_clock")) is int]
+                            if clocks:ranked.append((max(clocks),o))
+                        rows=([o for clock,o in ranked if clock==max(v for v,_ in ranked)]
+                              if ranked else [])
                     if len(rows)!=1:
                         self.routes["option_not_unique_or_absent"]+=1
                         continue
@@ -174,6 +196,11 @@ class ConditionalPolicy:
                         self.routes["checkpoint_direct_candidate"]+=1
                 else:
                     rows=[c for c in packet.get(rule["offer"],[]) if subset(c,rule.get("match",{}))]
+                    if rule.get("resolver")=="EXISTING_PLURAL_CARE_SOURCE_RESOLUTION":
+                        proposals=choose_one_grounded_plural_acquisition(rows)
+                        candidates.extend(proposals)
+                        self.routes["existing_plural_care_resolution"]+=len(proposals)
+                        continue
                     if len(rows)!=1:
                         self.routes["nomination_not_unique_or_absent"]+=1
                         continue
