@@ -855,3 +855,108 @@ class ExplicitDevelopmentalCheckpointProvider(ExplicitJSONLLMProvider):
             if self._metrics.maxlen:
                 with self._metrics_lock:
                     self._metrics_total+=1;self._metrics.append(receipt)
+
+
+# Live V3 candidate: one conditional semantic response for one actual native
+# turn, not the two-half historical generation checkpoint. Keep the existing
+# live JSON transport restrictions and parser. No automatic network fallback.
+_LIVE_TURN_INSTRUCTIONS = """You are constructing ONE situated response of a
+continuing fictional organism. The current principal's actual actor_attempt
+packet is the operative starting point. This is not a history generation
+checkpoint, diary, personality inventory, or narration of a guaranteed outcome.
+The existing initiative owner selected the occasion; you cannot change WHO.
+The other person's actual choice remains separately conditioned by their own
+packet and current practical alternatives. Do not attribute analyst knowledge
+to a person's conscious self. No fabricated human action, consent, assent,
+successful act, perception, memory, or development. Existing world owner settles
+the actual attempt, actual lexical occurrence, coaction and material result.
+Return exactly {policies:{actor_id:actor_policy,...}} with the principal present.
+Only listed actor IDs; peer contexts are separately conditioned, never shared
+psychic state. Principal expression must use only principal actor-accessible
+content, not another person's private tip or analyst description. No exposition
+of hidden history to the visitor. Ordinary activity may be banal, ambivalent
+or blocked. No forced disclosure or drama.
+
+actor_policy: {actions:[conditional alternatives in order],formation?:{base:
+"LOCAL" or "NONE",rules:[...]},expression?:{speech?:nonblank <=500,surface?:
+nonblank <=500}}. Select actual operation names from options. Alternatives may
+be {action,project_id?}, {action,option_match:{operation?,project_id?,
+world_request?:{addressed_party_ref?,material_object_ref?,operation?},
+binding_status?,grounds_status?},pool?}, or
+{action:"SELECT_HIGHEST_CURRENT_PROJECT_COURSE",project_course_actions:[...]}.
+The optional pool is practical_options, addressed_lexical_options or
+possible_end_trials; unique fresh match required. For possible-end trial match
+source_material_object_ref or genesis_family. For voluntary SPEAK include
+speech_intent (nonblank <=500) and actual expression.speech (nonblank <=500);
+speech_intent is not the utterance, and the owner must realize it. An absent
+option is not an act; fall through to another conditional alternative or local
+policy. For an addressed SIGNAL, optional rank_by
+LATEST_PERSONALLY_SENSED_REGULATION only with grounds_status
+HISTORICALLY_ACQUIRED_CO_REGULATION. Coactor invitation and response remain
+separate. Peer policies are conditional on the ACTUAL own later offer, not the
+principal's preferences.
+
+Formation rules use the actual development packet AFTER world settlement.
+{offer:"historically_possible_..." or "historically_proposed_...",match?:{},
+augment?:semantic-only fields} nominates a unique actual owner offer; no
+invented source IDs. Typed constructors: LEXICAL_PROJECT_REVALUATION on
+historically_possible_lexical_project_revaluations with augment
+{priority:finite nonnegative changed number,personal_significance:nonblank
+<=512}; CROSS_OBJECT_POSSIBLE_END on historically_possible_cross_object_significance
+with augment {possible_object,possible_means:["INSPECT"],cue_terms};
+INCIDENTAL_END_TAKEUP on historically_possible_incidental_takeup with augment
+{means:["INSPECT"]}. Existing plural-care resolver: {offer:
+"historically_possible_plural_care",resolver:"EXISTING_PLURAL_CARE_SOURCE_RESOLUTION"}.
+Direct hypothesis rule {candidate:{kind:"MEMORY",content:nonblank <=512,
+cue_terms:[1..12 short terms]},when?:{own_action?,status?,participated?}} or
+{candidate:{kind:"ACQUIRE_HISTORICAL_ORIENTATION",operation,orientation_mode:
+"APPROACH" or "WITHHOLD"},when?:...}. Optional, no mutation unless actual
+owner admits it. Do not make an actor acquire a meaning merely because another
+actor speaks. Empty/no-change is lawful. No new family birth or interval here.
+No second model call for validation, expression or development. JSON only."""
+
+
+class ExplicitLiveTurnProvider(ExplicitJSONLLMProvider):
+    """Explicit, sourcefree one-response transport; not empirical adequacy."""
+    grade="EXPLICIT_SOURCEFREE_ONE_TURN_LLM_UNCALIBRATED"
+    def __init__(self,*,sourcefree_live_attested=False,**kwargs):
+        if sourcefree_live_attested is not True:
+            raise ValueError("LIVE_TURN_SOURCEFREE_ATTESTATION_REQUIRED")
+        super().__init__(**kwargs)
+    def call(self,request):
+        receipt={"task":"live_conditional_turn","transport":"MOCK" if self._transport is not None else "HTTPS",
+                 "attempts":0,"outcome":"REJECTED_OR_FAILED","instruction_bytes":None,
+                 "packet_bytes":None,"request_bytes":None,"response_content_bytes":None,
+                 "prompt_variant":"LIVE_CONDITIONAL_TURN","packet_variant":"ACTOR_TIPS",
+                 "wire_packet_bytes":None,"alias_count":0,"structured_field_count":0,
+                 "usage":self._reported_usage(None)}
+        start=perf_counter_ns()
+        try:
+            if (type(request) is not dict or set(request)!={"grade","source","principal","principal_packet","peer_tips"}
+                    or request["grade"]!="SOURCEFREE_CONDITIONAL_LIVE_TURN_NOT_MODEL_ADEQUACY"
+                    or type(request["principal_packet"]) is not dict
+                    or request["principal_packet"].get("actor",{}).get("id")!=request["principal"]
+                    or type(request["peer_tips"]) is not dict):
+                raise ValueError("LIVE_TURN_UNQUALIFIED_REQUEST")
+            body=canonical(request);n=len(body.encode("utf-8"))
+            receipt["packet_bytes"]=n;receipt["wire_packet_bytes"]=n
+            if n>512*1024:raise ValueError("LIVE_TURN_PACKET_LIMIT")
+            req={"model":self.model,"messages":[{"role":"system","content":_LIVE_TURN_INSTRUCTIONS},
+                   {"role":"user","content":body}],"response_format":{"type":"json_object"},
+                   **({self.completion_limit_field:self.completion_token_limit}
+                      if self.completion_token_limit is not None else {})}
+            receipt["instruction_bytes"]=len(_LIVE_TURN_INSTRUCTIONS.encode("utf-8"))
+            receipt["request_bytes"]=len(canonical(req).encode("utf-8"))
+            receipt["attempts"]=1
+            result=self._transport(copy(req)) if self._transport is not None else self._request(req)
+            receipt["usage"]=self._reported_usage(result)
+            data=self._decode_json_response(result,receipt)
+            if set(data)!={"policies"} or type(data["policies"]) is not dict:
+                raise ValueError("LIVE_TURN_RESPONSE_SHAPE")
+            receipt["outcome"]="PROPOSAL_RETURNED"
+            return copy(data)
+        finally:
+            receipt["elapsed_ns"]=perf_counter_ns()-start
+            if self._metrics.maxlen:
+                with self._metrics_lock:
+                    self._metrics_total+=1;self._metrics.append(receipt)
