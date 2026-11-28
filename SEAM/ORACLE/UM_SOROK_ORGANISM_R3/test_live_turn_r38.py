@@ -193,6 +193,7 @@ class OneResponseLiveCourt(unittest.TestCase):
                 a["projects"]=[{"id":"care:"+a["id"],"object":"care for Nadia","means":["CARE"],
                   "addressed_party_ref":"nadia","priority":.6,"status":"active"}]
             rt.ledger.initialize(blank_world(),[m,father,child])
+            stage={"address":False}
             def call(req):
                 a=req["principal"]
                 acquire=policy([], [{"offer":"historically_possible_plural_care",
@@ -200,16 +201,21 @@ class OneResponseLiveCourt(unittest.TestCase):
                 if a!="nadia":
                     return {"policies":{a:policy([action("CARE",{"project_id":"care:"+a,
                         "world_request":{"addressed_party_ref":"nadia"}}),action("REST")]),"nadia":acquire}}
-                acquire["actions"]=[{"action":"SIGNAL","option_match":{"grounds_status":"HISTORICALLY_ACQUIRED_CO_REGULATION"},
-                    "rank_by":"LATEST_PERSONALLY_SENSED_REGULATION"},action("ORIENT"),action("WAIT")]
+                acquire["actions"]=([{"action":"SIGNAL","option_match":{"grounds_status":"HISTORICALLY_ACQUIRED_CO_REGULATION"},
+                    "rank_by":"LATEST_PERSONALLY_SENSED_REGULATION"}] if stage["address"] else [])+[action("ORIENT"),action("WAIT")]
                 return {"policies":{"nadia":acquire,"mother":policy([action("REFUSE")]),"father":policy([action("REFUSE")])}}
             wire=transport(call);session=LiveTurnSession(rt,wire,f/"attempts.sqlite",sourcefree_attested=True)
             try:
                 n=NeighborEncounter(rt,"visitor",mii_module=mii)
                 for aid in ("father","mother"):
                     self.assertEqual(session.owner_actor_beat(n,aid)["attempt"],"CARE")
+                # Actual received care is not yet an acquired orientation.
+                self.assertFalse(rt.ledger.actor("nadia")[1]["co_regulation_orientations"])
+                for _ in range(2):
+                    self.assertEqual(session.owner_actor_beat(n,"nadia")["attempt"],"ORIENT")
                 self.assertEqual({x["caregiver_ref"] for x in rt.ledger.actor("nadia")[1]["co_regulation_orientations"]},
                                  {"mother","father"})
+                stage["address"]=True
                 out=session.owner_actor_beat(n,"nadia")
                 self.assertEqual(out["attempt"],"SIGNAL")
                 self.assertEqual(out["status"],"PARTIAL")
@@ -217,9 +223,9 @@ class OneResponseLiveCourt(unittest.TestCase):
                 self.assertIsNotNone(evt["coactor_attempt"])
                 row=session.custody.receipts()[-1]
                 self.assertEqual(row["local_semantic_tasks"]["actor_attempt"],2)
-                self.assertEqual(wire.usage_snapshot()["total"],3)
+                self.assertEqual(wire.usage_snapshot()["total"],5)
                 self.assertTrue(rt.verify()["valid"])
-                print("R40_CARE "+json.dumps({"calls":3,"child_attempt":out["attempt"],"actual_status":out["status"],
+                print("R40_CARE "+json.dumps({"calls":5,"child_attempt":out["attempt"],"actual_status":out["status"],
                     "actual_coactor_attempt":evt["coactor_attempt"]["action"],"local_attempt_tasks":2},sort_keys=True))
             finally:session.close();rt.close()
 
