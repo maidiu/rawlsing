@@ -28,6 +28,15 @@ from um_sorok_organism.plural_care_paths import choose_one_grounded_plural_acqui
 GRADE = "PROVISIONAL_SOURCEFREE_MODERN_GENERATION_PORT_NOT_NATIVE_OR_MODEL_ADEQUACY"
 MAX_TEXT = 512
 MAX_POLICY_ITEMS = 24
+# Existing native fields, not a new psychological schema.
+ANALYTIC_DOMAINS = (
+    "forms","links","projects","activity_links","composition_methods","relational_motifs",
+    "possible_ends","functional_bindings","historical_orientations","self_model",
+    "expectations","memories","co_regulation_orientations","joint_practices",
+    "care_practical_commitments","cultural_reference_practices","vocal_coordination_practices",
+    "material_investments","power_exercises","lived_genesis_episodes","evidence_paths")
+MAX_ANALYTIC_READS = 12
+MAX_ANALYTIC_BYTES = 256*1024
 
 def require(ok, code):
     if not ok:
@@ -313,6 +322,7 @@ class ModernDevelopmentOwner:
         if self.continuity_link:
             require(self.continuity_link["root"]==self.root,"GEN_CONTINUITY_ROOT")
             require(self.continuity_link["actor"]==actor,"GEN_CONTINUITY_ACTOR")
+            validate_actual_live_link(runtime,self.continuity_link)
         self.family_sources=tuple(sorted(set(family_sources)))
         for sid in self.family_sources:
             row=self.rt.ledger.source(sid)
@@ -356,7 +366,36 @@ class ModernDevelopmentOwner:
         _,w=self.rt.ledger.world(self.rt.world_id)
         return StateIdentity(self.root,self.actor,self.branch,w["clock"],verified["last_hash"])
 
-    def context(self):
+    def resolve_analytic_reads(self,reads):
+        require(isinstance(reads,list) and len(reads)<=MAX_ANALYTIC_READS,"GEN_ANALYTIC_READ_LIMIT")
+        out=[];seen=set();people=self.rt.ledger.actors();events=None
+        for read in reads:
+            require(isinstance(read,dict) and read.get("actor") in people,"GEN_ANALYTIC_READ_ACTOR")
+            aid=read["actor"];kind=read.get("kind")
+            if kind=="ACTOR_DOMAIN":
+                require(exact_keys(read,("kind","actor","domain")) and read["domain"] in ANALYTIC_DOMAINS,
+                        "GEN_ANALYTIC_READ_DOMAIN")
+                require(read["domain"] in people[aid],"GEN_ANALYTIC_READ_DOMAIN_ABSENT")
+                value=people[aid][read["domain"]]
+                identity={"current_state":self.snapshot().state_hash,"domain":read["domain"]}
+            elif kind=="ACTUAL_EXPERIENCE":
+                require(exact_keys(read,("kind","actor","objective_ref")) and text(read["objective_ref"]),
+                        "GEN_ANALYTIC_READ_SOURCE")
+                if events is None:events=self.rt.ledger.events()
+                matches=[e for e in events if e["envelope"].get("payload",{}).get("objective_ref")==read["objective_ref"]
+                         and aid in e["envelope"].get("payload",{}).get("private_actor_experience_receipts",{})]
+                require(len(matches)==1,"GEN_ANALYTIC_READ_UNRECEIVED_OR_AMBIGUOUS")
+                e=matches[0];value=e["envelope"]["payload"]["private_actor_experience_receipts"][aid]
+                identity={"native_receipt":e["id"],"chain_hash":e["chain_hash"]}
+            else:raise RecursionRefusal("GEN_ANALYTIC_READ_KIND")
+            key=canonical(read);require(key not in seen,"GEN_ANALYTIC_READ_DUPLICATE");seen.add(key)
+            out.append({"request":detached(read),"source":identity,"value":detached(value),
+                        "value_digest":digest(value),"analyst_only_not_actor_self_knowledge":True})
+        require(len(canonical(out).encode("utf-8"))<=MAX_ANALYTIC_BYTES,
+                "GEN_ANALYTIC_EXPANSION_BUDGET_HOLD")
+        return out
+
+    def context(self,analytic_reads=None):
         """Analyst-only, actor-separated working set; not a first-person account.
         Prior actual experience comes separately from inherited RecursionCycle.
         """
@@ -369,7 +408,13 @@ class ModernDevelopmentOwner:
                          "accessible_memories":[m for m in a.get("memories",[])
                                                 if m.get("status")=="ACTOR_ACCESSIBLE"],
                          "analyst_only_historical_orientations":a.get("historical_orientations",[]),
-                         "current_situated":situated}
+                         "current_situated":situated,
+                         "exact_analytic_domain_index":{k:{"count":len(a[k]) if isinstance(a[k],(dict,list)) else None,
+                             "digest":digest(a[k]),"bytes":len(canonical(a[k]).encode("utf-8"))}
+                             for k in ANALYTIC_DOMAINS if k in a},
+                         "possible_ends":a.get("possible_ends",[]),
+                         "recent_lived_source_refs":[{"objective_ref":x["event"],"experience_ref":x.get("experience_ref")}
+                             for x in a.get("evidence_paths",[])[-12:] if x.get("event")]}
         # Genealogy source is an analyst-only conditional premise. Do not
         # expose counterpart private source packets to an actor policy.
         family={}
@@ -392,6 +437,7 @@ class ModernDevelopmentOwner:
                             for p in rows] for key,rows in self.period_catalog.items()},
                          **({"prior_generation_and_live_ancestry":self.continuity_link}
                             if self.continuity_link else {}),
+                         "selected_exact_analytic_reads":self.resolve_analytic_reads(analytic_reads or []),
                          "actor_contexts_are_separate_analyst_only_not_actor_self_report":True})
 
     def validate_proposal(self,p):
@@ -401,7 +447,7 @@ class ModernDevelopmentOwner:
         require(len(p.participants)==1 and p.participants[0] in roster,"GEN_PRINCIPAL")
         require(type(p.event_time) is int and p.event_time>self.snapshot().clock,"GEN_CLOCK")
         c=p.circumstances
-        require(exact_keys(c,("policies",),("retrospective_event_id","rehearsal","period_ref","family")),
+        require(exact_keys(c,("policies",),("retrospective_event_id","rehearsal","period_ref","family","next_analytic_reads")),
                 "GEN_CIRCUMSTANCES")
         require(isinstance(c["policies"],dict) and set(c["policies"])<=roster,"GEN_POLICY_ACTOR")
         for policy in c["policies"].values():policy_check(policy)
@@ -410,6 +456,8 @@ class ModernDevelopmentOwner:
                     type(p.interval["span"]) is int and 1<=p.interval["span"]<=3650,"GEN_INTERVAL")
         if "period_ref" in c:
             require(p.interval is not None and c["period_ref"] in self.period_catalog,"GEN_PERIOD_REF")
+        if "next_analytic_reads" in c:
+            self.resolve_analytic_reads(c["next_analytic_reads"])
         family=c.get("family")
         if family is not None:
             require(exact_keys(family,("kind","source_seal_id"),("pathway_id",)) and
@@ -578,7 +626,8 @@ class ModernDevelopmentOwner:
                 {"grade":GRADE,"developmental_effects":detached(payload.get("developmental_effects",{})),
                  "local_semantic_tasks":dict(policy.counts),"conditional_routes":dict(policy.routes),
                  "local_packet_bytes":policy.packet_bytes,
-                 "remote_calls_during_event":0,"native_chain_hash":after.state_hash},
+                 "remote_calls_during_event":0,"native_chain_hash":after.state_hash,
+                 "next_analytic_reads":detached(c.get("next_analytic_reads",[]))},
                 readset,event["id"])
             self.db.execute("UPDATE operations SET result=? WHERE id=?",
                             (canonical(result.document()),operation_id));self.db.commit()
@@ -667,11 +716,13 @@ class CheckpointProvider:
             return response
         require(isinstance(pros,list) and 3<=len(pros)<=5,"GEN_PROSPECTIVE_COUNT")
         prior_clock=request["context"].get("clock")
-        for p in pros:
+        for ordinal,p in enumerate(pros):
             require(isinstance(p,dict) and isinstance(p.get("circumstances"),dict) and
                     isinstance(p.get("participants"),list) and len(p["participants"])==1,
                     "GEN_PROSPECTIVE_SURFACE")
             c=p["circumstances"]
+            if "next_analytic_reads" in c:
+                require(ordinal==len(pros)-1,"GEN_ANALYTIC_READS_ON_FINAL_SURFACE_ONLY")
             if prior_clock is not None:
                 interval=p.get("interval")
                 require(interval is None or (exact_keys(interval,("mode","span")) and
@@ -700,7 +751,14 @@ class ModernGeneration:
     def _run(self,method):
         self.provider.current_attempt_id=None
         try:
-            context=self.owner.context()
+            reads=[]
+            if method.__name__ in ("advance","finish"):
+                store=self.cycle._load()
+                if store.get("phase")=="PENDING_BATCH":
+                    pending=store["pending"];history=self.engine.history(pending["batch_id"])
+                    require(history==pending,"GEN_ANALYTIC_READ_HISTORY_CHANGED")
+                    reads=history["records"][-1]["consequences"].get("next_analytic_reads",[])
+            context=self.owner.context(reads)
             if self.owner.continuity_link and method.__name__!="bootstrap":
                 link=context["prior_generation_and_live_ancestry"]
                 context["prior_generation_and_live_ancestry"]={
@@ -738,6 +796,24 @@ class ModernGeneration:
     def close(self):self.engine.close();self.owner.close()
 
 
+def _native_link_rows(tail):
+    return [{"native_ref":e["id"],"chain_hash":e["chain_hash"],"clock":e["clock"],
+             "kind":e["kind"],"actor":e["actor_id"],
+             "actor_accessible":e["envelope"].get("payload",{}).get("private_actor_experience_receipts",{})}
+            for e in tail]
+
+def validate_actual_live_link(runtime,link):
+    require(runtime.verify()["valid"],"GEN_LIVE_LINK_NATIVE_CHAIN")
+    events=runtime.ledger.events()
+    require(events[0]["chain_hash"]==link["root"],"GEN_LIVE_LINK_ROOT")
+    state=link["prior_terminal"]["state"]
+    require(state["root"]==link["root"] and state["actor"]==link["actor"],"GEN_LIVE_LINK_PRIOR_IDENTITY")
+    a=[i for i,e in enumerate(events) if e["chain_hash"]==state["state_hash"]]
+    b=[i for i,e in enumerate(events) if e["chain_hash"]==link["resumption_chain_hash"]]
+    require(len(a)==len(b)==1 and a[0]<b[0],"GEN_LIVE_LINK_ANCESTRY")
+    require(link["events"]==_native_link_rows(events[a[0]+1:b[0]+1]),"GEN_LIVE_LINK_FABRICATED_RECEIPT")
+    return True
+
 def link_actual_live_interval(runtime,handoff,prior_cycle_path,*,max_events=128):
     """Bind later generation to the same actual ledger after an explicit live mode.
 
@@ -762,8 +838,5 @@ def link_actual_live_interval(runtime,handoff,prior_cycle_path,*,max_events=128)
             "GEN_LIVE_LINK_PRESENT_VISITOR")
     return detached({"root":state["root"],"actor":state["actor"],
         "prior_terminal":handoff,"resumption_chain_hash":events[-1]["chain_hash"],
-        "events":[{"native_ref":e["id"],"chain_hash":e["chain_hash"],"clock":e["clock"],
-                   "kind":e["kind"],"actor":e["actor_id"],
-                   "actor_accessible":e["envelope"].get("payload",{}).get("private_actor_experience_receipts",{})}
-                  for e in tail],
+        "events":_native_link_rows(tail),
         "grade":"ACTUAL_LEDGER_LINK_NOT_ACTOR_RECOLLECTION_OR_HUMAN_AUTHORITY"})

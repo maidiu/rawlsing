@@ -67,6 +67,11 @@ class LifeCheckpoint:
                  e("child",span+3,"nadia",{"nadia":child([action("PRACTICE"),action("ORIENT"),action("WAIT")])}),
                  e("address",span+4,"nadia",{"nadia":child([address(),action("ORIENT")]),
                      "mother":policy([action("REFUSE")]),"father":policy([action("REFUSE")])})]
+        if self.resumed and r["mode"]=="BOOTSTRAP":
+            refs=ctx["actor_contexts"]["father"]["recent_lived_source_refs"]
+            out[-1]["circumstances"]["next_analytic_reads"]=[
+                {"kind":"ACTOR_DOMAIN","actor":"father","domain":"memories"},
+                {"kind":"ACTUAL_EXPERIENCE","actor":"father","objective_ref":refs[-1]["objective_ref"]}]
         return {"retrospective":ret,"prospective":out}
 
 class JoinedGenerationCourt(unittest.TestCase):
@@ -207,6 +212,11 @@ class JoinedGenerationCourt(unittest.TestCase):
             rt=ConstitutiveRuntime(str(db));g=self.generation(rt,after,p2,continuity_link=link,**args)
             try:
                 g.advance();g.finish()
+                reads=p2.requests[1]["context"]["selected_exact_analytic_reads"]
+                self.assertEqual(len(reads),2)
+                self.assertIn(PRIVATE,canonical(reads[0]["value"]))
+                self.assertEqual(reads[1]["value"]["actor"],"father")
+                self.assertNotIn("events",p2.requests[1]["context"]["prior_generation_and_live_ancestry"])
                 self.assertEqual(rt.ledger.actor("nadia")[1]["age_days"],440)
                 self.assertEqual(rt.ledger.world()[1]["neighbor_user_events"],history)
                 self.assertEqual(constructors,["mother","father"])
