@@ -6,14 +6,14 @@ from .types import Constitution, Situated, AccessibleEncounter, copy, GRADE
 from .organism import eligible, ACTIONS
 from .activity import eligible_activities, annotate_interactivity_relations
 from .psychodynamics import enact_currents
-from .relational_metabolism import derive_relational_metabolism
+from .relational_metabolism import derive_relational_metabolism, situated_relation_links, quarantine_pairs
 from .plans import qualified_learned_compositions
 from .practical_difference import practical_alternatives
 from .preproject_agency import recruit_preproject_anticipations
 from .prospective_horizon import project_trial_horizons
 from .attention_field import situate_attention
 from .historical_self_organization import pre_cue_pressures
-from .care_commitment_genesis import practiced_care_alternatives
+from .care_commitment_genesis import practiced_care_alternatives, annotate_care_contradictions
 from .cultural_mediation import cultural_object_alternatives
 from .distributed_power import conditional_assistance_options, current_addressed_food_offers
 from .practical_powers import situated_exercised_repertoire
@@ -197,7 +197,8 @@ def actor_access(actor,world):
             _nonnegative_transfer_amount(site.get('food',0),
               'INVALID_ACTOR_ACCESS_SHARED_FOOD')>=1)
     if any(c.get('kind')=='coactor_present' for c in cues) and (
-            held>=1 or shared):
+            held>=1 or shared or _nonnegative_transfer_amount(
+                site.get('mutual_aid_food',0),'INVALID_ACTOR_ACCESS_COMMONS_FOOD')>=1):
         env.append('FEED')
     if actor['body']['sensor'] >= .05:
         env += [x['operation'] for x in live_food_petition_opportunity(
@@ -305,11 +306,13 @@ def compose(constitution,access,limit=50):
         if f.get('lifecycle') not in ('ENDED','DORMANT')
         and f.get('body_min',0)<=constitution.body['motor']
         and _form_in_scope(f,access)}
-    valid_links=[link for link in constitution.links
+    valid_links=[link for link in situated_relation_links(constitution.links,access.location)
         if link.get('source') in forms and link.get('target') in forms
         and (not link.get('contexts') or access.location in link['contexts'])]
+    partitions=quarantine_pairs(valid_links,access.location)
     positive=[link for link in valid_links if link.get('relation') in
-              ('RECRUITS','SUPPORTS','ACTIVATES','REINFORCES')]
+              ('RECRUITS','SUPPORTS','ACTIVATES','REINFORCES')
+              and (link['source'],link['target']) not in partitions]
     negative=[link for link in valid_links if link.get('relation') in
               ('INHIBITS','SUPPRESSES')]
 
@@ -383,6 +386,15 @@ def compose(constitution,access,limit=50):
     actual,motif_routes=joint_recruitment(seed,vetoed)
     active={fid:copy(forms[fid]) for fid in sorted(actual)}
     relational=derive_relational_metabolism(constitution,access,active,vetoed)
+    partition_refs=[]
+    for link in valid_links:
+        if link.get('relation')=='QUARANTINES_FROM' and link['source'] in active:
+            from .relational_metabolism import link_ref
+            lid=link_ref(link);partition_refs.append(lid)
+            currents.append({'kind':'CONTEXTUAL_ASSOCIATIVE_PARTITION','relation_ref':lid,
+                'source_form_ref':link['source'],'target_form_ref':link['target'],
+                'target_independently_recruited':link['target'] in active,
+                'not_erasure_of_target_or_global_inhibition':True,'grade':GRADE})
     # This is the same link-only comparison for every motif route.
     # Do not conflate direct/linked recruitment with motif recruitment.
     direct_link_closure=closure(seed,vetoed) if motif_routes else set()
@@ -758,6 +770,8 @@ def compose(constitution,access,limit=50):
     currents+=affective_afterlife['currents']
     notice_afterlife=annotate_notice_expectations(constitution,access,dynamics['candidate_actions'])
     currents+=notice_afterlife['currents']
+    care_contradictions=annotate_care_contradictions(constitution,access,dynamics['candidate_actions'])
+    currents+=care_contradictions['currents']
     interactivity=annotate_interactivity_relations(constitution,access,dynamics['candidate_actions'])
     currents+=interactivity['currents']
     # The same historically noticed end can offer several ACTUAL eligible
@@ -775,7 +789,7 @@ def compose(constitution,access,limit=50):
     return Situated(actor=constitution.actor,clock=constitution.clock,recruited=list(active.values()),
        dormant=sorted(set(dormant)),inhibited=sorted(set(inhibited)),currents=currents,
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
-       readset=sorted(set(list(active)+list(vetoed)+relational['readset']+
+       readset=sorted(set(list(active)+list(vetoed)+relational['readset']+partition_refs+care_contradictions['readset']+
                            historical['readset']+preproject['readset']+exercised['readset']+
                            attention['frame'].get('monitoring_orientation_refs',[])+
                            [row[k] for row in cross_object for k in

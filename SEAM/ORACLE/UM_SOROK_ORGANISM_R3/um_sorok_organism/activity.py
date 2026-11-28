@@ -162,6 +162,8 @@ def eligible_activities(constitution, recruited_form_ids, encounter):
                         for j in getattr(constitution,'joint_practices',[])))]
         if p.get('provisioning_means_basis') and encounter.location!=p['provisioning_means_basis']['provisioning_site']:
             x['means']=[m for m in x.get('means',[]) if m not in ('WORK','BUY_FOOD')]
+        if p.get('commons_provisioning_basis') and encounter.location!=p['commons_provisioning_basis']['location']:
+            x['means']=[m for m in x.get('means',[]) if m!='CONTRIBUTE_FOOD_COMMONS']
         if p.get('productive_witness_means') and not productive_witness_signs(p,encounter):
             x['means']=[m for m in x.get('means',[]) if m!='ORIENT']
         x['recruitment_basis']=['ACTIVITY_CUE'] if cue_match else []
@@ -499,13 +501,18 @@ def qualify_interactivity_deferral(alternatives, selected, deferred_id, location
     rows=[x for x in alternatives if x['option_id']==deferred_id
           and x.get('project_id') not in (None,selected['project_id'])
           and x['operation']!=selected['operation']
-          and x.get('binding_status')=='NO_ADDRESSED_PARTY'
-          and selected.get('binding_status')=='NO_ADDRESSED_PARTY'
-          and not x.get('world_request',{}).get('material_object_ref')
-          and not selected.get('world_request',{}).get('material_object_ref')]
+          and ((x.get('binding_status')=='NO_ADDRESSED_PARTY'
+                and selected.get('binding_status')=='NO_ADDRESSED_PARTY'
+                and not x.get('world_request',{}).get('material_object_ref')
+                and not selected.get('world_request',{}).get('material_object_ref'))
+               or _addressed_use_time_pair(selected,x))]
     if len(rows)!=1:raise ValueError('INTERACTIVITY_UNISSUED_DEFERRED_COURSE')
     x=rows[0]
-    return {'selected_project':selected['project_id'],'selected_operation':selected['operation'],
+    extra=({'course_relation_kind':'ADDRESSED_REPRODUCTIVE_USE_TIME',
+            'selected_addressed_party_ref':selected.get('world_request',{}).get('addressed_party_ref'),
+            'deferred_addressed_party_ref':x.get('world_request',{}).get('addressed_party_ref')}
+           if _addressed_use_time_pair(selected,x) else {})
+    return {**extra,'selected_project':selected['project_id'],'selected_operation':selected['operation'],
             'selected_option_ref':selected['option_id'],'deferred_project':x['project_id'],
             'deferred_operation':x['operation'],'deferred_option_ref':x['option_id'],
             'location':location,'not_a_performed_alternative_or_abandoned_motive':True}
@@ -557,7 +564,9 @@ def possible_interactivity_relations(actor,experience,event_ref):
           and x.get('id') in paths[0].get('received_cue_refs',[])]
     if len(cues)!=1:return []
     selected=choice['selected_project'];deferred=choice['deferred_project']
-    prior=_interactivity_history(actor,selected,deferred,event_ref)
+    prior=(_addressed_interactivity_history(actor,choice,event_ref,experience)
+           if choice.get('course_relation_kind')=='ADDRESSED_REPRODUCTIVE_USE_TIME'
+           else _interactivity_history(actor,selected,deferred,event_ref))
     if not prior:return []
     p=next(p for p in actor['projects'] if p['id']==selected)
     if any(x['basis']['deferred_project']==deferred and x['basis']['location']==choice['location']
@@ -589,14 +598,25 @@ def annotate_interactivity_relations(constitution,access,options):
             if (rec.get('status')!='ACTIVE' or b.get('actor')!=constitution.actor
                     or b.get('selected_project')!=p['id'] or b.get('location')!=access.location
                     or rec.get('id')!=stable_id('interactivity_relation',b)):continue
-            left=[x for x in alts if x.get('project_id')==b['selected_project']
-                  and x['operation']==b['selected_operation'] and x.get('binding_status')=='NO_ADDRESSED_PARTY']
-            right=[x for x in alts if x.get('project_id')==b['deferred_project']
-                   and x['operation']==b['deferred_operation'] and x.get('binding_status')=='NO_ADDRESSED_PARTY']
+            addressed=b.get('course_relation_kind')=='ADDRESSED_REPRODUCTIVE_USE_TIME'
+            def matches(x,which):
+                if (x.get('project_id')!=b[which+'_project']
+                        or x['operation']!=b[which+'_operation']):return False
+                if not addressed:return x.get('binding_status')=='NO_ADDRESSED_PARTY'
+                other=b[which+'_addressed_party_ref']
+                return (x.get('world_request',{}).get('addressed_party_ref')==other
+                        and x.get('binding_status')==(
+                            'QUALIFIED_AS_PRESENT' if other else 'NO_ADDRESSED_PARTY'))
+            left=[x for x in alts if matches(x,'selected')]
+            right=[x for x in alts if matches(x,'deferred')]
             if len(left)!=1 or len(right)!=1:continue
             row={'relation_ref':rec['id'],'selected_project':b['selected_project'],
                  'deferred_project':b['deferred_project'],'selected_option_ref':left[0]['option_id'],
                  'deferred_option_ref':right[0]['option_id'],'personal_sense':rec['personal_sense'],
+                 **({'course_relation_kind':b['course_relation_kind'],
+                     'selected_addressed_party_ref':b['selected_addressed_party_ref'],
+                     'deferred_addressed_party_ref':b['deferred_addressed_party_ref']}
+                    if addressed else {}),
                  'not_an_automatic_deferral':True,'grade':GRADE}
             for x in left+right:x.setdefault('interactivity_currents',[]).append(copy(row))
             currents.append({'kind':'INTERACTIVITY_HISTORICAL_CURRENT',**copy(row)})
@@ -674,7 +694,9 @@ def possible_provisioning_reorganizations(actor,experience,event_ref):
     if not works:return []
     work,wv=max(works,key=lambda x:x[1]['clock'])
     projects=[x for x in actor.get('projects',[]) if x.get('id')==refs[0]
-              and x.get('status','active')=='active' and x.get('means')==['FEED']
+              and x.get('status','active')=='active' and x.get('means') in (
+                  ['FEED'],['FEED','CONTRIBUTE_FOOD_COMMONS'])
+              and ('CONTRIBUTE_FOOD_COMMONS' not in x['means'] or x.get('commons_provisioning_basis'))
               and x.get('addressed_party_ref')==target
               and not x.get('provisioning_means_basis')]
     if len(projects)!=1:return []
@@ -684,4 +706,180 @@ def possible_provisioning_reorganizations(actor,experience,event_ref):
            'purchase_claim_ref':pv['material_claim_ref'],'provisioning_site':pv['site'],
            'not_proof_of_earmarked_money_or_motive_fulfillment':True}
     return [{'kind':'REORGANIZE_PROJECT','project_id':refs[0],
-             'means':['FEED','WORK','BUY_FOOD'],'provisioning_means_basis':basis}]
+             'means':copy(projects[0]['means'])+['WORK','BUY_FOOD'],'provisioning_means_basis':basis}]
+
+
+def own_commons_receipt(actor,experience,world,event_ref):
+    """The existing material commons producer, actually exercised by this actor.
+
+    A real contribution can change later practical means. The receipt is
+    actor-local and analytic; no token earmarking, political ideology or
+    unperformed feeding is inferred.
+    """
+    aid=actor['id'];clock=experience.get('clock');site=experience.get('location')
+    sel=experience.get('own_practical_selection') or {}
+    if (experience.get('actor')!=aid or type(clock) is not int
+            or experience.get('own_action')!='CONTRIBUTE_FOOD_COMMONS'
+            or experience.get('status')!='PERFORMED'
+            or experience.get('participated') is not True
+            or sel.get('actor')!=aid or sel.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+            or (sel.get('world_request') or {}).get('operation')!='CONTRIBUTE_FOOD_COMMONS'):
+        return None
+    signs=[x for x in experience.get('perceived_cues',[])
+           if x.get('kind')=='performed_contribute_food_commons'
+           and x.get('source_actor')==aid and x.get('clock')==clock
+           and x.get('location')==site
+           and x.get('description')=='INDEPENDENT_FOOD_COMMONS_ENLARGED']
+    rows=[x for x in world.get('food_commons_history',[])
+          if x.get('giver')==aid and x.get('site')==site and x.get('clock')==clock
+          and x.get('actor_selection_source')=='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+          and x.get('food_debited_from_private_holdings')==1
+          and x.get('food_credited_to_independent_commons')==1]
+    if len(signs)!=1 or len(rows)!=1:return None
+    return {'actor':aid,'event_ref':event_ref,'experience_ref':experience['ref'],
+            'clock':clock,'site':site,'cue_ref':signs[0]['id'],'commons_ref':rows[0]['id'],
+            'not_a_proof_of_earmarked_food_or_collective_ideology':True}
+
+
+def possible_commons_provisioning_reorganizations(actor,experience,event_ref):
+    """Actual blocked care, own material contribution and actual later feeding.
+
+    The project can acquire a new *means* through its own material history,
+    not because a model supplies a political slogan. Preserve the end, other
+    historically acquired means, and the former unfinished activity.
+    """
+    aid=actor['id'];site=experience.get('location');clock=experience.get('clock')
+    sel=experience.get('own_practical_selection') or {}
+    refs=sel.get('selected_project_refs',[])
+    if (experience.get('actor')!=aid or type(clock) is not int
+            or experience.get('own_action')!='FEED' or experience.get('status')!='PERFORMED'
+            or experience.get('participated') is not True
+            or sel.get('actor')!=aid or sel.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+            or len(refs)!=1 or sel.get('possible_end_trial') is not None):return []
+    target=(sel.get('world_request') or {}).get('addressed_party_ref')
+    if type(target) is not str or target==aid:return []
+    projects=[x for x in actor.get('projects',[])
+              if x.get('id')==refs[0] and x.get('status','active')=='active'
+              and x.get('addressed_party_ref')==target and 'FEED' in x.get('means',[])
+              and 'CONTRIBUTE_FOOD_COMMONS' not in x.get('means',[])
+              and not x.get('commons_provisioning_basis')]
+    if len(projects)!=1:return []
+    project=projects[0]
+    paths=actor.get('evidence_paths',[])
+    feed=[x for x in actor.get('performed_feeding_events',[])
+          if x.get('event_ref')==event_ref and x.get('giver')==aid
+          and x.get('recipient')==target and x.get('site')==site
+          and x.get('material_food_source')=='MUTUAL_AID_FOOD'
+          and x.get('original_action_was_actor_selected') is True
+          and x.get('applied_nutrition_change',0)>0]
+    if len(feed)!=1:return []
+    now=[p for p in paths if p.get('event')==event_ref and p.get('experience_ref')==experience['ref']
+         and p.get('selected_project_refs')==refs
+         and p.get('practical_option_ref')==sel.get('option_id')
+         and feed[0].get('received_action_sign_ref') in p.get('received_cue_refs',[])]
+    if len(now)!=1:return []
+    prior=[]
+    for x in actor.get('material_dependency_encounters',[]):
+        if (x.get('actor')!=aid or x.get('location')!=site
+                or x.get('own_operation_attempted')!='FEED'
+                or type(x.get('clock')) is not int or x['clock']>=clock):continue
+        own=[p for p in paths if p.get('event')==x.get('event_ref')
+             and p.get('experience_ref')==x.get('experience_ref')
+             and p.get('selected_project_refs')==refs
+             and x.get('received_nonperformance_sign_ref') in p.get('received_cue_refs',[])]
+        episodes=[e for e in actor.get('lived_genesis_episodes',[])
+                  if e.get('event_ref')==x.get('event_ref') and e.get('actor')==aid
+                  and e.get('experience_ref')==x.get('experience_ref')
+                  and e.get('selected_addressed_party_ref')==target
+                  and e.get('selected_project_refs')==refs
+                  and e.get('unfinished_own_activity')
+                  and e.get('selected_practical_option_ref') is not None]
+        if len(own)==len(episodes)==1:prior.append(x)
+    if not prior:return []
+    blocked=max(prior,key=lambda x:x['clock'])
+    donations=[]
+    for path in paths:
+        x=path.get('own_commons_receipt_analytic_only',{})
+        if (x.get('actor')==aid and x.get('site')==site
+                and x.get('event_ref')==path.get('event')
+                and x.get('experience_ref')==path.get('experience_ref')
+                and x.get('cue_ref') in path.get('received_cue_refs',[])
+                and type(x.get('clock')) is int and blocked['clock']<x['clock']<clock):
+            donations.append(x)
+    if not donations:return []
+    donation=max(donations,key=lambda x:x['clock'])
+    basis={'actor':aid,'location':site,'recipient_ref':target,
+           'blocked_feeding_ref':blocked['id'],'blocked_event_ref':blocked['event_ref'],
+           'actual_commons_ref':donation['commons_ref'],'contribution_event_ref':donation['event_ref'],
+           'feeding_event_ref':event_ref,'feeding_receipt_ref':feed[0]['id'],
+           'not_proof_of_earmarked_food_or_abandoned_other_means':True}
+    return [{'kind':'REORGANIZE_PROJECT','project_id':project['id'],
+             'means':copy(project['means'])+['CONTRIBUTE_FOOD_COMMONS'],
+             'commons_provisioning_basis':basis}]
+
+
+def _addressed_use_time_pair(selected,deferred):
+    """The exact two alternatives coexist, neither automatically dominates.
+
+    Extend the existing deferral owner to one actually addressed care course
+    versus one nonaddressed material course. No imagined access, unavailable
+    recipient, future promise or arbitrary object identity.
+    """
+    pair=[selected,deferred]
+    care=[x for x in pair if x['operation'] in ('CARE','FEED')
+          and x.get('binding_status')=='QUALIFIED_AS_PRESENT'
+          and type(x.get('world_request',{}).get('addressed_party_ref')) is str]
+    material=[x for x in pair if x['operation'] in (
+              'CONTRIBUTE_FOOD_COMMONS','WORK','BUY_FOOD','EAT','REST')
+              and x.get('binding_status')=='NO_ADDRESSED_PARTY'
+              and x.get('world_request',{}).get('addressed_party_ref') is None]
+    return len(care)==len(material)==1 and not any(
+        x.get('world_request',{}).get('material_object_ref') for x in pair)
+
+
+def _addressed_interactivity_history(actor,choice,event_ref,experience):
+    """Actual reverse allocation of the same two projects is evidence of
+    their distinct practical courses, not proof of conflict or priority."""
+    aid=actor['id'];site=choice['location'];clock=experience.get('clock')
+    if type(clock) is not int:return None
+    projects={p['id']:p for p in actor.get('projects',[]) if p.get('status','active')=='active'}
+    s=choice['selected_project'];d=choice['deferred_project']
+    if not {s,d}<=set(projects):return None
+    paths=actor.get('evidence_paths',[])
+    def actual(p,project,operation):
+        return (p.get('selected_project_refs')==[project]
+                and p.get('own_action')==operation
+                and any(x.get('event')==p.get('event') and x.get('project')==project
+                        and x.get('operation')==operation and x.get('performed_status')=='PERFORMED'
+                        and x.get('selected_at_actor_attempt') is True
+                        for x in projects[project].get('operational_history',[])))
+    current=[p for p in paths if p.get('event')==event_ref
+             and p.get('experience_ref')==experience.get('ref')
+             and p.get('interactivity_deferral')==choice
+             and actual(p,s,choice['selected_operation'])]
+    if len(current)!=1:return None
+    previous=[]
+    for p in paths:
+        b=p.get('interactivity_deferral',{})
+        if (b.get('course_relation_kind')!='ADDRESSED_REPRODUCTIVE_USE_TIME'
+                or b.get('location')!=site or p.get('event')==event_ref
+                or b.get('selected_project')!=d or b.get('deferred_project')!=s
+                or b.get('selected_operation')!=choice['deferred_operation']
+                or b.get('deferred_operation')!=choice['selected_operation']
+                or b.get('selected_addressed_party_ref')!=choice['deferred_addressed_party_ref']
+                or b.get('deferred_addressed_party_ref')!=choice['selected_addressed_party_ref']
+                or not actual(p,d,choice['deferred_operation'])):continue
+        lived=[e for e in actor.get('lived_genesis_episodes',[])
+               if e.get('event_ref')==p.get('event') and e.get('actor')==aid
+               and e.get('experience_ref')==p.get('experience_ref') and e.get('location')==site
+               and e.get('selected_practical_option_ref')==b.get('selected_option_ref')
+               and type(e.get('clock')) is int and e['clock']<clock
+               and not e.get('unfinished_own_activity')]
+        if len(lived)==1:previous.append((p,lived[0]))
+    if not previous:return None
+    p,e=max(previous,key=lambda x:x[1]['clock'])
+    return {'earlier_reverse_deferral_event_ref':p['event'],
+            'earlier_reverse_deferral_experience_ref':p['experience_ref'],
+            'earlier_reverse_deferral_episode_ref':e['id'],
+            'earlier_selected_project':d,
+            'not_proof_of_foregone_outcome_or_fixed_priority':True}

@@ -83,6 +83,8 @@ def practical_alternatives(constitution,access,option):
             # Material acquisition serves a particular care undertaking but
             # is not an addressed act or a claim on the recipient.
             target=None
+        if project.get('commons_provisioning_basis') and act=='CONTRIBUTE_FOOD_COMMONS':
+            target=None
         conditional=project.get('dependency_conditional_means',{}).get(act)
         human_counterpart=False
         if conditional is not None:
