@@ -179,13 +179,16 @@ class ReciprocalOrdinaryLife(unittest.TestCase):
     def material_course(self,db,op,both):
         from um_sorok_organism.types import newborn
         from um_sorok_organism.organism import mature
-        phase={'op':'REST','refuse':False,'retire':False}
+        phase={'op':'REST','refuse':False,'retire':False,'learn':False}
         def policy(task,p):
             if task=='expression':return {'task':task,'surface':'Ordinary care.'}
             aid=p['actor']['id']
             if task=='actor_attempt':
                 action=op if p.get('requesting_actor') else phase['op']
                 if p.get('requesting_actor') and phase['refuse']:return {'task':task,'action':'REFUSE'}
+                if action=='LATER':
+                    acquired=[x for x in p.get('practical_options',[]) if x.get('grounds_status')=='HISTORICALLY_ACQUIRED_CO_REGULATION' and x.get('world_request',{}).get('addressed_party_ref')=='mother']
+                    return {'task':task,'practical_option_id':acquired[0]['option_id']} if acquired else {'task':task,'action':'WAIT'}
                 rows=[x for x in p.get('practical_options',[]) if x['operation']==action
                       and x.get('project_id') in ('mother-care','child-call','other-care')]
                 if rows and action not in ('WAIT','REST'):
@@ -197,6 +200,10 @@ class ReciprocalOrdinaryLife(unittest.TestCase):
                     return {'task':task,'practical_option_id':rows[0]['option_id']}
                 return {'task':task,'action':action}
             if task=='development':
+                if aid=='child' and phase['learn']:
+                    for x in p.get('historically_possible_co_regulation',[]):
+                        if x['caregiver_ref']=='mother':
+                            return {'task':task,'candidates':[{'kind':'ACQUIRE_CO_REGULATION_ORIENTATION','caregiver_ref':'mother','period_refs':x['source_care_period_refs'],'perceived_cue_ref':x['current_perceived_cue_ref']}]}
                 for offer in p.get('historically_possible_recurrent_routines',[]):
                     basis=offer['basis']
                     if aid=='child' and not both:continue
@@ -269,6 +276,19 @@ class ReciprocalOrdinaryLife(unittest.TestCase):
             elif both:
                 self.assertTrue(any(x.get('giver')=='mother' for x in world()['reproductive_labor_periods']))
             self.assertEqual(bool(after['practice_exposures']),both)
+            if op=='FEED':
+                exposure=[x for x in after.get('undergone_care_periods',[]) if x.get('historical_exposure_kind')=='MODELED_BODILY_PROVISIONING']
+                self.assertEqual(bool(exposure),both)
+                self.assertTrue(all(x['caregiver_ref']=='mother' and x['aggregate_modeled_nutrition_gain']>0 for x in exposure))
+                self.assertFalse(after.get('co_regulation_orientations'))
+                rt.close();rt=ConstitutiveRuntime(str(db),semantic=service)
+                phase['learn']=True;beat('child','REST');phase['learn']=False
+                formed=[x for x in actor('child').get('co_regulation_orientations',[]) if x['caregiver_ref']=='mother']
+                self.assertEqual(bool(formed),both)
+                if both:self.assertTrue(set(formed[0]['source_care_period_refs']) & {x['id'] for x in exposure})
+                phase['op']='LATER';phase['refuse']=True
+                attempt=rt.step('child');phase['refuse']=False
+                self.assertEqual((attempt['attempt'],attempt['status']),('SIGNAL','PARTIAL') if both else ('WAIT','PERFORMED'))
             if both:
                 # Retirement belongs to the child. Mother's project and
                 # independent other-care remain, but no joint claim survives.

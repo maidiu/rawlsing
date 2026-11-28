@@ -86,6 +86,7 @@ def qualify_feeding(world,actors,process,start,days):
         "id":key,"giver":giver,"recipient":recipient,"location":loc,
         "origin":origin,"source_ref":process["source_ref"],
         "requested_units":str(requested),
+        "modeled_labor_hours":round(process["hours_per_active_day"]*exposure*days,5),
         "time_claimed_from":"R13_FINITE_ACTOR_TIME",
         "not_witnessed_day_by_day":True,
         "caregiver_willingness_each_day":"NOT_ESTABLISHED",
@@ -169,11 +170,7 @@ def settle_provisioning(world, actors, allocation):
             # Provisional physiology: max 0.02 body nutrition per unit. It
             # does NOT certify a diet or infer hunger satisfaction from hours.
             recipient=claim["recipient"]
-            old=projected_nutrition[recipient]
-            nominal=min(Decimal("0.50"),amount*Decimal("0.02"))
-            after=min(Decimal("1"),old+nominal).quantize(UNIT)
-            gained=after-old
-            projected_nutrition[recipient]=after
+            nominal=min(Decimal("0.50"),amount*Decimal("0.02")).quantize(UNIT)
             outcomes.append({
                 "id":stable_id("material_feeding_period",{
                     "claim":claim["id"],"delivery":str(amount),
@@ -192,7 +189,10 @@ def settle_provisioning(world, actors, allocation):
                     0.0 if denied else float(shortage)),
                 "physical_stock_was_present_but_inaccessible":(
                     bool(denied and pool>0)),
-                "actual_recipient_nutrition_gain":float(gained),
+                "modeled_labor_hours":claim["modeled_labor_hours"],
+                "nominal_recipient_nutrition_gain_model":float(nominal),
+                "actual_recipient_nutrition_gain":0.0,
+                "nutrition_allocation_policy":"PROPORTIONAL_SIMULTANEOUS_BODILY_CAPACITY_R1",
                 "material_status":(
                     "INSTITUTIONAL_RIGHTS_DENIED" if denied else
                     "FULLY_PROVISIONED" if shortage==0 else
@@ -204,6 +204,19 @@ def settle_provisioning(world, actors, allocation):
                 "no_actor_causal_comprehension_inferred":True,
                 "policy":"PROPORTIONAL_DECLARED_CLAIMS_R1",
                 "grade":"SOURCEFREE_QUALIFIED_MATERIAL_PROVISIONING"})
+    # An unordered aggregate period provides no evidence that the first
+    # iterated source fed first. Allocate limited bodily headroom among
+    # simultaneous modeled effects, separately from physical food delivery.
+    by_recipient={}
+    for row in outcomes:
+        by_recipient.setdefault(row["recipient"],[]).append(row)
+    for recipient,rows in by_recipient.items():
+        claims=[{"id":x["id"],"requested_units":str(x["nominal_recipient_nutrition_gain_model"])}
+                for x in rows]
+        gains={q["id"]:v for q,v in _allocate(Decimal(1)-projected_nutrition[recipient],claims)}
+        for row in rows:
+            row["actual_recipient_nutrition_gain"]=float(gains.get(row["id"],Decimal(0)))
+        projected_nutrition[recipient]+=sum(gains.values(),Decimal(0))
     # Validate the entire settlement first, then apply exact material
     # conservation and nutrition as one transaction.
     for key,nextstock in changes:
@@ -230,6 +243,9 @@ def settle_provisioning(world, actors, allocation):
     for recipient,final in projected_nutrition.items():
         actors[recipient]["body"]["nutrition"]=float(final)
     world.setdefault("material_provisioning_periods",[]).extend(outcomes)
+    from .co_regulation_history import conserve_received_period_provision
+    for row in outcomes:
+        conserve_received_period_provision(actors[row["recipient"]],row)
     return outcomes
 
 
