@@ -287,4 +287,87 @@ class JoinedGenerationCourt(unittest.TestCase):
                     finally:g.close()
                 finally:rt.close()
 
+
+    def test_actual_acquired_cultural_reference_becomes_new_end_trial_and_project(self):
+        # Reuse the R34 native cultural, possible-end and project owners.
+        # Two explicit research setup acts are conserved as such, never
+        # represented as autonomous psychological selection.
+        from um_sorok_organism.types import adult,blank_world
+        for acquire in (True,False):
+            with self.subTest(acquire=acquire),tempfile.TemporaryDirectory() as d:
+                folder=Path(d);rt=ConstitutiveRuntime(str(folder/"life.sqlite"))
+                try:
+                    father=adult("father","Father")
+                    father["projects"]=[{"id":"make","object":"make things","means":["MAKE_OBJECT"],"priority":.6,"status":"active"}]
+                    child=newborn("nadia","Nadia")
+                    w=blank_world();w["sites"]["home"]["stock"]=30
+                    rt.ledger.initialize(w,[father,child])
+                    self.assertEqual(rt.step("father",requested_action="MAKE_OBJECT")["status"],"PERFORMED")
+                    old=next(iter(rt.ledger.world()[1]["material_objects"]))
+                    self.assertEqual(rt.step("father",requested_action="SPEAK",object_ref=old)["status"],"PERFORMED")
+                    self.assertTrue(rt.ledger.actor("nadia")[1]["cultural_demonstrations"])
+                    self.assertFalse(rt.ledger.actor("nadia")[1]["possible_ends"])
+                    class CulturalCheckpoint:
+                        def __init__(self):self.requests=[]
+                        def call(self,r):
+                            self.requests.append(r);ctx=r["context"];t=ctx["clock"]
+                            if r["mode"]=="TERMINAL":return {"retrospective":retro(r),"prospective":None}
+                            if r["mode"]=="BOOTSTRAP":
+                                learn=[{"offer":"historically_possible_cultural_references"}] if acquire else []
+                                meaning=[{"offer":"historically_possible_cross_object_significance",
+                                    "construct":"CROSS_OBJECT_POSSIBLE_END","augment":{
+                                    "possible_object":"discover how different made things can be cared for",
+                                    "possible_means":["INSPECT"],"cue_terms":["material_object"]}}] if acquire else []
+                                rows=[
+                                    event(ctx,"inspect-old",t+1,"nadia",{"nadia":policy([
+                                        action("INSPECT",{"project_id":None,"world_request":{"material_object_ref":old},
+                                            "grounds_status":"PRESENT_MATERIAL_OBJECT_NOT_ASSUMED_MOTIVE"})],learn)}),
+                                    event(ctx,"make-new",t+2,"father",{"father":policy([{"action":"MAKE_OBJECT","project_id":"make"}])}),
+                                    event(ctx,"new-interest",t+3,"nadia",{"nadia":policy([
+                                        action("INSPECT",{"cross_object_attention_analytic_only":{}}),action("WAIT")],meaning)})]
+                            else:
+                                ends=ctx["actor_contexts"]["nadia"]["possible_ends"]
+                                if ends:
+                                    ref=ends[0]["origin_material_object_ref"]
+                                    acts=[{"action":"INSPECT","pool":"possible_end_trials",
+                                         "option_match":{"source_material_object_ref":ref}},action("WAIT")]
+                                    take=[action("INSPECT",{"project_id":None,"world_request":{"material_object_ref":ref},
+                                          "grounds_status":"PRESENT_MATERIAL_OBJECT_NOT_ASSUMED_MOTIVE"}),action("WAIT")]
+                                    takeup=[{"offer":"historically_possible_incidental_takeup",
+                                            "construct":"INCIDENTAL_END_TAKEUP","augment":{"means":["INSPECT"]}}]
+                                    exercise=[action("INSPECT",{"world_request":{"material_object_ref":ref},
+                                            "grounds_status":"AVAILABLE_SINGLE_PROJECT_COURSE"}),action("WAIT")]
+                                else:acts=take=exercise=[action("WAIT")];takeup=[]
+                                rows=[event(ctx,"trial",t+1,"nadia",{"nadia":policy(acts)}),
+                                    event(ctx,"takeup",t+2,"nadia",{"nadia":policy(take,takeup)}),
+                                    event(ctx,"exercise",t+3,"nadia",{"nadia":policy(exercise)})]
+                            return {"retrospective":retro(r),"prospective":rows}
+                    p=CulturalCheckpoint()
+                    g=ModernGeneration(ModernDevelopmentOwner(rt,"nadia",folder/"ops.sqlite",
+                        sourcefree_attested=True),p,folder/"batch.sqlite",folder/"cycle.json")
+                    try:
+                        b=g.bootstrap();a=rt.ledger.actor("nadia")[1]
+                        self.assertEqual(len(a["cultural_reference_practices"]),int(acquire))
+                        self.assertEqual(len(a["possible_ends"]),int(acquire))
+                        self.assertFalse(a["projects"])
+                        self.assertEqual(b["records"][2]["objective"]["attempt"],"INSPECT" if acquire else "WAIT")
+                        if acquire:self.assertNotEqual(a["possible_ends"][0]["origin_material_object_ref"],old)
+                    finally:g.close();rt.close()
+                    rt=ConstitutiveRuntime(str(folder/"life.sqlite"))
+                    g=ModernGeneration(ModernDevelopmentOwner(rt,"nadia",folder/"ops.sqlite",
+                        sourcefree_attested=True),p,folder/"batch.sqlite",folder/"cycle.json")
+                    try:
+                        b=g.advance();a=rt.ledger.actor("nadia")[1]
+                        self.assertEqual(len(a["projects"]),int(acquire))
+                        self.assertEqual(b["records"][2]["objective"]["attempt"],"INSPECT" if acquire else "WAIT")
+                        if acquire:
+                            self.assertTrue(any(x.get("operation")=="INSPECT" and x.get("performed_status")=="PERFORMED"
+                                                for x in a["projects"][0].get("operational_history",[])))
+                        g.finish();self.assertTrue(rt.verify()["valid"]);self.assertTrue(g.engine.verify())
+                        print("R37_CULTURAL_END "+json.dumps({"acquire":acquire,"checkpoints":len(p.requests),
+                           "acquired_references":len(a["cultural_reference_practices"]),"projects":len(a["projects"]),
+                           "later_attempt":b["records"][2]["objective"]["attempt"]},sort_keys=True))
+                    finally:g.close()
+                finally:rt.close()
+
 if __name__=="__main__":unittest.main()
