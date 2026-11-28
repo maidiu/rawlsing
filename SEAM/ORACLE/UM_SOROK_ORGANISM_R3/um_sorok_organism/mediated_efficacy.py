@@ -20,6 +20,65 @@ def _fraction(x):
     return float(x)
 
 
+PREPROJECT_COMPONENTS=frozenset({'SIGNAL','PRACTICE'})
+
+def preproject_exercise_basis(actor, operation, location, source_ref, as_of):
+    """An actual earlier independently selected bodily exercise, not a project.
+
+    Only sparse child practice of rudimentary operations is in this new lane.
+    An externally requested operation, joint success, imagined scene or an
+    aggregate receipt cannot supply its initial detailed historical anchor.
+    """
+    if (actor.get('role')!='child' or operation not in PREPROJECT_COMPONENTS
+            or type(source_ref) is not str or type(as_of) is not int):
+        return None
+    matches=[r for r in actor.get('power_exercises',[])
+             if r.get('id')==source_ref and r.get('actor')==actor.get('id')
+             and r.get('operation')==operation
+             and r.get('encounter_location')==location
+             and r.get('attempt_status_analyst_receipt')=='PERFORMED'
+             and r.get('felt_attempt') is True
+             and r.get('participation_configuration')=='NO_PERCEIVED_JOINT_PARTICIPATION'
+             and r.get('actor_selected_preproject_exercise') is True
+             and type(r.get('event_clock')) is int and r['event_clock']<=as_of]
+    if len(matches)!=1:return None
+    row=matches[0]
+    paths=[p for p in actor.get('evidence_paths',[])
+           if p.get('event')==row.get('event_ref')
+           and p.get('experience_ref')==row.get('experience_ref')
+           and p.get('own_action')==operation
+           and p.get('practical_option_ref')==row.get('preproject_option_ref')
+           and type(p.get('practical_option_ref')) is str
+           and not p.get('selected_project_refs')
+           and not p.get('provisional_end_trial_ref_analytic_only')]
+    return row if len(paths)==1 else None
+
+
+def preproject_motor_readiness(actor):
+    """Separate coarse modeled dose from counted, actually performed events.
+
+    Provisional ceiling: 30 modeled hours -> at most .024 motor floor. No
+    language, remembered episodes, purpose, independent mastery or future
+    support. Use cumulative hours, not number of period partitions.
+    """
+    total=0.0
+    seen=set()
+    for row in actor.get('practice_exposures',[]):
+        if row.get('operation')!='PRACTICE' or not row.get('preproject_exercise_ref'):
+            continue
+        ref=row.get('id')
+        hours=row.get('modeled_practice_hours')
+        if (type(ref) is not str or ref in seen or type(hours) not in (int,float)
+                or not 0<hours<=3650*16 or row.get('actor')!=actor.get('id')
+                or row.get('grade')!='SOURCEFREE_CONDITIONED_AGGREGATE_PRACTICE'
+                or not preproject_exercise_basis(actor,'PRACTICE',row.get('location'),
+                     row['preproject_exercise_ref'],row.get('start_clock'))):
+            continue
+        seen.add(ref)
+        total+=hours
+    return round(min(.024,total*.0008),5)
+
+
 def conserve_compressed_practice(actor, process, start_clock, days):
     """Bounded *aggregate* participation, never fictitious single events.
 
@@ -47,12 +106,25 @@ def conserve_compressed_practice(actor, process, start_clock, days):
         raise ValueError('ROUTINE_UNQUALIFIED_SUPPORT')
     if place!=actor.get('location'):
         return None
-    if not any(p.get('status','active')=='active' and op in p.get('means',[])
-               for p in actor.get('projects',[])):
+    prior_ref=process.get('preproject_exercise_ref')
+    prior=None
+    if prior_ref is not None:
+        confirmation=process.get('source_registry_confirmation') or {}
+        if (confirmation.get('preproject_exercise_ref')!=prior_ref
+                or confirmation.get('practice_operation')!=op
+                or confirmation.get('source_ref')!=source
+                or mode!='SOLO_COMPONENT_PRACTICE'):
+            raise ValueError('PREPROJECT_ROUTINE_SOURCE_MISMATCH')
+        prior=preproject_exercise_basis(actor,op,place,prior_ref,start_clock)
+        if prior is None:raise ValueError('PREPROJECT_ROUTINE_NO_ACTUAL_OWN_EXERCISE')
+        if fraction==0:return None
+    elif not any(p.get('status','active')=='active' and op in p.get('means',[])
+                 for p in actor.get('projects',[])):
         return None
     ref=stable_id('qualified_aggregate_practice',{
         'actor':actor['id'],'source':source,'operation':op,
-        'start':start_clock,'days':days,'fraction':fraction,'mode':mode})
+        'start':start_clock,'days':days,'fraction':fraction,'mode':mode,
+        **({'preproject_exercise_ref':prior_ref} if prior is not None else {})})
     records=actor.setdefault('practice_exposures',[])
     if any(e.get('id')==ref for e in records):
         return {'id':ref,'already_recorded':True}
@@ -68,6 +140,12 @@ def conserve_compressed_practice(actor, process, start_clock, days):
         'not_a_conscious_account':True,
         'grade':'SOURCEFREE_CONDITIONED_AGGREGATE_PRACTICE',
     }
+    if prior is not None:
+        record.update({'preproject_exercise_ref':prior_ref,
+            'anchor_actual_event_ref':prior['event_ref'],
+            'anchor_actual_experience_ref':prior['experience_ref'],
+            'modeled_practice_hours':round(days*fraction*process['hours_per_active_day'],5),
+            'no_acquired_project_required_or_created':True})
     records.append(record)
     return record
 

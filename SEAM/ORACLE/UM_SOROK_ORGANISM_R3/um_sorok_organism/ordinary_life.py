@@ -69,6 +69,8 @@ def passage(world,actors,days,processes=None):
            'material_feeding_period_refs'],
        'material_feeding_shortfall_refs':allocation_receipt[
            'material_feeding_shortfall_refs'],
+       **({'preproject_practice_loads':allocation_receipt['preproject_practice_loads']}
+          if allocation_receipt.get('preproject_practice_loads') else {}),
        'actor_time_claims':allocation_receipt['actor_hour_claims_per_day'],
        'material_object_condition_process_refs':[r['id'] for r in material_wear],
        'qualified_aggregate_practice_refs':practice_evidence,
