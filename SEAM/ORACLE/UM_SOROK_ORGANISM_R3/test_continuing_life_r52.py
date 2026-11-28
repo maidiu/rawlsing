@@ -450,8 +450,8 @@ class ContinuingLifeCourt(unittest.TestCase):
         secret="The sound was mine, but doing it here felt difficult."
         rehearsal="I can stop and be quiet for a while."
         obj="make room for a quieter pause"
-        for nominate in (True,False):
-            with self.subTest(nominate=nominate),tempfile.TemporaryDirectory() as d:
+        for nominate,private_op in ((True,"REST"),(False,"REST"),(True,"ORIENT")):
+            with self.subTest(nominate=nominate,private_op=private_op),tempfile.TemporaryDirectory() as d:
                 root=Path(d);db=root/"life.sqlite"
                 def continue_actual(rt,reopen):
                     entry=deepcopy(rt.ledger.actor("nadia")[1]);proj=entry["projects"][0]["id"]
@@ -475,7 +475,7 @@ class ContinuingLifeCourt(unittest.TestCase):
                     def sing():return {"action":"SING","project_id":proj}
                     def course():
                         return policy([{"action":"SELECT_HIGHEST_CURRENT_PROJECT_COURSE",
-                                        "project_course_actions":["REST"]},sing(),action("WAIT")])
+                                        "project_course_actions":[private_op]},sing(),action("WAIT")])
                     def rows(r,plan):
                         ctx=r["context"];t=ctx["clock"];out=[]
                         for i,(who,p,span) in enumerate(plan):
@@ -560,7 +560,7 @@ class ContinuingLifeCourt(unittest.TestCase):
                                                ("nadia",policy([sing()],[affect("APPROACH")]),0)])
                             if n==2:
                                 p=policy([action("WAIT")],[{"private_construct":"NOTICE_END",
-                                    "augment":{"possible_object":obj,"means":["REST"]}}])
+                                    "augment":{"possible_object":obj,"means":[private_op]}}])
                                 if nominate:
                                     m=r["context"]["actor_contexts"]["nadia"]["accessible_memories"][0]
                                     p["private_rehearsal"]={"affect":"REQUIRED","memory_ref":m["id"],
@@ -570,12 +570,12 @@ class ContinuingLifeCourt(unittest.TestCase):
                             if n==3:
                                 ends=[e for e in r["context"]["actor_contexts"]["nadia"]["possible_ends"]
                                       if e.get("genesis_family")=="ACTUAL_PRIVATE_REHEARSAL"]
-                                rules=([{"action":"REST","pool":"possible_end_trials","option_match":{
+                                rules=([{"action":private_op,"pool":"possible_end_trials","option_match":{
                                     "possible_end_ref":ends[0]["id"]}}] if ends else [])+[action("WAIT")]
                                 takeup={"private_construct":"TAKE_UP_END","match":{"possible_object":obj},
-                                        "augment":{"means":["REST"]}}
+                                        "augment":{"means":[private_op]}}
                                 return rows(r,[("nadia",policy(rules),0),
-                                    ("nadia",policy([action("REST")],[takeup]),0),("nadia",course(),0)])
+                                    ("nadia",policy([action(private_op)],[takeup]),0),("nadia",course(),0)])
                             raise AssertionError("unexpected historical call")
                     class LiveCourse:
                         def __init__(self):self.calls=[]
@@ -597,6 +597,40 @@ class ContinuingLifeCourt(unittest.TestCase):
                         self.assertEqual({a["course_orientation"] for a in aff},{"APPROACH","WITHHOLD"})
                         if nominate:self.assertEqual(child["memories"][0]["ordinary_affect_memory"]["affect_ref"],
                             next(a["id"] for a in aff if a["course_orientation"]=="WITHHOLD"))
+                        if nominate and private_op=="REST":
+                            # R83 hostile read courts: the subject really formed
+                            # this memory in the joined runtime. Perturb only
+                            # detached read-model copies, never native ledger.
+                            from um_sorok_organism.reflective_regulation import offer_private_rehearsals
+                            clock=rt.ledger.world()[1]["clock"]
+                            m=child["memories"][0];src=m["ordinary_affect_memory"]
+                            def linked(a):
+                                return [o for o in offer_private_rehearsals(a,clock,"workshop",["WAIT","REST","ORIENT"])
+                                        if o["memory_ref"]==m["id"] and o.get("affect_ref")]
+                            original=linked(child);self.assertEqual(len(original),1)
+                            with self.subTest(hostile="unrelated-history-does-not-erase-access"):
+                                long=deepcopy(child)
+                                for i in range(257):
+                                    e="irrelevant:"+str(i)
+                                    long["evidence_paths"].append({"event":e,"experience_ref":e})
+                                    long["lived_genesis_episodes"].append({"event_ref":e,"actor":"nadia","experience_ref":e})
+                                for i in range(129):
+                                    long["expectations"].append({"id":"irrelevant:"+str(i),"actor":"nadia","affective_organizations":[]})
+                                self.assertEqual(linked(long),original)
+                            with self.subTest(hostile="unrelated-affect-must-not-borrow-memory"):
+                                mixed=deepcopy(child)
+                                for ex in mixed["expectations"]:
+                                    for a in list(ex.get("affective_organizations",[])):
+                                        if a["id"]==src["affect_ref"]:
+                                            other=deepcopy(a);other["id"]="different-affect-same-event"
+                                            other["basis"]["formation_source"]="OTHER_QUALIFIED_FAMILY"
+                                            ex["affective_organizations"].append(other)
+                                self.assertEqual(linked(mixed),original)
+                            with self.subTest(hostile="duplicate-source-is-not-a-witness"):
+                                doubled=deepcopy(child)
+                                doubled["evidence_paths"].append(deepcopy(next(p for p in child["evidence_paths"]
+                                    if p["event"]==src["event_ref"])))
+                                self.assertEqual(linked(doubled),[])
                         s.historical_checkpoint()
                         child=rt.ledger.actor("nadia")[1]
                         self.assertEqual(len(child["projects"]),1)
@@ -613,7 +647,17 @@ class ContinuingLifeCourt(unittest.TestCase):
                             p=child["projects"][1]
                             self.assertEqual(p["takeup_evidence"]["private_takeup_basis"]["ordinary_affect_memory"],
                                              child["memories"][0]["ordinary_affect_memory"])
-                            self.assertEqual(p["operational_history"][-1]["operation"],"REST")
+                            self.assertEqual(p["operational_history"][-1]["operation"],private_op)
+                            if private_op=="REST":
+                                from um_sorok_organism.reflective_regulation import ordinary_private_project_site
+                                from um_sorok_organism.constitution import materialize,actor_access
+                                w=cold.ledger.world()[1]
+                                self.assertTrue(ordinary_private_project_site(materialize(child,w),p,actor_access(child,w)))
+                                with self.subTest(hostile="source-severance-must-withhold-private-project"):
+                                    broken=deepcopy(child)
+                                    src=p["takeup_evidence"]["private_takeup_basis"]["ordinary_affect_memory"]
+                                    broken["evidence_paths"]=[x for x in broken["evidence_paths"] if x["event"]!=src["event_ref"]]
+                                    self.assertFalse(ordinary_private_project_site(materialize(broken,w),p,actor_access(broken,w)))
                         else:self.assertEqual(child["projects"][0]["operational_history"][-1]["operation"],"SING")
                         s.finish_history()
                         self.assertEqual(cold.ledger.events()[:len(prefix)],prefix)
@@ -651,7 +695,7 @@ class ContinuingLifeCourt(unittest.TestCase):
                         self.assertEqual(cold.ledger.events()[:len(actual)],actual)
                         result=cold.ledger.actor("nadia")[1]
                         p=result["projects"][-1]
-                        self.assertEqual(p["operational_history"][-1]["operation"],"REST" if nominate else "SING")
+                        self.assertEqual(p["operational_history"][-1]["operation"],private_op if nominate else "SING")
                         s.historical_checkpoint()
                         before_period=deepcopy(cold.ledger.world()[1])
                         father=deepcopy(cold.ledger.actor("father")[1])
@@ -676,7 +720,7 @@ class ContinuingLifeCourt(unittest.TestCase):
                         self.assertEqual(cold.ledger.actor("father")[1]["memories"],father["memories"])
                         result=cold.ledger.actor("nadia")[1];p=result["projects"][-1]
                         self.assertEqual(result["memories"],child_before["memories"])
-                        self.assertEqual(p["operational_history"][-1]["operation"],"REST" if nominate else "SING")
+                        self.assertEqual(p["operational_history"][-1]["operation"],private_op if nominate else "SING")
                         self.assertEqual(cold.ledger.events()[:len(actual)],actual)
                         # R82: the same actual family can return to personally
                         # experienced sites, form independent reciprocal routines,
@@ -713,7 +757,7 @@ class ContinuingLifeCourt(unittest.TestCase):
                         self.assertEqual(cold.ledger.events()[:len(before_pair_events)],before_pair_events)
                         result=cold.ledger.actor("nadia")[1];p=result["projects"][-1]
                         self.assertEqual(result["memories"],child_before["memories"])
-                        self.assertEqual(p["operational_history"][-1]["operation"],"REST" if nominate else "SING")
+                        self.assertEqual(p["operational_history"][-1]["operation"],private_op if nominate else "SING")
                         s.finish_history()
                         self.assertTrue(cold.verify()["valid"])
                         self.assertTrue(all(x["status"]=="RETURNED" for x in s.receipts()))
