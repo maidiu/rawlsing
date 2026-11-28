@@ -113,4 +113,73 @@ class ContinuingLifeCourt(unittest.TestCase):
                 self.assertEqual(rt.ledger.events(),before)
             finally:s.close();rt.close()
 
+
+    def test_exact_compiled_live_request_same_native_lexical_afterlife(self):
+        import sqlite3
+        from importlib.util import spec_from_file_location,module_from_spec
+        from copy import deepcopy
+        import test_live_turn_r38 as old
+        from live_turn_port_r38 import LiveTurnSession
+        from neighbor_runtime import NeighborEncounter
+        spec=spec_from_file_location("um_sorok_organism.r53_transport",
+            Path(__file__).parent/"um_sorok_organism"/"live_psychological_llm.py")
+        mod=module_from_spec(spec);spec.loader.exec_module(mod)
+        with tempfile.TemporaryDirectory() as d:
+            folder=Path(d);source=folder/"source.sqlite"
+            rt=old.OneResponseLiveCourt.setup_lexical(self,source);rt.close()
+            results=[]
+            for compact in (False,True):
+                db=folder/("compact.sqlite" if compact else "full.sqlite")
+                with sqlite3.connect(source) as origin,sqlite3.connect(db) as dest:origin.backup(dest)
+                packets=[];wire_rows=[]
+                def mock(req):
+                    doc=json.loads(req["messages"][1]["content"])
+                    wire_rows.append(doc)
+                    doc=mod.expand_live_wire_request(doc)
+                    packets.append(doc)
+                    a=doc["principal"]
+                    if a=="speaker":
+                        speak=policy([{"action":"SPEAK","pool":"addressed_lexical_options",
+                            "option_match":{"project_id":"talk","world_request":{"addressed_party_ref":"listener"}},
+                            "speech_intent":"Share a worry."}])
+                        speak["expression"]={"speech":old.WORDS,"surface":"Ordinary life."}
+                        learn=policy([], [{"offer":"historically_possible_lexical_project_revaluations",
+                            "construct":"LEXICAL_PROJECT_REVALUATION","match":{"project_id":"work",
+                            "lexical_revaluation_basis":{"lexical_acquisition_route":"VOLUNTARILY_ADDRESSED_TO_SELF"}},
+                            "augment":{"priority":.1,"personal_significance":"Perhaps I can take a moment to listen."}}])
+                        ans={"policies":{"speaker":speak,"listener":learn}}
+                    else:ans={"policies":{"listener":policy([{"action":"SELECT_HIGHEST_CURRENT_PROJECT_COURSE",
+                        "project_course_actions":["WORK","REST"]},action("WAIT")])}}
+                    return {"choices":[{"message":{"content":json.dumps(ans)}}]}
+                wire=mod.ExplicitLiveTurnProvider(endpoint="https://example.invalid/chat/completions",
+                    model="fixture",api_key="not-a-key",allow_private_actor_data=True,
+                    sourcefree_live_attested=True,transport=mock,metrics_capacity=8,
+                    compact_exact_packet=compact,compact_structured_packet=compact)
+                rt=ConstitutiveRuntime(str(db));session=LiveTurnSession(rt,wire,
+                     folder/("compact-attempt.sqlite" if compact else "full-attempt.sqlite"),sourcefree_attested=True)
+                try:
+                    n=NeighborEncounter(rt,"visitor",mii_module=mii)
+                    self.assertEqual(session.owner_actor_beat(n,"listener")["attempt"],"WORK")
+                    old.geometry(n,["speaker","listener"])
+                    self.assertEqual(session.owner_actor_beat(n,"speaker")["attempt"],"SPEAK")
+                    self.assertEqual(session.owner_actor_beat(n,"listener")["attempt"],"REST")
+                    view=n.private_surface(n.new_private_profile())
+                    self.assertIn(old.WORDS,json.dumps(view));self.assertNotIn(old.PRIVATE,json.dumps(view))
+                    self.assertTrue(rt.verify()["valid"])
+                    result={"packets":packets,"history":rt.ledger.events(),"actors":rt.ledger.actors(),
+                            "world":rt.ledger.world(),"metrics":wire.usage_snapshot()["receipts"],"view":view}
+                    self.assertEqual(len(packets),3)
+                    results.append(result)
+                finally:session.close();rt.close()
+            a,b=results
+            for k in ("packets","history","actors","world","view"):self.assertEqual(a[k],b[k],k)
+            full=sum(r["request_bytes"] for r in a["metrics"])
+            small=sum(r["request_bytes"] for r in b["metrics"])
+            self.assertLess(small,full)
+            self.assertTrue(any(r["alias_count"]+r["structured_field_count"]>0 for r in b["metrics"]))
+            print("R53_LIVE_EXACT",json.dumps({"full_bytes":full,"compact_bytes":small,
+                "calls_each":len(a["metrics"]),"exact_native_history":True,
+                "aliases":sum(r["alias_count"] for r in b["metrics"]),
+                "structured":sum(r["structured_field_count"] for r in b["metrics"])},sort_keys=True))
+
 if __name__=="__main__":unittest.main()

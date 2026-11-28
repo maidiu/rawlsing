@@ -932,6 +932,33 @@ actor speaks. Empty/no-change is lawful. No new family birth or interval here.
 No second model call for validation, expression or development. JSON only."""
 
 
+# Reuse the existing same-phase actor_attempt exact compiler. The combined
+# request has a different outer contract; only its principal packet may use
+# these aliases. No peer's information is copied into the principal.
+_LIVE_EXACT_RULES=(
+    " The principal_packet may omit only fields in principal_exact_aliases. "
+    "Each dotted destination equals the full source value in this SAME "
+    "principal_packet, never a peer or earlier occasion. Restore aliases "
+    "before principal_reconstructed_fields. For practical_options and "
+    "possible_end_trials with FROM_ORDERED_OPTIONS concatenate the respective "
+    "practical_alternatives or possible_end_trials lists in options order; "
+    "missing lists are empty. All other fields remain exact. These are "
+    "transport projections, not additional actor awareness or new options."
+)
+
+def expand_live_wire_request(wire):
+    """Strict inverse for exact transport checks, not actor cognition."""
+    if type(wire) is not dict or set(wire)-{
+            "grade","source","principal","principal_packet","peer_tips",
+            "principal_exact_aliases","principal_reconstructed_fields"}:
+        raise ValueError("LIVE_WIRE_FIELDS")
+    result=copy(wire)
+    aliases=result.pop("principal_exact_aliases",{})
+    descriptions=result.pop("principal_reconstructed_fields",{})
+    result["principal_packet"]=_expand_structured_fields("actor_attempt",
+        _expand_exact_aliases("actor_attempt",result["principal_packet"],aliases),descriptions)
+    return result
+
 class ExplicitLiveTurnProvider(ExplicitJSONLLMProvider):
     """Explicit, sourcefree one-response transport; not empirical adequacy."""
     grade="EXPLICIT_SOURCEFREE_ONE_TURN_LLM_UNCALIBRATED"
@@ -957,11 +984,37 @@ class ExplicitLiveTurnProvider(ExplicitJSONLLMProvider):
             body=canonical(request);n=len(body.encode("utf-8"))
             receipt["packet_bytes"]=n;receipt["wire_packet_bytes"]=n
             if n>512*1024:raise ValueError("LIVE_TURN_PACKET_LIMIT")
-            req={"model":self.model,"messages":[{"role":"system","content":_LIVE_TURN_INSTRUCTIONS},
-                   {"role":"user","content":body}],"response_format":{"type":"json_object"},
-                   **({self.completion_limit_field:self.completion_token_limit}
-                      if self.completion_token_limit is not None else {})}
-            receipt["instruction_bytes"]=len(_LIVE_TURN_INSTRUCTIONS.encode("utf-8"))
+            def wire_req(value,instructions):
+                return {"model":self.model,"messages":[{"role":"system","content":instructions},
+                    {"role":"user","content":canonical(value)}],"response_format":{"type":"json_object"},
+                    **({self.completion_limit_field:self.completion_token_limit}
+                       if self.completion_token_limit is not None else {})}
+            req=wire_req(request,_LIVE_TURN_INSTRUCTIONS)
+            projection=copy(request)
+            source=request["principal_packet"]
+            if self.compact_exact_packet:
+                projected,aliases=_compile_exact_aliases("actor_attempt",source)
+                if aliases:
+                    projection["principal_packet"]=projected
+                    projection["principal_exact_aliases"]=aliases
+            if self.compact_structured_packet:
+                _,descriptions=_compile_structured_fields("actor_attempt",source)
+                if descriptions:
+                    for field in descriptions:
+                        path=tuple(field.split("."))
+                        del _packet_field(projection["principal_packet"],path[:-1])[path[-1]]
+                    projection["principal_reconstructed_fields"]=descriptions
+            if projection!=request:
+                if canonical(expand_live_wire_request(projection))!=body:
+                    raise ValueError("LIVE_EXACT_PROJECTION_NOT_REVERSIBLE")
+                trial=wire_req(projection,_LIVE_TURN_INSTRUCTIONS+_LIVE_EXACT_RULES)
+                if len(canonical(trial).encode("utf-8"))<len(canonical(req).encode("utf-8")):
+                    req=trial
+                    receipt["packet_variant"]="ACTOR_TIPS_EXACT_PRINCIPAL"
+                    receipt["wire_packet_bytes"]=len(canonical(projection).encode("utf-8"))
+                    receipt["alias_count"]=len(projection.get("principal_exact_aliases",{}))
+                    receipt["structured_field_count"]=len(projection.get("principal_reconstructed_fields",{}))
+            receipt["instruction_bytes"]=len(req["messages"][0]["content"].encode("utf-8"))
             receipt["request_bytes"]=len(canonical(req).encode("utf-8"))
             receipt["attempts"]=1
             result=self._transport(copy(req)) if self._transport is not None else self._request(req)
