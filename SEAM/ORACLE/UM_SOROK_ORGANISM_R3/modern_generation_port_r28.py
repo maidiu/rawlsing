@@ -90,8 +90,14 @@ def policy_check(policy):
         if "option_match" in rule:
             require(isinstance(rule["option_match"],dict) and bool(rule["option_match"]) and
                     set(rule["option_match"])<= {"project_id","world_request","binding_status",
-                                               "grounds_status","operation","source_material_object_ref","genesis_family","productive_witness_attention","cross_object_attention_analytic_only","possible_end_ref","private_rehearsal_ref"},
+                                               "grounds_status","operation","source_material_object_ref","genesis_family","productive_witness_attention","cross_object_attention_analytic_only","possible_end_ref","private_rehearsal_ref","counter_due_clock"},
                     "GEN_ACTION_MATCH")
+            if "counter_due_clock" in rule["option_match"]:
+                require(rule["action"]=="COUNTER_MEETING" and
+                        type(rule["option_match"]["counter_due_clock"]) is int and
+                        rule["option_match"]["counter_due_clock"]>=0 and
+                        rule.get("pool","practical_options")=="practical_options",
+                        "GEN_COUNTER_MEETING_MATCH")
         if "current_match" in rule:
             m=rule["current_match"]
             require(isinstance(m,dict) and bool(m) and set(m)<={"action","kind","ref"} and
