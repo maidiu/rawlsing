@@ -12,7 +12,8 @@ remain the first writer/reader. No new canonical P2/P6/SDTF or native rights.
 """
 import math
 from .types import GRADE, copy, stable_id
-from .routine_sources import verify_qualified_period_envelope
+from .routine_sources import (verify_qualified_period_envelope, live_routine_situational_reason,
+                              LIVED_CLASS)
 from .organism import eligible
 from .mediated_efficacy import COMPONENTS
 from .material_conjunction import qualify_aggregate_material_gate
@@ -96,6 +97,9 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
         conditional=raw.get('routine_window_application')
         if conditional not in (None,'SITUATED_CONDITIONAL_ROUTINE'):
             raise ValueError('HISTORICAL_TIME_UNKNOWN_ROUTINE_APPLICATION')
+        lived_source=source_confirmation['source_grade']==LIVED_CLASS
+        if lived_source and conditional!='SITUATED_CONDITIONAL_ROUTINE':
+            raise ValueError('LIVED_ROUTINE_REQUIRES_SITUATED_APPLICATION')
         if conditional:
             # The explicit aggregate premise is not unconditional conduct.
             # Withhold a known course that is now situationally unavailable.
@@ -112,6 +116,8 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
                     'RECIPIENT_ELSEWHERE' if care_kind and not _actor_at_site(world,actors,recipient,site) else
                     'NO_ACTIVE_CARE_COURSE' if care_kind and 'CARE' not in active_means else
                     'NO_ACTIVE_WORK_COURSE' if raw['kind']=='QUALIFIED_WAGE_LABOR' and 'WORK' not in active_means else None)
+            if not reason and lived_source:
+                reason=live_routine_situational_reason(world,actors,raw)
             if reason:
                 situationally_withheld.append({'input_index':i,'source_ref':raw['source_ref'],
                     'actor':a,'location':site,'start_clock':start_clock,
@@ -164,6 +170,16 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
                     'not_a_performed_or_experienced_event':True})
                 continue
             raw={**raw,'aggregate_objective_gate':copy(gate)}
+        if lived_source and operation is not None:
+            ok,why=eligible(actors[a]['body'],operation)
+            if not ok:
+                bodily_withheld.append({'input_index':i,'source_ref':raw['source_ref'],
+                    'actor':a,'location':site,'operation':operation,
+                    'start_clock':start_clock,'end_clock':start_clock+days,
+                    'entry_body_reason':why,'proposed_routine':copy(raw),
+                    'coverage':'UNRESOLVED_FROM_ENTRY_BODY_NOT_ELIGIBLE',
+                    'not_proof_of_later_inability_or_actor_experience':True})
+                continue
         if raw['kind']=='QUALIFIED_ROUTINE_PRACTICE':
             # A future age or future relief cannot retroactively establish
             # a child's bodily participation throughout the preceding period.
