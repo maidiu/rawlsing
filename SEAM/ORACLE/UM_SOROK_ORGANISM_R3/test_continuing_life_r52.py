@@ -162,9 +162,9 @@ class ContinuingLifeCourt(unittest.TestCase):
                     self.assertEqual(session.owner_actor_beat(n,"listener")["attempt"],"WORK")
                     old.geometry(n,["speaker","listener"])
                     self.assertEqual(session.owner_actor_beat(n,"speaker")["attempt"],"SPEAK")
-                    self.assertEqual(session.owner_actor_beat(n,"listener")["attempt"],"REST")
                     view=n.private_surface(n.new_private_profile())
                     self.assertIn(old.WORDS,json.dumps(view));self.assertNotIn(old.PRIVATE,json.dumps(view))
+                    self.assertEqual(session.owner_actor_beat(n,"listener")["attempt"],"REST")
                     self.assertTrue(rt.verify()["valid"])
                     result={"packets":packets,"history":rt.ledger.events(),"actors":rt.ledger.actors(),
                             "world":rt.ledger.world(),"metrics":wire.usage_snapshot()["receipts"],"view":view}
