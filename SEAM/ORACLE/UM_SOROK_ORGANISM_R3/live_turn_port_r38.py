@@ -200,8 +200,8 @@ class LiveTurnSession:
         require(encounter.runtime is self.rt,"LIVE_FOREIGN_ENCOUNTER")
         if getattr(encounter,"_live_session",None) is self:return encounter.independent_actor_beat(actor)
         return self._run(lambda:encounter.independent_actor_beat(actor))
-    def continue_independent(self):
-        return self._run(lambda:self.rt.continue_without_user(beats=1))
+    def continue_independent(self,*,interval_origin=None):
+        return self._run(lambda:self.rt.continue_without_user(beats=1,interval_origin=interval_origin))
     def bind_neighbor(self,user_id,*,mii_module=None):
         """Attach to the existing multi-beat owner without a second scheduler.
 

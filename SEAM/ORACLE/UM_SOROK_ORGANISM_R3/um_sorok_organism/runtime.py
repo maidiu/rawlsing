@@ -1594,7 +1594,7 @@ class ConstitutiveRuntime:
             'developmental_effect_count':{aid:len(e) for aid,e in developmental.items()},
             'grade':GRADE}
 
-    def continue_without_user(self,beats=1):
+    def continue_without_user(self,beats=1,*,interval_origin=None):
         """Commit bounded real actor-selected, world-resolved life while absent.
 
         Unlike compressed background passage, each beat is a real transaction.
@@ -1602,10 +1602,16 @@ class ConstitutiveRuntime:
         it passes no external action, target, consent or forced developmental
         proposition into the continuing organism.
         """
+        counts=None
+        if interval_origin is not None:
+            clock=self.ledger.world(self.world_id)[1]['clock']
+            if type(interval_origin) is not int or not 0<=interval_origin<=clock:
+                raise ValueError('INITIATIVE_INVALID_CONTINUING_ORIGIN')
+            counts=self.ledger.actor_life_counts_after(self.world_id,interval_origin,clock)
         return continue_life(
             lambda: self.ledger.world(self.world_id)[1],
             self.ledger.actors,
-            lambda actor_id: self.step(actor_id), beats)
+            lambda actor_id: self.step(actor_id), beats,initial_counts=counts)
 
     def advance_to_discontinuity(self,horizon=30,processes=None):
         """Cover ordinary time only to the next real material interruption.

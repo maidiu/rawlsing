@@ -211,8 +211,19 @@ class ContinuingLife:
         with self.lock():
             s=self.ready("LIVE")
             require(not self.present(),"LIFE_USE_PRESENT_OWNER")
+            # Persist no second scheduler. The live epoch already has a
+            # qualified terminal boundary; an actual later departure opens
+            # a new absent interval. Recover counts from the native ledger.
+            require(s["terminal"] is not None,"LIFE_MISSING_TERMINAL")
+            origin=s["terminal"]["state"]["clock"]
+            w=self.rt.ledger.world(self.rt.world_id)[1]
+            departures=[e["clock"] for e in w.get("neighbor_user_events",[])
+                        if e.get("operation")=="LEAVE" and e.get("status")=="PERFORMED"
+                        and type(e.get("clock")) is int and origin<=e["clock"]<=w["clock"]]
+            origin=max([origin,*departures])
             def work(_):
-                with self.live() as session:return session.continue_independent()
+                with self.live() as session:
+                    return session.continue_independent(interval_origin=origin)
             return self.execute(s,"ABSENT_INDEPENDENT_BEAT",work)
 
     def resume_history(self):

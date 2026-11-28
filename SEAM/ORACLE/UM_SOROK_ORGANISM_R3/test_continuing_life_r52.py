@@ -423,11 +423,15 @@ class JoinedRoutineContinuityCourt(unittest.TestCase):
             def periods(start):return [x for x in world()["historical_periods"] if x["start"]>=start]
             def revise(s,mode):
                 live.mode=mode
-                for _ in range(8):
+                begin=len(live.requests)
+                for _ in range(4):
                     s.independent_absent_beat()
                     rows=routine("b").get("revisions",[])
-                    if rows and rows[-1]["mode"]==mode:return
-                self.fail("independent actor did not revise own routine")
+                    if rows and rows[-1]["mode"]==mode:
+                        self.assertIn("b",[q["principal"] for q in live.requests[begin:]])
+                        return
+                self.fail("independent actor did not revise own routine: principals="+
+                          str([q["principal"] for q in live.requests[begin:]]))
             s=open_life()
             try:
                 for _ in range(3):s.historical_checkpoint()
