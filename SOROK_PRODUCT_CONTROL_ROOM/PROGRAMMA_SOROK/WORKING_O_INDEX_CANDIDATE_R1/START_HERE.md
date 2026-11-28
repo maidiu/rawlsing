@@ -1,5 +1,10 @@
 # SOROK PROGRAMMA — O-INDEX LIVE RECEIVING START_HERE
 
+## PM R004 late supplement and documentary correction
+
+Current ledger exact Git **blob `923a49f9b026c09db80375a387322449ccbebb77`**; machine CIC `2a0c07ae9beaad26dff0c8bc85e3058b6fa94e20`. R24 #1378 `ee55cbb196eac7f2104d5cbf0b72dcb6f78d0981`, exact source and tests inspected: offline reducer of observed primary attempts across pinned 60-slot mapping, missing usage not zero, per-attempt integrity and terminal span, not completed archive accounting or adequate-result timing. Worker reported 2/2 local synthetic tests each mode; full CI still in progress, archive/CLI NOT_RUN. R23 remains last fully executed specialist cut; complete prior ledger record and CIC evidence/review pairs conserved. Latest PM return blob a1c94a268e91913e8374ae13566c2d3f8eb2c166. No count changes. Initial documentary CI [job 140804106200](https://github.com/maidiu/rawlsing/actions/runs/46088655305/job/140804106200) RED REFINEMENT_FUNCTION_CROSSWALK at ef19c70ef968029934b7930bbca8db9f32c57ac5; removed only newly added C8 evidence pointer from NEIGHBOR-CIC-024.03 (not original mapped function), retained C12 and exact R23 construction witness. No function crosswalk, status, review or authority change. Supersedes earlier R004 current pins below; historical cuts remain valid as dated observations.
+
+
 ## PM R004 — 2026-11-27 exact receiving
 
 Current ledger exact Git **blob `c50e06804d8afb53f893848a1da3f87337e2cde2`**; machine CIC `7f0035483d2def5dac6590cebe1ae31551a37d80`. 195 observed PR records, 686 relationships, 144 original identities, 58 obligations, 187 criteria, 719 frozen source routes. Construction observations: 150 unexamined (not absent), 34 partial, 2 first draft, 1 integrated first draft; clusters 36 unexamined / 22 partial. No organism percentage. 11 existing criteria gain bounded witnesses; prior criteria/dimensions/review grades and five superseded #1378 evidence/review pairs conserved.
