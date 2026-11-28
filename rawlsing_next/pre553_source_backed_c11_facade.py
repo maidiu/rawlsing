@@ -1092,16 +1092,47 @@ def _owner_material(owner_authority_refs: Iterable[AuthorityRef]) -> tuple[Autho
     return _auths(owner_authority_refs)
 
 
+def _event_identity_hashes(material):
+    """Exact three incumbent hashes from one serialization of each field.
+
+    Role is a distinct top-level canonical key, not a text substitution
+    inside an opaque value. Both subobjects use the existing encoder,
+    including nested canonicalization, Unicode and exact numeric rules.
+    """
+    if "role" in material:
+        raise SourceBackedC11FacadeError("event preimage already has role")
+    before={k:v for k,v in material.items() if k<"role"}
+    after={k:v for k,v in material.items() if k>"role"}
+    # The event owner's fixed schema has nonempty partitions. Preserve
+    # ordinary semantic hashing for any future geometry outside that ABI.
+    if not before or not after:
+        return (semantic_hash({**material,"role":"GROUP"}),
+                semantic_hash({**material,"role":"EVENT"}),semantic_hash(material))
+    prefix=canonical_json(before).encode("utf-8")[:-1]
+    suffix=canonical_json(after).encode("utf-8")[1:]
+    base=hashlib.sha256(prefix)
+    def role_hash(role):
+        h=base.copy()
+        h.update(b',"role":"'+role+b'",')
+        h.update(suffix)
+        return h.hexdigest()
+    replay=base.copy()
+    replay.update(b",")
+    replay.update(suffix)
+    return role_hash(b"GROUP"),role_hash(b"EVENT"),replay.hexdigest()
+
+
 def _event(source_sha, row, respondent, slot, cell, value, occ, p, owner_authority_refs=()):
     q = slot.question_binding
+    respondent_ref=respondent.ref
+    question_ref=q.ref
     owner_authority_refs = _owner_material(owner_authority_refs)
     material = {"contract": CONTRACT_ID, "projection": p.projection_identity_ref.as_dict(), "source_sha": source_sha,
-                "row": row, "respondent": respondent.ref.as_dict(), "question": q.ref.as_dict(),
+                "row": row, "respondent": respondent_ref.as_dict(), "question": question_ref.as_dict(),
                 "slot": slot.slot.key, "physical_value_key": value.physical_key, "occurrence": occ.key}
     if owner_authority_refs:
         material["slot_owner_authority_refs"] = [x.as_dict() for x in owner_authority_refs]
-    group = semantic_hash({**material, "role": "GROUP"})
-    eid = semantic_hash({**material, "role": "EVENT"})
+    group,eid,replay_digest = _event_identity_hashes(material)
     auths = [p.projection_authority_ref, authority_ref(q.semantic_authority_ref, "question semantic authority"),
              authority_ref(q.topology_authority_ref, "question topology authority"), *value.extra_authority_refs,
              *owner_authority_refs]
@@ -1109,17 +1140,20 @@ def _event(source_sha, row, respondent, slot, cell, value, occ, p, owner_authori
         auths.append(value.transform_authority_ref)
     component = occ.component_ref or _opt_ref(q.component_subitem_ref_or_typed_absence, "component")
     return RespondentEvent(
-        typed_state=value.response_state, authority_snapshot_refs=_auths(auths), dependency_refs=_refs((respondent.ref, q.ref)),
-        producer_replay_locator_or_reference_root=_dref("PRE553_C05R2A_EVENT_REPLAY_ROOT", "event", material),
-        empirical_universe_ref=respondent.empirical_universe_ref, scoped_respondent_ref=respondent.ref,
+        # CanonicalSemanticObject owns normalization and exact set order;
+        # do not repeat them here for every response occurrence.
+        typed_state=value.response_state, authority_snapshot_refs=auths, dependency_refs=(respondent_ref,question_ref),
+        producer_replay_locator_or_reference_root=ExactRef("PRE553_C05R2A_EVENT_REPLAY_ROOT",
+            f"urn:rawlsing:pre553:c05r2a:event:sha256:{replay_digest}",replay_digest),
+        empirical_universe_ref=respondent.empirical_universe_ref, scoped_respondent_ref=respondent_ref,
         native_question_ref=q.native_question_ref,
         canonical_question_ref_if_authorized=_opt_ref(q.canonical_question_ref_or_typed_absence, "canonical question"),
         component_or_subitem_ref=component,
         event_group_id=f"urn:rawlsing:pre553:c05r2a:event-group:sha256:{group}",
         response_event_id_or_deterministic_index=f"urn:rawlsing:pre553:c05r2a:event:sha256:{eid}",
-        raw_response_value=raw_physical_value_witness(cell.raw_value), canonical_response_value_if_authorized=canonicalize(value.canonical_value),
+        raw_response_value=raw_physical_value_witness(cell.raw_value), canonical_response_value_if_authorized=value.canonical_value,
         value_transform_authority_ref=value.transform_authority_ref, response_topology_ref=occ.topology_ref,
-        multiplicity_order_rank_fields=canonicalize(occ.multiplicity_order_rank_fields), response_state=value.response_state)
+        multiplicity_order_rank_fields=occ.multiplicity_order_rank_fields, response_state=value.response_state)
 
 
 def _coordinate(source_sha, row, respondent, slot, cell, rule, p, owner_authority_refs=()):

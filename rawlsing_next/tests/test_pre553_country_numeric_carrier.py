@@ -11,6 +11,31 @@ from rawlsing_next.pre553_country_numeric_carrier import (
 )
 
 class CountryNumeric(unittest.TestCase):
+    def test_event_preimage_split_is_exact_independent_canonical_hash(self):
+        from rawlsing_next.pre553_source_backed_c11_facade import _event_identity_hashes,SourceBackedC11FacadeError
+        from rawlsing_next.pre553_empirical_objects import semantic_hash,Pre553IntegrityError
+        from decimal import Decimal
+        from fractions import Fraction
+        from types import MappingProxyType
+        for material in (
+            {"row":19,"respondent":{"kind":"r","object_id":"é","content_hash":"a"*64},
+             "question":{"kind":"q","object_id":"q","content_hash":"b"*64},
+             "slot":(8,'embedded ,"role":"GROUP","row":'),"occurrence":"a",
+             "contract":"c","source_sha":"c"*64,"projection":{"x":"漢字"},
+             "physical_value_key":"d"*64},
+            {"a":MappingProxyType({"role":"embedded","z":(Decimal("1.230"),Fraction(2,3))}),
+             "row":1,"slot_owner_authority_refs":[{"authority_id":"a","authority_version":"1",
+                                                  "authority_content_hash":"f"*64}]},
+            {"row":1}, {"a":"before"}, {},
+        ):
+            expected=(semantic_hash({**material,"role":"GROUP"}),
+                      semantic_hash({**material,"role":"EVENT"}),semantic_hash(material))
+            self.assertEqual(_event_identity_hashes(material),expected)
+        with self.assertRaises(SourceBackedC11FacadeError):
+            _event_identity_hashes({"role":"foreign","row":1})
+        with self.assertRaises(Pre553IntegrityError):
+            _event_identity_hashes({"a":1.25,"row":1})
+
     def test_writer_scalar_memo_exact_tokens_and_bounded_fallback(self):
         from decimal import Decimal
         from dataclasses import replace
