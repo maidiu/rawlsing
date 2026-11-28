@@ -45,6 +45,7 @@ from .institutional_procedure_learning import (
     admit_public_procedure_expectation, admit_notice_expectation, admit_notice_revision,
     qualify_lived_institutional_difference,
 )
+from .routine_sources import admit_recurrent_routine
 import math
 
 class InvalidDevelopment(ValueError): pass
@@ -75,7 +76,7 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'ACQUIRE_NOTICE_EXPECTATION','REVISE_NOTICE_EXPECTATION',
          'ACQUIRE_GENETIC_POSSIBLE_END',
          'ACQUIRE_CONDITIONAL_JOINT_PRACTICE',
-         'ACQUIRE_COSTLY_CARE_PRACTICE','REVISE_COSTLY_CARE_PRACTICE',
+         'ACQUIRE_COSTLY_CARE_PRACTICE','REVISE_COSTLY_CARE_PRACTICE','ACQUIRE_RECURRENT_ROUTINE',
          'ACQUIRE_SITUATED_CULTURAL_REFERENCE',
          'REVISE_SITUATED_CULTURAL_REFERENCE',
          'ACQUIRE_SOCIAL_VOCAL_COORDINATION','ACQUIRE_REPAIR_TECHNIQUE','NO_CHANGE'}
@@ -445,6 +446,9 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                     actor,experience,event_ref,c))
             except ValueError as error:
                 raise InvalidDevelopment(str(error)) from error
+        elif op=='ACQUIRE_RECURRENT_ROUTINE':
+            try:report.append(admit_recurrent_routine(actor,experience,event_ref,c))
+            except ValueError as err:raise InvalidDevelopment(str(err)) from err
         elif op=='REVISE_COSTLY_CARE_PRACTICE':
             try:
                 report.append(admit_care_practice_revision(actor,experience,event_ref,c))

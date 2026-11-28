@@ -151,7 +151,7 @@ class CourseWire:
         return {'by_task':dict(totals),'original_packet_bytes':dict(self.original_bytes),
                 'projection_routes':dict(self.routes),'provider_tokens':None}
 
-def run_course(db, arm):
+def run_course(db, arm, *, routine_admission=None):
     """Two connected organs in one real household/ledger over elapsed life.
 
     Material course: actual demonstration/inspection -> acquired apprehension
@@ -167,6 +167,8 @@ def run_course(db, arm):
     fallback = HeuristicSemanticProvider()
     acquired = arm not in ('Lbad','F_abstain')
     observed = []
+    routine_threshold=None
+    routine_result=None
     def policy(task,p):
         aid = p.get('actor',{}).get('id')
         if task == 'adult_constructor':
@@ -209,6 +211,14 @@ def run_course(db, arm):
             if phase=='vocal-takeup':
                 return {'task':task,'candidates':p.get(
                     'historically_possible_productive_vocal_takeups',[])}
+            if phase=='routine-vocal' and routine_admission:
+                rows=[x for x in p.get('historically_possible_recurrent_routines',[])
+                      if x['basis']['operation']=='SING']
+                if rows:
+                    return {'task':task,'candidates':[{
+                        'kind':'ACQUIRE_RECURRENT_ROUTINE','basis':rows[0]['basis'],
+                        'window_days':60,'hours_per_active_day':2.,
+                        'provisional_exposure_fraction':.75}]}
             return {'task':task,'candidates':[]}
         if task=='actor_attempt':
             rows=p.get('practical_options',[])
@@ -240,8 +250,17 @@ def run_course(db, arm):
                 return choose(lambda x:x.get('operation')=='INSPECT'
                     and x.get('world_request',{}).get('material_object_ref')==new
                     and bool(x.get('project_id'))==(phase=='material-project'))
-            if phase=='vocal-project':
+            if phase in ('vocal-project','routine-vocal'):
                 return choose(lambda x:x.get('operation')=='SING' and x.get('project_id'))
+            if phase=='routine-rest':return {'task':task,'action':'REST'}
+            if phase=='routine-late':
+                # A controlled policy exercises a facility-sensitive choice.
+                # No claim that this estimate is conscious self-knowledge.
+                value=next((x['situated_component_facility']['technical_component_facility_estimate']
+                            for x in p['options'] if x['action']=='SING'),None)
+                if value is not None and value>routine_threshold:
+                    return choose(lambda x:x.get('operation')=='SING' and x.get('project_id'))
+                return {'task':task,'action':'WAIT'}
             if phase in ('vocal-own','vocal-takeup'):
                 return {'task':task,'action':'SING'}
             return {'task':task,'action':'WAIT'}
@@ -349,9 +368,59 @@ def run_course(db, arm):
         require(updated['means']==(['SING','ORIENT'] if acquired else ['SING']),
                 'RECIPROCAL_REFUNCT_FAILURE')
         cold()
-        phase='receive';beat('mother','ORIENT' if acquired else 'WAIT')
+        phase='receive';mother_later=beat('mother','ORIENT' if acquired else 'WAIT')['attempt']
         require(rt.ledger.world('w1')[1]['neighbor_user_events']==visitor_history,
                 'FABRICATED_ABSENT_VISITOR')
+        if routine_admission is not None:
+            require(acquired and arm=='E','ROUTINE_REQUIRES_FULL_ACQUIRED_EXACT_ARM')
+            # Continue the very SAME child's acquired purpose, not a seeded
+            # adult-like project or a newly initialized person.
+            for _ in range(2):
+                phase='routine-rest';beat('nadia','REST')
+                phase='routine-vocal';beat('nadia','SING')
+            phase='routine-rest';beat('nadia','REST')
+            before=deepcopy(rt.ledger.actor('nadia')[1])
+            projects=[p for p in before['projects'] if 'SING' in p.get('means',[])]
+            require(len(projects)==1,'ROUTINE_NO_ACTUALLY_ACQUIRED_PROJECT')
+            sources=[x for x in rt.ledger.world()[1]['routine_source_registry'].values()
+                     if x.get('actor')=='nadia' and x.get('operation')=='SING']
+            require(len(sources)==int(routine_admission),'ROUTINE_SOURCE_ADMISSION')
+            from um_sorok_organism.mediated_efficacy import situated_component_efficacy
+            prior_component=situated_component_efficacy(before,'SING','home')
+            # Fixed matched threshold relative to the actual pre-period
+            # competence, not knowledge of which arm was selected.
+            routine_threshold=prior_component['technical_component_facility_estimate']+.02
+            start=rt.ledger.world()[1]['clock'];dep=visitor_history[-1]['event_ref']
+            phase='elapsed';cold()
+            result=n.continue_absent_life_until(dep,start+40,
+                historical_cadence={'cadence_origin':start,'ordinary_span':40,'detail_beats':3})
+            require(result['status']=='AT_OR_PAST_ABSENCE_TARGET','ROUTINE_CONTINUATION')
+            require(rt.ledger.world()[1]['neighbor_user_events']==visitor_history,
+                    'ROUTINE_FABRICATED_ABSENT_USER')
+            current=deepcopy(rt.ledger.actor('nadia')[1])
+            require(current['power_exercises']==before['power_exercises'],
+                    'ROUTINE_INVENTED_INDIVIDUAL_PRACTICE')
+            require(current['memories']==before['memories'],'ROUTINE_INVENTED_MEMORIES')
+            require(current['projects']==before['projects'],'ROUTINE_REPLACED_PURPOSE')
+            later_component=situated_component_efficacy(current,'SING','home')
+            require(later_component['technical_component_facility_estimate']>
+                    routine_threshold if routine_admission else later_component==prior_component,
+                    'ROUTINE_DID_NOT_CHANGE_EXISTING_FACILITY')
+            cold()
+            require(n.contribute('return-after-routine','MOVE',destination='home')['status']=='PERFORMED',
+                    'ROUTINE_RETURN')
+            phase='routine-late'
+            actual=beat('nadia','SING' if routine_admission else 'WAIT')
+            surface=n.private_surface(n.new_private_profile())
+            require('recurrent_routines' not in canonical(surface),'ROUTINE_PRIVATE_LEAK')
+            routine_result={'project_id':projects[0]['id'],'actual_later_operation':actual['attempt'],
+                'facility_before':prior_component['technical_component_facility_estimate'],
+                'facility_after':later_component['technical_component_facility_estimate'],
+                'aggregate_practice_periods':later_component['qualified_compressed_practice_periods'],
+                'individual_exercises_before_period':prior_component['actual_participation_events'],
+                'individual_exercises_after_period':later_component['actual_participation_events'],
+                'body_age_days':current['age_days'],'source_count':len(sources),
+                'threshold_is_controlled_policy_not_science':True}
         require('visitor' not in rt.ledger.actors(),'COUNTERFEIT_VISITOR')
         require(rt.verify()['valid'],'FINAL_CHAIN')
         final={'world':rt.ledger.world('w1')[1],'actors':rt.ledger.actors(),
@@ -361,7 +430,8 @@ def run_course(db, arm):
                 'cultural_practice':int(acquired),'new_material_project':int(bool(material)),
                 'actual_material_project_exercises':material_exercises,
                 'vocal_project':len(vocal),'mother_means':updated['means'],
-                'mother_actual_later_operation':observed[-1][1],
+                'mother_actual_later_operation':mother_later,
+                **({'acquired_routine_course':routine_result} if routine_result is not None else {}),
                 'wire_witness_digest':digest(wire.witness),'cost':wire.stats(),
                 'sourcefree_not_live_model':True,
                 'no_inference_token_or_population_forecast':True}

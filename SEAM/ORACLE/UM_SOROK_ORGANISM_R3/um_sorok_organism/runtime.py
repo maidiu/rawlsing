@@ -41,7 +41,8 @@ from .unintended_goods import (possible_unintended_goods, qualify_incidental_obj
 from .expectation_afterlife import (source_qualified_appraisal_candidates,
                                     possible_activity_affects, own_vocal_reception,
                                     possible_expressive_practices, possible_self_expression_affects)
-from .routine_sources import register_sourcefree_period_envelope
+from .routine_sources import (register_sourcefree_period_envelope, routine_exercise_receipt,
+    possible_recurrent_routines, register_admitted_routine)
 from .caregiving_practice import retain_performed_material_feeding
 from .material_provisioning import offer_feeding_source_alternatives, offer_self_meal_source_alternatives
 from .food_access_struggle import configure_food_power
@@ -1201,6 +1202,9 @@ class ConstitutiveRuntime:
                 actors[aid],experience,objective_ref)
             retain_performed_material_feeding(
                 actors[aid],experience,objective_ref,world)
+            routine_exercise=routine_exercise_receipt(actors[aid],experience,objective_ref)
+            if routine_exercise:
+                actors[aid]['evidence_paths'][-1]['routine_exercise_analytic_only']=routine_exercise
             conserve_sensed_material_nonperformance(
                 actors[aid],experience,objective_ref)
             conserve_incomplete_work(actors[aid],experience,objective_ref)
@@ -1353,6 +1357,9 @@ class ConstitutiveRuntime:
                 **({'historically_possible_provisioning_reorganizations':copy(provisioning)}
                    if (provisioning:=possible_provisioning_reorganizations(
                        actors[aid],experience,objective_ref)) else {}),
+                **({'historically_possible_recurrent_routines':routine_candidates}
+                   if (routine_candidates:=possible_recurrent_routines(
+                       actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_productive_witness_reorganizations':copy(
                     possible_productive_witness_reorganizations(actors[aid],experience,objective_ref)),
                 'historically_possible_dependency_project_reorganizations':copy(
@@ -1476,6 +1483,9 @@ class ConstitutiveRuntime:
             developmental[aid]=admit(actors[aid],experience,objective_ref,
                                     developmental_candidates,
                                     issued_trial=issued_trial)
+            for report in developmental[aid]:
+                if report.get('kind')=='ACQUIRE_RECURRENT_ROUTINE':
+                    report['source_ref']=register_admitted_routine(world,actors[aid],report,objective_ref)
         observed=subjective.get(actor_id,{})
         # A privileged world audit outcome is NOT automatically what this
         # person saw or can disclose. The event's public sign is deliberately
