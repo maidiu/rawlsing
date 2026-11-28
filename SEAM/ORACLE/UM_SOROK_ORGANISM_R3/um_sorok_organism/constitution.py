@@ -8,7 +8,7 @@ from .activity import eligible_activities, annotate_interactivity_relations
 from .psychodynamics import enact_currents
 from .relational_metabolism import derive_relational_metabolism, situated_relation_links, quarantine_pairs
 from .plans import qualified_learned_compositions
-from .practical_difference import practical_alternatives
+from .practical_difference import practical_alternatives, familiar_destination_rows
 from .preproject_agency import recruit_preproject_anticipations
 from .prospective_horizon import project_trial_horizons
 from .attention_field import situate_attention
@@ -699,6 +699,10 @@ def compose(constitution,access,limit=50):
         actions.setdefault('REFUSE',{'action':'REFUSE','score':.055,
             'basis':['CURRENT_ACTOR_ACCESSIBLE_MATERIAL_OFFER'],
             'opportunity':'PARTICULAR_OFFER_MAY_BE_REFUSED_NOT_REQUIRED'})
+    if eligible(constitution.body,'MOVE')[0] and familiar_destination_rows(constitution,access):
+        actions.setdefault('MOVE',{'action':'MOVE','score':.045,
+            'basis':['ACTOR_LIVED_FAMILIAR_DESTINATION'],
+            'opportunity':'POSSIBLE_RETURN_NOT_CURRENT_PERMISSION'})
     for action in MEETING_ACTIONS:
         if eligible(constitution.body,action)[0] and meeting_options(constitution,access,action):
             actions.setdefault(action,{'action':action,'score':.045,

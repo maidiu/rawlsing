@@ -75,7 +75,13 @@ def subset(row, match):
     return isinstance(row,dict) and all(k in row and (subset(row[k],v) if isinstance(v,dict) else row[k]==v) for k,v in match.items())
 
 def policy_check(policy):
-    require(exact_keys(policy,(),("actions","formation","expression")),"GEN_POLICY_SHAPE")
+    require(exact_keys(policy,(),("actions","formation","expression","private_rehearsal")),"GEN_POLICY_SHAPE")
+    if "private_rehearsal" in policy:
+        r=policy["private_rehearsal"]
+        require(exact_keys(r,("affect","meaning"),("memory_event_ref","memory_ref","affect_ref")) and
+                r["affect"] in ("REQUIRED","NONE") and text(r["meaning"]) and
+                all(text(r[k]) for k in ("memory_event_ref","memory_ref","affect_ref") if k in r) and
+                ("affect_ref" not in r or r["affect"]=="REQUIRED"),"GEN_PRIVATE_REHEARSAL_POLICY")
     actions=policy.get("actions",[])
     require(isinstance(actions,list) and len(actions)<=MAX_POLICY_ITEMS,"GEN_ACTION_POLICY_SIZE")
     for rule in actions:
@@ -84,7 +90,7 @@ def policy_check(policy):
         if "option_match" in rule:
             require(isinstance(rule["option_match"],dict) and bool(rule["option_match"]) and
                     set(rule["option_match"])<= {"project_id","world_request","binding_status",
-                                               "grounds_status","operation","source_material_object_ref","genesis_family","productive_witness_attention","cross_object_attention_analytic_only"},
+                                               "grounds_status","operation","source_material_object_ref","genesis_family","productive_witness_attention","cross_object_attention_analytic_only","possible_end_ref","private_rehearsal_ref"},
                     "GEN_ACTION_MATCH")
         if "current_match" in rule:
             m=rule["current_match"]
@@ -126,7 +132,17 @@ def policy_check(policy):
             isinstance(formation["rules"],list) and len(formation["rules"])<=MAX_POLICY_ITEMS,
             "GEN_FORMATION_POLICY")
     for rule in formation["rules"]:
-        if exact_keys(rule,("candidate",),("when",)):
+        if exact_keys(rule,("private_construct","augment"),("match",)):
+            kind=rule["private_construct"];v=rule["augment"];m=rule.get("match",{})
+            require(isinstance(m,dict) and set(m)<={"private_affect_ref","possible_end_ref","possible_object"} and
+                    all(text(x) for x in m.values()),"GEN_PRIVATE_CONSTRUCT_MATCH")
+            require(kind in ("NOTICE_END","TAKE_UP_END"),"GEN_PRIVATE_CONSTRUCT_KIND")
+            require(exact_keys(v,("possible_object","means") if kind=="NOTICE_END" else ("means",)) and
+                    ("possible_object" not in v or text(v["possible_object"])) and
+                    isinstance(v["means"],list) and 1<=len(v["means"])<=3 and
+                    all(x in ("REST","ORIENT","EAT") for x in v["means"]) and
+                    len(set(v["means"]))==len(v["means"]),"GEN_PRIVATE_CONSTRUCT_MEANING")
+        elif exact_keys(rule,("candidate",),("when",)):
             c=rule["candidate"]
             require(isinstance(c,dict) and c.get("kind") in
                     ("MEMORY","ACQUIRE_HISTORICAL_ORIENTATION"),"GEN_DIRECT_KIND")
@@ -184,12 +200,14 @@ TYPED_FORMATION_OFFERS = {
     "DELAYED_APPRAISAL": ("historically_possible_delayed_appraisals",),
     "ACTIVITY_AFFECT": ("historically_possible_activity_affects",
                         "historically_possible_self_expression_affects"),
+    "ORDINARY_AFFECT_MEMORY": ("historically_possible_activity_affects",),
     "EXPRESSIVE_PRACTICE": ("historically_possible_expressive_practices",),
     "RECURRENT_WORK_ORIENTATION": ("historically_possible_recurrent_livelihood_orientation",),
     "LIVED_CROSS_CONTEXT_REVALUATION": ("historically_possible_lived_cross_context_revaluations",),
     "WITNESSED_OTHER_RELATION": ("historically_possible_witnessed_third_party_relations",),
     "RECURRENT_ROUTINE": ("historically_possible_recurrent_routines",),
     "RECURRENT_ROUTINE_REVISION": ("historically_possible_routine_revisions",),
+    "ROUTINE_REVISION": ("historically_possible_routine_revisions",),
 }
 
 def rich_meaning_check(kind,v):
@@ -199,6 +217,10 @@ def rich_meaning_check(kind,v):
         require(exact_keys(v,("affect_name","personal_sense","course_orientation")) and
                 text(v["affect_name"],120) and text(v["personal_sense"]) and
                 v["course_orientation"] in ("APPROACH","WITHHOLD"),"GEN_ACTIVITY_AFFECT")
+    elif kind=="ORDINARY_AFFECT_MEMORY":
+        require(exact_keys(v,("content","cue_terms")) and text(v["content"])
+                and isinstance(v["cue_terms"],list) and 1<=len(v["cue_terms"])<=12
+                and all(text(k,80) for k in v["cue_terms"]),"GEN_ORDINARY_AFFECT_MEMORY_MEANING")
     elif kind=="EXPRESSIVE_PRACTICE":
         require(exact_keys(v,("cadence",)) and text(v["cadence"],40),"GEN_EXPRESSIVE_PRACTICE")
     elif kind=="RECURRENT_WORK_ORIENTATION":
@@ -223,7 +245,7 @@ def rich_meaning_check(kind,v):
                  0<v["food_units_per_active_day"]<=1 and
                  round(v["food_units_per_active_day"],5)==v["food_units_per_active_day"]),
                 "GEN_ROUTINE_DOSE")
-    elif kind=="RECURRENT_ROUTINE_REVISION":
+    elif kind in ("RECURRENT_ROUTINE_REVISION","ROUTINE_REVISION"):
         require(exact_keys(v,("mode","interpretive_hypothesis"),("dose",)) and
                 v["mode"] in ("PAUSE","RESUME","RETIRE","RESIZE") and
                 text(v["interpretive_hypothesis"],512) and
@@ -267,7 +289,7 @@ def rich_candidate(kind,q,v):
                  v["food_units_per_active_day"]<=q["maximum_food_units_per_active_day"]),
                 "GEN_ROUTINE_UNOFFERED_DOSE")
         return {"kind":"ACQUIRE_RECURRENT_ROUTINE","basis":q["basis"],**v}
-    if kind=="RECURRENT_ROUTINE_REVISION":
+    if kind in ("RECURRENT_ROUTINE_REVISION","ROUTINE_REVISION"):
         require(q.get("kind")=="REVISE_RECURRENT_ROUTINE" and v["mode"] in q["allowed_modes"],
                 "GEN_ROUTINE_UNOFFERED_REVISION")
         if v["mode"]=="RESIZE":
@@ -315,6 +337,16 @@ class ConditionalPolicy:
                     return {"task":task,"action":"WAIT","private_rehearsal_id":rows[0]["rehearsal_id"],
                             "private_rehearsal_content":retro["meaning"]}
                 self.routes["retrospective_rehearsal_not_currently_eligible"]+=1
+            r=policy.get("private_rehearsal")
+            if r and packet.get("requesting_actor") is None:
+                rows=[q for q in packet.get("private_rehearsal_options",[])
+                      if (q.get("affect_ref") is not None)==(r["affect"]=="REQUIRED")
+                      and all(q.get(k)==r[k] for k in ("memory_event_ref","memory_ref","affect_ref") if k in r)]
+                if len(rows)==1:
+                    self.routes["private_rehearsal_selected"]+=1
+                    return {"task":task,"action":"WAIT","private_rehearsal_id":rows[0]["rehearsal_id"],
+                            "private_rehearsal_content":r["meaning"]}
+                self.routes["private_rehearsal_absent_or_ambiguous"]+=1
             for rule in policy.get("actions",[]):
                 action=rule["action"]
                 if "current_match" in rule and not any(subset(c,rule["current_match"]) for c in packet.get("situated",{}).get("currents",[])):
@@ -385,7 +417,38 @@ class ConditionalPolicy:
                 elif packet.get("actual_private_rehearsal_analyst_only"):
                     self.routes["retrospective_no_qualified_revision"]+=1
             for rule in form["rules"]:
-                if "candidate" in rule:
+                if "private_construct" in rule:
+                    kind=rule["private_construct"];v=rule["augment"];m=rule.get("match",{})
+                    experience=packet.get("experience",{});sel=experience.get("own_practical_selection") or {}
+                    rec=packet.get("actual_private_rehearsal_analyst_only")
+                    if kind=="NOTICE_END":
+                        if (rec and rec.get("actor")==actor and set(v["means"])<=set(rec.get("possible_means",[]))
+                                and subset({"private_affect_ref":rec.get("affect_ref")},m)):
+                            candidates.append({"kind":"NOTICE_PRIVATE_POSSIBLE_END","rehearsal_ref":rec["id"],
+                                "possible_object":v["possible_object"],"possible_means":v["means"]})
+                            self.routes["private_end_nominated"]+=1
+                    else:
+                        # Derive only from retained actual ends and a later own
+                        # performed course. Native admission rechecks all grounds.
+                        rows=[e for e in packet.get("actor_possible_ends",[])
+                              if e.get("genesis_family")=="ACTUAL_PRIVATE_REHEARSAL"
+                              and e.get("status")=="POSSIBLE_NOT_ACQUIRED_MOTIVE"
+                              and subset({**e,"possible_end_ref":e.get("id")},m)
+                              and e.get("private_location")==experience.get("location")
+                              and type(e.get("origin_clock")) is int and e["origin_clock"]<experience.get("clock",-1)
+                              and set(v["means"])<=set(e.get("possible_means",[]))
+                              and any(t.get("actor_experienced_status")=="PERFORMED"
+                                  and t.get("private_rehearsal_ref")==e.get("private_rehearsal_ref")
+                                  and t.get("operation")==experience.get("own_action")
+                                  and t.get("event_ref")!=packet.get("evidence_path",{}).get("event")
+                                  for t in e.get("trial_history",[]))]
+                        if (len(rows)==1 and experience.get("status")=="PERFORMED"
+                                and experience.get("perceived_cues") and sel.get("status")=="ACTOR_POLICY_PRACTICAL_ATTEMPT"
+                                and sel.get("selected_project_refs")==[] and sel.get("possible_end_trial") is None):
+                            candidates.append({"kind":"TAKE_UP_POSSIBLE_END","possible_end_ref":rows[0]["id"],
+                                               "means":v["means"]})
+                            self.routes["private_end_takeup_nominated"]+=1
+                elif "candidate" in rule:
                     if subset(packet.get("experience",{}),rule.get("when",{})):
                         candidates.append(detached(rule["candidate"]))
                         self.routes["checkpoint_direct_candidate"]+=1
@@ -401,7 +464,19 @@ class ConditionalPolicy:
                         continue
                     q=detached(rows[0]);extra=rule.get("augment",{})
                     construct=rule.get("construct")
-                    if construct in TYPED_FORMATION_OFFERS:
+                    if construct=="ORDINARY_AFFECT_MEMORY":
+                        # Never let a generic memory borrow a coincident affect.
+                        # Only the exact fresh owner offer AND an earlier same
+                        # dispatch affect nomination can supply this memory.
+                        # Native development still checks actual admission,
+                        # expressive capacity, source, actor and chronology.
+                        prior=[c for c in candidates if c.get("kind")=="ACQUIRE_ACTIVITY_AFFECT"
+                               and c.get("basis")==q]
+                        if q.get("formation_source")!="OWN_ORDINARY_PROJECT_EXERCISE" or len(prior)!=1:
+                            self.routes["ordinary_affect_memory_unqualified"]+=1
+                            continue
+                        c={"kind":"MEMORY","ordinary_affect_memory_basis":q,**detached(extra)}
+                    elif construct in TYPED_FORMATION_OFFERS:
                         c=rich_candidate(construct,q,detached(extra))
                     elif construct=="LEXICAL_PROJECT_REVALUATION":
                         c={"kind":"REORGANIZE_PROJECT","project_id":q["project_id"],

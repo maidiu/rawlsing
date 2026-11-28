@@ -368,6 +368,511 @@ class ContinuingLifeCourt(unittest.TestCase):
                         "retained_hypotheses":len(models),"live_calls":p.calls},sort_keys=True))
                 finally:session.close();rt.close()
 
+
+    def test_affect_qualified_private_rehearsal_new_end_trial_and_later_project(self):
+        from live_turn_port_r38 import LiveTurnSession
+        from neighbor_runtime import NeighborEncounter
+        from test_rich_formation_r44 import rich
+        from copy import deepcopy
+        for nominate in (True,False):
+            with self.subTest(nominate=nominate),tempfile.TemporaryDirectory() as d:
+                root=Path(d);db=root/"life.sqlite";rt=ConstitutiveRuntime(str(db))
+                a=adult("worker","Mara");a["projects"]=[{"id":"duty","object":"sustain availability",
+                    "means":["REST","SPEAK"],"status":"active","priority":.5,
+                    "expected_difference":{"feature":"availability","direction":"PRESERVE","sign_tags":["wait"]}}]
+                rt.ledger.initialize(blank_world(),[a])
+                secret="Quiet need not mean abandoning a commitment."
+                class Provider:
+                    def __init__(self):self.calls=0;self.stage=0
+                    def call(self,r):
+                        self.calls+=1;stage=self.stage
+                        if stage==0:p=policy([{"action":"REST","project_id":"duty"}])
+                        elif stage==1:p=policy([action("WAIT")],[rich("delayed_appraisals","DELAYED_APPRAISAL",appraisal="ACTOR_INTERPRETS_DISAPPOINTED")])
+                        elif stage==2:p=policy([action("WAIT")],[
+                            rich("activity_affects","ACTIVITY_AFFECT",affect_name="unease",personal_sense="quiet conflicts with duty",course_orientation="APPROACH"),
+                            {"candidate":{"kind":"MEMORY","content":"The quiet interval felt like letting someone down.","cue_terms":["wait"]},
+                             "when":{"own_action":"WAIT","status":"PERFORMED"}}])
+                        elif stage==3:
+                            p=policy([action("WAIT")],[{"private_construct":"NOTICE_END","augment":{
+                                "possible_object":"Attend without promising availability","means":["ORIENT"]}}] if nominate else [])
+                            p["private_rehearsal"]={"affect":"REQUIRED","meaning":secret}
+                        elif stage==4:
+                            rows=[q for q in r["principal_packet"]["possible_end_trials"] if q.get("private_rehearsal_ref")]
+                            p=policy(([{"action":"ORIENT","pool":"possible_end_trials","option_match":{
+                                "possible_end_ref":rows[0]["possible_end_ref"]}}] if rows else [])+[action("WAIT")])
+                        elif stage==5:p=policy([action("ORIENT")],[{"private_construct":"TAKE_UP_END",
+                                "augment":{"means":["ORIENT"]},"match":{"possible_object":"Attend without promising availability"}}])
+                        else:p=policy([{"action":"SELECT_HIGHEST_CURRENT_PROJECT_COURSE","project_course_actions":["ORIENT"]},action("WAIT")])
+                        return {"policies":{"worker":p}}
+                p=Provider();session=LiveTurnSession(rt,p,root/"live.sqlite",sourcefree_attested=True)
+                try:
+                    n=NeighborEncounter(rt,"visitor",mii_module=mii)
+                    for stage in range(4):
+                        p.stage=stage;self.assertEqual(session.owner_actor_beat(n,"worker")["status"],"PERFORMED")
+                    before=rt.snapshot("worker")
+                    recs=[x for m in before["memories"] for x in m.get("private_rehearsals",[])]
+                    self.assertEqual(len(recs),1);self.assertTrue(recs[0]["affect_ref"])
+                    ends=[e for e in before["possible_ends"] if e.get("genesis_family")=="ACTUAL_PRIVATE_REHEARSAL"]
+                    self.assertEqual(len(ends),int(nominate))
+                    self.assertNotIn(secret,json.dumps(rt.ledger.world()[1]))
+                    p.stage=4;out=session.owner_actor_beat(n,"worker")
+                    self.assertEqual(out["attempt"],"ORIENT" if nominate else "WAIT")
+                    self.assertFalse(any(x.get("possible_end_ref") for x in rt.snapshot("worker")["projects"]))
+                    p.stage=5;self.assertEqual(session.owner_actor_beat(n,"worker")["status"],"PERFORMED")
+                    after=rt.snapshot("worker")
+                    projects=[x for x in after["projects"] if x.get("possible_end_ref")]
+                    self.assertEqual(len(projects),int(nominate))
+                    self.assertEqual(after["memories"],before["memories"])
+                    if nominate:self.assertTrue(projects[0]["takeup_evidence"]["private_takeup_basis"])
+                finally:session.close();rt.close()
+                rt=ConstitutiveRuntime(str(db));session=LiveTurnSession(rt,p,root/"live.sqlite",sourcefree_attested=True)
+                try:
+                    p.stage=6;out=session.owner_actor_beat(NeighborEncounter(rt,"visitor",mii_module=mii),"worker")
+                    self.assertEqual(out["attempt"],"ORIENT" if nominate else "WAIT")
+                    self.assertTrue(rt.verify()["valid"])
+                    self.assertEqual(p.calls,7)
+                    print("R57_PRIVATE_END",json.dumps({"nominate":nominate,"later":out["attempt"],
+                        "projects":len(projects),"calls":p.calls,"affect_qualified":True},sort_keys=True))
+                finally:session.close();rt.close()
+
+
+    def test_R79_actual_developing_child_affect_memory_through_checkpoint_encounter_and_resumption(self):
+        """Continue the actual R78 childhood at its already acquired local concern.
+        No injected child project, generic memory substitute or old owner checkout.
+        Both arms use the same actual affect and policy; only qualified memory
+        nomination order differs. The visitor is an authored fictional fixture.
+        """
+        import importlib.util
+        from copy import deepcopy
+        from um_sorok_organism.types import canonical
+        spec=importlib.util.spec_from_file_location("actual_r78_childhood",
+            Path(__file__).parent/"tests"/"test_early_ordinary_practice_r66.py")
+        mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)
+        secret="The sound was mine, but doing it here felt difficult."
+        rehearsal="I can stop and be quiet for a while."
+        obj="make room for a quieter pause"
+        for nominate in (True,False):
+            with self.subTest(nominate=nominate),tempfile.TemporaryDirectory() as d:
+                root=Path(d);db=root/"life.sqlite"
+                def continue_actual(rt,reopen):
+                    entry=deepcopy(rt.ledger.actor("nadia")[1]);proj=entry["projects"][0]["id"]
+                    work=[p for p in rt.ledger.actor("father")[1]["projects"] if p["object"]=="subsistence"]
+                    self.assertEqual(len(work),1);work_proj=work[0]["id"]
+                    shared_projects={a:next(p["id"] for p in rt.ledger.actor(a)[1]["projects"]
+                        if p["object"]=="ordinary shared singing") for a in ("father","mother")}
+                    self.assertEqual(entry["location"],"workshop")
+                    self.assertEqual(entry["body"]["language"],.35)
+                    self.assertEqual(entry["memories"],[])
+                    self.assertEqual(len(entry["projects"]),1)
+                    match={"formation_source":"OWN_ORDINARY_PROJECT_EXERCISE","object_affect_ref":None,
+                           "project_ref":proj}
+                    def affect(orientation):
+                        return {"offer":"historically_possible_activity_affects","construct":"ACTIVITY_AFFECT",
+                            "match":match,"augment":{"affect_name":"reticence" if orientation=="WITHHOLD" else "interest",
+                                "personal_sense":"a provisional significance of the actually exercised concern",
+                                "course_orientation":orientation}}
+                    memory={"offer":"historically_possible_activity_affects","construct":"ORDINARY_AFFECT_MEMORY",
+                            "match":match,"augment":{"content":secret,"cue_terms":["sing"]}}
+                    def sing():return {"action":"SING","project_id":proj}
+                    def course():
+                        return policy([{"action":"SELECT_HIGHEST_CURRENT_PROJECT_COURSE",
+                                        "project_course_actions":["REST"]},sing(),action("WAIT")])
+                    def rows(r,plan):
+                        ctx=r["context"];t=ctx["clock"];out=[]
+                        for i,(who,p,span) in enumerate(plan):
+                            t+=span+1
+                            out.append(event(ctx,"r79:"+str(t)+":"+str(i),t,who,p if who in p else {who:p},span=span))
+                        return {"retrospective":retro(r),"prospective":out}
+                    class History:
+                        def __init__(self,resumed=False):self.calls=[];self.resumed=resumed
+                        def call(self,r):
+                            self.calls.append(r)
+                            if r["mode"]=="TERMINAL":return {"retrospective":retro(r),"prospective":None}
+                            if self.resumed:
+                                if not r["context"]["prior_generation_and_live_ancestry"]:
+                                    raise AssertionError("actual live ancestry absent")
+                                n=len(self.calls)
+                                if n==1:
+                                    return rows(r,[("nadia",course(),0),("father",policy([action("REST")]),0),
+                                                   ("nadia",course(),0)])
+                                if n==2:
+                                    # Actual previously constituted adult, not
+                                    # a new wage-labor personality. Three exact
+                                    # independently selected material courses.
+                                    work=action("WORK",{"project_id":work_proj})
+                                    routine={"offer":"historically_possible_recurrent_routines",
+                                        "construct":"RECURRENT_ROUTINE",
+                                        "match":{"basis":{"actor":"father","operation":"WORK","project_ref":work_proj}},
+                                        "augment":{"window_days":60,"hours_per_active_day":2.,
+                                                   "provisional_exposure_fraction":.5}}
+                                    return rows(r,[("father",policy([work]),0),
+                                        ("father",policy([action("REST")]),0),("father",policy([work]),0),
+                                        ("father",policy([action("REST")]),0),("father",policy([work],[routine]),0)])
+                                if n==3:
+                                    def revise(mode):
+                                        return {"offer":"historically_possible_routine_revisions","construct":"ROUTINE_REVISION",
+                                            "match":{"basis":{"actor":"father","operation":"WORK","project_ref":work_proj}},
+                                            "augment":{"mode":mode,"interpretive_hypothesis":"Change my own continued work."}}
+                                    # Source comes from ACTUAL previous admitted
+                                    # routine, not an authored period catalog.
+                                    return rows(r,[("nadia",course(),10),
+                                        ("father",policy([action("REST")],[revise("PAUSE")]),0),
+                                        ("nadia",course(),5),
+                                        ("father",policy([action("REST")],[revise("RESUME")]),0),
+                                        ("nadia",course(),5)])
+                                def move(site):
+                                    return policy([action("MOVE",{"grounds_status":"HISTORICALLY_FAMILIAR_DESTINATION",
+                                        "world_request":{"material_object_ref":site}})])
+                                def shared(nominate_routine=False,refuse=False):
+                                    out={}
+                                    for a,peer in (("father","mother"),("mother","father")):
+                                        rule={"offer":"historically_possible_recurrent_routines",
+                                            "construct":"RECURRENT_ROUTINE",
+                                            "match":{"basis":{"actor":a,"operation":"SING","project_ref":shared_projects[a],
+                                                              "coactivity_partner":peer}},
+                                            "augment":{"window_days":45,"hours_per_active_day":2.,
+                                                       "provisional_exposure_fraction":.5}}
+                                        out[a]=policy([action("REFUSE")] if refuse and a=="mother" else
+                                              [action("SING",{"project_id":shared_projects[a]})],
+                                              [rule] if nominate_routine else [])
+                                    return out
+                                if n==4:
+                                    return rows(r,[("father",policy([action("REST")]),0),
+                                        ("father",move("home"),0),("nadia",move("home"),0),
+                                        ("father",shared(refuse=True),0),("father",policy([action("REST")]),0)])
+                                if n==5:
+                                    return rows(r,[("mother",policy([action("REST")]),0),("father",shared(),0),
+                                        ("father",policy([action("REST")]),0),
+                                        ("mother",policy([action("REST")]),0),("father",shared(),0)])
+                                if n==6:
+                                    return rows(r,[("father",policy([action("REST")]),0),("mother",policy([action("REST")]),0),
+                                        ("father",shared(nominate_routine=True),0)])
+                                if n==7:
+                                    return rows(r,[("nadia",course(),4),
+                                        ("father",policy([action("REST")]),0),
+                                        ("father",move("workshop"),0),("nadia",move("workshop"),0),
+                                        ("nadia",course(),4)])
+                                raise AssertionError("unexpected resumed call")
+                            n=len(self.calls)
+                            if n==1:
+                                first=[affect("WITHHOLD"),memory] if nominate else [memory,affect("WITHHOLD")]
+                                return rows(r,[("nadia",policy([sing()],first),0),
+                                               ("nadia",policy([action("REST")]),0),
+                                               ("nadia",policy([sing()],[affect("APPROACH")]),0)])
+                            if n==2:
+                                p=policy([action("WAIT")],[{"private_construct":"NOTICE_END",
+                                    "augment":{"possible_object":obj,"means":["REST"]}}])
+                                if nominate:
+                                    m=r["context"]["actor_contexts"]["nadia"]["accessible_memories"][0]
+                                    p["private_rehearsal"]={"affect":"REQUIRED","memory_ref":m["id"],
+                                        "affect_ref":m["ordinary_affect_memory"]["affect_ref"],"meaning":rehearsal}
+                                return rows(r,[("nadia",policy([action("WAIT")]),0),
+                                               ("nadia",policy([action("REST")]),2),("nadia",p,0)])
+                            if n==3:
+                                ends=[e for e in r["context"]["actor_contexts"]["nadia"]["possible_ends"]
+                                      if e.get("genesis_family")=="ACTUAL_PRIVATE_REHEARSAL"]
+                                rules=([{"action":"REST","pool":"possible_end_trials","option_match":{
+                                    "possible_end_ref":ends[0]["id"]}}] if ends else [])+[action("WAIT")]
+                                takeup={"private_construct":"TAKE_UP_END","match":{"possible_object":obj},
+                                        "augment":{"means":["REST"]}}
+                                return rows(r,[("nadia",policy(rules),0),
+                                    ("nadia",policy([action("REST")],[takeup]),0),("nadia",course(),0)])
+                            raise AssertionError("unexpected historical call")
+                    class LiveCourse:
+                        def __init__(self):self.calls=[]
+                        def call(self,r):
+                            self.calls.append(r)
+                            aid=r["principal"]
+                            return {"policies":{aid:course() if aid=="nadia" else policy([action("REST"),action("WAIT")])}}
+                    h=History();live=LiveCourse()
+                    def op(runtime,hist):return ContinuingLife(runtime,root/"operator","nadia",
+                        historical_provider=hist,live_provider=live,sourcefree_attested=True,mii_module=mii)
+                    s=op(rt,h)
+                    try:
+                        prefix=rt.ledger.events()
+                        s.historical_checkpoint()
+                        child=rt.ledger.actor("nadia")[1]
+                        self.assertEqual(len(child["memories"]),int(nominate))
+                        aff=[a for e in child["expectations"] for a in e.get("affective_organizations",[])
+                             if a["basis"]["location"]=="workshop"]
+                        self.assertEqual({a["course_orientation"] for a in aff},{"APPROACH","WITHHOLD"})
+                        if nominate:self.assertEqual(child["memories"][0]["ordinary_affect_memory"]["affect_ref"],
+                            next(a["id"] for a in aff if a["course_orientation"]=="WITHHOLD"))
+                        s.historical_checkpoint()
+                        child=rt.ledger.actor("nadia")[1]
+                        self.assertEqual(len(child["projects"]),1)
+                        self.assertEqual(len([e for e in child["possible_ends"] if
+                            e.get("genesis_family")=="ACTUAL_PRIVATE_REHEARSAL"]),int(nominate))
+                    finally:s.close()
+                    # Cold history continuation, not a regenerated child.
+                    cold=ConstitutiveRuntime(str(db));s=op(cold,h)
+                    try:
+                        s.historical_checkpoint()
+                        child=cold.ledger.actor("nadia")[1]
+                        self.assertEqual(len(child["projects"]),1+int(nominate))
+                        if nominate:
+                            p=child["projects"][1]
+                            self.assertEqual(p["takeup_evidence"]["private_takeup_basis"]["ordinary_affect_memory"],
+                                             child["memories"][0]["ordinary_affect_memory"])
+                            self.assertEqual(p["operational_history"][-1]["operation"],"REST")
+                        else:self.assertEqual(child["projects"][0]["operational_history"][-1]["operation"],"SING")
+                        s.finish_history()
+                        self.assertEqual(cold.ledger.events()[:len(prefix)],prefix)
+                        pre_live=cold.ledger.events()
+                        s.configure_encounter("visitor",{"grade":"SOURCEFREE_TEST_ONLY",
+                            "user_conditions":{"workshop":{"light":"lit","sightline":"unobstructed",
+                                "hearing":True,"sound_path":"audible","legibility":"readable"}},
+                            "actor_conditions":{a:{"facing":"entrance","visual":True,"light":"lit",
+                                "sightline":"unobstructed","hearing":True,"sound_path":"audible"}
+                                for a in ("father","mother","nadia")}},request_id="geometry")
+                        self.assertEqual(s.contribute("visitor","enter","MOVE",destination="workshop")["status"],"PERFORMED")
+                        self.assertEqual(s.contribute("visitor","say","SAY",text="There is room to be here.",
+                                                      target_actor_ref="nadia")["status"],"PERFORMED")
+                        w=cold.ledger.world()[1];ref=w["neighbor_user_events"][-1]["event_ref"];target=w["clock"]+4
+                        with self.assertRaisesRegex(RecursionRefusal,"LIFE_VISITOR_STILL_PRESENT"):s.resume_history()
+                        self.assertEqual(s.present_until("visitor",ref,target,max_beats=1)["beats_committed_this_call"],1)
+                    finally:s.close();cold.close()
+                    cold=ConstitutiveRuntime(str(db));s=op(cold,h)
+                    try:
+                        s.present_until("visitor",ref,target)
+                        calls=len(live.calls);self.assertEqual(calls,4)
+                        self.assertEqual(s.present_until("visitor",ref,target)["new_present_surfaces"],[])
+                        self.assertEqual(len(live.calls),calls)
+                        self.assertIn("nadia",{q["principal"] for q in live.calls})
+                        view=canonical(s.private_surface("visitor"))
+                        self.assertNotIn(secret,view);self.assertNotIn(rehearsal,view)
+                        self.assertNotIn(secret,canonical(cold.ledger.world()[1]))
+                        self.assertEqual(s.contribute("visitor","leave","LEAVE")["status"],"PERFORMED")
+                        actual=cold.ledger.events();self.assertEqual(actual[:len(pre_live)],pre_live)
+                    finally:s.close();cold.close()
+                    h2=History(resumed=True);cold=ConstitutiveRuntime(str(db));s=op(cold,h2)
+                    try:
+                        s.resume_history()
+                        self.assertEqual(s.status()["epoch"],1)
+                        self.assertEqual(cold.ledger.events()[:len(actual)],actual)
+                        result=cold.ledger.actor("nadia")[1]
+                        p=result["projects"][-1]
+                        self.assertEqual(p["operational_history"][-1]["operation"],"REST" if nominate else "SING")
+                        s.historical_checkpoint()
+                        before_period=deepcopy(cold.ledger.world()[1])
+                        father=deepcopy(cold.ledger.actor("father")[1])
+                        child_before=deepcopy(cold.ledger.actor("nadia")[1])
+                        sources=[q for q in before_period["routine_source_registry"].values()
+                                 if q["actor"]=="father" and q.get("operation")=="WORK"]
+                        self.assertEqual(len(sources),1)
+                        src=sources[0];self.assertEqual(len(set(src["basis_event_refs"])),3)
+                        self.assertEqual(src["evidence_class"],"SOURCEFREE_ACTOR_LIVED_ROUTINE_PROPOSAL")
+                        s.historical_checkpoint()
+                        after=cold.ledger.world()[1]
+                        periods=[q for q in after["historical_periods"] if q["start"]>=before_period["clock"]]
+                        active=[q for q in periods if any(x["source_ref"]==src["id"] for x in q["processes"])]
+                        held=[q for q in periods if any(x["source_ref"]==src["id"] and
+                              x["reason"]=="ACTOR_ROUTINE_PAUSED" for x in q.get("situationally_withheld_processes",[]))]
+                        self.assertEqual(sum(q["end"]-q["start"] for q in active),15)
+                        self.assertEqual(sum(q["end"]-q["start"] for q in held),5)
+                        self.assertEqual(sum(q["modeled_labor_hours"] for q in after["wage_labor_periods"]
+                                             if q["source_ref"]==src["id"]),15.)
+                        self.assertEqual([x["mode"] for x in after["routine_source_registry"][src["id"]]["revisions"]],
+                                         ["PAUSE","RESUME"])
+                        self.assertEqual(cold.ledger.actor("father")[1]["memories"],father["memories"])
+                        result=cold.ledger.actor("nadia")[1];p=result["projects"][-1]
+                        self.assertEqual(result["memories"],child_before["memories"])
+                        self.assertEqual(p["operational_history"][-1]["operation"],"REST" if nominate else "SING")
+                        self.assertEqual(cold.ledger.events()[:len(actual)],actual)
+                        # R82: the same actual family can return to personally
+                        # experienced sites, form independent reciprocal routines,
+                        # and carry both private and material history across departure.
+                        s.historical_checkpoint()
+                        w=cold.ledger.world()[1]
+                        self.assertEqual(w["positions"]["father"],"home")
+                        self.assertEqual(w["positions"]["nadia"],"home")
+                        s.historical_checkpoint()
+                        s.historical_checkpoint()
+                        w=cold.ledger.world()[1]
+                        pair=[q for q in w["routine_source_registry"].values()
+                              if q.get("operation")=="SING"]
+                        self.assertEqual({q["actor"] for q in pair},{"father","mother"})
+                        self.assertEqual(len(pair),2)
+                        self.assertEqual(pair[0]["basis_event_refs"],pair[1]["basis_event_refs"])
+                        self.assertEqual(len(set(pair[0]["basis_event_refs"])),3)
+                        before_pair=deepcopy(w);before_pair_events=cold.ledger.events()
+                    finally:s.close();cold.close()
+                    cold=ConstitutiveRuntime(str(db));s=op(cold,h2)
+                    try:
+                        s.historical_checkpoint()
+                        w=cold.ledger.world()[1]
+                        self.assertEqual(w["positions"]["father"],"workshop")
+                        self.assertEqual(w["positions"]["nadia"],"workshop")
+                        pair_refs={q["id"] for q in pair}
+                        periods=[q for q in w["historical_periods"] if q["start"]>=before_pair["clock"]]
+                        self.assertEqual(sum(q["end"]-q["start"] for q in periods
+                            if pair_refs.issubset({v["source_ref"] for v in q["processes"]})),4)
+                        self.assertEqual(sum(q["end"]-q["start"] for q in periods
+                            if any(v["source_ref"]==src["id"] for v in q["processes"])),4)
+                        self.assertTrue(all(not (pair_refs & {v["source_ref"] for v in q["processes"]}
+                            and any(v["source_ref"]==src["id"] for v in q["processes"])) for q in periods))
+                        self.assertEqual(cold.ledger.events()[:len(before_pair_events)],before_pair_events)
+                        result=cold.ledger.actor("nadia")[1];p=result["projects"][-1]
+                        self.assertEqual(result["memories"],child_before["memories"])
+                        self.assertEqual(p["operational_history"][-1]["operation"],"REST" if nominate else "SING")
+                        s.finish_history()
+                        self.assertTrue(cold.verify()["valid"])
+                        self.assertTrue(all(x["status"]=="RETURNED" for x in s.receipts()))
+                        self.assertFalse(s.status()["held"])
+                        print("R79_JOINED_CHILD",json.dumps({"nominate":nominate,"age_days":result["age_days"],
+                            "projects":len(result["projects"]),"historical_calls":len(h.calls)+len(h2.calls),
+                            "live_calls":calls,"native_events":len(cold.ledger.events()),
+                            "actual_later_course":p["operational_history"][-1]["operation"],
+                            "modeled_wage_hours":19,"paused_days":5,"actual_work_anchor_events":3,
+                            "same_family_reciprocal_days":4,"actual_reciprocal_anchor_events":3},sort_keys=True))
+                        return result
+                    finally:s.close();cold.close()
+                result=mod.EarlyOrdinaryPractice().productive_ordinary_arm(db,True,transfer=True,affect=True,
+                    private=nominate,antecedent=True,continuation=continue_actual,reciprocal_antecedent=True)
+                self.assertEqual(len(result["projects"]),1+int(nominate))
+
+
+    def test_R82_familiar_destination_is_actor_local_not_world_permission(self):
+        from modern_generation_port_r28 import ConditionalPolicy
+        from um_sorok_organism.semantics import ValidatingSemanticService
+        with tempfile.TemporaryDirectory() as d:
+            rt=ConstitutiveRuntime(str(Path(d)/"life.sqlite"))
+            try:
+                # Authored starting placement, not a claim of enduring
+                # institutional admission. The actor actually lives there.
+                rt.ledger.initialize(blank_world(),[adult("a","A",location="hall"),adult("b","B")])
+                self.assertEqual(rt.step("a",requested_action="REST")["status"],"PERFORMED")
+                self.assertEqual(rt.step("a",requested_action="MOVE",object_ref="home")["objective_outcome"],"MOVED")
+                rt.step("b",requested_action="REST")
+                def destinations(a):
+                    return [o for q in rt.situated(a)["candidate_actions"]
+                            for o in q.get("practical_alternatives",[])
+                            if o.get("grounds_status")=="HISTORICALLY_FAMILIAR_DESTINATION"]
+                opts=destinations("a");self.assertEqual(len(opts),1)
+                self.assertEqual(opts[0]["world_request"]["material_object_ref"],"hall")
+                self.assertEqual(destinations("b"),[])
+                self.assertNotIn("workshop",[v["world_request"]["material_object_ref"] for v in opts])
+                # An action label by itself cannot silently pick a destination.
+                rt.semantic=ValidatingSemanticService(ConditionalPolicy({"a":policy([action("MOVE")])}))
+                self.assertIsNone(rt.plan("a").object_ref)
+                pol=policy([action("MOVE",{"grounds_status":"HISTORICALLY_FAMILIAR_DESTINATION",
+                                           "world_request":{"material_object_ref":"hall"}})])
+                rt.semantic=ValidatingSemanticService(ConditionalPolicy({"a":pol}))
+                out=rt.step("a")
+                self.assertEqual(out["attempt"],"MOVE")
+                self.assertEqual(out["objective_outcome"],"INSTITUTIONAL_ACCESS_DENIED")
+                self.assertEqual(rt.ledger.actor("a")[1]["location"],"home")
+                path=rt.ledger.actor("a")[1]["evidence_paths"][-1]
+                witness=path["pre_world_operative_policy_witness_analytic_only"]["familiar_destination_choice"]
+                self.assertEqual(witness["source"],opts[0]["familiar_destination_basis"])
+                self.assertTrue(rt.verify()["valid"])
+            finally:rt.close()
+
+
+    def test_R81_independent_reciprocal_routine_through_actual_checkpoint_interval_and_revision(self):
+        """Same shared semantic compiler and owner; no injected future assent."""
+        from copy import deepcopy
+        from um_sorok_organism.mediated_efficacy import situated_component_efficacy
+        for both in (True,False):
+            with self.subTest(both=both),tempfile.TemporaryDirectory() as d:
+                root=Path(d);db=root/"life.sqlite";rt=ConstitutiveRuntime(str(db))
+                aa=adult("a","A");bb=adult("b","B")
+                for actor,peer in ((aa,"b"),(bb,"a")):
+                    actor["projects"]=[{"id":actor["id"]+"-song","object":"a particular shared practice",
+                        "means":["SING"],"addressed_party_ref":peer,"status":"active","priority":.7}]
+                rt.ledger.initialize(blank_world(),[aa,bb])
+                def own(a,op,rules=()):
+                    return {a:policy([action(op)],rules)}
+                def shared(nominate=False,refuse=False):
+                    out={}
+                    for a,peer in (("a","b"),("b","a")):
+                        f=[]
+                        if nominate and (a=="a" or both):
+                            f=[{"offer":"historically_possible_recurrent_routines","construct":"RECURRENT_ROUTINE",
+                                "match":{"basis":{"actor":a,"operation":"SING","project_ref":a+"-song",
+                                                  "coactivity_partner":peer}},
+                                "augment":{"window_days":80,"hours_per_active_day":3. if a=="a" else 2.,
+                                           "provisional_exposure_fraction":1. if a=="a" else .5}}]
+                        out[a]=policy([action("REFUSE")] if refuse and a=="b" else
+                                      [action("SING",{"project_id":a+"-song"})],f)
+                    return out
+                def revise(mode):
+                    return [{"offer":"historically_possible_routine_revisions","construct":"ROUTINE_REVISION",
+                        "match":{"basis":{"actor":"b","operation":"SING","project_ref":"b-song"}},
+                        "augment":{"mode":mode,"interpretive_hypothesis":"Change my own involvement."}}]
+                class H:
+                    def __init__(self):self.calls=[]
+                    def call(self,r):
+                        self.calls.append(r)
+                        if r["mode"]=="TERMINAL":return {"retrospective":retro(r),"prospective":None}
+                        n=len(self.calls);ctx=r["context"];t=ctx["clock"];out=[]
+                        if n==1:
+                            plan=[("a",shared(refuse=True),0),("a",own("a","REST"),0),
+                                  ("b",own("b","REST"),0),("a",shared(),0)]
+                        elif n==2:
+                            plan=[("a",own("a","REST"),0),("b",own("b","REST"),0),
+                                  ("a",shared(),0),("a",own("a","REST"),0),
+                                  ("b",own("b","REST"),0)]
+                        elif n==3:
+                            plan=[("a",shared(nominate=True),0),("a",own("a","REST"),0),
+                                  ("b",own("b","REST"),0)]
+                        elif n==4:
+                            plan=[("a",own("a","REST"),10),("b",own("b","REST",revise("PAUSE") if both else []),0),
+                                  ("a",own("a","REST"),5),("b",own("b","REST",revise("RESUME") if both else []),0),
+                                  ("a",own("a","REST"),5)]
+                        else:raise AssertionError("unexpected checkpoint")
+                        for i,(a,pol,span) in enumerate(plan):
+                            t+=span+1
+                            out.append(event(ctx,"r81:"+str(n)+":"+str(i),t,a,pol,span=span))
+                        return {"retrospective":retro(r),"prospective":out}
+                h=H();live=Live()
+                def open_session(runtime):return ContinuingLife(runtime,root/"operator","a",
+                    historical_provider=h,live_provider=live,sourcefree_attested=True)
+                s=open_session(rt)
+                try:
+                    for _ in range(3):s.historical_checkpoint()
+                    w=rt.ledger.world()[1];sources=w["routine_source_registry"]
+                    self.assertEqual(len(sources),2 if both else 1)
+                    self.assertTrue(all(len(set(x["basis_event_refs"]))==3 for x in sources.values()))
+                    if both:
+                        a,b=sorted(sources.values(),key=lambda q:q["actor"])
+                        self.assertEqual(a["basis_event_refs"],b["basis_event_refs"])
+                    prefix=rt.ledger.events();before=deepcopy(rt.ledger.actors());clock=w["clock"]
+                    f0={a:situated_component_efficacy(before[a],"SING","home")[
+                        "technical_component_facility_estimate"] for a in before}
+                finally:s.close();rt.close()
+                rt=ConstitutiveRuntime(str(db));s=open_session(rt)
+                try:
+                    s.historical_checkpoint()
+                    w=rt.ledger.world()[1];periods=[q for q in w["historical_periods"] if q["start"]>=clock]
+                    active=[q for q in periods if q["processes"]]
+                    self.assertEqual(sum(q["end"]-q["start"] for q in active),15 if both else 0)
+                    self.assertTrue(all(len(q["processes"])==2 and q["actor_time_claims"]=={"a":1.,"b":1.}
+                                        and len({p["reciprocal_routine_pair_ref"] for p in q["processes"]})==1
+                                        for q in active))
+                    held=[q for q in periods if not q["processes"]]
+                    self.assertEqual(sum(q["end"]-q["start"] for q in held),5 if both else 20)
+                    if both:
+                        self.assertTrue(any(p["reason"]=="ACTOR_ROUTINE_PAUSED"
+                            for q in held for p in q.get("situationally_withheld_processes",[])))
+                    self.assertTrue(any(p["reason"]=="NO_UNAMBIGUOUS_INDEPENDENT_RECIPROCAL_ROUTINE"
+                        for q in held for p in q.get("situationally_withheld_processes",[])))
+                    for a in before:
+                        q=rt.ledger.actor(a)[1]
+                        self.assertEqual(q["memories"],before[a]["memories"])
+                        self.assertEqual(q["power_exercises"],before[a]["power_exercises"])
+                        f1=situated_component_efficacy(q,"SING","home")["technical_component_facility_estimate"]
+                        self.assertEqual(f1>f0[a],both)
+                    self.assertEqual(rt.ledger.events()[:len(prefix)],prefix)
+                    s.finish_history()
+                    self.assertTrue(rt.verify()["valid"])
+                    self.assertTrue(all(q["status"]=="RETURNED" for q in s.receipts()))
+                    self.assertFalse(live.requests)
+                    print("R81_RECIPROCAL_CHECKPOINT",json.dumps({"both":both,
+                        "active_days":15 if both else 0,"withheld_days":5 if both else 20,
+                        "actual_anchor_events":3,"historical_calls":len(h.calls)},sort_keys=True))
+                finally:s.close();rt.close()
+
 if __name__=="__main__":unittest.main()
 
 
