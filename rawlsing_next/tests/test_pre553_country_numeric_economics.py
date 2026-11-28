@@ -46,6 +46,79 @@ from rawlsing_next.tests.test_pre553_discovery_exact import (
 )
 
 class CountryNativeEconomics(unittest.TestCase):
+    def test_constituent_identity_codec_conserves_complete_exact_identity(self):
+        from rawlsing_next._pre553_query_eval import (
+            _constituent_identity_pack,_constituent_identity_unpack,
+        )
+        from rawlsing_next.pre553_empirical_objects import URN_PREFIX,RespondentEvent
+        digest="ab"*32
+        from rawlsing_next.pre553_c11_integrity import _PackedClosureRefs
+        # Independent incumbent canonical prefix, plus literal family
+        # names; do not use the new codec's own construction as its oracle.
+        for kind,family,name in (("routing",RoutingEligibilityFact.FAMILY,"RoutingEligibilityFact"),
+                                 ("target",RespondentEvent.FAMILY,"RespondentEvent")):
+            self.assertEqual(family,name+"@1.0.0")
+            prefix=f"{URN_PREFIX}:{name}:sha256:"
+            self.assertEqual(_PackedClosureRefs._derived_prefix(family),prefix)
+            canonical=(family,prefix+digest,digest)
+            self.assertEqual(_constituent_identity_pack(kind,canonical),bytes.fromhex(digest))
+            self.assertEqual(_constituent_identity_unpack(kind,bytes.fromhex(digest)),canonical)
+            for identity in (canonical,("foreign",canonical[1],digest),
+                             (family,f"{URN_PREFIX}:{family}:sha256:{digest}",digest),
+                             (name,canonical[1],digest),
+                             (family,"foreign:"+digest,digest),
+                             (family,canonical[1],"cd"*32),
+                             (family,canonical[1],digest.upper())):
+                encoded=_constituent_identity_pack(kind,identity)
+                self.assertEqual(_constituent_identity_unpack(kind,encoded),identity)
+                if identity!=canonical:self.assertIs(type(encoded),tuple)
+
+    def test_constituent_plane_refusal_is_atomic_and_hit_rechecks_authority(self):
+        # Isolated representation boundary witness. Actual native I03 and
+        # issued revocation/file controls are exercised by the session court.
+        from types import SimpleNamespace
+        from rawlsing_next._pre553_query_eval import _CountryConstituentMemo
+        from rawlsing_next._pre553_c11_execution_view import _EventRead
+        from rawlsing_next.pre553_empirical_objects import AuthorityRef,RespondentEvent,URN_PREFIX
+        from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
+        h="ab"*32
+        identity=(RespondentEvent.FAMILY,f"{URN_PREFIX}:RespondentEvent:sha256:{h}",h)
+        authority=AuthorityRef("unit","1","cd"*32)
+        snapshot=SimpleNamespace(typed_state="ALLOW",authority_kind="RESPONSE_SEMANTICS")
+        calls=[]
+        def resolve(ref):
+            calls.append(ref)
+            self.assertEqual(ref,authority)
+            return SimpleNamespace(snapshot=snapshot)
+        registry=SimpleNamespace(_by_key={},resolve_exact=resolve)
+        respondent=SimpleNamespace(ref=_ref("RESPONDENT","r7-unit"))
+        event=_EventRead(identity,"OBSERVED",identity,None,None,(), "1","1",{}, "unit")
+        def compute(used,auth):
+            used.append(event);auth.append(authority)
+            return True,"1"
+        memo=_CountryConstituentMemo(None,registry,lambda cost:False)
+        used=[];auth=[]
+        self.assertEqual(memo.evaluate("target",("a",),respondent,registry,used,auth,compute),(True,"1"))
+        self.assertEqual((memo.planes,memo.respondent_keys,memo.authority_sets),({},{},{}))
+        self.assertEqual((memo.bytes,memo.retained_rows,memo.refusals),(0,0,1))
+        self.assertEqual([x.ref for x in used],[event.ref])
+        memo.budget=lambda cost:True
+        memo.evaluate("target",("a",),respondent,registry,[],[],compute)
+        memo.evaluate("target",("b",),respondent,registry,[],[],compute)
+        self.assertEqual((len(memo.planes),len(memo.respondent_keys),
+                          len(memo.authority_sets),memo.retained_rows),(2,1,1,2))
+        self.assertEqual((memo.compact_identities,memo.explicit_identities),(2,0))
+        used=[];auth=[]
+        self.assertEqual(memo.evaluate("target",("b",),respondent,registry,used,auth,
+                         lambda *_:self.fail("recomputed hit")),(True,"1"))
+        self.assertEqual([x.ref for x in used],[event.ref])
+        self.assertEqual(auth,[authority])
+        self.assertEqual(calls,[authority])
+        snapshot.typed_state="REVOKED"
+        with self.assertRaises(Pre553AuthorityError):
+            memo.evaluate("target",("b",),respondent,registry,[],[],compute)
+        self.assertEqual(calls,[authority,authority])
+
     def test_mixed_cardinality_sav_distinct_native_batch_and_cold_product(self):
         self._native_batch(wide=False)
 
@@ -1229,6 +1302,9 @@ class CountryNativeEconomics(unittest.TestCase):
                     self.assertGreater(receipt0["constituent_cache_hits"]["routing"],0)
                     self.assertGreater(receipt0["constituent_cache_hits"]["target"],0)
                     self.assertLessEqual(receipt0["constituent_cache_bytes_estimate"],32*1024*1024)
+                    self.assertGreater(receipt0["constituent_compact_identities"],0)
+                    self.assertLess(receipt0["constituent_cache_bytes_estimate"],
+                                    receipt0["constituent_legacy_bytes_same_retained_rows"])
                     # Foreign release projection must close old scope even
                     # when equal in content; no cross-owner reuse.
                     item,resolver,_=cases[1]
