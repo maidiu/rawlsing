@@ -201,6 +201,8 @@ TYPED_FORMATION_OFFERS = {
     "ACTIVITY_AFFECT": ("historically_possible_activity_affects",
                         "historically_possible_self_expression_affects"),
     "ORDINARY_AFFECT_MEMORY": ("historically_possible_activity_affects",),
+    "RECURRENT_ROUTINE": ("historically_possible_recurrent_routines",),
+    "ROUTINE_REVISION": ("historically_possible_routine_revisions",),
     "EXPRESSIVE_PRACTICE": ("historically_possible_expressive_practices",),
     "RECURRENT_WORK_ORIENTATION": ("historically_possible_recurrent_livelihood_orientation",),
     "LIVED_CROSS_CONTEXT_REVALUATION": ("historically_possible_lived_cross_context_revaluations",),
@@ -218,6 +220,29 @@ def rich_meaning_check(kind,v):
         require(exact_keys(v,("content","cue_terms")) and text(v["content"])
                 and isinstance(v["cue_terms"],list) and 1<=len(v["cue_terms"])<=12
                 and all(text(k,80) for k in v["cue_terms"]),"GEN_ORDINARY_AFFECT_MEMORY_MEANING")
+    elif kind=="RECURRENT_ROUTINE":
+        require(exact_keys(v,("window_days","hours_per_active_day","provisional_exposure_fraction"),
+                             ("food_units_per_active_day",))
+                and type(v["window_days"]) is int and 1<=v["window_days"]<=90
+                and type(v["hours_per_active_day"]) in (int,float)
+                and isfinite(v["hours_per_active_day"]) and 0<v["hours_per_active_day"]<=4
+                and type(v["provisional_exposure_fraction"]) in (int,float)
+                and isfinite(v["provisional_exposure_fraction"]) and 0<v["provisional_exposure_fraction"]<=1
+                and ("food_units_per_active_day" not in v or (type(v["food_units_per_active_day"]) in (int,float)
+                     and isfinite(v["food_units_per_active_day"]) and 0<v["food_units_per_active_day"]<=1
+                     and round(v["food_units_per_active_day"],5)==v["food_units_per_active_day"])),
+                "GEN_RECURRENT_ROUTINE_MEANING")
+    elif kind=="ROUTINE_REVISION":
+        require(exact_keys(v,("mode","interpretive_hypothesis"),("dose",))
+                and v["mode"] in ("PAUSE","RESUME","RETIRE","RESIZE")
+                and text(v["interpretive_hypothesis"])
+                and ("dose" in v)==(v["mode"]=="RESIZE"),"GEN_ROUTINE_REVISION_MEANING")
+        if "dose" in v:
+            d=v["dose"]
+            require(exact_keys(d,("hours_per_active_day","provisional_exposure_fraction"),
+                               ("food_units_per_active_day",))
+                    and all(type(x) in (int,float) and isfinite(x) and x>0 for x in d.values()),
+                    "GEN_ROUTINE_REVISION_DOSE")
     elif kind=="EXPRESSIVE_PRACTICE":
         require(exact_keys(v,("cadence",)) and text(v["cadence"],40),"GEN_EXPRESSIVE_PRACTICE")
     elif kind=="RECURRENT_WORK_ORIENTATION":
@@ -238,6 +263,19 @@ def rich_candidate(kind,q,v):
                 "perceived_cue_ref":q["source_perceived_cue_ref"],**v}
     if kind=="ACTIVITY_AFFECT":
         return {"kind":"ACQUIRE_ACTIVITY_AFFECT","basis":q,**v}
+    if kind=="RECURRENT_ROUTINE":
+        require(("food_units_per_active_day" in v)==(q["basis"]["operation"]=="FEED")
+                and v["window_days"]<=q["maximum_window_days"]
+                and v["hours_per_active_day"]<=q["maximum_hours_per_active_day"],
+                "GEN_RECURRENCE_UNOFFERED_DOSE")
+        return {"kind":"ACQUIRE_RECURRENT_ROUTINE","basis":q["basis"],**v}
+    if kind=="ROUTINE_REVISION":
+        require(v["mode"] in q["allowed_modes"],"GEN_ROUTINE_REVISION_UNOFFERED_MODE")
+        if "dose" in v:
+            ceiling={k:x for k,x in q["original_ceiling"].items() if k!="state"}
+            require(set(v["dose"])==set(ceiling) and all(x<=ceiling[k] for k,x in v["dose"].items()),
+                    "GEN_ROUTINE_REVISION_UNOFFERED_DOSE")
+        return {"kind":"REVISE_RECURRENT_ROUTINE","basis":q["basis"],**v}
     if kind=="EXPRESSIVE_PRACTICE":
         return {"kind":"ACQUIRE_EXPRESSIVE_PRACTICE","basis":q["basis"],**v}
     if kind=="RECURRENT_WORK_ORIENTATION":
@@ -759,11 +797,22 @@ class ModernDevelopmentOwner:
         world=self.rt.ledger.world(self.rt.world_id)[1];target=world["clock"]+span
         require(not any(x.get("present") is True for x in world.get("neighbor_users",{}).values()),
                 "GEN_PRESENT_VISITOR_REQUIRES_LIVE_OWNER")
+        from um_sorok_organism.routine_sources import acquired_routine_processes, lived_work_permission_boundaries
         schedule=qualify_mixed_history_schedule(world,processes)
+        explicit_refs={row["source_ref"] for _,_,row in schedule}
         receipts=[];events=[]
         while world["clock"]<target:
             clock=world["clock"]
-            end,active=mixed_history_interval(schedule,clock,min(target,clock+MAX_HORIZON))
+            # Same actor-owned routine registry and cut semantics as the
+            # existing mixed-history owner. Never carry a stale copied dose
+            # from an earlier semantic checkpoint or omit independent claims.
+            dynamic=qualify_mixed_history_schedule(world,[p for p in acquired_routine_processes(world)
+                       if p["source_ref"] not in explicit_refs])
+            end,active=mixed_history_interval(schedule+dynamic,clock,min(target,clock+MAX_HORIZON))
+            for p in active:
+                if p["kind"]=="QUALIFIED_WAGE_LABOR":
+                    times=lived_work_permission_boundaries(world,p["actor"],p["location"],clock,end)
+                    if times:end=min(end,times[0])
             boundary=next_discontinuity(world,self.rt.ledger.actors(),end-clock)
             if boundary:
                 kind=boundary["kind"];at=boundary["at"]
