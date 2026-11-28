@@ -608,12 +608,13 @@ class PluralReciprocalLifeCourt(unittest.TestCase):
                       [song("b",1),song("c",2),e("rest",3,"a",[action("REST")])])
                 return {"retrospective":retro(r),"prospective":rows}
         class Live:
-            def __init__(self):self.requests=[];self.mode="PAUSE"
+            def __init__(self):self.requests=[];self.mode="PAUSE";self.retire_both=False
             def call(self,r):
                 self.requests.append(r);aid=r["principal"]
+                project=("b-a" if aid=="b" else "a-b" if aid=="a" and self.retire_both else None)
                 rules=[{"offer":"historically_possible_routine_revisions",
-                        "construct":"RECURRENT_ROUTINE_REVISION","match":{"basis":{"project_ref":"b-a"}},
-                        "augment":{"mode":self.mode,"interpretive_hypothesis":"Alter my own undertaking."}}] if aid=="b" else []
+                        "construct":"RECURRENT_ROUTINE_REVISION","match":{"basis":{"project_ref":project}},
+                        "augment":{"mode":self.mode,"interpretive_hypothesis":"Alter my own undertaking."}}] if project else []
                 return {"policies":{aid:policy([action("REST")],rules)}}
         with tempfile.TemporaryDirectory() as d:
             root=Path(d);db=root/"life.sqlite"
@@ -690,6 +691,35 @@ class PluralReciprocalLifeCourt(unittest.TestCase):
                     self.assertFalse(routine(a,p).get("revisions"))
                 self.assertEqual(len(routine("b","b-a")["revisions"]),2)
                 self.assertEqual(set(world()["routine_source_registry"]),set(ids.values()))
+                # A retired course cannot be silently resumed. Both actors
+                # independently retire, then independently admit a new course
+                # after three new actual shared exercises. The other relation
+                # is neither retired nor automatically renewed.
+                s.finish_history();live.mode="RETIRE";live.retire_both=True
+                for _ in range(9):
+                    s.independent_absent_beat()
+                    if all(routine(a,p).get("revisions") and
+                           routine(a,p)["revisions"][-1]["mode"]=="RETIRE"
+                           for a,p in (("a","a-b"),("b","b-a"))):break
+                else:self.fail("Both actors did not independently retire their own contribution")
+                retired=max(routine(a,p)["revisions"][-1]["clock"] for a,p in (("a","a-b"),("b","b-a")))
+                hist.coarse=False
+                s.resume_history();s.historical_checkpoint()
+                self.assertEqual(set(world()["routine_source_registry"]),set(ids.values()))
+                s.historical_checkpoint()
+                def last(a,p):
+                    return next(x for x in rt.snapshot(a)["projects"] if x["id"]==p)["recurrent_routines"][-1]
+                new_a=last("a","a-b");new_b=last("b","b-a")
+                self.assertNotEqual(new_a["id"],ids["a-b"]);self.assertNotEqual(new_b["id"],ids["b-a"])
+                self.assertEqual([x["event_ref"] for x in new_a["basis"]["exercises"]],
+                                 [x["event_ref"] for x in new_b["basis"]["exercises"]])
+                self.assertTrue(all(x["clock"]>retired for x in new_a["basis"]["exercises"]))
+                self.assertEqual(set(world()["routine_source_registry"]),
+                                 set(ids.values())|{new_a["id"],new_b["id"]})
+                self.assertEqual(last("a","a-c")["id"],ids["a-c"])
+                self.assertEqual(last("c","c-a")["id"],ids["c-a"])
+                hist.coarse=True;start=world()["clock"];s.historical_checkpoint()
+                coverage(start,{new_a["id"],new_b["id"],ids["a-c"],ids["c-a"]})
                 self.assertTrue(rt.verify()["valid"])
                 self.assertFalse(s.status()["held"])
                 print("R008_PLURAL_RECIPROCAL_EPOCHS",len(hist.requests),len(live.requests),s.status()["epoch"])
