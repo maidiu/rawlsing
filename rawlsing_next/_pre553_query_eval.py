@@ -539,7 +539,9 @@ def _constituent_identity_pack(kind,identity):
     if (type(identity) is tuple and len(identity)==3
             and all(type(v) is str for v in identity)
             and identity[0]==family
-            and identity[1]==f"{URN_PREFIX}:{family}:sha256:{identity[2]}"):
+            # Public reference kinds carry the schema version; their object
+            # IDs do not (CanonicalSemanticObject / _PackedClosureRefs).
+            and identity[1]==f"{URN_PREFIX}:{family.split('@',1)[0]}:sha256:{identity[2]}"):
         try:
             digest=bytes.fromhex(identity[2])
         except ValueError:
@@ -555,7 +557,7 @@ def _constituent_identity_unpack(kind,value):
         return value
     family=RoutingEligibilityFact.FAMILY if kind=="routing" else RespondentEvent.FAMILY
     h=value.hex()
-    return family,f"{URN_PREFIX}:{family}:sha256:{h}",h
+    return family,f"{URN_PREFIX}:{family.split('@',1)[0]}:sha256:{h}",h
 
 
 def _constituent_extent(value):

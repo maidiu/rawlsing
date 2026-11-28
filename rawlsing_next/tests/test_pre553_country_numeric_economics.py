@@ -52,11 +52,20 @@ class CountryNativeEconomics(unittest.TestCase):
         )
         from rawlsing_next.pre553_empirical_objects import URN_PREFIX,RespondentEvent
         digest="ab"*32
-        for kind,family in (("routing",RoutingEligibilityFact.FAMILY),
-                            ("target",RespondentEvent.FAMILY)):
-            canonical=(family,f"{URN_PREFIX}:{family}:sha256:{digest}",digest)
+        from rawlsing_next.pre553_c11_integrity import _PackedClosureRefs
+        # Independent incumbent canonical prefix, plus literal family
+        # names; do not use the new codec's own construction as its oracle.
+        for kind,family,name in (("routing",RoutingEligibilityFact.FAMILY,"RoutingEligibilityFact"),
+                                 ("target",RespondentEvent.FAMILY,"RespondentEvent")):
+            self.assertEqual(family,name+"@1.0.0")
+            prefix=f"{URN_PREFIX}:{name}:sha256:"
+            self.assertEqual(_PackedClosureRefs._derived_prefix(family),prefix)
+            canonical=(family,prefix+digest,digest)
             self.assertEqual(_constituent_identity_pack(kind,canonical),bytes.fromhex(digest))
+            self.assertEqual(_constituent_identity_unpack(kind,bytes.fromhex(digest)),canonical)
             for identity in (canonical,("foreign",canonical[1],digest),
+                             (family,f"{URN_PREFIX}:{family}:sha256:{digest}",digest),
+                             (name,canonical[1],digest),
                              (family,"foreign:"+digest,digest),
                              (family,canonical[1],"cd"*32),
                              (family,canonical[1],digest.upper())):
@@ -73,7 +82,7 @@ class CountryNativeEconomics(unittest.TestCase):
         from rawlsing_next.pre553_empirical_objects import AuthorityRef,RespondentEvent,URN_PREFIX
         from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
         h="ab"*32
-        identity=(RespondentEvent.FAMILY,f"{URN_PREFIX}:{RespondentEvent.FAMILY}:sha256:{h}",h)
+        identity=(RespondentEvent.FAMILY,f"{URN_PREFIX}:RespondentEvent:sha256:{h}",h)
         authority=AuthorityRef("unit","1","cd"*32)
         snapshot=SimpleNamespace(typed_state="ALLOW",authority_kind="RESPONSE_SEMANTICS")
         calls=[]
@@ -98,6 +107,7 @@ class CountryNativeEconomics(unittest.TestCase):
         memo.evaluate("target",("b",),respondent,registry,[],[],compute)
         self.assertEqual((len(memo.planes),len(memo.respondent_keys),
                           len(memo.authority_sets),memo.retained_rows),(2,1,1,2))
+        self.assertEqual((memo.compact_identities,memo.explicit_identities),(2,0))
         used=[];auth=[]
         self.assertEqual(memo.evaluate("target",("b",),respondent,registry,used,auth,
                          lambda *_:self.fail("recomputed hit")),(True,"1"))
