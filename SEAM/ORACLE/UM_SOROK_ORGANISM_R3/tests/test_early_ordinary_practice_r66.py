@@ -355,7 +355,7 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                              self.expressive_arm(Path(d)/'abstain.db',False))
 
 
-    def productive_ordinary_arm(self,db,admit_end,forge=False,practice=None,witness=None,transfer=None,affect=None,local_period=None):
+    def productive_ordinary_arm(self,db,admit_end,forge=False,practice=None,witness=None,transfer=None,affect=None,local_period=None,private=None):
         """From ordinary infancy through plural response to self-generated end.
         Same acquired capacity in both arms; a later trial is not a project.
         No joint SING, no actual deficit/relief required, no injected child act.
@@ -406,6 +406,26 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                                         'reticence' if orientation=='WITHHOLD' else 'absorbed interest'),
                          'personal_sense':'a provisional significance of the actually exercised concern',
                          'course_orientation':orientation}]
+                    if private is not None and phase['name']=='local_affect':
+                        basis=deepcopy(choices[0])
+                        if private=='forge':basis['current_cue_ref']='invented'
+                        if private:candidates=candidates+[{'kind':'MEMORY',
+                            'ordinary_affect_memory_basis':basis,
+                            'content':'The sound was mine, but doing it here felt difficult.',
+                            'cue_terms':['sing']}]
+                if private is not None and phase['name']=='private_rehearsal':
+                    rec=p.get('actual_private_rehearsal_analyst_only')
+                    if rec:
+                        self.assertTrue(rec.get('ordinary_affect_memory'))
+                        candidates=candidates+[{'kind':'NOTICE_PRIVATE_POSSIBLE_END',
+                            'rehearsal_ref':rec['id'],'possible_object':'make room for a quieter pause',
+                            'possible_means':['REST']}]
+                if private is not None and phase['name']=='private_takeup':
+                    ends=[e for e in p.get('actor_possible_ends',[])
+                          if e.get('genesis_family')=='ACTUAL_PRIVATE_REHEARSAL'
+                          and e.get('trial_history')]
+                    if ends:candidates=candidates+[{'kind':'TAKE_UP_POSSIBLE_END',
+                        'possible_end_ref':ends[0]['id'],'means':['REST'],'priority':.5}]
                 if phase['name']=='transfer_probe' and transfer is not None:
                     choices=p.get('historically_possible_ordinary_context_transfers',[])
                     self.assertEqual(len(choices),1)
@@ -441,6 +461,25 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                     self.assertEqual(len(a),1)
                     self.assertTrue(a[0]['not_current_external_sign_or_present_other_required'])
                     return {'task':task,'possible_end_trial_id':a[0]['trial_id']}
+                if phase['name']=='private_rehearsal':
+                    rows=[o for o in p['private_rehearsal_options'] if o.get('ordinary_affect_memory')]
+                    self.assertEqual(len(rows),int(bool(private)))
+                    if not rows:return {'task':task,'action':'WAIT'}
+                    return {'task':task,'action':'WAIT','private_rehearsal_id':rows[0]['rehearsal_id'],
+                            'private_rehearsal_content':'I can stop and be quiet for a while.'}
+                if phase['name']=='private_trial':
+                    rows=[o for o in p['possible_end_trials'] if o.get('private_rehearsal_ref')]
+                    self.assertEqual(len(rows),int(bool(private)))
+                    return {'task':task,'possible_end_trial_id':rows[0]['trial_id']} if rows else {'task':task,'action':'WAIT'}
+                if phase['name']=='private_takeup':
+                    return {'task':task,'action':'REST'}
+                if phase['name']=='private_conduct':
+                    rows=[o for o in p['practical_options'] if o['operation']=='REST' and o.get('project_id')]
+                    self.assertEqual(len(rows),int(bool(private)))
+                    if rows:return {'task':task,'practical_option_id':rows[0]['option_id']}
+                    a=[o for o in p['practical_options'] if o['operation']=='SING' and o.get('project_id')]
+                    self.assertEqual(len(a),1)
+                    return {'task':task,'practical_option_id':a[0]['option_id']}
                 if phase['name']=='transfer_probe':
                     a=[o for o in p['practical_options'] if o['operation']=='SING']
                     self.assertTrue(a)
@@ -585,6 +624,15 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                     self.assertEqual(rt.step('nadia')['attempt'],'SING')
                 child=self.child(rt);project=child['projects'][0]
                 rt.background(180)
+                if private is not None:
+                    rt.background(max(0,450-self.child(rt)['age_days']))
+                    for i in range(4):
+                        phase['name']='recovery'
+                        rt.step('nadia');rt.step('father');rt.step('mother')
+                        phase['name']='signal';phase['other']='father' if i%2==0 else 'mother'
+                        self.assertEqual(rt.step('nadia')['coactor'],'SPEAK')
+                        rt.background(14)
+                    self.assertEqual(self.child(rt)['body']['language'],.35)
                 phase['name']='recovery'
                 rt.step('nadia')
                 self.assertEqual(rt.step('father',requested_action='MOVE',object_ref='workshop')['objective_outcome'],'MOVED')
@@ -614,7 +662,15 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                 self.assertEqual(rt.step('nadia')['attempt'],'SING' if transfer else 'WAIT')
                 self.assertTrue(rt.verify()['valid'])
                 if affect is not None:
-                    phase['name']='local_affect';self.assertEqual(rt.step('nadia')['attempt'],'SING')
+                    phase['name']='local_affect'
+                    if private=='forge':
+                        before=self.child(rt);count=rt.verify()['events']
+                        with self.assertRaisesRegex(InvalidDevelopment,'ORDINARY_AFFECT_MEMORY_UNQUALIFIED'):
+                            rt.step('nadia')
+                        self.assertEqual(before,self.child(rt))
+                        self.assertEqual(count,rt.verify()['events'])
+                        return
+                    self.assertEqual(rt.step('nadia')['attempt'],'SING')
                     phase['name']='recovery';rt.step('nadia')
                     phase['name']='local_opposition';self.assertEqual(rt.step('nadia')['attempt'],'SING')
                     rt.close();rt=runtime()
@@ -622,6 +678,29 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                     self.assertEqual(rt.step('nadia')['attempt'],'WAIT' if affect else 'SING')
                     self.assertEqual(rt.step('father',requested_action='MOVE',object_ref='home')['objective_outcome'],'MOVED')
                     phase['name']='local_alone';self.assertEqual(rt.step('nadia')['attempt'],'SING')
+                    if private is not None:
+                        rt.background(2)
+                        phase['name']='recovery';rt.step('nadia')
+                        before=self.child(rt)
+                        self.assertEqual(len(before['memories']),int(bool(private)))
+                        phase['name']='private_rehearsal'
+                        self.assertEqual(rt.step('nadia')['attempt'],'WAIT')
+                        after=self.child(rt)
+                        self.assertEqual(len(after['possible_ends']),len(before['possible_ends'])+int(bool(private)))
+                        self.assertEqual(after['projects'],before['projects'])
+                        self.assertFalse(any(c.get('kind')=='private_rehearsal' for c in rt.ledger.world()[1]['cues']))
+                        rt.close();rt=runtime()
+                        phase['name']='private_trial'
+                        self.assertEqual(rt.step('nadia')['attempt'],'REST' if private else 'WAIT')
+                        self.assertEqual(self.child(rt)['projects'],before['projects'])
+                        phase['name']='private_takeup'
+                        self.assertEqual(rt.step('nadia')['attempt'],'REST')
+                        self.assertEqual(len(self.child(rt)['projects']),1+int(bool(private)))
+                        rt.close();rt=runtime()
+                        phase['name']='private_conduct'
+                        self.assertEqual(rt.step('nadia')['attempt'],'REST' if private else 'SING')
+                        self.assertTrue(rt.verify()['valid'])
+                        return self.child(rt)
                     self.assertEqual(rt.step('father',requested_action='MOVE',object_ref='workshop')['objective_outcome'],'MOVED')
                     phase['name']='recovery';rt.step('nadia')
                     phase['name']='higher_affect';self.assertEqual(rt.step('nadia')['attempt'],'SING')
@@ -804,3 +883,20 @@ class EarlyOrdinaryPractice(unittest.TestCase):
             self.assertEqual(yes['practice_exposures'][-1]['location'],'workshop')
             self.assertEqual(yes['practice_exposures'][-1]['modeled_practice_hours'],15)
             self.assertEqual(len([a for e in yes['expectations'] for a in e.get('affective_organizations',[])]),4)
+
+
+    def test_developing_child_private_activity_reconstitutes_future_material_conduct(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)
+            yes=self.productive_ordinary_arm(p/'private.db',True,transfer=True,affect=True,private=True)
+            no=self.productive_ordinary_arm(p/'no_memory.db',True,transfer=True,affect=True,private=False)
+            self.assertEqual(yes['body']['language'],no['body']['language'])
+            self.assertEqual(yes['age_days'],no['age_days'])
+            self.assertEqual(yes['projects'][0]['id'],no['projects'][0]['id'])
+            self.assertEqual(len(yes['projects']),2)
+            self.assertEqual(len(no['projects']),1)
+            p2=yes['projects'][1]
+            basis=p2['takeup_evidence']['private_takeup_basis']
+            self.assertEqual(basis['ordinary_affect_memory'],yes['memories'][0]['ordinary_affect_memory'])
+            self.assertEqual(p2['operational_history'][-1]['operation'],'REST')
+            self.productive_ordinary_arm(p/'forge_memory.db',True,transfer=True,affect=True,private='forge')

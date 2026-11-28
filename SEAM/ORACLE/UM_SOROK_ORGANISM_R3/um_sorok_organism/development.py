@@ -14,7 +14,8 @@ from .organism import ACTIONS
 from .practical_difference import validate_expected_difference, appraise_expected_difference
 from .expectation_afterlife import admit_activity_affect, admit_expressive_practice
 from .preproject_agency import admit_preproject_anticipation, revise_preproject_anticipation
-from .reflective_regulation import acquire_reflective_regulation, admit_private_possible_end, private_end_ground
+from .reflective_regulation import (acquire_reflective_regulation, admit_private_possible_end,
+                                    private_end_ground, qualified_ordinary_affect_memory)
 from .attention_field import (received_undertaking_attention, received_correspondence_attention,
                               received_focal_encounter)
 from .practical_powers import admit_repair_technique, active_repair_technique
@@ -668,6 +669,8 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                     raise InvalidDevelopment('PRIVATE_END_TAKEUP_REQUIRES_LATER_LIVED_COURSE')
                 private_takeup={'rehearsal_ref':ground['id'],'prior_trial_ref':trials[-1]['id'],
                                 'later_event_ref':event_ref}
+                if ground.get('ordinary_affect_memory'):
+                    private_takeup['ordinary_affect_memory']=copy(ground['ordinary_affect_memory'])
             dependency_takeup=None
             if end.get('genesis_family')=='INTERRUPTED_ACQUIRED_SUPPORT_THEN_INDEPENDENT_RELIEF':
                 matches=[p for p in possible_dependency_project_takeups(actor,experience,event_ref)
@@ -946,6 +949,15 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                    'grade':GRADE,'status':'NONDECLARATIVE' if op=='TRACE' else 'ACTOR_ACCESSIBLE',
                    'cue_terms':c.get('cue_terms',[]),'content':c.get('content',''),
                    'manifestation':c.get('manifestation','uninterpreted')}
+            if 'ordinary_affect_memory_basis' in c:
+                receipt=qualified_ordinary_affect_memory(actor,experience,event_ref,
+                                                         c['ordinary_affect_memory_basis'])
+                if (op!='MEMORY' or not receipt or type(entry['content']) is not str
+                        or not entry['content'].strip() or len(entry['content'])>512
+                        or any(m.get('ordinary_affect_memory',{}).get('affect_ref')==receipt['affect_ref']
+                               for m in actor['memories'])):
+                    raise InvalidDevelopment('ORDINARY_AFFECT_MEMORY_UNQUALIFIED')
+                entry['ordinary_affect_memory']=copy(receipt)
             if 'undertaking_attention_ref' in c:
                 receipt=received_undertaking_attention(actor,
                     experience.get('own_practical_selection'),experience)

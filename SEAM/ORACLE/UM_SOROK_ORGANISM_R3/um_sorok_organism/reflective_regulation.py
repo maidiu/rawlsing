@@ -107,6 +107,52 @@ def _capacity(body):
     return all(type(body.get(k)) in (int,float) and math.isfinite(body[k])
                and body[k]>=v for k,v in (('language',.35),('regulation',.20),('rest',.12)))
 
+def qualified_ordinary_affect_memory(actor,experience,event_ref,basis):
+    """An optional, fallible memory of an actually experienced formation.
+    An analyst's label is not itself the child's remembered content.
+    This bounded explicit-memory route uses the inherited reflective
+    capacity threshold, not a claim that infants cannot remember."""
+    if (experience.get('actor')!=actor.get('id') or not _capacity(actor['body'])
+            or type(basis) is not dict
+            or basis.get('formation_source')!='OWN_ORDINARY_PROJECT_EXERCISE'
+            or basis.get('current_event_ref')!=event_ref
+            or basis.get('current_experience_ref')!=experience.get('ref')
+            or basis.get('location')!=experience.get('location')
+            or basis.get('current_cue_ref') not in {
+                c.get('id') for c in experience.get('perceived_cues',[])}):
+        return None
+    paths=[p for p in actor.get('evidence_paths',[]) if p.get('event')==event_ref
+           and p.get('experience_ref')==experience['ref']
+           and p.get('own_action')=='SING'
+           and p.get('selected_project_refs')==[basis.get('project_ref')]
+           and basis.get('current_cue_ref') in p.get('received_cue_refs',[])]
+    rows=[a for e in actor.get('expectations',[]) if e.get('actor')==actor['id']
+          and e.get('id')==basis.get('expectation_ref')
+          for a in e.get('affective_organizations',[])
+          if a.get('actor')==actor['id'] and a.get('origin_event_ref')==event_ref
+          and a.get('basis')==basis and a.get('project_ref')==e.get('project_id')]
+    if len(paths)!=1 or len(rows)!=1:return None
+    a=rows[0]
+    if a.get('id')!=stable_id('activity_affect',{'actor':actor['id'],'basis':basis}):return None
+    return {'affect_ref':a['id'],'expectation_ref':a['expectation_ref'],
+            'project_ref':a['project_ref'],'event_ref':event_ref,
+            'experience_ref':experience['ref'],'received_sign_ref':basis['current_cue_ref'],
+            'location':experience['location'],'not_verified_recollection_or_self_explanation':True}
+
+
+def _qualified_ordinary_memory_link(m,a,path,episode):
+    b=m.get('ordinary_affect_memory')
+    return (type(b) is dict and a.get('id')==b.get('affect_ref')
+            and a.get('expectation_ref')==b.get('expectation_ref')
+            and a.get('project_ref')==b.get('project_ref')
+            and a.get('origin_event_ref')==b.get('event_ref')==path.get('event')==episode.get('event_ref')
+            and b.get('experience_ref')==m.get('experience')==path.get('experience_ref')
+            and b.get('location')==episode.get('location')==a.get('basis',{}).get('location')
+            and b.get('received_sign_ref')==a.get('basis',{}).get('current_cue_ref')
+            and b.get('received_sign_ref') in path.get('received_cue_refs',[])
+            and b.get('received_sign_ref') in episode.get('received_sign_refs',[]))
+
+
 def offer_private_rehearsals(actor,clock,location,available_operations,*,body=None):
     """Actor-local, finite recollective opportunities; no matching external cue required.
 
@@ -137,7 +183,14 @@ def offer_private_rehearsals(actor,clock,location,available_operations,*,body=No
                 or episode.get('location')!=location):continue
         cues=sorted(set(path.get('received_cue_refs',[]))&set(episode.get('received_sign_refs',[])))
         if not cues:continue
-        linked=[a for a in affects if a.get('origin_event_ref')==origins[0]]
+        linked=[a for a in affects if a.get('origin_event_ref')==origins[0]
+                and (a.get('basis',{}).get('formation_source')!='OWN_ORDINARY_PROJECT_EXERCISE'
+                     or _qualified_ordinary_memory_link(m,a,path,episode))]
+        # A specially formed memory does not become an affect-directed
+        # source on loss of its exact ancestry; a generic memory never
+        # borrows a coincident ordinary affect's identity.
+        if m.get('ordinary_affect_memory') and not any(
+                _qualified_ordinary_memory_link(m,a,path,episode) for a in linked):continue
         # Keep the memory-only course distinct from affect-directed rehearsal.
         for aff in [*linked,None]:
             ar=aff['id'] if aff else None
@@ -146,6 +199,8 @@ def offer_private_rehearsals(actor,clock,location,available_operations,*,body=No
                    'memory_ref':m['id'],'memory_event_ref':origins[0],
                    'memory_experience_ref':m['experience'],'historical_received_cue_refs':cues,
                    'affect_ref':ar,'possible_means':means}
+            if aff is not None and m.get('ordinary_affect_memory'):
+                basis['ordinary_affect_memory']=copy(m['ordinary_affect_memory'])
             if m.get('undertaking_attention'):
                 receipt=m['undertaking_attention']
                 if (path.get('undertaking_attention')!=receipt
@@ -204,6 +259,8 @@ def perform_private_rehearsal(actor,experience,event_ref,selection,before):
          'private_activity_not_new_world_event':True,
          'reconstructed_not_verified_recollection':True,
          'no_new_perception_skill_or_permission':True,'grade':GRADE}
+    if opt.get('ordinary_affect_memory'):
+        rec['ordinary_affect_memory']=copy(opt['ordinary_affect_memory'])
     if opt.get('undertaking_attention'):
         rec['undertaking_attention']=copy(opt['undertaking_attention'])
     if opt.get('correspondence_attention'):
@@ -242,6 +299,8 @@ def admit_private_possible_end(actor,experience,event_ref,proposal):
          'historical_received_cue_refs':copy(rec['historical_received_cue_refs']),
          'actor_perceived_cue_ref':None,'not_a_new_received_world_sign':True,
          'meaning_hypothesis_not_empirical_learning_law':True,'grade':GRADE}
+    if rec.get('ordinary_affect_memory'):
+        end['private_ordinary_affect_memory']=copy(rec['ordinary_affect_memory'])
     if rec.get('undertaking_attention'):
         end['private_undertaking_attention']=copy(rec['undertaking_attention'])
     if rec.get('correspondence_attention'):
@@ -261,5 +320,8 @@ def private_end_ground(memories,end,aid,location,clock):
           and r.get('experience_ref')==end.get('experience_ref')
           and r.get('location')==location==end.get('private_location')
           and r.get('clock',clock)<=clock
-          and r.get('affect_ref')==end.get('private_affect_ref')]
+          and r.get('affect_ref')==end.get('private_affect_ref')
+          and r.get('ordinary_affect_memory')==end.get('private_ordinary_affect_memory')
+          and (r.get('ordinary_affect_memory') is None
+               or r['ordinary_affect_memory']==m.get('ordinary_affect_memory'))]
     return rows[0] if len(rows)==1 else None
