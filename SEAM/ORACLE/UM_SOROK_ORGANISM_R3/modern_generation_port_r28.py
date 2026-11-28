@@ -204,6 +204,8 @@ TYPED_FORMATION_OFFERS = {
     "RECURRENT_WORK_ORIENTATION": ("historically_possible_recurrent_livelihood_orientation",),
     "LIVED_CROSS_CONTEXT_REVALUATION": ("historically_possible_lived_cross_context_revaluations",),
     "WITNESSED_OTHER_RELATION": ("historically_possible_witnessed_third_party_relations",),
+    "RECURRENT_ROUTINE": ("historically_possible_recurrent_routines",),
+    "ROUTINE_REVISION": ("historically_possible_routine_revisions",),
 }
 
 def rich_meaning_check(kind,v):
@@ -212,7 +214,7 @@ def rich_meaning_check(kind,v):
     elif kind=="ACTIVITY_AFFECT":
         require(exact_keys(v,("affect_name","personal_sense","course_orientation")) and
                 text(v["affect_name"],120) and text(v["personal_sense"]) and
-                v["course_orientation"] in ("APPROACH","WITHHOLD"),"GEN_ACTIVITY_AFFECT")
+                v["course_orientation"] in ("APPROACH","WITHHOLD","NO_DIRECT_TENDENCY"),"GEN_ACTIVITY_AFFECT")
     elif kind=="EXPRESSIVE_PRACTICE":
         require(exact_keys(v,("cadence",)) and text(v["cadence"],40),"GEN_EXPRESSIVE_PRACTICE")
     elif kind=="RECURRENT_WORK_ORIENTATION":
@@ -226,6 +228,26 @@ def rich_meaning_check(kind,v):
                 "GEN_CROSS_CONTEXT_MEANING")
     elif kind=="WITNESSED_OTHER_RELATION":
         require(exact_keys(v,("hypothesis",)) and text(v["hypothesis"]),"GEN_OTHER_RELATION_HYPOTHESIS")
+    elif kind=="RECURRENT_ROUTINE":
+        require(exact_keys(v,("window_days","hours_per_active_day","provisional_exposure_fraction"),
+                            ("food_units_per_active_day",)) and
+                type(v["window_days"]) is int and 1<=v["window_days"]<=90 and
+                all(type(v[k]) in (int,float) and isfinite(v[k]) and 0<v[k]<=limit
+                    for k,limit in (("hours_per_active_day",4),("provisional_exposure_fraction",1))) and
+                ("food_units_per_active_day" not in v or (type(v["food_units_per_active_day"]) in (int,float)
+                    and isfinite(v["food_units_per_active_day"]) and 0<v["food_units_per_active_day"]<=1
+                    and round(v["food_units_per_active_day"],5)==v["food_units_per_active_day"])),
+                "GEN_ROUTINE_DOSE")
+    elif kind=="ROUTINE_REVISION":
+        require(exact_keys(v,("mode","interpretive_hypothesis"),("dose",)) and
+                v["mode"] in ("PAUSE","RESUME","RETIRE","RESIZE") and text(v["interpretive_hypothesis"]) and
+                ("dose" in v)==(v["mode"]=="RESIZE"),"GEN_ROUTINE_REVISION")
+        if "dose" in v:
+            d=v["dose"]
+            require(exact_keys(d,("hours_per_active_day","provisional_exposure_fraction"),
+                                ("food_units_per_active_day",)) and
+                    all(type(x) in (int,float) and isfinite(x) and x>0 for x in d.values()),
+                    "GEN_ROUTINE_REVISION_DOSE")
 
 def rich_candidate(kind,q,v):
     if kind=="DELAYED_APPRAISAL":
@@ -250,6 +272,24 @@ def rich_candidate(kind,q,v):
         return {"kind":"CHANGE_OTHER_MODEL","other_ref":q["source_actor_ref"],
                 "about_relation_with_ref":q["target_actor_ref"],
                 "witnessed_cue_ref":q["witnessed_cue_ref"],**v}
+    if kind=="RECURRENT_ROUTINE":
+        food=q["basis"].get("operation")=="FEED"
+        if (food!=("food_units_per_active_day" in v) or
+                v["window_days"]>q["maximum_window_days"] or
+                v["hours_per_active_day"]>q["maximum_hours_per_active_day"] or
+                (food and v["food_units_per_active_day"]>q["maximum_food_units_per_active_day"])):
+            return None
+        return {"kind":"ACQUIRE_RECURRENT_ROUTINE","basis":q["basis"],**v}
+    if kind=="ROUTINE_REVISION":
+        if v["mode"] not in q["allowed_modes"]:return None
+        if v["mode"]=="RESIZE":
+            ceiling={k:x for k,x in q["original_ceiling"].items() if k!="state"}
+            d=v["dose"]
+            if (set(d)!=set(ceiling) or any(d[k]>ceiling[k] for k in d)
+                    or ("food_units_per_active_day" in d and round(d["food_units_per_active_day"],5)!=d["food_units_per_active_day"])
+                    or {"state":"ACTIVE",**d}==q["basis"]["prior_effective_dose"]):
+                return None
+        return {"kind":"REVISE_RECURRENT_ROUTINE","basis":q["basis"],**v}
     raise RecursionRefusal("GEN_UNKNOWN_RICH_CONSTRUCTION")
 
 class ConditionalPolicy:
@@ -418,6 +458,9 @@ class ConditionalPolicy:
                     construct=rule.get("construct")
                     if construct in TYPED_FORMATION_OFFERS:
                         c=rich_candidate(construct,q,detached(extra))
+                        if c is None:
+                            self.routes["typed_conditional_offer_unmet"]+=1
+                            continue
                     elif construct=="LEXICAL_PROJECT_REVALUATION":
                         c={"kind":"REORGANIZE_PROJECT","project_id":q["project_id"],
                            "lexical_revaluation_basis":q["lexical_revaluation_basis"],**detached(extra)}
