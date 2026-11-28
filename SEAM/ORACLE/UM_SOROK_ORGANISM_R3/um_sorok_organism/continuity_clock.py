@@ -658,6 +658,7 @@ def qualified_recurrent_interval(world,schedule,clock,limit):
     the existing allocator, which resolves the current revision and pairing.
     """
     from .routine_sources import acquired_routine_processes,lived_work_permission_boundaries
+    from .food_access_struggle import shared_food_permission_boundaries
     live=acquired_routine_processes(world)
     explicit_refs={row['source_ref'] for _,_,row in schedule}
     dynamic=qualify_mixed_history_schedule(world,[p for p in live
@@ -666,6 +667,9 @@ def qualified_recurrent_interval(world,schedule,clock,limit):
     for p in active:
         if p['kind']=='QUALIFIED_WAGE_LABOR':
             times=lived_work_permission_boundaries(world,p['actor'],p['location'],clock,end)
+            if times:end=min(end,times[0])
+        if p['kind'] in ('QUALIFIED_MATERIAL_FEEDING','QUALIFIED_SELF_MEAL') and p.get('supply_origin')=='SHARED_SITE_FOOD':
+            times=shared_food_permission_boundaries(world,p['actor'],p['location'],clock,end)
             if times:end=min(end,times[0])
     if end<=clock:raise ValueError('MIXED_HISTORY_EMPTY_ROUTINE_INTERVAL')
     return end,active

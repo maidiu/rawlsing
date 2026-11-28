@@ -14,7 +14,7 @@ human-care priority. It is replaced by qualified material institutions later.
 from decimal import Decimal, ROUND_DOWN
 from math import isfinite
 from .types import stable_id, copy, GRADE
-from .food_access_struggle import can_draw_shared_food
+from .food_access_struggle import can_draw_shared_food,shared_food_permission_boundaries
 
 UNIT = Decimal("0.00001")
 PROVISION_KIND="QUALIFIED_MATERIAL_FEEDING"
@@ -85,6 +85,8 @@ def qualify_feeding(world,actors,process,start,days):
     if requested<=0:
         raise ValueError("PROVISION_ZERO_REQUEST")
     _available(world,origin,giver,loc)
+    if origin=="SHARED_SITE_FOOD" and shared_food_permission_boundaries(world,giver,loc,start,start+days-1):
+        raise ValueError("PROVISION_SPLIT_AT_EFFECTIVE_FOOD_PERMISSION_CHANGE")
     key=stable_id("provisioning_claim",{
         "giver":giver,"recipient":recipient,
         "source":process["source_ref"],"location":loc,
