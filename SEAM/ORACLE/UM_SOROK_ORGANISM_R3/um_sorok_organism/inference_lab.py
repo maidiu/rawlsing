@@ -17,6 +17,8 @@ SCHEMA="RAWLSING_SOURCEFREE_INFERENCE_WORKLOAD_V1"
 GRADE="SOURCEFREE_FIXTURE_ONLY_NOT_EMPIRICAL"
 TASKS=frozenset(("actor_attempt","development","expression","adult_constructor",
                  "blind_adult_interview","family_pathway_selection"))
+CHECKPOINT_TASK="developmental_checkpoint"
+CAPTURE_TASKS=TASKS|{CHECKPOINT_TASK}
 MAX_PACKET_BYTES=128000
 MAX_PROPOSAL_BYTES=256000
 MAX_TAPE_BYTES=128*1024*1024
@@ -77,7 +79,7 @@ class WorkloadCapture:
 
     def invoke(self,provider,task,packet):
         if self.failed:raise RuntimeError("LAB_CAPTURE_INCOMPLETE")
-        if task not in TASKS or type(packet) is not dict:
+        if task not in CAPTURE_TASKS or type(packet) is not dict:
             raise ValueError("LAB_INVALID_PACKET")
         frozen=copy(packet);n=size(frozen)
         if (n>MAX_PACKET_BYTES or len(self.rows)>=self.max_rows
@@ -150,7 +152,7 @@ def verify_workload(doc,*,source_head=None):
     for i,row in enumerate(rows):
         if (type(row) is not dict or set(row)!={"seq","task","packet","packet_digest",
                     "proposal","proposal_digest","elapsed_ns"} or type(row["seq"]) is not int
-                or row["seq"]!=i or row["task"] not in TASKS
+                or row["seq"]!=i or row["task"] not in CAPTURE_TASKS
                 or type(row["packet"]) is not dict or type(row["proposal"]) is not dict
                 or row["proposal"].get("task") not in (None,row["task"])
                 or digest(row["packet"])!=row["packet_digest"]
@@ -208,22 +210,36 @@ def selected_rows(document,*,per_task=1,tasks=None):
     return out
 
 
-def compare_frozen(document,arms,*,per_task=1,tasks=None):
+def compare_frozen(document,arms,*,per_task=1,tasks=None,sequence_ids=None,
+                   rotate_arms=False,on_observation=None):
     """Matched frozen proposal workloads, not owner admission or life equivalence.
 
     No choice of winner, auto escalation, retry, or psychological rating.
     A provider exception remains an observed failure. A budget stop retains
     all completed observations and prevents any subsequent provider call.
     """
-    rows=selected_rows(document,per_task=per_task,tasks=tasks)
+    if sequence_ids is None:
+        rows=selected_rows(document,per_task=per_task,tasks=tasks)
+    else:
+        all_rows=verify_workload(document)["rows"]
+        if (type(sequence_ids) is not list or not sequence_ids
+                or any(type(i) is not int or not 0<=i<len(all_rows) for i in sequence_ids)
+                or len(set(sequence_ids))!=len(sequence_ids)):
+            raise ValueError("LAB_SEQUENCE_SELECTION")
+        rows=[all_rows[i] for i in sequence_ids]
+    if type(rotate_arms) is not bool or (on_observation is not None and not callable(on_observation)):
+        raise ValueError("LAB_COMPARISON_OPTIONS")
     if type(arms) is not dict or not arms:raise ValueError("LAB_ARMS_REQUIRED")
     for name in arms:
         if type(name) is not str or not re.fullmatch("[A-Za-z0-9_.-]{1,80}",name):
             raise ValueError("LAB_ARM_ID_INVALID")
     observations=[];stopped=False
-    for row in rows:
+    order=list(arms)
+    for i,row in enumerate(rows):
         if stopped:break
-        for name,provider in arms.items():
+        shift=i%len(order) if rotate_arms else 0
+        for name in order[shift:]+order[:shift]:
+            provider=arms[name]
             prior=provider.usage_snapshot()["total"] if hasattr(provider,"usage_snapshot") else None
             start=perf_counter_ns()
             try:
@@ -246,6 +262,7 @@ def compare_frozen(document,arms,*,per_task=1,tasks=None):
                   "proposal":copy(proposal),"proposal_digest":digest(proposal),
                   "equals_recorded_proposal":proposal==row["proposal"],
                   "elapsed_ns":perf_counter_ns()-start,"metric":metric})
+            if on_observation is not None:on_observation(copy(observations[-1]))
             if stopped:break
     return {"schema":"RAWLSING_FROZEN_PROPOSAL_COMPARISON_V1",
             "planned_observations":len(rows)*len(arms),
@@ -334,7 +351,7 @@ class LiveBudget:
             raise BudgetStop("LAB_LIVE_BUDGET_EXHAUSTED")
         self.calls+=1;self.wire_bytes+=n;self.reserved+=self.reserve;self.pending=True
         self._append({"event":"RESERVED_BEFORE_SEND","attempt":self.calls,
-                      "wire_bytes":n,"reserved_nanos":self.reserve,
+                      "wire_bytes":n,"request_sha256":digest(request),"reserved_nanos":self.reserve,
                       "cumulative_reserved_nanos":self.reserved})
 
     def settle(self,usage):

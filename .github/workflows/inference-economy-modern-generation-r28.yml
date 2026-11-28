@@ -1,0 +1,42 @@
+name: Inference economy R28 modern developmental generation port
+on:
+  push:
+    branches:
+      - agent/inference-economy-semantic-port-r1-20261126
+    paths:
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/modern_generation_port_r28.py'
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/test_modern_generation_port_r28.py'
+      - '.github/workflows/inference-economy-modern-generation-r28.yml'
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/live_psychological_llm.py'
+  workflow_dispatch:
+jobs:
+  modern-generation:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: specialist
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 48acef94058a141aa86b97dd07410afca8258e5e
+          path: owner
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact owner and inherited P2 source pins
+        run: |
+          git -C specialist rev-parse HEAD
+          test "$(git -C owner rev-parse HEAD)" = 48acef94058a141aa86b97dd07410afca8258e5e
+          test "$(git -C owner hash-object SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/runtime.py)" = 7565f45279e63244b7f399aab42c469b0c63a28f
+          test "$(git -C specialist hash-object WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py)" = 231cab97b4bc5e2f40de3c45d179a68ba58585c5
+          test "$(git -C specialist hash-object WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py)" = a777692782003e05de6c46280b5861e97516dc90
+      - name: Actual generation, cold continuation and adverse courts
+        env:
+          PYTHONPATH: ${{ github.workspace }}/owner/SEAM/ORACLE/UM_SOROK_ORGANISM_R3:${{ github.workspace }}/specialist/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -c 'import um_sorok_organism.runtime as r; assert "/owner/" in r.__file__; import unittest; unittest.main(module="test_modern_generation_port_r28")'
+          python -O -c 'import um_sorok_organism.runtime as r; "/owner/" in r.__file__ or __import__("sys").exit("WRONG_OWNER"); import unittest; unittest.main(module="test_modern_generation_port_r28")'
