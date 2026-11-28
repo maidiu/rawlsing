@@ -10,7 +10,7 @@ from pathlib import Path
 from statistics import median
 from unittest.mock import patch
 
-BASE="bb1f792a71f7057510f8d303bf22a27ae6ad269e"
+BASE="6d1f5e83b67784a55a089479c81cffa1adda6ff2"
 
 def worker(root,mode,report):
     from tools.pyat_country_preparation_court import read,write,geometry,target_domains
@@ -108,9 +108,11 @@ def worker(root,mode,report):
         from rawlsing_next._pre553_country_preparation import CountryPreparationPin
         kwargs["preparation_pin"]=CountryPreparationPin(**read(report.parent/"pin.json"))
     from rawlsing_next import pre553_c11_ingest as ingest
+    from rawlsing_next import _pre553_country_preparation as prep
     counts={k:0 for k in ("I02","I03","I05","admission","scope_check","scope_current","nonrouting_pin","projection_identity","full_file_auth",
                            "replay_projection_hash","replay_closure_census","routing_authority_validation",
-                           "namespace_validation","question_occurrence_validation")}
+                           "namespace_validation","question_occurrence_validation",
+                           "physical_projection","event_constructor","event_collector","preparation_finish")}
     phases={k:0. for k in counts}
     def monitor(owner,name,label):
         original=getattr(owner,name)
@@ -170,6 +172,10 @@ def worker(root,mode,report):
             (ingest,"_validate_packed_routing_authorities","routing_authority_validation"),
             (ingest,"_validate_universe_and_respondent_scope","namespace_validation"),
             (ingest,"_validate_questions_and_events","question_occurrence_validation"),
+            (facade,"project_c11_candidate_from_physical_cells","physical_projection"),
+            (facade,"_event","event_constructor"),
+            (ingest._CountryEventCollector,"add","event_collector"),
+            (prep._CountryPreparation,"finish","preparation_finish"),
         ):
             stack.enter_context(monitor(owner,name,label))
         with carrier.CountryWorkloadSession(db,receipt,**kwargs) as session:

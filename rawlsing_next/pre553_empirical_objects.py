@@ -426,6 +426,12 @@ class CanonicalSemanticObject:
         if family_name != "AuthoritySnapshot" and not auth_refs:
             raise Pre553IntegrityError(f"{family_name} requires exact authority_snapshot_refs for closure")
 
+        # RespondentEvent is the dense I02 family. Its fields have no
+        # SET_LIKE_FIELDS; normalize into ordinary canonical JSON material
+        # once, hash that material, then freeze it for the public object.
+        # The independent ingress verifier still hashes the detached object.
+        # Other families and subclasses retain the incumbent generic path.
+        dense_event = type(self) is RespondentEvent and not self.SET_LIKE_FIELDS
         normalized: dict[str, Any] = {}
         for key, value in semantic_fields.items():
             if key in {"family", "schema_id", "schema_version", "object_id", "content_hash"}:
@@ -435,7 +441,8 @@ class CanonicalSemanticObject:
                     raise Pre553IntegrityError(f"{key} must be a set-like iterable")
                 normalized[key] = _freeze_semantic_descendants(canonical_set(value))
             else:
-                normalized[key] = _freeze_semantic_descendants(canonicalize(value))
+                material = canonicalize(value)
+                normalized[key] = material if dense_event else _freeze_semantic_descendants(material)
 
         replay_root = _replay_root(producer_replay_locator_or_reference_root)
         projection = {
@@ -447,7 +454,15 @@ class CanonicalSemanticObject:
             "producer_replay_locator_or_reference_root": canonicalize(replay_root),
             "semantic_fields": normalized,
         }
-        digest = semantic_hash(projection)
+        if dense_event:
+            # Every descendant above has already passed canonicalize:
+            # schema/state text, canonical ref sets, canonical replay and
+            # normalized semantic fields. Match canonical_json's exact
+            # encoder flags without traversing/freezing/thawing again.
+            digest = hashlib.sha256(json.dumps(projection, sort_keys=True,
+                separators=(",", ":"), ensure_ascii=False, allow_nan=False).encode("utf-8")).hexdigest()
+        else:
+            digest = semantic_hash(projection)
         expected_id = f"{URN_PREFIX}:{family_name}:sha256:{digest}"
         if object_id is not None and object_id != expected_id:
             raise Pre553IntegrityError("object_id does not match deterministic semantic identity")
@@ -462,6 +477,9 @@ class CanonicalSemanticObject:
         object.__setattr__(self, "authority_snapshot_refs", auth_refs)
         object.__setattr__(self, "dependency_refs", deps)
         object.__setattr__(self, "producer_replay_locator_or_reference_root", replay_root)
+        if dense_event:
+            normalized = {key: _freeze_semantic_descendants(value)
+                          for key, value in normalized.items()}
         object.__setattr__(self, "_semantic_fields", MappingProxyType(normalized))
         object.__setattr__(self, "_frozen", True)
         self._validate_family()
