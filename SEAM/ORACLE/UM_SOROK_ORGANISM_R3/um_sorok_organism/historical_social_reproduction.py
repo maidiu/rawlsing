@@ -21,7 +21,8 @@ from .mediated_efficacy import COMPONENTS, preproject_exercise_basis, qualified_
 from .material_conjunction import qualify_aggregate_material_gate
 from .co_regulation_history import conserve_received_period_care
 from .material_provisioning import (
-    PROVISION_KIND,SELF_MEAL_KIND,qualify_feeding,settle_provisioning,_allocate)
+    PROVISION_KIND,SELF_MEAL_KIND,PURCHASE_KIND,qualify_feeding,settle_provisioning,
+    qualify_period_purchase,settle_period_purchases,_allocate)
 
 DAY_HOURS=24.0
 PROVISIONAL_REST_RESERVE=8.0
@@ -29,7 +30,7 @@ ACTIVE_HOURS=DAY_HOURS-PROVISIONAL_REST_RESERVE
 KINDS=frozenset({'QUALIFIED_ROUTINE_PRACTICE',
                  'QUALIFIED_REPRODUCTIVE_CARE',
                  'QUALIFIED_WAGE_LABOR',
-                 'QUALIFIED_MATERIAL_FEEDING',SELF_MEAL_KIND,
+                 'QUALIFIED_MATERIAL_FEEDING',SELF_MEAL_KIND,PURCHASE_KIND,
                  'QUALIFIED_OTHER_OBLIGATION'})
 
 
@@ -145,6 +146,8 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
             # Feeding is an additional, materially specified routine, never
             # silently included in generic CARE or awarded by affection.
             qualify_feeding(world,actors,raw,start_clock,days)
+        if raw['kind']==PURCHASE_KIND:
+            qualify_period_purchase(world,actors,raw,start_clock,days)
         if raw['kind']=='QUALIFIED_REPRODUCTIVE_CARE':
             recipient=raw.get('recipient')
             if (type(recipient) is not str or recipient==a or
@@ -178,7 +181,7 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
                 continue
         operation=({'QUALIFIED_REPRODUCTIVE_CARE':'CARE',
                     'QUALIFIED_WAGE_LABOR':'WORK',
-                    PROVISION_KIND:'FEED',SELF_MEAL_KIND:'EAT'}.get(raw['kind']))
+                    PROVISION_KIND:'FEED',SELF_MEAL_KIND:'EAT',PURCHASE_KIND:'BUY_FOOD'}.get(raw['kind']))
         if raw['kind']=='QUALIFIED_ROUTINE_PRACTICE':
             operation=raw.get('operation')
         if raw.get('preproject_exercise_ref') is not None:
@@ -509,6 +512,7 @@ def apply_period_allocation(world,actors,allocation):
            world.get('historical_time_allocations',[])):
         raise ValueError('HISTORICAL_TIME_DUPLICATE_SETTLEMENT')
     care=[];wages=[];practice_loads=[];project_loads=[];lived_practice_by_actor={}
+    opening_cash=copy(world['accounts'])
     wage_plan=_plan_wages(world,allocation['qualified'],start,days)
     # All qualification and per-person time budgets are checked before writes.
     for proc in allocation['qualified']:
@@ -565,6 +569,7 @@ def apply_period_allocation(world,actors,allocation):
             'not_observed_daily_events':True,'not_a_measured_physiological_law':True,
             'grade':GRADE})
     provisioned=settle_provisioning(world,actors,allocation)
+    purchased=settle_period_purchases(world,actors,allocation,opening_cash)
     receipt={
         'id':ref,'start_clock':start,'end_clock':start+days,
         'actor_hour_claims_per_day':copy(
@@ -583,6 +588,7 @@ def apply_period_allocation(world,actors,allocation):
             'material_self_meal_shortfall_refs':[x['id'] for x in provisioned
                  if x.get('self_meal') and x['uncovered_food_units']>0]}
            if any(x.get('self_meal') for x in provisioned) else {}),
+        **({'material_purchase_period_refs':[x['id'] for x in purchased]} if purchased else {}),
         'source_qualified_process_refs':[
             x['source_ref'] for x in allocation['qualified']],
         'support_downgraded_to_unresolved_indices':copy(

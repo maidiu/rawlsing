@@ -1012,7 +1012,9 @@ class ConstitutiveRuntime:
             if chosen is None:continue
             activity_effects[row['actor']]=record_activity_afterlife(actors[row['actor']],
                 row['action'],row['status'],summary['outcome'],chosen.basis,objective_ref,
-                {'material_claim_ref':summary.get('material_claim_ref')},
+                {'material_claim_ref':summary.get('material_claim_ref'),
+                 **({'material_purchase_basis':copy(summary['material_purchase_basis'])}
+                    if row['actor']==actor_id and summary.get('material_purchase_basis') else {})},
                 purpose_selection=chosen.purpose_selection)
         developmental={};subjective={};post_event_psychodynamics={}
         for aid in actors:

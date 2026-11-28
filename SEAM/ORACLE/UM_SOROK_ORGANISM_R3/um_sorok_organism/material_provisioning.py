@@ -11,7 +11,7 @@ sourcefree world provisioning policy divides simultaneous scarce claims
 proportionally; it is not a universal culture, rationing justice law or
 human-care priority. It is replaced by qualified material institutions later.
 """
-from decimal import Decimal, ROUND_DOWN
+from decimal import Decimal, ROUND_DOWN, ROUND_UP
 from math import isfinite
 from .types import stable_id, copy, GRADE
 from .food_access_struggle import can_draw_shared_food,shared_food_permission_boundaries
@@ -19,6 +19,7 @@ from .food_access_struggle import can_draw_shared_food,shared_food_permission_bo
 UNIT = Decimal("0.00001")
 PROVISION_KIND="QUALIFIED_MATERIAL_FEEDING"
 SELF_MEAL_KIND="QUALIFIED_SELF_MEAL"
+PURCHASE_KIND="QUALIFIED_FOOD_PURCHASE"
 ORIGINS=frozenset(("SHARED_SITE_FOOD","GIVER_HELD_FOOD","MUTUAL_AID_FOOD"))
 CAP=Decimal("1000000")
 
@@ -268,6 +269,99 @@ def settle_provisioning(world, actors, allocation):
         else:
             conserve_received_period_provision(actors[row["recipient"]],row)
     return outcomes
+
+
+def qualify_period_purchase(world,actors,process,start,days):
+    """Exact actor-local market course; never an invented seller."""
+    from .world import _effective_material_controller,_cash_amount
+    a=process.get("actor");loc=process.get("location")
+    if (process.get("kind")!=PURCHASE_KIND
+            or (process.get("source_registry_confirmation") or {}).get("source_grade")!="SOURCEFREE_ACTOR_LIVED_ROUTINE_PROPOSAL"
+            or a not in actors or world.get("positions",{}).get(a)!=loc
+            or actors[a].get("location")!=loc or loc not in world["sites"]
+            or process.get("supply_origin")!="SITE_MARKET_PURCHASE"):
+        raise ValueError("PURCHASE_PERIOD_UNQUALIFIED_COURSE")
+    site=world["sites"][loc]
+    seller,error=_effective_material_controller(world,loc,site)
+    if error or seller is None or seller==a or seller!=process.get("market_seller"):
+        raise ValueError("PURCHASE_PERIOD_UNQUALIFIED_SELLER")
+    if not any(p.get("id")==process.get("routine_project_ref") and
+               p.get("status","active")=="active" and "BUY_FOOD" in p.get("means",[])
+               for p in actors[a].get("projects",[])):
+        raise ValueError("PURCHASE_PERIOD_NO_OWN_PROJECT")
+    price=Decimal(str(_cash_amount(site.get("food_price",1.),"PURCHASE_PERIOD_PRICE")))
+    _cash_amount(world["accounts"].get(a,0),"PURCHASE_PERIOD_BUYER_CASH")
+    _cash_amount(world["accounts"].get(seller,0),"PURCHASE_PERIOD_SELLER_CASH")
+    _quantity(site.get("food",0),"PURCHASE_PERIOD_STOCK")
+    _quantity(world.get("holdings",{}).get(a,{}).get("food",0),"PURCHASE_PERIOD_HOLDINGS")
+    daily=_quantity(process.get("food_units_per_active_day"),"PURCHASE_DAILY_FOOD",positive=True)
+    qty=(daily*Decimal(str(process["provisional_exposure_fraction"]))*Decimal(days)).quantize(UNIT)
+    if qty<=0:raise ValueError("PURCHASE_PERIOD_ZERO_REQUEST")
+    return {"id":stable_id("aggregate_purchase_claim",{"source":process["source_ref"],"start":start,"days":days}),
+            "source_ref":process["source_ref"],"buyer":a,"seller":seller,"location":loc,
+            "price":price,"requested":qty,"modeled_hours":round(process["hours_per_active_day"]*
+                process["provisional_exposure_fraction"]*days,5)}
+
+
+def settle_period_purchases(world,actors,allocation,opening_cash):
+    """End-of-interval replenishment, not a fictional daily economy.
+
+    Prior wage/provisioning settlements cannot finance retroactive purchases:
+    use at most opening cash AND cash still held, and remaining physical stock.
+    New food cannot retroactively provision this interval. Simultaneous
+    affordable demand uses the existing proportional stock allocator.
+    """
+    from .world import _cash_amount,_exact_material_delta
+    start=allocation["start_clock"];days=allocation["days"]
+    claims=[qualify_period_purchase(world,actors,p,start,days)
+            for p in allocation["qualified"] if p["kind"]==PURCHASE_KIND]
+    if not claims:return []
+    if len({q["buyer"] for q in claims})!=len(claims):
+        raise ValueError("PURCHASE_PERIOD_COMPETING_BUYER_COURSES")
+    pools={};affordable={}
+    for q in claims:
+        a=q["buyer"];cash=Decimal(str(min(
+            _cash_amount(opening_cash.get(a,0),"PURCHASE_OPENING_CASH"),
+            _cash_amount(world["accounts"].get(a,0),"PURCHASE_SETTLEMENT_CASH"))))
+        cap=q["requested"] if not q["price"] else min(q["requested"],(cash/q["price"]).quantize(UNIT,rounding=ROUND_DOWN))
+        affordable[q["id"]]=cap
+        pools.setdefault(q["location"],[]).append({"id":q["id"],"requested_units":str(cap)})
+    transfers={};stocks={};holdings={};out=[]
+    for loc,requests in sorted(pools.items()):
+        pool=_quantity(world["sites"][loc].get("food",0),"PURCHASE_PERIOD_STOCK")
+        amounts={q["id"]:v for q,v in _allocate(pool,requests)}
+        stocks[loc]=pool-sum(amounts.values(),Decimal(0))
+        for q in sorted((x for x in claims if x["location"]==loc),key=lambda x:x["id"]):
+            amount=amounts.get(q["id"],Decimal(0))
+            paid=(amount*q["price"]).quantize(UNIT,rounding=ROUND_UP)
+            buyer=q["buyer"];seller=q["seller"]
+            transfers[buyer]=transfers.get(buyer,Decimal(0))-paid
+            transfers[seller]=transfers.get(seller,Decimal(0))+paid
+            holdings[buyer]=_quantity(world.get("holdings",{}).get(buyer,{}).get("food",0),"PURCHASE_HOLDINGS")+amount
+            out.append({"id":q["id"],"source_ref":q["source_ref"],"buyer":buyer,"seller":seller,
+                "location":loc,"start_clock":start,"end_clock":start+days,
+                "requested_food_units":float(q["requested"]),"affordable_food_units":float(affordable[q["id"]]),
+                "purchased_food_units":float(amount),"actual_paid_model":float(paid),
+                "uncovered_due_to_cash_units":float(q["requested"]-affordable[q["id"]]),
+                "uncovered_due_to_stock_units":float(affordable[q["id"]]-amount),
+                "unit_price_model":float(q["price"]),"modeled_hours":q["modeled_hours"],
+                "policy":"OPENING_CASH_REMAINING_STOCK_END_BOUNDARY_R1",
+                "not_available_for_same_period_provisioning":True,
+                "not_individually_witnessed_purchase_events":True,"grade":GRADE})
+    cash_after={a:_exact_material_delta(_cash_amount(world["accounts"].get(a,0),"PURCHASE_ACCOUNT"),float(v),"PURCHASE_ACCOUNT_DELTA")
+                for a,v in transfers.items()}
+    for v in stocks.values():_quantity(float(v),"PURCHASE_FINAL_STOCK")
+    for v in holdings.values():_quantity(float(v),"PURCHASE_FINAL_HOLDINGS")
+    if sum(transfers.values(),Decimal(0))!=0:raise ValueError("PURCHASE_CASH_NONCONSERVATION")
+    for a,v in cash_after.items():world["accounts"][a]=v
+    for loc,v in stocks.items():world["sites"][loc]["food"]=float(v)
+    for a,v in holdings.items():world.setdefault("holdings",{}).setdefault(a,{})["food"]=float(v)
+    for row in out:
+        body=actors[row["buyer"]]["body"];before=body["rest"]
+        body["rest"]=min(before,round(max(0.,before-row["modeled_hours"]*.00012),5))
+        row["own_rest_expenditure_model"]=round(before-body["rest"],5)
+    world.setdefault("material_purchase_periods",[]).extend(out)
+    return out
 
 
 def visitor_held_food_available(world, giver, location):

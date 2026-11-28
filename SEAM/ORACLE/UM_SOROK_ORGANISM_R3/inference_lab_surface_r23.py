@@ -37,7 +37,10 @@ COUNTER_PINS={**JOINED_PINS,
     NEIGHBOR+"/neighbor_runtime.py":"cf9063ca7ab501f1ccb9adf38063f873e201ed89",
     R3+"/um_sorok_organism/runtime.py":"c0cd223f45b9a5dcfee698588a6387eb689a6710",
 }
-SOURCE_PROFILES=(PINS,JOINED_PINS,COUNTER_PINS)
+PURCHASE_PINS={**COUNTER_PINS,
+    R3+"/um_sorok_organism/runtime.py":"114df1f8e559b35b017370d3561a4df5204366a6",
+}
+SOURCE_PROFILES=(PINS,JOINED_PINS,COUNTER_PINS,PURCHASE_PINS)
 ARMS={"acquired":{},"unheard":{"visitor_hears":False},
       "unacquired":{"learn":False},"unaddressed":{"acknowledge":False}}
 

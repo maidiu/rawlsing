@@ -1046,6 +1046,10 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                         inspected_material_object['id']
                         if inspected_material_object else None),
                    'co_present_not_verified_witnessing':True}
+    if (attempt.action=='BUY_FOOD' and status=='PERFORMED' and output=='FOOD_PURCHASED'
+            and last_claim and last_claim.get('kind')=='FOOD_PURCHASE'
+            and last_claim.get('buyer')==aid and last_claim.get('clock')==world['clock']-1):
+        event_summary['material_purchase_basis']=copy(last_claim)
     if actual_meeting_ref is not None:
         event_summary['meeting_ref']=actual_meeting_ref
         event_summary['human_meeting_event_ref']=human_vocal['user_event_ref']
@@ -1067,7 +1071,7 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         # The objective debit is not another person's view of the meal.
         event_summary['selected_self_meal_receipt']=selected_self_meal_receipt
         perceptible_outcome='ATE_FOOD'
-    public_event={k:v for k,v in event_summary.items() if k!='selected_self_meal_receipt'}
+    public_event={k:v for k,v in event_summary.items() if k not in ('selected_self_meal_receipt','material_purchase_basis')}
     public_event['outcome']=perceptible_outcome
     world['public_history'].append(public_event)
     # New cues are actual public world consequences, not actor introspection.

@@ -288,7 +288,7 @@ def rich_candidate(kind,q,v):
                 "witnessed_cue_ref":q["witnessed_cue_ref"],**v}
     if kind=="RECURRENT_ROUTINE":
         require(q.get("kind")=="ACQUIRE_RECURRENT_ROUTINE" and
-                (("food_units_per_active_day" in v)==(q["basis"]["operation"] in ("FEED","EAT"))) and
+                (("food_units_per_active_day" in v)==(q["basis"]["operation"] in ("FEED","EAT","BUY_FOOD"))) and
                 v["window_days"]<=q["maximum_window_days"] and
                 v["hours_per_active_day"]<=q["maximum_hours_per_active_day"] and
                 ("food_units_per_active_day" not in v or
