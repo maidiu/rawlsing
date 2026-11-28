@@ -22,6 +22,7 @@ from .activity import (record_activity_afterlife, register_lived_activity_attemp
                         possible_productive_witness_reorganizations,
                        possible_dependency_project_reorganizations,
                        possible_dependency_means_revisions, qualify_interactivity_deferral,
+                       possible_lexical_project_revaluations,
                        possible_interactivity_relations)
 from .practical_difference import start_selected_expectations
 from .lived_genesis import proposals_from_bodily_history
@@ -1288,6 +1289,9 @@ class ConstitutiveRuntime:
                     possible_productive_vocal_takeups(actors[aid],experience,objective_ref)),
                 'historically_possible_dependency_takeups':copy(
                     possible_dependency_project_takeups(actors[aid],experience,objective_ref)),
+                **({'historically_possible_lexical_project_revaluations':copy(lexical_revaluations)}
+                   if (lexical_revaluations:=possible_lexical_project_revaluations(
+                       actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_productive_witness_reorganizations':copy(
                     possible_productive_witness_reorganizations(actors[aid],experience,objective_ref)),
                 'historically_possible_dependency_project_reorganizations':copy(

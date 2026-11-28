@@ -225,6 +225,8 @@ def project_recursive_actor_sign(world, actor, cue, location):
             result.pop('unobserved_semantic_content',None)
             result['spoken_text']=text
             result['utterance_claim_truth']='NOT_ESTABLISHED'
+            result['utterance_grade']=cue['utterance_grade']
+            result['utterance_text_hash']=cue['utterance_text_hash']
         return result
     if source==actor['id']:
         return copy(cue)

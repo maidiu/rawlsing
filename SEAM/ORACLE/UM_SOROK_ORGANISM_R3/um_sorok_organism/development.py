@@ -25,7 +25,8 @@ from .psychic_genesis import (admit_contrast_end, possible_dependency_project_ta
                              PRODUCTIVE_VOCAL_FAMILY, possible_productive_vocal_takeups)
 from .activity import (possible_productive_witness_reorganizations,
                         possible_dependency_project_reorganizations,
-                       possible_dependency_means_revisions, admit_interactivity_relation)
+                       possible_dependency_means_revisions, admit_interactivity_relation,
+                       possible_lexical_project_revaluations)
 from .joint_practice_genesis import admit_joint_practice
 from .care_commitment_genesis import admit_care_commitment
 from .cultural_mediation import (
@@ -817,7 +818,30 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             dependency_project=bool(project.get('takeup_evidence',{}).get('dependency_takeup_basis'))
             revision_basis=c.get('dependency_means_revision_basis')
             witness_basis=c.get('productive_witness_basis')
-            if witness_basis is not None:
+            lexical_basis=c.get('lexical_revaluation_basis')
+            if 'lexical_revaluation_basis' in c:
+                # Exact basis issued by this actor's actual received sign and
+                # previously lived course. Preserve the old project and its
+                # history. No objective truth or new means are admitted.
+                offered=possible_lexical_project_revaluations(actor,experience,event_ref)
+                significance=c.get('personal_significance')
+                if (set(c)!={'kind','project_id','lexical_revaluation_basis',
+                            'priority','personal_significance'}
+                        or not any(q['project_id']==ident
+                                   and q['lexical_revaluation_basis']==lexical_basis for q in offered)
+                        or type(significance) is not str or not significance.strip()
+                        or len(significance)>512
+                        or any(v.get('event')==event_ref and v.get('lexical_revaluation')
+                               for v in project.get('history',[]))):
+                    raise InvalidDevelopment('LEXICAL_PROJECT_REVALUATION_UNQUALIFIED')
+                priority=validate_activity_priority(c['priority'])
+                if priority==project.get('priority',.4):
+                    raise InvalidDevelopment('LEXICAL_REVALUATION_NO_OPERATIVE_PRIORITY_CHANGE')
+                evidence['lexical_revaluation']={
+                    'basis':copy(lexical_basis),'personal_significance':significance,
+                    'prior_priority':project.get('priority',.4),'new_priority':priority,
+                    'fallible_semantic_hypothesis_not_actor_self_report':True}
+            elif witness_basis is not None:
                 if c not in possible_productive_witness_reorganizations(actor,experience,event_ref):
                     raise InvalidDevelopment('PRODUCTIVE_WITNESS_REORGANIZATION_UNQUALIFIED')
                 project['productive_witness_means']=copy(witness_basis)
