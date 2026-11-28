@@ -27,7 +27,7 @@ from .activity import (possible_productive_witness_reorganizations, possible_pro
                         possible_dependency_project_reorganizations,
                        possible_dependency_means_revisions, admit_interactivity_relation)
 from .joint_practice_genesis import admit_joint_practice
-from .care_commitment_genesis import admit_care_commitment
+from .care_commitment_genesis import admit_care_commitment, admit_care_practice_revision
 from .cultural_mediation import (
     admit_cultural_reference,admit_reference_revision)
 from .social_vocal_development import admit_vocal_coordination
@@ -74,7 +74,7 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'ACQUIRE_NOTICE_EXPECTATION','REVISE_NOTICE_EXPECTATION',
          'ACQUIRE_GENETIC_POSSIBLE_END',
          'ACQUIRE_CONDITIONAL_JOINT_PRACTICE',
-         'ACQUIRE_COSTLY_CARE_PRACTICE',
+         'ACQUIRE_COSTLY_CARE_PRACTICE','REVISE_COSTLY_CARE_PRACTICE',
          'ACQUIRE_SITUATED_CULTURAL_REFERENCE',
          'REVISE_SITUATED_CULTURAL_REFERENCE',
          'ACQUIRE_SOCIAL_VOCAL_COORDINATION','ACQUIRE_REPAIR_TECHNIQUE','NO_CHANGE'}
@@ -442,6 +442,11 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             try:
                 report.append(admit_reference_revision(
                     actor,experience,event_ref,c))
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
+        elif op=='REVISE_COSTLY_CARE_PRACTICE':
+            try:
+                report.append(admit_care_practice_revision(actor,experience,event_ref,c))
             except ValueError as error:
                 raise InvalidDevelopment(str(error)) from error
         elif op=='ACQUIRE_COSTLY_CARE_PRACTICE':

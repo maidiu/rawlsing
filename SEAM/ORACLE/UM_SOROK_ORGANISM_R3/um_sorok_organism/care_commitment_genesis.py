@@ -159,6 +159,9 @@ def practiced_care_alternatives(constitution,access,option):
     for row in getattr(constitution,"care_practical_commitments",[]):
         if (row.get("status")!=(
                 "HISTORICALLY_PRACTICED_CONTINGENT_CARE")
+                or any(x.get('mode')=='SUSPEND_PARTICULAR_RECRUITMENT'
+                       and x.get('basis',{}).get('location')==access.location
+                       for x in row.get('revisions',[]))
                 or row.get("operation")!=option["action"]
                 or row.get("recipient_ref") not in present):
             continue
@@ -180,3 +183,75 @@ def practiced_care_alternatives(constitution,access,option):
             "future_sufficient_bodily_material_resources":"WORLD_MUST_CHECK",
             "grade":GRADE})
     return results
+
+
+def possible_care_practice_revisions(actor,experience,event_ref):
+    """A recipient can also exercise power against the giver.
+
+    Actual historically practiced care and a later personally received
+    directed imposition are distinct facts. This provisional operation can
+    suspend the PARTICULAR acquired shortcut, not erase care, withdraw all
+    possible care, diagnose abuse, or identify why the Other acted.
+    """
+    from .attention_field import personally_received_directed_act
+    aid=actor.get('id')
+    received=personally_received_directed_act(experience)
+    if (experience.get('actor')!=aid or not received
+            or received['operation']!='IMPOSE'):return []
+    paths=actor.get('evidence_paths',[])
+    present=[p for p in paths if p.get('event')==event_ref
+             and p.get('experience_ref')==experience.get('ref')
+             and p.get('directed_encounter')==received
+             and received['cue_ref'] in p.get('received_cue_refs',[])]
+    if len(present)!=1:return []
+    out=[]
+    for row in actor.get('care_practical_commitments',[]):
+        if (row.get('actor')!=aid
+                or row.get('recipient_ref')!=received['counterpart_ref']
+                or row.get('status')!='HISTORICALLY_PRACTICED_CONTINGENT_CARE'
+                or row.get('revisions')):continue
+        refs=row.get('source_contribution_refs',[])
+        source=[x for x in actor.get('care_contribution_episodes',[])
+                if x.get('id') in refs and x.get('actor')==aid
+                and x.get('recipient_ref')==received['counterpart_ref']
+                and x.get('location')==received['location']
+                and x.get('selection_source')==CHOSEN
+                and x.get('bodily_cost_rest_delta',0)>0
+                and type(x.get('clock')) is int
+                and x['clock']<received['clock']]
+        if (len(refs)!=2 or len(source)!=2 or len(set(refs))!=2
+                or [x['event_ref'] for x in source]!=row['source_event_refs']
+                or [x['clock'] for x in source]!=row['source_clock_interval']
+                or source[0]['clock']>=source[1]['clock']):continue
+        if not all(any(p.get('event')==x['event_ref']
+                       and p.get('experience_ref')==x['experience_ref']
+                       and p.get('own_action')==x['operation']
+                       for p in paths) for x in source):continue
+        out.append({'kind':'REVISE_COSTLY_CARE_PRACTICE',
+                    'practice_ref':row['id'],'revision_mode':'SUSPEND_PARTICULAR_RECRUITMENT',
+                    'basis':{'actor':aid,'recipient_ref':received['counterpart_ref'],
+                             'location':received['location'],
+                             'earlier_contribution_refs':copy(refs),
+                             'imposition_event_ref':event_ref,
+                             'imposition_experience_ref':experience['ref'],
+                             'received_directed_act':copy(received),
+                             'not_care_as_consent_or_proof_of_motive':True}})
+    return out[:16]
+
+
+def admit_care_practice_revision(actor,experience,event_ref,proposal):
+    meaning=proposal.get('interpretive_hypothesis')
+    if (type(meaning) is not str or not meaning.strip() or len(meaning)>512
+            or {k:v for k,v in proposal.items() if k!='interpretive_hypothesis'}
+                not in possible_care_practice_revisions(actor,experience,event_ref)):
+        raise ValueError('CARE_PRACTICE_REVISION_UNQUALIFIED')
+    row=next(x for x in actor['care_practical_commitments']
+             if x['id']==proposal['practice_ref'])
+    row.setdefault('revisions',[]).append({
+        'event_ref':event_ref,'experience_ref':experience['ref'],
+        'basis':copy(proposal['basis']),
+        'mode':proposal['revision_mode'],
+        'interpretive_hypothesis_not_causal_truth':meaning.strip(),
+        'original_practice_not_erased':True,'grade':GRADE})
+    return {'kind':proposal['kind'],'practice_ref':row['id'],
+            'status':'ADMITTED_PARTICULAR_CARE_RECRUITMENT_SUSPENSION','grade':GRADE}

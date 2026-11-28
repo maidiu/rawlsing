@@ -57,7 +57,7 @@ from .psychic_genesis import (
     possible_productive_vocal_takeups)
 from .joint_practice_genesis import possible_joint_practice
 from .care_commitment_genesis import (
-    conserve_costly_offered_care,candidate_care_commitment)
+    conserve_costly_offered_care,candidate_care_commitment,possible_care_practice_revisions)
 from .cultural_mediation import (
     conserve_personally_heard_reference,
     possible_cultural_object_inquiry,possible_reference_revision)
@@ -1255,6 +1255,9 @@ class ConstitutiveRuntime:
                     possible_joint_practice_genesis),
                 'historically_possible_care_practices':copy(
                     possible_care_practice),
+                **({'historically_possible_care_practice_revisions':copy(care_revisions)}
+                   if (care_revisions:=possible_care_practice_revisions(
+                       actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_cultural_references':copy(
                     cultural_reference_candidates),
                 'historically_possible_cultural_revisions':copy(
