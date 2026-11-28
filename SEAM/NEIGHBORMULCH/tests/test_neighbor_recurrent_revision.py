@@ -184,6 +184,7 @@ class ContinuingRevision(unittest.TestCase):
             self.assertEqual(routine(pause)['revisions'][-1]['effective_dose']['state'],'ACTIVE')
             self.assertEqual(routine('SING')['revisions'][-1]['effective_dose']['hours_per_active_day'],1.)
             prior=deepcopy(world()['historical_periods'])
+            final_start=world()['clock']
             interval(2)
             self.assertEqual(world()['historical_periods'][:len(prior)],prior)
             last=world()['historical_periods'][-1]
@@ -191,7 +192,10 @@ class ContinuingRevision(unittest.TestCase):
             sing=next(x for x in last['processes'] if x['source_ref']==routine('SING')['id'])
             self.assertEqual(sing['hours_per_active_day'],1.)
             self.assertEqual(sing['routine_revision_ref'],routine('SING')['revisions'][-1]['id'])
-            self.assertEqual(routine('SING')['modeled_course_receipts'][-1]['own_modeled_hours'],2.)
+            final_receipts=[x for x in routine('SING')['modeled_course_receipts']
+                            if x['from_clock']>=final_start]
+            self.assertEqual(sum(x['own_modeled_hours'] for x in final_receipts),2.)
+            self.assertEqual(sum(x['through_clock']-x['from_clock'] for x in final_receipts),2.)
             self.assertTrue(rt.verify()['valid'])
             return {'pause':pause,'nutrition':nutrition,'wage':after_wage,'meal':meal['status'],
                     'initial_withheld':5,'new_hours':last['actor_time_claims']['mother'],
