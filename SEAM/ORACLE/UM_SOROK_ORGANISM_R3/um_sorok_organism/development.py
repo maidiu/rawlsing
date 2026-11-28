@@ -24,6 +24,7 @@ from .historical_self_organization import (
 from .psychic_genesis import (admit_contrast_end, possible_dependency_project_takeups,
                              PRODUCTIVE_VOCAL_FAMILY, possible_productive_vocal_takeups)
 from .activity import (possible_productive_witness_reorganizations, possible_provisioning_reorganizations,
+                       possible_commons_provisioning_reorganizations,
                         possible_dependency_project_reorganizations,
                        possible_dependency_means_revisions, admit_interactivity_relation)
 from .joint_practice_genesis import admit_joint_practice
@@ -833,7 +834,18 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             revision_basis=c.get('dependency_means_revision_basis')
             witness_basis=c.get('productive_witness_basis')
             provisioning_basis=c.get('provisioning_means_basis')
-            if provisioning_basis is not None:
+            commons_basis=c.get('commons_provisioning_basis')
+            if commons_basis is not None:
+                if c not in possible_commons_provisioning_reorganizations(actor,experience,event_ref):
+                    raise InvalidDevelopment('COMMONS_PROVISIONING_UNQUALIFIED_HISTORY')
+                project['commons_provisioning_basis']=copy(commons_basis)
+                project.setdefault('provisioning_means_history',[]).append({
+                    'event_ref':event_ref,'previous_means':copy(project['means']),
+                    'commons_basis':copy(commons_basis),'grade':GRADE})
+            elif project.get('commons_provisioning_basis') and any(k in c for k in
+                    ('means','addressed_party_ref','commons_provisioning_basis')):
+                raise InvalidDevelopment('COMMONS_MEANS_REQUIRE_QUALIFIED_REVISION')
+            elif provisioning_basis is not None:
                 if c not in possible_provisioning_reorganizations(actor,experience,event_ref):
                     raise InvalidDevelopment('PROVISIONING_REORGANIZATION_UNQUALIFIED')
                 project['provisioning_means_basis']=copy(provisioning_basis)

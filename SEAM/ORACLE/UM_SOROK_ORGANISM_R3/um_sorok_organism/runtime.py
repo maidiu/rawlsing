@@ -21,6 +21,7 @@ from .ordinary_life import passage
 from .activity import (record_activity_afterlife, register_lived_activity_attempt,
                         possible_productive_witness_reorganizations,
                         own_provisioning_receipt, possible_provisioning_reorganizations,
+                        own_commons_receipt, possible_commons_provisioning_reorganizations,
                        possible_dependency_project_reorganizations,
                        possible_dependency_means_revisions, qualify_interactivity_deferral,
                        possible_interactivity_relations)
@@ -1084,6 +1085,9 @@ class ConstitutiveRuntime:
                    if (experience.get('own_practical_selection') or {}).get('notice_expectation') else {}),
                 **({'own_vocal_reception':own_vocal_reception(actors[aid],experience)}
                    if own_vocal_reception(actors[aid],experience) is not None else {}),
+                **({'own_commons_receipt_analytic_only':commons_receipt}
+                   if (commons_receipt:=own_commons_receipt(
+                       actors[aid],experience,world,objective_ref)) else {}),
                 **({'own_provisioning_receipt_analytic_only':receipt}
                    if (receipt:=own_provisioning_receipt(actors[aid],experience,world)) else {}),
                 **({'performed_repair_technique_ref_analytic_only':
@@ -1254,6 +1258,9 @@ class ConstitutiveRuntime:
                     possible_productive_vocal_takeups(actors[aid],experience,objective_ref)),
                 'historically_possible_dependency_takeups':copy(
                     possible_dependency_project_takeups(actors[aid],experience,objective_ref)),
+                **({'historically_possible_commons_provisioning_reorganizations':copy(commons_provisioning)}
+                   if (commons_provisioning:=possible_commons_provisioning_reorganizations(
+                       actors[aid],experience,objective_ref)) else {}),
                 **({'historically_possible_provisioning_reorganizations':copy(provisioning)}
                    if (provisioning:=possible_provisioning_reorganizations(
                        actors[aid],experience,objective_ref)) else {}),

@@ -197,7 +197,8 @@ def actor_access(actor,world):
             _nonnegative_transfer_amount(site.get('food',0),
               'INVALID_ACTOR_ACCESS_SHARED_FOOD')>=1)
     if any(c.get('kind')=='coactor_present' for c in cues) and (
-            held>=1 or shared):
+            held>=1 or shared or _nonnegative_transfer_amount(
+                site.get('mutual_aid_food',0),'INVALID_ACTOR_ACCESS_COMMONS_FOOD')>=1):
         env.append('FEED')
     if actor['body']['sensor'] >= .05:
         env += [x['operation'] for x in live_food_petition_opportunity(
