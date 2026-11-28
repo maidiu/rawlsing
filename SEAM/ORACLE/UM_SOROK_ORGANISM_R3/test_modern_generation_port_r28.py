@@ -76,6 +76,41 @@ class FamilyCheckpoint:
             event(ctx,f"child{n}",t+9,"nadia",{"nadia":policy([action("SIGNAL"),action("WAIT")],base="LOCAL")}),
             event(ctx,f"father{n}",t+10,"father",{"father":policy([action("WORK"),action("REST"),action("WAIT")],base="LOCAL")})]}
 
+
+class GenealogyCheckpoint:
+    def __init__(self,sid,choose=True):
+        self.sid=sid;self.choose=choose;self.requests=[]
+    def call(self,r):
+        self.requests.append(r);ctx=r["context"];t=ctx["clock"]
+        def family(e,kind,**fields):
+            e["circumstances"]["family"]={"kind":kind,"source_seal_id":self.sid,**fields}
+            return e
+        def pledge(target):
+            return action("PLEDGE_CARE",{"world_request":{"addressed_party_ref":target}})
+        if r["mode"]=="BOOTSTRAP":
+            first=event(ctx,"antecedent",t+1,"father",{"father":policy([pledge("mother"),action("WAIT")],
+                [{"candidate":{"kind":"MEMORY","content":"I made a promise.","cue_terms":["care"]},
+                  "when":{"own_action":"PLEDGE_CARE","status":"PERFORMED"}}])})
+            bind=family(event(ctx,"binding",t+2,"mother",{"mother":policy([action("WAIT")])}),
+                        "INTERSECTION",pathway_id="retained" if self.choose else None)
+            third=family(event(ctx,"conditional",t+3,"father",{"father":policy([pledge("mother"),action("WAIT")])}),
+                         "CONCEPTION")
+            birth=family(event(ctx,"birth",t+5,"mother",{},span=2),"BIRTH")
+            birth["operation"]="REALIZE_FAMILY_BIRTH"
+            return {"retrospective":None,"prospective":[first,bind,third,birth]}
+        if r["mode"]=="TERMINAL":
+            return {"retrospective":retro(r),"prospective":None}
+        roster=ctx["actor_contexts"]
+        first="nadia" if "nadia" in roster else "mother"
+        return {"retrospective":retro(r),"prospective":[
+            event(ctx,"continuing-child-or-mother",t+1,first,
+                  {first:policy([action("SIGNAL"),action("WAIT")],base="LOCAL"),
+                   "father":policy([action("CARE"),action("REFUSE")],base="LOCAL"),
+                   **({"mother":policy([action("CARE"),action("REFUSE")],base="LOCAL")} if first!="mother" else {})}),
+            event(ctx,"continuing-father",t+2,"father",
+                  {"father":policy([pledge(first),action("REST"),action("WAIT")],base="LOCAL")}),
+            event(ctx,"period-mother",t+6,"mother",{"mother":policy([action("REST"),action("WAIT")],base="LOCAL")},span=3)]}
+
 class ModernGenerationCourt(unittest.TestCase):
     def setup_repair(self,db):
         rt=ConstitutiveRuntime(str(db));w=blank_world();w["sites"]["home"]["stock"]=30
@@ -98,9 +133,9 @@ class ModernGenerationCourt(unittest.TestCase):
         # A real external prep, not represented as a checkpoint or model call.
         rt.step("worker",requested_action="REST")
         return rt,refs
-    def generation(self,rt,folder,actor,provider):
+    def generation(self,rt,folder,actor,provider,**kwargs):
         return ModernGeneration(ModernDevelopmentOwner(rt,actor,folder/"ops.sqlite",
-            sourcefree_attested=True),provider,folder/"batch.sqlite",folder/"cycle.json")
+            sourcefree_attested=True,**kwargs),provider,folder/"batch.sqlite",folder/"cycle.json")
     def repair_arm(self,folder,admit):
         rt,refs=self.setup_repair(folder/"life.sqlite");p=RepairCheckpoint(refs,admit)
         g=self.generation(rt,folder,"worker",p)
@@ -167,6 +202,61 @@ class ModernGenerationCourt(unittest.TestCase):
                      "child_age_days":rt.ledger.actor("nadia")[1]["age_days"],
                      "actors":sorted(rt.ledger.actors())},sort_keys=True))
             finally:g.close();rt.close()
+
+    def test_historical_existing_adults_to_birth_and_continuing_child(self):
+        for choose in (True,False):
+            with self.subTest(choose=choose),tempfile.TemporaryDirectory() as tmp:
+                from um_sorok_organism.semantics import HeuristicSemanticProvider,ValidatingSemanticService
+                class Counting(HeuristicSemanticProvider):
+                    def __init__(self):self.calls=[]
+                    def propose(self,task,packet):
+                        self.calls.append(task)
+                        return super().propose(task,packet)
+                local=Counting()
+                folder=Path(tmp);rt=ConstitutiveRuntime(str(folder/"life.sqlite"),
+                    semantic=ValidatingSemanticService(local))
+                def packet(who):
+                    return {"input_kind":"THIN_BIOGRAPHY","source_grade":"EXPLICIT_FICTIONAL_HISTORICAL_INPUT",
+                        "source_ref":"fictional:"+who,"biographical_context":{"ordinary_life":who},
+                        "fictional_seed":{"projects":[{"object":"ordinary care",
+                          "means":["CARE","REST","EAT"],"priority":.5}]}}
+                rt.initialize_antecedent_adult("mother","Mother",packet("mother"),
+                     other_adults=[("father","Father",packet("father"))])
+                sid=rt.register_family_pathways("mother",[{"id":"retained","source_ref":"fictional:path",
+                    "intersection_clock":2,"intersection_site":"home","conception_clock":3,"birth_clock":5,
+                    "counterpart_id":"father","counterpart_name":"Father","counterpart_packet":None,
+                    "child_id":"nadia","child_name":"Nadia","prior_shared_effects":"RETAIN_EXISTING_ACTUAL_HISTORY"}])["source_seal_id"]
+                p=GenealogyCheckpoint(sid,choose);g=self.generation(rt,folder,"mother",p,family_sources=(sid,))
+                try:
+                    first=g.bootstrap()
+                    self.assertEqual(len(p.requests),1)
+                    self.assertEqual(len(first["records"]),4)
+                    self.assertEqual(first["records"][0]["objective"]["attempt"],"PLEDGE_CARE")
+                    self.assertEqual(first["records"][1]["objective"]["family"]["status"],"BOUND" if choose else "ABSTAINED")
+                    self.assertEqual("nadia" in rt.ledger.actors(),choose)
+                    self.assertEqual(first["records"][3]["accessible"]["by_actor"],{})
+                    self.assertEqual(local.calls.count("adult_constructor"),2)
+                    father=rt.ledger.actor("father")[1]
+                    self.assertTrue(father["memories"])
+                    self.assertTrue(rt.verify()["valid"])
+                    if choose:self.assertEqual(rt.ledger.actor("nadia")[1],newborn("nadia","Nadia"))
+                finally:g.close();rt.close()
+                rt=ConstitutiveRuntime(str(folder/"life.sqlite"));g=self.generation(rt,folder,"mother",p,family_sources=(sid,))
+                try:
+                    second=g.advance();self.assertEqual(len(p.requests),2)
+                    self.assertEqual(len(second["records"]),3)
+                    self.assertTrue(rt.ledger.actor("father")[1]["memories"])
+                    if choose:
+                        self.assertIn("nadia",second["records"][0]["accessible"]["by_actor"])
+                        self.assertEqual(rt.ledger.actor("nadia")[1]["age_days"],3)
+                    else:self.assertNotIn("nadia",rt.ledger.actors())
+                    g.finish();self.assertEqual(len(p.requests),3)
+                    self.assertTrue(g.engine.verify());self.assertTrue(rt.verify()["valid"])
+                    print("R29_GENEALOGY "+json.dumps({"choose":choose,"checkpoints":3,"ordinary_calls":1,
+                       "surfaces":7,"actor_roster":sorted(rt.ledger.actors()),
+                       "native_family_stages":[r["objective"]["family"]["status"] for r in first["records"] if r["objective"]["family"]],
+                       "initial_adult_constructors":local.calls.count("adult_constructor")},sort_keys=True))
+                finally:g.close();rt.close()
     def test_foreign_retrospective_and_unbound_carrier_refused(self):
         req={"mode":"ORDINARY","context":{},"previous":{"batch_id":"b","history_hash":"h",
              "events":[{"event_id":"e","accessible":{"objective_ref":"o","by_actor":{"a":{}}}}]}}
