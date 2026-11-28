@@ -638,7 +638,7 @@ class ContinuingLifeCourt(unittest.TestCase):
                         "REFERENCE_UNMATCHED")
                     import sqlite3
                     with sqlite3.connect(two/"operator"/"live.sqlite") as cx:
-                        records=[json.loads(x[0]) for x in cx.execute("SELECT root FROM binding")]
+                        records=[json.loads(x[0]) for x in cx.execute("SELECT receipt FROM turns ORDER BY rowid")]
                     self.assertEqual(records[-1]["transport_receipt"]["budget_profile"],"economy")
                     self.assertEqual(records[-1]["transport_receipt"]["allocation_qualification_digest"],
                         qualification["qualification_digest"])
