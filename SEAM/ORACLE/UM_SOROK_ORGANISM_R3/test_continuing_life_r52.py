@@ -724,3 +724,100 @@ class PluralReciprocalLifeCourt(unittest.TestCase):
                 self.assertFalse(s.status()["held"])
                 print("R008_PLURAL_RECIPROCAL_EPOCHS",len(hist.requests),len(live.requests),s.status()["epoch"])
             finally:s.close();rt.close()
+
+
+class GenealogicalSubsistenceCourt(unittest.TestCase):
+    """Adult historical construction and newborn maturation in one scarce pool.
+
+    All meal/feeding claims originate in actual independently selected acts.
+    The same two claimants compete again during compression; no scripted
+    household provision envelope, invented caregiver or daily event.
+    """
+    def test_parent_self_reproduction_competes_with_child_nourishment(self):
+        class History:
+            def __init__(self,sid,meal,feed):
+                self.requests=[];self.family=joined.LifeCheckpoint(sid)
+                self.meal=meal;self.feed=feed;self.coarse=False
+            def call(self,r):
+                self.requests.append(r);ctx=r["context"];clock=ctx["clock"];n=len(self.requests)
+                if r["mode"]=="TERMINAL":return {"retrospective":retro(r),"prospective":None}
+                if n==1:return self.family.call(r)
+                def e(label,offset,actor,acts,rules=(),span=0):
+                    return event(ctx,str(n)+":"+label,clock+offset,actor,
+                         {actor:policy(acts,rules)},span=span)
+                def nominate(op):
+                    return {"offer":"historically_possible_recurrent_routines",
+                            "construct":"RECURRENT_ROUTINE","match":{"basis":{"operation":op}},
+                            "augment":{"window_days":90,"hours_per_active_day":1.,
+                                       "provisional_exposure_fraction":.25,"food_units_per_active_day":1.}}
+                if self.coarse:
+                    rows=[e("ordinary",61,"nadia",[action("ORIENT"),action("WAIT")],span=60),
+                          e("mother-rest",62,"mother",[action("REST")]),
+                          e("father-rest",63,"father",[action("REST")])]
+                else:
+                    rows=[e("mother-meal",1,"mother",[action("EAT",{"project_id":self.meal})],[nominate("EAT")]),
+                          e("father-feed",2,"father",[action("FEED",{"project_id":self.feed})],[nominate("FEED")]),
+                          e("child",3,"nadia",[action("ORIENT")])]
+                return {"retrospective":retro(r),"prospective":rows}
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);db=root/"life.sqlite"
+            rt,sid,_,constructors=joined.JoinedGenerationCourt.setup(self,db,
+                extra_projects={"father":[{"object":"materially nourish Nadia","means":["CARE","FEED"],
+                                           "addressed_party_ref":"nadia","priority":.85}]})
+            meal=next(x["id"] for x in rt.snapshot("mother")["projects"] if "EAT" in x["means"])
+            feed=next(x["id"] for x in rt.snapshot("father")["projects"] if "FEED" in x["means"])
+            hist=History(sid,meal,feed);live=Live()
+            def open_life():return ContinuingLife(rt,root/"operator","mother",
+                       historical_provider=hist,live_provider=live,sourcefree_attested=True,
+                       family_sources=(sid,),mii_module=mii)
+            def world():return rt.ledger.world()[1]
+            def routine(a,p):
+                return next(x for x in rt.snapshot(a)["projects"] if x["id"]==p)["recurrent_routines"][0]
+            s=open_life()
+            try:
+                s.historical_checkpoint()
+                self.assertEqual(constructors,["mother","father"])
+                self.assertEqual(rt.snapshot("nadia")["age_days"],0)
+                for _ in range(3):s.historical_checkpoint()
+                mr=routine("mother",meal);fr=routine("father",feed)
+                self.assertEqual(mr["food_origin"],"SHARED_SITE_FOOD")
+                self.assertEqual(fr["food_origin"],"SHARED_SITE_FOOD")
+                self.assertEqual(len(mr["basis"]["exercises"]),3)
+                self.assertEqual(len(fr["basis"]["exercises"]),3)
+                self.assertEqual(world()["sites"]["home"]["food"],6)
+                age=rt.snapshot("nadia")["age_days"]
+                before=deepcopy(rt.ledger.events())
+                hist.coarse=True;start=world()["clock"];s.historical_checkpoint()
+                periods=[x for x in world()["historical_periods"] if x["start"]>=start]
+                self.assertEqual(sum(x["end"]-x["start"] for x in periods),60)
+                own=world()["material_self_meal_periods"]
+                other=world()["material_provisioning_periods"]
+                self.assertTrue(all(x["giver"]==x["recipient"]=="mother" and x["self_meal"] for x in own))
+                self.assertTrue(all(x["giver"]=="father" and x["recipient"]=="nadia" for x in other))
+                self.assertAlmostEqual(sum(x["consumed_food_units"] for x in own+other),6,places=5)
+                self.assertAlmostEqual(sum(x["consumed_food_units"] for x in own),3,places=5)
+                self.assertAlmostEqual(sum(x["consumed_food_units"] for x in other),3,places=5)
+                self.assertEqual(world()["sites"]["home"]["food"],0)
+                self.assertTrue(any(x["uncovered_food_units"]>0 for x in own))
+                self.assertTrue(any(x["uncovered_food_units"]>0 for x in other))
+                self.assertEqual(rt.snapshot("nadia")["age_days"],age+60)
+                self.assertFalse(any(x.get("caregiver_ref")=="mother" for x in rt.snapshot("mother")["undergone_care_periods"]))
+                self.assertTrue(any(x.get("caregiver_ref")=="father" for x in rt.snapshot("nadia")["undergone_care_periods"]))
+                self.assertEqual(rt.ledger.events()[:len(before)],before)
+                self.assertTrue(any(x.get("own_self_meal_consumption_model",0)>0 for x in routine("mother",meal)["modeled_course_receipts"]))
+                s.finish_history();old=deepcopy(rt.ledger.events())
+            finally:s.close();rt.close()
+            rt=ConstitutiveRuntime(str(db));s=open_life()
+            try:
+                # Real independent absence then resumed history with no
+                # replenishment grant. Source expiry must cut coverage.
+                s.independent_absent_beat();s.resume_history()
+                self.assertEqual(world()["sites"]["home"]["food"],0)
+                self.assertEqual(sum(x["consumed_food_units"] for x in world()["material_self_meal_periods"]),3)
+                self.assertEqual(sum(x["consumed_food_units"] for x in world()["material_provisioning_periods"]),3)
+                self.assertEqual(rt.ledger.events()[:len(old)],old)
+                self.assertEqual(constructors,["mother","father"])
+                self.assertTrue(rt.verify()["valid"])
+                self.assertFalse(s.status()["held"])
+                print("R008_GENEALOGICAL_SUBSISTENCE",rt.snapshot("nadia")["age_days"],len(hist.requests),len(live.requests))
+            finally:s.close();rt.close()
