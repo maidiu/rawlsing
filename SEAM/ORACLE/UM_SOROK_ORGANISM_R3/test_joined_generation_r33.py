@@ -94,9 +94,10 @@ class CulturalCheckpoint:
                 event(ctx,"new-interest",t+3,"nadia",{"nadia":policy([
                     action("INSPECT",{"cross_object_attention_analytic_only":{}}),action("WAIT")],meaning)})]
         else:
-            ends=ctx["actor_contexts"]["nadia"]["possible_ends"]
+            ends=[e for e in ctx["actor_contexts"]["nadia"]["possible_ends"]
+                  if e.get("origin_material_object_ref") and e["origin_material_object_ref"]!=old]
             if ends:
-                ref=ends[0]["origin_material_object_ref"]
+                ref=ends[-1]["origin_material_object_ref"]
                 acts=[{"action":"INSPECT","pool":"possible_end_trials",
                      "option_match":{"source_material_object_ref":ref}},action("WAIT")]
                 take=[action("INSPECT",{"project_id":None,"world_request":{"material_object_ref":ref},
