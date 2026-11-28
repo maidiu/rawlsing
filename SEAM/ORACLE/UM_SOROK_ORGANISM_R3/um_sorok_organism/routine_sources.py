@@ -597,12 +597,14 @@ def match_reciprocal_routine_claims(world,claims):
         options=[]
         for j,b in joint.items():
             if j==i:continue
+            sb=registry[b['source_ref']]
+            # CARE and FEED are typed material process kinds; only practice
+            # carries an operation field. Use the exact admitted source.
             if (b['actor']!=a['coactivity_partner'] or b['coactivity_partner']!=a['actor']
                     or a['location']!=b['location']
-                    or b['operation'] not in JOINT_ROUTINE_COMPLEMENTS.get(a['operation'],set())
-                    or a['operation'] not in JOINT_ROUTINE_COMPLEMENTS.get(b['operation'],set())):
+                    or sb['operation'] not in JOINT_ROUTINE_COMPLEMENTS.get(sa['operation'],set())
+                    or sa['operation'] not in JOINT_ROUTINE_COMPLEMENTS.get(sb['operation'],set())):
                 continue
-            sb=registry[b['source_ref']]
             common=sorted(set(sa['basis_event_refs']) & set(sb['basis_event_refs']))
             if len(common)>=3:options.append((j,common))
         edges[i]=options
