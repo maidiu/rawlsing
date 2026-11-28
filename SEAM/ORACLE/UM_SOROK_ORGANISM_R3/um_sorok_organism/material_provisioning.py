@@ -299,6 +299,69 @@ def offer_feeding_source_alternatives(world,access,option):
     return out
 
 
+def offer_self_meal_source_alternatives(world,access,option):
+    """Self-reproduction can compete with other lives for the same food.
+
+    Refine the existing unaddressed EAT choice; no new appetite, consent,
+    project or assumption of ownership. Reuse R37's qualified stock reader.
+    Only multiple real sources warrant a new alternative, preserving legacy
+    default IDs and avoiding unnecessary semantic expansion.
+    """
+    if option.get("action")!="EAT":return []
+    sources=[s for s in current_feeding_sources(world,access.actor,access.location)
+             if s!="SHARED_SITE_FOOD" or access.location=="home"]
+    if len(sources)<2:return []
+    out=[]
+    for base in option.get("practical_alternatives",[]):
+        request=base.get("world_request",{})
+        if (request.get("operation")!="EAT" or request.get("addressed_party_ref") is not None
+                or request.get("material_object_ref") is not None):continue
+        for source in sources:
+            row=copy(base)
+            row.update(option_id=stable_id("self_meal_source",{
+                "base":base["option_id"],"actor":access.actor,"clock":access.world_clock,
+                "source":source}),
+                grounds_status="PRESENT_SELF_MEAL_SOURCE_ALTERNATIVE",
+                source_base_option_ref=base["option_id"],
+                source_base_grounds_status=base.get("grounds_status"),
+                selected_self_meal_source=source,
+                no_other_person_stock_or_future_availability_inferred=True)
+            out.append(row)
+    return out
+
+
+def settle_selected_self_meal(world,actor,location,source,selection_source):
+    """Debit precisely the chosen source, never fall through to another.
+
+    The existing EAT body owner applies nourishment only on actual success.
+    Return an objective audit receipt; no spectator is entitled to the
+    source's balance or the actor's motive. No separate material store.
+    """
+    if (selection_source!="ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE"
+            or type(source) is not str or source not in ORIGINS
+            or (source=="SHARED_SITE_FOOD" and location!="home")
+            or source not in current_feeding_sources(world,actor,location)):
+        return "BLOCKED","SELECTED_SELF_MEAL_SOURCE_UNAVAILABLE",None
+    before=_available(world,source,actor,location)
+    after=before-Decimal(1)
+    if source=="GIVER_HELD_FOOD":
+        world["holdings"][actor]["food"]=float(after)
+        outcome="ATE_OWNED_FOOD"
+    elif source=="MUTUAL_AID_FOOD":
+        world["sites"][location]["mutual_aid_food"]=float(after)
+        outcome="ATE_INDEPENDENT_FOOD_COMMONS"
+    else:
+        world["sites"][location]["food"]=float(after)
+        outcome="ATE_SHARED_HOUSEHOLD_FOOD"
+    receipt={"id":stable_id("selected_self_meal",{"world":world["id"],
+        "actor":actor,"clock":world["clock"]+1,"location":location,"source":source}),
+        "actor":actor,"clock":world["clock"]+1,"location":location,
+        "food_source":source,"pool_holder":actor if source=="GIVER_HELD_FOOD" else location,
+        "pool_before":float(before),"pool_after":float(after),"consumed_units":1,
+        "other_person_need_or_actor_intention_not_inferred":True,"grade":GRADE}
+    return "PERFORMED",outcome,receipt
+
+
 def perform_one_actual_feeding(world,actors,giver,recipient,location,
                                actor_selection_source='UNKNOWN_NOT_ISSUED',
                                *, qualified_human_offer_ref=None, selected_food_source=None):
