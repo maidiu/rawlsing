@@ -27,14 +27,25 @@ PINS={
     R3+"/um_sorok_organism/semantics.py":"3dd67a27b1cc02df68808f32318a9ace7c583fb5",
     "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/mii.py":"5d0a816a6fe298beb7eac23baed0129ca72669c0",
 }
+# Retain the immutable original R23 court. Explicit successor source
+# profiles qualify only these exact owner cuts, never arbitrary local drift.
+JOINED_PINS={**PINS,
+    NEIGHBOR+"/neighbor_runtime.py":"f2b0e088e1ad84acef8f043e78b51ac9ed6e0bd4",
+    R3+"/um_sorok_organism/runtime.py":"b74415db636af8a898600d13077f82d55be8a0ca",
+}
+SOURCE_PROFILES=(PINS,JOINED_PINS)
 ARMS={"acquired":{},"unheard":{"visitor_hears":False},
       "unacquired":{"learn":False},"unaddressed":{"acknowledge":False}}
 
 def source_pins():
-    for path,expected in PINS.items():
-        actual=subprocess.check_output(["git","-C",str(REPO),"hash-object",str(REPO/path)],text=True).strip()
-        if actual!=expected:raise ValueError("R23_INHERITED_SOURCE_DRIFT:"+path)
-    return copy(PINS)
+    actual={path:subprocess.check_output(
+        ["git","-C",str(REPO),"hash-object",str(REPO/path)],text=True).strip()
+        for path in PINS}
+    if actual not in SOURCE_PROFILES:
+        # Whole-profile comparison: mixtures of individually recognized blobs
+        # are not an authorized successor source profile.
+        raise ValueError("R23_INHERITED_SOURCE_DRIFT:"+str(actual))
+    return copy(actual)
 
 def _fixture():
     tests=REPO/NEIGHBOR/"tests"
@@ -111,7 +122,7 @@ def verify_surface(document,witness,*,source_head):
     if (arm not in ARMS or p["fixture"]!="R35_SURFACE_"+arm
             or p["owner_state_sha256"]!=digest(witness)
             or witness.get("source_head")!=source_head
-            or witness.get("source_pins")!=PINS
+            or witness.get("source_pins") not in SOURCE_PROFILES
             or witness.get("schema")!="R23_LOCAL_SURFACE_WITNESS_V1"):
         raise ValueError("R23_WITNESS_BINDING")
     rows=p["rows"];steps=witness["steps"];surfaces=witness["surfaces"]

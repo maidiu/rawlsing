@@ -104,7 +104,7 @@ def meeting_record(world,ref):
     return rows[0]
 
 
-def record_meeting_proposal(world,user,recipient,location,due,event_ref):
+def record_meeting_proposal(world,user,recipient,location,due,event_ref,*,replaces=None):
     # Two particular future modeled transitions, not hours or real-human
     # calendar time. Assent requires an immediate actual proposal encounter.
     if type(due) is not int or not world['clock']+3<due<=world['clock']+MAX_HORIZON:
@@ -119,8 +119,36 @@ def record_meeting_proposal(world,user,recipient,location,due,event_ref):
          'checkin_clock':due-2,'meeting_clock':due-1,
          'source_user_event_ref':event_ref,'status':'PROPOSED',
          'no_actor_assent_or_real_calendar_inferred':True,'grade':GRADE}
+    if replaces is not None:
+        old=meeting_record(world,replaces)
+        if (old['responsible_actor']!=user or old['recipient']!=recipient
+                or old['status']!='WITHDRAWN_BY_AUTHORED_ACT'
+                or old.get('replacement_meeting_ref') is not None
+                or old['due_clock']==due
+                or old['settled_at_clock']>=world['clock']):
+            raise ValueError('MEETING_REPLACEMENT_NOT_QUALIFIED')
+        row['replaces_meeting_ref']=old['id']
+        old['replacement_meeting_ref']=row['id']
     world.setdefault('scheduled_obligations',[]).append(row)
     return row['id']
+
+
+def withdraw_meeting(world,user,ref,event_ref):
+    """Close an explicitly owned open window, without rewriting its assent.
+
+    The administrative act consumes its actual transition. It neither
+    supplies a notification nor a psychological consequence to the Other.
+    A replacement is a distinct proposal with a distinct assent.
+    """
+    row=meeting_record(world,ref)
+    if (row['responsible_actor']!=user or row['status'] not in MEETING_OPEN
+            or not row['origin_clock']<world['clock']<row['meeting_clock']):
+        raise ValueError('MEETING_WITHDRAWAL_NOT_QUALIFIED')
+    row.update(status='WITHDRAWN_BY_AUTHORED_ACT',
+               withdrawn_from_status=row['status'],settled_at_clock=world['clock'],
+               withdrawal_user_event_ref=event_ref,
+               no_recipient_notification_or_appraisal_inferred=True)
+    return row
 
 
 def qualify_meeting_checkin(world,user,ref,location):
@@ -213,6 +241,9 @@ def qualified_meeting_receipt(world,actor,attempt,ledger_event):
     authored={'user':attempt.target,'operation':op,'text':None,'destination':None}
     if op=='PROPOSE_MEETING':
         authored.update(target_actor_ref=actor['id'],due_clock=row['due_clock'])
+        if 'replaces_meeting_ref' in row:
+            if e.get('target_commitment_ref')!=row['replaces_meeting_ref']:return None
+            authored['target_commitment_ref']=row['replaces_meeting_ref']
         valid=(row['status']=='PROPOSED' and row['origin_clock']==world['clock']
                and row['source_user_event_ref']==e.get('event_ref')
                and world['clock']+1<row['checkin_clock'])

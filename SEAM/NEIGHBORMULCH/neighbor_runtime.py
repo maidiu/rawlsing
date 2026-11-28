@@ -27,7 +27,7 @@ class EncounterRefusal(ValueError):
 
 
 _ALLOWED = frozenset({'SAY', 'MOVE', 'WAIT', 'LEAVE', 'LOOK', 'REPAIR', 'MAKE_OBJECT',
-                      'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER', 'WITHDRAW_PLEDGE', 'PROPOSE_MEETING', 'CHECK_IN_MEETING'})
+                      'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER', 'WITHDRAW_PLEDGE', 'PROPOSE_MEETING', 'CHECK_IN_MEETING', 'WITHDRAW_MEETING'})
 
 
 def _text(value: Any, label: str, maximum: int = 500) -> str:
@@ -485,7 +485,8 @@ class NeighborEncounter:
                 raise EncounterRefusal('INVALID_HUMAN_OFFER_DEADLINE')
         elif due_clock is not None:
             raise EncounterRefusal('UNAUTHORED_DEADLINE')
-        if operation in ('WITHDRAW_PLEDGE','CHECK_IN_MEETING'):
+        if operation in ('WITHDRAW_PLEDGE','CHECK_IN_MEETING','WITHDRAW_MEETING') or (
+                operation=='PROPOSE_MEETING' and target_commitment_ref is not None):
             target_commitment_ref=_text(target_commitment_ref,'COMMITMENT_REF',100)
         elif target_commitment_ref is not None:
             raise EncounterRefusal('UNAUTHORED_COMMITMENT_TARGET')
@@ -505,7 +506,7 @@ class NeighborEncounter:
             request_payload['target_actor_ref'] = target_actor_ref
             if operation in ('PLEDGE_OFFER','PROPOSE_MEETING'):
                 request_payload['due_clock']=due_clock
-        if operation in ('WITHDRAW_PLEDGE','CHECK_IN_MEETING'):
+        if target_commitment_ref is not None:
             request_payload['target_commitment_ref']=target_commitment_ref
         payload_hash = digest(request_payload)
         prior = world.get('neighbor_user_requests', {}).get(req_key)
@@ -527,7 +528,7 @@ class NeighborEncounter:
         participants = world.setdefault('neighbor_users', {})
         person = deepcopy(participants.get(self.user_id, {'present': False, 'location': None}))
         origin = person['location']
-        if operation not in ('MOVE','LEAVE','WITHDRAW_PLEDGE') and not person['present']:
+        if operation not in ('MOVE','LEAVE','WITHDRAW_PLEDGE','WITHDRAW_MEETING') and not person['present']:
             raise EncounterRefusal('USER_NOT_PRESENT')
         status = 'PERFORMED'
         material_outcome = None
@@ -536,7 +537,7 @@ class NeighborEncounter:
         # An explicitly authored administrative withdrawal is possible
         # during absence, but its historical occurrence is not a bodily
         # visit, utterance, or recipient-directed communication.
-        loc = None if operation=='WITHDRAW_PLEDGE' else origin
+        loc = None if operation in ('WITHDRAW_PLEDGE','WITHDRAW_MEETING') else origin
         if operation=='WITHDRAW_PLEDGE':
             origin=None
             owned=[r for r in self.own_food_commitments() if r['id']==target_commitment_ref]
@@ -547,6 +548,20 @@ class NeighborEncounter:
                 raise EncounterRefusal('HUMAN_WITHDRAWAL_WINDOW_NOT_PENDING')
         meeting_ref=None
         meeting=None
+        if operation=='WITHDRAW_MEETING':
+            origin=None
+            owned=[r for r in self.own_meetings() if r['id']==target_commitment_ref]
+            if (len(owned)!=1 or owned[0]['status'] not in ('PROPOSED','ACCEPTED','CHECKED_IN')
+                    or world['clock']+1>=owned[0]['meeting_clock']):
+                raise EncounterRefusal('MEETING_WITHDRAWAL_NOT_QUALIFIED')
+            target_actor_ref=owned[0]['recipient']
+        if operation=='PROPOSE_MEETING' and target_commitment_ref is not None:
+            owned=[r for r in self.own_meetings() if r['id']==target_commitment_ref]
+            if (len(owned)!=1 or owned[0]['status']!='WITHDRAWN_BY_AUTHORED_ACT'
+                    or owned[0]['recipient']!=target_actor_ref
+                    or owned[0].get('replacement_meeting_ref') is not None
+                    or owned[0]['due_clock']==due_clock):
+                raise EncounterRefusal('MEETING_REPLACEMENT_NOT_QUALIFIED')
         if operation=='CHECK_IN_MEETING':
             from um_sorok_organism.continuity_clock import qualify_meeting_checkin
             try:meeting=qualify_meeting_checkin(world,self.user_id,target_commitment_ref,loc)
@@ -684,11 +699,12 @@ class NeighborEncounter:
                 settle_human_offer_deadlines, record_human_offer_commitment,
                 record_authored_food_offer, withdraw_human_offer_commitment)
             settle_human_offer_deadlines(world)
-        if (operation in ('PROPOSE_MEETING','CHECK_IN_MEETING')
+        if (operation in ('PROPOSE_MEETING','CHECK_IN_MEETING','WITHDRAW_MEETING')
                 or any(row.get('kind')=='HUMAN_ACTOR_MEETING_WINDOW'
                        for row in world.get('scheduled_obligations',[]))):
             from um_sorok_organism.continuity_clock import (
-                settle_meeting_deadlines, record_meeting_proposal, record_meeting_checkin, meeting_record)
+                settle_meeting_deadlines, record_meeting_proposal, record_meeting_checkin, meeting_record,
+                withdraw_meeting)
             settle_meeting_deadlines(world)
         ref = stable_id('neighbor_user', {'user': self.user_id,
             'request_id': request_id, 'payload_hash': payload_hash})
@@ -703,10 +719,14 @@ class NeighborEncounter:
             commitment_ref=withdraw_human_offer_commitment(
                 world,self.user_id,target_commitment_ref,ref)
         if status=='PERFORMED' and operation=='PROPOSE_MEETING':
-            meeting_ref=record_meeting_proposal(world,self.user_id,target_actor_ref,loc,due_clock,ref)
+            meeting_ref=record_meeting_proposal(world,self.user_id,target_actor_ref,loc,due_clock,ref,
+                                                replaces=target_commitment_ref)
             meeting=meeting_record(world,meeting_ref)
         elif status=='PERFORMED' and operation=='CHECK_IN_MEETING':
             meeting=record_meeting_checkin(world,self.user_id,target_commitment_ref,loc,ref)
+            meeting_ref=meeting['id']
+        elif status=='PERFORMED' and operation=='WITHDRAW_MEETING':
+            meeting=withdraw_meeting(world,self.user_id,target_commitment_ref,ref)
             meeting_ref=meeting['id']
         evidence = []
         if status == 'PERFORMED' and operation in ('MOVE', 'SAY', 'LOOK', 'REPAIR', 'MAKE_OBJECT', 'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER','PROPOSE_MEETING','CHECK_IN_MEETING'):
@@ -798,10 +818,12 @@ class NeighborEncounter:
             event['target_actor_ref'] = target_actor_ref
         if operation=='PLEDGE_OFFER':
             event['due_clock']=due_clock
-        if operation in ('PROPOSE_MEETING','CHECK_IN_MEETING'):
+        if operation in ('PROPOSE_MEETING','CHECK_IN_MEETING','WITHDRAW_MEETING'):
             event['target_actor_ref']=target_actor_ref
             if operation=='PROPOSE_MEETING':event['due_clock']=due_clock
-            else:event['target_commitment_ref']=target_commitment_ref
+            if target_commitment_ref is not None:event['target_commitment_ref']=target_commitment_ref
+            if operation=='WITHDRAW_MEETING':
+                event.update(administrative_act_not_presence=True,notification='NOT_PERFORMED_BY_WITHDRAWAL')
             if meeting_ref is not None:event['meeting_ref']=meeting_ref
         if operation=='WITHDRAW_PLEDGE':
             event.update(target_commitment_ref=target_commitment_ref,
@@ -833,7 +855,8 @@ class NeighborEncounter:
              'candidate_cue_refs': [e['cue_ref'] for e in evidence],
              **({'meeting_ref':meeting_ref} if meeting_ref is not None else {}),
              **({'target_commitment_ref':target_commitment_ref}
-                if operation=='WITHDRAW_PLEDGE' else {}),
+                if operation in ('WITHDRAW_PLEDGE','WITHDRAW_MEETING') or
+                    (operation=='PROPOSE_MEETING' and target_commitment_ref is not None) else {}),
              **({'made_object_ref':made_object_ref} if made_object_ref is not None else {}),
              'no_actor_motive_or_consent_issued': True,
              'look_cannot_issue_actor_belief_or_visitor_reading': operation == 'LOOK'})
@@ -873,10 +896,16 @@ class NeighborEncounter:
             authored={'user':self.user_id,'operation':op,'text':None,'destination':None}
             if op=='PROPOSE_MEETING':
                 authored.update(target_actor_ref=row['recipient'],due_clock=row['due_clock'])
+                if 'replaces_meeting_ref' in row:
+                    authored['target_commitment_ref']=row['replaces_meeting_ref']
+                    if e.get('target_commitment_ref')!=row['replaces_meeting_ref']:return False
             else:authored.update(target_commitment_ref=row['id'])
+            if op=='WITHDRAW_MEETING' and (e.get('target_commitment_ref')!=row['id']
+                    or p.get('target_commitment_ref')!=row['id']):return False
             return (e.get('user')==self.user_id and p.get('user')==self.user_id
                     and e.get('status')=='PERFORMED' and p.get('performed') is True
-                    and e.get('operation')==op and e.get('destination')==row['location']
+                    and e.get('operation')==op and e.get('destination')==(
+                        None if op=='WITHDRAW_MEETING' else row['location'])
                     and e.get('meeting_ref')==row['id'] and p.get('meeting_ref')==row['id']
                     and e.get('target_actor_ref')==row['recipient']
                     and e.get('clock')==receipt.get('clock')==clock
@@ -908,9 +937,32 @@ class NeighborEncounter:
                     or row['checkin_clock']!=row['due_clock']-2
                     or not user_source(row,'PROPOSE_MEETING',origin,row['origin_clock'])):
                 raise EncounterRefusal('MEETING_UNQUALIFIED_PROPOSAL')
-            accepted=status in ('ACCEPTED','CHECKED_IN','MEETING_PERFORMED',
+            prior_status=row.get('withdrawn_from_status') if status=='WITHDRAWN_BY_AUTHORED_ACT' else status
+            accepted=prior_status in ('ACCEPTED','CHECKED_IN','MEETING_PERFORMED',
                                 'ELAPSED_WITHOUT_ACTUAL_CHECK_IN','ELAPSED_WITHOUT_ACTUAL_MEETING')
-            checked=status in ('CHECKED_IN','MEETING_PERFORMED','ELAPSED_WITHOUT_ACTUAL_MEETING')
+            checked=prior_status in ('CHECKED_IN','MEETING_PERFORMED','ELAPSED_WITHOUT_ACTUAL_MEETING')
+            if status=='WITHDRAWN_BY_AUTHORED_ACT' and (
+                    prior_status not in ('PROPOSED','ACCEPTED','CHECKED_IN')
+                    or not row['origin_clock']<row.get('settled_at_clock',-1)<row['meeting_clock']
+                    or not user_source(row,'WITHDRAW_MEETING',row.get('withdrawal_user_event_ref'),row['settled_at_clock'])):
+                raise EncounterRefusal('MEETING_UNQUALIFIED_WITHDRAWAL')
+            if not accepted and ('accepted_at_clock' in row or 'acceptance_source_user_event_ref' in row):
+                raise EncounterRefusal('MEETING_UNQUALIFIED_ASSENT')
+            if not checked and 'checkin_user_event_ref' in row:
+                raise EncounterRefusal('MEETING_UNQUALIFIED_CHECKIN')
+            if 'replaces_meeting_ref' in row:
+                old=[x for x in rows if x['id']==row['replaces_meeting_ref']]
+                if (len(old)!=1 or old[0].get('replacement_meeting_ref')!=row['id']
+                        or old[0]['status']!='WITHDRAWN_BY_AUTHORED_ACT'
+                        or old[0]['recipient']!=row['recipient']
+                        or old[0]['due_clock']==row['due_clock']
+                        or old[0]['settled_at_clock']>=row['origin_clock']):
+                    raise EncounterRefusal('MEETING_UNQUALIFIED_REPLACEMENT')
+            if 'replacement_meeting_ref' in row:
+                new=[x for x in rows if x['id']==row['replacement_meeting_ref']]
+                if (status!='WITHDRAWN_BY_AUTHORED_ACT' or len(new)!=1
+                        or new[0].get('replaces_meeting_ref')!=row['id']):
+                    raise EncounterRefusal('MEETING_UNQUALIFIED_REPLACEMENT')
             if accepted and (row.get('acceptance_source_user_event_ref')!=origin
                     or row.get('accepted_at_clock')!=row['origin_clock']+1
                     or not actor_source(row,'ACCEPT_MEETING',origin,row['accepted_at_clock'])):
@@ -923,17 +975,21 @@ class NeighborEncounter:
                 raise EncounterRefusal('MEETING_UNQUALIFIED_PERFORMANCE')
             if status not in ('PROPOSED','ACCEPTED','CHECKED_IN','MEETING_PERFORMED',
                               'ELAPSED_WITHOUT_ACTOR_ASSENT','ELAPSED_WITHOUT_ACTUAL_CHECK_IN',
-                              'ELAPSED_WITHOUT_ACTUAL_MEETING'):
+                              'ELAPSED_WITHOUT_ACTUAL_MEETING','WITHDRAWN_BY_AUTHORED_ACT'):
                 raise EncounterRefusal('MEETING_UNQUALIFIED_STATUS')
             if status in ('PROPOSED','ACCEPTED','CHECKED_IN'):
                 if world['clock']>=row['meeting_clock']:
                     raise EncounterRefusal('MEETING_UNSETTLED_ELAPSED_WINDOW')
+            elif status=='WITHDRAWN_BY_AUTHORED_ACT':
+                if row['settled_at_clock']>world['clock']:
+                    raise EncounterRefusal('MEETING_UNQUALIFIED_SETTLEMENT_CLOCK')
             elif row.get('settled_at_clock')!=row['meeting_clock'] or world['clock']<row['meeting_clock']:
                 raise EncounterRefusal('MEETING_UNQUALIFIED_SETTLEMENT_CLOCK')
             result.append({**{k:deepcopy(row[k]) for k in (
                 'id','recipient','location','origin_clock','checkin_clock','meeting_clock',
                 'due_clock','status','accepted_at_clock','settled_at_clock',
-                'source_user_event_ref','checkin_user_event_ref') if k in row},
+                'source_user_event_ref','checkin_user_event_ref','withdrawal_user_event_ref',
+                'withdrawn_from_status','replaces_meeting_ref','replacement_meeting_ref') if k in row},
                 'administrative_readback_not_perception_or_appraisal':True})
         return result
 

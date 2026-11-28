@@ -21,6 +21,14 @@ jobs:
           git rev-parse HEAD
           test "$(git hash-object WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py)" = 231cab97b4bc5e2f40de3c45d179a68ba58585c5
           test "$(git hash-object WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py)" = a777692782003e05de6c46280b5861e97516dc90
+      - name: Elastic meeting and exact R23 owner receiving (normal and optimized)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/:${{ github.workspace }}/SEAM/NEIGHBORMULCH/tests:${{ github.workspace }}/SEAM/NEIGHBORMULCH
+        run: |
+          python -m unittest -v test_neighbor_elastic_meeting_r008 test_neighbor_meeting_time_r38
+          python -O -m unittest -v test_neighbor_elastic_meeting_r008 test_neighbor_meeting_time_r38
+          python -m unittest discover -s SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests -p test_inference_lab_surface_r23.py -v
+          python -O -m unittest discover -s SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests -p test_inference_lab_surface_r23.py -v
       - name: Actual generation and live ancestry on same tree
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/:${{ github.workspace }}/SEAM/NEIGHBORMULCH/tests:${{ github.workspace }}/SEAM/NEIGHBORMULCH
