@@ -355,7 +355,7 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                              self.expressive_arm(Path(d)/'abstain.db',False))
 
 
-    def productive_ordinary_arm(self,db,admit_end,forge=False,practice=None,witness=None,transfer=None):
+    def productive_ordinary_arm(self,db,admit_end,forge=False,practice=None,witness=None,transfer=None,affect=None):
         """From ordinary infancy through plural response to self-generated end.
         Same acquired capacity in both arms; a later trial is not a project.
         No joint SING, no actual deficit/relief required, no injected child act.
@@ -386,7 +386,22 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                         ends[0]['productive_vocal_basis']['source_other_refs']=['invented','mother']
                     if admit_end:candidates=candidates+ends
                 if phase['name']=='takeup':
-                    candidates=candidates+p.get('historically_possible_productive_vocal_takeups',[])
+                    new=p.get('historically_possible_productive_vocal_takeups',[])
+                    if affect is not None:
+                        for c in new:c['expected_difference']={'feature':'further own vocal exercise',
+                            'direction':'MORE','sign_tags':['sing']}
+                    candidates=candidates+new
+                if affect is not None and phase['name'] in ('home_affect','local_affect','local_opposition'):
+                    choices=[b for b in p.get('historically_possible_activity_affects',[])
+                             if b.get('formation_source')=='OWN_ORDINARY_PROJECT_EXERCISE'
+                             and b.get('object_affect_ref') is None]
+                    self.assertEqual(len(choices),1)
+                    orientation='WITHHOLD' if phase['name']=='local_affect' else 'APPROACH'
+                    if affect=='forge':choices[0]['origin_exercise_sign_ref']='invented'
+                    if affect:candidates=candidates+[{'kind':'ACQUIRE_ACTIVITY_AFFECT','basis':choices[0],
+                         'affect_name':'reticence' if orientation=='WITHHOLD' else 'absorbed interest',
+                         'personal_sense':'a provisional significance of the actually exercised concern',
+                         'course_orientation':orientation}]
                 if phase['name']=='transfer_probe' and transfer is not None:
                     choices=p.get('historically_possible_ordinary_context_transfers',[])
                     self.assertEqual(len(choices),1)
@@ -426,6 +441,19 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                     a=[o for o in p['practical_options'] if o['operation']=='SING']
                     self.assertTrue(a)
                     self.assertTrue(all(not o.get('project_id') for o in a))
+                    return {'task':task,'practical_option_id':a[0]['option_id']}
+                if phase['name'] in ('home_affect','local_affect','local_opposition','affect_choice','home_choice','local_alone'):
+                    a=[o for o in p['practical_options'] if o['operation']=='SING' and o.get('project_id')]
+                    self.assertEqual(len(a),1)
+                    rows=a[0].get('course_affective_organizations',[])
+                    if phase['name']=='affect_choice':
+                        self.assertEqual({x['course_orientation'] for x in rows},
+                                         {'APPROACH','WITHHOLD'} if affect else set())
+                        return {'task':task,'action':'WAIT'} if affect else {'task':task,'practical_option_id':a[0]['option_id']}
+                    if phase['name']=='home_choice':
+                        self.assertEqual({x['course_orientation'] for x in rows},{'APPROACH'} if affect else set())
+                        self.assertTrue(all(x['basis']['location']=='home' for x in rows))
+                    if phase['name']=='local_alone':self.assertEqual(rows,[])
                     return {'task':task,'practical_option_id':a[0]['option_id']}
                 if phase['name']=='transferred':
                     a=[o for o in p['practical_options'] if o['operation']=='SING' and o.get('project_id')]
@@ -531,6 +559,16 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                         for a in rt.situated('mother')['candidate_actions'] for o in a.get('practical_alternatives',[])))
                 return m
             if transfer is not None:
+                if affect is not None:
+                    phase['name']='home_affect'
+                    if affect=='forge':
+                        before=self.child(rt);count=rt.verify()['events']
+                        with self.assertRaisesRegex(InvalidDevelopment,'ACTIVITY_AFFECT_UNQUALIFIED_HISTORY'):
+                            rt.step('nadia')
+                        self.assertEqual(before,self.child(rt))
+                        self.assertEqual(count,rt.verify()['events'])
+                        return
+                    self.assertEqual(rt.step('nadia')['attempt'],'SING')
                 child=self.child(rt);project=child['projects'][0]
                 rt.background(180)
                 phase['name']='recovery'
@@ -557,9 +595,18 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                 phase['name']='transferred'
                 self.assertEqual(rt.step('nadia')['attempt'],'SING' if transfer else 'WAIT')
                 self.assertTrue(rt.verify()['valid'])
+                if affect is not None:
+                    phase['name']='local_affect';self.assertEqual(rt.step('nadia')['attempt'],'SING')
+                    phase['name']='recovery';rt.step('nadia')
+                    phase['name']='local_opposition';self.assertEqual(rt.step('nadia')['attempt'],'SING')
+                    rt.close();rt=runtime()
+                    phase['name']='affect_choice'
+                    self.assertEqual(rt.step('nadia')['attempt'],'WAIT' if affect else 'SING')
+                    self.assertEqual(rt.step('father',requested_action='MOVE',object_ref='home')['objective_outcome'],'MOVED')
+                    phase['name']='local_alone';self.assertEqual(rt.step('nadia')['attempt'],'SING')
                 phase['name']='recovery';rt.step('nadia')
                 self.assertEqual(rt.step('nadia',requested_action='MOVE',object_ref='home')['objective_outcome'],'MOVED')
-                phase['name']='project'
+                phase['name']='home_choice' if affect is not None else 'project'
                 self.assertEqual(rt.step('nadia')['attempt'],'SING')
                 self.assertTrue(rt.verify()['valid'])
                 return self.child(rt)
@@ -662,3 +709,17 @@ class EarlyOrdinaryPractice(unittest.TestCase):
             self.assertEqual(len(yes['projects'][0]['ordinary_vocal_context_transfers']),1)
             self.assertNotIn('ordinary_vocal_context_transfers',no['projects'][0])
             self.productive_ordinary_arm(p/'forge.db',True,transfer='forge')
+
+
+    def test_same_acquired_concern_can_form_opposed_and_locally_differentiated_personal_significance(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)
+            yes=self.productive_ordinary_arm(p/'opposed.db',True,transfer=True,affect=True)
+            no=self.productive_ordinary_arm(p/'abstain.db',True,transfer=True,affect=False)
+            aff=[a for e in yes['expectations'] for a in e.get('affective_organizations',[])]
+            self.assertEqual(len(aff),3)
+            self.assertEqual({a['basis']['location'] for a in aff},{'home','workshop'})
+            self.assertEqual(len({a['origin_event_ref'] for a in aff}),3)
+            self.assertFalse(any(e.get('affective_organizations') for e in no['expectations']))
+            self.assertEqual(yes['projects'][0]['object'],no['projects'][0]['object'])
+            self.productive_ordinary_arm(p/'forge_affect.db',True,transfer=True,affect='forge')

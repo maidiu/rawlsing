@@ -139,6 +139,87 @@ def annotate_practical_expectations(constitution,options):
 # This is an extension of the existing expectation/activity afterlife, not
 # a universal emotion ontology. The semantic constructor supplies the
 # particular meaning and may abstain, including in materially identical lives.
+def possible_ordinary_project_affects(actor,experience,event_ref):
+    """A personally enacted acquired concern can become felt significance.
+    This route does not require that the child already reflectively judges
+    a propositional expectation. The existing expectation owner supplies
+    durable prospective identity; the model may abstain or differentiate
+    meanings of the SAME performed act.
+    """
+    from .activity import (_ordinary_project_own_sing, ordinary_vocal_project_site)
+    if (experience.get('actor')!=actor.get('id')
+            or experience.get('own_action')!='SING'
+            or experience.get('status')!='PERFORMED'
+            or experience.get('participated') is not True):return []
+    clock=experience.get('clock');loc=experience.get('location')
+    if type(clock) is not int or type(loc) is not str:return []
+    sel=experience.get('own_practical_selection') or {}
+    refs=sel.get('selected_project_refs',[])
+    if (len(refs)!=1 or sel.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+            or sel.get('possible_end_trial') is not None):return []
+    ps=[p for p in actor.get('projects',[]) if p.get('id')==refs[0]
+        and p.get('status')=='active' and p.get('ordinary_vocal_genesis_basis')]
+    if len(ps)!=1:return []
+    p=ps[0]
+    if not ordinary_vocal_project_site(actor,p,loc,clock):return []
+    current=[(x,z) for x,z in _ordinary_project_own_sing(actor,p,loc,clock)
+             if x['event_ref']==event_ref and x['experience_ref']==experience.get('ref')
+             and x['clock']==clock and z in {q.get('id') for q in experience.get('perceived_cues',[])}]
+    if len(current)!=1:return []
+    ep,sign=current[0]
+    origin_site=p['ordinary_vocal_genesis_basis']['location']
+    prior=_ordinary_project_own_sing(actor,p,origin_site,clock-1)
+    if not prior:return []
+    # One earlier actually enacted expectation is the continuing owner.
+    # Do not multiply affect offers by every repeat of an identical project.
+    anchors=[]
+    for older,oldsign in prior:
+        for exp in actor.get('expectations',[]):
+            if (exp.get('actor')==actor['id'] and exp.get('project_id')==p['id']
+                    and exp.get('origin_event')==older['event_ref']
+                    and exp.get('origin_experience_ref')==older['experience_ref']
+                    and exp.get('practical_option_id')==older['selected_practical_option_ref']
+                    and 'sing' in exp.get('anticipated_difference',{}).get('sign_tags',[])):
+                anchors.append((older,oldsign,exp))
+    if not anchors:return []
+    older,oldsign,exp=anchors[0]
+    local=None
+    if loc!=origin_site:
+        rows=[r for r in p.get('ordinary_vocal_context_transfers',[])
+              if r.get('location')==loc and r.get('local_other_ref') in {
+                  c.get('source_actor') for c in experience.get('perceived_cues',[])
+                  if c.get('kind')=='coactor_present'}]
+        if len(rows)!=1:return []
+        local=rows[0]
+    # One actual current episode may occasion one first-order formulation
+    # and one higher-order relation to an earlier affect. The earlier
+    # organization is not overwritten by the later one.
+    existing=exp.get('affective_organizations',[])
+    if any(a.get('origin_event_ref')==event_ref for a in existing):return []
+    target=[a for a in existing if a.get('depth')==1
+            and a.get('basis',{}).get('formation_source')=='OWN_ORDINARY_PROJECT_EXERCISE'
+            and a.get('basis',{}).get('location')!=loc]
+    # Bounded first-draft scope: at most two first-order organizations per
+    # site; an additional one may concern a particular earlier affect.
+    local_count=sum(a.get('depth')==1 and a.get('basis',{}).get('location')==loc
+                    and a.get('basis',{}).get('formation_source')=='OWN_ORDINARY_PROJECT_EXERCISE'
+                    for a in existing)
+    objects=([None] if local_count<2 else [])
+    if target and not any(a.get('basis',{}).get('object_affect_ref')==target[0]['id']
+                          and a.get('basis',{}).get('location')==loc for a in existing):
+        objects.append(target[0]['id'])
+    return [{'formation_source':'OWN_ORDINARY_PROJECT_EXERCISE',
+             'expectation_ref':exp['id'],'project_ref':p['id'],
+             'origin_event_ref':older['event_ref'],'origin_exercise_sign_ref':oldsign,
+             'current_event_ref':event_ref,'current_experience_ref':ep['experience_ref'],
+             'current_cue_ref':sign,'cue_terms':['sing'],'location':loc,
+             'expressive_operation':'SING','object_affect_ref':obj,
+             'source_context_other_ref':local['local_other_ref'] if local else None,
+             'context_transfer_probe_event_ref':local['probe_event_ref'] if local else None,
+             'not_technical_success_as_pleasure_or_conscious_self_account':True}
+            for obj in objects]
+
+
 def possible_activity_affects(actor, experience, event_ref):
     """Offer personally grounded affective organization and higher-order objects.
 
@@ -174,7 +255,7 @@ def possible_activity_affects(actor, experience, event_ref):
                     and anchor is not None and anchor[0]<current[0]
                     and aff.get('depth')==1):
                 prior_affects.append((exp,aff))
-    offers=[]
+    offers=possible_ordinary_project_affects(actor,experience,event_ref)
     for exp in expectations:
         origin=by_event.get(exp.get('origin_event'))
         pid=exp['project_id']
@@ -278,8 +359,16 @@ def annotate_activity_affects(constitution, access, options):
             b=aff.get('basis',{})
             if (aff.get('actor')!=constitution.actor or aff.get('expectation_ref')!=exp['id']
                     or aff.get('project_ref')!=exp.get('project_id')
-                    or b.get('location')!=access.location
-                    or not tags.intersection(b.get('cue_terms',[]))):continue
+                    or b.get('location')!=access.location):continue
+            if b.get('formation_source')=='OWN_ORDINARY_PROJECT_EXERCISE':
+                from .activity import ordinary_project_actor_view, ordinary_vocal_project_site
+                p=next((q for q in constitution.projects if q.get('id')==exp['project_id']),None)
+                other=b.get('source_context_other_ref')
+                if (not p or not ordinary_vocal_project_site(ordinary_project_actor_view(constitution),
+                        p,access.location,access.world_clock)
+                        or (other is not None and not any(c.get('kind')=='coactor_present'
+                            and c.get('source_actor')==other for c in access.cues))):continue
+            elif not tags.intersection(b.get('cue_terms',[])):continue
             by_project.setdefault(exp['project_id'],[]).append(aff)
     readset=set();currents=[]
     for opt in options:
@@ -288,7 +377,8 @@ def annotate_activity_affects(constitution, access, options):
             if not rows or alt.get('binding_status')=='UNBOUND_PARTY_NOT_PRESENT':continue
             # An affect about one's own expressive practice concerns the
             # particular expressive course, not every means of its undertaking.
-            rows=[a for a in rows if a['basis'].get('formation_source')!='OWN_PERFORMED_EXPRESSION'
+            rows=[a for a in rows if a['basis'].get('formation_source') not in (
+                  'OWN_PERFORMED_EXPRESSION','OWN_ORDINARY_PROJECT_EXERCISE')
                   or a['basis'].get('expressive_operation')==opt['action']]
             if not rows:continue
             # Each relation is preserved, even if no action tendency follows.
