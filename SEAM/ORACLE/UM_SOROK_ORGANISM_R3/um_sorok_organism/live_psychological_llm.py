@@ -339,6 +339,14 @@ class ExplicitJSONLLMProvider:
             raise ValueError("REMOTE_MODEL_REPLY_TOO_LARGE")
         return json.loads(data.decode("utf-8"))
 
+    def _dispatch_wire(self,payload,receipt):
+        # Shared final wire boundary; reservation adapters can refuse before
+        # transport without falsely counting a physical invocation.
+        if receipt is not None:receipt["attempts"]=1
+        result=self._transport(copy(payload)) if self._transport is not None else self._request(payload)
+        if receipt is not None:receipt["usage"]=self._reported_usage(result)
+        return result
+
     def usage_snapshot(self):
         """Opt-in bounded operational receipts, never prompt/history/secret logs."""
         with self._metrics_lock:
@@ -648,11 +656,7 @@ class ExplicitJSONLLMProvider:
         if receipt is not None:
             receipt["instruction_bytes"]=len(instructions.encode("utf-8"))
             receipt["request_bytes"]=len(canonical(req).encode("utf-8"))
-            receipt["attempts"]=1
-        result=(self._transport(copy(req)) if self._transport is not None
-                else self._request(req))
-        if receipt is not None:
-            receipt["usage"]=self._reported_usage(result)
+        result=self._dispatch_wire(req,receipt)
         data=self._decode_json_response(result,receipt)
         if data.get("task")!=task:
             raise ValueError("REMOTE_MODEL_TASK_MISMATCH")
@@ -853,9 +857,7 @@ class ExplicitDevelopmentalCheckpointProvider(ExplicitJSONLLMProvider):
                     if self.completion_token_limit is not None else {})}
             receipt["instruction_bytes"]=len(_CHECKPOINT_INSTRUCTIONS.encode("utf-8"))
             receipt["request_bytes"]=len(canonical(req).encode("utf-8"))
-            receipt["attempts"]=1
-            result=self._transport(copy(req)) if self._transport is not None else self._request(req)
-            receipt["usage"]=self._reported_usage(result)
+            result=self._dispatch_wire(req,receipt)
             data=self._decode_json_response(result,receipt)
             if set(data)!={"retrospective","prospective"}:
                 raise ValueError("CHECKPOINT_RESPONSE_SHAPE")
@@ -1022,9 +1024,7 @@ class ExplicitLiveTurnProvider(ExplicitJSONLLMProvider):
                     receipt["structured_field_count"]=len(projection.get("principal_reconstructed_fields",{}))
             receipt["instruction_bytes"]=len(req["messages"][0]["content"].encode("utf-8"))
             receipt["request_bytes"]=len(canonical(req).encode("utf-8"))
-            receipt["attempts"]=1
-            result=self._transport(copy(req)) if self._transport is not None else self._request(req)
-            receipt["usage"]=self._reported_usage(result)
+            result=self._dispatch_wire(req,receipt)
             data=self._decode_json_response(result,receipt)
             if (not {"policies"}<=set(data)<={"policies","private_rehearsal"}
                     or type(data["policies"]) is not dict):

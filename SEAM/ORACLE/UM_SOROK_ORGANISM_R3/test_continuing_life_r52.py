@@ -435,3 +435,115 @@ class ContinuingLifeCourt(unittest.TestCase):
                 finally:session.close();rt.close()
 
 if __name__=="__main__":unittest.main()
+
+
+    def test_one_existing_budget_across_history_live_resume_and_cold_hold(self):
+        from importlib.util import spec_from_file_location,module_from_spec
+        from unittest.mock import patch
+        import sys
+        folder=Path(__file__).parent/"um_sorok_organism"
+        def module(name,path):
+            spec=spec_from_file_location(name,path)
+            mod=module_from_spec(spec);spec.loader.exec_module(mod);return mod
+        wire=module("um_sorok_organism.r58_wire",folder/"live_psychological_llm.py")
+        with patch.dict(sys.modules,{"um_sorok_organism.live_psychological_llm":wire}):
+            lab=module("um_sorok_organism.r58_lab",folder/"inference_lab.py")
+            with tempfile.TemporaryDirectory() as d:
+                root=Path(d);db=root/"life.sqlite"
+                rt,sid,catalog,_=joined.JoinedGenerationCourt.setup(self,db)
+                h1=joined.LifeCheckpoint(sid);h2=joined.LifeCheckpoint(sid,resumed=True)
+                l=Live();seen=[]
+                b=lab.LiveBudget(journal=root/"budget.json",max_calls=6,max_wire_bytes=10000000,
+                    input_token_ceiling=100000,completion_token_limit=1000,input_nanos_per_token=2,
+                    output_nanos_per_token=5,max_budget_nanos=2000000,sourcefree_live_authorized=True)
+                common=dict(budget=b,endpoint="https://example.invalid/chat/completions",
+                    model="fixture",api_key="not-a-key",allow_private_actor_data=True,metrics_capacity=1)
+                hp=lab.budgeted_combined_provider("HISTORICAL",sourcefree_checkpoint_attested=True,**common)
+                lp=lab.budgeted_combined_provider("LIVE",sourcefree_live_attested=True,**common)
+                def hermetic(provider,payload):
+                    self.assertTrue(b.pending)
+                    self.assertEqual(payload["max_completion_tokens"],1000)
+                    doc=json.loads(payload["messages"][1]["content"])
+                    if "mode" in doc:
+                        result=(h1 if len(h1.requests)<4 else h2).call(doc)
+                    else:result=l.call(doc)
+                    seen.append("HISTORICAL" if "mode" in doc else "LIVE")
+                    return {"choices":[{"message":{"content":json.dumps(result)}}],
+                            "usage":{"prompt_tokens":200,"completion_tokens":50,"total_tokens":250}}
+                def open_life(runtime):
+                    return ContinuingLife(runtime,root/"operator","mother",historical_provider=hp,
+                       live_provider=lp,sourcefree_attested=True,period_catalog=catalog,
+                       family_sources=(sid,),mii_module=mii)
+                s=open_life(rt)
+                try:
+                    with patch.object(wire.ExplicitJSONLLMProvider,"_request",hermetic):
+                        s.historical_checkpoint();s.historical_checkpoint();s.historical_checkpoint()
+                        s.finish_history()
+                        self.assertEqual(rt.snapshot("nadia")["age_days"],100)
+                        s.independent_absent_beat()
+                        s.resume_history()
+                        self.assertEqual(rt.snapshot("nadia")["age_days"],170)
+                        before=rt.ledger.events()
+                        # Same single allowance, no additional send in either mode.
+                        with self.assertRaises(Exception):s.finish_history()
+                        self.assertEqual(rt.ledger.events(),before)
+                        self.assertTrue(s.status()["held"])
+                        self.assertEqual(seen,["HISTORICAL"]*4+["LIVE","HISTORICAL"])
+                        self.assertEqual(b.calls,6);self.assertTrue(b.stopped)
+                        self.assertEqual(b.estimated_reported,3900)
+                        last=hp.usage_snapshot()["receipts"][-1]
+                        self.assertEqual(last["attempts"],0)
+                        self.assertEqual(last["budget_disposition"],"PREFLIGHT_REFUSED")
+                        self.assertIsNone(last["budget_attempt"])
+                        self.assertEqual(lp.usage_snapshot()["receipts"][-1]["budget_attempt"],5)
+                        import sqlite3
+                        with sqlite3.connect(root/"operator"/"epoch-000001"/"ops.sqlite") as cx:
+                            rows=[json.loads(x[0]) for x in cx.execute("SELECT receipt FROM checkpoint_attempts ORDER BY id")]
+                        self.assertEqual(rows[0]["transport_receipt"]["budget_attempt"],6)
+                        self.assertEqual(rows[-1]["transport_receipt"]["attempts"],0)
+                        self.assertEqual(rows[-1]["cycle_disposition"],"HELD_OR_FAILED")
+                        self.assertEqual(len(b.log.read_text().splitlines()),12)
+                finally:s.close();rt.close()
+                rt=ConstitutiveRuntime(str(db));s=open_life(rt)
+                try:
+                    with self.assertRaisesRegex(RecursionRefusal,"LIFE_AMBIGUOUS_OPERATION"):s.finish_history()
+                    self.assertEqual(rt.ledger.events(),before);self.assertEqual(len(seen),6)
+                finally:s.close();rt.close()
+
+    def test_shared_budget_unknown_usage_and_concurrent_denial_are_not_free_calls(self):
+        from importlib.util import spec_from_file_location,module_from_spec
+        from unittest.mock import patch
+        import sys
+        folder=Path(__file__).parent/"um_sorok_organism"
+        def module(name,path):
+            spec=spec_from_file_location(name,path)
+            mod=module_from_spec(spec);spec.loader.exec_module(mod);return mod
+        wire=module("um_sorok_organism.r58_wire",folder/"live_psychological_llm.py")
+        with patch.dict(sys.modules,{"um_sorok_organism.live_psychological_llm":wire}):
+            lab=module("um_sorok_organism.r58_lab",folder/"inference_lab.py")
+            with tempfile.TemporaryDirectory() as d:
+                b=lab.LiveBudget(journal=Path(d)/"budget",max_calls=2,max_wire_bytes=100000,
+                    input_token_ceiling=1000,completion_token_limit=100,input_nanos_per_token=2,
+                    output_nanos_per_token=5,max_budget_nanos=10000,sourcefree_live_authorized=True)
+                common=dict(budget=b,endpoint="https://example.invalid/chat/completions",
+                    model="fixture",api_key="not-a-key",allow_private_actor_data=True,metrics_capacity=2)
+                hp=lab.budgeted_combined_provider("HISTORICAL",sourcefree_checkpoint_attested=True,**common)
+                lp=lab.budgeted_combined_provider("LIVE",sourcefree_live_attested=True,**common)
+                request={"mode":"BOOTSTRAP","context":{"grade":
+                    "PROVISIONAL_SOURCEFREE_MODERN_GENERATION_PORT_NOT_NATIVE_OR_MODEL_ADEQUACY"},"previous":None}
+                live_request={"grade":"SOURCEFREE_CONDITIONAL_LIVE_TURN_NOT_MODEL_ADEQUACY","source":"fixture",
+                    "principal":"a","principal_packet":{"actor":{"id":"a"}},"peer_tips":{}}
+                seen=[]
+                def unknown(provider,payload):
+                    seen.append(payload)
+                    with self.assertRaisesRegex(lab.BudgetStop,"CONCURRENT"):lp.call(live_request)
+                    self.assertTrue(b.pending)
+                    return {"choices":[{"message":{"content":"{}"}}],"usage":{"prompt_tokens":23}}
+                with patch.object(wire.ExplicitJSONLLMProvider,"_request",unknown):
+                    with self.assertRaises(lab.BudgetStop):hp.call(request)
+                    with self.assertRaises(lab.BudgetStop):lp.call(live_request)
+                self.assertEqual(len(seen),1);self.assertEqual(b.calls,1);self.assertTrue(b.stopped)
+                self.assertEqual(hp.usage_snapshot()["receipts"][-1]["budget_disposition"],"RESERVATION_UNCERTAIN")
+                self.assertEqual([x["attempts"] for x in lp.usage_snapshot()["receipts"]],[0,0])
+                self.assertIn('"input_tokens":23',b.log.read_text())
+                self.assertIn("UNCERTAIN_SPEND_STOP",b.log.read_text())

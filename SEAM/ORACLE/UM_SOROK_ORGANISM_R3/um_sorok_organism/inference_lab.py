@@ -6,6 +6,7 @@ change, not provenance, authorization, or model adequacy. No network by default.
 from collections import Counter
 from pathlib import Path
 from time import perf_counter_ns
+from threading import Lock
 import json
 import os
 import re
@@ -326,6 +327,9 @@ class LiveBudget:
         if self.reserve>self.max_budget:raise ValueError("LAB_BUDGET_BELOW_ONE_RESERVATION")
         self.calls=0;self.wire_bytes=0;self.reserved=0;self.estimated_reported=0
         self.stopped=False;self.pending=False
+        # One shared allowance across historical and live providers in this process.
+        # Reject overlap rather than racing or borrowing another call's reservation.
+        self.dispatch_lock=Lock()
         self.path=Path(journal)
         _local_write(self.path,{"schema":"RAWLSING_LIVE_BUDGET_V1",
              "max_calls":self.max_calls,"max_wire_bytes":self.max_wire_bytes,
@@ -359,6 +363,9 @@ class LiveBudget:
         a=usage.get("input_tokens");b=usage.get("output_tokens")
         if (type(a) is not int or type(b) is not int or a<0 or b<0
                 or a>self.input_ceiling or b>self.output_limit):
+            self._append({"event":"USAGE_REJECTED","attempt":self.calls,
+                          "input_tokens":a if type(a) is int and a>=0 else None,
+                          "output_tokens":b if type(b) is int and b>=0 else None})
             self.fail()
             raise BudgetStop("LAB_USAGE_UNKNOWN_OR_ABOVE_DECLARED_CEILING")
         self.pending=False
@@ -382,8 +389,8 @@ class LiveBudget:
                 "stopped":self.stopped,"pending":self.pending,"billing_guarantee":False}
 
 
-class BudgetedLiveProvider(ExplicitJSONLLMProvider):
-    """Reuse existing HTTPS implementation; cap before every actual request."""
+class _BudgetedWireMixin:
+    """One existing LiveBudget for ordinary, historical and one-response live wire dispatch."""
     def __init__(self,*,budget,**kwargs):
         if not isinstance(budget,LiveBudget):raise TypeError("LAB_BUDGET_REQUIRED")
         if kwargs.get("transport") is not None:
@@ -393,6 +400,24 @@ class BudgetedLiveProvider(ExplicitJSONLLMProvider):
         self.budget=budget
         super().__init__(completion_token_limit=budget.output_limit,**kwargs)
 
+    def _dispatch_wire(self,payload,receipt):
+        # Provider counters are not evidence of sending if a budget rejects
+        # preflight. Bind this invocation to its own durable reservation.
+        if not self.budget.dispatch_lock.acquire(blocking=False):
+            if receipt is not None:receipt.update(attempts=0,budget_disposition="CONCURRENT_REFUSED")
+            raise BudgetStop("LAB_SHARED_BUDGET_CONCURRENT_DISPATCH")
+        before=self.budget.calls
+        try:
+            return super()._dispatch_wire(payload,receipt)
+        finally:
+            if receipt is not None:
+                n=self.budget.calls-before
+                receipt["attempts"]=n
+                receipt["budget_attempt"]=self.budget.calls if n else None
+                receipt["budget_disposition"]=("RESERVATION_UNCERTAIN" if n and self.budget.stopped else
+                    "RESERVATION_SETTLED" if n else "PREFLIGHT_REFUSED")
+            self.budget.dispatch_lock.release()
+
     def _request(self,payload):
         if payload.get(self.completion_limit_field)!=self.budget.output_limit:
             raise BudgetStop("LAB_OUTPUT_CAP_MISSING")
@@ -401,9 +426,31 @@ class BudgetedLiveProvider(ExplicitJSONLLMProvider):
             result=super()._request(payload)
             self.budget.settle(self._reported_usage(result))
             return result
-        except Exception:
+        except BaseException as exc:
             self.budget.fail()
+            if not isinstance(exc,Exception):raise
             raise BudgetStop("LAB_LIVE_TRANSPORT_OR_USAGE_FAILURE") from None
+
+
+class BudgetedLiveProvider(_BudgetedWireMixin,ExplicitJSONLLMProvider):
+    """Existing isolated-task laboratory provider, unchanged external API."""
+
+
+def budgeted_combined_provider(mode,*,budget,**kwargs):
+    """Use the existing reservation for either actual combined inference ABI.
+
+    Lazy import preserves the laboratory's older-owner overlay compatibility.
+    No automatic network dispatch, retry, model choice or disclosure authority.
+    Two instances may share one allowance; they remain different causal modes.
+    """
+    from .live_psychological_llm import (ExplicitDevelopmentalCheckpointProvider,
+                                         ExplicitLiveTurnProvider)
+    if mode=="HISTORICAL":base=ExplicitDevelopmentalCheckpointProvider
+    elif mode=="LIVE":base=ExplicitLiveTurnProvider
+    else:raise ValueError("LAB_COMBINED_PROVIDER_MODE")
+    class CombinedBudgetedProvider(_BudgetedWireMixin,base):
+        pass
+    return CombinedBudgetedProvider(budget=budget,**kwargs)
 
 
 def save_report(path,report):
