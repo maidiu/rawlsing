@@ -1862,4 +1862,88 @@ class ActorCounterofferEpochCourt(unittest.TestCase):
                     print("R008_ACTOR_COUNTEROFFER",accept,clock(),len(hist.requests),len(live.requests))
                 finally:s.close();rt.close()
 
+
+
+class MaterialReplenishmentCourt(unittest.TestCase):
+    """Actual repeated purchase and meal courses with distinct buyers.
+
+    Preserve the existing seller, physical stock, time and cash. Aggregate
+    purchases are end-boundary transfers, not fictitious witnessed meals.
+    """
+    def test_two_independent_buyers_and_later_own_consumption(self):
+        from um_sorok_organism.semantics import CallbackLLMProvider,ValidatingSemanticService
+        from um_sorok_organism.routine_sources import acquired_routine_processes
+        with tempfile.TemporaryDirectory() as d:
+            db=str(Path(d)/"life.sqlite");phase={"action":"BUY_FOOD"}
+            def callback(task,p):
+                if task=="actor_attempt":
+                    op=phase["action"]
+                    return {"task":task,"action":op,"project_id":op.lower()}
+                if task=="development":
+                    rows=[q for q in p.get("historically_possible_recurrent_routines",[])
+                          if q["basis"]["operation"]==phase["action"]]
+                    return {"task":task,"candidates":[{"kind":"ACQUIRE_RECURRENT_ROUTINE",
+                        "basis":q["basis"],"window_days":90,"hours_per_active_day":1.,
+                        "provisional_exposure_fraction":1.,"food_units_per_active_day":1.} for q in rows]}
+                if task=="expression":return {"task":task,"surface":"Ordinary life."}
+                raise AssertionError(task)
+            sem=ValidatingSemanticService(CallbackLLMProvider(callback))
+            rt=ConstitutiveRuntime(db,semantic=sem);w=blank_world()
+            w["sites"]["workshop"]["food"]=10
+            w["accounts"].update({"a":6.,"b":6.})
+            people=[adult(a,a.upper(),"workshop") for a in ("a","b")]
+            for a in people:
+                a["projects"]=[{"id":op.lower(),"object":obj,"means":[op],
+                     "status":"active","priority":.8} for op,obj in (
+                         ("BUY_FOOD","obtain food"),("EAT","continue embodied life"))]
+            rt.ledger.initialize(w,people)
+            def world():return rt.ledger.world()[1]
+            try:
+                for op in ("BUY_FOOD","EAT"):
+                    phase["action"]=op
+                    for _ in range(3):
+                        for a in ("a","b"):
+                            step=rt.step(a)
+                            self.assertEqual((step["attempt"],step["status"]),(op,"PERFORMED"))
+                self.assertEqual(world()["sites"]["workshop"]["food"],4)
+                self.assertEqual([world()["accounts"][a] for a in ("a","b")],[3.,3.])
+                self.assertEqual([world()["holdings"][a]["food"] for a in ("a","b")],[0.,0.])
+                self.assertEqual(len(acquired_routine_processes(world())),4)
+                original=deepcopy(rt.ledger.events());cash=sum(world()["accounts"].values())
+                def procs():
+                    return [{**p,"routine_window_application":"SITUATED_CONDITIONAL_ROUTINE"}
+                             for p in acquired_routine_processes(world())]
+                receipt=rt.background(8,processes=procs())
+                w=world();rows=w["material_purchase_periods"];meals=w["material_self_meal_periods"]
+                self.assertEqual(len(rows),2)
+                self.assertEqual({x["seller"] for x in rows},{"workshop_steward"})
+                self.assertEqual([x["purchased_food_units"] for x in rows],[2.,2.])
+                self.assertEqual([x["actual_paid_model"] for x in rows],[2.,2.])
+                self.assertEqual([x["uncovered_due_to_cash_units"] for x in rows],[5.,5.])
+                self.assertEqual([x["uncovered_due_to_stock_units"] for x in rows],[1.,1.])
+                self.assertEqual([x["consumed_food_units"] for x in meals],[0.,0.])
+                self.assertEqual(w["sites"]["workshop"]["food"],0)
+                self.assertEqual([w["holdings"][a]["food"] for a in ("a","b")],[2.,2.])
+                self.assertEqual([w["accounts"][a] for a in ("a","b")],[1.,1.])
+                self.assertEqual(sum(w["accounts"].values()),cash)
+                self.assertEqual(rt.ledger.events()[:len(original)],original)
+                prefix=deepcopy(rt.ledger.events())
+            finally:rt.close()
+            rt=ConstitutiveRuntime(db,semantic=sem)
+            try:
+                rt.background(2,processes=procs())
+                w=world()
+                self.assertEqual([x["purchased_food_units"] for x in w["material_purchase_periods"][-2:]],[0.,0.])
+                self.assertEqual([x["consumed_food_units"] for x in w["material_self_meal_periods"][-2:]],[2.,2.])
+                self.assertEqual([w["holdings"][a]["food"] for a in ("a","b")],[0.,0.])
+                self.assertEqual(sum(w["accounts"].values()),cash)
+                self.assertEqual(rt.ledger.events()[:len(prefix)],prefix)
+                for a in ("a","b"):
+                    p=next(p for p in rt.snapshot(a)["projects"] if p["id"]=="buy_food")
+                    receipts=p["recurrent_routines"][0]["modeled_course_receipts"]
+                    self.assertEqual([q["own_purchased_food_units_model"] for q in receipts],[2.,0.])
+                self.assertTrue(rt.verify()["valid"])
+                print("R008_MATERIAL_REPLENISHMENT",4,4,2)
+            finally:rt.close()
+
 if __name__=="__main__":unittest.main()
