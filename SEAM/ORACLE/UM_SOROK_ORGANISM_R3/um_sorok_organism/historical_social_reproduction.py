@@ -21,7 +21,7 @@ from .mediated_efficacy import COMPONENTS, preproject_exercise_basis, qualified_
 from .material_conjunction import qualify_aggregate_material_gate
 from .co_regulation_history import conserve_received_period_care
 from .material_provisioning import (
-    PROVISION_KIND,qualify_feeding,settle_provisioning,_allocate)
+    PROVISION_KIND,SELF_MEAL_KIND,qualify_feeding,settle_provisioning,_allocate)
 
 DAY_HOURS=24.0
 PROVISIONAL_REST_RESERVE=8.0
@@ -29,7 +29,7 @@ ACTIVE_HOURS=DAY_HOURS-PROVISIONAL_REST_RESERVE
 KINDS=frozenset({'QUALIFIED_ROUTINE_PRACTICE',
                  'QUALIFIED_REPRODUCTIVE_CARE',
                  'QUALIFIED_WAGE_LABOR',
-                 'QUALIFIED_MATERIAL_FEEDING',
+                 'QUALIFIED_MATERIAL_FEEDING',SELF_MEAL_KIND,
                  'QUALIFIED_OTHER_OBLIGATION'})
 
 
@@ -141,7 +141,7 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
             hours,fraction=_typecheck(raw)
         if not _actor_at_site(world,actors,a,site):
             raise ValueError('HISTORICAL_TIME_ACTOR_NOT_AT_RECORDED_SITE')
-        if raw['kind']==PROVISION_KIND:
+        if raw['kind'] in (PROVISION_KIND,SELF_MEAL_KIND):
             # Feeding is an additional, materially specified routine, never
             # silently included in generic CARE or awarded by affection.
             qualify_feeding(world,actors,raw,start_clock,days)
@@ -178,7 +178,7 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
                 continue
         operation=({'QUALIFIED_REPRODUCTIVE_CARE':'CARE',
                     'QUALIFIED_WAGE_LABOR':'WORK',
-                    PROVISION_KIND:'FEED'}.get(raw['kind']))
+                    PROVISION_KIND:'FEED',SELF_MEAL_KIND:'EAT'}.get(raw['kind']))
         if raw['kind']=='QUALIFIED_ROUTINE_PRACTICE':
             operation=raw.get('operation')
         if raw.get('preproject_exercise_ref') is not None:
@@ -576,9 +576,13 @@ def apply_period_allocation(world,actors,allocation):
         **({'lived_practice_loads':lived_practice_loads} if lived_practice_loads else {}),
         'care_period_refs':[x['id'] for x in care],
         'wage_period_refs':[x['id'] for x in wages],
-        'material_feeding_period_refs':[x['id'] for x in provisioned],
+        'material_feeding_period_refs':[x['id'] for x in provisioned if not x.get('self_meal')],
         'material_feeding_shortfall_refs':[
-            x['id'] for x in provisioned if x['uncovered_food_units']>0],
+            x['id'] for x in provisioned if not x.get('self_meal') and x['uncovered_food_units']>0],
+        **({'material_self_meal_period_refs':[x['id'] for x in provisioned if x.get('self_meal')],
+            'material_self_meal_shortfall_refs':[x['id'] for x in provisioned
+                 if x.get('self_meal') and x['uncovered_food_units']>0]}
+           if any(x.get('self_meal') for x in provisioned) else {}),
         'source_qualified_process_refs':[
             x['source_ref'] for x in allocation['qualified']],
         'support_downgraded_to_unresolved_indices':copy(

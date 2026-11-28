@@ -20,7 +20,7 @@ KINDS=frozenset({'QUALIFIED_ROUTINE_PRACTICE',
 SCENARIO_CLASS='EXPLICIT_SOURCEFREE_HISTORICAL_FIXTURE'
 LIVED_CLASS='SOURCEFREE_ACTOR_LIVED_ROUTINE_PROPOSAL'
 ROUTINE_OPS={'CARE':'QUALIFIED_REPRODUCTIVE_CARE','FEED':'QUALIFIED_MATERIAL_FEEDING',
-             'WORK':'QUALIFIED_WAGE_LABOR',
+             'WORK':'QUALIFIED_WAGE_LABOR','EAT':'QUALIFIED_SELF_MEAL',
              'PRACTICE':'QUALIFIED_ROUTINE_PRACTICE','SING':'QUALIFIED_ROUTINE_PRACTICE'}
 MAX_ROUTINE_WINDOW=90
 # Bounded existing world-defined cooperative contributions, not a general
@@ -190,6 +190,13 @@ def routine_exercise_receipt(actor,experience,event_ref):
             return None
     elif recipient is not None:return None
     origin=None
+    if op=='EAT':
+        # Existing operational history records the actual world outcome of
+        # the actor's selected project. No future ownership or food inferred.
+        origin={'ATE_OWNED_FOOD':'GIVER_HELD_FOOD',
+                'ATE_INDEPENDENT_FOOD_COMMONS':'MUTUAL_AID_FOOD',
+                'ATE_SHARED_HOUSEHOLD_FOOD':'SHARED_SITE_FOOD'}.get(rows[0].get('objective_outcome'))
+        if origin is None or (origin=='SHARED_SITE_FOOD' and site!='home'):return None
     if op=='FEED':
         if 'CARE' not in project.get('means',[]):return None
         feeds=[x for x in actor.get('performed_feeding_events',[])
@@ -265,7 +272,7 @@ def possible_recurrent_routines(actor,experience,event_ref):
     return [{'kind':'ACQUIRE_RECURRENT_ROUTINE','basis':basis,
              'maximum_window_days':MAX_ROUTINE_WINDOW,
              'maximum_hours_per_active_day':4.,
-             **({'maximum_food_units_per_active_day':1.} if current['operation']=='FEED' else {}),
+             **({'maximum_food_units_per_active_day':1.} if current['operation'] in ('FEED','EAT') else {}),
              'not_actor_self_report_or_proof_of_future_repetition':True}]
 
 
@@ -274,7 +281,7 @@ def admit_recurrent_routine(actor,experience,event_ref,candidate):
     basis=candidate.get('basis')
     if not isinstance(basis,dict):raise ValueError('LIVED_ROUTINE_CANDIDATE_CONTRACT')
     fields={'kind','basis','window_days','hours_per_active_day','provisional_exposure_fraction'}
-    if basis.get('operation')=='FEED':fields.add('food_units_per_active_day')
+    if basis.get('operation') in ('FEED','EAT'):fields.add('food_units_per_active_day')
     if set(candidate)!=fields:raise ValueError('LIVED_ROUTINE_CANDIDATE_CONTRACT')
     if not any(x['basis']==basis for x in possible_recurrent_routines(actor,experience,event_ref)):
         raise ValueError('LIVED_ROUTINE_UNQUALIFIED_BASIS')
@@ -288,7 +295,7 @@ def admit_recurrent_routine(actor,experience,event_ref,candidate):
     if food is not None and (type(food) not in (int,float) or not isfinite(food)
                               or not 0<food<=1 or round(food,5)!=food):
         raise ValueError('LIVED_ROUTINE_UNQUALIFIED_FOOD_DOSE')
-    if basis['operation']=='FEED' and food is None:
+    if basis['operation'] in ('FEED','EAT') and food is None:
         raise ValueError('LIVED_ROUTINE_UNQUALIFIED_FOOD_DOSE')
     project=next(p for p in actor['projects'] if p['id']==basis['project_ref'])
     clock=experience['clock']
@@ -332,7 +339,7 @@ def register_admitted_routine(world,actor,report,event_ref):
              'provisional_exposure_fraction':row['provisional_exposure_fraction']}
     if row.get('coactivity_partner'):process['coactivity_partner']=row['coactivity_partner']
     if op in ('CARE','FEED'):process['recipient']=row['recipient']
-    if op=='FEED':process.update({'supply_origin':row['food_origin'],
+    if op in ('FEED','EAT'):process.update({'supply_origin':row['food_origin'],
                             'food_units_per_active_day':row['food_units_per_active_day']})
     if process['kind']=='QUALIFIED_ROUTINE_PRACTICE':
         process.update({'operation':op,'mode':'SOLO_COMPONENT_PRACTICE'})
@@ -427,7 +434,7 @@ def effective_routine_dose(row):
     return {'state':'ACTIVE','hours_per_active_day':row['hours_per_active_day'],
             'provisional_exposure_fraction':row['provisional_exposure_fraction'],
             **({'food_units_per_active_day':row['food_units_per_active_day']}
-               if row['operation']=='FEED' else {})}
+               if row['operation'] in ('FEED','EAT') else {})}
 
 
 def possible_routine_revisions(actor,experience,event_ref):
@@ -605,7 +612,7 @@ def conserve_routine_period(world,actors,period,allocation):
                  'not_individual_experience_or_conscious_reason':True}
         if actual:
             own_refs=[]
-            for key in ('reproductive_labor_periods','wage_labor_periods','material_provisioning_periods'):
+            for key in ('reproductive_labor_periods','wage_labor_periods','material_provisioning_periods','material_self_meal_periods'):
                 for effect in reversed(world.get(key,[])):
                     if effect.get('end_clock',-1)<end:break
                     if effect.get('source_ref')!=ref or effect.get('end_clock')!=end:continue
@@ -619,6 +626,9 @@ def conserve_routine_period(world,actors,period,allocation):
                         receipt['own_nominal_care_rest_expenditure_model']=effect['giver_rest_expenditure_model']
                     elif key=='material_provisioning_periods':
                         receipt['own_provisioning_food_contribution_model']=effect['consumed_food_units']
+                    elif key=='material_self_meal_periods':
+                        receipt['own_self_meal_consumption_model']=effect['consumed_food_units']
+                        receipt['own_self_meal_nutrition_gain_model']=effect['actual_recipient_nutrition_gain']
             own_refs.extend(x['id'] for x in actor.get('practice_exposures',[])
                             if x.get('source_ref')==ref and x.get('end_clock')==end)
             for load in allocation.get('lived_practice_loads',[]):

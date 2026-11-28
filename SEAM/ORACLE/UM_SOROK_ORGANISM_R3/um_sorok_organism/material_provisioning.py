@@ -18,6 +18,7 @@ from .food_access_struggle import can_draw_shared_food
 
 UNIT = Decimal("0.00001")
 PROVISION_KIND="QUALIFIED_MATERIAL_FEEDING"
+SELF_MEAL_KIND="QUALIFIED_SELF_MEAL"
 ORIGINS=frozenset(("SHARED_SITE_FOOD","GIVER_HELD_FOOD","MUTUAL_AID_FOOD"))
 CAP=Decimal("1000000")
 
@@ -48,12 +49,16 @@ def _available(world, origin, giver, location):
 
 def qualify_feeding(world,actors,process,start,days):
     """Qualify source-verified, site-local child provisioning BEFORE any write."""
-    if process.get("kind")!=PROVISION_KIND:
+    self_meal=process.get("kind")==SELF_MEAL_KIND
+    if process.get("kind") not in (PROVISION_KIND,SELF_MEAL_KIND):
         raise ValueError("PROVISION_INVALID_KIND")
-    giver=process.get("actor");recipient=process.get("recipient")
+    giver=process.get("actor");recipient=giver if self_meal else process.get("recipient")
+    if self_meal and (process.get("recipient") is not None or
+            (process.get("source_registry_confirmation") or {}).get("source_grade")!="SOURCEFREE_ACTOR_LIVED_ROUTINE_PROPOSAL"):
+        raise ValueError("SELF_MEAL_REQUIRES_ACTOR_LOCAL_SOURCE")
     loc=process.get("location");origin=process.get("supply_origin")
     if (type(giver) is not str or type(recipient) is not str or
-            giver==recipient or giver not in actors or
+            (giver==recipient)!=self_meal or giver not in actors or
             recipient not in actors):
         raise ValueError("PROVISION_UNREGISTERED_GIVER_OR_RECIPIENT")
     if (loc not in world.get("sites",{}) or
@@ -63,9 +68,11 @@ def qualify_feeding(world,actors,process,start,days):
             actors[recipient].get("location")!=loc):
         raise ValueError("PROVISION_NOT_COLOCATED")
     if not any(p.get("status","active")=="active" and
-               "CARE" in p.get("means",[])
+               ("EAT" if self_meal else "CARE") in p.get("means",[])
                for p in actors[giver].get("projects",[])):
-        raise ValueError("PROVISION_NO_HISTORICAL_CARE_COURSE")
+        raise ValueError("PROVISION_NO_HISTORICAL_SELF_MEAL_COURSE" if self_meal else "PROVISION_NO_HISTORICAL_CARE_COURSE")
+    if self_meal and origin=="SHARED_SITE_FOOD" and loc!="home":
+        raise ValueError("SELF_MEAL_SHARED_SITE_NOT_AUTHORIZED")
     if origin not in ORIGINS:
         raise ValueError("PROVISION_NO_OWNED_OR_SHARED_FOOD_ORIGIN")
     daily=_quantity(process.get("food_units_per_active_day"),
@@ -89,7 +96,8 @@ def qualify_feeding(world,actors,process,start,days):
         "modeled_labor_hours":round(process["hours_per_active_day"]*exposure*days,5),
         "time_claimed_from":"R13_FINITE_ACTOR_TIME",
         "not_witnessed_day_by_day":True,
-        "caregiver_willingness_each_day":"NOT_ESTABLISHED",
+        **({"self_meal":True,"individual_meal_choices_not_established":True}
+           if self_meal else {"caregiver_willingness_each_day":"NOT_ESTABLISHED"}),
         "grade":GRADE}
 
 
@@ -129,7 +137,7 @@ def settle_provisioning(world, actors, allocation):
     """
     start=allocation["start_clock"];days=allocation["days"]
     procs=[p for p in allocation["qualified"]
-           if p.get("kind")==PROVISION_KIND]
+           if p.get("kind") in (PROVISION_KIND,SELF_MEAL_KIND)]
     claims=[qualify_feeding(world,actors,p,start,days) for p in procs]
     if len({c["id"] for c in claims})!=len(claims):
         raise ValueError("PROVISION_DUPLICATE_SOURCE_CLAIM")
@@ -201,9 +209,11 @@ def settle_provisioning(world, actors, allocation):
                     "FULLY_PROVISIONED" if shortage==0 else
                     "PARTIALLY_PROVISIONED" if amount>0 else
                     "UNPROVISIONED_NO_AVAILABLE_FOOD"),
-                "caregiver_effort":"ACCOUNTED_IN_FINITE_TIME",
+                **({"self_meal":True,"own_reproduction_time":"ACCOUNTED_IN_FINITE_TIME"}
+                   if claim.get("self_meal") else
+                   {"caregiver_effort":"ACCOUNTED_IN_FINITE_TIME",
+                    "failure_is_not_evidence_of_caregiver_unwillingness":True}),
                 "no_individually_witnessed_meals":True,
-                "failure_is_not_evidence_of_caregiver_unwillingness":True,
                 "no_actor_causal_comprehension_inferred":True,
                 "policy":"PROPORTIONAL_DECLARED_CLAIMS_R1",
                 "grade":"SOURCEFREE_QUALIFIED_MATERIAL_PROVISIONING"})
@@ -245,10 +255,16 @@ def settle_provisioning(world, actors, allocation):
             world["sites"][holder]["food"]=float(nextstock)
     for recipient,final in projected_nutrition.items():
         actors[recipient]["body"]["nutrition"]=float(final)
-    world.setdefault("material_provisioning_periods",[]).extend(outcomes)
+    # Same stock competition and nutrition capacity, distinct historical
+    # meaning: self-reproduction must never fabricate a caregiver relation.
+    world.setdefault("material_provisioning_periods",[]).extend(
+        row for row in outcomes if not row.get("self_meal"))
     from .co_regulation_history import conserve_received_period_provision
     for row in outcomes:
-        conserve_received_period_provision(actors[row["recipient"]],row)
+        if row.get("self_meal"):
+            world.setdefault("material_self_meal_periods",[]).append(row)
+        else:
+            conserve_received_period_provision(actors[row["recipient"]],row)
     return outcomes
 
 
