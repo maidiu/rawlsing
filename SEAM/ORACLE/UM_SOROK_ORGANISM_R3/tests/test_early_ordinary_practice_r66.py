@@ -929,12 +929,25 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                                 # CARE. Allow actual ordinary bodily change
                                 # before each encounter rather than assert a
                                 # gain at the saturation ceiling.
-                                self.assertEqual(rt.step('nadia',requested_action='WAIT')['status'],'PERFORMED')
-                                self.assertEqual(rt.step('mother')['attempt'],'CARE')
-                                self.assertEqual(rt.step('nadia',requested_action='WAIT')['status'],'PERFORMED')
-                                self.assertEqual(rt.step('father')['attempt'],'WAIT' if material_period else 'CARE')
+                                for _ in range(3):
+                                    self.assertEqual(rt.step('nadia',requested_action='WAIT')['status'],'PERFORMED')
+                                before_care=self.child(rt)
+                                care=rt.step('mother')
+                                self.assertEqual(care['attempt'],'CARE')
+                                self.assertEqual(care['status'],'PERFORMED',care)
+                                after_care=self.child(rt)
+                                self.assertGreater(after_care['body']['comfort'],before_care['body']['comfort'],
+                                                   (before_care['body'],after_care['body'],care))
+                                self.assertEqual(after_care['experienced_care_events'][-1]['giver_ref'],'mother',
+                                                 (after_care['evidence_paths'][-2:],care))
+                                for _ in range(3):
+                                    self.assertEqual(rt.step('nadia',requested_action='WAIT')['status'],'PERFORMED')
+                                father=rt.step('father')
+                                self.assertEqual(father['attempt'],'WAIT' if material_period else 'CARE')
+                                self.assertEqual(father['status'],'PERFORMED',father)
                                 expected='mother' if material_period else 'father'
-                                self.assertEqual(self.child(rt)['experienced_care_events'][-1]['giver_ref'],expected)
+                                self.assertEqual(self.child(rt)['experienced_care_events'][-1]['giver_ref'],expected,
+                                                 (self.child(rt)['evidence_paths'][-3:],father))
                                 phase['name']='care_address'
                                 self.assertEqual(rt.plan('nadia').target,expected)
                                 signal=rt.step('nadia')
