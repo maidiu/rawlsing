@@ -566,9 +566,15 @@ def run_integrated_life_course(db, *, resume=True, acquire=True):
         require(any(x.get('spoken_text')=='We have been living our ordinary lives.'
                     and x.get('lexical_acquisition_route')=='VOLUNTARILY_ADDRESSED_TO_SELF'
                     for x in surface['mandatory']),'INTEGRATED_ACTUAL_WORDS_NOT_RENDERED')
+        # An actual later care occasion, not an inference from the aggregate period.
+        phase='initial-care'
+        step('nadia','ORIENT')
+        later_care=len(actor('nadia')['experienced_care_events'])
+        step('mother','CARE')
+        require(len(actor('nadia')['experienced_care_events'])>later_care,'INTEGRATED_LATER_CARE_NOT_SENSED')
         phase='child-address'
         child=n.independent_actor_beat('nadia')
-        require(child['attempt']==('SIGNAL' if acquire else 'ORIENT'),'INTEGRATED_ACQUIRED_ADDRESS')
+        require(child['attempt']==('SIGNAL' if acquire else 'ORIENT'),'INTEGRATED_ACQUIRED_ADDRESS:'+str(child['attempt'])+':'+str(child['status']))
         if acquire:require(child['status']=='PARTIAL','INTEGRATED_NO_INDEPENDENT_REFUSAL')
         require(n.contribute('depart','LEAVE')['status']=='PERFORMED','INTEGRATED_DEPARTURE')
         absent_history=deepcopy(world()['neighbor_user_events'])
