@@ -434,4 +434,171 @@ class ContinuingLifeCourt(unittest.TestCase):
                         "projects":len(projects),"calls":p.calls,"affect_qualified":True},sort_keys=True))
                 finally:session.close();rt.close()
 
+
+    def test_R79_actual_developing_child_affect_memory_through_checkpoint_encounter_and_resumption(self):
+        """Continue the actual R78 childhood at its already acquired local concern.
+        No injected child project, generic memory substitute or old owner checkout.
+        Both arms use the same actual affect and policy; only qualified memory
+        nomination order differs. The visitor is an authored fictional fixture.
+        """
+        import importlib.util
+        from copy import deepcopy
+        from um_sorok_organism.types import canonical
+        spec=importlib.util.spec_from_file_location("actual_r78_childhood",
+            Path(__file__).parent/"tests"/"test_early_ordinary_practice_r66.py")
+        mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)
+        secret="The sound was mine, but doing it here felt difficult."
+        rehearsal="I can stop and be quiet for a while."
+        obj="make room for a quieter pause"
+        for nominate in (True,False):
+            with self.subTest(nominate=nominate),tempfile.TemporaryDirectory() as d:
+                root=Path(d);db=root/"life.sqlite"
+                def continue_actual(rt,reopen):
+                    entry=deepcopy(rt.ledger.actor("nadia")[1]);proj=entry["projects"][0]["id"]
+                    self.assertEqual(entry["location"],"workshop")
+                    self.assertEqual(entry["body"]["language"],.35)
+                    self.assertEqual(entry["memories"],[])
+                    self.assertEqual(len(entry["projects"]),1)
+                    match={"formation_source":"OWN_ORDINARY_PROJECT_EXERCISE","object_affect_ref":None,
+                           "project_ref":proj}
+                    def affect(orientation):
+                        return {"offer":"historically_possible_activity_affects","construct":"ACTIVITY_AFFECT",
+                            "match":match,"augment":{"affect_name":"reticence" if orientation=="WITHHOLD" else "interest",
+                                "personal_sense":"a provisional significance of the actually exercised concern",
+                                "course_orientation":orientation}}
+                    memory={"offer":"historically_possible_activity_affects","construct":"ORDINARY_AFFECT_MEMORY",
+                            "match":match,"augment":{"content":secret,"cue_terms":["sing"]}}
+                    def sing():return {"action":"SING","project_id":proj}
+                    def course():
+                        return policy([{"action":"SELECT_HIGHEST_CURRENT_PROJECT_COURSE",
+                                        "project_course_actions":["REST"]},sing(),action("WAIT")])
+                    def rows(r,plan):
+                        ctx=r["context"];t=ctx["clock"];out=[]
+                        for i,(who,p,span) in enumerate(plan):
+                            t+=span+1
+                            out.append(event(ctx,"r79:"+str(t)+":"+str(i),t,who,{who:p},span=span))
+                        return {"retrospective":retro(r),"prospective":out}
+                    class History:
+                        def __init__(self,resumed=False):self.calls=[];self.resumed=resumed
+                        def call(self,r):
+                            self.calls.append(r)
+                            if r["mode"]=="TERMINAL":return {"retrospective":retro(r),"prospective":None}
+                            if self.resumed:
+                                assert r["context"]["prior_generation_and_live_ancestry"]
+                                return rows(r,[("nadia",course(),0),("father",policy([action("REST")]),0),
+                                               ("nadia",course(),0)])
+                            n=len(self.calls)
+                            if n==1:
+                                first=[affect("WITHHOLD"),memory] if nominate else [memory,affect("WITHHOLD")]
+                                return rows(r,[("nadia",policy([sing()],first),0),
+                                               ("nadia",policy([action("REST")]),0),
+                                               ("nadia",policy([sing()],[affect("APPROACH")]),0)])
+                            if n==2:
+                                p=policy([action("WAIT")],[{"private_construct":"NOTICE_END",
+                                    "augment":{"possible_object":obj,"means":["REST"]}}])
+                                if nominate:
+                                    m=r["context"]["actor_contexts"]["nadia"]["accessible_memories"][0]
+                                    p["private_rehearsal"]={"affect":"REQUIRED","memory_ref":m["id"],
+                                        "affect_ref":m["ordinary_affect_memory"]["affect_ref"],"meaning":rehearsal}
+                                return rows(r,[("nadia",policy([action("WAIT")]),0),
+                                               ("nadia",policy([action("REST")]),2),("nadia",p,0)])
+                            if n==3:
+                                ends=[e for e in r["context"]["actor_contexts"]["nadia"]["possible_ends"]
+                                      if e.get("genesis_family")=="ACTUAL_PRIVATE_REHEARSAL"]
+                                rules=([{"action":"REST","pool":"possible_end_trials","option_match":{
+                                    "possible_end_ref":ends[0]["id"]}}] if ends else [])+[action("WAIT")]
+                                takeup={"private_construct":"TAKE_UP_END","match":{"possible_object":obj},
+                                        "augment":{"means":["REST"]}}
+                                return rows(r,[("nadia",policy(rules),0),
+                                    ("nadia",policy([action("REST")],[takeup]),0),("nadia",course(),0)])
+                            raise AssertionError("unexpected historical call")
+                    class LiveCourse:
+                        def __init__(self):self.calls=[]
+                        def call(self,r):
+                            self.calls.append(r)
+                            aid=r["principal"]
+                            return {"policies":{aid:course() if aid=="nadia" else policy([action("REST"),action("WAIT")])}}
+                    h=History();live=LiveCourse()
+                    def op(runtime,hist):return ContinuingLife(runtime,root/"operator","nadia",
+                        historical_provider=hist,live_provider=live,sourcefree_attested=True,mii_module=mii)
+                    s=op(rt,h)
+                    try:
+                        prefix=rt.ledger.events()
+                        s.historical_checkpoint()
+                        child=rt.ledger.actor("nadia")[1]
+                        self.assertEqual(len(child["memories"]),int(nominate))
+                        aff=[a for e in child["expectations"] for a in e.get("affective_organizations",[])
+                             if a["basis"]["location"]=="workshop"]
+                        self.assertEqual({a["course_orientation"] for a in aff},{"APPROACH","WITHHOLD"})
+                        if nominate:self.assertEqual(child["memories"][0]["ordinary_affect_memory"]["affect_ref"],
+                            next(a["id"] for a in aff if a["course_orientation"]=="WITHHOLD"))
+                        s.historical_checkpoint()
+                        child=rt.ledger.actor("nadia")[1]
+                        self.assertEqual(len(child["projects"]),1)
+                        self.assertEqual(len([e for e in child["possible_ends"] if
+                            e.get("genesis_family")=="ACTUAL_PRIVATE_REHEARSAL"]),int(nominate))
+                    finally:s.close()
+                    # Cold history continuation, not a regenerated child.
+                    cold=ConstitutiveRuntime(str(db));s=op(cold,h)
+                    try:
+                        s.historical_checkpoint()
+                        child=cold.ledger.actor("nadia")[1]
+                        self.assertEqual(len(child["projects"]),1+int(nominate))
+                        if nominate:
+                            p=child["projects"][1]
+                            self.assertEqual(p["takeup_evidence"]["private_takeup_basis"]["ordinary_affect_memory"],
+                                             child["memories"][0]["ordinary_affect_memory"])
+                            self.assertEqual(p["operational_history"][-1]["operation"],"REST")
+                        else:self.assertEqual(child["projects"][0]["operational_history"][-1]["operation"],"SING")
+                        s.finish_history()
+                        self.assertEqual(cold.ledger.events()[:len(prefix)],prefix)
+                        pre_live=cold.ledger.events()
+                        s.configure_encounter("visitor",{"grade":"SOURCEFREE_TEST_ONLY",
+                            "user_conditions":{"workshop":{"light":"lit","sightline":"unobstructed",
+                                "hearing":True,"sound_path":"audible","legibility":"readable"}},
+                            "actor_conditions":{a:{"facing":"entrance","visual":True,"light":"lit",
+                                "sightline":"unobstructed","hearing":True,"sound_path":"audible"}
+                                for a in ("father","mother","nadia")}},request_id="geometry")
+                        self.assertEqual(s.contribute("visitor","enter","MOVE",destination="workshop")["status"],"PERFORMED")
+                        self.assertEqual(s.contribute("visitor","say","SAY",text="There is room to be here.",
+                                                      target_actor_ref="nadia")["status"],"PERFORMED")
+                        w=cold.ledger.world()[1];ref=w["neighbor_user_events"][-1]["event_ref"];target=w["clock"]+4
+                        with self.assertRaisesRegex(RecursionRefusal,"LIFE_VISITOR_STILL_PRESENT"):s.resume_history()
+                        self.assertEqual(s.present_until("visitor",ref,target,max_beats=1)["beats_committed_this_call"],1)
+                    finally:s.close();cold.close()
+                    cold=ConstitutiveRuntime(str(db));s=op(cold,h)
+                    try:
+                        s.present_until("visitor",ref,target)
+                        calls=len(live.calls);self.assertEqual(calls,4)
+                        self.assertEqual(s.present_until("visitor",ref,target)["new_present_surfaces"],[])
+                        self.assertEqual(len(live.calls),calls)
+                        self.assertIn("nadia",{q["principal"] for q in live.calls})
+                        view=canonical(s.private_surface("visitor"))
+                        self.assertNotIn(secret,view);self.assertNotIn(rehearsal,view)
+                        self.assertNotIn(secret,canonical(cold.ledger.world()[1]))
+                        self.assertEqual(s.contribute("visitor","leave","LEAVE")["status"],"PERFORMED")
+                        actual=cold.ledger.events();self.assertEqual(actual[:len(pre_live)],pre_live)
+                    finally:s.close();cold.close()
+                    h2=History(resumed=True);cold=ConstitutiveRuntime(str(db));s=op(cold,h2)
+                    try:
+                        s.resume_history()
+                        self.assertEqual(s.status()["epoch"],1)
+                        self.assertEqual(cold.ledger.events()[:len(actual)],actual)
+                        result=cold.ledger.actor("nadia")[1]
+                        p=result["projects"][-1]
+                        self.assertEqual(p["operational_history"][-1]["operation"],"REST" if nominate else "SING")
+                        s.finish_history()
+                        self.assertTrue(cold.verify()["valid"])
+                        self.assertTrue(all(x["status"]=="RETURNED" for x in s.receipts()))
+                        self.assertFalse(s.status()["held"])
+                        print("R79_JOINED_CHILD",json.dumps({"nominate":nominate,"age_days":result["age_days"],
+                            "projects":len(result["projects"]),"historical_calls":len(h.calls)+len(h2.calls),
+                            "live_calls":calls,"native_events":len(cold.ledger.events()),
+                            "actual_later_course":p["operational_history"][-1]["operation"]},sort_keys=True))
+                        return result
+                    finally:s.close();cold.close()
+                result=mod.EarlyOrdinaryPractice().productive_ordinary_arm(db,True,transfer=True,affect=True,
+                    private=nominate,antecedent=True,continuation=continue_actual)
+                self.assertEqual(len(result["projects"]),1+int(nominate))
+
 if __name__=="__main__":unittest.main()
