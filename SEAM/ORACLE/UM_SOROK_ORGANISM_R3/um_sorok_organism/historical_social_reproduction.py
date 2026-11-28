@@ -508,7 +508,7 @@ def apply_period_allocation(world,actors,allocation):
     if any(r.get('id')==ref for r in
            world.get('historical_time_allocations',[])):
         raise ValueError('HISTORICAL_TIME_DUPLICATE_SETTLEMENT')
-    care=[];wages=[];practice_loads=[];project_loads=[]
+    care=[];wages=[];practice_loads=[];project_loads=[];lived_practice_by_actor={}
     wage_plan=_plan_wages(world,allocation['qualified'],start,days)
     # All qualification and per-person time budgets are checked before writes.
     for proc in allocation['qualified']:
@@ -536,6 +536,34 @@ def apply_period_allocation(world,actors,allocation):
                 'source_ref':proc['source_ref'],'preproject_exercise_ref':proc['preproject_exercise_ref'],
                 'modeled_hours':round(hours,5),'rest_before':before,
                 'rest_after':body['rest'],'not_observed_daily_events':True,'grade':GRADE})
+        elif (proc['kind']=='QUALIFIED_ROUTINE_PRACTICE' and
+              (proc.get('source_registry_confirmation') or {}).get('source_grade')==LIVED_CLASS):
+            # Acquired independent practice claims pay a bodily cost, not
+            # just an abstract opportunity cost. Unmatched/withheld claims
+            # never reach this owner. Combine each body's claims once so
+            # input ordering cannot alter rounding or saturating rest.
+            hours=proc['hours_per_active_day']*proc['provisional_exposure_fraction']*days
+            lived_practice_by_actor.setdefault(proc['actor'],[]).append({
+                'source_ref':proc['source_ref'],'operation':proc['operation'],
+                'modeled_hours':round(hours,5),
+                'nominal_rest_expenditure_model':hours*.00012,
+                **({'reciprocal_routine_pair_ref':proc['reciprocal_routine_pair_ref']}
+                   if proc.get('reciprocal_routine_pair_ref') else {})})
+    lived_practice_loads=[]
+    for aid,claims in sorted(lived_practice_by_actor.items()):
+        claims.sort(key=lambda c:c['source_ref'])
+        body=actors[aid]['body'];before=body['rest']
+        nominal=math.fsum(c['nominal_rest_expenditure_model'] for c in claims)
+        body['rest']=min(before,round(max(0.,before-nominal),5))
+        lived_practice_loads.append({
+            'id':stable_id('lived_practice_load',{'allocation':ref,'actor':aid}),
+            'actor':aid,'claims':claims,
+            'modeled_hours':round(math.fsum(c['modeled_hours'] for c in claims),5),
+            'nominal_rest_expenditure_model':nominal,
+            'realized_rest_expenditure_model':round(before-body['rest'],5),
+            'rest_before':before,'rest_after':body['rest'],
+            'not_observed_daily_events':True,'not_a_measured_physiological_law':True,
+            'grade':GRADE})
     provisioned=settle_provisioning(world,actors,allocation)
     receipt={
         'id':ref,'start_clock':start,'end_clock':start+days,
@@ -545,6 +573,7 @@ def apply_period_allocation(world,actors,allocation):
             allocation['unmodeled_free_hours_per_day']),
         **({'preproject_practice_loads':practice_loads} if practice_loads else {}),
         **({'project_practice_loads':project_loads} if project_loads else {}),
+        **({'lived_practice_loads':lived_practice_loads} if lived_practice_loads else {}),
         'care_period_refs':[x['id'] for x in care],
         'wage_period_refs':[x['id'] for x in wages],
         'material_feeding_period_refs':[x['id'] for x in provisioned],

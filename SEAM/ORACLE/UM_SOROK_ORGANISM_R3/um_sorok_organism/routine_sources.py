@@ -621,6 +621,16 @@ def conserve_routine_period(world,actors,period,allocation):
                         receipt['own_provisioning_food_contribution_model']=effect['consumed_food_units']
             own_refs.extend(x['id'] for x in actor.get('practice_exposures',[])
                             if x.get('source_ref')==ref and x.get('end_clock')==end)
+            for load in allocation.get('lived_practice_loads',[]):
+                if load['actor']!=aid:continue
+                claim=next((x for x in load['claims'] if x['source_ref']==ref),None)
+                if claim is None:continue
+                own_refs.append(load['id'])
+                receipt['own_practice_nominal_rest_expenditure_model']=claim['nominal_rest_expenditure_model']
+                # Saturation is borne by the body once across its claims.
+                # No invented attribution of the actual depletion among
+                # overlapping commitments or other people's bodies.
+                receipt['own_combined_practice_load_ref']=load['id']
             receipt['own_aggregate_effect_refs']=own_refs
         records=row.setdefault('modeled_course_receipts',[])
         if any(x.get('period_ref')==period['id'] for x in records):

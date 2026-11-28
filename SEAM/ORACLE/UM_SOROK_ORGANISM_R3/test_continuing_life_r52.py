@@ -643,6 +643,16 @@ class PluralReciprocalLifeCourt(unittest.TestCase):
                         pairs.setdefault(p["reciprocal_routine_pair_ref"],[]).append(p)
                     self.assertTrue(all(len(v)==2 and v[0]["actor"]!=v[1]["actor"] for v in pairs.values()))
                     self.assertEqual(len(pairs),len(expected)//2)
+                    loads=x["lived_practice_loads"]
+                    self.assertEqual({c["source_ref"] for load in loads for c in load["claims"]},expected)
+                    for load in loads:
+                        self.assertGreater(load["realized_rest_expenditure_model"],0)
+                        self.assertAlmostEqual(load["rest_before"]-load["rest_after"],
+                                               load["realized_rest_expenditure_model"],places=5)
+                        self.assertAlmostEqual(load["modeled_hours"],
+                            sum(c["modeled_hours"] for c in load["claims"]),places=5)
+                    a_load=next(load for load in loads if load["actor"]=="a")
+                    self.assertEqual(len(a_load["claims"]),len(expected)//2)
             def revise(s,mode):
                 live.mode=mode
                 for _ in range(6):
