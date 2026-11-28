@@ -198,6 +198,58 @@ class RecurrentLife(unittest.TestCase):
             self.assertEqual(no['aggregate_practice_periods'],0)
             print('R008_ACQUIRED_CHILDHOOD_ROUTINE',yes,no)
 
+    def test_actual_employer_sanction_and_worker_withdrawal_interrupt_recurrent_work(self):
+        from um_sorok_organism.labor_dependency import work_permission
+        with tempfile.TemporaryDirectory() as d:
+            rt,phase,service,_=self.setup_course(Path(d)/'work.sqlite')
+            try:
+                # Explicit institutional scenario, actual world-owned contract
+                # acceptance and later delegate sanction. The repeated WORK
+                # and eventual withdrawal are independently selected.
+                spec=rt.register_sourcefree_work_regime({
+                    'grade':'EXPLICIT_SOURCEFREE_INSTITUTIONAL_SCENARIO',
+                    'source_ref':'fictional:recurrent-employment',
+                    'site':'workshop','controller':'workshop_steward',
+                    'eligible_workers':['father'],'delegates':['mother']})
+                rt.step('father',requested_action='INSPECT',object_ref=spec['terms_notice_ref'])
+                self.assertEqual(rt.step('father',requested_action='ACCEPT_WORK_TERMS')['status'],'PERFORMED')
+                for _ in range(3):
+                    self.beat(rt,phase,'father','REST')
+                    self.beat(rt,phase,'father','WORK')
+                self.beat(rt,phase,'father','REST')
+                self.beat(rt,phase,'father','REST')
+                self.assertEqual(len(acquired_routine_processes(rt.ledger.world()[1])),1)
+                rt.step('mother',requested_action='MOVE',object_ref='workshop')
+                self.assertEqual(rt.step('mother',requested_action='SUSPEND_WAGE_WORK',target='father')['status'],
+                                 'PERFORMED')
+                w=rt.ledger.world()[1]
+                start=w['clock'];sanction=w['work_regimes']['workshop']['suspensions'][-1]
+                boundary=sanction['through_clock']+1
+                self.assertEqual(work_permission(w,'father','workshop'),'EMPLOYER_SANCTION_PREVENTS_PAID_WORK')
+                prior=deepcopy(rt.ledger.actor('father')[1]['power_exercises'])
+                phase['op']='WAIT'
+                result=rt.continue_mixed_history(start+10,cadence_origin=start,ordinary_span=30)
+                self.assertEqual(result['status'],'MODELED_HISTORY_CUT_REACHED')
+                w=rt.ledger.world()[1]
+                held=[x for period in w['historical_periods']
+                      for x in period.get('situationally_withheld_processes',[])]
+                self.assertTrue(any('EMPLOYER_SANCTION_PREVENTS_PAID_WORK' in x['reason'] for x in held))
+                self.assertTrue(w.get('wage_labor_periods'))
+                self.assertTrue(all(x['start_clock']>=boundary for x in w['wage_labor_periods']))
+                self.assertEqual(rt.ledger.actor('father')[1]['power_exercises'],prior)
+                self.assertEqual(work_permission(w,'father','workshop'),'QUALIFIED_WORK_CONTRACT_ACTIVE')
+                self.beat(rt,phase,'father','WITHDRAW_FROM_WAGE_WORK')
+                count=len(w['wage_labor_periods']);start=rt.ledger.world()[1]['clock']
+                phase['op']='WAIT'
+                rt.continue_mixed_history(start+6,cadence_origin=start,ordinary_span=30)
+                w=rt.ledger.world()[1]
+                self.assertEqual(len(w['wage_labor_periods']),count)
+                self.assertTrue(any('NO_ACCEPTED_WAGE_CONTRACT' in x['reason']
+                                    for period in w['historical_periods']
+                                    for x in period.get('situationally_withheld_processes',[])))
+                self.assertTrue(rt.verify()['valid'])
+            finally:rt.close()
+
     def test_forged_history_and_process_are_atomic_and_location_requalifies(self):
         with tempfile.TemporaryDirectory() as d:
             rt,phase,service,_=self.setup_course(Path(d)/'atomic.sqlite')
