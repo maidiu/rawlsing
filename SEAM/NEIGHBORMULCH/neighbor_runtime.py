@@ -1642,11 +1642,11 @@ class NeighborEncounter:
                             'lexical_content':'ACTUAL_REALIZED_WORDS',
                             'utterance_claim_truth':'NOT_ESTABLISHED',
                             'human_comprehension':'NOT_ESTABLISHED'}
-                        selected=envelope['payload']['attempt']['practical_selection'].get(
+                        selected_address=envelope['payload']['attempt']['practical_selection'].get(
                             'selected_speech_address')
                         addressed=actual.get('target')
-                        if (visible_identity and type(selected) is dict and type(addressed) is str
-                                and selected.get('recipient')==addressed
+                        if (visible_identity and type(selected_address) is dict and type(addressed) is str
+                                and selected_address.get('recipient')==addressed
                                 and historical_public.get('target')==addressed
                                 and cue.get('voluntary_addressed_party_ref')==addressed
                                 and cue.get('voluntary_address_ref')==actual.get('voluntary_address_ref')
