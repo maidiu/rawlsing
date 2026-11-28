@@ -98,11 +98,12 @@ class ReproductiveWorkload(unittest.TestCase):
             self.assertNotEqual(paid['actual_paid_model'],unpaid['actual_paid_model'])
 
     def test_saturated_rest_cannot_be_credited_by_work(self):
-        from um_sorok_organism.historical_social_reproduction import _work
+        from um_sorok_organism.historical_social_reproduction import _work,_plan_wages
         a=adult('worker','Worker');w=blank_world()
         a['body']['rest']=.001
-        row=_work(w,{'worker':a},{'actor':'worker','location':'workshop',
+        proc={'kind':'QUALIFIED_WAGE_LABOR','actor':'worker','location':'workshop',
             'source_ref':'direct_settlement_fixture','hours_per_active_day':8,
-            'provisional_exposure_fraction':1.0},0,100)
+            'provisional_exposure_fraction':1.0}
+        row=_work(w,{'worker':a},proc,0,100,_plan_wages(w,[proc],0,100))
         self.assertEqual(a['body']['rest'],0.)
         self.assertEqual(row['worker_rest_expenditure_model'],.001)

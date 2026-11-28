@@ -23,7 +23,7 @@ class InterconstitutiveWage(unittest.TestCase):
         rt=ConstitutiveRuntime(str(db),semantic=service)
         w=blank_world()
         w['accounts']['workshop_steward']=initial_cash
-        w['sites']['workshop']['food_price']=.25
+        w['sites']['workshop']['food_price']=1.25
         w['sites']['workshop']['food']=10
         a=adult('a','A','workshop');b=adult('b','B','workshop')
         c=newborn('child','Child');mature(c,365);c['location']='workshop'
@@ -99,6 +99,7 @@ class InterconstitutiveWage(unittest.TestCase):
                 self.assertEqual(rt.step('b',requested_action='SUSPEND_WAGE_WORK',
                                    target='a')['status'],'PERFORMED')
                 self.assertEqual(rt.step('a',requested_action='WORK')['status'],'BLOCKED')
+                self.assertEqual(rt.step('a',requested_action='BUY_FOOD')['status'],'BLOCKED')
                 beat('a','DRAW_WAGE_RELIEF')
                 self.assertEqual(world()['accounts'][reg['relief_pool_ref']],0.)
                 self.assertEqual(rt.step('a',requested_action='BUY_FOOD')['status'],'PERFORMED')

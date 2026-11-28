@@ -109,10 +109,13 @@ def _allocate(pool, claims):
     remaining=int((actual-sum(amounts,Decimal(0)))/UNIT)
     if remaining<0 or remaining>len(claims):
         raise ValueError("PROVISION_ROUNDING_ERROR")
-    for i in range(remaining):
-        if amounts[i]+UNIT>requests[i]:
-            raise ValueError("PROVISION_RESIDUAL_EXCEEDS_REQUEST")
-        amounts[i]+=UNIT
+    # Zero and already satisfied claims cannot take the rounding residue.
+    for i in range(len(claims)):
+        if not remaining:break
+        if amounts[i]+UNIT<=requests[i]:
+            amounts[i]+=UNIT
+            remaining-=1
+    if remaining:raise ValueError("PROVISION_RESIDUAL_EXCEEDS_REQUEST")
     if sum(amounts,Decimal(0))!=actual:
         raise ValueError("PROVISION_NONCONSERVATION")
     return list(zip(claims,amounts))
