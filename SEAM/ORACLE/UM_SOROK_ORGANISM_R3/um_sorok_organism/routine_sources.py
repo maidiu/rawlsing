@@ -307,6 +307,11 @@ def live_routine_situational_reason(world,actors,process):
     if (len(receipts)!=1 or receipts[0]['through_clock']!=row['through_clock']
             or receipts[0]['basis']['admission_event_ref']!=row['admission_event_ref']):
         raise ValueError('LIVED_ROUTINE_ACTOR_WORLD_SOURCE_DIVERGENCE')
+    if receipts[0].get('revisions',[])!=row.get('revisions',[]):
+        raise ValueError('LIVED_ROUTINE_REVISION_ACTOR_WORLD_DIVERGENCE')
+    if row.get('revisions'):
+        state=row['revisions'][-1]['effective_dose']['state']
+        if state!='ACTIVE':return 'ACTOR_ROUTINE_'+state
     if op in ('CARE','FEED') and project.get('addressed_party_ref')!=process.get('recipient'):
         return 'PARTICULAR_CARE_RECIPIENT_CHANGED'
     if op=='WORK':
@@ -337,3 +342,148 @@ def lived_work_permission_boundaries(world,actor,site,start,end):
     return [t for t in sorted(times)
             if work_permission({**world,'clock':t-1},actor,site)!=
                work_permission({**world,'clock':t},actor,site)]
+
+
+def effective_routine_dose(row):
+    """Derive continuing dose without overwriting the original source."""
+    revisions=row.get('revisions',[])
+    if revisions:return copy(revisions[-1]['effective_dose'])
+    return {'state':'ACTIVE','hours_per_active_day':row['hours_per_active_day'],
+            'provisional_exposure_fraction':row['provisional_exposure_fraction'],
+            **({'food_units_per_active_day':row['food_units_per_active_day']}
+               if row['operation']=='FEED' else {})}
+
+
+def possible_routine_revisions(actor,experience,event_ref):
+    """Actual current lived occasion, optional reconstitution of own routine.
+
+    No analyst-only absence, hidden resource fact or other person's motive
+    may be installed as a reason. The actor's own embodied attempt, explicit
+    selection and personally received directed act are distinct witnesses.
+    The semantic proposal can alter a prospective modeled dose, not the past.
+    """
+    from .attention_field import personally_received_directed_act
+    aid=actor['id'];clock=experience.get('clock')
+    if experience.get('actor')!=aid or type(clock) is not int:return []
+    paths=[p for p in actor.get('evidence_paths',[])
+           if p.get('event')==event_ref and p.get('experience_ref')==experience.get('ref')]
+    if len(paths)!=1:return []
+    path=paths[0];site=experience.get('location')
+    selected=experience.get('own_practical_selection') or {}
+    own=experience.get('own_action')
+    felt=experience.get('felt_enactment') or {}
+    own_witness=(selected.get('status')=='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+                 and selected.get('actor')==aid
+                 and experience.get('participated') is True
+                 and own==felt.get('attempted_operation')
+                 and felt.get('objective_result_not_inferred') is True
+                 and own==path.get('own_action')
+                 and selected.get('option_id')==path.get('practical_option_ref')
+                 and selected.get('possible_end_trial') is None)
+    directed=personally_received_directed_act(experience)
+    if directed and directed!=path.get('directed_encounter'):directed=None
+    if not own_witness and not directed:return []
+    out=[]
+    for project in actor.get('projects',[]):
+        for row in project.get('recurrent_routines',[]):
+            if (row.get('actor')!=aid or row.get('project_ref')!=project['id']
+                    or row.get('admitted_clock',clock)>=clock
+                    or row.get('through_clock',0)<=clock
+                    or row.get('location')!=site):continue
+            if any(x.get('event_ref')==event_ref for x in row.get('revisions',[])):continue
+            dose=effective_routine_dose(row)
+            if dose['state']=='RETIRED':continue
+            # Do not make every observed micro-event a general review of
+            # every historical routine. A directed act must concern the
+            # actual counterpart; an own attempt is a present lived choice.
+            if not own_witness and (not directed or directed['counterpart_ref']!=row.get('recipient')):
+                continue
+            basis={'actor':aid,'routine_ref':row['id'],'project_ref':project['id'],
+                   'operation':row['operation'],'location':site,'event_ref':event_ref,
+                   'experience_ref':experience['ref'],'clock':clock,
+                   'prior_revision_ref':row.get('revisions',[{}])[-1].get('id') if row.get('revisions') else None,
+                   'prior_effective_dose':dose,
+                   'own_attempt':({'operation':own,'status':experience.get('status'),
+                                    'selected_project_refs':copy(selected.get('selected_project_refs',[])),
+                                    'option_ref':selected.get('option_id')} if own_witness else None),
+                   'received_directed_act':copy(directed) if directed else None}
+            modes=['RETIRE','RESUME'] if dose['state']=='PAUSED' else ['PAUSE','RETIRE','RESIZE']
+            out.append({'kind':'REVISE_RECURRENT_ROUTINE','basis':basis,'allowed_modes':modes,
+                        'original_ceiling':effective_routine_dose({k:v for k,v in row.items() if k!='revisions'}),
+                        'through_clock':row['through_clock'],
+                        'not_conscious_self_report_or_proof_of_future_action':True})
+    return out[:16]
+
+
+def admit_routine_revision(actor,experience,event_ref,candidate):
+    offers=possible_routine_revisions(actor,experience,event_ref)
+    q=next((x for x in offers if x['basis']==candidate.get('basis')),None)
+    if q is None:raise ValueError('LIVED_ROUTINE_REVISION_UNQUALIFIED_BASIS')
+    mode=candidate.get('mode')
+    if mode not in q['allowed_modes']:raise ValueError('LIVED_ROUTINE_REVISION_INVALID_MODE')
+    fields={'kind','basis','mode','interpretive_hypothesis'}
+    prior=copy(q['basis']['prior_effective_dose'])
+    ceiling=q['original_ceiling']
+    meaning=candidate.get('interpretive_hypothesis')
+    if type(meaning) is not str or not meaning.strip() or len(meaning)>512:
+        raise ValueError('LIVED_ROUTINE_REVISION_INVALID_MEANING')
+    if mode=='RESIZE':
+        fields.add('dose')
+        dose=candidate.get('dose')
+        expected={k for k in ceiling if k!='state'}
+        if type(dose) is not dict or set(dose)!=expected:
+            raise ValueError('LIVED_ROUTINE_REVISION_INVALID_DOSE')
+        for k,v in dose.items():
+            if type(v) not in (int,float) or not isfinite(v) or not 0<v<=ceiling[k]:
+                raise ValueError('LIVED_ROUTINE_REVISION_INVALID_DOSE')
+            if k=='food_units_per_active_day' and round(v,5)!=v:
+                raise ValueError('LIVED_ROUTINE_REVISION_INVALID_DOSE')
+        effective={'state':'ACTIVE',**copy(dose)}
+        if effective==prior:raise ValueError('LIVED_ROUTINE_REVISION_NO_CHANGE')
+    else:
+        effective={**prior,'state':{'PAUSE':'PAUSED','RESUME':'ACTIVE','RETIRE':'RETIRED'}[mode]}
+    if set(candidate)!=fields:raise ValueError('LIVED_ROUTINE_REVISION_INVALID_FIELDS')
+    basis=q['basis'];project=next(p for p in actor['projects'] if p['id']==basis['project_ref'])
+    row=next(x for x in project['recurrent_routines'] if x['id']==basis['routine_ref'])
+    revision={'id':stable_id('routine_revision',{'event':event_ref,'candidate':candidate}),
+              'event_ref':event_ref,'clock':experience['clock'],'mode':mode,
+              'basis':copy(basis),'effective_dose':effective,
+              'interpretive_hypothesis':meaning,'not_retroactive_or_actor_self_report':True}
+    row.setdefault('revisions',[]).append(revision)
+    return {'kind':'REVISE_RECURRENT_ROUTINE','status':'ADMITTED_SOURCEFREE_FICTIONAL',
+            'routine_ref':row['id'],'project_ref':project['id'],'revision_ref':revision['id'],
+            'grade':LIVED_CLASS}
+
+
+def register_routine_revision(world,actor,report,event_ref):
+    """Atomic existing world registry projection; retain original process."""
+    p=next((p for p in actor['projects'] if p['id']==report['project_ref']),None)
+    row=next((x for x in (p or {}).get('recurrent_routines',[])
+              if x['id']==report['routine_ref']),None)
+    src=world.get('routine_source_registry',{}).get(report['routine_ref'])
+    if row is None or src is None or src.get('actor')!=actor['id'] or src.get('evidence_class')!=LIVED_CLASS:
+        raise ValueError('LIVED_ROUTINE_REVISION_SOURCE_MISMATCH')
+    rev=row['revisions'][-1]
+    if (rev['id']!=report['revision_ref'] or rev['event_ref']!=event_ref
+            or rev['clock']!=world['clock']
+            or src.get('revisions',[])!=row['revisions'][:-1]):
+        raise ValueError('LIVED_ROUTINE_REVISION_HISTORY_MISMATCH')
+    # This is internal analyst provenance, not a new visible actor cue.
+    src.setdefault('revisions',[]).append(copy(rev))
+    return src['id']
+
+
+def realized_lived_process(world,process):
+    """Use only current admitted dose, AFTER original process verification.
+
+    The original source may be supplied by an explicit caller, but the
+    caller cannot restore a suspended/retired routine or its old dose.
+    """
+    source=world['routine_source_registry'][process['source_ref']]
+    if source.get('evidence_class')!=LIVED_CLASS or not source.get('revisions'):
+        return process
+    revision=source['revisions'][-1]
+    dose=revision['effective_dose']
+    if dose['state']!='ACTIVE':raise ValueError('LIVED_ROUTINE_INACTIVE_REALIZATION')
+    return {**process,**{k:v for k,v in dose.items() if k!='state'},
+            'routine_revision_ref':revision['id']}

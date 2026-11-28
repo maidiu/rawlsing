@@ -13,7 +13,8 @@ remain the first writer/reader. No new canonical P2/P6/SDTF or native rights.
 import math
 from .types import GRADE, copy, stable_id
 from .routine_sources import (verify_qualified_period_envelope, live_routine_situational_reason,
-                              LIVED_CLASS, lived_work_permission_boundaries)
+                              LIVED_CLASS, lived_work_permission_boundaries,
+                              realized_lived_process)
 from .organism import eligible
 from .mediated_efficacy import COMPONENTS
 from .material_conjunction import qualify_aggregate_material_gate
@@ -88,6 +89,7 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
     if type(processes) is not list or len(processes)>512:
         raise ValueError('HISTORICAL_TIME_INVALID_PROCESS_BUDGET')
     normalized=[];fraction_by_actor={};support_downgrades=[];withheld=[];bodily_withheld=[];situationally_withheld=[]
+    claims=[];seen_lived=set()
     for i,raw in enumerate(processes):
         hours,fraction=_typecheck(raw)
         source_confirmation=verify_qualified_period_envelope(
@@ -98,6 +100,9 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
         if conditional not in (None,'SITUATED_CONDITIONAL_ROUTINE'):
             raise ValueError('HISTORICAL_TIME_UNKNOWN_ROUTINE_APPLICATION')
         lived_source=source_confirmation['source_grade']==LIVED_CLASS
+        if lived_source:
+            if raw['source_ref'] in seen_lived:raise ValueError('LIVED_ROUTINE_DUPLICATE_ALLOCATION')
+            seen_lived.add(raw['source_ref'])
         if lived_source and raw['kind']=='QUALIFIED_WAGE_LABOR' and lived_work_permission_boundaries(
                 world,a,site,start_clock,start_clock+days-1):
             raise ValueError('LIVED_ROUTINE_SPLIT_AT_WORK_PERMISSION_CHANGE')
@@ -127,6 +132,9 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
                     'end_clock':start_clock+days,'reason':reason,'proposed_routine':copy(raw),
                     'unexecuted_premise_not_missed_duty_or_sensed_event':True})
                 continue
+        if lived_source:
+            raw=realized_lived_process(world,raw)
+            hours,fraction=_typecheck(raw)
         if not _actor_at_site(world,actors,a,site):
             raise ValueError('HISTORICAL_TIME_ACTOR_NOT_AT_RECORDED_SITE')
         if raw['kind']==PROVISION_KIND:
@@ -228,12 +236,33 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
                 fraction_by_actor[supporter]=(
                     fraction_by_actor.get(supporter,0.)+hours*fraction)
         normalized.append(copy(raw))
+        claims.append((i,raw,lived_source,hours*fraction))
         fraction_by_actor[a]=fraction_by_actor.get(a,0.)+hours*fraction
     over={a:round(x,6) for a,x in fraction_by_actor.items()
           if x>ACTIVE_HOURS+1e-9}
     if over:
-        raise ValueError('HISTORICAL_TIME_OVERBOOKED_ACTOR:'+','.join(
-            sorted(over)))
+        # Explicit historical scenario allocations remain strict. They are
+        # fixed premises of this research cut, not a moral priority. If
+        # those alone fit, do NOT silently choose among an actor's competing
+        # contingent acquired routines. Conserve the unresolved whole set;
+        # only later actor-local admission can revise its distribution.
+        removed=set()
+        for i,raw,lived,amount in claims:
+            a=raw['actor']
+            if a not in over or not lived:continue
+            removed.add(i)
+            situationally_withheld.append({'input_index':i,'source_ref':raw['source_ref'],
+                'actor':a,'location':raw['location'],'start_clock':start_clock,
+                'end_clock':start_clock+days,'reason':'UNRESOLVED_COMPETING_ROUTINE_TIME_CLAIMS',
+                'total_modeled_actor_hours_claimed_per_day':over[a],
+                'daily_active_hour_ceiling':ACTIVE_HOURS,'proposed_routine':copy(raw),
+                'unexecuted_premise_not_missed_duty_or_sensed_event':True,
+                'no_choice_between_routines_or_actor_knowledge_inferred':True})
+            fraction_by_actor[a]-=amount
+        still_over={a for a,x in fraction_by_actor.items() if x>ACTIVE_HOURS+1e-9}
+        if still_over:
+            raise ValueError('HISTORICAL_TIME_OVERBOOKED_ACTOR:'+','.join(sorted(still_over)))
+        normalized=[copy(raw) for i,raw,_,_ in claims if i not in removed]
     return {
         'qualified':normalized,
         **({'structurally_withheld_processes':withheld} if withheld else {}),
