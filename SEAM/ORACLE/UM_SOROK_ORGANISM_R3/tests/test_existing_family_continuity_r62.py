@@ -43,7 +43,7 @@ class ExistingFamilyContinuity(unittest.TestCase):
                         phase['acquire']=False
                         return {'task':task,'candidates':[{'kind':'ACQUIRE_HISTORICAL_ORIENTATION',
                             'operation':'EAT','orientation_mode':'WITHHOLD'},
-                            {'kind':'MEMORY','content':'father secret','cue_terms':['rest']}]}
+                            {'kind':'MEMORY','content':'father secret','cue_terms':['care']}]}
                     return {'task':task,'candidates':[]}
                 if task=='actor_attempt':
                     if p['actor']['id']=='father':
@@ -61,10 +61,13 @@ class ExistingFamilyContinuity(unittest.TestCase):
                     other_adults=[('father','Father',packet('father'))])
                 self.assertEqual(calls,['mother','father'])
                 sid=rt.register_family_pathways('mother',[pathway()])['source_seal_id']
-                self.assertEqual(rt.step('father',requested_action='REST')['status'],'PERFORMED')
+                self.assertEqual(rt.step('father',requested_action='CARE',target='mother')['status'],'PERFORMED')
                 self.assertEqual(rt.step('mother')['status'],'PERFORMED')
                 old=deepcopy(rt.ledger.actor('father')[1]);mother=deepcopy(rt.ledger.actor('mother')[1])
                 events=deepcopy(rt.ledger.events());version,world=rt.ledger.world()
+                self.assertTrue(any(e.get('actor')=='father' and e.get('target')=='mother'
+                                    and e.get('action')=='CARE' and e.get('status')=='PERFORMED'
+                                    for e in world['public_history']))
                 self.assertTrue(old['historical_orientations'])
                 self.assertTrue(old['memories'])
                 self.assertEqual(rt.select_family_intersection(sid)['actor'],'father')
@@ -86,6 +89,7 @@ class ExistingFamilyContinuity(unittest.TestCase):
             finally:rt.close()
             rt=ConstitutiveRuntime(str(db),semantic=service)
             try:
+                self.assertTrue(any(x['action']=='EAT' for x in rt.situated('father')['suspended_actions']))
                 self.assertEqual(rt.step('father')['attempt'],'WAIT')
                 self.assertEqual(rt.step('father',requested_action='CARE',target='nadia')['status'],'PERFORMED')
                 self.assertTrue(rt.ledger.actor('nadia')[1]['experienced_care_events'])
