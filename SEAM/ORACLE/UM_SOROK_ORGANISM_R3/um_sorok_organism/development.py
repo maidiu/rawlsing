@@ -754,6 +754,8 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             if end.get('addressed_party_ref') is not None:
                 project['addressed_party_ref']=end['addressed_party_ref']
                 project['other_future_conduct']='INDEPENDENT_NOT_PROMISED'
+            if productive_takeup is not None and productive_takeup.get('ordinary_vocal_genesis_basis'):
+                project['ordinary_vocal_genesis_basis']=copy(productive_takeup['ordinary_vocal_genesis_basis'])
             if incidental is not None:
                 project['material_object_ref']=incidental['source_object_ref']
                 project['incidental_takeup_basis']=copy(incidental)
