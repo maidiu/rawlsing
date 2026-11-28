@@ -505,3 +505,50 @@ def food_power_opportunities(world,actor,site):
             and world["positions"].get(who)==site):
         available.append(COMMONS)
     return available
+
+
+# Actor-side reception of a real institutional enactment. The paid source
+# remains world-owned; actor access remains the actually received outward sign.
+def received_enacted_food_power(actor,experience,world,summary,event_ref):
+    aid=actor['id'];op=summary.get('action');clock=experience.get('clock')
+    kinds={INSTALL:('PANTRY_ENCLOSURE_MATERIALLY_ENACTED','INITIAL_PANTRY_ENCLOSURE_SERVICE'),
+           MAINTAIN:('PANTRY_CONTROL_REPRODUCED','REPRODUCE_PANTRY_CONTROL'),
+           SANCTION:('MATERIAL_SANCTION_ON_PANTRY_ACCESS','SELECTIVE_PANTRY_SANCTION')}
+    if (op not in kinds or experience.get('actor')!=aid
+            or type(clock) is not int or summary.get('clock')!=clock
+            or summary.get('status')!='PERFORMED' or summary.get('outcome')!=kinds[op][0]):
+        return None
+    source=summary.get('actor');site=experience.get('location')
+    signs=[c for c in experience.get('perceived_cues',[])
+           if c.get('source_actor')==source and c.get('clock')==clock
+           and c.get('location')==site and c.get('kind')=='performed_'+op.lower()
+           and c.get('description')==kinds[op][0] and type(c.get('id')) is str]
+    if len(signs)!=1:return None
+    from .food_access_struggle import _board
+    board=_board(world,site)
+    if not board or board.get('controller_actor')!=source:return None
+    if op==INSTALL:
+        if board.get('r18_install_event_ref')!=summary.get('institutional_policy_ref'):return None
+        rows=[x for x in board.get('r18_enforcement_history',[])
+              if x.get('kind')=='INITIAL_ENFORCEMENT_FINANCED' and x.get('actor')==source]
+    elif op==MAINTAIN:
+        rows=[x for x in board.get('r18_enforcement_history',[])
+              if x.get('id')==summary.get('institutional_policy_ref')
+              and x.get('kind')=='MATERIAL_ENFORCEMENT_REPRODUCED' and x.get('actor')==source]
+    else:
+        rows=[x for x in board.get('r18_sanctions',[])
+              if x.get('id')==summary.get('institutional_policy_ref')
+              and x.get('controller')==source and x.get('subject')==summary.get('target')
+              and x.get('start_clock')==clock]
+    if len(rows)!=1:return None
+    paid=[x for x in world.get('enforcement_payments',[])
+          if x.get('id')==rows[0].get('payment_ref') and x.get('payer')==source
+          and x.get('clock')==clock and x.get('institutional_service_kind')==kinds[op][1]
+          and x.get('money_conserved_between_two_accounts') is True]
+    if len(paid)!=1:return None
+    # Neither the sanction subject (the public notice is anonymous) nor
+    # accounts/financial mechanism become actor knowledge through this path.
+    return {'actor':aid,'source_actor_ref':source,'operation':op,'location':site,
+            'clock':clock,'event_ref':event_ref,'experience_ref':experience['ref'],
+            'received_cue_ref':signs[0]['id'],
+            'not_knowledge_of_sanction_subject_payment_or_motive':True,'grade':GRADE}

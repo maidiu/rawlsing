@@ -42,6 +42,9 @@ def validate_expected_difference(value):
 from .activity import productive_witness_signs, productive_witness_option
 
 
+from .mediated_efficacy import preproject_vocal_basis
+
+
 def practical_alternatives(constitution,access,option):
     """A named option remains distinct beneath one executable operation.
 
@@ -82,6 +85,8 @@ def practical_alternatives(constitution,access,option):
         if project.get('provisioning_means_basis') and act in ('WORK','BUY_FOOD'):
             # Material acquisition serves a particular care undertaking but
             # is not an addressed act or a claim on the recipient.
+            target=None
+        if project.get('commons_provisioning_basis') and act=='CONTRIBUTE_FOOD_COMMONS':
             target=None
         conditional=project.get('dependency_conditional_means',{}).get(act)
         human_counterpart=False
@@ -146,6 +151,30 @@ def practical_alternatives(constitution,access,option):
             alts[-1]['counterpart_participation_kind']='HUMAN_AUTHORED_NEIGHBOR'
             accepted=food_acceptance_alternative(access,alts[-1])
             if accepted is not None:alts.append(accepted)
+    if act=='SIGNAL' and constitution.role=='child':
+        own={'id':actor,'role':constitution.role,
+             'power_exercises':constitution.power_exercises,
+             'evidence_paths':constitution.evidence_paths,
+             'practice_exposures':constitution.practice_exposures}
+        early=preproject_vocal_basis(own,access.location,clock)
+        if early is not None:
+            # An exploratory call can now be addressed without installing a
+            # caregiving orientation, goal, gratitude or consent in either actor.
+            for counterpart in sorted(present):
+                alts.append({
+                    'option_id':stable_id('preproject_addressed_vocal_trial',{
+                        'actor':actor,'clock':clock,'other':counterpart,
+                        'ordinary_basis':early['id']}),
+                    'actor':actor,'as_of_clock':clock,'operation':act,
+                    'project_id':None,'anticipated_difference':None,
+                    'beneficiary_as_apprehended':None,'priority':None,
+                    'grounds_status':'PREPROJECT_ORDINARY_VOCAL_EXPLORATION',
+                    'world_request':{'operation':act,'addressed_party_ref':counterpart,
+                                     'material_object_ref':None},
+                    'binding_status':'QUALIFIED_AS_PRESENT',
+                    'source_aggregate_ref':early['id'],
+                    'not_actor_self_account':True,'not_world_outcome':True,
+                    'other_response_not_assumed':True,'source_grade':GRADE})
     if act=='PLEDGE_CARE':
         # An actual addressee matters: a free-floating promise cannot bind
         # some convenient future person assigned by the world narration.

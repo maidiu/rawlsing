@@ -120,7 +120,9 @@ def mature(actor,days):
         # max prevents charging the same exercise again on each period.
         # An already higher motor state remains intact, as before.
         baseline=min(.9,.17+.18*years)
-        b['motor']=max(b['motor'],round(min(.9,baseline+conserved_motor_exercise(actor)),5))
+        from .mediated_efficacy import preproject_motor_readiness
+        b['motor']=max(b['motor'],round(min(.9,baseline+conserved_motor_exercise(actor)
+                                         +preproject_motor_readiness(actor)),5))
         b['sensor']=max(b['sensor'],round(min(.9,.4+.12*years),5))
         # Language readiness != culturally acquired language competence: ceiling only.
         b['language_ceiling']=round(min(.95,.1+.22*years),5)

@@ -10,6 +10,7 @@ proof of events, an independent coactor's consent, or scientific evidence.
 from .types import stable_id, copy, GRADE
 from .organism import eligible
 from math import isfinite
+from .mediated_efficacy import preproject_exercise_basis, qualified_project_exercise_basis
 
 KINDS=frozenset({'QUALIFIED_ROUTINE_PRACTICE',
                  'QUALIFIED_REPRODUCTIVE_CARE',
@@ -51,10 +52,24 @@ def register_sourcefree_period_envelope(world,actors,spec):
         raise ValueError('ROUTINE_SOURCE_INVALID_HOUR_CEILING')
     if type(spec.get('description')) is not str or not spec['description'].strip():
         raise ValueError('ROUTINE_SOURCE_MISSING_EXPLICIT_PROPOSAL')
+    developmental={}
+    if 'preproject_exercise_ref' in spec:
+        ref=spec['preproject_exercise_ref']
+        op=spec.get('operation')
+        if (spec['kind']!='QUALIFIED_ROUTINE_PRACTICE'
+                or not preproject_exercise_basis(actors[actor],op,location,ref,world['clock'])):
+            raise ValueError('PREPROJECT_SOURCE_NO_ACTUAL_OWN_EXERCISE')
+        developmental={'preproject_exercise_ref':ref,'practice_operation':op}
+    if 'practice_project_ref' in spec or 'project_exercise_ref' in spec:
+        p=spec.get('practice_project_ref');x=spec.get('project_exercise_ref');op=spec.get('operation')
+        if (developmental or spec['kind']!='QUALIFIED_ROUTINE_PRACTICE'
+                or not qualified_project_exercise_basis(actors[actor],p,x,op,location,world['clock'])):
+            raise ValueError('PROJECT_SOURCE_NO_ACTUAL_SELECTED_EXERCISE')
+        developmental={'practice_project_ref':p,'project_exercise_ref':x,'practice_operation':op}
     key=stable_id('routine_sourcefree_envelope',{
         'world':world['id'],'actor':actor,'kind':spec['kind'],
         'location':location,'start':start,'end':end,
-        'max_hours':max_daily,'description':spec['description']})
+        'max_hours':max_daily,'description':spec['description'],**developmental})
     if key in world.setdefault('routine_source_registry',{}):
         raise ValueError('ROUTINE_SOURCE_DUPLICATE')
     record={
@@ -67,7 +82,7 @@ def register_sourcefree_period_envelope(world,actors,spec):
         'does_not_authorize_PYAT_source_or_native_psyche':True,
         'coactor_willingness_not_proved':True,
         'no_actual_history_until_qualified_period_executed':True,
-        'registered_at_world_clock':world['clock'],'grade':GRADE,
+        'registered_at_world_clock':world['clock'],'grade':GRADE,**developmental,
     }
     world['routine_source_registry'][key]=record
     return record
@@ -94,8 +109,29 @@ def verify_qualified_period_envelope(world,process,start_clock,days):
     if (type(request) not in (int,float) or
             request>source['max_hours_per_active_day']):
         raise ValueError('HISTORICAL_PROCESS_SOURCE_HOUR_OVERREACH')
+    developmental={}
+    if source.get('preproject_exercise_ref') is not None:
+        if (process.get('preproject_exercise_ref')!=source['preproject_exercise_ref']
+                or process.get('operation')!=source.get('practice_operation')
+                or process.get('mode')!='SOLO_COMPONENT_PRACTICE'):
+            raise ValueError('PREPROJECT_ROUTINE_SOURCE_SCOPE_MISMATCH')
+        developmental={'preproject_exercise_ref':source['preproject_exercise_ref'],
+                       'practice_operation':source['practice_operation']}
+    elif 'preproject_exercise_ref' in process:
+        raise ValueError('PREPROJECT_ROUTINE_UNREGISTERED_BASIS')
+    if source.get('practice_project_ref') is not None:
+        if (developmental or process.get('practice_project_ref')!=source['practice_project_ref']
+                or process.get('project_exercise_ref')!=source['project_exercise_ref']
+                or process.get('operation')!=source.get('practice_operation')
+                or process.get('mode')!='SOLO_COMPONENT_PRACTICE'):
+            raise ValueError('PROJECT_ROUTINE_SOURCE_SCOPE_MISMATCH')
+        developmental={'practice_project_ref':source['practice_project_ref'],
+                       'project_exercise_ref':source['project_exercise_ref'],
+                       'practice_operation':source['practice_operation']}
+    elif 'practice_project_ref' in process or 'project_exercise_ref' in process:
+        raise ValueError('PROJECT_ROUTINE_UNREGISTERED_BASIS')
     return {
-        'source_ref':source['id'],
+        **developmental,'source_ref':source['id'],
         'source_grade':source['evidence_class'],
         'source_recorded_at':source['registered_at_world_clock'],
         'author_permission':('ADMITTED_ACTOR_LOCAL_SOURCEFREE_PROPOSAL_ONLY'

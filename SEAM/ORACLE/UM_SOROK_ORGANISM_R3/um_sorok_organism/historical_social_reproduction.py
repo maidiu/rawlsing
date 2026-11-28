@@ -17,7 +17,7 @@ from .routine_sources import (verify_qualified_period_envelope, live_routine_sit
                               LIVED_CLASS, lived_work_permission_boundaries,
                               realized_lived_process, match_reciprocal_routine_claims)
 from .organism import eligible
-from .mediated_efficacy import COMPONENTS
+from .mediated_efficacy import COMPONENTS, preproject_exercise_basis, qualified_project_exercise_basis
 from .material_conjunction import qualify_aggregate_material_gate
 from .co_regulation_history import conserve_received_period_care
 from .material_provisioning import (
@@ -91,6 +91,9 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
         raise ValueError('HISTORICAL_TIME_INVALID_PROCESS_BUDGET')
     normalized=[];fraction_by_actor={};support_downgrades=[];withheld=[];bodily_withheld=[];situationally_withheld=[]
     claims=[];seen_lived=set()
+    preproject_slots=set()
+    routine_slots=set()
+    scoped_project_slots=set()
     for i,raw in enumerate(processes):
         hours,fraction=_typecheck(raw)
         source_confirmation=verify_qualified_period_envelope(
@@ -178,6 +181,26 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
                     PROVISION_KIND:'FEED'}.get(raw['kind']))
         if raw['kind']=='QUALIFIED_ROUTINE_PRACTICE':
             operation=raw.get('operation')
+        if raw.get('preproject_exercise_ref') is not None:
+            if not preproject_exercise_basis(actors[a],operation,site,
+                    raw['preproject_exercise_ref'],start_clock):
+                raise ValueError('PREPROJECT_ROUTINE_NO_ACTUAL_OWN_EXERCISE')
+            key=(a,operation)
+            if key in preproject_slots:
+                raise ValueError('PREPROJECT_ROUTINE_DUPLICATE_COMPONENT_WINDOW')
+            preproject_slots.add(key)
+        if raw['kind']=='QUALIFIED_ROUTINE_PRACTICE':
+            slot=(a,operation)
+            if raw.get('practice_project_ref') is not None:
+                if not qualified_project_exercise_basis(actors[a],raw['practice_project_ref'],
+                        raw.get('project_exercise_ref'),operation,site,start_clock):
+                    raise ValueError('PROJECT_ROUTINE_NO_ACTUAL_SELECTED_EXERCISE')
+                if slot in routine_slots:
+                    raise ValueError('PROJECT_ROUTINE_DUPLICATE_COMPONENT_WINDOW')
+                scoped_project_slots.add(slot)
+            elif slot in scoped_project_slots:
+                raise ValueError('PROJECT_ROUTINE_DUPLICATE_COMPONENT_WINDOW')
+            routine_slots.add(slot)
         gate=qualify_aggregate_material_gate(world,a,site,operation,start_clock,days)
         if gate is not None and gate['readset']:
             if gate['decision'] in ('BLOCKED','UNRESOLVED'):
@@ -485,7 +508,7 @@ def apply_period_allocation(world,actors,allocation):
     if any(r.get('id')==ref for r in
            world.get('historical_time_allocations',[])):
         raise ValueError('HISTORICAL_TIME_DUPLICATE_SETTLEMENT')
-    care=[];wages=[]
+    care=[];wages=[];practice_loads=[];project_loads=[]
     wage_plan=_plan_wages(world,allocation['qualified'],start,days)
     # All qualification and per-person time budgets are checked before writes.
     for proc in allocation['qualified']:
@@ -493,6 +516,26 @@ def apply_period_allocation(world,actors,allocation):
             care.append(_care(world,actors,proc,start,days))
         elif proc['kind']=='QUALIFIED_WAGE_LABOR':
             wages.append(_work(world,actors,proc,start,days,wage_plan))
+        elif proc.get('practice_project_ref') is not None:
+            body=actors[proc['actor']]['body']
+            hours=proc['hours_per_active_day']*proc['provisional_exposure_fraction']*days
+            before=body['rest']
+            body['rest']=round(max(0.,before-hours*.00012),5)
+            project_loads.append({'actor':proc['actor'],'operation':proc['operation'],
+                'source_ref':proc['source_ref'],'practice_project_ref':proc['practice_project_ref'],
+                'project_exercise_ref':proc['project_exercise_ref'],
+                'modeled_hours':round(hours,5),'rest_before':before,'rest_after':body['rest'],
+                'not_observed_daily_events':True,'not_motive_fulfillment':True,'grade':GRADE})
+        elif proc.get('preproject_exercise_ref') is not None:
+            body=actors[proc['actor']]['body']
+            hours=proc['hours_per_active_day']*proc['provisional_exposure_fraction']*days
+            before=body['rest']
+            # Reuse existing modeled hourly labor load; no inferred recovery.
+            body['rest']=round(max(0.,before-hours*.00012),5)
+            practice_loads.append({'actor':proc['actor'],'operation':proc['operation'],
+                'source_ref':proc['source_ref'],'preproject_exercise_ref':proc['preproject_exercise_ref'],
+                'modeled_hours':round(hours,5),'rest_before':before,
+                'rest_after':body['rest'],'not_observed_daily_events':True,'grade':GRADE})
     provisioned=settle_provisioning(world,actors,allocation)
     receipt={
         'id':ref,'start_clock':start,'end_clock':start+days,
@@ -500,6 +543,8 @@ def apply_period_allocation(world,actors,allocation):
             allocation['actor_active_hour_claim_per_day']),
         'free_hours_per_day_after_modeled_claims':copy(
             allocation['unmodeled_free_hours_per_day']),
+        **({'preproject_practice_loads':practice_loads} if practice_loads else {}),
+        **({'project_practice_loads':project_loads} if project_loads else {}),
         'care_period_refs':[x['id'] for x in care],
         'wage_period_refs':[x['id'] for x in wages],
         'material_feeding_period_refs':[x['id'] for x in provisioned],

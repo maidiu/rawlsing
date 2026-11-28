@@ -12,6 +12,9 @@ scientifically measured theory of skill acquisition.
 """
 from .types import copy, stable_id, GRADE
 from .organism import eligible
+from .mediated_efficacy import preproject_exercise_basis
+from .social_vocal_development import ordinary_expressive_opportunity, ordinary_vocal_self_exercise
+from .activity import ordinary_vocal_context_probe
 
 # The physical vocabulary is inherited.  Substitution is allowed only for
 # operations whose plausible component practice is already expressed by the
@@ -73,6 +76,14 @@ def retain_exercised_power(actor, experience, objective_ref, location):
     # personally received repair of that object.
     sel=experience.get('own_practical_selection') or {}
     obj=(sel.get('world_request') or {}).get('material_object_ref')
+    if (actor.get('role')=='child' and operation in ('SIGNAL','PRACTICE')
+            and status=='PERFORMED' and configuration=='NO_PERCEIVED_JOINT_PARTICIPATION'
+            and sel.get('status')=='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+            and sel.get('actor')==actor['id'] and type(sel.get('option_id')) is str
+            and not sel.get('selected_project_refs') and not sel.get('possible_end_trial')
+            and sel.get('world_request',{}).get('addressed_party_ref') is None):
+        receipt.update({'actor_selected_preproject_exercise':True,
+                        'preproject_option_ref':sel['option_id']})
     if (operation=='REPAIR' and status=='PERFORMED' and not partner
             and sel.get('status')=='ACTOR_POLICY_PRACTICAL_ATTEMPT'
             and sel.get('actor')==actor['id'] and type(obj) is str
@@ -169,6 +180,67 @@ def situated_exercised_repertoire(constitution, access):
             'world_authority_remains_independent':True,
             'grade':GRADE,
         })
+    # Ordinary bodily history can generate a new exploratory opportunity
+    # before an acquired project or cross-site skill exists. No automatic
+    # selection or acquired PRACTICE form, and no new opportunity at another site.
+    if (constitution.role=='child' and eligible(constitution.body,'PRACTICE')[0]
+            and not any(r['action']=='PRACTICE' for r in out)):
+        actor={'id':constitution.actor,'role':constitution.role,
+               'power_exercises':constitution.power_exercises,
+               'evidence_paths':constitution.evidence_paths}
+        bases=[]
+        for row in constitution.practice_exposures:
+            if (row.get('operation')=='SIGNAL' and row.get('location')==access.location
+                    and row.get('actor')==constitution.actor
+                    and row.get('modeled_practice_hours',0)>0
+                    and type(row.get('end_clock')) is int
+                    and row['end_clock']<=access.world_clock
+                    and preproject_exercise_basis(actor,'SIGNAL',access.location,
+                         row.get('preproject_exercise_ref'),row.get('start_clock'))):
+                bases.append(row)
+        if bases:
+            latest=max(bases,key=lambda x:(x['end_clock'],x['id']))
+            out.append({'action':'PRACTICE','score':.03,
+                'basis':[latest['anchor_actual_experience_ref']],
+                'source_event_refs':[latest['anchor_actual_event_ref']],
+                'source_aggregate_refs':[latest['id']],
+                'historical_support_statuses':['RUDIMENTARY_EXPLORATORY_OPPORTUNITY_NOT_ACQUIRED_MEANS'],
+                'opportunity':'PREPROJECT_MODELED_BODILY_EXPLORATION',
+                'grade':GRADE})
+    # In the inherited physical grammar SING may resolve as SOLO_PRACTICE.
+    # This narrowly offers bodily vocal exploration, not a learned song,
+    # communicative language, partner consent or culturally acquired means.
+    # Both actual own operations and source-qualified ordinary signal
+    # participation must precede this occasion; motor readiness alone cannot.
+    if (constitution.role=='child' and eligible(constitution.body,'SING')[0]
+            and not any(r['action']=='SING' for r in out)):
+        actor={'id':constitution.actor,'role':constitution.role,
+               'power_exercises':constitution.power_exercises,
+               'evidence_paths':constitution.evidence_paths}
+        practiced=[r for r in prior if preproject_exercise_basis(
+            actor,'PRACTICE',access.location,r.get('id'),access.world_clock)]
+        signaled=[r for r in constitution.practice_exposures
+            if r.get('operation')=='SIGNAL' and r.get('actor')==constitution.actor
+            and r.get('location')==access.location and r.get('modeled_practice_hours',0)>0
+            and type(r.get('end_clock')) is int and r['end_clock']<=access.world_clock
+            and preproject_exercise_basis(actor,'SIGNAL',access.location,
+                 r.get('preproject_exercise_ref'),r.get('start_clock'))]
+        if practiced and signaled:
+            p=max(practiced,key=lambda x:(x['event_clock'],x['id']))
+            q=max(signaled,key=lambda x:(x['end_clock'],x['id']))
+            out.append({'action':'SING','score':.03,
+                'basis':[p['experience_ref'],q['anchor_actual_experience_ref']],
+                'source_event_refs':[p['event_ref'],q['anchor_actual_event_ref']],
+                'source_aggregate_refs':[q['id']],
+                'historical_support_statuses':['RUDIMENTARY_VOCAL_EXPLORATION_NOT_LEARNED_SONG'],
+                'opportunity':'PREPROJECT_BODILY_VOCAL_EXPLORATION','grade':GRADE})
+    solo=ordinary_vocal_self_exercise(constitution,access)
+    if solo is not None and not any(r['action']=='SING' for r in out):out.append(solo)
+    probe=ordinary_vocal_context_probe(constitution,access)
+    if probe is not None and not any(r['action']=='SING' for r in out):out.append(probe)
+    expression=ordinary_expressive_opportunity(constitution,access)
+    if expression is not None and not any(r['action']=='SPEAK' for r in out):
+        out.append(expression)
     return {'offered':out,'retained_but_unqualified_refs':sorted(set(
                     x for x in held_back if type(x) is str)),
             'readset':sorted(set(r for row in out

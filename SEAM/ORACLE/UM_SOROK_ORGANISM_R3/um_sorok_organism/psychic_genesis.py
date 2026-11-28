@@ -13,6 +13,7 @@ episode nor an LLM's invented noun can create the end by itself.
 """
 from .types import stable_id, copy, GRADE
 from .organism import ACTIONS, eligible
+from .social_vocal_development import qualified_ordinary_vocal_ancestry, ordinary_vocal_basis_still_qualified
 import math
 
 RELIEF_AXES=("comfort","nutrition","regulation","rest")
@@ -320,6 +321,50 @@ def _productive_vocal_contrast(actor, experience, event_ref):
             "actor_conscious_explanation_not_imputed":True,"grade":GRADE}
 
 
+def _ordinary_productive_vocal_contrast(actor,experience,event_ref):
+    """A distinct entrance into the existing positive end/trial/takeup owner."""
+    own=_own_vocal_episode(actor,experience,event_ref)
+    if own is None:return None
+    cur,sign=own
+    rows=qualified_ordinary_vocal_ancestry(actor,cur['location'],cur['clock'])
+    if not rows or any(e.get('productive_vocal_basis',{}).get('source_route')==
+            'ORDINARY_RESPONSIVE_COORDINATION_THEN_OWN_EXERCISE'
+            and e.get('productive_vocal_basis',{}).get('location')==cur['location']
+            for e in actor.get('possible_ends',[])):return None
+    r=rows[-1];a=r['earlier_turn'];b=r['later_turn']
+    lives=[x for x in actor.get('lived_genesis_episodes',[])
+           if x.get('actor')==actor['id'] and x.get('event_ref')==b['event_ref']
+           and x.get('experience_ref')==b['experience_ref'] and x.get('clock')==b['clock']
+           and x.get('actor_felt_attempt')=='SIGNAL' and not x.get('unfinished_own_activity')
+           and b['personally_received_response_sign_ref'] in x.get('received_sign_refs',[])]
+    if len(lives)!=1:return None
+    earlier=lives[0]
+    basis={'source_route':'ORDINARY_RESPONSIVE_COORDINATION_THEN_OWN_EXERCISE',
+           'vocal_coordination_practice_ref':r['practice_ref'],
+           'earlier_response_turn_ref':a['id'],'later_response_turn_ref':b['id'],
+           'earlier_response_event_ref':a['event_ref'],
+           'source_other_refs':[a['independently_responding_other_ref'],b['independently_responding_other_ref']],
+           'ordinary_basis_refs':copy(r['ordinary_basis_refs']),
+           'joint_episode_ref':earlier['id'],'joint_event_ref':earlier['event_ref'],
+           'own_episode_ref':cur['id'],'own_event_ref':event_ref,
+           'own_selected_option_ref':cur['selected_practical_option_ref'],'location':cur['location'],
+           'no_joint_sing_or_prior_failure_required':True,'no_pleasure_or_mastery_inferred':True}
+    witness=stable_id('ordinary_productive_vocal_contrast',{'actor':actor['id'],'basis':basis})
+    reading={'mode':'EXPLORE_OWN_SOUND_AFTER_RESPONSIVE_SOCIAL_ACTIVITY',
+             'candidate_ref':stable_id('genetic_end_reading',{'witness':witness}),
+             'object':'explore making sound oneself after responsive vocal activity',
+             'means':['SING'],'addressed_party_ref':None,'source_received_sign_ref':sign['id']}
+    return {'kind':'ACQUIRE_GENETIC_POSSIBLE_END','genesis_witness_ref':witness,
+            'prior_joint_episode_ref':earlier['id'],'later_independent_episode_ref':cur['id'],
+            'later_perceived_cue_ref':sign['id'],'possible_object':reading['object'],
+            'licensed_end_constructions':[reading],'chosen_end_mode':reading['mode'],
+            'chosen_end_candidate_ref':reading['candidate_ref'],'relieved_bodily_axis':None,
+            'genesis_family':PRODUCTIVE_VOCAL_FAMILY,'possible_means':['SING'],
+            'cue_terms':['sing'],'productive_vocal_basis':basis,
+            'sourcefree_genesis_not_an_empirical_motive_law':True,
+            'actor_conscious_explanation_not_imputed':True,'grade':GRADE}
+
+
 def possible_productive_vocal_takeups(actor,experience,event_ref):
     """A distinct independent course after an actually performed issued trial."""
     own=_own_vocal_episode(actor,experience,event_ref)
@@ -332,6 +377,7 @@ def possible_productive_vocal_takeups(actor,experience,event_ref):
                 or end.get("possible_means")!=["SING"]):continue
         basis=end.get("productive_vocal_basis",{})
         if basis.get("location")!=cur.get("location"):continue
+        if basis.get('source_route')=='ORDINARY_RESPONSIVE_COORDINATION_THEN_OWN_EXERCISE' and not ordinary_vocal_basis_still_qualified(actor,basis,cur['location'],cur['clock']):continue
         seeds=[x for x in actor.get("lived_genesis_episodes",[])
                if x.get("id")==basis.get("own_episode_ref")
                and x.get("event_ref")==end.get("origin_event")
@@ -365,6 +411,9 @@ def possible_productive_vocal_takeups(actor,experience,event_ref):
                 "source_event_refs":[basis["joint_event_ref"],seeds[0]["event_ref"],
                                      lived["event_ref"],event_ref],
                 "no_motive_fulfillment_or_mastery_inferred":True}
+        if basis.get('source_route')=='ORDINARY_RESPONSIVE_COORDINATION_THEN_OWN_EXERCISE':
+            takeup['source_event_refs'].insert(0,basis['earlier_response_event_ref'])
+            takeup['ordinary_vocal_genesis_basis']=copy(basis)
         candidates.append({"kind":"TAKE_UP_POSSIBLE_END","possible_end_ref":end["id"],
                            "later_perceived_cue_ref":sign["id"],"means":["SING"],
                            "priority":.32,"productive_vocal_takeup_basis":takeup})
@@ -386,6 +435,7 @@ def possible_contrast_end(actor,experience,event_ref):
     if len(current)!=1:return []
     cur=current[0]
     productive=_productive_vocal_contrast(actor,experience,event_ref)
+    if productive is None:productive=_ordinary_productive_vocal_contrast(actor,experience,event_ref)
     if productive is not None:return [productive]
     if not cur.get("received_relief"):return []
     dependency=_dependency_contrast(actor,experience,event_ref,cur)
@@ -579,6 +629,8 @@ def admit_contrast_end(actor,experience,event_ref,proposal):
         end["no_automatic_disaffection_or_independent_mastery"]=True
     if productive:
         end["productive_vocal_basis"]=copy(productive)
+        if productive.get('source_route')=='ORDINARY_RESPONSIVE_COORDINATION_THEN_OWN_EXERCISE':
+            end['source_event_refs'].insert(0,productive['earlier_response_event_ref'])
     actor.setdefault("possible_ends",[]).append(end)
     return {"kind":proposal["kind"],"possible_end":ident,
             "genesis_witness_ref":expected["genesis_witness_ref"],
