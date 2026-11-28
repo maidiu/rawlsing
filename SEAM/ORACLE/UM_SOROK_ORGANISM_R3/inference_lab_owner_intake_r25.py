@@ -49,7 +49,6 @@ def run(root, lane, output=None):
     spec = importlib.util.spec_from_file_location("um_sorok_organism.inference_lab_r25_overlay", LAB)
     lab = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(lab)
-    import importlib
     owner = importlib.import_module(fixture.stem)
     all_cases = []
     active = None
