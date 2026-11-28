@@ -43,8 +43,10 @@ def conserve_compressed_practice(actor, process, start_clock, days):
     fraction=_fraction(process.get('provisional_exposure_fraction'))
     mode=process.get('mode','ARRANGEMENT_UNRESOLVED')
     if mode not in ('SOLO_COMPONENT_PRACTICE','ASSISTED_COMPONENT_PRACTICE',
-                    'ARRANGEMENT_UNRESOLVED'):
+                    'ARRANGEMENT_UNRESOLVED','RECIPROCAL_COMPONENT_PRACTICE'):
         raise ValueError('ROUTINE_UNQUALIFIED_SUPPORT')
+    if mode=='RECIPROCAL_COMPONENT_PRACTICE' and not (process.get('reciprocal_routine_pair_ref') and process.get('matched_counterpart_source_ref')):
+        raise ValueError('ROUTINE_UNMATCHED_RECIPROCAL_EXPOSURE')
     if place!=actor.get('location'):
         return None
     if not any(p.get('status','active')=='active' and op in p.get('means',[])
@@ -62,6 +64,8 @@ def conserve_compressed_practice(actor, process, start_clock, days):
         'start_clock':start_clock,'end_clock':start_clock+days,
         'modeled_participation_days':round(days*fraction,3),
         'support_configuration':mode,
+        **({'reciprocal_routine_pair_ref':process['reciprocal_routine_pair_ref']}
+           if mode=='RECIPROCAL_COMPONENT_PRACTICE' else {}),
         'no_claim_all_days_successful':True,
         'individual_microevents_not_invented':True,
         'other_contributions_not_automatically_authorized':True,
@@ -99,7 +103,7 @@ def situated_component_efficacy(actor,operation,location):
     # This is a sourcefree programming policy, not a measured learning law.
     dose=(len(solo)+.35*len(joint)
           +.08*days('SOLO_COMPONENT_PRACTICE')
-          +.025*days('ASSISTED_COMPONENT_PRACTICE')
+          +.025*(days('ASSISTED_COMPONENT_PRACTICE')+days('RECIPROCAL_COMPONENT_PRACTICE'))
           +.008*days('ARRANGEMENT_UNRESOLVED'))
     estimate=round(.12+.70*(1-exp(-dose/14)),4)
     # In particular, 1,000 compressed opportunities are NOT 1,000 witnessed

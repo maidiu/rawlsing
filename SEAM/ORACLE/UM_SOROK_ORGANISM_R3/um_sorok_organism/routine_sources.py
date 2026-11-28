@@ -22,6 +22,9 @@ ROUTINE_OPS={'CARE':'QUALIFIED_REPRODUCTIVE_CARE','FEED':'QUALIFIED_MATERIAL_FEE
              'WORK':'QUALIFIED_WAGE_LABOR',
              'PRACTICE':'QUALIFIED_ROUTINE_PRACTICE','SING':'QUALIFIED_ROUTINE_PRACTICE'}
 MAX_ROUTINE_WINDOW=90
+# Same-operation singing and complementary practice/join are the bounded
+# joint arrangements admitted here. No inference of general teamwork.
+JOINT_ROUTINE_COMPLEMENTS={'SING':{'SING'},'PRACTICE':{'JOIN'},'JOIN':{'PRACTICE'}}
 
 
 def register_sourcefree_period_envelope(world,actors,spec):
@@ -110,14 +113,14 @@ def routine_exercise_receipt(actor,experience,event_ref):
     aid=actor['id'];op=experience.get('own_action');clock=experience.get('clock')
     sel=experience.get('own_practical_selection') or {}
     refs=sel.get('selected_project_refs',[])
-    if (experience.get('actor')!=aid or op not in ROUTINE_OPS
+    partner=experience.get('reciprocated_partner')
+    if (experience.get('actor')!=aid or (op not in ROUTINE_OPS and not (op=='JOIN' and partner))
             or experience.get('status')!='PERFORMED'
             or experience.get('participated') is not True
             or type(clock) is not int or clock<0
             or sel.get('actor')!=aid
             or sel.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'
-            or len(refs)!=1 or sel.get('possible_end_trial') is not None
-            or experience.get('reciprocated_partner') is not None):
+            or len(refs)!=1 or sel.get('possible_end_trial') is not None):
         return None
     site=experience.get('location')
     if not isinstance(site,str) or not site:return None
@@ -134,7 +137,15 @@ def routine_exercise_receipt(actor,experience,event_ref):
     if felt.get('attempted_operation')!=op or felt.get('objective_result_not_inferred') is not True:
         return None
     recipient=(sel.get('world_request') or {}).get('addressed_party_ref')
-    if op in ('CARE','FEED'):
+    if partner is not None:
+        # An actual independently selected addressed project and personally
+        # encountered coactivity, not an invitation, presence or support label.
+        if (op not in JOINT_ROUTINE_COMPLEMENTS or type(partner) is not str
+                or partner==aid or recipient!=partner
+                or project.get('addressed_party_ref')!=partner
+                or not experience.get('perceived_cues')):
+            return None
+    elif op in ('CARE','FEED'):
         if type(recipient) is not str or recipient==aid or project.get('addressed_party_ref')!=recipient:
             return None
     elif recipient is not None:return None
@@ -149,7 +160,8 @@ def routine_exercise_receipt(actor,experience,event_ref):
         origin=feeds[0].get('material_food_source')
         if origin not in ('GIVER_HELD_FOOD','MUTUAL_AID_FOOD','SHARED_SITE_FOOD'):return None
     return {'actor':aid,'project_ref':project['id'],'operation':op,'location':site,
-            'recipient':recipient,'food_origin':origin,'event_ref':event_ref,'experience_ref':experience['ref'],
+            'recipient':recipient,'food_origin':origin,
+            **({'coactivity_partner':partner} if partner else {}),'event_ref':event_ref,'experience_ref':experience['ref'],
             'clock':clock,'not_future_undertaking_or_observed_daily_history':True}
 
 
@@ -169,6 +181,7 @@ def possible_recurrent_routines(actor,experience,event_ref):
     if any(x.get('through_clock',0)>clock for x in all_routines):return []
     last=max((x.get('admitted_clock',-1) for x in all_routines),default=-1)
     keys=('actor','project_ref','operation','location','recipient','food_origin')
+    if current.get('coactivity_partner'):keys+=('coactivity_partner',)
     paths=actor.get('evidence_paths',[])
     prior=[]
     for path in reversed(paths):
@@ -228,6 +241,7 @@ def admit_recurrent_routine(actor,experience,event_ref,candidate):
     row={'id':ref,'actor':actor['id'],'project_ref':project['id'],
          'operation':basis['operation'],'location':basis['location'],
          'recipient':basis['recipient'],'food_origin':basis['food_origin'],
+         **({'coactivity_partner':basis['coactivity_partner']} if basis.get('coactivity_partner') else {}),
          **({'food_units_per_active_day':food} if food is not None else {}),'admitted_clock':clock,'through_clock':clock+days,
          'hours_per_active_day':hours,'provisional_exposure_fraction':fraction,
          'basis':copy(basis),'grade':LIVED_CLASS,
@@ -253,12 +267,12 @@ def register_admitted_routine(world,actor,report,event_ref):
             or world.get('positions',{}).get(aid)!=site
             or actor['location']!=site or op not in project.get('means',[])):
         raise ValueError('LIVED_ROUTINE_SOURCE_BOUNDARY_MISMATCH')
-    if op in ('CARE','FEED') and world.get('positions',{}).get(row['recipient'])!=site:
+    if (op in ('CARE','FEED') or row.get('coactivity_partner')) and world.get('positions',{}).get(row['recipient'])!=site:
         raise ValueError('LIVED_ROUTINE_CARE_RECIPIENT_NOT_PRESENT')
     ref=row['id']
     registry=world.setdefault('routine_source_registry',{})
     if ref in registry:raise ValueError('LIVED_ROUTINE_DUPLICATE_SOURCE')
-    process={'kind':ROUTINE_OPS[op],'actor':aid,'location':site,'source_ref':ref,
+    process={'kind':ROUTINE_OPS.get(op,'QUALIFIED_ROUTINE_PRACTICE'),'actor':aid,'location':site,'source_ref':ref,
              'routine_project_ref':project['id'],'hours_per_active_day':row['hours_per_active_day'],
              'provisional_exposure_fraction':row['provisional_exposure_fraction']}
     if op in ('CARE','FEED'):process['recipient']=row['recipient']
@@ -266,6 +280,9 @@ def register_admitted_routine(world,actor,report,event_ref):
                             'food_units_per_active_day':row['food_units_per_active_day']})
     if process['kind']=='QUALIFIED_ROUTINE_PRACTICE':
         process.update({'operation':op,'mode':'SOLO_COMPONENT_PRACTICE'})
+        if row.get('coactivity_partner'):
+            process.update({'mode':'RECIPROCAL_COMPONENT_PRACTICE',
+                            'coactivity_partner':row['coactivity_partner']})
     record={'id':ref,'actor':aid,'location':site,'kind':process['kind'],
             'from_clock':row['admitted_clock'],'through_clock':row['through_clock'],
             'max_hours_per_active_day':row['hours_per_active_day'],
@@ -312,6 +329,9 @@ def live_routine_situational_reason(world,actors,process):
     if row.get('revisions'):
         state=row['revisions'][-1]['effective_dose']['state']
         if state!='ACTIVE':return 'ACTOR_ROUTINE_'+state
+    if row['process'].get('coactivity_partner'):
+        if project.get('addressed_party_ref')!=row['process']['coactivity_partner']:
+            return 'PARTICULAR_COACTIVITY_COUNTERPART_CHANGED'
     if op in ('CARE','FEED') and project.get('addressed_party_ref')!=process.get('recipient'):
         return 'PARTICULAR_CARE_RECIPIENT_CHANGED'
     if op=='WORK':
@@ -550,3 +570,61 @@ def conserve_routine_period(world,actors,period,allocation):
         if any(x.get('period_ref')==period['id'] for x in records):
             raise ValueError('LIVED_ROUTINE_DUPLICATE_PERIOD_RECEIPT')
         records.append(receipt)
+
+
+def match_reciprocal_routine_claims(world,claims):
+    """Match independently admitted present claims, not a third collective will.
+
+    Input claims have already passed exact source, actor, body, location,
+    material and prospective revision qualification. Two separate actor-local
+    admissions must derive from the same three actual shared event identities.
+    Common coverage is conservatively bounded by BOTH doses; surplus is
+    unmodeled. No repeated individual consent or daily scene is reconstructed.
+    Returns per-index effective process replacements and withheld reasons.
+    """
+    registry=world.get('routine_source_registry',{})
+    joint={i:raw for i,raw,lived,_ in claims
+           if lived and raw.get('coactivity_partner')}
+    matched={};held={}
+    for i,a in sorted(joint.items()):
+        if i in matched or i in held:continue
+        sa=registry[a['source_ref']]
+        eligible=[]
+        for j,b in joint.items():
+            if j==i or j in matched or j in held:continue
+            if (b['actor']!=a['coactivity_partner'] or b['coactivity_partner']!=a['actor']
+                    or a['location']!=b['location']
+                    or b['operation'] not in JOINT_ROUTINE_COMPLEMENTS.get(a['operation'],set())
+                    or a['operation'] not in JOINT_ROUTINE_COMPLEMENTS.get(b['operation'],set())):
+                continue
+            sb=registry[b['source_ref']]
+            common=sorted(set(sa['basis_event_refs']) & set(sb['basis_event_refs']))
+            if len(common)>=3:eligible.append((j,b,common))
+        if len(eligible)!=1:
+            held[i]='NO_UNAMBIGUOUS_INDEPENDENT_RECIPROCAL_ROUTINE'
+            continue
+        j,b,common=eligible[0]
+        # The mirror must also have a unique compatible source. Never choose
+        # amongst rival partners/courses or merge unshared source histories.
+        reverse=[k for k,c in joint.items() if k!=j and k not in matched and k not in held
+                 and c['actor']==b['coactivity_partner']
+                 and c['coactivity_partner']==b['actor'] and c['location']==b['location']
+                 and c['operation'] in JOINT_ROUTINE_COMPLEMENTS.get(b['operation'],set())
+                 and len(set(registry[c['source_ref']]['basis_event_refs']) &
+                         set(registry[b['source_ref']]['basis_event_refs']))>=3]
+        if reverse!=[i]:
+            held[i]='NO_UNAMBIGUOUS_INDEPENDENT_RECIPROCAL_ROUTINE';continue
+        hours=min(a['hours_per_active_day'],b['hours_per_active_day'])
+        fraction=min(a['provisional_exposure_fraction'],b['provisional_exposure_fraction'])
+        pair=stable_id('reciprocal_routine_pair',{'sources':sorted([a['source_ref'],b['source_ref']]),
+                                                 'shared_exercises':common})
+        for k,own,other in ((i,a,b),(j,b,a)):
+            matched[k]={**own,'hours_per_active_day':hours,'provisional_exposure_fraction':fraction,
+                        'reciprocal_routine_pair_ref':pair,
+                        'matched_counterpart_source_ref':other['source_ref'],
+                        'unmatched_own_claim_hours_per_day':round(
+                            own['hours_per_active_day']*own['provisional_exposure_fraction']-hours*fraction,5),
+                        'not_future_individual_assent_or_synchronized_daily_occurrence':True}
+    for i in joint:
+        if i not in matched:held.setdefault(i,'NO_UNAMBIGUOUS_INDEPENDENT_RECIPROCAL_ROUTINE')
+    return matched,held
