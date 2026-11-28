@@ -215,11 +215,25 @@ def possible_recurrent_routines(actor,experience,event_ref):
     current=routine_exercise_receipt(actor,experience,event_ref)
     if current is None:return []
     project=next(p for p in actor['projects'] if p['id']==current['project_ref'])
+    # Different particular reciprocal relationships can recruit the same
+    # component. They are distinct courses, not competing descriptions of
+    # one event. Keep the original component-wide exclusion for solitary
+    # courses and for the same project or counterpart. The period allocator
+    # still owns the total finite time of every actor and every matched pair.
     all_routines=[row for p in actor['projects'] for row in p.get('recurrent_routines',[])
-                  if row.get('operation')==current['operation']]
+                  if row.get('operation')==current['operation']
+                  and not (current.get('coactivity_partner') and row.get('coactivity_partner')
+                           and row.get('coactivity_partner')!=current['coactivity_partner']
+                           and row.get('project_ref')!=current['project_ref'])]
     clock=current['clock']
-    if any(x.get('through_clock',0)>clock for x in all_routines):return []
-    last=max((x.get('admitted_clock',-1) for x in all_routines),default=-1)
+    # A retired claim has no future standing. A new course requires three
+    # new particular exercises after retirement, not revival of its source.
+    if any(x.get('through_clock',0)>clock and
+           effective_routine_dose(x)['state']!='RETIRED' for x in all_routines):return []
+    last=max((max(x.get('admitted_clock',-1),
+                  x['revisions'][-1]['clock'] if x.get('revisions') and
+                  effective_routine_dose(x)['state']=='RETIRED' else -1)
+              for x in all_routines),default=-1)
     keys=('actor','project_ref','operation','location','recipient','food_origin')
     if current.get('coactivity_partner'):keys+=('coactivity_partner',)
     paths=actor.get('evidence_paths',[])

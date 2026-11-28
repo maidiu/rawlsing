@@ -574,3 +574,113 @@ class ElasticAppointmentEpochCourt(unittest.TestCase):
                     self.assertTrue(rt.verify()["valid"])
                     print("R008_ELASTIC_APPOINTMENT_EPOCHS",choose,len(hist.requests),len(live.requests),clock())
                 finally:s.close();rt.close()
+
+
+class PluralReciprocalLifeCourt(unittest.TestCase):
+    """One actor's two particular relationships, not a collective will.
+
+    Both independent dyads have actual exercises, distinct source claims
+    and one shared finite world allocator. One person's withdrawal must not
+    eliminate the other relationship or attribute motives to its partners.
+    """
+    def test_distinct_reciprocal_courses_continue_through_selective_pause_and_resume(self):
+        class History:
+            def __init__(self):self.requests=[];self.coarse=False
+            def call(self,r):
+                self.requests.append(r);ctx=r["context"];clock=ctx["clock"];n=len(self.requests)
+                if r["mode"]=="TERMINAL":return {"retrospective":retro(r),"prospective":None}
+                def e(label,offset,actor,acts,rules=(),span=0,peers=None):
+                    return event(ctx,str(n)+":"+label,clock+offset,actor,
+                        {actor:policy(acts,rules),**(peers or {})},span=span)
+                def nominate(project):
+                    return {"offer":"historically_possible_recurrent_routines",
+                            "construct":"RECURRENT_ROUTINE","match":{"basis":{"project_ref":project}},
+                            "augment":{"window_days":80,"hours_per_active_day":2.,
+                                       "provisional_exposure_fraction":.5}}
+                def song(peer,offset):
+                    return e("song-"+peer,offset,"a",
+                             [action("SING",{"project_id":"a-"+peer})],[nominate("a-"+peer)],
+                             peers={peer:policy([action("SING",{"project_id":peer+"-a"})],
+                                                [nominate(peer+"-a")])})
+                rows=([e("coarse",7,"a",[action("REST")],span=6),
+                       e("rest-b",8,"b",[action("REST")]),e("rest-c",9,"c",[action("REST")])]
+                      if self.coarse else
+                      [song("b",1),song("c",2),e("rest",3,"a",[action("REST")])])
+                return {"retrospective":retro(r),"prospective":rows}
+        class Live:
+            def __init__(self):self.requests=[];self.mode="PAUSE"
+            def call(self,r):
+                self.requests.append(r);aid=r["principal"]
+                rules=[{"offer":"historically_possible_routine_revisions",
+                        "construct":"RECURRENT_ROUTINE_REVISION","match":{"basis":{"project_ref":"b-a"}},
+                        "augment":{"mode":self.mode,"interpretive_hypothesis":"Alter my own undertaking."}}] if aid=="b" else []
+                return {"policies":{aid:policy([action("REST")],rules)}}
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);db=root/"life.sqlite"
+            rt=ConstitutiveRuntime(str(db))
+            people=[adult(a,a.upper()) for a in ("a","b","c")]
+            for person,peers in zip(people,(("b","c"),("a",),("a",))):
+                person["projects"]=[{"id":person["id"]+"-"+peer,
+                    "object":"sing with "+peer,"means":["SING"],"addressed_party_ref":peer,
+                    "status":"active","priority":.7} for peer in peers]
+            rt.ledger.initialize(blank_world(),people)
+            hist=History();live=Live()
+            def open_life():return ContinuingLife(rt,root/"operator","a",
+                       historical_provider=hist,live_provider=live,sourcefree_attested=True,mii_module=mii)
+            def world():return rt.ledger.world()[1]
+            def routine(aid,project):
+                p=next(x for x in rt.snapshot(aid)["projects"] if x["id"]==project)
+                return p["recurrent_routines"][0]
+            def periods(start):
+                return [x for x in world()["historical_periods"] if x["start"]>=start]
+            def coverage(start,expected):
+                rows=periods(start)
+                self.assertEqual(sum(x["end"]-x["start"] for x in rows),6)
+                for x in rows:
+                    self.assertEqual({p["source_ref"] for p in x["processes"]},expected)
+                    pairs={}
+                    for p in x["processes"]:
+                        pairs.setdefault(p["reciprocal_routine_pair_ref"],[]).append(p)
+                    self.assertTrue(all(len(v)==2 and v[0]["actor"]!=v[1]["actor"] for v in pairs.values()))
+                    self.assertEqual(len(pairs),len(expected)//2)
+            def revise(s,mode):
+                live.mode=mode
+                for _ in range(6):
+                    s.independent_absent_beat()
+                    rows=routine("b","b-a").get("revisions",[])
+                    if rows and rows[-1]["mode"]==mode:return
+                self.fail("B did not independently revise: "+str([r["principal"] for r in live.requests]))
+            s=open_life()
+            try:
+                for _ in range(3):s.historical_checkpoint()
+                ids={p:routine(a,p)["id"] for a,p in (("a","a-b"),("a","a-c"),("b","b-a"),("c","c-a"))}
+                self.assertEqual(len(set(ids.values())),4)
+                self.assertEqual(set(world()["routine_source_registry"]),set(ids.values()))
+                for p,q in (("a-b","b-a"),("a-c","c-a")):
+                    self.assertEqual(world()["routine_source_registry"][ids[p]]["basis_event_refs"],
+                                     world()["routine_source_registry"][ids[q]]["basis_event_refs"])
+                self.assertFalse(set(world()["routine_source_registry"][ids["a-b"]]["basis_event_refs"]) &
+                                 set(world()["routine_source_registry"][ids["a-c"]]["basis_event_refs"]))
+                hist.coarse=True;start=world()["clock"];s.historical_checkpoint()
+                coverage(start,set(ids.values()))
+                allocations=[x for x in world()["historical_time_allocations"] if x["start_clock"]>=start]
+                self.assertTrue(allocations)
+                self.assertTrue(all(x["actor_hour_claims_per_day"]=={"a":2.,"b":1.,"c":1.} for x in allocations))
+                s.finish_history();revise(s,"PAUSE")
+                old=deepcopy(world()["historical_periods"])
+            finally:s.close();rt.close()
+            rt=ConstitutiveRuntime(str(db));s=open_life()
+            try:
+                start=world()["clock"];s.resume_history()
+                coverage(start,{ids["a-c"],ids["c-a"]})
+                self.assertEqual(world()["historical_periods"][:len(old)],old)
+                s.finish_history();revise(s,"RESUME")
+                start=world()["clock"];s.resume_history();coverage(start,set(ids.values()))
+                for a,p in (("a","a-b"),("a","a-c"),("c","c-a")):
+                    self.assertFalse(routine(a,p).get("revisions"))
+                self.assertEqual(len(routine("b","b-a")["revisions"]),2)
+                self.assertEqual(set(world()["routine_source_registry"]),set(ids.values()))
+                self.assertTrue(rt.verify()["valid"])
+                self.assertFalse(s.status()["held"])
+                print("R008_PLURAL_RECIPROCAL_EPOCHS",len(hist.requests),len(live.requests),s.status()["epoch"])
+            finally:s.close();rt.close()
