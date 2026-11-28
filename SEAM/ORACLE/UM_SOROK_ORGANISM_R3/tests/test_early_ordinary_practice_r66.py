@@ -355,7 +355,7 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                              self.expressive_arm(Path(d)/'abstain.db',False))
 
 
-    def productive_ordinary_arm(self,db,admit_end,forge=False,practice=None,witness=None):
+    def productive_ordinary_arm(self,db,admit_end,forge=False,practice=None,witness=None,transfer=None):
         """From ordinary infancy through plural response to self-generated end.
         Same acquired capacity in both arms; a later trial is not a project.
         No joint SING, no actual deficit/relief required, no injected child act.
@@ -387,6 +387,12 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                     if admit_end:candidates=candidates+ends
                 if phase['name']=='takeup':
                     candidates=candidates+p.get('historically_possible_productive_vocal_takeups',[])
+                if phase['name']=='transfer_probe' and transfer is not None:
+                    choices=p.get('historically_possible_ordinary_context_transfers',[])
+                    self.assertEqual(len(choices),1)
+                    if transfer=='forge':
+                        choices[0]['ordinary_vocal_context_transfer']['local_other_ref']='invented'
+                    if transfer:candidates=candidates+choices
                 return {'task':task,'candidates':candidates}
             if task=='actor_attempt':
                 if aid!='nadia':
@@ -416,6 +422,15 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                     self.assertEqual(len(a),1)
                     self.assertTrue(a[0]['not_current_external_sign_or_present_other_required'])
                     return {'task':task,'possible_end_trial_id':a[0]['trial_id']}
+                if phase['name']=='transfer_probe':
+                    a=[o for o in p['practical_options'] if o['operation']=='SING']
+                    self.assertTrue(a)
+                    self.assertTrue(all(not o.get('project_id') for o in a))
+                    return {'task':task,'practical_option_id':a[0]['option_id']}
+                if phase['name']=='transferred':
+                    a=[o for o in p['practical_options'] if o['operation']=='SING' and o.get('project_id')]
+                    self.assertEqual(len(a),int(bool(transfer)))
+                    return {'task':task,'practical_option_id':a[0]['option_id']} if a else {'task':task,'action':'WAIT'}
                 if phase['name']=='recovery':
                     return {'task':task,'action':'REST'}
                 if phase['name']=='after_period':
@@ -515,6 +530,39 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                     self.assertFalse(any(o.get('productive_witness_attention')
                         for a in rt.situated('mother')['candidate_actions'] for o in a.get('practical_alternatives',[])))
                 return m
+            if transfer is not None:
+                child=self.child(rt);project=child['projects'][0]
+                rt.background(180)
+                phase['name']='recovery'
+                rt.step('nadia')
+                self.assertEqual(rt.step('father',requested_action='MOVE',object_ref='workshop')['objective_outcome'],'MOVED')
+                self.assertEqual(rt.step('nadia',requested_action='MOVE',object_ref='workshop')['objective_outcome'],'MOVED')
+                opts=lambda: [o for a in rt.situated('nadia')['candidate_actions'] for o in a.get('practical_alternatives',[]) if o['operation']=='SING']
+                self.assertFalse(any(o.get('project_id') for o in opts()))
+                self.assertEqual(rt.step('father',requested_action='SING')['status'],'PERFORMED')
+                self.assertTrue(any(not o.get('project_id') for o in opts()))
+                phase['name']='transfer_probe'
+                if transfer=='forge':
+                    before=self.child(rt);count=rt.verify()['events']
+                    with self.assertRaisesRegex(InvalidDevelopment,'ORDINARY_VOCAL_CONTEXT_TRANSFER_UNQUALIFIED'):
+                        rt.step('nadia')
+                    self.assertEqual(before,self.child(rt))
+                    self.assertEqual(count,rt.verify()['events'])
+                    return
+                self.assertEqual(rt.step('nadia')['attempt'],'SING')
+                child=self.child(rt)
+                self.assertEqual(child['projects'][0]['id'],project['id'])
+                self.assertEqual(len(child['projects'][0].get('ordinary_vocal_context_transfers',[])),int(bool(transfer)))
+                rt.close();rt=runtime()
+                phase['name']='transferred'
+                self.assertEqual(rt.step('nadia')['attempt'],'SING' if transfer else 'WAIT')
+                self.assertTrue(rt.verify()['valid'])
+                phase['name']='recovery';rt.step('nadia')
+                self.assertEqual(rt.step('nadia',requested_action='MOVE',object_ref='home')['objective_outcome'],'MOVED')
+                phase['name']='project'
+                self.assertEqual(rt.step('nadia')['attempt'],'SING')
+                self.assertTrue(rt.verify()['valid'])
+                return self.child(rt)
             if practice is None:return self.child(rt)
             child=self.child(rt)
             project=child['projects'][0]
@@ -602,3 +650,15 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                              no['projects'][0]['operational_history'][0])
             self.assertEqual(yes['projects'][0]['means'],['SPEAK','ORIENT'])
             self.assertEqual(no['projects'][0]['means'],['SPEAK'])
+
+
+    def test_acquired_ordinary_concern_transfers_only_after_actual_local_exploration_and_admission(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)
+            yes=self.productive_ordinary_arm(p/'transfer.db',True,transfer=True)
+            no=self.productive_ordinary_arm(p/'abstain.db',True,transfer=False)
+            self.assertEqual(yes['projects'][0]['object'],no['projects'][0]['object'])
+            self.assertEqual(yes['projects'][0]['origin'],no['projects'][0]['origin'])
+            self.assertEqual(len(yes['projects'][0]['ordinary_vocal_context_transfers']),1)
+            self.assertNotIn('ordinary_vocal_context_transfers',no['projects'][0])
+            self.productive_ordinary_arm(p/'forge.db',True,transfer='forge')

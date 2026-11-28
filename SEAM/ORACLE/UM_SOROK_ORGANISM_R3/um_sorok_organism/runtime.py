@@ -18,8 +18,8 @@ from .attention_field import (offer_undertaking_attention, received_undertaking_
     offer_focal_encounters, received_focal_encounter, personally_received_directed_act,
     possible_monitoring_changes)
 from .ordinary_life import passage
-from .activity import (record_activity_afterlife, register_lived_activity_attempt,
 from .activity import received_local_vocal_context, possible_ordinary_context_transfers
+from .activity import (record_activity_afterlife, register_lived_activity_attempt,
                         possible_productive_witness_reorganizations,
                         own_provisioning_receipt, possible_provisioning_reorganizations,
                         own_commons_receipt, possible_commons_provisioning_reorganizations,
