@@ -3,7 +3,7 @@
 Private, sourcefree research only. A digest proves integrity against accidental
 change, not provenance, authorization, or model adequacy. No network by default.
 """
-from collections import Counter
+from collections import Counter, deque
 from pathlib import Path
 from time import perf_counter_ns
 from threading import Lock
@@ -19,7 +19,18 @@ GRADE="SOURCEFREE_FIXTURE_ONLY_NOT_EMPIRICAL"
 TASKS=frozenset(("actor_attempt","development","expression","adult_constructor",
                  "blind_adult_interview","family_pathway_selection"))
 CHECKPOINT_TASK="developmental_checkpoint"
-CAPTURE_TASKS=TASKS|{CHECKPOINT_TASK}
+LIVE_TURN_TASK="live_conditional_turn"
+CAPTURE_TASKS=TASKS|{CHECKPOINT_TASK,LIVE_TURN_TASK}
+
+
+def _packet_limit(task):
+    return 1024*1024 if task==CHECKPOINT_TASK else 512*1024 if task==LIVE_TURN_TASK else MAX_PACKET_BYTES
+
+
+def _call_task(provider,task,packet):
+    if task in (CHECKPOINT_TASK,LIVE_TURN_TASK) and callable(getattr(provider,"call",None)):
+        return provider.call(packet)
+    return provider.propose(task,packet)
 MAX_PACKET_BYTES=128000
 MAX_PROPOSAL_BYTES=256000
 MAX_TAPE_BYTES=128*1024*1024
@@ -83,14 +94,14 @@ class WorkloadCapture:
         if task not in CAPTURE_TASKS or type(packet) is not dict:
             raise ValueError("LAB_INVALID_PACKET")
         frozen=copy(packet);n=size(frozen)
-        if (n>MAX_PACKET_BYTES or len(self.rows)>=self.max_rows
+        if (n>_packet_limit(task) or len(self.rows)>=self.max_rows
                 or self.bytes+n>self.max_bytes):
             self.failed=True
             raise ValueError("LAB_CAPTURE_CAP")
         # Snapshot before semantic work: a callback cannot rewrite its input.
         start=perf_counter_ns()
         try:
-            answer=provider.propose(task,copy(frozen))
+            answer=_call_task(provider,task,copy(frozen))
             if type(answer) is not dict or size(answer)>MAX_PROPOSAL_BYTES:
                 raise ValueError("LAB_INVALID_PROPOSAL")
             if answer.get("task") not in (None,task):
@@ -158,7 +169,7 @@ def verify_workload(doc,*,source_head=None):
                 or row["proposal"].get("task") not in (None,row["task"])
                 or digest(row["packet"])!=row["packet_digest"]
                 or digest(row["proposal"])!=row["proposal_digest"]
-                or size(row["packet"])>MAX_PACKET_BYTES
+                or size(row["packet"])>_packet_limit(row["task"])
                 or size(row["proposal"])>MAX_PROPOSAL_BYTES):
             raise ValueError("LAB_WORKLOAD_ROW_INTEGRITY")
         _integer(row["elapsed_ns"],0,10**20)
@@ -201,7 +212,7 @@ def selected_rows(document,*,per_task=1,tasks=None):
     _integer(per_task,1,10000)
     p=verify_workload(document)
     want=TASKS if tasks is None else frozenset(tasks)
-    if not want or not want<=TASKS:raise ValueError("LAB_TASK_SELECTION")
+    if not want or not want<=CAPTURE_TASKS:raise ValueError("LAB_TASK_SELECTION")
     counts=Counter();out=[]
     for row in p["rows"]:
         t=row["task"]
@@ -244,7 +255,7 @@ def compare_frozen(document,arms,*,per_task=1,tasks=None,sequence_ids=None,
             prior=provider.usage_snapshot()["total"] if hasattr(provider,"usage_snapshot") else None
             start=perf_counter_ns()
             try:
-                proposal=provider.propose(row["task"],copy(row["packet"]))
+                proposal=_call_task(provider,row["task"],copy(row["packet"]))
                 if type(proposal) is not dict or size(proposal)>MAX_PROPOSAL_BYTES:
                     raise ValueError("LAB_INVALID_PROPOSAL")
                 outcome="PROPOSAL_RETURNED"
@@ -313,7 +324,7 @@ class LiveBudget:
     """
     def __init__(self,*,journal,max_calls,max_wire_bytes,input_token_ceiling,
                  completion_token_limit,input_nanos_per_token,output_nanos_per_token,
-                 max_budget_nanos,sourcefree_live_authorized=False):
+                 max_budget_nanos,sourcefree_live_authorized=False,profiles=None):
         if sourcefree_live_authorized is not True:
             raise ValueError("LAB_LIVE_AUTHORIZATION_REQUIRED")
         self.max_calls=_integer(max_calls,1,100000)
@@ -325,6 +336,26 @@ class LiveBudget:
         self.max_budget=_integer(max_budget_nanos,1,10**15)
         self.reserve=self.input_ceiling*self.input_rate+self.output_limit*self.output_rate
         if self.reserve>self.max_budget:raise ValueError("LAB_BUDGET_BELOW_ONE_RESERVATION")
+        self._profiles={}
+        if profiles is not None:
+            if type(profiles) is not dict or not profiles or len(profiles)>32:
+                raise ValueError("LAB_PROFILE_TABLE")
+            for name,p in profiles.items():
+                if (type(name) is not str or not re.fullmatch("[A-Za-z0-9_.-]{1,64}",name)
+                        or name=="legacy" or type(p) is not dict or set(p)!={"model","endpoint",
+                            "input_token_ceiling","completion_token_limit","input_nanos_per_token",
+                            "output_nanos_per_token"} or type(p["model"]) is not str or not p["model"]
+                        or type(p["endpoint"]) is not str or not p["endpoint"]):
+                    raise ValueError("LAB_PROFILE_INVALID")
+                a=_integer(p["input_token_ceiling"],1,10**7)
+                b=_integer(p["completion_token_limit"],1,131072)
+                c=_integer(p["input_nanos_per_token"],1,10**9)
+                e=_integer(p["output_nanos_per_token"],1,10**9)
+                if a*c+b*e>self.max_budget:raise ValueError("LAB_PROFILE_RESERVATION_TOO_LARGE")
+                self._profiles[name]={"model":p["model"],"endpoint":p["endpoint"],
+                    "input_ceiling":a,"output_limit":b,"input_rate":c,"output_rate":e,
+                    "reserve":a*c+b*e}
+        self.pending_profile=None
         self.calls=0;self.wire_bytes=0;self.reserved=0;self.estimated_reported=0
         self.stopped=False;self.pending=False
         # One shared allowance across historical and live providers in this process.
@@ -336,7 +367,8 @@ class LiveBudget:
              "reserve_per_call_nanos":self.reserve,"max_budget_nanos":self.max_budget,
              "input_token_ceiling":self.input_ceiling,"completion_token_limit":self.output_limit,
              "input_nanos_per_token":self.input_rate,"output_nanos_per_token":self.output_rate,
-             "billing_guarantee":False})
+             "billing_guarantee":False,**({"profiles":{k:{x:y for x,y in v.items() if x!="endpoint"}
+                for k,v in self._profiles.items()}} if self._profiles else {})})
         # Journal is append-only in this single-process lab; no resume.
         self.log=Path(str(self.path)+".jsonl")
         fd=os.open(self.log,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
@@ -346,32 +378,48 @@ class LiveBudget:
         with open(self.log,"ab") as f:
             f.write(canonical(row).encode("utf-8")+b"\n");f.flush();os.fsync(f.fileno())
 
-    def begin(self,request):
+    def profile(self,name):
+        if name is None:
+            # A heterogeneous allowance cannot silently fall back to legacy rates.
+            if self._profiles:raise ValueError("LAB_NAMED_PROFILE_REQUIRED")
+            return {"input_ceiling":self.input_ceiling,"output_limit":self.output_limit,
+                    "input_rate":self.input_rate,"output_rate":self.output_rate,"reserve":self.reserve}
+        if name not in self._profiles:raise ValueError("LAB_UNKNOWN_PROFILE")
+        return copy(self._profiles[name])
+
+    def begin(self,request,*,profile=None):
+        p=self.profile(profile)
+        if profile is not None and request.get("model")!=p["model"]:
+            raise BudgetStop("LAB_PROFILE_MODEL_MISMATCH")
         if self.stopped or self.pending:raise BudgetStop("LAB_LIVE_STOPPED")
         n=size(request)
         if (self.calls>=self.max_calls or self.wire_bytes+n>self.max_wire_bytes
-                or self.reserved+self.reserve>self.max_budget):
+                or self.reserved+p["reserve"]>self.max_budget):
             self.stopped=True
             raise BudgetStop("LAB_LIVE_BUDGET_EXHAUSTED")
-        self.calls+=1;self.wire_bytes+=n;self.reserved+=self.reserve;self.pending=True
+        self.calls+=1;self.wire_bytes+=n;self.reserved+=p["reserve"];self.pending=True
+        self.pending_profile=profile
         self._append({"event":"RESERVED_BEFORE_SEND","attempt":self.calls,
-                      "wire_bytes":n,"request_sha256":digest(request),"reserved_nanos":self.reserve,
+                      "wire_bytes":n,"request_sha256":digest(request),"reserved_nanos":p["reserve"],
+                      "budget_profile":profile,
                       "cumulative_reserved_nanos":self.reserved})
 
     def settle(self,usage):
         if not self.pending:raise BudgetStop("LAB_NO_PENDING_RESERVATION")
+        p=self.profile(self.pending_profile)
         a=usage.get("input_tokens");b=usage.get("output_tokens")
         if (type(a) is not int or type(b) is not int or a<0 or b<0
-                or a>self.input_ceiling or b>self.output_limit):
-            self._append({"event":"USAGE_REJECTED","attempt":self.calls,
+                or a>p["input_ceiling"] or b>p["output_limit"]):
+            self._append({"event":"USAGE_REJECTED","attempt":self.calls,"budget_profile":self.pending_profile,
                           "input_tokens":a if type(a) is int and a>=0 else None,
                           "output_tokens":b if type(b) is int and b>=0 else None})
             self.fail()
             raise BudgetStop("LAB_USAGE_UNKNOWN_OR_ABOVE_DECLARED_CEILING")
         self.pending=False
-        estimated=a*self.input_rate+b*self.output_rate
+        profile=self.pending_profile;self.pending_profile=None
+        estimated=a*p["input_rate"]+b*p["output_rate"]
         self.estimated_reported+=estimated
-        self._append({"event":"USAGE_REPORTED","attempt":self.calls,"input_tokens":a,
+        self._append({"event":"USAGE_REPORTED","attempt":self.calls,"budget_profile":profile,"input_tokens":a,
                       "output_tokens":b,"declared_rate_estimate_nanos":estimated})
         # Retain the whole reservation, including unspent allowance, for
         # conservative authorization. Cached tokens receive no price discount.
@@ -380,7 +428,9 @@ class LiveBudget:
         self.stopped=True
         if self.pending:
             self.pending=False
-            self._append({"event":"UNCERTAIN_SPEND_STOP","attempt":self.calls})
+            self._append({"event":"UNCERTAIN_SPEND_STOP","attempt":self.calls,
+                          "budget_profile":self.pending_profile})
+            self.pending_profile=None
 
     def snapshot(self):
         return {"attempts":self.calls,"wire_bytes":self.wire_bytes,
@@ -391,14 +441,18 @@ class LiveBudget:
 
 class _BudgetedWireMixin:
     """One existing LiveBudget for ordinary, historical and one-response live wire dispatch."""
-    def __init__(self,*,budget,**kwargs):
+    def __init__(self,*,budget,budget_profile=None,**kwargs):
         if not isinstance(budget,LiveBudget):raise TypeError("LAB_BUDGET_REQUIRED")
         if kwargs.get("transport") is not None:
             raise ValueError("LAB_LIVE_NO_TRANSPORT_OVERRIDE")
         if "completion_token_limit" in kwargs:
             raise ValueError("LAB_BUDGET_OWNS_COMPLETION_LIMIT")
-        self.budget=budget
-        super().__init__(completion_token_limit=budget.output_limit,**kwargs)
+        self.budget=budget;self.budget_profile=budget_profile
+        p=budget.profile(budget_profile)
+        if budget_profile is not None and (kwargs.get("model")!=p["model"]
+                or kwargs.get("endpoint")!=p["endpoint"]):
+            raise ValueError("LAB_PROFILE_PROVIDER_MISMATCH")
+        super().__init__(completion_token_limit=p["output_limit"],**kwargs)
 
     def _dispatch_wire(self,payload,receipt):
         # Provider counters are not evidence of sending if a budget rejects
@@ -413,15 +467,16 @@ class _BudgetedWireMixin:
             if receipt is not None:
                 n=self.budget.calls-before
                 receipt["attempts"]=n
+                receipt["budget_profile"]=self.budget_profile
                 receipt["budget_attempt"]=self.budget.calls if n else None
                 receipt["budget_disposition"]=("RESERVATION_UNCERTAIN" if n and self.budget.stopped else
                     "RESERVATION_SETTLED" if n else "PREFLIGHT_REFUSED")
             self.budget.dispatch_lock.release()
 
     def _request(self,payload):
-        if payload.get(self.completion_limit_field)!=self.budget.output_limit:
+        if payload.get(self.completion_limit_field)!=self.budget.profile(self.budget_profile)["output_limit"]:
             raise BudgetStop("LAB_OUTPUT_CAP_MISSING")
-        self.budget.begin(payload)
+        self.budget.begin(payload,profile=self.budget_profile)
         try:
             result=super()._request(payload)
             self.budget.settle(self._reported_usage(result))
@@ -451,6 +506,91 @@ def budgeted_combined_provider(mode,*,budget,**kwargs):
     class CombinedBudgetedProvider(_BudgetedWireMixin,base):
         pass
     return CombinedBudgetedProvider(budget=budget,**kwargs)
+
+
+
+class CombinedCaptureProvider:
+    """Capture real combined owner requests with the existing private tape.
+    No additional invocation, projection, or owner mutation.
+    """
+    def __init__(self,provider,capture,mode):
+        if mode not in ("HISTORICAL","LIVE"):raise ValueError("LAB_COMBINED_PROVIDER_MODE")
+        self.provider=provider;self.capture=capture
+        self.task=CHECKPOINT_TASK if mode=="HISTORICAL" else LIVE_TURN_TASK
+        self.grade=getattr(provider,"grade","UNSPECIFIED_SEMANTIC_ADAPTER_NO_PROVEN_GRADE")
+
+    def call(self,request):
+        return self.capture.invoke(self.provider,self.task,request)
+
+
+class CombinedAllocationProvider:
+    """Select an explicitly qualified profile at an actual owner request.
+
+    Exact owner HEAD + whole request + mode are required for transfer.
+    A reviewed qualification is an external assertion, not proof of scientific
+    adequacy; this sourcefree operator cannot authenticate that assertion.
+    Unmatched requests use the reference profile, not a cheap-model guess.
+    No retry or automatic fallback after any attempt, even after rejection.
+    """
+    def __init__(self,mode,*,owner_head,budget,reference_profile,provider_options,
+                 qualifications=(),sourcefree_allocation_authorized=False,metrics_capacity=128):
+        if sourcefree_allocation_authorized is not True:
+            raise ValueError("LAB_ALLOCATION_AUTHORIZATION_REQUIRED")
+        if mode not in ("HISTORICAL","LIVE"):raise ValueError("LAB_COMBINED_PROVIDER_MODE")
+        self.mode=mode;self.owner_head=_head(owner_head);self.reference=reference_profile
+        if (type(provider_options) is not dict or reference_profile not in provider_options
+                or not 1<=len(provider_options)<=32):
+            raise ValueError("LAB_ALLOCATION_PROVIDERS")
+        self.providers={}
+        for name,options in provider_options.items():
+            if type(name) is not str or type(options) is not dict or "metrics_capacity" in options:
+                raise ValueError("LAB_ALLOCATION_PROVIDER_OPTIONS")
+            self.providers[name]=budgeted_combined_provider(mode,budget=budget,
+                budget_profile=name,metrics_capacity=1,**options)
+        self.routes={}
+        if type(qualifications) not in (list,tuple) or len(qualifications)>100000:
+            raise ValueError("LAB_ALLOCATION_QUALIFICATIONS")
+        for row in qualifications:
+            if (type(row) is not dict or set(row)!={"owner_head","mode","request_digest",
+                        "reference_profile","candidate_profile","qualification_digest"}
+                    or row["owner_head"]!=self.owner_head or row["mode"]!=mode
+                    or row["reference_profile"]!=reference_profile
+                    or row["candidate_profile"] not in self.providers
+                    or row["candidate_profile"]==reference_profile
+                    or any(type(row[k]) is not str or not re.fullmatch("[0-9a-f]{64}",row[k])
+                           for k in ("request_digest","qualification_digest"))
+                    or row["request_digest"] in self.routes):
+                raise ValueError("LAB_ALLOCATION_QUALIFICATION_INVALID")
+            self.routes[row["request_digest"]]=copy(row)
+        self._metrics=deque(maxlen=_integer(metrics_capacity,1,100000))
+        self._total=0;self._lock=Lock()
+        self.grade="SOURCEFREE_EXACT_QUALIFICATION_ROUTER_NOT_MODEL_ADEQUACY"
+
+    def usage_snapshot(self):
+        return {"total":self._total,"evicted":self._total-len(self._metrics),
+                "receipts":copy(list(self._metrics))}
+
+    def call(self,request):
+        if not self._lock.acquire(blocking=False):
+            raise BudgetStop("LAB_ALLOCATION_CONCURRENT_CALL")
+        try:
+            d=digest(request);row=self.routes.get(d)
+            name=row["candidate_profile"] if row else self.reference
+            p=self.providers[name];before=p.usage_snapshot()["total"]
+            try:
+                return p.call(copy(request))
+            finally:
+                after=p.usage_snapshot()
+                if after["total"]==before+1 and after["receipts"]:
+                    receipt=after["receipts"][-1]
+                else:
+                    receipt={"attempts":None,"outcome":"ALLOCATION_RECEIPT_MISSING"}
+                receipt.update(allocation_profile=name,
+                    allocation_basis="EXACT_REVIEWED_REQUEST" if row else "REFERENCE_UNMATCHED",
+                    allocation_owner_head=self.owner_head,
+                    allocation_qualification_digest=row["qualification_digest"] if row else None)
+                self._metrics.append(receipt);self._total+=1
+        finally:self._lock.release()
 
 
 def save_report(path,report):

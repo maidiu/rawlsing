@@ -548,4 +548,111 @@ class ContinuingLifeCourt(unittest.TestCase):
                 self.assertIn("UNCERTAIN_SPEND_STOP",b.log.read_text())
 
 
+
+    def test_heterogeneous_exact_allocation_actual_life_and_conserved_budget(self):
+        from importlib.util import spec_from_file_location,module_from_spec
+        from unittest.mock import patch
+        import sys
+        folder=Path(__file__).parent/"um_sorok_organism"
+        def module(name,path):
+            spec=spec_from_file_location(name,path)
+            mod=module_from_spec(spec);spec.loader.exec_module(mod);return mod
+        wire=module("um_sorok_organism.r59_wire",folder/"live_psychological_llm.py")
+        with patch.dict(sys.modules,{"um_sorok_organism.live_psychological_llm":wire}):
+            lab=module("um_sorok_organism.r59_lab",folder/"inference_lab.py")
+            with tempfile.TemporaryDirectory() as d:
+                root=Path(d);head="604f3d1a51a21c53523a2040b30e234b556785fa"
+                capture=lab.WorkloadCapture(source_head=head,fixture="whole-life-r59",
+                    sourcefree_fixture_attested=True)
+                def setup(where,hp,lp):
+                    where.mkdir()
+                    rt,sid,catalog,_=joined.JoinedGenerationCourt.setup(self,where/"life.sqlite")
+                    return rt,sid,catalog
+                def run(rt,where,sid,catalog,hp,lp):
+                    s=ContinuingLife(rt,where/"operator","mother",historical_provider=hp,
+                        live_provider=lp,sourcefree_attested=True,period_catalog=catalog,
+                        family_sources=(sid,),mii_module=mii)
+                    try:
+                        for _ in range(3):s.historical_checkpoint()
+                        s.finish_history();s.independent_absent_beat();s.resume_history()
+                        s.finish_history()
+                        return rt.ledger.events()
+                    finally:s.close()
+                class History:
+                    def __init__(self,sid):
+                        self.a=joined.LifeCheckpoint(sid);self.b=joined.LifeCheckpoint(sid,resumed=True)
+                    def call(self,req):
+                        return (self.a if len(self.a.requests)<4 else self.b).call(req)
+                one=root/"reference";rt,sid,catalog=setup(one,None,None)
+                try:
+                    baseline=run(rt,one,sid,catalog,lab.CombinedCaptureProvider(History(sid),capture,"HISTORICAL"),
+                        lab.CombinedCaptureProvider(Live(),capture,"LIVE"))
+                finally:rt.close()
+                tape=capture.document();rows=lab.verify_workload(tape,source_head=head)["rows"]
+                self.assertEqual([x["task"] for x in rows],
+                    [lab.CHECKPOINT_TASK]*4+[lab.LIVE_TURN_TASK]+[lab.CHECKPOINT_TASK]*2)
+                # Exact matched request qualification, deliberately hermetic;
+                # equal fixture answers do NOT qualify any actual model.
+                live_row=rows[4]; endpoint="https://example.invalid/chat/completions"
+                def profile(model,a,b,c,e):
+                    return dict(model=model,endpoint=endpoint,input_token_ceiling=a,
+                        completion_token_limit=b,input_nanos_per_token=c,output_nanos_per_token=e)
+                b=lab.LiveBudget(journal=root/"budget",max_calls=7,max_wire_bytes=10000000,
+                    input_token_ceiling=100000,completion_token_limit=1000,input_nanos_per_token=5,
+                    output_nanos_per_token=10,max_budget_nanos=4000000,sourcefree_live_authorized=True,
+                    profiles={"reference":profile("reference-model",100000,1000,5,10),
+                              "economy":profile("economy-model",80000,500,1,3)})
+                def opts(model,mode):
+                    return dict(endpoint=endpoint,model=model,api_key="not-a-key",
+                        allow_private_actor_data=True,**({"sourcefree_checkpoint_attested":True}
+                            if mode=="HISTORICAL" else {"sourcefree_live_attested":True}))
+                qualification=dict(owner_head=head,mode="LIVE",request_digest=live_row["packet_digest"],
+                    reference_profile="reference",candidate_profile="economy",
+                    qualification_digest=lab.digest({"scope":"HERMETIC_ONLY","workload":tape["sha256"]}))
+                def router(mode,qualifications=()):
+                    return lab.CombinedAllocationProvider(mode,owner_head=head,budget=b,
+                        reference_profile="reference",provider_options={p:opts(p+"-model",mode)
+                            for p in ("reference","economy")},qualifications=qualifications,
+                        sourcefree_allocation_authorized=True)
+                hp=router("HISTORICAL");lp=router("LIVE",[qualification])
+                two=root/"allocation";rt,sid,catalog=setup(two,None,None)
+                history=History(sid);live=Live();seen=[]
+                def hermetic(provider,payload):
+                    doc=json.loads(payload["messages"][1]["content"])
+                    seen.append((payload["model"],payload["max_completion_tokens"]))
+                    proposal=history.call(doc) if "mode" in doc else live.call(doc)
+                    return {"choices":[{"message":{"content":json.dumps(proposal)}}],
+                            "usage":{"prompt_tokens":200,"completion_tokens":50,"total_tokens":250}}
+                try:
+                    with patch.object(wire.ExplicitJSONLLMProvider,"_request",hermetic):
+                        actual=run(rt,two,sid,catalog,hp,lp)
+                    self.assertEqual(actual,baseline)
+                    self.assertEqual(seen,[("reference-model",1000)]*4+[("economy-model",500)]
+                        +[("reference-model",1000)]*2)
+                    self.assertEqual(b.calls,7)
+                    self.assertEqual(b.reserved,6*510000+81500)
+                    self.assertEqual(b.estimated_reported,6*1500+350)
+                    self.assertEqual(lp.usage_snapshot()["receipts"][-1]["allocation_basis"],
+                        "EXACT_REVIEWED_REQUEST")
+                    self.assertEqual(hp.usage_snapshot()["receipts"][-1]["allocation_basis"],
+                        "REFERENCE_UNMATCHED")
+                    import sqlite3
+                    with sqlite3.connect(two/"operator"/"live.sqlite") as cx:
+                        records=[json.loads(x[0]) for x in cx.execute("SELECT root FROM binding")]
+                    self.assertEqual(records[-1]["transport_receipt"]["budget_profile"],"economy")
+                    self.assertEqual(records[-1]["transport_receipt"]["allocation_qualification_digest"],
+                        qualification["qualification_digest"])
+                    self.assertEqual(len(b.log.read_text().splitlines()),14)
+                    # One mutation of the actual request loses qualification.
+                    changed=lab.copy(live_row["packet"]);changed["source"]="unmatched-source"
+                    with patch.object(wire.ExplicitJSONLLMProvider,"_request",hermetic):
+                        with self.assertRaises(lab.BudgetStop):lp.call(changed)
+                    self.assertEqual(len(seen),7)
+                    self.assertEqual(lp.usage_snapshot()["receipts"][-1]["allocation_profile"],"reference")
+                    self.assertEqual(lp.usage_snapshot()["receipts"][-1]["attempts"],0)
+                finally:rt.close()
+                bad=dict(qualification,owner_head="0"*40)
+                with self.assertRaisesRegex(ValueError,"QUALIFICATION_INVALID"):router("LIVE",[bad])
+
+
 if __name__=="__main__":unittest.main()

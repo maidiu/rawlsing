@@ -879,7 +879,9 @@ class CheckpointProvider:
                     rec["transport_receipt"]={k:detached(v) for k,v in after[-1].items()
                         if k in ("task","transport","attempts","outcome","request_bytes","response_bytes",
                                  "instruction_bytes","packet_bytes","response_content_bytes","usage","elapsed_ns",
-                                 "budget_attempt","budget_disposition","wire_packet_bytes","packet_variant",
+                                 "budget_attempt","budget_disposition","budget_profile","allocation_profile",
+                                 "allocation_basis","allocation_owner_head","allocation_qualification_digest",
+                                 "wire_packet_bytes","packet_variant",
                                  "alias_count","structured_field_count")}
             self.owner.record_checkpoint_update(aid,**rec)
     @staticmethod
