@@ -1,0 +1,34 @@
+name: R008 exact single-tree continuing generation candidate
+on:
+  push:
+    branches: [agent/soracle-r008-co-neighbor-economy-candidate-20261128-r1]
+    paths:
+      - 'SEAM/**'
+      - '.github/workflows/r008-single-tree-continuing-candidate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  single-tree:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Actual shared owner identity and inherited P2 pins
+        run: |
+          git rev-parse HEAD
+          test "$(git hash-object WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py)" = 231cab97b4bc5e2f40de3c45d179a68ba58585c5
+          test "$(git hash-object WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py)" = a777692782003e05de6c46280b5861e97516dc90
+      - name: Existing Economy modern and joined generation / live / rich / continuation courts
+        env:
+          PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3:${{ github.workspace }}/SEAM/NEIGHBORMULCH/tests:${{ github.workspace }}/SEAM/NEIGHBORMULCH
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -c 'import um_sorok_organism.runtime as r; import pathlib; assert pathlib.Path(r.__file__).resolve().is_relative_to(pathlib.Path.cwd())'
+          python -m unittest test_modern_generation_port_r28 test_joined_generation_r33 test_live_turn_r38 test_rich_formation_r44 test_continuing_life_r52 -v
+          python -O -m unittest test_modern_generation_port_r28 test_joined_generation_r33 test_live_turn_r38 test_rich_formation_r44 test_continuing_life_r52 -q
