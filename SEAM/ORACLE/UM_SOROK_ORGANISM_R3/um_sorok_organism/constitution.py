@@ -226,6 +226,49 @@ def _form_in_scope(form,access):
         return False
     return True
 
+def _positive_reachability(positive,qualified):
+    """Existing positive link closure, with a composition-local adjacency.
+
+    The previous algorithm scanned every edge once per propagation round.
+    Only the reachable set is observed by its consumers. Visit each reached
+    source once; keep the original qualification and per-question veto.
+    No persistent index, new edge, modified relation or new authority.
+    """
+    adjacency={}
+    for link in positive:
+        target=link['target']
+        if target in qualified:
+            adjacency.setdefault(link['source'],set()).add(target)
+    def closure(start,blocked=frozenset()):
+        reached=(set(start)&qualified)-set(blocked)
+        pending=list(reached)
+        while pending:
+            source=pending.pop()
+            for target in adjacency.get(source,()):
+                if target not in reached and target not in blocked:
+                    reached.add(target)
+                    pending.append(target)
+        return reached
+    return closure
+
+
+def _same_composition_recruitment(recruit):
+    """Reuse only identical closure questions within one immutable read.
+
+    compose makes at most three closure requests. The local table dies
+    with that call; no actor state, event history, admission, or persistent
+    index becomes trusted through it. Differing blocked sets are distinct.
+    The internal caller consumes the returned sets/routes read-only.
+    """
+    resolved={}
+    def read(start,blocked=frozenset()):
+        key=(frozenset(start),frozenset(blocked))
+        if key not in resolved:
+            resolved[key]=recruit(start,blocked)
+        return resolved[key]
+    return read
+
+
 def compose(constitution,access,limit=50):
     """Three streams: direct cue/ongoing project, acquired associative links, qualified traces.
     Does not select a motive, infer actor memory from objective facts, or claim transfer
@@ -270,16 +313,7 @@ def compose(constitution,access,limit=50):
     negative=[link for link in valid_links if link.get('relation') in
               ('INHIBITS','SUPPRESSES')]
 
-    def closure(start,blocked=frozenset()):
-        reached=(set(start)&qualified)-set(blocked)
-        while True:
-            added={link['target'] for link in positive
-                   if link['source'] in reached
-                   and link['target'] in qualified
-                   and link['target'] not in blocked}
-            newer=reached|added
-            if newer==reached:return reached
-            reached=newer
+    closure=_positive_reachability(positive,qualified)
 
     def joint_recruitment(start,blocked=frozenset()):
         """Qualified link/motif closure, with no hidden mutable actor state."""
@@ -303,6 +337,10 @@ def compose(constitution,access,limit=50):
             reached=following
         raise RuntimeError('RELATIONAL_RECRUITMENT_DID_NOT_CONVERGE')
 
+    # Same immutable constitution and access, same initial forms, same
+    # blocked set => identical closure and motif provenance. In particular
+    # no-inhibition contexts formerly evaluated this closure three times.
+    joint_recruitment=_same_composition_recruitment(joint_recruitment)
     potentially_active,_=joint_recruitment(seed)
     conservative_veto={link['target'] for link in negative
                        if link['source'] in potentially_active}
@@ -345,8 +383,11 @@ def compose(constitution,access,limit=50):
     actual,motif_routes=joint_recruitment(seed,vetoed)
     active={fid:copy(forms[fid]) for fid in sorted(actual)}
     relational=derive_relational_metabolism(constitution,access,active,vetoed)
+    # This is the same link-only comparison for every motif route.
+    # Do not conflate direct/linked recruitment with motif recruitment.
+    direct_link_closure=closure(seed,vetoed) if motif_routes else set()
     for fid,route in sorted(motif_routes.items()):
-        if fid in active and fid not in closure(seed,vetoed):
+        if fid in active and fid not in direct_link_closure:
             currents.append({'kind':'HISTORICALLY_RECRUITED_VIA_MOTIF',
                 'ref':fid,'motif_ref':route['motif_ref'],
                 'qualified_source_forms':route['source_form_refs'],
@@ -655,6 +696,8 @@ def compose(constitution,access,limit=50):
     # original access; only deliberate means/beneficiary binding uses the
     # presently nominated, scarce attentional field.
     attention=situate_attention(constitution,access,historical=historical)
+    cross_object=attention['frame'].get('cross_object_attention',[])
+    currents+=copy(cross_object)
     # Attach actor/clock/project-specific practical ALTERNATIVES beneath the
     # existing physical action grammar. Psychodynamic inhibition still acts
     # first; an inhibited operation cannot be revived by an option ID.
@@ -685,6 +728,13 @@ def compose(constitution,access,limit=50):
         option['practical_alternatives']+=situated_suspension_targets(
             constitution,attention['focus_access'],option)
         annotate_material_alternatives(option,invested)
+        if option['action']=='INSPECT':
+            for alt in option['practical_alternatives']:
+                for row in cross_object:
+                    if (alt.get('grounds_status')=='PRESENT_MATERIAL_OBJECT_NOT_ASSUMED_MOTIVE'
+                            and alt['world_request'].get('material_object_ref')==
+                            row['new_material_object_ref']):
+                        alt['cross_object_attention_analytic_only']=copy(row)
         if option['action']=='INSPECT' and option.get('candidate_notice_refs'):
             option['practical_alternatives'] += [
                 {'option_id':'inquiry:'+constitution.actor+':'+
@@ -727,6 +777,11 @@ def compose(constitution,access,limit=50):
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
        readset=sorted(set(list(active)+list(vetoed)+relational['readset']+
                            historical['readset']+preproject['readset']+exercised['readset']+
+                           attention['frame'].get('monitoring_orientation_refs',[])+
+                           [row[k] for row in cross_object for k in
+                            ('source_practice_ref','source_demonstration_ref',
+                             'source_exercised_encounter_ref','current_making_sign_ref',
+                             'current_visible_object_cue_ref')]+
                            invested['recruitment']['readset']+
                            material['readset']+
                            historical_care['readset']+

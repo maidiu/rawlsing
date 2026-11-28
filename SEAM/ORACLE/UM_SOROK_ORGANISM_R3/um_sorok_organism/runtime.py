@@ -14,7 +14,9 @@ from .organism import eligible, apply_body
 from .development import admit, recurring_provisional_growth, possible_practice_memory_access_decrease
 from .reflective_regulation import offer_private_rehearsals, perform_private_rehearsal
 from .attention_field import (offer_undertaking_attention, received_undertaking_attention,
-    offer_correspondence_attention, settle_correspondence_attention, received_correspondence_attention)
+    offer_correspondence_attention, settle_correspondence_attention, received_correspondence_attention,
+    offer_focal_encounters, received_focal_encounter, personally_received_directed_act,
+    possible_monitoring_changes)
 from .ordinary_life import passage
 from .activity import (record_activity_afterlife, register_lived_activity_attempt,
                         possible_productive_witness_reorganizations,
@@ -24,13 +26,15 @@ from .activity import (record_activity_afterlife, register_lived_activity_attemp
 from .practical_difference import start_selected_expectations
 from .lived_genesis import proposals_from_bodily_history
 from .historical_self_organization import (possible_lived_directional_orientation,
-                                           possible_dependency_ambivalence)
+                                           possible_dependency_ambivalence,
+                                           possible_counterhistory_release)
 from .distributed_power import record_actor_participation
 from .practical_powers import retain_exercised_power, possible_repair_technique
 from .practical_inquiry import retain_personal_notice_exposure
 from .material_investments import (
     retain_personal_object_encounter, possible_object_investments)
-from .unintended_goods import possible_unintended_goods, qualify_incidental_object_takeup
+from .unintended_goods import (possible_unintended_goods, qualify_incidental_object_takeup,
+                               possible_cross_object_significance)
 from .expectation_afterlife import (source_qualified_appraisal_candidates,
                                     possible_activity_affects, own_vocal_reception,
                                     possible_expressive_practices)
@@ -344,9 +348,14 @@ class ConstitutiveRuntime:
                 'clock':world['clock'],'offer_id':proposal['offer_id'],
                 'no_material_consequence_inferred':True,'grade':GRADE}
 
-    def _actor_plan(self,actor_id,world,actors,requested_action=None,requesting_actor=None,requesting_action=None):
+    def _actor_plan(self,actor_id,world,actors,requested_action=None,requesting_actor=None,requesting_action=None,*,_principal_projection=None):
         actor=actors[actor_id]
-        c=materialize(actor,world);e=actor_access(actor,world);situated=asdict(compose(c,e))
+        # Internal same-stack, same-phase result from step's pre-event audit.
+        # Public plan and the independent coactor planner always read afresh.
+        if _principal_projection is None:
+            c=materialize(actor,world);e=actor_access(actor,world);situated=asdict(compose(c,e))
+        else:
+            e,situated=_principal_projection
         options=copy(situated['candidate_actions'])
         if requesting_actor is not None:
             valid=COOPERATIVE.get(requesting_action,set())
@@ -390,6 +399,14 @@ class ConstitutiveRuntime:
                 if requesting_actor is None and any(o['action']=='ORIENT' for o in options) else [])
             correspondence_options=(offer_correspondence_attention(actor,world,e)
                 if requesting_actor is None and any(o['action']=='ORIENT' for o in options) else [])
+            # Query one committed tail row only for a potentially receivable
+            # directed human utterance; no whole-history hydration per beat.
+            focal_options=(offer_focal_encounters(actor,e,
+                situated.get('attention_frame',{}).get('focally_eligible_cue_refs',[]),
+                world=world,ledger_event=(self.ledger.latest_event()
+                    if any(c.get('visitor_speech_addressed_to_recipient') is True
+                           for c in e.cues) else None))
+                if requesting_actor is None and any(o['action']=='ORIENT' for o in options) else [])
             proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role'],
                 'body':copy(actor['body'])},
                 'accessible':{k:v for k,v in asdict(e).items() if k!='inaccessible_count'},
@@ -399,6 +416,7 @@ class ConstitutiveRuntime:
                 'private_rehearsal_options':copy(private_options),
                 'undertaking_attention_options':copy(undertaking_options),
                 **({'correspondence_attention_options':correspondence_options} if correspondence_options else {}),
+                **({'focal_encounter_options':focal_options} if focal_options else {}),
                 'possible_end_trial_does_not_establish_motive':True,
                 'selected_option_is_not_conscious_intent':True,
                 'requesting_actor':requesting_actor,'requesting_action':requesting_action})
@@ -432,6 +450,17 @@ class ConstitutiveRuntime:
                                 'notice_expectation_ref','defer_course_option_id','interactivity_relation_ref'))):
                     raise ValueError('CORRESPONDENCE_UNISSUED_OR_CONFLICTING_SELECTION')
                 correspondence_choice=copy(rows[0])
+            focal_choice=None
+            if 'focal_encounter_id' in proposed:
+                rows=[o for o in focal_options if o['attention_id']==proposed['focal_encounter_id']]
+                if (len(rows)!=1 or proposed.get('action')!='ORIENT'
+                        or private_choice is not None or undertaking_choice is not None
+                        or correspondence_choice is not None
+                        or any(proposed.get(k) is not None for k in
+                               ('project_id','project_ids','practical_option_id','possible_end_trial_id',
+                                'notice_expectation_ref','defer_course_option_id','interactivity_relation_ref'))):
+                    raise ValueError('FOCAL_ENCOUNTER_UNISSUED_OR_CONFLICTING_SELECTION')
+                focal_choice=copy(rows[0])
             requested_option=proposed.get('practical_option_id')
             requested_trial=proposed.get('possible_end_trial_id')
             trial_choice=None
@@ -682,6 +711,11 @@ class ConstitutiveRuntime:
                     raise ValueError('INTERACTIVITY_CONFLICTING_SELECTION')
                 practical['interactivity_deferral']=qualify_interactivity_deferral(
                     flat_alternatives,selected_alternative,proposed['defer_course_option_id'],e.location)
+            if (selected_alternative and proposed.get('practical_option_id')==
+                    selected_alternative['option_id'] and trial_choice is None
+                    and selected_alternative.get('cross_object_attention_analytic_only')):
+                practical['cross_object_attention_analytic_only']=copy(
+                    selected_alternative['cross_object_attention_analytic_only'])
             if selected_alternative and selected_alternative.get('productive_witness_attention'):
                 practical['productive_witness_attention']=copy(selected_alternative['productive_witness_attention'])
             if 'interactivity_relation_ref' in proposed:
@@ -709,6 +743,8 @@ class ConstitutiveRuntime:
                 practical['undertaking_attention']=undertaking_choice
             if correspondence_choice is not None:
                 practical['correspondence_attention']=correspondence_choice
+            if focal_choice is not None:
+                practical['focal_encounter']=focal_choice
             if trial_choice is not None:
                 # Freeze actor's already issued option before the world settles.
                 practical['possible_end_trial']=copy(trial_choice)
@@ -767,14 +803,20 @@ class ConstitutiveRuntime:
                     or research_plan_context.get('authority')!='EXTERNAL_RESEARCH_PLAN'):
                 raise ValueError('UNQUALIFIED_EXTERNAL_PLAN_CONTEXT')
         wv,world=self.ledger.world(self.world_id)
-        actor_versions={aid:self.ledger.actor(aid)[0] for aid in self.ledger.actors()}
-        actors=self.ledger.actors()
+        actor_versions,actors=self.ledger.actors_with_versions()
         # Preserve a private read of the operative psychological organization
         # BEFORE the independent world result. Even an externally injected
         # action cannot retroactively manufacture the actor's motives.
         pre_event_psychodynamics={}
+        principal_projection=None
         for aid,person in actors.items():
-            prior=asdict(compose(materialize(person,world),actor_access(person,world)))
+            constitution=materialize(person,world)
+            encounter=actor_access(person,world)
+            prior=asdict(compose(constitution,encounter))
+            if aid==actor_id:
+                # All audit fields below are independently copied. No world
+                # or actor write, semantic call or phase transition intervenes.
+                principal_projection=(encounter,prior)
             pre_event_psychodynamics[aid]={
                 'readset':copy(prior['readset']),
                 'recruited_form_refs':[x['id'] for x in prior['recruited']],
@@ -787,13 +829,18 @@ class ConstitutiveRuntime:
         # Snapshot physical state before independently authorized world settlement;
         # later psychic inference cannot retcon what this body had undergone.
         bodily_before={aid:copy(person['body']) for aid,person in actors.items()}
-        principal=self._actor_plan(actor_id,world,actors,requested_action)[0]
+        principal=self._actor_plan(actor_id,world,actors,requested_action,
+                                   _principal_projection=principal_projection)[0]
+        # No cross-phase, cross-beat or persisted projection cache.
+        del principal_projection
         if principal.practical_selection.get('productive_witness_attention') is not None and (target is not None or object_ref is not None):
             raise ValueError('PRODUCTIVE_WITNESS_CANNOT_BE_EXTERNALLY_ADDRESSED')
         if principal.practical_selection.get('correspondence_attention') is not None and (target is not None or object_ref is not None):
             raise ValueError('CORRESPONDENCE_CANNOT_BE_EXTERNALLY_ADDRESSED')
         if principal.practical_selection.get('undertaking_attention') is not None and (target is not None or object_ref is not None):
             raise ValueError('UNDERTAKING_ATTENTION_CANNOT_BE_EXTERNALLY_ADDRESSED')
+        if principal.practical_selection.get('focal_encounter') is not None and (target is not None or object_ref is not None):
+            raise ValueError('FOCAL_ENCOUNTER_CANNOT_BE_EXTERNALLY_ADDRESSED')
         if principal.practical_selection.get('private_rehearsal') is not None and (target is not None or object_ref is not None):
             raise ValueError('PRIVATE_REHEARSAL_CANNOT_BE_EXTERNALLY_ADDRESSED')
         if target is not None and principal.target not in (None,target):
@@ -881,6 +928,13 @@ class ConstitutiveRuntime:
                     cue=copy(chosen['outward_sign'])
                     if not any(c['id']==cue['id'] for c in personal_cues):
                         personal_cues.append(cue)
+            if (aid==actor_id and requested_action is None and personally_done
+                    and personally_done['action']=='ORIENT' and personally_done['status']=='PERFORMED'):
+                chosen=principal.practical_selection.get('focal_encounter')
+                if chosen is not None:
+                    cue=copy(chosen['outward_sign'])
+                    if not any(c['id']==cue['id'] for c in personal_cues):
+                        personal_cues.append(cue)
             if not participated and not personal_cues:continue
             own=(personally_done['action'] if personally_done else
                  ('RECEIVED_FEEDING' if aid in affected and
@@ -955,6 +1009,11 @@ class ConstitutiveRuntime:
                 actors[aid],experience.get('own_practical_selection'),experience)
             if correspondence_receipt:
                 experience['correspondence_attention_receipt']=correspondence_receipt
+            focal_receipt=received_focal_encounter(
+                actors[aid],experience.get('own_practical_selection'),experience)
+            if focal_receipt:
+                experience['focal_encounter_receipt']=focal_receipt
+            directed_receipt=personally_received_directed_act(experience)
             subjective[aid]=copy(experience)
             if personally_done and actor_attempt is not None:
                 # Anticipation is formed at the time of this actor's attempt,
@@ -988,6 +1047,12 @@ class ConstitutiveRuntime:
                    if (experience.get('own_practical_selection') or {}).get('interactivity_deferral') else {}),
                 **({'undertaking_attention':copy(attention_receipt)} if attention_receipt else {}),
                 **({'correspondence_attention':copy(correspondence_receipt)} if correspondence_receipt else {}),
+                **({'selected_cross_object_attention_analytic_only':copy(
+                        experience['own_practical_selection']['cross_object_attention_analytic_only'])}
+                   if (experience.get('own_practical_selection') or {}).get(
+                       'cross_object_attention_analytic_only') else {}),
+                **({'focal_encounter':copy(focal_receipt)} if focal_receipt else {}),
+                **({'directed_encounter':copy(directed_receipt)} if directed_receipt else {}),
                 **({'notice_expectation':copy(experience['own_practical_selection']['notice_expectation'])}
                    if (experience.get('own_practical_selection') or {}).get('notice_expectation') else {}),
                 **({'own_vocal_reception':own_vocal_reception(actors[aid],experience)}
@@ -1132,6 +1197,10 @@ class ConstitutiveRuntime:
                 'actor_forms':copy(actors[aid]['forms']),
                 'actual_private_rehearsal_analyst_only':copy(private_rehearsal),
                 'actual_undertaking_attention_analyst_only':copy(attention_receipt),
+                **({'historically_possible_focal_encounter_memory': {
+                        'kind':'MEMORY','focal_encounter_ref':focal_receipt['attention_id'],
+                        'content_requires_actor_local_semantic_proposal':True}}
+                   if focal_receipt else {}),
                 **({'actual_correspondence_attention_analyst_only':copy(correspondence_receipt)} if correspondence_receipt else {}),
                 **({'historically_possible_memory_access_decreases':memory_access_candidates}
                    if (memory_access_candidates:=possible_practice_memory_access_decrease(
@@ -1185,6 +1254,9 @@ class ConstitutiveRuntime:
                     material_meaning_proposals),
                 'historically_possible_incidental_goods':copy(
                     possible_incidental_goods),
+                **({'historically_possible_cross_object_significance':copy(cross_object)}
+                   if (cross_object:=possible_cross_object_significance(
+                       actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_incidental_takeup':[
                     q for end in actors[aid].get('possible_ends',[])
                     if end.get('status')=='POSSIBLE_NOT_ACQUIRED_MOTIVE'
@@ -1225,6 +1297,10 @@ class ConstitutiveRuntime:
                     recurrent_work),
                 'historically_possible_lived_directional_orientation':copy(
                     lived_directional_orientation),
+                'historically_possible_counterhistory_release':copy(
+                    possible_counterhistory_release(actors[aid],experience,objective_ref)),
+                'historically_possible_monitoring_changes':copy(
+                    possible_monitoring_changes(actors[aid],experience,objective_ref)),
                 'historically_possible_lived_cross_context_revaluations':copy(
                     possible_lived_cross_context_revaluations(
                         actors[aid],experience,objective_ref)),
@@ -1271,6 +1347,8 @@ class ConstitutiveRuntime:
         if expression_access.get('own_practical_selection'):
             expression_access['own_practical_selection'].pop('private_rehearsal',None)
             expression_access['own_practical_selection'].pop('undertaking_attention',None)
+            expression_access['own_practical_selection'].pop('focal_encounter',None)
+            expression_access['own_practical_selection'].pop('cross_object_attention_analytic_only',None)
             expression_access['own_practical_selection'].pop('productive_witness_attention',None)
             expression_access['own_practical_selection'].pop('notice_expectation',None)
             expression_access['own_practical_selection'].pop('interactivity_deferral',None)
@@ -1278,6 +1356,7 @@ class ConstitutiveRuntime:
             expression_access['own_practical_selection'].pop('selected_course_affects_analytic_only',None)
             expression_access['own_practical_selection'].pop('course_historical_currents_analytic_only',None)
         expression_access.pop('undertaking_attention_receipt',None)
+        expression_access.pop('focal_encounter_receipt',None)
         if correspondence_cue is not None:
             expression_access.pop('correspondence_attention_receipt',None)
             expression_access.get('own_practical_selection',{}).pop('correspondence_attention',None)
@@ -1434,8 +1513,7 @@ class ConstitutiveRuntime:
 
     def background(self,days,processes=None):
         v,w=self.ledger.world(self.world_id)
-        actor_versions={aid:self.ledger.actor(aid)[0] for aid in self.ledger.actors()}
-        actors=self.ledger.actors()
+        actor_versions,actors=self.ledger.actors_with_versions()
         period=passage(w,actors,days,processes)
         deltas={aid:recurring_provisional_growth(a,period['id'],period['processes']) for aid,a in actors.items()}
         commit=self.ledger.commit(self.world_id,v,w,actors,actor_versions,'COMPRESSED_ORDINARY_LIFE',None,

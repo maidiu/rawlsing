@@ -15,7 +15,8 @@ from .practical_difference import validate_expected_difference, appraise_expecte
 from .expectation_afterlife import admit_activity_affect, admit_expressive_practice
 from .preproject_agency import admit_preproject_anticipation, revise_preproject_anticipation
 from .reflective_regulation import acquire_reflective_regulation, admit_private_possible_end, private_end_ground
-from .attention_field import received_undertaking_attention, received_correspondence_attention
+from .attention_field import (received_undertaking_attention, received_correspondence_attention,
+                              received_focal_encounter)
 from .practical_powers import admit_repair_technique, active_repair_technique
 from .historical_self_organization import (
     acquire_orientation, revise_orientation, acquire_operative_self,
@@ -31,7 +32,8 @@ from .cultural_mediation import (
     admit_cultural_reference,admit_reference_revision)
 from .social_vocal_development import admit_vocal_coordination
 from .prospective_horizon import record_possible_end_trial
-from .unintended_goods import possible_unintended_goods, qualify_incidental_object_takeup
+from .unintended_goods import (possible_unintended_goods, qualify_incidental_object_takeup,
+                               possible_cross_object_significance)
 from .functional_correspondence import (admit_functional_correspondence,
                                          admit_functional_revision)
 from .material_investments import admit_material_investment
@@ -521,8 +523,9 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                  'grade':GRADE}
             if c.get('incidental_object_end_basis') is not None:
                 matches=[q['incidental_object_end_basis'] for q in
-                    possible_unintended_goods(actor,experience,
+                    (possible_unintended_goods(actor,experience,
                         experience.get('own_practical_selection'),event_ref)
+                     + possible_cross_object_significance(actor,experience,event_ref))
                     if q.get('incidental_object_end_basis')==c['incidental_object_end_basis']
                     and q['source_cue_ref']==ref
                     and q['world_material_object_ref']==origin_object]
@@ -916,6 +919,22 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                     raise InvalidDevelopment('CORRESPONDENCE_MEMORY_UNQUALIFIED_ATTENTION')
                 entry['correspondence_attention']=copy(receipt)
                 entry['remembered_meaning_not_message_truth']=True
+            if 'focal_encounter_ref' in c:
+                receipt=received_focal_encounter(actor,
+                    experience.get('own_practical_selection'),experience)
+                paths=[p for p in actor.get('evidence_paths',[])
+                       if p.get('event')==event_ref and p.get('experience_ref')==experience['ref']
+                       and p.get('focal_encounter')==receipt]
+                if (op!='MEMORY' or not receipt or receipt!=experience.get('focal_encounter_receipt')
+                        or c['focal_encounter_ref']!=receipt['attention_id'] or len(paths)!=1
+                        or receipt['cue_ref'] not in paths[0].get('received_cue_refs',[])
+                        or type(entry['content']) is not str or not entry['content'].strip()
+                        or len(entry['content'])>512
+                        or any(m.get('focal_encounter',{}).get('attention_id')==receipt['attention_id']
+                               for m in actor['memories'])):
+                    raise InvalidDevelopment('FOCAL_MEMORY_UNQUALIFIED_ATTENTION')
+                entry['focal_encounter']=copy(receipt)
+                entry['remembered_meaning_not_other_mind']=True
             actor['traces' if op=='TRACE' else 'memories'].append(entry)
             report.append({'kind':op,'ref':ref,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
         elif op=='CHANGE_OTHER_MODEL':

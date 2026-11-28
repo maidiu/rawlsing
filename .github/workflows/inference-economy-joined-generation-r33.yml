@@ -1,0 +1,83 @@
+name: Inference economy R33 joined continuing organism
+on:
+  push:
+    branches: [agent/inference-economy-semantic-port-r1-20261126]
+    paths:
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/modern_generation_port_r28.py'
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/test_joined_generation_r33.py'
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/live_turn_port_r38.py'
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/test_live_turn_r38.py'
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/test_rich_formation_r44.py'
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/continuing_life_r52.py'
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/test_continuing_life_r52.py'
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/test_current_owner_intake_r63.py'
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/inference_lab.py'
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/live_psychological_llm.py'
+      - '.github/workflows/inference-economy-joined-generation-r33.yml'
+  workflow_dispatch:
+jobs:
+  joined:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: specialist
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 604f3d1a51a21c53523a2040b30e234b556785fa
+          path: owner
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact joined owner and checkpoint source
+        run: |
+          git -C specialist rev-parse HEAD
+          test "$(git -C owner rev-parse HEAD)" = 604f3d1a51a21c53523a2040b30e234b556785fa
+          test "$(git -C owner hash-object SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/runtime.py)" = cf4e46841fe118fb4704ef44af0b706a1110b2b5
+          test "$(git -C owner hash-object SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/continuity_clock.py)" = 5db21d368bb197f40c7fd5b47325ecbda9763d0d
+          test "$(git -C specialist hash-object WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py)" = 231cab97b4bc5e2f40de3c45d179a68ba58585c5
+      - name: Joined developmental and live ancestry court
+        env:
+          PYTHONPATH: ${{ github.workspace }}/owner/SEAM/ORACLE/UM_SOROK_ORGANISM_R3:${{ github.workspace }}/owner/SEAM/NEIGHBORMULCH/tests:${{ github.workspace }}/owner/SEAM/NEIGHBORMULCH:${{ github.workspace }}/specialist/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -c 'import um_sorok_organism.runtime as r; assert "/owner/" in r.__file__; import unittest; unittest.main(module=None,argv=["unittest","test_joined_generation_r33","test_live_turn_r38","test_rich_formation_r44","test_continuing_life_r52"])'
+          python -O -c 'import um_sorok_organism.runtime as r; "/owner/" in r.__file__ or __import__("sys").exit("WRONG_OWNER"); import unittest; unittest.main(module=None,argv=["unittest","test_joined_generation_r33","test_live_turn_r38","test_rich_formation_r44","test_continuing_life_r52"])'
+
+  current-owner-intake:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - lane: CO
+            ref: 2f9bbc89cd3b935bdb5b5c9940327ca5d0f18d57
+          - lane: NEIGHBOR
+            ref: 3bafa19fda1ee7597583a649e8c3d1d0ee20ca21
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: specialist
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.ref }}
+          path: owner
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Current exact owner intake (not a combined owner merge)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/owner/SEAM/ORACLE/UM_SOROK_ORGANISM_R3:${{ github.workspace }}/owner/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests:${{ github.workspace }}/owner/SEAM/NEIGHBORMULCH/tests:${{ github.workspace }}/owner/SEAM/NEIGHBORMULCH:${{ github.workspace }}/specialist/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+          INFERENCE_OWNER_LANE: ${{ matrix.lane }}
+        run: |
+          git -C specialist rev-parse HEAD
+          test "$(git -C owner rev-parse HEAD)" = "${{ matrix.ref }}"
+          python -c 'import um_sorok_organism.runtime as r; "/owner/" in r.__file__ or __import__("sys").exit("WRONG_OWNER"); import unittest; unittest.main(module=None,argv=["unittest","test_current_owner_intake_r63"])'
+          python -O -c 'import um_sorok_organism.runtime as r; "/owner/" in r.__file__ or __import__("sys").exit("WRONG_OWNER"); import unittest; unittest.main(module=None,argv=["unittest","test_current_owner_intake_r63"])'

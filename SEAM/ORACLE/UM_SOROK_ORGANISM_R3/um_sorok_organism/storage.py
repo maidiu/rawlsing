@@ -1,13 +1,53 @@
 """Research-only independent event and state owner. NEVER writes native P2/P3.
 SQLite atomic world+actors transaction, version guards and append-only hash chain.
 """
-import sqlite3, json, threading
+import sqlite3, json, threading, hashlib
 from contextlib import contextmanager
 from pathlib import Path
 from .types import canonical, digest, copy, GRADE
 
 class Conflict(Exception): pass
 class Missing(Exception): pass
+
+def _canonical_event_hashes(envelope, raw, prior, eid):
+    """Hash the already verified canonical envelope without reserializing it.
+
+    The existing sorted JSON preimages are retained byte for byte.
+    No memoization or trusted cached history: callers must first establish
+    canonical(envelope) == raw. Envelope argument also permits matched legacy
+    hashing in the economic court.
+    """
+    payload=raw.encode('utf-8')
+    def hash_parts(*parts):
+        h=hashlib.sha256()
+        for part in parts:h.update(part)
+        return h.hexdigest()
+    previous=canonical(prior).encode('utf-8')
+    identity=hash_parts(b'{"envelope":',payload,b',"prev":',previous,b'}')
+    chain=hash_parts(b'{"eid":',canonical(eid).encode('utf-8'),
+                     b',"envelope":',payload,b',"previous":',previous,b'}')
+    return 'evt_'+identity[:20],chain
+
+
+def _canonical_object_hash(value, raw):
+    """Reuse bytes *after* the caller has proved canonical(value) == raw.
+
+    Retain parsed value for the exact original hashing comparator. Never use
+    this as a substitute for canonical byte or type/identity verification.
+    """
+    return hashlib.sha256(raw.encode('utf-8')).hexdigest()
+
+
+def _canonical_seal_hash(category, value, raw):
+    """Exact canonical source-seal wrapper; only validated content bytes."""
+    h=hashlib.sha256()
+    h.update(b'{"category":')
+    h.update(canonical(category).encode('utf-8'))
+    h.update(b',"content":')
+    h.update(raw.encode('utf-8'))
+    h.update(b'}')
+    return h.hexdigest()
+
 
 class ResearchLedger:
     def __init__(self, path):
@@ -58,9 +98,10 @@ class ResearchLedger:
             envelope=json.loads(payload)
             if (canonical(envelope)!=payload or event_world!=envelope['world'] or
                 event_clock!=envelope['clock'] or event_actor!=envelope['actor'] or
-                kind!=envelope['kind'] or
-                eid!='evt_'+digest({'prev':prior,'envelope':envelope})[:20] or
-                chain!=digest({'previous':prior,'eid':eid,'envelope':envelope})):
+                kind!=envelope['kind']):
+                raise Conflict('UNCOMMITTED_LEDGER_RECORD')
+            expected_id,expected_chain=_canonical_event_hashes(envelope,payload,prior,eid)
+            if eid!=expected_id or chain!=expected_chain:
                 raise Conflict('UNCOMMITTED_LEDGER_RECORD')
         except (ValueError,TypeError,KeyError) as exc:
             raise Conflict('UNCOMMITTED_LEDGER_RECORD') from exc
@@ -71,7 +112,7 @@ class ResearchLedger:
             raise Conflict('UNCOMMITTED_WORLD_ROSTER')
         try:
             world=json.loads(rows[0][1])
-            if canonical(world)!=rows[0][1] or digest(world)!=envelope['world_digest'] or world['clock']!=event_clock:
+            if canonical(world)!=rows[0][1] or _canonical_object_hash(world,rows[0][1])!=envelope['world_digest'] or world['clock']!=event_clock:
                 raise Conflict('UNCOMMITTED_WORLD_STATE')
         except (ValueError,TypeError,KeyError) as exc:
             raise Conflict('UNCOMMITTED_WORLD_STATE') from exc
@@ -82,7 +123,7 @@ class ResearchLedger:
             try:
                 person=json.loads(raw)
                 if (canonical(person)!=raw or person.get('id')!=aid or
-                    digest(person)!=envelope['actor_digests'][aid]):
+                    _canonical_object_hash(person,raw)!=envelope['actor_digests'][aid]):
                     raise Conflict('UNCOMMITTED_ACTOR_STATE')
             except (ValueError,TypeError,KeyError) as exc:
                 raise Conflict('UNCOMMITTED_ACTOR_STATE') from exc
@@ -133,7 +174,7 @@ class ResearchLedger:
                 content=json.loads(raw)
                 if canonical(content)!=raw:
                     raise ValueError('NONCANONICAL_SOURCE_BYTES')
-                actual[sid]=digest({'category':category,'content':content})
+                actual[sid]=_canonical_seal_hash(category,content,raw)
             except (ValueError,TypeError) as exc:
                 raise Conflict('SOURCE_SEAL_TABLE_NONCANONICAL') from exc
         if anchored!=actual:
@@ -224,6 +265,19 @@ class ResearchLedger:
 
     def actors(self):
         return {a:json.loads(b) for a,b in self.conn.execute('SELECT id,body FROM actors')}
+
+    def actors_with_versions(self):
+        """One roster statement binds each decoded body to its own version.
+
+        No trusted cache or cross-statement roster claim. The existing world
+        version and per-actor CAS checks, full historical audit, and anchor
+        verification remain authoritative at commit.
+        """
+        versions={};actors={}
+        for aid,version,body in self.conn.execute('SELECT id,version,body FROM actors'):
+            versions[aid]=version
+            actors[aid]=json.loads(body)
+        return versions,actors
 
     def seal_source(self, sid, category, content, *, expected_world=None):
         """Optional late source seal: chain-anchor atomically, never an orphan row.
@@ -389,15 +443,34 @@ class ResearchLedger:
                               (eid,wid,world['clock'],actor_id,kind,canonical(envelope),prev,chain))
             return {'id':eid,'chain_hash':chain,'envelope':envelope}
 
-    def events(self,limit=None):
+    def _iter_events(self,limit=None):
         if limit is None:
             x=self.conn.execute('SELECT eid,world_id,clock,actor_id,kind,payload,previous_hash,chain_hash FROM events ORDER BY seq')
         else:
             x=self.conn.execute('SELECT eid,world_id,clock,actor_id,kind,payload,previous_hash,chain_hash FROM events ORDER BY seq LIMIT ?', (limit,))
-        return [{'id':e,'world_id':wid,'clock':clock,'actor_id':aid,'kind':kind,
-                 'envelope':json.loads(p),'envelope_bytes':p,
-                 'previous_hash':prev,'chain_hash':h}
-                for e,wid,clock,aid,kind,p,prev,h in x]
+        for e,wid,clock,aid,kind,p,prev,h in x:
+            yield {'id':e,'world_id':wid,'clock':clock,'actor_id':aid,'kind':kind,
+                   'envelope':json.loads(p),'envelope_bytes':p,
+                   'previous_hash':prev,'chain_hash':h}
+
+    def events(self,limit=None):
+        # Retain the existing public materialized reader contract.
+        return list(self._iter_events(limit))
+
+    def latest_event(self):
+        """Bounded read of the exact existing tail record, not a new cache.
+
+        Same event envelope as events()[-1], without hydrating earlier life.
+        The enclosing step still uses the existing CAS/chain verification.
+        """
+        row=self.conn.execute(
+            'SELECT eid,world_id,clock,actor_id,kind,payload,previous_hash,chain_hash '
+            'FROM events ORDER BY seq DESC LIMIT 1').fetchone()
+        if row is None:return None
+        e,wid,clock,aid,kind,p,prev,h=row
+        return {'id':e,'world_id':wid,'clock':clock,'actor_id':aid,'kind':kind,
+                'envelope':json.loads(p),'envelope_bytes':p,
+                'previous_hash':prev,'chain_hash':h}
 
     def verify_chain(self):
         """Fail closed in ordinary AND Python -O interpreters.
@@ -408,10 +481,10 @@ class ResearchLedger:
         source seal. This is local integrity, not native cryptographic issuer.
         """
         prior='GENESIS';count=0;anchored={};previous_roster=None;previous_actor_digests=None
-        records=self.events()
-        if not records:
-            raise AssertionError('MISSING_OBJECTIVE_EVENT_HISTORY')
-        for idx,r in enumerate(records):
+        last=None
+        # Complete verification still visits every row, in the existing order.
+        # Only the current row and the predecessor metadata must remain live.
+        for idx,r in enumerate(self._iter_events()):
             envelope=r['envelope']
             if (type(envelope) is not dict or
                     any(k not in envelope for k in ('world','clock','actor','kind'))):
@@ -428,9 +501,11 @@ class ResearchLedger:
                 raise AssertionError('DUPLICATE_INITIALIZATION_GENESIS')
             if r['previous_hash']!=prior:
                 raise AssertionError('BROKEN_EVENT_ANCESTRY')
-            if r['id']!='evt_'+digest({'prev':prior,'envelope':envelope})[:20]:
+            expected_id,expected_chain=_canonical_event_hashes(
+                envelope,r['envelope_bytes'],prior,r['id'])
+            if r['id']!=expected_id:
                 raise AssertionError('BAD_EVENT_ID')
-            if r['chain_hash']!=digest({'previous':prior,'eid':r['id'],'envelope':envelope}):
+            if r['chain_hash']!=expected_chain:
                 raise AssertionError('BAD_EVENT_CHAIN_HASH')
             seals=envelope.get('source_seal_digests',{})
             if type(seals) is not dict:
@@ -468,7 +543,9 @@ class ResearchLedger:
                 raise AssertionError('FAMILY_CONCEPTION_ANCESTRY_INVALID')
             previous_roster=roster
             previous_actor_digests=envelope['actor_digests']
-            prior=r['chain_hash'];count+=1
+            prior=r['chain_hash'];count+=1;last=envelope
+        if last is None:
+            raise AssertionError('MISSING_OBJECTIVE_EVENT_HISTORY')
         if self.conn.execute('SELECT 1 FROM constraints LIMIT 1').fetchone():
             raise AssertionError('UNANCHORED_CONSTRAINTS_STATE')
         actual={}
@@ -476,11 +553,10 @@ class ResearchLedger:
             normalized=json.loads(content)
             if canonical(normalized)!=content:
                 raise AssertionError('SOURCE_SEAL_NONCANONICAL_BYTES:'+sid)
-            actual[sid]=digest({'category':cat,'content':normalized})
+            actual[sid]=_canonical_seal_hash(cat,normalized,content)
         if anchored!=actual:
             raise AssertionError('SOURCE_SEAL_ANCHOR_MISMATCH_OR_UNANCHORED_LEGACY')
-        if records:
-            last=records[-1]['envelope']
+        if last is not None:
             # Exact current REMONT P070: the *stored* state is committed,
             # not only the meaning of its parsed JSON. No extra world can be
             # present even if the primary world hash still matches.
@@ -495,7 +571,7 @@ class ResearchLedger:
                     raise AssertionError('WORLD_SNAPSHOT_NONCANONICAL_BYTES')
             except (ValueError,TypeError) as exc:
                 raise AssertionError('WORLD_SNAPSHOT_NONCANONICAL_BYTES') from exc
-            if digest(world_obj)!=last['world_digest']:
+            if _canonical_object_hash(world_obj,world_rows[0][1])!=last['world_digest']:
                 raise AssertionError('LAST_WORLD_STATE_CHANGED_OUTSIDE_LEDGER')
             actor_rows=self.conn.execute('SELECT id,body FROM actors').fetchall()
             if set(aid for aid,_ in actor_rows)!=set(last['actor_digests']):
@@ -509,7 +585,7 @@ class ResearchLedger:
                         raise AssertionError('ACTOR_SNAPSHOT_NONCANONICAL_BYTES:'+aid)
                 except (ValueError,TypeError) as exc:
                     raise AssertionError('ACTOR_SNAPSHOT_NONCANONICAL_BYTES:'+aid) from exc
-                if person.get('id')!=aid or digest(person)!=last['actor_digests'][aid]:
+                if person.get('id')!=aid or _canonical_object_hash(person,raw)!=last['actor_digests'][aid]:
                     raise AssertionError('LAST_ACTOR_STATE_CHANGED_OUTSIDE_LEDGER:'+aid)
         return {'grade':GRADE,'events':count,'valid':True,'last_hash':prior,
                 'source_seals_verified':len(anchored)}
