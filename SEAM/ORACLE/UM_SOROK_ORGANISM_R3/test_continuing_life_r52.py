@@ -455,6 +455,8 @@ class ContinuingLifeCourt(unittest.TestCase):
                 root=Path(d);db=root/"life.sqlite"
                 def continue_actual(rt,reopen):
                     entry=deepcopy(rt.ledger.actor("nadia")[1]);proj=entry["projects"][0]["id"]
+                    work=[p for p in rt.ledger.actor("father")[1]["projects"] if p["object"]=="subsistence"]
+                    self.assertEqual(len(work),1);work_proj=work[0]["id"]
                     self.assertEqual(entry["location"],"workshop")
                     self.assertEqual(entry["body"]["language"],.35)
                     self.assertEqual(entry["memories"],[])
@@ -484,9 +486,38 @@ class ContinuingLifeCourt(unittest.TestCase):
                             self.calls.append(r)
                             if r["mode"]=="TERMINAL":return {"retrospective":retro(r),"prospective":None}
                             if self.resumed:
-                                assert r["context"]["prior_generation_and_live_ancestry"]
-                                return rows(r,[("nadia",course(),0),("father",policy([action("REST")]),0),
-                                               ("nadia",course(),0)])
+                                if not r["context"]["prior_generation_and_live_ancestry"]:
+                                    raise AssertionError("actual live ancestry absent")
+                                n=len(self.calls)
+                                if n==1:
+                                    return rows(r,[("nadia",course(),0),("father",policy([action("REST")]),0),
+                                                   ("nadia",course(),0)])
+                                if n==2:
+                                    # Actual previously constituted adult, not
+                                    # a new wage-labor personality. Three exact
+                                    # independently selected material courses.
+                                    work=action("WORK",{"project_id":work_proj})
+                                    routine={"offer":"historically_possible_recurrent_routines",
+                                        "construct":"RECURRENT_ROUTINE",
+                                        "match":{"basis":{"actor":"father","operation":"WORK","project_ref":work_proj}},
+                                        "augment":{"window_days":60,"hours_per_active_day":2.,
+                                                   "provisional_exposure_fraction":.5}}
+                                    return rows(r,[("father",policy([work]),0),
+                                        ("father",policy([action("REST")]),0),("father",policy([work]),0),
+                                        ("father",policy([action("REST")]),0),("father",policy([work],[routine]),0)])
+                                if n==3:
+                                    def revise(mode):
+                                        return {"offer":"historically_possible_routine_revisions","construct":"ROUTINE_REVISION",
+                                            "match":{"basis":{"actor":"father","operation":"WORK","project_ref":work_proj}},
+                                            "augment":{"mode":mode,"interpretive_hypothesis":"Change my own continued work."}}
+                                    # Source comes from ACTUAL previous admitted
+                                    # routine, not an authored period catalog.
+                                    return rows(r,[("nadia",course(),10),
+                                        ("father",policy([action("REST")],[revise("PAUSE")]),0),
+                                        ("nadia",course(),5),
+                                        ("father",policy([action("REST")],[revise("RESUME")]),0),
+                                        ("nadia",course(),5)])
+                                raise AssertionError("unexpected resumed call")
                             n=len(self.calls)
                             if n==1:
                                 first=[affect("WITHHOLD"),memory] if nominate else [memory,affect("WITHHOLD")]
@@ -587,6 +618,32 @@ class ContinuingLifeCourt(unittest.TestCase):
                         result=cold.ledger.actor("nadia")[1]
                         p=result["projects"][-1]
                         self.assertEqual(p["operational_history"][-1]["operation"],"REST" if nominate else "SING")
+                        s.historical_checkpoint()
+                        before_period=deepcopy(cold.ledger.world()[1])
+                        father=deepcopy(cold.ledger.actor("father")[1])
+                        child_before=deepcopy(cold.ledger.actor("nadia")[1])
+                        sources=[q for q in before_period["routine_source_registry"].values()
+                                 if q["actor"]=="father" and q.get("operation")=="WORK"]
+                        self.assertEqual(len(sources),1)
+                        src=sources[0];self.assertEqual(len(set(src["basis_event_refs"])),3)
+                        self.assertEqual(src["evidence_class"],"SOURCEFREE_ACTOR_LIVED_ROUTINE_PROPOSAL")
+                        s.historical_checkpoint()
+                        after=cold.ledger.world()[1]
+                        periods=[q for q in after["historical_periods"] if q["start"]>=before_period["clock"]]
+                        active=[q for q in periods if any(x["source_ref"]==src["id"] for x in q["processes"])]
+                        held=[q for q in periods if any(x["source_ref"]==src["id"] and
+                              x["reason"]=="ACTOR_ROUTINE_PAUSED" for x in q.get("situationally_withheld_processes",[]))]
+                        self.assertEqual(sum(q["end"]-q["start"] for q in active),15)
+                        self.assertEqual(sum(q["end"]-q["start"] for q in held),5)
+                        self.assertEqual(sum(q["modeled_labor_hours"] for q in after["wage_labor_periods"]
+                                             if q["source_ref"]==src["id"]),15.)
+                        self.assertEqual([x["mode"] for x in after["routine_source_registry"][src["id"]]["revisions"]],
+                                         ["PAUSE","RESUME"])
+                        self.assertEqual(cold.ledger.actor("father")[1]["memories"],father["memories"])
+                        result=cold.ledger.actor("nadia")[1];p=result["projects"][-1]
+                        self.assertEqual(result["memories"],child_before["memories"])
+                        self.assertEqual(p["operational_history"][-1]["operation"],"REST" if nominate else "SING")
+                        self.assertEqual(cold.ledger.events()[:len(actual)],actual)
                         s.finish_history()
                         self.assertTrue(cold.verify()["valid"])
                         self.assertTrue(all(x["status"]=="RETURNED" for x in s.receipts()))
@@ -594,7 +651,8 @@ class ContinuingLifeCourt(unittest.TestCase):
                         print("R79_JOINED_CHILD",json.dumps({"nominate":nominate,"age_days":result["age_days"],
                             "projects":len(result["projects"]),"historical_calls":len(h.calls)+len(h2.calls),
                             "live_calls":calls,"native_events":len(cold.ledger.events()),
-                            "actual_later_course":p["operational_history"][-1]["operation"]},sort_keys=True))
+                            "actual_later_course":p["operational_history"][-1]["operation"],
+                            "modeled_wage_hours":15,"paused_days":5,"actual_work_anchor_events":3},sort_keys=True))
                         return result
                     finally:s.close();cold.close()
                 result=mod.EarlyOrdinaryPractice().productive_ordinary_arm(db,True,transfer=True,affect=True,
