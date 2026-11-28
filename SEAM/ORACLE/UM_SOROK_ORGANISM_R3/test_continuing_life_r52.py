@@ -704,9 +704,9 @@ class ContinuingLifeCourt(unittest.TestCase):
                     return dict(model=name,endpoint=endpoint,api_key="not-a-key",allow_private_actor_data=True,
                         **({"sourcefree_checkpoint_attested":True} if mode=="HISTORICAL"
                         else {"sourcefree_live_attested":True}))
-                def router(mode,b,env=None,dispatch=False):
+                def router(mode,b,env=None,dispatch=False,reference="reference"):
                     return lab.CombinedAllocationProvider(mode,owner_head=head,budget=b,
-                        reference_profile="reference",provider_options={n:opts(n,mode)
+                        reference_profile=reference,provider_options={n:opts(n,mode)
                         for n in ("reference","economy")},sourcefree_allocation_authorized=True,
                         demand_envelope=env,sourcefree_envelope_dispatch=dispatch)
                 def setup(label,n):
@@ -748,8 +748,7 @@ class ContinuingLifeCourt(unittest.TestCase):
                     owner_results={}
                     for arm in ("reference","economy"):
                         path,rt,sid,catalog=setup(label+"-"+arm,n)
-                        provider=lab.budgeted_combined_provider("HISTORICAL",budget=b,budget_profile=arm,
-                            metrics_capacity=1,**opts(arm,"HISTORICAL"))
+                        provider=router("HISTORICAL",b,reference=arm)
                         history=History(sid)
                         def answer(self,payload):
                             req=json.loads(payload["messages"][1]["content"])
@@ -764,11 +763,15 @@ class ContinuingLifeCourt(unittest.TestCase):
                         self.assertEqual(rec["cycle_disposition"],"CYCLE_RETURNED")
                         owner_results[arm]={"receipt":rec,"native_digest":lab.digest(outcome)}
                     row=tape["payload"]["rows"][0]
-                    review={"seq":0,"request_digest":row["packet_digest"],
-                        "reference_identity":ids["reference"],"candidate_identity":ids["economy"],
-                        "reference_disposition":"OWNER_OPERATION_RETURNED","candidate_disposition":"OWNER_OPERATION_RETURNED",
-                        "quality_verdict":"ADEQUATE","reference_cost_nanos":1250,"candidate_cost_nanos":250,
-                        "review_digest":lab.digest({"fixture_only":True,"arms":owner_results})}
+                    review=lab.paired_owner_review(tape,0,mode="HISTORICAL",budget=b,
+                        reference_receipt=owner_results["reference"]["receipt"],
+                        candidate_receipt=owner_results["economy"]["receipt"],
+                        reference_identity=ids["reference"],candidate_identity=ids["economy"],
+                        quality_verdict="ADEQUATE",
+                        quality_evidence_digest=lab.digest({"fixture_only":True,"arms":owner_results}))
+                    self.assertEqual(review["reference_cost_nanos"],1250)
+                    self.assertEqual(review["candidate_cost_nanos"],250)
+                    self.assertEqual(review["request_digest"],row["packet_digest"])
                     courses.append({"workload":tape,"partition":partition,"reviews":[review]})
                 def envelope(c):
                     return lab.CombinedDemandEnvelope(mode="HISTORICAL",owner_head=head,

@@ -704,7 +704,8 @@ class CombinedAllocationProvider:
                 "compact_exact_packet":p.compact_exact_packet,
                 "compact_structured_packet":p.compact_structured_packet,
                 "compact_task_prompt":p.compact_task_prompt,
-                "timeout_seconds":p.timeout_seconds})
+                "timeout_seconds":p.timeout_seconds,
+                "wire_contract":p.wire_contract_identity()})
         self.envelope=demand_envelope;self.envelope_dispatch=sourcefree_envelope_dispatch
         if type(sourcefree_envelope_dispatch) is not bool or (sourcefree_envelope_dispatch and demand_envelope is None):
             raise ValueError("LAB_DEMAND_DISPATCH_OPTIONS")
@@ -863,6 +864,53 @@ def reconcile_budget_owner_receipts(budget,*,historical_receipts=(),live_receipt
                 "attempts":list(attempts.values()),"profiles":groups,"preflight_refusals":preflight,
                 "unlinked_owner_receipts":unlinked_receipts,"billing_guarantee":False}
     finally:budget.dispatch_lock.release()
+
+
+
+def paired_owner_review(workload,seq,*,mode,budget,reference_receipt,candidate_receipt,
+                        reference_identity,candidate_identity,quality_verdict,quality_evidence_digest):
+    """Derive paired costs and owner outcomes from the actual existing custody.
+
+    Psychological judgment is still an explicit external input. Never infer
+    adequacy from equal state, returned proposal, lower expense, or completion.
+    The digest binds evidence supplied by the caller, not its authenticity.
+    """
+    p=verify_workload(workload)
+    rows=p["rows"]
+    if type(seq) is not int or not 0<=seq<len(rows):raise ValueError("LAB_PAIR_SEQUENCE")
+    if mode not in ("HISTORICAL","LIVE"):raise ValueError("LAB_PAIR_MODE")
+    row=rows[seq];task=CHECKPOINT_TASK if mode=="HISTORICAL" else LIVE_TURN_TASK
+    if (row["task"]!=task or quality_verdict not in ("ADEQUATE","INADEQUATE","UNRESOLVED")
+            or type(quality_evidence_digest) is not str or not re.fullmatch("[0-9a-f]{64}",quality_evidence_digest)
+            or reference_identity==candidate_identity
+            or any(type(x) is not str or not re.fullmatch("[0-9a-f]{64}",x)
+                   for x in (reference_identity,candidate_identity))):
+        raise ValueError("LAB_PAIR_REVIEW")
+    pair=(reference_receipt,candidate_receipt)
+    for receipt,identity in zip(pair,(reference_identity,candidate_identity)):
+        if (type(receipt) is not dict or receipt.get("request_digest")!=row["packet_digest"]
+                or (receipt.get("transport_receipt") or {}).get("allocation_identity")!=identity):
+            raise ValueError("LAB_PAIR_RECEIPT_BINDING")
+    args={"historical_receipts":pair} if mode=="HISTORICAL" else {"live_receipts":pair}
+    report=reconcile_budget_owner_receipts(budget,**args)
+    by_attempt={a["attempt"]:a for a in report["attempts"]}
+    linked=[]
+    for receipt in pair:
+        a=by_attempt.get(receipt["transport_receipt"].get("budget_attempt"))
+        if a is None or a["owner_disposition"]=="UNLINKED":
+            linked.append({"owner_disposition":"UNLINKED","rate_estimate_nanos":None})
+        else:linked.append(a)
+    ref,cand=linked
+    return {"seq":seq,"request_digest":row["packet_digest"],
+        "reference_identity":reference_identity,"candidate_identity":candidate_identity,
+        "reference_disposition":ref["owner_disposition"],"candidate_disposition":cand["owner_disposition"],
+        "quality_verdict":quality_verdict,"reference_cost_nanos":ref["rate_estimate_nanos"],
+        "candidate_cost_nanos":cand["rate_estimate_nanos"],
+        "review_digest":digest({"scope":"PAIRED_OWNER_CUSTODY_WITH_EXTERNAL_QUALITY_ASSERTION",
+            "workload":workload["sha256"],"seq":seq,"mode":mode,
+            "reference_receipt":digest(reference_receipt),"candidate_receipt":digest(candidate_receipt),
+            "accounted_attempts":linked,"quality_verdict":quality_verdict,
+            "quality_evidence_digest":quality_evidence_digest})}
 
 
 def save_report(path,report):

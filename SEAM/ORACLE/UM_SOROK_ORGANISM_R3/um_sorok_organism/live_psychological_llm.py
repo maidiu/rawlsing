@@ -827,6 +827,11 @@ class ExplicitDevelopmentalCheckpointProvider(ExplicitJSONLLMProvider):
         if sourcefree_checkpoint_attested is not True:
             raise ValueError("CHECKPOINT_SOURCEFREE_ATTESTATION_REQUIRED")
         super().__init__(**kwargs)
+    @staticmethod
+    def wire_contract_identity():
+        from .types import digest
+        return digest({"abi":"COMBINED_HISTORICAL_V1","instructions":_CHECKPOINT_INSTRUCTIONS})
+
     def call(self,request):
         receipt={"task":"developmental_checkpoint",
                  "transport":"MOCK" if self._transport is not None else "HTTPS",
@@ -974,6 +979,13 @@ class ExplicitLiveTurnProvider(ExplicitJSONLLMProvider):
         if sourcefree_live_attested is not True:
             raise ValueError("LIVE_TURN_SOURCEFREE_ATTESTATION_REQUIRED")
         super().__init__(**kwargs)
+    @staticmethod
+    def wire_contract_identity():
+        from .types import digest
+        return digest({"abi":"COMBINED_LIVE_V1","instructions":_LIVE_TURN_INSTRUCTIONS,
+                       "exact_rules":_LIVE_EXACT_RULES,"alias_rules":_ALIAS_RULES,
+                       "structured_rules":_STRUCTURED_RULES})
+
     def call(self,request):
         receipt={"task":"live_conditional_turn","transport":"MOCK" if self._transport is not None else "HTTPS",
                  "attempts":0,"outcome":"REJECTED_OR_FAILED","instruction_bytes":None,
