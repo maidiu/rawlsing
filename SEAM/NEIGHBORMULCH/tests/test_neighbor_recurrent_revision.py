@@ -211,4 +211,86 @@ class ContinuingRevision(unittest.TestCase):
             self.assertEqual((a['meal'],b['meal']),('BLOCKED','PERFORMED'))
             print('R008_CONTINUING_CONTRADICTION',a,b)
 
+class RelationalRoutineRevision(unittest.TestCase):
+    def course(self,db,nominate):
+        phase={'action':'CARE','revision':False,'received':[]}
+        def policy(task,p):
+            if task=='expression':return {'task':task,'surface':'Ordinary life.'}
+            if task=='actor_attempt':
+                if p.get('requesting_actor'):return {'task':task,'action':'REFUSE'}
+                op=phase['action']
+                rows=[x for x in p.get('practical_options',[]) if x['operation']==op and x.get('project_id')]
+                if rows:return {'task':task,'practical_option_id':rows[0]['option_id']}
+                return {'task':task,'action':op}
+            if task=='development':
+                candidates=[]
+                if phase['action']=='CARE':
+                    candidates.extend(p.get('historically_possible_care_practices',[]))
+                    for offer in p.get('historically_possible_recurrent_routines',[]):
+                        candidates.append({'kind':'ACQUIRE_RECURRENT_ROUTINE',
+                            'basis':offer['basis'],'window_days':60,
+                            'hours_per_active_day':2.,'provisional_exposure_fraction':1.})
+                if phase['revision'] and p['actor']['id']=='giver':
+                    old=p.get('historically_possible_care_practice_revisions',[])
+                    new=[x for x in p.get('historically_possible_routine_revisions',[])
+                         if x['basis'].get('received_directed_act')]
+                    phase['received'].extend(deepcopy(new))
+                    if nominate:
+                        candidates.extend({**x,'interpretive_hypothesis':'This contribution may need to stop.'}
+                                          for x in old)
+                        candidates.extend({'kind':'REVISE_RECURRENT_ROUTINE','basis':x['basis'],
+                                           'mode':'PAUSE','interpretive_hypothesis':
+                                           'This particular recurrent care may need to stop.'} for x in new)
+                return {'task':task,'candidates':candidates}
+            raise AssertionError(task)
+        svc=ValidatingSemanticService(CallbackLLMProvider(policy))
+        rt=ConstitutiveRuntime(str(db),semantic=svc)
+        try:
+            people=[adult(x,x) for x in ('giver','second','recipient','third')]
+            for a in people[:2]:
+                a['projects']=[{'id':'care-'+a['id'],'object':'care for recipient','means':['CARE'],
+                    'addressed_party_ref':'recipient','priority':.7,'status':'active'}]
+            rt.ledger.initialize(blank_world(),people)
+            for aid in ('giver','second'):
+                for _ in range(3):
+                    phase['action']='CARE'
+                    self.assertEqual(rt.step(aid)['status'],'PERFORMED')
+                    phase['action']='REST';rt.step(aid)
+            def world():return rt.ledger.world()[1]
+            def actor(aid):return rt.ledger.actor(aid)[1]
+            prior=deepcopy(actor('giver'))
+            self.assertEqual(len(prior['care_practical_commitments']),1)
+            self.assertEqual(len(acquired_routine_processes(world())),2)
+            phase['revision']=True;phase['action']='WAIT'
+            # Inherited R64 explicit scenario act, not asserted autonomous.
+            self.assertEqual(rt.step('third',requested_action='IMPOSE',target='giver')['status'],'PERFORMED')
+            self.assertFalse(phase['received'])
+            self.assertEqual(rt.step('recipient',requested_action='IMPOSE',target='giver')['status'],'PERFORMED')
+            self.assertEqual(len(phase['received']),1)
+            phase['revision']=False
+            after=actor('giver')
+            self.assertEqual(after['care_contribution_episodes'],prior['care_contribution_episodes'])
+            self.assertEqual(bool(after['care_practical_commitments'][0].get('revisions')),nominate)
+            row=after['projects'][0]['recurrent_routines'][0]
+            self.assertEqual(bool(row.get('revisions')),nominate)
+            self.assertFalse(actor('second')['projects'][0]['recurrent_routines'][0].get('revisions'))
+            # Neither the actual other caregiver nor their time is taken over.
+            start=world()['clock'];rt.close()
+            rt=ConstitutiveRuntime(str(db),semantic=svc)
+            result=rt.continue_mixed_history(start+10,cadence_origin=start,ordinary_span=10)
+            self.assertEqual(result['status'],'MODELED_HISTORY_CUT_REACHED')
+            labor=world()['reproductive_labor_periods']
+            self.assertEqual(sum(x['modeled_labor_hours'] for x in labor if x['giver']=='second'),20.)
+            self.assertEqual(sum(x['modeled_labor_hours'] for x in labor if x['giver']=='giver'),
+                             0. if nominate else 20.)
+            # Prior care is retained, and generic available care is not outlawed.
+            self.assertTrue(any(x.get('action')=='CARE' for x in rt.situated('giver')['candidate_actions']))
+            self.assertTrue(rt.verify()['valid'])
+        finally:rt.close()
+
+    def test_personally_received_adverse_act_can_reconstitute_recurring_care_without_substitution(self):
+        with tempfile.TemporaryDirectory() as d:
+            self.course(Path(d)/'retained.sqlite',False)
+            self.course(Path(d)/'paused.sqlite',True)
+
 if __name__=='__main__':unittest.main()
