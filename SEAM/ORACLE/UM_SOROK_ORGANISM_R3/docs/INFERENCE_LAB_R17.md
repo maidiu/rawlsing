@@ -353,3 +353,15 @@ capture until owner-qualified input/consumption and exact replay path.
 RFA legacy typed-occurrence rubric informs a future comparative court;
 this is not the legacy typed prospective action renderer. R35 is an
 older executed owner course, not R38/R60 join or whole current UX.
+
+
+## R24 — offline RFA retained-attempt accounting
+
+Supplement, not replacement, for historical RFA-06C2 frozen request/custody/blind-score tooling at 06e5cadac5519d5e86609a490c95157738d0fe10. From R3, run locally:
+
+```sh
+umask 077
+python inference_lab_rfa_attempts_r24.py --mapping "$RFA/anthropic_cross_model_screen_r2/BLIND_MAPPING_PRIVATE_R1.json" --opus-raw "$RFA/anthropic_court_r2/results/raw" --cross-raw "$RFA/anthropic_cross_model_screen_r2/results/raw" > "$LAB/rfa-observed-attempts.json"
+```
+
+Pin the historical 60-slot mapping; read every retained primary attempt, not just latest terminal. Exclude secondary and smoke cases from primary accounting; report coverage, missing usage, request consistency, observed attempt duration and inclusive timestamp span. Unknown usage is not zero, output already includes thinking; no inferred invoice, true archive completeness, frozen request authentication, score-seal verification or time-to-adequate-result. Run the original RFA custody/score checks separately; do not publish raw archives or unblind early. Local fixture tests are synthetic, not actual missing historical outcomes. No remote calls.
