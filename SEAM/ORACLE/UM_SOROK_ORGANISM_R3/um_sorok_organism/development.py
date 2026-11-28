@@ -15,7 +15,7 @@ from .practical_difference import validate_expected_difference, appraise_expecte
 from .expectation_afterlife import admit_activity_affect, admit_expressive_practice
 from .preproject_agency import admit_preproject_anticipation, revise_preproject_anticipation
 from .reflective_regulation import (acquire_reflective_regulation, admit_private_possible_end,
-                                    private_end_ground, qualified_ordinary_affect_memory)
+                                    private_end_ground, qualified_ordinary_affect_memory, private_trial_path_matches)
 from .attention_field import (received_undertaking_attention, received_correspondence_attention,
                               received_focal_encounter)
 from .practical_powers import admit_repair_technique, active_repair_technique
@@ -661,11 +661,14 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             private_takeup=None
             if end.get('genesis_family')=='ACTUAL_PRIVATE_REHEARSAL':
                 ground=private_end_ground(actor.get('memories',[]),end,actor['id'],
-                                           experience.get('location'),experience.get('clock',-1))
+                                           experience.get('location'),experience.get('clock',-1),history=actor)
+                ordinary=bool(ground and ground.get('ordinary_affect_memory'))
                 trials=[t for t in end.get('trial_history',[])
                         if t.get('private_rehearsal_ref')==end.get('private_rehearsal_ref')
                         and t.get('actor_experienced_status')=='PERFORMED'
-                        and t.get('event_ref')!=event_ref]
+                        and t.get('event_ref')!=event_ref
+                        and t.get('operation')==experience.get('own_action')
+                        and (not ordinary or private_trial_path_matches(actor,t))]
                 sel=experience.get('own_practical_selection') or {}
                 if (not ground or not trials
                         or sel.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'
@@ -677,7 +680,9 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                     raise InvalidDevelopment('PRIVATE_END_TAKEUP_REQUIRES_LATER_LIVED_COURSE')
                 private_takeup={'rehearsal_ref':ground['id'],'prior_trial_ref':trials[-1]['id'],
                                 'later_event_ref':event_ref}
-                if ground.get('ordinary_affect_memory'):
+                if ordinary:
+                    if c.get('means',end['possible_means'])!=[experience.get('own_action')]:
+                        raise InvalidDevelopment('ORDINARY_PRIVATE_TAKEUP_REQUIRES_REINFORCED_MEANS')
                     private_takeup['ordinary_affect_memory']=copy(ground['ordinary_affect_memory'])
             dependency_takeup=None
             if end.get('genesis_family')=='INTERRUPTED_ACQUIRED_SUPPORT_THEN_INDEPENDENT_RELIEF':

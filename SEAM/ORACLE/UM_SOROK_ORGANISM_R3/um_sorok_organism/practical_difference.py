@@ -45,6 +45,48 @@ from .activity import productive_witness_signs, productive_witness_option
 from .mediated_efficacy import preproject_vocal_basis
 
 
+def familiar_destination_rows(constitution,access):
+    """A personally lived earlier site can become a possible destination.
+
+    This is an exploratory, source-qualified practical return, not a map,
+    a travel motive, a claim of conscious recollection, or present permission.
+    In particular, do not enumerate objective world sites or other actors'
+    histories. The existing world MOVE owner settles the actual attempt.
+    """
+    if constitution.actor!=access.actor:return []
+    paths={}
+    for path in constitution.evidence_paths:
+        ref=path.get('event')
+        paths[ref]=None if ref in paths else path
+    episode_counts={}
+    for e in constitution.lived_genesis_episodes:
+        ref=e.get('event_ref')
+        episode_counts[ref]=episode_counts.get(ref,0)+1
+    found={}
+    for e in reversed(constitution.lived_genesis_episodes):
+        ref=e.get('event_ref');path=paths.get(ref)
+        if (type(ref) is not str or not path or episode_counts[ref]!=1
+                or type(e.get('experience_ref')) is not str
+                or path.get('experience_ref')!=e['experience_ref']
+                or e.get('id')!=stable_id('personally_lived_genesis_episode',{
+                    'actor':constitution.actor,'event':ref,'experience':e['experience_ref']})):
+            continue
+        felt=e.get('actor_felt_attempt')
+        actual_felt=type(felt) is str and felt==path.get('own_action')
+        received_relief=bool(e.get('received_relief')) and bool(
+            set(e.get('received_sign_refs',[]))&set(path.get('received_cue_refs',[])))
+        if not (actual_felt or received_relief):continue
+        site=e.get('location')
+        if (e.get('actor')!=constitution.actor or type(site) is not str or not site
+                or site==access.location or site in found
+                or type(e.get('clock')) is not int or e['clock']>=access.world_clock
+                ):
+            continue
+        found[site]={'site':site,'episode_ref':e['id'],'event_ref':e['event_ref'],
+                     'experience_ref':e['experience_ref'],'experienced_clock':e['clock']}
+    return list(found.values())
+
+
 def practical_alternatives(constitution,access,option):
     """A named option remains distinct beneath one executable operation.
 
@@ -203,6 +245,20 @@ def practical_alternatives(constitution,access,option):
         'binding_status':'UNATTRIBUTED_OPERATION',
         'not_actor_self_account':True,'not_world_outcome':True,
         'source_grade':GRADE,'priority':None})
+    if act=='MOVE':
+        for destination in familiar_destination_rows(constitution,access):
+            site=destination['site']
+            alts.append({'option_id':stable_id('familiar_destination',{
+                'actor':actor,'clock':clock,'source':destination,'from':access.location}),
+                'actor':actor,'as_of_clock':clock,'operation':act,'project_id':None,
+                'grounds_status':'HISTORICALLY_FAMILIAR_DESTINATION',
+                'binding_status':'PAST_SITE_EXPERIENCED_CURRENT_ACCESS_NOT_ESTABLISHED',
+                'world_request':{'operation':act,'addressed_party_ref':None,
+                                 'material_object_ref':site},
+                'familiar_destination_basis':copy(destination),
+                'anticipated_difference':None,'beneficiary_as_apprehended':None,
+                'priority':None,'not_actor_self_account':True,'not_world_outcome':True,
+                'source_grade':GRADE})
     return alts
 
 def offer_addressed_lexical_alternatives(access,option,focal_refs):

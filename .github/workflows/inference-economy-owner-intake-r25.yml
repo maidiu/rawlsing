@@ -1,0 +1,53 @@
+name: Inference economy R25 exact separate owner intake
+on:
+  push:
+    branches:
+      - agent/inference-economy-semantic-port-r1-20261126
+    paths:
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/inference_lab_owner_intake_r25.py'
+      - '.github/workflows/inference-economy-owner-intake-r25.yml'
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/inference_lab_lexical_transport_r27.py'
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/live_psychological_llm.py'
+  workflow_dispatch:
+jobs:
+  owner-intake:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - lane: R62
+            ref: ee66a124476596ea0464e87ac2839191bdc1d651
+          - lane: R40
+            ref: a95cb4c11cc62d808d5c7780c0326dca00827b91
+          - lane: R39
+            ref: 4d104a17c4ec9126484faac4e6f13d5050162051
+          - lane: R61
+            ref: 2bef1d25fb6faa87fe9c97656febf4bb92876d83
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: specialist
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.ref }}
+          path: owner
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Actual owner fixture normal and optimized with economic instrumentation
+        run: |
+          git -C specialist rev-parse HEAD
+          git -C owner rev-parse HEAD
+          python specialist/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/inference_lab_owner_intake_r25.py --owner-root owner --lane ${{ matrix.lane }}
+          python -O specialist/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/inference_lab_owner_intake_r25.py --owner-root owner --lane ${{ matrix.lane }}
+
+      - name: R27 exact owner lexical transport admission, full and task-only prompts
+        if: matrix.lane == 'R39' || matrix.lane == 'R40'
+        run: |
+          python specialist/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/inference_lab_lexical_transport_r27.py --owner-root owner --lane ${{ matrix.lane }}
+          python -O specialist/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/inference_lab_lexical_transport_r27.py --owner-root owner --lane ${{ matrix.lane }}

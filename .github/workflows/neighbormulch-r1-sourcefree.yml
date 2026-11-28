@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - agent/soracle-co-neighbor-r008-join-candidate-20261128-r1
+      - agent/soracle-r008-co-neighbor-economy-candidate-20261128-r1
       - agent/neighbormulch-one-world-encounter-r1-20261121
       - agent/neighbormulch-r2-live-independent-actor-occurrence-20261121-r1
       - agent/neighbormulch-r3-observable-visitor-conduct-20261123-r1
@@ -92,21 +93,21 @@ jobs:
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_commitment_time_r24.py
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_structural_absence_r25.py
       - name: Independently constituted reciprocal ordinary life
-        if: github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/soracle-co-neighbor-r008-join-candidate-20261128-r1'
+        if: github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/soracle-co-neighbor-r008-join-candidate-20261128-r1' || github.ref_name == 'agent/soracle-r008-co-neighbor-economy-candidate-20261128-r1'
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_reciprocal_routine.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_reciprocal_routine.py' -q
       - name: Continuing R008 actor-owned routine revision and actual conflicting material life
-        if: github.ref_name == 'agent/neighbormulch-r008-continuing-revision-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/soracle-co-neighbor-r008-join-candidate-20261128-r1'
+        if: github.ref_name == 'agent/neighbormulch-r008-continuing-revision-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/soracle-co-neighbor-r008-join-candidate-20261128-r1' || github.ref_name == 'agent/soracle-r008-co-neighbor-economy-candidate-20261128-r1'
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_recurrent_revision.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_recurrent_revision.py' -q
       - name: R008 actual recurrent life, material allocation and returning neighbor
-        if: github.ref_name == 'agent/neighbormulch-r008-recurrent-life-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-continuing-revision-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/soracle-co-neighbor-r008-join-candidate-20261128-r1'
+        if: github.ref_name == 'agent/neighbormulch-r008-recurrent-life-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-continuing-revision-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/soracle-co-neighbor-r008-join-candidate-20261128-r1' || github.ref_name == 'agent/soracle-r008-co-neighbor-economy-candidate-20261128-r1'
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: |
@@ -115,7 +116,7 @@ jobs:
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_recurrent_life_r008.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_recurrent_life_r008.py' -q
       - name: Joined family genesis, historical life, acquired orientation and visitor continuation
-        if: github.ref_name == 'agent/neighbormulch-integrated-organism-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-recurrent-life-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-continuing-revision-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/soracle-co-neighbor-r008-join-candidate-20261128-r1'
+        if: github.ref_name == 'agent/neighbormulch-integrated-organism-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-recurrent-life-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-continuing-revision-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/soracle-co-neighbor-r008-join-candidate-20261128-r1' || github.ref_name == 'agent/soracle-r008-co-neighbor-economy-candidate-20261128-r1'
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_integrated_life_course.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_integrated_life_course.py' -q

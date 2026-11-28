@@ -355,7 +355,7 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                              self.expressive_arm(Path(d)/'abstain.db',False))
 
 
-    def productive_ordinary_arm(self,db,admit_end,forge=False,practice=None,witness=None,transfer=None,affect=None,local_period=None,private=None,antecedent=False,material_period=None):
+    def productive_ordinary_arm(self,db,admit_end,forge=False,practice=None,witness=None,transfer=None,affect=None,local_period=None,private=None,antecedent=False,material_period=None,continuation=None,reciprocal_antecedent=False):
         """From ordinary infancy through plural response to self-generated end.
         Same acquired capacity in both arms; a later trial is not a project.
         No joint SING, no actual deficit/relief required, no injected child act.
@@ -620,7 +620,10 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                             'source_ref':'fictional:'+who,'biographical_context':{'ordinary_life':who},
                             'fictional_seed':{'projects':[{'object':'ordinary vocal activity',
                                 'means':['SPEAK','FEED'],'priority':.2,'cue_terms':['home']},
-                                {'object':'subsistence','means':['WORK'],'priority':.4}]}}
+                                {'object':'subsistence','means':['WORK'],'priority':.4}]
+                                +([{'object':'ordinary shared singing','means':['SING'],'priority':.3,
+                                     'addressed_party_ref':'father' if who=='mother' else 'mother'}]
+                                  if reciprocal_antecedent else [])}}
                 rt.initialize_antecedent_adult('mother','Mother',packet('mother'),
                     other_adults=[('father','Father',packet('father'))])
                 self.assertEqual(constructor_calls,['mother','father'])
@@ -782,6 +785,10 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                 phase['name']='transferred'
                 self.assertEqual(rt.step('nadia')['attempt'],'SING' if transfer else 'WAIT')
                 self.assertTrue(rt.verify()['valid'])
+                if continuation is not None:
+                    # Handoff actual acquired history, never reconstruct a
+                    # synthetic iceberg or inject a private project.
+                    return continuation(rt, runtime)
                 if affect is not None:
                     phase['name']='local_affect'
                     if private=='forge':

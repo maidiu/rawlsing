@@ -599,7 +599,7 @@ class ExplicitJSONLLMProvider:
             instructions+=(" For historically_possible_lexical_project_revaluations "
                 "you may abstain or emit REORGANIZE_PROJECT with exactly kind, "
                 "project_id, lexical_revaluation_basis copied from this actor's "
-                "issued offer, priority (changed finite nonnegative numeric activity priority), and "
+                "issued offer, priority (a changed finite nonnegative number, no upper cap; not a boolean), and "
                 "personal_significance (nonblank string at most 512 characters). "
                 "Never use another actor's basis, change project means or claim "
                 "objective truth, necessary understanding or later action. "
@@ -682,22 +682,7 @@ class ExplicitJSONLLMProvider:
                 else self._request(req))
         if receipt is not None:
             receipt["usage"]=self._reported_usage(result)
-        if type(result) is not dict or type(result.get("choices")) is not list:
-            raise ValueError("REMOTE_MODEL_RESPONSE_SCHEMA_INVALID")
-        choices=result["choices"]
-        if len(choices)!=1 or type(choices[0]) is not dict:
-            raise ValueError("REMOTE_MODEL_AMBIGUOUS_CHOICES")
-        message=choices[0].get("message")
-        if type(message) is not dict or type(message.get("content")) is not str:
-            raise ValueError("REMOTE_MODEL_NO_JSON_CONTENT")
-        content_bytes=len(message["content"].encode("utf-8"))
-        if receipt is not None:
-            receipt["response_content_bytes"]=content_bytes
-        if content_bytes>256000:
-            raise ValueError("REMOTE_MODEL_RESPONSE_TOO_LARGE")
-        data=json.loads(message["content"])
-        if type(data) is not dict:
-            raise ValueError("REMOTE_MODEL_NOT_JSON_OBJECT")
+        data=self._decode_json_response(result,receipt)
         if data.get("task")!=task:
             raise ValueError("REMOTE_MODEL_TASK_MISMATCH")
         if task=="development" and type(data.get("candidates")) is not list:
@@ -717,3 +702,370 @@ class ExplicitJSONLLMProvider:
             receipt["proposed_candidate_count"]=len(data["candidates"])
         # No underlying authoring authority is conferred by this transport.
         return copy(data)
+
+    @staticmethod
+    def _decode_json_response(result,receipt=None):
+        if type(result) is not dict or type(result.get("choices")) is not list:
+            raise ValueError("REMOTE_MODEL_RESPONSE_SCHEMA_INVALID")
+        choices=result["choices"]
+        if len(choices)!=1 or type(choices[0]) is not dict:
+            raise ValueError("REMOTE_MODEL_AMBIGUOUS_CHOICES")
+        message=choices[0].get("message")
+        if type(message) is not dict or type(message.get("content")) is not str:
+            raise ValueError("REMOTE_MODEL_NO_JSON_CONTENT")
+        content_bytes=len(message["content"].encode("utf-8"))
+        if receipt is not None:
+            receipt["response_content_bytes"]=content_bytes
+        if content_bytes>256000:
+            raise ValueError("REMOTE_MODEL_RESPONSE_TOO_LARGE")
+        data=json.loads(message["content"])
+        if type(data) is not dict:
+            raise ValueError("REMOTE_MODEL_NOT_JSON_OBJECT")
+        return data
+
+
+# This is deliberately a different transport operation from live-V3 propose().
+# P2 owns call reservations; the modern generation port owns actual bind/dispatch.
+# No generic campaign or per-event live adapter can use this to bypass those.
+_CHECKPOINT_INSTRUCTIONS = """
+Typed formation extensions (fresh exact offer basis only, optional and actor-local):
+Optional actor policy.private_rehearsal={affect:"REQUIRED" or "NONE",meaning,memory_event_ref?,memory_ref?,affect_ref?} selects only one fresh actor-local offered private rehearsal, otherwise falls through; never creates a public utterance. Optional formation.rules {private_construct:"NOTICE_END",augment:{possible_object,means:["REST"|"ORIENT"|"EAT"]},match?:{private_affect_ref}} binds only the actual performed private rehearsal and its allowed means. Later action pool possible_end_trials can match exact possible_end_ref or private_rehearsal_ref. Optional formation rule {private_construct:"TAKE_UP_END",augment:{means},match?:{possible_end_ref,possible_object,private_affect_ref}} requires actual earlier private trial and a distinct later independent performed course. No imagined possibility is a motive or action entitlement.
+DELAYED_APPRAISAL from historically_possible_delayed_appraisals, augment {appraisal:"ACTOR_INTERPRETS_DISAPPOINTED"} when appropriate;
+ACTIVITY_AFFECT from historically_possible_activity_affects or historically_possible_self_expression_affects, augment {affect_name,personal_sense,course_orientation:"APPROACH" or "WITHHOLD"};
+RECURRENT_ROUTINE from historically_possible_recurrent_routines, augment {window_days,hours_per_active_day,provisional_exposure_fraction,food_units_per_active_day?}; use fresh exact own project/operation/recipient and three actual exercises. The bounded dose is not a guarantee of daily activity; coactivity needs independently compatible counterpart sources. ROUTINE_REVISION from historically_possible_routine_revisions, augment {mode,interpretive_hypothesis,dose?}; RESIZE requires the exact numeric keys within original ceilings, other modes omit dose. The owner independently requalifies the actor, current site, material permission, bodily and reciprocal time constraints; no rewritten past or future assent.
+ORDINARY_AFFECT_MEMORY from historically_possible_activity_affects, match formation_source OWN_ORDINARY_PROJECT_EXERCISE, augment {content,cue_terms}. Optional and ordered AFTER an ACTIVITY_AFFECT nomination of the identical fresh basis in the same development packet. The compiler copies the exact basis; the native owner verifies that the affect was actually admitted and that this actor can form the memory. Content is a fallible acquired recollection, not analyst knowledge or public speech. Abstain if the actor's own history does not warrant it.
+EXPRESSIVE_PRACTICE from historically_possible_expressive_practices, augment {cadence:"HALTING"} when appropriate;
+RECURRENT_WORK_ORIENTATION from historically_possible_recurrent_livelihood_orientation, augment {orientation_mode:"APPROACH" or "WITHHOLD"}.
+LIVED_CROSS_CONTEXT_REVALUATION from historically_possible_lived_cross_context_revaluations, augment {new_relation,new_polarity,interpretive_hypothesis?} using only offered semantic choices; preserve the old motif's actual source, action and context. A shared operation does not prove the same good.
+WITNESSED_OTHER_RELATION from historically_possible_witnessed_third_party_relations, augment {hypothesis}; the actual witnessed source, target and sign are bound from the current actor's offer, not an assertion about another person's hidden motive or assent.
+Exact complete candidate offers historically_possible_care_practice_revisions, historically_possible_relief_reconstitution and historically_possible_provisioning_reorganizations may be nominated or withheld; no fabricated source.
+Optional action.current_match checks an actual situated current's exact {action?,kind?,ref?}; optional action.exclude_affect checks an exact practical option's own course_affective_organizations for {course_orientation,basis?:{formation_source}} and falls through if a matching organization exists. These are proposed situated policies, not universal affect or work laws. No actor need understand these analyst-only determinants.
+You are the analyst-level sourcefree developmental construction machinery
+for a continuing fictional material-social organism. You are not any actor's
+conscious self and not the world owner. One response is one checkpoint:
+interpret the preceding ACTUAL event receipts individually in order, then
+propose 3-5 salient next event surfaces, with conditionally specified,
+actor-local practical and developmental hypotheses. Use the changed current
+actors, not an invented original personality or predicted adult destination.
+Select substantial formative, revealing, consolidating, or contradictory
+ordinary-life developments; compressed intervals stand for elapsed life,
+not fabricated microevents. Do not force drama, consent, successful activity,
+acquisition, or a predetermined relationship. Other actors have independently
+separated policies, needs and histories. No shared psychic state. The model
+may construct meanings; only the existing owner can admit actual effects.
+Return ONE JSON object with exactly retrospective and prospective keys.
+
+Request mode BOOTSTRAP: retrospective=null. ORDINARY: both halves required.
+TERMINAL: prospective=null, retrospective only. The retrospective object must
+copy batch_id, history_hash and ordered event_ids from previous, and provide
+impressions: one {event_id, interpretations:[...]} per actual event in order.
+Each interpretation is {actor,meaning,disposition}; actor must have an actual
+receipt in previous.events[i].accessible.by_actor; meaning is nonblank <=512
+characters; disposition is INTERPRET_ONLY, ABSTAIN, or REHEARSE. No attribution
+to an unexposed person, no privileged analyst information as self-knowledge.
+REHEARSE is an optional operative hypothesis, not a guaranteed change: on
+ORDINARY only, link to exactly one next prospective surface for that actor by
+circumstances.retrospective_event_id. The owner will recheck accessible memory,
+current practical eligibility, and the exact actual historically possible
+retrospective revision after the actual selected rehearsal. No rewrite of
+earlier awareness. INTERPRET_ONLY/ABSTAIN do not install psychology. Terminal
+interpretations have no present carrier; never nominate REHEARSE there.
+
+Each prospective surface:
+{event_id:unique string, event_time:integer strictly forward,
+ operation:"CONTINUE_ACTOR_LIFE",source_refs:[context.source_ref],
+ participants:[one currently existing principal actor id],
+ circumstances:{policies:{actor_id:actor_policy,...}}, interval?:{mode:"ACTUAL",span:integer 1..3650}}.
+Event time = preceding actual clock + optional interval span + 1.
+Optional circumstances.period_ref must be in context.period_refs; never author
+new material period data. Family conditional surfaces ONLY from the explicit
+context.conditional_family_sources_analyst_only catalog: circumstances.family
+={kind:"INTERSECTION",source_seal_id,pathway_id:offered id or null} on the
+mother's actual step at the sealed intersection clock; {kind:"CONCEPTION",
+source_seal_id} on an actual continuing step at sealed conception clock.
+Conception is a separately authorized fictional premise, never inferred consent.
+Birth surface operation REALIZE_FAMILY_BIRTH, participants:[mother], policies:{},
+family:{kind:"BIRTH",source_seal_id}, positive ACTUAL interval reaching sealed
+birth clock WITHOUT +1. No actor appears before actual admitted birth. A
+candidate pathway can fail, abstain, or remain unbound; no regeneration or
+forced subsequent family stage. Do not invent private actor experience of
+genealogy/birth. Every actual next event will recheck current eligibility.
+
+actor_policy may contain actions (ordered conditional alternatives),
+formation, expression. actions:[{action:operation name, option_match?:{project_id?,
+world_request?:{material_object_ref?,addressed_party_ref?,operation?},binding_status?,
+grounds_status?,operation?},project_id?:id,speech_intent?:nonblank <=500,rank_by?}].
+For SIGNAL with option_match.grounds_status HISTORICALLY_ACQUIRED_CO_REGULATION
+only, rank_by LATEST_PERSONALLY_SENSED_REGULATION selects a uniquely latest
+actual personally sensed relief (ties/absence unresolved). This is an optional
+particular policy, not a universal caregiver-preference law.
+Use action names that may be offered by current_situated.candidate_actions
+or become relevant through actual next life; no fake option ids or guaranteed
+outcomes. An option_match must uniquely bind a fresh exact practical option.
+For independent SPEAK only, speech_intent is prospective, not actual utterance.
+The actual lexical phase (where owner supports it) may use expression.speech,
+a nonblank string <=500. expression.surface is limited to actor-accessible
+situated expression, never privileged analyst information or private
+interpretations. The world/other's actual response is never authored here.
+Absent/ambiguous matches fall through other alternatives, then the existing
+local policy. Coactor choices come from their own actor_policy or existing
+local policy. Do not select another actor's response on behalf of the principal.
+
+formation:{base:"LOCAL" or "NONE",rules:[...]} chooses whether to retain
+existing local hypotheses, plus additional conditional model nominations.
+A direct rule is {candidate:{kind:"MEMORY",content:string <=512,cue_terms:[1..12
+short terms]},when?:{own_action?,status?,participated?}} or candidate with
+kind:"ACQUIRE_HISTORICAL_ORIENTATION",operation,orientation_mode:"APPROACH"
+or "WITHHOLD". These remain hypotheses about personally lived circumstances.
+Prefer source-qualified nominations {offer:actual owner packet field beginning
+historically_possible_ or historically_proposed_,match?:subset of offered
+candidate,augment?:semantic fields}. Example offer families:
+historically_possible_repair_techniques, historically_possible_joint_practices,
+historically_possible_care_practices, historically_possible_genetic_ends,
+historically_possible_dependency_means_revisions,
+historically_possible_dependency_project_reorganizations,
+historically_possible_functional_revisions, historically_possible_retrospective_orientation_revisions,
+historically_possible_lexical_project_revaluations where supported.
+Nominate only where current actual packet has exactly one matching offer.
+The existing plural-care source resolver is available only as {offer:
+"historically_possible_plural_care",resolver:"EXISTING_PLURAL_CARE_SOURCE_RESOLUTION"};
+it uses the existing owner helper, not a new relationship law or forced winner.
+Augment only missing interpretive_hypothesis, personal_significance,
+personal_sense, affect_name, course_orientation, priority, anticipated_availability,
+revision, new_relation or new_polarity; never overwrite source basis, operation
+or identity. Priority must be a finite nonnegative numeric value, not boolean.
+For current joined owner only, action.pool may be addressed_lexical_options (SPEAK with speech_intent and exact option_match), or possible_end_trials (exact operation and trial predicate); no preissued trial ID. Typed offer construction: construct LEXICAL_PROJECT_REVALUATION on historically_possible_lexical_project_revaluations, augment {priority,personal_significance}; CROSS_OBJECT_POSSIBLE_END on historically_possible_cross_object_significance, augment {possible_object,possible_means:["INSPECT"],cue_terms}; INCIDENTAL_END_TAKEUP on historically_possible_incidental_takeup, augment {means:["INSPECT"]}. The adapter copies the exact offered source basis; do not invent identifiers. An optional action rule {action:"SELECT_HIGHEST_CURRENT_PROJECT_COURSE",project_course_actions:[...]} selects a unique highest currently offered course among the named operation families; ties remain unresolved. An explicit prior_generation_and_live_ancestry on BOOTSTRAP describes actual previous epochs, not a blank psyche; bootstrap retrospective remains null for the new batch. Qualified routine windows may split elapsed intervals; do not cross a conditional birth or a due actor occasion without an actual explicit surface. To inspect dormant organization or actual earlier experience at the next checkpoint without an extra call, put next_analytic_reads on the final prospective surface only: [{kind:"ACTOR_DOMAIN",actor:existing actor,domain:exact native key from exact_analytic_domain_index}, {kind:"ACTUAL_EXPERIENCE",actor:person who actually received it,objective_ref:actual source from recent_lived_source_refs or prior receipts}]. Max 12 exact requests. Current actor domains are read from then-current state, actual historical experience is immutable. This is analyst-only retrieval, not new self-knowledge. For continuing history, an exact selected read can be ACTOR_DOMAIN_PAGE with {kind,actor,domain,offset,limit} (limit 1..32) to return current exact row handles, sizes and digests, then ACTOR_ROW with {kind,actor,domain,row_ref} to retrieve one uniquely identified native row on the following checkpoint. A row may change; its actual current digest is returned, never fabricate an absent or ambiguous handle. ACTOR_DOMAIN full expansion remains available. Optional accessible_memory_projection marks a deliberately selective working set; older accessible memories remain in the same psyche and can be requested. The compact profile is not a claim of optimal model adequacy. Empty/no-change is lawful. The owner may reject invalid candidates; don't
+fabricate current source identifiers or precompute actual event-specific refs.
+The context is actor-separated analyst-only evidence; never conflate actor
+experience with objective history, public expression or another person's
+private history. No empirical or real-person claims. Return valid JSON only."""
+
+
+class ExplicitDevelopmentalCheckpointProvider(ExplicitJSONLLMProvider):
+    """Explicitly opted-in sourcefree combined-checkpoint JSON transport.
+
+    Same network/credential restrictions, response parser, bounded metrics
+    and model-agnostic interface as the live adapter, but NOT live propose().
+    The caller still needs actual source/export/paid-use authority. The
+    transport cannot infer that authority from an attestation or a hash.
+    """
+    grade="EXPLICIT_SOURCEFREE_CHECKPOINT_LLM_UNCALIBRATED_CONSTRUCTION"
+    def __init__(self,*,sourcefree_checkpoint_attested=False,**kwargs):
+        if sourcefree_checkpoint_attested is not True:
+            raise ValueError("CHECKPOINT_SOURCEFREE_ATTESTATION_REQUIRED")
+        super().__init__(**kwargs)
+    def call(self,request):
+        receipt={"task":"developmental_checkpoint",
+                 "transport":"MOCK" if self._transport is not None else "HTTPS",
+                 "attempts":0,"outcome":"REJECTED_OR_FAILED",
+                 "instruction_bytes":None,"packet_bytes":None,"request_bytes":None,
+                 "response_content_bytes":None,"prompt_variant":"CHECKPOINT_CONTRACT",
+                 "packet_variant":"FULL","wire_packet_bytes":None,
+                 "alias_count":0,"structured_field_count":0,
+                 "usage":self._reported_usage(None)}
+        start=perf_counter_ns()
+        try:
+            if (type(request) is not dict or set(request)!={"mode","context","previous"}
+                    or request["mode"] not in ("BOOTSTRAP","ORDINARY","TERMINAL")
+                    or type(request["context"]) is not dict
+                    or request["context"].get("grade")!=
+                    "PROVISIONAL_SOURCEFREE_MODERN_GENERATION_PORT_NOT_NATIVE_OR_MODEL_ADEQUACY"
+                    or (request["previous"] is None)!=(request["mode"]=="BOOTSTRAP")):
+                raise ValueError("CHECKPOINT_UNQUALIFIED_REQUEST")
+            body=canonical(request)
+            n=len(body.encode("utf-8"))
+            receipt["packet_bytes"]=n;receipt["wire_packet_bytes"]=n
+            if n>1024*1024:raise ValueError("CHECKPOINT_PACKET_LIMIT")
+            req={"model":self.model,
+                 "messages":[{"role":"system","content":_CHECKPOINT_INSTRUCTIONS},
+                             {"role":"user","content":body}],
+                 "response_format":{"type":"json_object"},
+                 **({self.completion_limit_field:self.completion_token_limit}
+                    if self.completion_token_limit is not None else {})}
+            receipt["instruction_bytes"]=len(_CHECKPOINT_INSTRUCTIONS.encode("utf-8"))
+            receipt["request_bytes"]=len(canonical(req).encode("utf-8"))
+            receipt["attempts"]=1
+            result=self._transport(copy(req)) if self._transport is not None else self._request(req)
+            receipt["usage"]=self._reported_usage(result)
+            data=self._decode_json_response(result,receipt)
+            if set(data)!={"retrospective","prospective"}:
+                raise ValueError("CHECKPOINT_RESPONSE_SHAPE")
+            receipt["outcome"]="PROPOSAL_RETURNED"
+            return copy(data)
+        finally:
+            receipt["elapsed_ns"]=perf_counter_ns()-start
+            if self._metrics.maxlen:
+                with self._metrics_lock:
+                    self._metrics_total+=1;self._metrics.append(receipt)
+
+
+# Live V3 candidate: one conditional semantic response for one actual native
+# turn, not the two-half historical generation checkpoint. Keep the existing
+# live JSON transport restrictions and parser. No automatic network fallback.
+_LIVE_TURN_INSTRUCTIONS = """
+Typed formation extensions (fresh exact offer basis only, optional and actor-local):
+Optional actor policy.private_rehearsal={affect:"REQUIRED" or "NONE",meaning,memory_event_ref?,memory_ref?,affect_ref?} selects only one fresh actor-local offered private rehearsal, otherwise falls through; never creates a public utterance. Optional formation.rules {private_construct:"NOTICE_END",augment:{possible_object,means:["REST"|"ORIENT"|"EAT"]},match?:{private_affect_ref}} binds only the actual performed private rehearsal and its allowed means. Later action pool possible_end_trials can match exact possible_end_ref or private_rehearsal_ref. Optional formation rule {private_construct:"TAKE_UP_END",augment:{means},match?:{possible_end_ref,possible_object,private_affect_ref}} requires actual earlier private trial and a distinct later independent performed course. No imagined possibility is a motive or action entitlement.
+DELAYED_APPRAISAL from historically_possible_delayed_appraisals, augment {appraisal:"ACTOR_INTERPRETS_DISAPPOINTED"} when appropriate;
+ACTIVITY_AFFECT from historically_possible_activity_affects or historically_possible_self_expression_affects, augment {affect_name,personal_sense,course_orientation:"APPROACH" or "WITHHOLD"};
+RECURRENT_ROUTINE from historically_possible_recurrent_routines, augment {window_days,hours_per_active_day,provisional_exposure_fraction,food_units_per_active_day?}; use fresh exact own project/operation/recipient and three actual exercises. The bounded dose is not a guarantee of daily activity; coactivity needs independently compatible counterpart sources. ROUTINE_REVISION from historically_possible_routine_revisions, augment {mode,interpretive_hypothesis,dose?}; RESIZE requires the exact numeric keys within original ceilings, other modes omit dose. The owner independently requalifies the actor, current site, material permission, bodily and reciprocal time constraints; no rewritten past or future assent.
+ORDINARY_AFFECT_MEMORY from historically_possible_activity_affects, match formation_source OWN_ORDINARY_PROJECT_EXERCISE, augment {content,cue_terms}. Optional and ordered AFTER an ACTIVITY_AFFECT nomination of the identical fresh basis in the same development packet. The compiler copies the exact basis; the native owner verifies that the affect was actually admitted and that this actor can form the memory. Content is a fallible acquired recollection, not analyst knowledge or public speech. Abstain if the actor's own history does not warrant it.
+EXPRESSIVE_PRACTICE from historically_possible_expressive_practices, augment {cadence:"HALTING"} when appropriate;
+RECURRENT_WORK_ORIENTATION from historically_possible_recurrent_livelihood_orientation, augment {orientation_mode:"APPROACH" or "WITHHOLD"}.
+LIVED_CROSS_CONTEXT_REVALUATION from historically_possible_lived_cross_context_revaluations, augment {new_relation,new_polarity,interpretive_hypothesis?} using only offered semantic choices; preserve the old motif's actual source, action and context. A shared operation does not prove the same good.
+WITNESSED_OTHER_RELATION from historically_possible_witnessed_third_party_relations, augment {hypothesis}; the actual witnessed source, target and sign are bound from the current actor's offer, not an assertion about another person's hidden motive or assent.
+Exact complete candidate offers historically_possible_care_practice_revisions, historically_possible_relief_reconstitution and historically_possible_provisioning_reorganizations may be nominated or withheld; no fabricated source.
+Optional action.current_match checks an actual situated current's exact {action?,kind?,ref?}; optional action.exclude_affect checks an exact practical option's own course_affective_organizations for {course_orientation,basis?:{formation_source}} and falls through if a matching organization exists. These are proposed situated policies, not universal affect or work laws. No actor need understand these analyst-only determinants.
+You are constructing ONE situated response of a
+continuing fictional organism. The current principal's actual actor_attempt
+packet is the operative starting point. This is not a history generation
+checkpoint, diary, personality inventory, or narration of a guaranteed outcome.
+The existing initiative owner selected the occasion; you cannot change WHO.
+The other person's actual choice remains separately conditioned by their own
+packet and current practical alternatives. Do not attribute analyst knowledge
+to a person's conscious self. No fabricated human action, consent, assent,
+successful act, perception, memory, or development. Existing world owner settles
+the actual attempt, actual lexical occurrence, coaction and material result.
+Return {policies:{actor_id:actor_policy,...}} with the principal present. A rare current private reconsideration may additionally nominate private_rehearsal:{objective_ref,meaning} ONLY if exactly one actual current principal_packet.private_rehearsal_options has that memory_event_ref and null affect_ref. Meaning <=512 nonblank, a present hypothesis not causal truth or changed earlier experience. The existing R61 owner may admit a qualified revision after actual private rehearsal, never automatically. This is a private actor activity, not a spoken response. No other actor private rehearsal nomination.
+Only listed actor IDs; peer contexts are separately conditioned, never shared
+psychic state. Principal expression must use only principal actor-accessible
+content, not another person's private tip or analyst description. No exposition
+of hidden history to the visitor. Ordinary activity may be banal, ambivalent
+or blocked. No forced disclosure or drama.
+
+actor_policy: {actions:[conditional alternatives in order],formation?:{base:
+"LOCAL" or "NONE",rules:[...]},expression?:{speech?:nonblank <=500,surface?:
+nonblank <=500}}. Select actual operation names from options. Alternatives may
+be {action,project_id?}, {action,option_match:{operation?,project_id?,
+world_request?:{addressed_party_ref?,material_object_ref?,operation?},
+binding_status?,grounds_status?},pool?}, or
+{action:"SELECT_HIGHEST_CURRENT_PROJECT_COURSE",project_course_actions:[...]}.
+The optional pool is practical_options, addressed_lexical_options or
+possible_end_trials; unique fresh match required. For possible-end trial match
+source_material_object_ref or genesis_family. For voluntary SPEAK include
+speech_intent (nonblank <=500) and actual expression.speech (nonblank <=500);
+speech_intent is not the utterance, and the owner must realize it. An absent
+option is not an act; fall through to another conditional alternative or local
+policy. For an addressed SIGNAL, optional rank_by
+LATEST_PERSONALLY_SENSED_REGULATION only with grounds_status
+HISTORICALLY_ACQUIRED_CO_REGULATION. Coactor invitation and response remain
+separate. Peer policies are conditional on the ACTUAL own later offer, not the
+principal's preferences.
+
+Formation rules use the actual development packet AFTER world settlement.
+{offer:"historically_possible_..." or "historically_proposed_...",match?:{},
+augment?:semantic-only fields} nominates a unique actual owner offer; no
+invented source IDs. Typed constructors: LEXICAL_PROJECT_REVALUATION on
+historically_possible_lexical_project_revaluations with augment
+{priority:finite nonnegative changed number,personal_significance:nonblank
+<=512}; CROSS_OBJECT_POSSIBLE_END on historically_possible_cross_object_significance
+with augment {possible_object,possible_means:["INSPECT"],cue_terms};
+INCIDENTAL_END_TAKEUP on historically_possible_incidental_takeup with augment
+{means:["INSPECT"]}. Existing plural-care resolver: {offer:
+"historically_possible_plural_care",resolver:"EXISTING_PLURAL_CARE_SOURCE_RESOLUTION"}.
+Direct hypothesis rule {candidate:{kind:"MEMORY",content:nonblank <=512,
+cue_terms:[1..12 short terms]},when?:{own_action?,status?,participated?}} or
+{candidate:{kind:"ACQUIRE_HISTORICAL_ORIENTATION",operation,orientation_mode:
+"APPROACH" or "WITHHOLD"},when?:...}. Optional, no mutation unless actual
+owner admits it. Do not make an actor acquire a meaning merely because another
+actor speaks. Empty/no-change is lawful. No new family birth or interval here.
+No second model call for validation, expression or development. JSON only."""
+
+
+# Reuse the existing same-phase actor_attempt exact compiler. The combined
+# request has a different outer contract; only its principal packet may use
+# these aliases. No peer's information is copied into the principal.
+_LIVE_EXACT_RULES=(
+    " The principal_packet may omit only fields in principal_exact_aliases. "
+    "Each dotted destination equals the full source value in this SAME "
+    "principal_packet, never a peer or earlier occasion. Restore aliases "
+    "before principal_reconstructed_fields. For practical_options and "
+    "possible_end_trials with FROM_ORDERED_OPTIONS concatenate the respective "
+    "practical_alternatives or possible_end_trials lists in options order; "
+    "missing lists are empty. All other fields remain exact. These are "
+    "transport projections, not additional actor awareness or new options."
+)
+
+def expand_live_wire_request(wire):
+    """Strict inverse for exact transport checks, not actor cognition."""
+    if type(wire) is not dict or set(wire)-{
+            "grade","source","principal","principal_packet","peer_tips",
+            "principal_exact_aliases","principal_reconstructed_fields"}:
+        raise ValueError("LIVE_WIRE_FIELDS")
+    result=copy(wire)
+    aliases=result.pop("principal_exact_aliases",{})
+    descriptions=result.pop("principal_reconstructed_fields",{})
+    result["principal_packet"]=_expand_structured_fields("actor_attempt",
+        _expand_exact_aliases("actor_attempt",result["principal_packet"],aliases),descriptions)
+    return result
+
+class ExplicitLiveTurnProvider(ExplicitJSONLLMProvider):
+    """Explicit, sourcefree one-response transport; not empirical adequacy."""
+    grade="EXPLICIT_SOURCEFREE_ONE_TURN_LLM_UNCALIBRATED"
+    def __init__(self,*,sourcefree_live_attested=False,**kwargs):
+        if sourcefree_live_attested is not True:
+            raise ValueError("LIVE_TURN_SOURCEFREE_ATTESTATION_REQUIRED")
+        super().__init__(**kwargs)
+    def call(self,request):
+        receipt={"task":"live_conditional_turn","transport":"MOCK" if self._transport is not None else "HTTPS",
+                 "attempts":0,"outcome":"REJECTED_OR_FAILED","instruction_bytes":None,
+                 "packet_bytes":None,"request_bytes":None,"response_content_bytes":None,
+                 "prompt_variant":"LIVE_CONDITIONAL_TURN","packet_variant":"ACTOR_TIPS",
+                 "wire_packet_bytes":None,"alias_count":0,"structured_field_count":0,
+                 "usage":self._reported_usage(None)}
+        start=perf_counter_ns()
+        try:
+            if (type(request) is not dict or set(request)!={"grade","source","principal","principal_packet","peer_tips"}
+                    or request["grade"]!="SOURCEFREE_CONDITIONAL_LIVE_TURN_NOT_MODEL_ADEQUACY"
+                    or type(request["principal_packet"]) is not dict
+                    or request["principal_packet"].get("actor",{}).get("id")!=request["principal"]
+                    or type(request["peer_tips"]) is not dict):
+                raise ValueError("LIVE_TURN_UNQUALIFIED_REQUEST")
+            body=canonical(request);n=len(body.encode("utf-8"))
+            receipt["packet_bytes"]=n;receipt["wire_packet_bytes"]=n
+            if n>512*1024:raise ValueError("LIVE_TURN_PACKET_LIMIT")
+            def wire_req(value,instructions):
+                return {"model":self.model,"messages":[{"role":"system","content":instructions},
+                    {"role":"user","content":canonical(value)}],"response_format":{"type":"json_object"},
+                    **({self.completion_limit_field:self.completion_token_limit}
+                       if self.completion_token_limit is not None else {})}
+            req=wire_req(request,_LIVE_TURN_INSTRUCTIONS)
+            projection=copy(request)
+            source=request["principal_packet"]
+            if self.compact_exact_packet:
+                projected,aliases=_compile_exact_aliases("actor_attempt",source)
+                if aliases:
+                    projection["principal_packet"]=projected
+                    projection["principal_exact_aliases"]=aliases
+            if self.compact_structured_packet:
+                _,descriptions=_compile_structured_fields("actor_attempt",source)
+                if descriptions:
+                    for field in descriptions:
+                        path=tuple(field.split("."))
+                        del _packet_field(projection["principal_packet"],path[:-1])[path[-1]]
+                    projection["principal_reconstructed_fields"]=descriptions
+            if projection!=request:
+                if canonical(expand_live_wire_request(projection))!=body:
+                    raise ValueError("LIVE_EXACT_PROJECTION_NOT_REVERSIBLE")
+                trial=wire_req(projection,_LIVE_TURN_INSTRUCTIONS+_LIVE_EXACT_RULES)
+                if len(canonical(trial).encode("utf-8"))<len(canonical(req).encode("utf-8")):
+                    req=trial
+                    receipt["packet_variant"]="ACTOR_TIPS_EXACT_PRINCIPAL"
+                    receipt["wire_packet_bytes"]=len(canonical(projection).encode("utf-8"))
+                    receipt["alias_count"]=len(projection.get("principal_exact_aliases",{}))
+                    receipt["structured_field_count"]=len(projection.get("principal_reconstructed_fields",{}))
+            receipt["instruction_bytes"]=len(req["messages"][0]["content"].encode("utf-8"))
+            receipt["request_bytes"]=len(canonical(req).encode("utf-8"))
+            receipt["attempts"]=1
+            result=self._transport(copy(req)) if self._transport is not None else self._request(req)
+            receipt["usage"]=self._reported_usage(result)
+            data=self._decode_json_response(result,receipt)
+            if (not {"policies"}<=set(data)<={"policies","private_rehearsal"}
+                    or type(data["policies"]) is not dict):
+                raise ValueError("LIVE_TURN_RESPONSE_SHAPE")
+            receipt["outcome"]="PROPOSAL_RETURNED"
+            return copy(data)
+        finally:
+            receipt["elapsed_ns"]=perf_counter_ns()-start
+            if self._metrics.maxlen:
+                with self._metrics_lock:
+                    self._metrics_total+=1;self._metrics.append(receipt)
