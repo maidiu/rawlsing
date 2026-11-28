@@ -4,6 +4,8 @@
 
 **Independent worker selection comes first.** [Corrected mandate](MANDATE.md#independent-mulch-judgment-is-primary-user-correction-2026-11-27). Deliberations are differentiated inputs, not a common theme or default assignment. Worker whole-domain judgment includes domains PM has not examined; no permission or special justification for divergence. Brief rationale in ordinary return if material. R006 returns reference pre-correction input bdd82ddd (economy cites pre-correction brief/pointer); cannot establish correction was operative. No criticism of alignment itself.
 
+**Binding 2026-11-28 construction-scale correction:** [Organism-scale construction is the unit of work](MANDATE.md#organism-scale-construction-is-the-unit-of-work-binding-user-correction-2026-11-28). Apply now and permanently. Initial R007 returns may be supplemented with actual additional construction; preserve prior exact receipts. Independent selection continues; a single successful court or PM witness is not a stopping condition. No new commission, permission gate or protected grant.
+
 | Lane | R007 deliberation | Return |
 |---|---|---|
 | CO-MULCHINEER | [R007](CO-MULCHINEER/deliberations/R007.md) | CO-MULCHINEER/returns/R007.md |

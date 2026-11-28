@@ -58,6 +58,8 @@ HOME-local reciprocal synthesis: put the joined meaning of complementary sources
 
 ## 5. Round decisions and handoff
 
+**Binding construction-scale correction:** [MANDATE — organism-scale construction is the unit of work](MANDATE.md#organism-scale-construction-is-the-unit-of-work-binding-user-correction-2026-11-28). PM must not make individual successful tests/CIC witnesses into worker work units or completion incentives. Receive substantially advancing capability chains and provisional joined subsystems; distinguish real stopping boundaries from premature cessation. Compact evidence and economical accession are not instructions to build less. Preserve autonomous whole-domain selection.
+
 **Independent worker MULCH comes first.** Follow the [corrected autonomy mandate](MANDATE.md#independent-mulch-judgment-is-primary-user-correction-2026-11-27): PM supplies integrative evidence and provisional concerns, not the default selection of work. Workers independently judge the least-mulched valuable parts of their whole domain; legitimate divergence needs no advance permission. Receive their discoveries as corrections to PM's map, not deviations from a plan.
 
 Default ORDINARY = three workers (CO-MULCHINEER, NEIGHBOR-UX-MULCHINEER, INFERENCE-ECONOMY). CO HQ is standing theory resource, not required each round. PARALLEL_THEORY = same three plus a consequential focused theoretical consultation, all simultaneously. THEORY_MEDIATED = CO HQ first only when its answer would materially change immediate construction choices. Under explicit scoped delegation it writes the three final handoffs and marks ready; no extra round-trip to PM. PM remains sole CIC/O-Index custodian; no blanket delegation. No wait for unrequested theory, no universal approval gate.

@@ -2,6 +2,7 @@
 
 Author/role, date, brief read (exact PM ref), own branch/PR/head and baseline; execution SHA/tree equivalence, job link, review/authority scope. If nothing changed, say so.
 
+- Actual construction breadth and stopping boundary: which functioning capability chain/subsystem advanced, which consequential dependencies and consumers were pursued beyond the first green court, and what real constraint or whole-domain reassessment warrants this handoff? Briefly; no new reporting gate.
 - Actual delta: what can now happen that could not happen before? If documentary/theory, what understanding or decision changed?
 - Constitutive significance: existing HOME/CIC IDs or precise anchors; distinguish bounded operation, parent criterion, whole obligation.
 - Producer -> actual consumer -> performed consequence -> later recruitment/history; negative/null evidence and residual construction. If only related or proposed, state that.

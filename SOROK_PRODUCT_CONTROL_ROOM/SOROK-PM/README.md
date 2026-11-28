@@ -13,6 +13,8 @@ New SOROK-PM successor: enter through [00_START_HERE — economical accession an
 
 ## Minimal operating loop
 
+**Binding worker scale:** [Organism-scale construction is the unit of work](MANDATE.md#organism-scale-construction-is-the-unit-of-work-binding-user-correction-2026-11-28). Do not return merely because a first focused court passed. Follow the consequential chain through actual owners and keep constructing with available capital; checkpoint and continue when feasible. Independent domain judgment remains primary. PM's concise receiving traffic is not a construction quota.
+
 1. User tells each worker **"New round is in."** Read your current brief plus relevant sister concerns; apply your own deeper knowledge. Contest any diagnosis with evidence and preserve or explicitly correct its underlying concern. No approval wait.
 2. Construct on your existing authorized owner branch. At end of the turn publish your compact own return to `<lane>/returns/R001.md` (use current round ID). Return only what changes another decision. No duplicate code, theory or ledger. If more than one return in a round, append a dated delta without erasing prior return.
 3. User tells SOROK-PM **"They're done."** PM resolves all requested lane returns and live owner heads independently; reconciles exact evidence into existing CIC/O-Index/SOROKUDA, routes qualified paired progress, assesses whole HOME breadth and cross-owner opportunities, then publishes next round's deliberation briefs or explicitly delegates their completion to CO HQ, and advances CURRENT_ROUND in a guarded commit. Missing requested returns remain visibly outstanding; proceed with useful work on the available evidence. Never claim receipt from silence.
