@@ -248,6 +248,8 @@ class ContradictoryLife(unittest.TestCase):
                 if task=='actor_attempt':
                     if p.get('requesting_actor') is not None:return {'task':task,'action':'REFUSE'}
                     a=p['actor']['id'];s=phase['stage']
+                    if s=='petition' and a in ('giver','controller'):
+                        return {'task':task,'action':'SIGN_FOOD_PETITION'}
                     if a=='giver' and s=='support' and feed:
                         return selection(task,options(p,'FEED','support')[0])
                     if a=='controller' and s=='power' and p['actor']['body']['nutrition']>=phase['threshold']:
@@ -277,8 +279,10 @@ class ContradictoryLife(unittest.TestCase):
                 for a in ('controller','giver'):
                     rt.step(a,requested_action='INSPECT',object_ref=board['public_notice_ref'])
                 self.assertEqual(rt.step('controller',requested_action='MAINTAIN_PANTRY_GATE')['status'],'PERFORMED')
+                phase['stage']='petition'
                 for a in ('giver','controller'):
-                    self.assertEqual(rt.step(a,requested_action='SIGN_FOOD_PETITION')['status'],'PERFORMED')
+                    self.assertEqual(rt.step(a)['status'],'PERFORMED')
+                self.assertEqual(rt.ledger.world()[1]['institutions']['household_food_board']['food_rights'],'SHARED_BY_COLLECTIVE_ACTS')
                 phase['threshold']=rt.ledger.actor('controller')[1]['body']['nutrition']+.05
                 phase['stage']='support'
                 self.assertEqual(rt.step('giver')['status'],'PERFORMED')
