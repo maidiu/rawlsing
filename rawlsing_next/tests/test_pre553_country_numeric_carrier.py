@@ -519,6 +519,54 @@ class CountryNumeric(unittest.TestCase):
                         compact_repo.resolve_object_exact(ExactRef(route.ref.kind,"wrong",route.ref.content_hash))
                 from rawlsing_next.pre553_empirical_objects import RespondentEvent,ExactRef
                 events=[x for x in direct.public_objects if isinstance(x,RespondentEvent)]
+                # R12: exercise actual full validator then shared template,
+                # with independent canonical source and adversarial row drift.
+                from rawlsing_next.pre553_c11_ingest import _CountryEventValidation
+                from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
+                from rawlsing_next.pre553_carrier_execution import materialize_public_object
+                from rawlsing_next.pre553_c11_integrity import C11IntegrityError
+                from rawlsing_next.pre553_empirical_objects import canonical_json,semantic_hash
+                from types import MappingProxyType
+                validator=_CountryEventValidation(AuthorityRegistry(fx["authorities"]))
+                event=events[0]
+                validator.validate(event)
+                validator.validate(event)
+                self.assertEqual((validator.full,validator.hits),(1,1))
+                fields,key=validator._geometry(event)
+                self.assertEqual(validator._bytes(event,fields,validator.templates[key]),
+                                 canonical_json(event.semantic_projection()).encode("utf-8"))
+                def variant(**changes):
+                    payload=event.semantic_projection()
+                    semantic=payload.pop("semantic_fields")
+                    semantic.update(changes)
+                    return RespondentEvent(**payload,**semantic)
+                changed=variant(event_group_id="different actual group",
+                                response_event_id_or_deterministic_index="different actual occurrence")
+                validator.validate(changed)
+                self.assertEqual(validator.hits,2)
+                bad=materialize_public_object(changed.as_dict())
+                object.__setattr__(bad,"content_hash",event.content_hash)
+                with self.assertRaisesRegex(C11IntegrityError,"projection/hash mismatch"):
+                    validator.validate(bad)
+                invalid=variant(scoped_respondent_ref={"kind":"bad","object_id":"bad","content_hash":"invalid"})
+                with self.assertRaises(C11IntegrityError):
+                    validator.validate(invalid)
+                # No cache hit after an embedded static field changes; even
+                # Python-equal boolean/integer values are distinct tokens.
+                from rawlsing_next.pre553_c11_ingest import _event_template_token
+                self.assertNotEqual(_event_template_token(True),_event_template_token(1))
+                before=validator.full
+                changed_static=variant(raw_response_value={"nested":{"authority_id":"unavailable",
+                    "authority_version":"1","authority_content_hash":"a"*64}})
+                from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
+                with self.assertRaises(Pre553AuthorityError):
+                    validator.validate(changed_static)
+                self.assertGreater(validator.full,before)
+                # Registry replacement cannot reuse even an identical key.
+                validator.registry=AuthorityRegistry(fx["authorities"])
+                before=validator.full
+                validator.validate(event)
+                self.assertEqual(validator.full,before+1)
                 lane=compact.public_objects.lane
                 from rawlsing_next._pre553_c11_execution_view import _PackedCountrySelectors,_EventRead
                 self.assertIsInstance(lane.selectors,_PackedCountrySelectors)
