@@ -23,7 +23,7 @@ from .historical_self_organization import (
     revise_operative_self, admit_lived_directional_orientation)
 from .psychic_genesis import (admit_contrast_end, possible_dependency_project_takeups,
                              PRODUCTIVE_VOCAL_FAMILY, possible_productive_vocal_takeups)
-from .activity import (possible_productive_witness_reorganizations, possible_provisioning_reorganizations,
+from .activity import (possible_ordinary_context_transfers, possible_productive_witness_reorganizations, possible_provisioning_reorganizations,
                        possible_commons_provisioning_reorganizations,
                         possible_dependency_project_reorganizations,
                        possible_dependency_means_revisions, admit_interactivity_relation)
@@ -756,6 +756,18 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                 project['other_future_conduct']='INDEPENDENT_NOT_PROMISED'
             if productive_takeup is not None and productive_takeup.get('ordinary_vocal_genesis_basis'):
                 project['ordinary_vocal_genesis_basis']=copy(productive_takeup['ordinary_vocal_genesis_basis'])
+                # An optional actor-relative anticipated difference is not an
+                # outcome, pleasure or conscious self-description. Only the
+                # personally received own-sign vocabulary may anchor it.
+                if 'expected_difference' in c:
+                    expected=validate_expected_difference(c['expected_difference'])
+                    if (not expected or not expected.get('sign_tags')
+                            or any(t.casefold() not in {x.casefold() for x in end['cue_terms']}
+                                   for t in expected['sign_tags'])
+                            or any(expected.get(k) not in (None,actor['id'])
+                                   for k in ('affected_party_ref','beneficiary_ref'))):
+                        raise InvalidDevelopment('ORDINARY_VOCAL_EXPECTATION_UNQUALIFIED')
+                    project['expected_difference']=expected
             if incidental is not None:
                 project['material_object_ref']=incidental['source_object_ref']
                 project['incidental_takeup_basis']=copy(incidental)
@@ -837,7 +849,12 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             witness_basis=c.get('productive_witness_basis')
             provisioning_basis=c.get('provisioning_means_basis')
             commons_basis=c.get('commons_provisioning_basis')
-            if commons_basis is not None:
+            if 'ordinary_vocal_context_transfer' in c:
+                if c not in possible_ordinary_context_transfers(actor,experience,event_ref):
+                    raise InvalidDevelopment('ORDINARY_VOCAL_CONTEXT_TRANSFER_UNQUALIFIED')
+                project.setdefault('ordinary_vocal_context_transfers',[]).append(
+                    copy(c['ordinary_vocal_context_transfer']))
+            elif commons_basis is not None:
                 if c not in possible_commons_provisioning_reorganizations(actor,experience,event_ref):
                     raise InvalidDevelopment('COMMONS_PROVISIONING_UNQUALIFIED_HISTORY')
                 project['commons_provisioning_basis']=copy(commons_basis)

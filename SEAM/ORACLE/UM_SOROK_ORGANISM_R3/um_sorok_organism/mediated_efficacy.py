@@ -103,13 +103,13 @@ def qualified_project_exercise_basis(actor,project_ref,exercise_ref,operation,lo
     Reuse the existing actor's project, lived exercise, and objective course.
     Narrow R67 vocal route; a project label or a trial alone is insufficient.
     """
-    from .social_vocal_development import ordinary_vocal_basis_still_qualified
+    from .activity import ordinary_vocal_project_site
     if (operation!='SING' or type(project_ref) is not str
             or type(exercise_ref) is not str or type(clock) is not int):return None
     ps=[p for p in actor.get('projects',[]) if p.get('id')==project_ref
         and p.get('status','active')=='active' and operation in p.get('means',[])
         and p.get('ordinary_vocal_genesis_basis')
-        and ordinary_vocal_basis_still_qualified(actor,p['ordinary_vocal_genesis_basis'],location,clock)]
+        and ordinary_vocal_project_site(actor,p,location,clock)]
     if len(ps)!=1:return None
     p=ps[0]
     rows=[e for e in actor.get('power_exercises',[])

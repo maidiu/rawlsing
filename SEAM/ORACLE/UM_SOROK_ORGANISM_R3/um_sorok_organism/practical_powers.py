@@ -14,6 +14,7 @@ from .types import copy, stable_id, GRADE
 from .organism import eligible
 from .mediated_efficacy import preproject_exercise_basis
 from .social_vocal_development import ordinary_expressive_opportunity, ordinary_vocal_self_exercise
+from .activity import ordinary_vocal_context_probe
 
 # The physical vocabulary is inherited.  Substitution is allowed only for
 # operations whose plausible component practice is already expressed by the
@@ -235,6 +236,8 @@ def situated_exercised_repertoire(constitution, access):
                 'opportunity':'PREPROJECT_BODILY_VOCAL_EXPLORATION','grade':GRADE})
     solo=ordinary_vocal_self_exercise(constitution,access)
     if solo is not None and not any(r['action']=='SING' for r in out):out.append(solo)
+    probe=ordinary_vocal_context_probe(constitution,access)
+    if probe is not None and not any(r['action']=='SING' for r in out):out.append(probe)
     expression=ordinary_expressive_opportunity(constitution,access)
     if expression is not None and not any(r['action']=='SPEAK' for r in out):
         out.append(expression)
