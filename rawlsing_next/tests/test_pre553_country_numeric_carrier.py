@@ -612,6 +612,39 @@ class CountryNumeric(unittest.TestCase):
                     self.assertEqual(deferred_saved.release_ref,direct.release_ref)
                 deferred_pin=deferred_owner.pin
                 self.assertIsNotNone(deferred_pin.routing_proof)
+                # Actual runtime fallback is valid for ordinary validation,
+                # but cannot establish a locally closed historical proof.
+                from rawlsing_next.pre553_runtime_authority import Pre553RuntimeAuthoritySet
+                from rawlsing_next.pre553_runtime_context import bind_runtime
+                route=_SortedPackedRoutingFacts.build(subset.routing)
+                missing_ref=route[0].authority_snapshot_refs[0]
+                missing=next(x for x in fx["authorities"] if x.authority_ref==missing_ref)
+                local=AuthorityRegistry(tuple(x for x in fx["authorities"] if x.authority_ref!=missing_ref))
+                with self.assertRaises(C11IntegrityError):
+                    ingest._validate_packed_routing_authorities(route,local)
+                runtime=Pre553RuntimeAuthoritySet(
+                    adopted_authority_hashes=(missing_ref.authority_content_hash,),
+                    historical_authority_snapshots=(missing,))
+                with bind_runtime(runtime):
+                    stats=ingest._validate_packed_routing_authorities(route,local)
+                    self.assertFalse(stats["local_only"])
+                self.assertNotEqual(ingest._routing_validation_binding(route,local),
+                    ingest._routing_validation_binding(route,AuthorityRegistry(fx["authorities"])))
+                # A digest lane alone is not the proof: even a change to
+                # otherwise unused raw lane bytes must change the binding.
+                from rawlsing_next.pre553_source_backed_c11_facade import _PackedRoutingFacts
+                storage=route.storage
+                runs,ends=storage
+                keys,columns,digests=runs[0]
+                blob,*tail=columns[0]
+                badcol=(bytes((blob[0]^1,))+blob[1:],*tail)
+                badstorage=(((keys,(badcol,*columns[1:]),digests),*runs[1:]),ends)
+                altered=object.__new__(_PackedRoutingFacts)
+                object.__setattr__(altered,"_storage",badstorage)
+                badroute=replace(route,source=altered,storage=badstorage)
+                registry=AuthorityRegistry(fx["authorities"])
+                self.assertNotEqual(ingest._routing_validation_binding(route,registry),
+                    ingest._routing_validation_binding(badroute,registry))
                 # A matching independently retained proof may replace the
                 # prior local-only routing semantic validation, not fresh
                 # authority registry or release identity checks.

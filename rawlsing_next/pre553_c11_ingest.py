@@ -719,6 +719,7 @@ class _CountryEventCollector:
         self.restored=False
         self.deferred_occurrences=False
         self.restored_routing_proof=None
+        self.retain_routing_proof=False
         self.validated_routing_proof=None
 
     def add(self,event,*,source_coordinates):
@@ -917,7 +918,7 @@ def _validate_authorities(candidate: C11SourceReleaseCandidate, *, country_colle
                     raise C11IntegrityError("restored routing validation binding differs from producer pin")
             else:
                 result=_validate_packed_routing_authorities(routes,registry)
-                if result.get("local_only") is True:
+                if country_collector.retain_routing_proof and result.get("local_only") is True:
                     country_collector.validated_routing_proof=_routing_validation_binding(routes,registry)
         elif country_collector is not None and country_collector.restored_routing_proof is not None:
             raise C11IntegrityError("restored routing proof requires packed routing")
@@ -1148,6 +1149,7 @@ def _validate_country_produced_release(*,produce,authority_snapshots,compact_bui
     validation can enter the public ingest API.
     """
     collector=_CountryEventCollector(authority_snapshots)
+    collector.retain_routing_proof=(_country_preparation is not None and _restored_headers is None)
     if _restored_headers is not None:
         # Private facade only: the independently retained preparation pin
         # authenticates the producer's exact previously validated headers.
