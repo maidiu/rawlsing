@@ -43,6 +43,7 @@ on:
       - agent/neighbormulch-r39-lexical-occurrence-20261127-r1
       - agent/neighbormulch-r40-polycentric-lexical-afterlife-20261127-r1
       - agent/neighbormulch-r41-shared-reproduction-20261127-r1
+      - agent/neighbormulch-r42-addressed-self-giving-20261128-r1
       - agent/neighbormulch-r33-resistant-evidence-20261126-r1
   pull_request:
     branches:
@@ -249,6 +250,10 @@ jobs:
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_shared_reproduction_r41.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_shared_reproduction_r41.py' -q
+      - name: R42 voluntary addressed speech and overheard distinction
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_voluntary_address_r42.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_voluntary_address_r42.py' -q
       - name: Full inherited CO R52 organism court normal and optimized
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3

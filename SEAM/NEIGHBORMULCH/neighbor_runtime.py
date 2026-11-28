@@ -1642,6 +1642,21 @@ class NeighborEncounter:
                             'lexical_content':'ACTUAL_REALIZED_WORDS',
                             'utterance_claim_truth':'NOT_ESTABLISHED',
                             'human_comprehension':'NOT_ESTABLISHED'}
+                        selected=envelope['payload']['attempt']['practical_selection'].get(
+                            'selected_speech_address')
+                        addressed=actual.get('target')
+                        if (visible_identity and type(selected) is dict and type(addressed) is str
+                                and selected.get('recipient')==addressed
+                                and historical_public.get('target')==addressed
+                                and cue.get('voluntary_addressed_party_ref')==addressed
+                                and cue.get('voluntary_address_ref')==actual.get('voluntary_address_ref')
+                                    ==historical_public.get('voluntary_address_ref')
+                                    ==stable_id('voluntary_lexical_address',{
+                                        'cue':cue['id'],'actor':actual['actor'],'recipient':addressed})):
+                            lexical['lexical_acquisition_route']=(
+                                'VOLUNTARILY_ADDRESSED_TO_SELF' if addressed==self.user_id else
+                                'AUDIBLE_NOT_ADDRESSED_TO_SELF')
+                            lexical['address_does_not_establish_trust_or_confidentiality']=True
                     mandatory.append({'kind': 'CO_PUBLIC_OCCURRENCE',
                         'text': text, 'modality': 'auditory',
                         'source_event_ref': last_event['id'],

@@ -24,7 +24,7 @@ from .activity import (record_activity_afterlife, register_lived_activity_attemp
                        possible_dependency_means_revisions, qualify_interactivity_deferral,
                        possible_lexical_project_revaluations,
                        possible_interactivity_relations)
-from .practical_difference import start_selected_expectations
+from .practical_difference import start_selected_expectations, offer_addressed_lexical_alternatives
 from .lived_genesis import proposals_from_bodily_history
 from .historical_self_organization import (possible_lived_directional_orientation,
                                            possible_dependency_ambivalence,
@@ -406,6 +406,10 @@ class ConstitutiveRuntime:
                 elif o.get('action')=='EAT' and requesting_actor is None:
                     o.setdefault('practical_alternatives',[]).extend(
                         offer_self_meal_source_alternatives(world,e,o))
+                elif o.get('action')=='SPEAK' and requesting_actor is None:
+                    o.setdefault('practical_alternatives',[]).extend(
+                        offer_addressed_lexical_alternatives(e,o,set(situated.get(
+                            'attention_frame',{}).get('focally_eligible_cue_refs',[]))))
             flat_alternatives=[copy(alt) for o in options
                                for alt in o.get('practical_alternatives',[])]
             flat_trials=[copy(t) for o in options for t in o.get('possible_end_trials',[])]
@@ -724,6 +728,15 @@ class ConstitutiveRuntime:
                         or type(intent) is not str or not intent.strip() or len(intent)>500):
                     raise ValueError('SPEECH_INTENT_NOT_QUALIFIED_PRINCIPAL_SPEAK')
                 practical['prospective_speech_intent']=intent
+            if (selected_alternative and selected_alternative.get('binding_status')
+                    =='EXACT_CURRENT_VOLUNTARY_SPEECH_ADDRESS'):
+                if (proposed.get('practical_option_id')!=selected_alternative['option_id']
+                        or not practical.get('prospective_speech_intent')
+                        or requesting_actor is not None or trial_choice is not None):
+                    raise ValueError('VOLUNTARY_ADDRESS_REQUIRES_EXACT_LEXICAL_CHOICE')
+                practical['selected_speech_address']={'recipient':bound_target,
+                    'presence_cue_ref':selected_alternative['speech_address_presence_ref'],
+                    'option_ref':selected_alternative['option_id']}
             if action in ('ACCEPT_MEETING','MEET_VISITOR'):
                 if (trial_choice is not None or not selected_alternative
                         or selected_alternative.get('binding_status')!='EXACT_CURRENT_HUMAN_MEETING_SIGN'
@@ -935,6 +948,9 @@ class ConstitutiveRuntime:
                 'actor_accessible':{'location':speech_access.location,
                     'perceived_cues':selected_cues},
                 'prospective_speech_intent':speech_intent,
+                **({'addressed_party_ref':principal.target,
+                    'address_is_not_privacy_or_recipient_assent':True}
+                   if principal.practical_selection.get('selected_speech_address') else {}),
                 'expression_phase':'LEXICAL_REALIZATION_BEFORE_EXPERIENCE',
                 'restriction':'ONLY_SPOKEN_WORDS_NO_NEW_ACTS_OR_WORLD_FACTS; CLAIMS_NOT_TRUTH'})
             from .world import attach_actual_utterance
