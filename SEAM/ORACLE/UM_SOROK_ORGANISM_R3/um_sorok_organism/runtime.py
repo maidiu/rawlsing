@@ -75,7 +75,8 @@ from .plural_care_paths import (
 from .functional_correspondence import (propose_actor_lived_correspondences,
                                         possible_functional_revisions)
 from .initiative import continue_life
-from .continuity_clock import continue_to_discontinuity, continue_pre_encounter, qualify_contingent_world_notice
+from .continuity_clock import (continue_to_discontinuity, continue_pre_encounter,
+    qualify_contingent_world_notice, continue_mixed_history)
 from .historical_parent_bridge import (render_blind_interview, qualify_family_pathways,
     family_encounter_evidence, FAMILY_SOURCE, FAMILY_GRADE, existing_family_binding)
 from .material_conjunction import admit_authored_structural_history
@@ -1566,6 +1567,14 @@ class ConstitutiveRuntime:
         response; no caller script forces fulfillment or another's consent.
         """
         return continue_to_discontinuity(self,horizon,processes=processes)
+
+    def continue_mixed_history(self,target_clock,*,cadence_origin=0,
+                               ordinary_span=30,detail_beats=3,max_segments=240,
+                               period_processes=None):
+        """Owner-native life continuation across both historical entrances."""
+        return continue_mixed_history(self,target_clock,cadence_origin=cadence_origin,
+            ordinary_span=ordinary_span,detail_beats=detail_beats,max_segments=max_segments,
+            period_processes=period_processes)
 
     def construct_pre_encounter_history(self,subject_id, target_age_days, *,
                                         horizon_days=365, autonomous_beats=2,

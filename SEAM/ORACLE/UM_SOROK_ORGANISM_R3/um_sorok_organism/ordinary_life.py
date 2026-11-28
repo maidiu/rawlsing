@@ -21,7 +21,7 @@ def passage(world,actors,days,processes=None):
         world,actors,qualified,start,days)
     effective_iter=iter(allocation['qualified'])
     held={p['input_index'] for k in ('structurally_withheld_processes',
-                                     'bodily_withheld_processes')
+                                     'bodily_withheld_processes','situationally_withheld_processes')
           for p in allocation.get(k,[])}
     effective_processes=[];qindex=0
     for p in processes:
@@ -61,6 +61,8 @@ def passage(world,actors,days,processes=None):
           if allocation_receipt.get('structurally_withheld_processes') else {}),
        **({'bodily_withheld_processes':copy(allocation_receipt['bodily_withheld_processes'])}
           if allocation_receipt.get('bodily_withheld_processes') else {}),
+       **({'situationally_withheld_processes':copy(allocation_receipt['situationally_withheld_processes'])}
+          if allocation_receipt.get('situationally_withheld_processes') else {}),
        **({'elapsed_human_offer_commitment_refs':elapsed_human_windows}
           if elapsed_human_windows else {}),
        **({'elapsed_meeting_refs':elapsed_meetings} if elapsed_meetings else {}),

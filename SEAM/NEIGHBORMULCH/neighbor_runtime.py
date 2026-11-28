@@ -1211,7 +1211,7 @@ class NeighborEncounter:
 
     def continue_absent_life_until(self, departure_ref: str, target_clock: int,
                                    *, max_segments: int = 24,
-                                   period_processes=None):
+                                   period_processes=None,historical_cadence=None):
         """Owner-side bounded absence continuation, NOT a visitor action.
 
         The target is an absolute modeled-world clock, not real wall time or
@@ -1256,6 +1256,31 @@ class NeighborEncounter:
 
         require_no_visitors(world)
         initial = world['clock']
+        if historical_cadence is not None:
+            if (type(historical_cadence) is not dict or
+                    set(historical_cadence)!={'cadence_origin','ordinary_span','detail_beats'}):
+                raise EncounterRefusal('INVALID_ABSENCE_HISTORICAL_CADENCE')
+            if target_clock<=initial:
+                return {'status':'AT_OR_PAST_ABSENCE_TARGET','departure_event_ref':departure_ref,
+                    'target_modeled_clock':target_clock,'actual_modeled_clock':initial,
+                    'modeled_clock_advance_this_call':0,'segments_executed_this_call':0,
+                    'new_world_events':False,'unseen_life_not_a_visitor_report':True,
+                    'real_calendar_elapsed_not_established':True,'grade':'SOURCEFREE_RESEARCH_PROVISIONAL'}
+            actual=self.runtime.continue_mixed_history(target_clock,
+                max_segments=max_segments,period_processes=period_processes,**historical_cadence)
+            final=self._world()[1]['clock']
+            return {'status':('AT_OR_PAST_ABSENCE_TARGET'
+                             if actual['status']=='MODELED_HISTORY_CUT_REACHED'
+                             else 'HELD_AT_BOUNDED_ABSENCE_CONTINUATION'),
+                'departure_event_ref':departure_ref,
+                'target_modeled_clock':target_clock,'actual_modeled_clock':final,
+                'modeled_clock_advance_this_call':final-initial,
+                'segments_executed_this_call':len(actual['segments']),
+                'independent_actor_beats':actual['independent_actor_beats'],
+                'ordinary_intervals':actual['ordinary_intervals'],
+                'hold_reason':actual['hold_reason'],'new_world_events':bool(actual['segments']),
+                'unseen_life_not_a_visitor_report':True,
+                'real_calendar_elapsed_not_established':True,'grade':'SOURCEFREE_RESEARCH_PROVISIONAL'}
         segments = 0
         while world['clock'] < target_clock and segments < max_segments:
             require_no_visitors(world)

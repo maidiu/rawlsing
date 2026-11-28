@@ -86,13 +86,38 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
         raise ValueError('HISTORICAL_TIME_INVALID_CLOCK')
     if type(processes) is not list or len(processes)>512:
         raise ValueError('HISTORICAL_TIME_INVALID_PROCESS_BUDGET')
-    normalized=[];fraction_by_actor={};support_downgrades=[];withheld=[];bodily_withheld=[]
+    normalized=[];fraction_by_actor={};support_downgrades=[];withheld=[];bodily_withheld=[];situationally_withheld=[]
     for i,raw in enumerate(processes):
         hours,fraction=_typecheck(raw)
         source_confirmation=verify_qualified_period_envelope(
             world,raw,start_clock,days)
         raw={**raw,'source_registry_confirmation':source_confirmation}
         a=raw['actor'];site=raw['location']
+        conditional=raw.get('routine_window_application')
+        if conditional not in (None,'SITUATED_CONDITIONAL_ROUTINE'):
+            raise ValueError('HISTORICAL_TIME_UNKNOWN_ROUTINE_APPLICATION')
+        if conditional:
+            # The explicit aggregate premise is not unconditional conduct.
+            # Withhold a known course that is now situationally unavailable.
+            # Unregistered sources/participants remain hard failures.
+            if a not in actors or site not in world.get('sites',{}):
+                raise ValueError('HISTORICAL_TIME_UNKNOWN_ROUTINE_PARTICIPANT_OR_SITE')
+            recipient=raw.get('recipient')
+            care_kind=raw['kind'] in ('QUALIFIED_REPRODUCTIVE_CARE',PROVISION_KIND)
+            if care_kind and (type(recipient) is not str or recipient==a or recipient not in actors):
+                raise ValueError('HISTORICAL_TIME_UNKNOWN_ROUTINE_RECIPIENT')
+            active_means={op for p in actors[a].get('projects',[])
+                          if p.get('status','active')=='active' for op in p.get('means',[])}
+            reason=('ACTOR_ELSEWHERE' if not _actor_at_site(world,actors,a,site) else
+                    'RECIPIENT_ELSEWHERE' if care_kind and not _actor_at_site(world,actors,recipient,site) else
+                    'NO_ACTIVE_CARE_COURSE' if care_kind and 'CARE' not in active_means else
+                    'NO_ACTIVE_WORK_COURSE' if raw['kind']=='QUALIFIED_WAGE_LABOR' and 'WORK' not in active_means else None)
+            if reason:
+                situationally_withheld.append({'input_index':i,'source_ref':raw['source_ref'],
+                    'actor':a,'location':site,'start_clock':start_clock,
+                    'end_clock':start_clock+days,'reason':reason,'proposed_routine':copy(raw),
+                    'unexecuted_premise_not_missed_duty_or_sensed_event':True})
+                continue
         if not _actor_at_site(world,actors,a,site):
             raise ValueError('HISTORICAL_TIME_ACTOR_NOT_AT_RECORDED_SITE')
         if raw['kind']==PROVISION_KIND:
@@ -194,6 +219,7 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
         'qualified':normalized,
         **({'structurally_withheld_processes':withheld} if withheld else {}),
         **({'bodily_withheld_processes':bodily_withheld} if bodily_withheld else {}),
+        **({'situationally_withheld_processes':situationally_withheld} if situationally_withheld else {}),
         'actor_active_hour_claim_per_day':{
             a:round(h,5) for a,h in sorted(fraction_by_actor.items())},
         'unmodeled_free_hours_per_day':{
@@ -321,7 +347,9 @@ def apply_period_allocation(world,actors,allocation):
         **({'structurally_withheld_processes':allocation['structurally_withheld_processes']}
            if allocation.get('structurally_withheld_processes') else {}),
         **({'bodily_withheld_processes':allocation['bodily_withheld_processes']}
-           if allocation.get('bodily_withheld_processes') else {})})
+           if allocation.get('bodily_withheld_processes') else {}),
+        **({'situationally_withheld_processes':allocation['situationally_withheld_processes']}
+           if allocation.get('situationally_withheld_processes') else {})})
     if any(r.get('id')==ref for r in
            world.get('historical_time_allocations',[])):
         raise ValueError('HISTORICAL_TIME_DUPLICATE_SETTLEMENT')
@@ -352,6 +380,8 @@ def apply_period_allocation(world,actors,allocation):
            if allocation.get('structurally_withheld_processes') else {}),
         **({'bodily_withheld_processes':copy(allocation['bodily_withheld_processes'])}
            if allocation.get('bodily_withheld_processes') else {}),
+        **({'situationally_withheld_processes':copy(allocation['situationally_withheld_processes'])}
+           if allocation.get('situationally_withheld_processes') else {}),
         'absent_high_resolution_scenes':'NOT_DEEMED_TO_HAVE_OCCURRED',
         'work_and_care_bearer_differentiation':True,
         'not_a_human_time_use_or_developmental_law':True,
