@@ -3,6 +3,7 @@ No owner source edits, live provider invocation, or forced joined runtime.
 """
 import argparse
 from collections import Counter
+from contextlib import ExitStack
 import importlib.util
 import json
 from pathlib import Path
@@ -19,6 +20,12 @@ PINS = {
     "R61": ("2bef1d25fb6faa87fe9c97656febf4bb92876d83",
             R3 / "tests/test_retrospective_reconstitution_r61.py",
             "616765ede05951e257c8ca8738263f138f21fb49"),
+    "R62": ("ee66a124476596ea0464e87ac2839191bdc1d651",
+            R3 / "tests/test_existing_family_continuity_r62.py",
+            "1d1f4f6aab3f44d79e3ebffbba92165b41d953f4"),
+    "R40": ("a95cb4c11cc62d808d5c7780c0326dca00827b91",
+            NEIGHBOR / "tests/test_neighbor_polycentric_lexical_r40.py",
+            "def6e585079cddb4bda106ae5e1c5f8fd1c33717"),
     "R39": ("4d104a17c4ec9126484faac4e6f13d5050162051",
             NEIGHBOR / "tests/test_neighbor_lexical_occurrence_r39.py",
             "d5f818248dbd82d10a5e87b35c1028b0e322261e"),
@@ -59,7 +66,7 @@ def run(root, lane, output=None):
         nonlocal active
         active = {"name":name, "cap":lab.WorkloadCapture(source_head=head,
             fixture="R25_"+lane+"_"+name, sourcefree_fixture_attested=True), "steps":[],
-            "views":[], "calls":[], "result":None}
+            "views":[], "calls":[], "operations":[], "result":None}
         all_cases.append(active)
 
     class Caller:
@@ -110,6 +117,25 @@ def run(root, lane, output=None):
             "elapsed_ns":perf_counter_ns()-t0})
         return result
 
+    def family_operation(name, original):
+        def wrapped(rt, *args, **kwargs):
+            cap = active["cap"]
+            start = len(cap.rows)
+            before = None if name == "initialize_antecedent_adult" else state(rt)
+            t0 = perf_counter_ns()
+            status = "RETURNED"
+            try:
+                return original(rt, *args, **kwargs)
+            except Exception as exc:
+                status = type(exc).__name__
+                if before is not None:
+                    need(before == state(rt), "R26_REJECTED_FAMILY_CHANGED_STATE")
+                raise
+            finally:
+                active["operations"].append({"operation":name,"start":start,"end":len(cap.rows),
+                    "status":status,"elapsed_ns":perf_counter_ns()-t0})
+        return wrapped
+
     with patch.object(ValidatingSemanticService,"proposal",new=proposal), patch.object(ConstitutiveRuntime,"step",new=step):
         if lane == "R61":
             for name, learn, nominate, forge in [
@@ -118,6 +144,37 @@ def run(root, lane, output=None):
                 begin(name)
                 with tempfile.TemporaryDirectory() as d:
                     active["result"] = owner.RetrospectiveReconstitution().arm(Path(d)/"life.sqlite",learn,nominate,forge)
+        elif lane == "R62":
+            cls = owner.ExistingFamilyContinuity
+            names = ("initialize_antecedent_adult", "register_family_pathways",
+                     "select_family_intersection", "admit_family_conception", "realize_family_birth")
+            with ExitStack() as stack:
+                for name in names:
+                    stack.enter_context(patch.object(ConstitutiveRuntime,name,
+                        new=family_operation(name,getattr(ConstitutiveRuntime,name))))
+                for name in unittest.defaultTestLoader.getTestCaseNames(cls):
+                    begin(name)
+                    result = unittest.TextTestRunner(verbosity=1).run(unittest.TestSuite([cls(name)]))
+                    need(result.wasSuccessful(),"R26_ORIGINAL_FAMILY_COURT_FAILED")
+        elif lane == "R40":
+            cls = owner.PolycentricLexicalR40
+            course0 = cls.course
+            surface0 = owner.NeighborEncounter.private_surface
+            def course(self,mode="admit"):
+                begin(mode)
+                active["result"] = course0(self,mode)
+                return active["result"]
+            def surface(neighbor,*args,**kwargs):
+                rt=neighbor.runtime
+                before=state(rt); start=len(active["calls"]); t0=perf_counter_ns()
+                view=surface0(neighbor,*args,**kwargs)
+                need(before==state(rt) and start==len(active["calls"]),"R26_SURFACE_SIDE_EFFECT")
+                active["views"].append({"view":types.copy(view),"event":types.copy(rt.ledger.events()[-1]),
+                    "elapsed_ns":perf_counter_ns()-t0})
+                return view
+            with patch.object(cls,"course",new=course), patch.object(owner.NeighborEncounter,"private_surface",new=surface):
+                result=unittest.TextTestRunner(verbosity=1).run(unittest.defaultTestLoader.loadTestsFromTestCase(cls))
+                need(result.wasSuccessful(),"R26_ORIGINAL_POLYCENTRIC_COURT_FAILED")
         else:
             cls = owner.LexicalOccurrenceR39
             build0 = cls.build
@@ -142,7 +199,7 @@ def run(root, lane, output=None):
         cap=case["cap"]
         need(not cap.failed, "R25_INCOMPLETE_CAPTURE")
         witness={"lane":lane,"case":case["name"],"steps":case["steps"],"views":case["views"],
-                 "calls":case["calls"],"result":case["result"]}
+                 "calls":case["calls"],"operations":case["operations"],"result":case["result"]}
         doc=cap.document(owner_state_sha256=types.digest(witness))
         rows=lab.verify_workload(doc,source_head=head)["rows"]
         assigned=[i for st in case["steps"] for i in range(st["start"],st["end"])]
@@ -153,18 +210,31 @@ def run(root, lane, output=None):
             p=r["packet"]
             lexical=p.get("expression_phase")=="LEXICAL_REALIZATION_BEFORE_EXPERIENCE"
             retro=r["task"]=="development" and bool(p.get("actual_private_rehearsal_analyst_only"))
-            if lexical or retro:
+            revalue = r["task"]=="development" and bool(p.get("historically_possible_lexical_project_revaluations"))
+            if lexical or retro or revalue:
                 bound=[s for s in case["steps"] if s["start"]<=r["seq"]<s["end"]]
                 need(len(bound)==1,"R25_TARGET_STEP")
                 targets.append({"seq":r["seq"],"task":r["task"],"packet_bytes":lab.size(p),
                     "proposal_bytes":lab.size(r["proposal"]),"step_status":bound[0]["status"],
                     "step_attempt":bound[0].get("result",{}).get("attempt"),
                     "offered_revisions":len(p.get("historically_possible_retrospective_orientation_revisions",[])),
-                    "proposed_candidates":len(r["proposal"].get("candidates",[]))})
+                    "proposed_candidates":len(r["proposal"].get("candidates",[])),
+                    "actor_id":p.get("actor",{}).get("id"),
+                    "lexical_revaluation_offers":len(p.get("historically_possible_lexical_project_revaluations",[]))})
+        operation_reports=[]
+        for op in case["operations"]:
+            group=rows[op["start"]:op["end"]]
+            operation_reports.append({**op,"task_counts":dict(Counter(r["task"] for r in group)),
+                "packet_bytes":sum(lab.size(r["packet"]) for r in group),
+                "proposal_bytes":sum(lab.size(r["proposal"]) for r in group)})
+        family_indices=[i for op in case["operations"] for i in range(op["start"],op["end"])]
+        need(len(family_indices)==len(set(family_indices)) and not set(family_indices)&set(assigned),
+             "R26_AMBIGUOUS_OPERATION_CALL")
         result={"case":case["name"],"task_counts":dict(Counter(r["task"] for r in rows)),
                 "packet_bytes":sum(lab.size(r["packet"]) for r in rows),
                 "proposal_bytes":sum(lab.size(r["proposal"]) for r in rows),
                 "calls_outside_step":len(rows)-len(assigned),"targets":targets,
+                "family_operations":operation_reports,"unassigned_calls":len(rows)-len(assigned)-len(family_indices),
                 "rejected_steps":sum(st["status"]=="REJECTED" for st in case["steps"]),
                 "views":[{"bytes":lab.size(v["view"]),"lexical_rows":sum(bool(x.get("spoken_text")) for x in v["view"]["mandatory"]),
                            "elapsed_ns":v["elapsed_ns"]} for v in case["views"]],
@@ -178,6 +248,40 @@ def run(root, lane, output=None):
         need(all(len(r["targets"])==1 for r in reports),"R25_RETRO_COVERAGE")
         need([r["targets"][0]["offered_revisions"] for r in reports]==[1,1,0,1],"R25_RETRO_OFFERS")
         need([r["targets"][0]["step_status"] for r in reports]==["COMMITTED","COMMITTED","COMMITTED","REJECTED"],"R25_RETRO_ADMISSION")
+    elif lane=="R62":
+        need(len(reports)==2,"R26_FAMILY_CASES")
+        positive=next(r for r in reports if r["case"].startswith("test_actual"))
+        negative=next(r for r in reports if r["case"].startswith("test_unlocated"))
+        for r in reports:
+            need(r["unassigned_calls"]==0,"R26_UNASSIGNED_FAMILY_CALL")
+            need(r["task_counts"].get("adult_constructor")==2,"R26_CONSTRUCTOR_COUNT")
+            init=next(o for o in r["family_operations"] if o["operation"]=="initialize_antecedent_adult")
+            need(init["task_counts"]=={"adult_constructor":2},"R26_INITIALIZATION_CALLS")
+        bind=next(o for o in positive["family_operations"] if o["operation"]=="select_family_intersection")
+        need(bind["status"]=="RETURNED" and bind["task_counts"]=={"family_pathway_selection":1},
+             "R26_RETAINED_BINDING_REGENERATED_OR_UNMEASURED")
+        for op in positive["family_operations"]:
+            if op["operation"] in ("register_family_pathways","admit_family_conception","realize_family_birth"):
+                need(not op["task_counts"],"R26_LOCAL_FAMILY_OPERATION_SEMANTIC_CALL")
+        refused=next(o for o in negative["family_operations"] if o["operation"]=="select_family_intersection")
+        need(refused["status"]=="ValueError" and not refused["task_counts"],"R26_UNLOCATED_SELECTION_CALL")
+    elif lane=="R40":
+        by={r["case"]:r for r in reports}
+        need(set(by)=={"admit","null","forge"},"R26_POLYCENTRIC_CASES")
+        for name,r in by.items():
+            lexical=[t for t in r["targets"] if t["task"]=="expression"]
+            offers=[t for t in r["targets"] if t["lexical_revaluation_offers"]]
+            need(len(lexical)==1,"R26_SINGLE_LEXICAL_CALL")
+            if name!="forge":
+                need({t["actor_id"] for t in offers}=={"first","second","null"},
+                     "R26_LISTENER_OFFER_COVERAGE")
+                need(all(t["step_status"]=="COMMITTED" for t in offers),"R26_LISTENER_ADMISSION")
+                need(len(r["views"])==1 and r["views"][0]["lexical_rows"]==1,"R26_VIEW")
+            else:
+                need(r["rejected_steps"]==1 and lexical[0]["step_status"]=="REJECTED",
+                     "R26_FOREIGN_BASIS_ROLLBACK")
+        need(tuple(by["admit"]["later_result"]["first"])==("REST",0),"R26_COLD_REST")
+        need(tuple(by["null"]["later_result"]["first"])==("WORK",.25),"R26_COLD_WORK")
     else:
         need(len(reports)==6,"R25_LEXICAL_ARMS")
         need(sum(len(r["targets"]) for r in reports)==3,"R25_LEXICAL_TARGETS")
