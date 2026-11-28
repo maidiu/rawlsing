@@ -8,6 +8,7 @@ world outcomes or pre-issued future references. No remote call inside a step.
 from collections import Counter
 import fcntl
 import json
+from math import isfinite
 from pathlib import Path
 import sqlite3
 import sys
@@ -56,13 +57,24 @@ def policy_check(policy):
     actions=policy.get("actions",[])
     require(isinstance(actions,list) and len(actions)<=MAX_POLICY_ITEMS,"GEN_ACTION_POLICY_SIZE")
     for rule in actions:
-        require(exact_keys(rule,("action",),("option_match","project_id","speech_intent","rank_by","pool","project_course_actions")) and
+        require(exact_keys(rule,("action",),("option_match","project_id","speech_intent","rank_by","pool","project_course_actions","current_match","exclude_affect")) and
                 text(rule["action"],80),"GEN_ACTION_RULE")
         if "option_match" in rule:
             require(isinstance(rule["option_match"],dict) and bool(rule["option_match"]) and
                     set(rule["option_match"])<= {"project_id","world_request","binding_status",
                                                "grounds_status","operation","source_material_object_ref","genesis_family","productive_witness_attention","cross_object_attention_analytic_only"},
                     "GEN_ACTION_MATCH")
+        if "current_match" in rule:
+            m=rule["current_match"]
+            require(isinstance(m,dict) and bool(m) and set(m)<={"action","kind","ref"} and
+                    all(text(v,120) for v in m.values()),"GEN_CURRENT_MATCH")
+        if "exclude_affect" in rule:
+            m=rule["exclude_affect"]
+            require("option_match" in rule and rule.get("pool","practical_options")=="practical_options" and
+                    exact_keys(m,("course_orientation",),("basis",)) and
+                    m["course_orientation"] in ("APPROACH","WITHHOLD") and
+                    ("basis" not in m or (exact_keys(m["basis"],("formation_source",)) and
+                        text(m["basis"]["formation_source"],100))),"GEN_AFFECT_EXCLUSION")
         if "project_course_actions" in rule:
             require(rule["action"]=="SELECT_HIGHEST_CURRENT_PROJECT_COURSE" and
                     isinstance(rule["project_course_actions"],list) and 1<=len(rule["project_course_actions"])<=12
@@ -118,19 +130,21 @@ def policy_check(policy):
                         rule["resolver"]=="EXISTING_PLURAL_CARE_SOURCE_RESOLUTION" and
                         not rule.get("augment"),"GEN_RESOLVER_SCOPE")
             if "construct" in rule:
-                require(rule["construct"] in ("LEXICAL_PROJECT_REVALUATION","CROSS_OBJECT_POSSIBLE_END","INCIDENTAL_END_TAKEUP")
+                require(rule["construct"] in (*TYPED_FORMATION_OFFERS,"LEXICAL_PROJECT_REVALUATION","CROSS_OBJECT_POSSIBLE_END","INCIDENTAL_END_TAKEUP")
                         and not rule.get("resolver"),"GEN_TYPED_CONSTRUCTION")
-                require(rule["offer"]=={"LEXICAL_PROJECT_REVALUATION":"historically_possible_lexical_project_revaluations",
+                require(rule["offer"] in TYPED_FORMATION_OFFERS.get(rule["construct"],()) or rule["offer"]=={"LEXICAL_PROJECT_REVALUATION":"historically_possible_lexical_project_revaluations",
                     "CROSS_OBJECT_POSSIBLE_END":"historically_possible_cross_object_significance",
-                    "INCIDENTAL_END_TAKEUP":"historically_possible_incidental_takeup"}[rule["construct"]],
+                    "INCIDENTAL_END_TAKEUP":"historically_possible_incidental_takeup"}.get(rule["construct"]),
                     "GEN_TYPED_CONSTRUCTION_OFFER")
             # Only semantic fields, never an invented source ref or owner basis.
             allowed={"interpretive_hypothesis","personal_significance","personal_sense",
                      "affect_name","course_orientation","priority","anticipated_availability",
                      "revision","new_relation","new_polarity"}
-            if rule.get("construct")=="LEXICAL_PROJECT_REVALUATION":
+            if rule.get("construct") in TYPED_FORMATION_OFFERS:
+                rich_meaning_check(rule["construct"],rule.get("augment",{}))
+            elif rule.get("construct")=="LEXICAL_PROJECT_REVALUATION":
                 v=rule.get("augment",{});require(exact_keys(v,("priority","personal_significance")) and
-                    type(v["priority"]) in (int,float) and v["priority"]>=0 and
+                    type(v["priority"]) in (int,float) and isfinite(v["priority"]) and v["priority"]>=0 and
                     text(v["personal_significance"]),"GEN_LEXICAL_MEANING")
             elif rule.get("construct")=="CROSS_OBJECT_POSSIBLE_END":
                 v=rule.get("augment",{});require(exact_keys(v,("possible_object","possible_means","cue_terms")) and
@@ -140,6 +154,45 @@ def policy_check(policy):
             elif rule.get("construct")=="INCIDENTAL_END_TAKEUP":
                 require(rule.get("augment")=={"means":["INSPECT"]},"GEN_TAKEUP_MEANS")
             else:require(set(rule.get("augment",{}))<=allowed,"GEN_NOMINATION_AUGMENT")
+
+# R44: typed wrappers for existing native offer grammars. The offered basis
+# is copied at dispatch, never supplied by the remote policy. Semantic choices
+# remain conditional and may be withheld; the native development owner admits.
+TYPED_FORMATION_OFFERS = {
+    "DELAYED_APPRAISAL": ("historically_possible_delayed_appraisals",),
+    "ACTIVITY_AFFECT": ("historically_possible_activity_affects",
+                        "historically_possible_self_expression_affects"),
+    "EXPRESSIVE_PRACTICE": ("historically_possible_expressive_practices",),
+    "RECURRENT_WORK_ORIENTATION": ("historically_possible_recurrent_livelihood_orientation",),
+}
+
+def rich_meaning_check(kind,v):
+    if kind=="DELAYED_APPRAISAL":
+        require(exact_keys(v,("appraisal",)) and text(v["appraisal"],100),"GEN_APPRAISAL")
+    elif kind=="ACTIVITY_AFFECT":
+        require(exact_keys(v,("affect_name","personal_sense","course_orientation")) and
+                text(v["affect_name"],120) and text(v["personal_sense"]) and
+                v["course_orientation"] in ("APPROACH","WITHHOLD"),"GEN_ACTIVITY_AFFECT")
+    elif kind=="EXPRESSIVE_PRACTICE":
+        require(exact_keys(v,("cadence",)) and text(v["cadence"],40),"GEN_EXPRESSIVE_PRACTICE")
+    elif kind=="RECURRENT_WORK_ORIENTATION":
+        require(exact_keys(v,("orientation_mode",)) and
+                v["orientation_mode"] in ("APPROACH","WITHHOLD"),"GEN_RECURRENT_ORIENTATION")
+
+def rich_candidate(kind,q,v):
+    if kind=="DELAYED_APPRAISAL":
+        return {"kind":"APPRAISE_EXPECTED_DIFFERENCE","expectation_ref":q["expectation_ref"],
+                "perceived_cue_ref":q["source_perceived_cue_ref"],**v}
+    if kind=="ACTIVITY_AFFECT":
+        return {"kind":"ACQUIRE_ACTIVITY_AFFECT","basis":q,**v}
+    if kind=="EXPRESSIVE_PRACTICE":
+        return {"kind":"ACQUIRE_EXPRESSIVE_PRACTICE","basis":q["basis"],**v}
+    if kind=="RECURRENT_WORK_ORIENTATION":
+        return {"kind":"ACQUIRE_HISTORICAL_ORIENTATION","operation":"WORK",
+                "perceived_cue_ref":q["current_received_work_sign_ref"],
+                "recurrent_work_practice":{k:q[k] for k in (
+                    "prior_exercised_work_refs","current_received_work_sign_ref","current_world_event_ref")},**v}
+    raise RecursionRefusal("GEN_UNKNOWN_RICH_CONSTRUCTION")
 
 class ConditionalPolicy:
     """Compile checkpoint-supplied hypotheses against fresh owner offers.
@@ -180,6 +233,9 @@ class ConditionalPolicy:
                 self.routes["retrospective_rehearsal_not_currently_eligible"]+=1
             for rule in policy.get("actions",[]):
                 action=rule["action"]
+                if "current_match" in rule and not any(subset(c,rule["current_match"]) for c in packet.get("situated",{}).get("currents",[])):
+                    self.routes["checkpoint_current_guard_unmet"]+=1
+                    continue
                 if action=="SELECT_HIGHEST_CURRENT_PROJECT_COURSE":
                     courses=[(c["priority"],o["action"],c["project_id"])
                              for o in packet.get("options",[]) if o["action"] in rule["project_course_actions"]
@@ -197,6 +253,9 @@ class ConditionalPolicy:
                     pool=rule.get("pool","practical_options")
                     rows=[o for o in packet.get(pool,[])
                           if o.get("operation")==action and subset(o,rule["option_match"])]
+                    if "exclude_affect" in rule:
+                        rows=[o for o in rows if not any(subset(a,rule["exclude_affect"])
+                            for a in o.get("course_affective_organizations",[]))]
                     if rule.get("rank_by")=="LATEST_PERSONALLY_SENSED_REGULATION":
                         # A declared conditional selection, not a universal
                         # psychological preference law. Actual personal relief
@@ -258,7 +317,9 @@ class ConditionalPolicy:
                         continue
                     q=detached(rows[0]);extra=rule.get("augment",{})
                     construct=rule.get("construct")
-                    if construct=="LEXICAL_PROJECT_REVALUATION":
+                    if construct in TYPED_FORMATION_OFFERS:
+                        c=rich_candidate(construct,q,detached(extra))
+                    elif construct=="LEXICAL_PROJECT_REVALUATION":
                         c={"kind":"REORGANIZE_PROJECT","project_id":q["project_id"],
                            "lexical_revaluation_basis":q["lexical_revaluation_basis"],**detached(extra)}
                     elif construct=="CROSS_OBJECT_POSSIBLE_END":

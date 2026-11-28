@@ -698,7 +698,15 @@ class ExplicitJSONLLMProvider:
 # This is deliberately a different transport operation from live-V3 propose().
 # P2 owns call reservations; the modern generation port owns actual bind/dispatch.
 # No generic campaign or per-event live adapter can use this to bypass those.
-_CHECKPOINT_INSTRUCTIONS = """You are the analyst-level sourcefree developmental construction machinery
+_CHECKPOINT_INSTRUCTIONS = """
+Typed formation extensions (fresh exact offer basis only, optional and actor-local):
+DELAYED_APPRAISAL from historically_possible_delayed_appraisals, augment {appraisal:"ACTOR_INTERPRETS_DISAPPOINTED"} when appropriate;
+ACTIVITY_AFFECT from historically_possible_activity_affects or historically_possible_self_expression_affects, augment {affect_name,personal_sense,course_orientation:"APPROACH" or "WITHHOLD"};
+EXPRESSIVE_PRACTICE from historically_possible_expressive_practices, augment {cadence:"HALTING"} when appropriate;
+RECURRENT_WORK_ORIENTATION from historically_possible_recurrent_livelihood_orientation, augment {orientation_mode:"APPROACH" or "WITHHOLD"}.
+Exact complete candidate offers historically_possible_care_practice_revisions, historically_possible_relief_reconstitution and historically_possible_provisioning_reorganizations may be nominated or withheld; no fabricated source.
+Optional action.current_match checks an actual situated current's exact {action?,kind?,ref?}; optional action.exclude_affect checks an exact practical option's own course_affective_organizations for {course_orientation,basis?:{formation_source}} and falls through if a matching organization exists. These are proposed situated policies, not universal affect or work laws. No actor need understand these analyst-only determinants.
+You are the analyst-level sourcefree developmental construction machinery
 for a continuing fictional material-social organism. You are not any actor's
 conscious self and not the world owner. One response is one checkpoint:
 interpret the preceding ACTUAL event receipts individually in order, then
@@ -860,7 +868,15 @@ class ExplicitDevelopmentalCheckpointProvider(ExplicitJSONLLMProvider):
 # Live V3 candidate: one conditional semantic response for one actual native
 # turn, not the two-half historical generation checkpoint. Keep the existing
 # live JSON transport restrictions and parser. No automatic network fallback.
-_LIVE_TURN_INSTRUCTIONS = """You are constructing ONE situated response of a
+_LIVE_TURN_INSTRUCTIONS = """
+Typed formation extensions (fresh exact offer basis only, optional and actor-local):
+DELAYED_APPRAISAL from historically_possible_delayed_appraisals, augment {appraisal:"ACTOR_INTERPRETS_DISAPPOINTED"} when appropriate;
+ACTIVITY_AFFECT from historically_possible_activity_affects or historically_possible_self_expression_affects, augment {affect_name,personal_sense,course_orientation:"APPROACH" or "WITHHOLD"};
+EXPRESSIVE_PRACTICE from historically_possible_expressive_practices, augment {cadence:"HALTING"} when appropriate;
+RECURRENT_WORK_ORIENTATION from historically_possible_recurrent_livelihood_orientation, augment {orientation_mode:"APPROACH" or "WITHHOLD"}.
+Exact complete candidate offers historically_possible_care_practice_revisions, historically_possible_relief_reconstitution and historically_possible_provisioning_reorganizations may be nominated or withheld; no fabricated source.
+Optional action.current_match checks an actual situated current's exact {action?,kind?,ref?}; optional action.exclude_affect checks an exact practical option's own course_affective_organizations for {course_orientation,basis?:{formation_source}} and falls through if a matching organization exists. These are proposed situated policies, not universal affect or work laws. No actor need understand these analyst-only determinants.
+You are constructing ONE situated response of a
 continuing fictional organism. The current principal's actual actor_attempt
 packet is the operative starting point. This is not a history generation
 checkpoint, diary, personality inventory, or narration of a guaranteed outcome.
