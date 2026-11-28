@@ -18,7 +18,8 @@ KINDS=frozenset({'QUALIFIED_ROUTINE_PRACTICE',
                  'QUALIFIED_OTHER_OBLIGATION'})
 SCENARIO_CLASS='EXPLICIT_SOURCEFREE_HISTORICAL_FIXTURE'
 LIVED_CLASS='SOURCEFREE_ACTOR_LIVED_ROUTINE_PROPOSAL'
-ROUTINE_OPS={'CARE':'QUALIFIED_REPRODUCTIVE_CARE','WORK':'QUALIFIED_WAGE_LABOR',
+ROUTINE_OPS={'CARE':'QUALIFIED_REPRODUCTIVE_CARE','FEED':'QUALIFIED_MATERIAL_FEEDING',
+             'WORK':'QUALIFIED_WAGE_LABOR',
              'PRACTICE':'QUALIFIED_ROUTINE_PRACTICE','SING':'QUALIFIED_ROUTINE_PRACTICE'}
 MAX_ROUTINE_WINDOW=90
 
@@ -127,16 +128,28 @@ def routine_exercise_receipt(actor,experience,event_ref):
           and x.get('operation')==op and x.get('performed_status')=='PERFORMED'
           and x.get('intent_attribution')=='ACTOR_POLICY_SELECTED_PROJECT_COURSE']
     if len(rows)!=1:return None
+    if op=='WORK' and rows[0].get('objective_outcome')!='PRODUCED_GOODS_CONTROLLED_BY_OTHER':
+        return None
     felt=experience.get('felt_enactment') or {}
     if felt.get('attempted_operation')!=op or felt.get('objective_result_not_inferred') is not True:
         return None
     recipient=(sel.get('world_request') or {}).get('addressed_party_ref')
-    if op=='CARE':
+    if op in ('CARE','FEED'):
         if type(recipient) is not str or recipient==aid or project.get('addressed_party_ref')!=recipient:
             return None
     elif recipient is not None:return None
+    origin=None
+    if op=='FEED':
+        if 'CARE' not in project.get('means',[]):return None
+        feeds=[x for x in actor.get('performed_feeding_events',[])
+               if x.get('event_ref')==event_ref and x.get('giver')==aid
+               and x.get('recipient')==recipient and x.get('site')==site
+               and x.get('original_action_was_actor_selected') is True]
+        if len(feeds)!=1:return None
+        origin=feeds[0].get('material_food_source')
+        if origin not in ('GIVER_HELD_FOOD','MUTUAL_AID_FOOD','SHARED_SITE_FOOD'):return None
     return {'actor':aid,'project_ref':project['id'],'operation':op,'location':site,
-            'recipient':recipient,'event_ref':event_ref,'experience_ref':experience['ref'],
+            'recipient':recipient,'food_origin':origin,'event_ref':event_ref,'experience_ref':experience['ref'],
             'clock':clock,'not_future_undertaking_or_observed_daily_history':True}
 
 
@@ -155,7 +168,7 @@ def possible_recurrent_routines(actor,experience,event_ref):
     clock=current['clock']
     if any(x.get('through_clock',0)>clock for x in all_routines):return []
     last=max((x.get('admitted_clock',-1) for x in all_routines),default=-1)
-    keys=('actor','project_ref','operation','location','recipient')
+    keys=('actor','project_ref','operation','location','recipient','food_origin')
     paths=actor.get('evidence_paths',[])
     prior=[]
     for path in reversed(paths):
@@ -184,15 +197,17 @@ def possible_recurrent_routines(actor,experience,event_ref):
     return [{'kind':'ACQUIRE_RECURRENT_ROUTINE','basis':basis,
              'maximum_window_days':MAX_ROUTINE_WINDOW,
              'maximum_hours_per_active_day':4.,
+             **({'maximum_food_units_per_active_day':1.} if current['operation']=='FEED' else {}),
              'not_actor_self_report_or_proof_of_future_repetition':True}]
 
 
 def admit_recurrent_routine(actor,experience,event_ref,candidate):
     """Typed admission into the existing particular project, not a new psyche."""
-    if set(candidate)!={'kind','basis','window_days','hours_per_active_day',
-                        'provisional_exposure_fraction'}:
-        raise ValueError('LIVED_ROUTINE_CANDIDATE_CONTRACT')
-    basis=candidate['basis']
+    basis=candidate.get('basis')
+    if not isinstance(basis,dict):raise ValueError('LIVED_ROUTINE_CANDIDATE_CONTRACT')
+    fields={'kind','basis','window_days','hours_per_active_day','provisional_exposure_fraction'}
+    if basis.get('operation')=='FEED':fields.add('food_units_per_active_day')
+    if set(candidate)!=fields:raise ValueError('LIVED_ROUTINE_CANDIDATE_CONTRACT')
     if not any(x['basis']==basis for x in possible_recurrent_routines(actor,experience,event_ref)):
         raise ValueError('LIVED_ROUTINE_UNQUALIFIED_BASIS')
     days=candidate['window_days'];hours=candidate['hours_per_active_day']
@@ -201,12 +216,19 @@ def admit_recurrent_routine(actor,experience,event_ref,candidate):
             or type(hours) not in (int,float) or not isfinite(hours) or not 0<hours<=4
             or type(fraction) not in (int,float) or not isfinite(fraction) or not 0<fraction<=1):
         raise ValueError('LIVED_ROUTINE_UNQUALIFIED_DOSE')
+    food=candidate.get('food_units_per_active_day')
+    if food is not None and (type(food) not in (int,float) or not isfinite(food)
+                              or not 0<food<=1 or round(food,5)!=food):
+        raise ValueError('LIVED_ROUTINE_UNQUALIFIED_FOOD_DOSE')
+    if basis['operation']=='FEED' and food is None:
+        raise ValueError('LIVED_ROUTINE_UNQUALIFIED_FOOD_DOSE')
     project=next(p for p in actor['projects'] if p['id']==basis['project_ref'])
     clock=experience['clock']
     ref=stable_id('lived_routine',{'actor':actor['id'],'event':event_ref,'candidate':candidate})
     row={'id':ref,'actor':actor['id'],'project_ref':project['id'],
          'operation':basis['operation'],'location':basis['location'],
-         'recipient':basis['recipient'],'admitted_clock':clock,'through_clock':clock+days,
+         'recipient':basis['recipient'],'food_origin':basis['food_origin'],
+         **({'food_units_per_active_day':food} if food is not None else {}),'admitted_clock':clock,'through_clock':clock+days,
          'hours_per_active_day':hours,'provisional_exposure_fraction':fraction,
          'basis':copy(basis),'grade':LIVED_CLASS,
          'future_coverage_requires_actual_qualification':True}
@@ -231,7 +253,7 @@ def register_admitted_routine(world,actor,report,event_ref):
             or world.get('positions',{}).get(aid)!=site
             or actor['location']!=site or op not in project.get('means',[])):
         raise ValueError('LIVED_ROUTINE_SOURCE_BOUNDARY_MISMATCH')
-    if op=='CARE' and world.get('positions',{}).get(row['recipient'])!=site:
+    if op in ('CARE','FEED') and world.get('positions',{}).get(row['recipient'])!=site:
         raise ValueError('LIVED_ROUTINE_CARE_RECIPIENT_NOT_PRESENT')
     ref=row['id']
     registry=world.setdefault('routine_source_registry',{})
@@ -239,7 +261,9 @@ def register_admitted_routine(world,actor,report,event_ref):
     process={'kind':ROUTINE_OPS[op],'actor':aid,'location':site,'source_ref':ref,
              'routine_project_ref':project['id'],'hours_per_active_day':row['hours_per_active_day'],
              'provisional_exposure_fraction':row['provisional_exposure_fraction']}
-    if op=='CARE':process['recipient']=row['recipient']
+    if op in ('CARE','FEED'):process['recipient']=row['recipient']
+    if op=='FEED':process.update({'supply_origin':row['food_origin'],
+                            'food_units_per_active_day':row['food_units_per_active_day']})
     if process['kind']=='QUALIFIED_ROUTINE_PRACTICE':
         process.update({'operation':op,'mode':'SOLO_COMPONENT_PRACTICE'})
     record={'id':ref,'actor':aid,'location':site,'kind':process['kind'],
@@ -283,13 +307,33 @@ def live_routine_situational_reason(world,actors,process):
     if (len(receipts)!=1 or receipts[0]['through_clock']!=row['through_clock']
             or receipts[0]['basis']['admission_event_ref']!=row['admission_event_ref']):
         raise ValueError('LIVED_ROUTINE_ACTOR_WORLD_SOURCE_DIVERGENCE')
-    if op=='CARE' and project.get('addressed_party_ref')!=process.get('recipient'):
+    if op in ('CARE','FEED') and project.get('addressed_party_ref')!=process.get('recipient'):
         return 'PARTICULAR_CARE_RECIPIENT_CHANGED'
     if op=='WORK':
         from .labor_dependency import work_permission
         permission=work_permission(world,a['id'],process['location'])
-        if permission not in ('QUALIFIED_WORK_CONTRACT_ACTIVE','LEGACY_SITE_WAGE_FIXTURE'):
+        if permission not in ('QUALIFIED_WORK_CONTRACT_ACTIVE','NO_ADDITIONAL_CONTRACT_REGIME'):
             # The current world work owner determines the same permission.
             # An absent/unqualified contract cannot be supplied by a routine.
             return 'CURRENT_WORK_PERMISSION_NOT_QUALIFIED:'+str(permission)
     return None
+
+
+def lived_work_permission_boundaries(world,actor,site,start,end):
+    """The existing wage-regime owner's inclusive sanctions are temporal facts.
+
+    Only actual permission changes at known boundaries matter. This avoids
+    assuming access over a compressed span merely because work was possible
+    at its first instant. No new institution or actor interpretation.
+    """
+    from .labor_dependency import work_permission
+    regime=world.get('work_regimes',{}).get(site)
+    if not regime:return []
+    times=set()
+    for item in regime.get('suspensions',[]):
+        if item.get('worker')==actor:
+            for t in (item.get('start_clock'),item.get('through_clock',-1)+1):
+                if type(t) is int and start<t<=end:times.add(t)
+    return [t for t in sorted(times)
+            if work_permission({**world,'clock':t-1},actor,site)!=
+               work_permission({**world,'clock':t},actor,site)]

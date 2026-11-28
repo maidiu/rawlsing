@@ -632,7 +632,7 @@ def continue_mixed_history(runtime,target_clock,*,cadence_origin=0,
     resolution choice, not a biological period, human calendar or adult end.
     """
     from .initiative import choose_next_actor
-    from .routine_sources import acquired_routine_processes
+    from .routine_sources import acquired_routine_processes, lived_work_permission_boundaries
     for value,low,high,code in (
         (target_clock,0,10**9,'TARGET'),(cadence_origin,0,10**9,'ORIGIN'),
         (ordinary_span,1,MAX_HORIZON,'SPAN'),(detail_beats,1,24,'DETAIL'),
@@ -708,6 +708,13 @@ def continue_mixed_history(runtime,target_clock,*,cadence_origin=0,
             dynamic=qualify_mixed_history_schedule(world,[p for p in live
                         if p['source_ref'] not in explicit_refs])
             end,active=mixed_history_interval(schedule+dynamic,clock,end)
+            # Existing employer sanctions can change material work eligibility
+            # inside a routine window. Cut before that boundary, without
+            # fabricating either a blocked work attempt or renewed assent.
+            for p in active:
+                if p['kind']=='QUALIFIED_WAGE_LABOR':
+                    times=lived_work_permission_boundaries(world,p['actor'],p['location'],clock,end)
+                    if times:end=min(end,times[0])
             if end<=clock:raise ValueError('MIXED_HISTORY_EMPTY_ROUTINE_INTERVAL')
             boundary=next_discontinuity(world,actors,end-clock)
             # Stop exactly at the interruption, not one actor beat beyond it.

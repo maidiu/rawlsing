@@ -1183,8 +1183,6 @@ class ConstitutiveRuntime:
                 **({'performed_repair_technique_ref_analytic_only':
                     experience['performed_repair_technique_ref_analytic_only']}
                    if experience.get('performed_repair_technique_ref_analytic_only') else {}),
-                **({'routine_exercise_analytic_only':routine_exercise}
-                   if (routine_exercise:=routine_exercise_receipt(actors[aid],experience,objective_ref)) else {}),
                 'received_cue_refs':[c['id'] for c in personal_cues],
                 'received_cue_tags':sorted({str(tag).lower()
                     for cue in personal_cues for tag in cue.get('tags',[])}),
@@ -1204,6 +1202,9 @@ class ConstitutiveRuntime:
                 actors[aid],experience,objective_ref)
             retain_performed_material_feeding(
                 actors[aid],experience,objective_ref,world)
+            routine_exercise=routine_exercise_receipt(actors[aid],experience,objective_ref)
+            if routine_exercise:
+                actors[aid]['evidence_paths'][-1]['routine_exercise_analytic_only']=routine_exercise
             conserve_sensed_material_nonperformance(
                 actors[aid],experience,objective_ref)
             conserve_incomplete_work(actors[aid],experience,objective_ref)

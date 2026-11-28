@@ -610,6 +610,8 @@ class ExplicitJSONLLMProvider:
                 "ACQUIRE_RECURRENT_ROUTINE with exactly kind, basis copied from the issued "
                 "offer, window_days (integer 1 to 90), hours_per_active_day (positive, at "
                 "most 4), and provisional_exposure_fraction (positive, at most 1). "
+                "For a FEED basis also include food_units_per_active_day (positive at most 1, "
+                "five decimal places); its actual source is fixed by the received basis. "
                 "These are provisional future modeled coverage, not a diary, guaranteed "
                 "compliance, consent, permission, skill or a claim of every day. "
                 "Choose a conservative window and dose; current owner requalifies actual "

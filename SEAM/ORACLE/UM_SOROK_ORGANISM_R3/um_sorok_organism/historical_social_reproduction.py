@@ -13,7 +13,7 @@ remain the first writer/reader. No new canonical P2/P6/SDTF or native rights.
 import math
 from .types import GRADE, copy, stable_id
 from .routine_sources import (verify_qualified_period_envelope, live_routine_situational_reason,
-                              LIVED_CLASS)
+                              LIVED_CLASS, lived_work_permission_boundaries)
 from .organism import eligible
 from .mediated_efficacy import COMPONENTS
 from .material_conjunction import qualify_aggregate_material_gate
@@ -98,6 +98,9 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
         if conditional not in (None,'SITUATED_CONDITIONAL_ROUTINE'):
             raise ValueError('HISTORICAL_TIME_UNKNOWN_ROUTINE_APPLICATION')
         lived_source=source_confirmation['source_grade']==LIVED_CLASS
+        if lived_source and raw['kind']=='QUALIFIED_WAGE_LABOR' and lived_work_permission_boundaries(
+                world,a,site,start_clock,start_clock+days-1):
+            raise ValueError('LIVED_ROUTINE_SPLIT_AT_WORK_PERMISSION_CHANGE')
         if lived_source and conditional!='SITUATED_CONDITIONAL_ROUTINE':
             raise ValueError('LIVED_ROUTINE_REQUIRES_SITUATED_APPLICATION')
         if conditional:
