@@ -311,6 +311,12 @@ class EarlyOrdinaryPractice(unittest.TestCase):
             self.assertEqual(len(child['cultural_reference_practices']),1)
             self.assertEqual(child['cultural_reference_practices'][0]['object_ref'],obj)
             self.assertEqual(child['projects'],[])
+            # The inherited historical qualifier requires strictly earlier
+            # acquisition, not recruitment in the same world-clock beat.
+            self.assertEqual(child['cultural_reference_practices'][0]['origin_clock'],rt.ledger.world()[1]['clock'])
+            self.assertEqual(rt.step('mother')['status'],'PERFORMED')
+            child=self.child(rt)
+            self.assertLess(child['cultural_reference_practices'][0]['origin_clock'],rt.ledger.world()[1]['clock'])
             self.assertTrue(rt.verify()['valid'])
         finally:rt.close()
         cold=runtime()
