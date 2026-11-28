@@ -54,6 +54,25 @@ def preproject_exercise_basis(actor, operation, location, source_ref, as_of):
     return row if len(paths)==1 else None
 
 
+def preproject_vocal_basis(actor, location, as_of):
+    """Earlier actually initiated signal + qualified ordinary participation.
+    This is not an acquired desire to communicate, a word, or an Other's consent.
+    """
+    rows=[]
+    for row in actor.get('practice_exposures',[]):
+        if (row.get('actor')==actor.get('id') and row.get('operation')=='SIGNAL'
+                and row.get('location')==location
+                and row.get('grade')=='SOURCEFREE_CONDITIONED_AGGREGATE_PRACTICE'
+                and type(row.get('modeled_practice_hours')) in (int,float)
+                and 0<row['modeled_practice_hours']<=3650*16
+                and type(row.get('end_clock')) is int and row['end_clock']<=as_of):
+            prior=preproject_exercise_basis(actor,'SIGNAL',location,
+                row.get('preproject_exercise_ref'),row.get('start_clock'))
+            if prior is not None and prior['event_ref']==row.get('anchor_actual_event_ref'):
+                rows.append(row)
+    return max(rows,key=lambda r:(r['end_clock'],r['id'])) if rows else None
+
+
 def preproject_motor_readiness(actor):
     """Separate coarse modeled dose from counted, actually performed events.
 

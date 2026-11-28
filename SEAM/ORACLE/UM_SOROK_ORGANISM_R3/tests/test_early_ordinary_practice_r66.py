@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from um_sorok_organism.runtime import ConstitutiveRuntime
-from um_sorok_organism.types import newborn, blank_world
+from um_sorok_organism.types import newborn, adult, blank_world
 from um_sorok_organism.organism import eligible, conserved_motor_exercise
 from um_sorok_organism.mediated_efficacy import preproject_motor_readiness
 from um_sorok_organism.semantics import CallbackLLMProvider, ValidatingSemanticService
@@ -134,3 +134,83 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                     self.assertEqual(rt.verify()['events'],before)
                 self.assertEqual(self.child(rt)['practice_exposures'],[])
             finally:rt.close()
+
+
+    def test_ordinary_history_recruits_plural_actual_social_response(self):
+        """One life, ordinary bodily formation, distinct independent Others,
+        optional semantic admission, and a cold actor-owned expressive capacity.
+        """
+        with tempfile.TemporaryDirectory() as d:
+            db=Path(d)/'plural-vocal.db'
+            stage={'action':'SIGNAL','other':None,'admit':True,'reply':'SPEAK'}
+            def policy(task,packet):
+                if task=='expression':return {'task':task,'surface':'Ordinary activity.'}
+                if task=='development':
+                    candidates=packet.get('historically_possible_social_vocal_development',[])
+                    return {'task':task,'candidates':candidates if stage['admit'] else []}
+                if task=='actor_attempt':
+                    aid=packet['actor']['id']
+                    if aid!='nadia':
+                        return {'task':task,'action':stage['reply'] if packet.get('requesting_actor') else 'REST'}
+                    operation=stage['action']
+                    out={'task':task,'action':operation}
+                    if stage['other'] is not None and operation=='SIGNAL':
+                        found=[a for a in packet['practical_options']
+                            if a.get('grounds_status')=='PREPROJECT_ORDINARY_VOCAL_EXPLORATION'
+                            and a['world_request']['addressed_party_ref']==stage['other']]
+                        self.assertEqual(len(found),1)
+                        out['practical_option_id']=found[0]['option_id']
+                    return out
+                raise AssertionError(task)
+            def runtime():
+                return ConstitutiveRuntime(str(db),semantic=ValidatingSemanticService(CallbackLLMProvider(policy)))
+            rt=runtime()
+            try:
+                adults=[adult('father','Father'),adult('mother','Mother')]
+                for person in adults:
+                    person['projects']=[{'id':'vocal:'+person['id'],'object':'vocal activity',
+                        'means':['SPEAK'],'priority':.2,'cue_terms':['home'],'status':'active'}]
+                rt.ledger.initialize(blank_world(),[newborn('nadia','Nadia'),*adults])
+                self.assertEqual(rt.step('nadia')['status'],'PERFORMED')
+                ref=self.anchor(rt,'SIGNAL')
+                proc=self.source(rt,'SIGNAL',ref,180)
+                rt.background(180,[proc])
+                self.assertEqual(self.child(rt)['cultural_demonstrations'],[])
+                self.assertEqual(self.child(rt)['body']['language'],0)
+                stage['other']='father'
+                a=rt.step('nadia')
+                self.assertEqual(a['coactor'],'SPEAK')
+                self.assertEqual(len(self.child(rt)['vocal_turn_experiences']),1)
+                rt.background(14)
+                stage['other']='mother'
+                stage['reply']='REFUSE'
+                rt.step('nadia')
+                self.assertEqual(len(self.child(rt)['vocal_turn_experiences']),1)
+                self.assertEqual(self.child(rt)['body']['language'],0)
+                stage['reply']='SPEAK'
+                b=rt.step('nadia')
+                self.assertEqual(b['coactor'],'SPEAK')
+                child=self.child(rt)
+                self.assertEqual(child['body']['language'],.07)
+                acquired=child['vocal_coordination_practices'][0]
+                self.assertEqual(acquired['earlier_source_other_ref'],'father')
+                self.assertEqual(acquired['source_other_ref'],'mother')
+                self.assertEqual(acquired['source_route'],'ORDINARY_ACTOR_ADDRESSED_RESPONSIVE_LIFE')
+                stage['other']='father'
+                rt.step('nadia')
+                self.assertEqual(self.child(rt)['body']['language'],.07)
+                rt.background(14)
+                stage['admit']=False
+                rt.step('nadia')
+                self.assertEqual(self.child(rt)['body']['language'],.07)
+                self.assertTrue(rt.verify()['valid'])
+                child=self.child(rt)
+            finally:rt.close()
+            cold=runtime()
+            try:
+                self.assertEqual(self.child(cold),child)
+                self.assertEqual(child['cultural_demonstrations'],[])
+                self.assertEqual(child['projects'],[])
+                self.assertFalse(eligible(child['body'],'SPEAK')[0])
+                self.assertTrue(cold.verify()['valid'])
+            finally:cold.close()
