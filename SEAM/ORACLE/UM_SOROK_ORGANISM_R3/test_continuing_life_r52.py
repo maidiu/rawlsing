@@ -480,7 +480,7 @@ class ContinuingLifeCourt(unittest.TestCase):
                         ctx=r["context"];t=ctx["clock"];out=[]
                         for i,(who,p,span) in enumerate(plan):
                             t+=span+1
-                            out.append(event(ctx,"r79:"+str(t)+":"+str(i),t,who,{who:p},span=span))
+                            out.append(event(ctx,"r79:"+str(t)+":"+str(i),t,who,p if who in p else {who:p},span=span))
                         return {"retrospective":retro(r),"prospective":out}
                     class History:
                         def __init__(self,resumed=False):self.calls=[];self.resumed=resumed
