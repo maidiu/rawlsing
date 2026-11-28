@@ -925,7 +925,13 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                                 self.assertTrue(eligible(rt.ledger.actor('mother')[1]['body'],'CARE')[0])
                                 rt.close();rt=runtime()
                                 phase['name']='care_now'
+                                # Relief is not inferable merely from performed
+                                # CARE. Allow actual ordinary bodily change
+                                # before each encounter rather than assert a
+                                # gain at the saturation ceiling.
+                                self.assertEqual(rt.step('nadia',requested_action='WAIT')['status'],'PERFORMED')
                                 self.assertEqual(rt.step('mother')['attempt'],'CARE')
+                                self.assertEqual(rt.step('nadia',requested_action='WAIT')['status'],'PERFORMED')
                                 self.assertEqual(rt.step('father')['attempt'],'WAIT' if material_period else 'CARE')
                                 expected='mother' if material_period else 'father'
                                 self.assertEqual(self.child(rt)['experienced_care_events'][-1]['giver_ref'],expected)
