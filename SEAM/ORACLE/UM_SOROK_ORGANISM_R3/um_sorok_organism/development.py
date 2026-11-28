@@ -270,6 +270,16 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             actor.setdefault('relational_motifs',[]).append(motif)
             report.append({'kind':op,'motif':motif['id'],
                            'status':'ADMITTED_SOURCEFREE_RELATIONAL_FORMATION'})
+        elif op=='REVALUE_RELATION' and 'lived_care_authority_basis' in c:
+            from .relational_metabolism import qualify_care_authority_revaluation
+            try:
+                revision=qualify_care_authority_revaluation(actor,experience,event_ref,c)
+            except InvalidRelationalMotif as exc:
+                raise InvalidDevelopment(str(exc)) from exc
+            link=next(x for x in actor['links'] if link_ref(x)==c['relation_id'])
+            link.setdefault('id',c['relation_id'])
+            link.setdefault('contextual_revaluations',[]).append(revision)
+            report.append({'kind':op,'relation':link['id'],'status':'ADMITTED_CONTEXTUAL_CARE_AUTHORITY_REVALUATION'})
         elif op=='REVALUE_RELATION':
             # The old relation remains in exact in-actor ancestry; replacement
             # changes how its endpoints become meaningful *now*, never the

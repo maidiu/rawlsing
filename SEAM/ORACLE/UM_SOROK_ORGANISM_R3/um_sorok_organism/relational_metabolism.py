@@ -139,7 +139,8 @@ def derive_relational_metabolism(constitution, access, active_forms, inhibited):
     action_currents = []
     recruitment_candidates = []
     readset = set()
-    for link in constitution.links:
+    partitions=quarantine_pairs(constitution.links,access.location)
+    for link in situated_relation_links(constitution.links,access.location):
         if (link.get("source") not in situated
                 or link.get("target") not in situated
                 or not _in_context(link, access, cues)):
@@ -202,6 +203,8 @@ def derive_relational_metabolism(constitution, access, active_forms, inhibited):
                     "has_inhibited_source": bool(sources & blocked),
                 })
             elif effect["kind"] == "RECRUIT_FORM":
+                if any((source,effect['target_form']) in partitions for source in sources):
+                    continue
                 recruitment_candidates.append({
                     "target_form": effect["target_form"],
                     "motif_ref": mid,
@@ -532,3 +535,100 @@ def qualify_lived_cross_context_revaluation(actor, experience, event_ref, candid
     basis['new_polarity']=polarity
     return basis,effects
 
+
+
+def situated_relation_links(links,location):
+    """A later revaluation can be local; do not overwrite the old relation
+    in every other activity field. The historical link retains its identity."""
+    result=[]
+    for link in links:
+        rows=[x for x in link.get('contextual_revaluations',[])
+              if x.get('location')==location]
+        if rows:
+            row=rows[-1]
+            projected=copy(link);projected['relation']=row['new_relation']
+            projected['contextual_revaluation_event_ref']=row['event_ref']
+            result.append(projected)
+        else:result.append(link)
+    return result
+
+
+def quarantine_pairs(links,location):
+    """A contextual partition stops this associative route, not the target
+    form itself, its other routes, its direct sensory recruitment or action."""
+    return {(x['source'],x['target']) for x in situated_relation_links(links,location)
+            if x.get('relation')=='QUARANTINES_FROM'
+            and (not x.get('contexts') or location in x['contexts'])}
+
+
+def possible_care_authority_revaluations(actor,experience,event_ref):
+    """Connect separately lived care and thwarted material activity through
+    an actual later reception of the care recipient exercising power.
+
+    No claim that the observed power caused the earlier blocked feeding.
+    The proposed relation is between the actor's already acquired forms.
+    """
+    from .care_commitment_genesis import lived_care_authority_encounters
+    aid=actor['id'];paths=actor.get('evidence_paths',[]);forms=actor.get('forms',{})
+    out=[]
+    for b in lived_care_authority_encounters(actor,experience,event_ref):
+        site=b['location'];clock=b['clock']
+        blocked=[x for x in actor.get('material_dependency_encounters',[])
+                 if x.get('actor')==aid and x.get('location')==site
+                 and x.get('own_operation_attempted')=='FEED'
+                 and type(x.get('clock')) is int and x['clock']<clock
+                 and any(p.get('event')==x.get('event_ref')
+                         and p.get('experience_ref')==x.get('experience_ref')
+                         and p.get('own_action')=='FEED'
+                         and x.get('received_nonperformance_sign_ref') in p.get('received_cue_refs',[])
+                         for p in paths)]
+        for link in actor.get('links',[]):
+            if (link.get('relation') not in RELATIONS
+                    or link.get('source')==link.get('target')
+                    or link.get('source') not in forms or link.get('target') not in forms
+                    or (link.get('contexts') and site not in link['contexts'])
+                    or not link.get('origin') or event_ref in link['origin']
+                    or not any(p.get('event') in link['origin'] for p in paths)
+                    or any(x.get('event_ref')==event_ref for x in link.get('contextual_revaluations',[]))):
+                continue
+            fs=[forms[link['source']],forms[link['target']]]
+            if any(f.get('actor')!=aid or not f.get('origin') or event_ref in f['origin']
+                   or not any(p.get('event') in f['origin']
+                              and p.get('experience_ref')==f.get('evidence',{}).get('experience_ref')
+                              for p in paths) for f in fs):continue
+            for i in (0,1):
+                caring,frustrated=fs[i],fs[1-i]
+                if not set(caring['origin']).intersection(b['earlier_care_event_refs']):continue
+                matches=[x for x in blocked if x['event_ref'] in frustrated['origin']]
+                if len(matches)!=1:continue
+                current=situated_relation_links([link],site)[0]['relation']
+                basis={'care_authority_encounter':copy(b),'relation_ref':link_ref(link),
+                       'caring_form_ref':caring['id'],'material_frustration_form_ref':frustrated['id'],
+                       'earlier_blocked_feeding_ref':matches[0]['id'],
+                       'earlier_blocked_event_ref':matches[0]['event_ref'],
+                       'previous_situated_relation':current,'location':site,
+                       'not_a_proven_institutional_causal_explanation':True}
+                out.append({'kind':'REVALUE_RELATION','relation_id':link_ref(link),
+                            'lived_care_authority_basis':basis,
+                            'new_relation_choices':sorted(RELATIONS-{current}),
+                            'semantic_hypothesis_required_or_abstain':True})
+                if len(out)>=12:return out
+    return out
+
+
+def qualify_care_authority_revaluation(actor,experience,event_ref,candidate):
+    allowed={'kind','relation_id','lived_care_authority_basis','new_relation','interpretive_hypothesis'}
+    if set(candidate)!=allowed:
+        raise InvalidRelationalMotif('CARE_AUTHORITY_RELATION_UNQUALIFIED_FIELDS')
+    h=candidate['interpretive_hypothesis']
+    rows=[x for x in possible_care_authority_revaluations(actor,experience,event_ref)
+          if x['relation_id']==candidate['relation_id']
+          and x['lived_care_authority_basis']==candidate['lived_care_authority_basis']
+          and candidate['new_relation'] in x['new_relation_choices']]
+    if len(rows)!=1 or type(h) is not str or not 1<=len(h.strip())<=512:
+        raise InvalidRelationalMotif('CARE_AUTHORITY_RELATION_UNQUALIFIED_HISTORY')
+    b=copy(rows[0]['lived_care_authority_basis'])
+    return {'event_ref':event_ref,'experience_ref':experience['ref'],
+            'location':b['location'],'previous_relation':b['previous_situated_relation'],
+            'new_relation':candidate['new_relation'],'basis':b,
+            'interpretive_hypothesis_not_causal_truth':h.strip(),'grade':GRADE}
