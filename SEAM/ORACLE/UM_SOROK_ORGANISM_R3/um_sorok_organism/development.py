@@ -23,12 +23,12 @@ from .historical_self_organization import (
     revise_operative_self, admit_lived_directional_orientation)
 from .psychic_genesis import (admit_contrast_end, possible_dependency_project_takeups,
                              PRODUCTIVE_VOCAL_FAMILY, possible_productive_vocal_takeups)
-from .activity import (possible_productive_witness_reorganizations,
+from .activity import (possible_productive_witness_reorganizations, possible_provisioning_reorganizations,
                         possible_dependency_project_reorganizations,
                        possible_dependency_means_revisions, admit_interactivity_relation,
                        possible_lexical_project_revaluations)
 from .joint_practice_genesis import admit_joint_practice
-from .care_commitment_genesis import admit_care_commitment
+from .care_commitment_genesis import admit_care_commitment, admit_care_practice_revision
 from .cultural_mediation import (
     admit_cultural_reference,admit_reference_revision)
 from .social_vocal_development import admit_vocal_coordination
@@ -75,7 +75,7 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'ACQUIRE_NOTICE_EXPECTATION','REVISE_NOTICE_EXPECTATION',
          'ACQUIRE_GENETIC_POSSIBLE_END',
          'ACQUIRE_CONDITIONAL_JOINT_PRACTICE',
-         'ACQUIRE_COSTLY_CARE_PRACTICE',
+         'ACQUIRE_COSTLY_CARE_PRACTICE','REVISE_COSTLY_CARE_PRACTICE',
          'ACQUIRE_SITUATED_CULTURAL_REFERENCE',
          'REVISE_SITUATED_CULTURAL_REFERENCE',
          'ACQUIRE_SOCIAL_VOCAL_COORDINATION','ACQUIRE_REPAIR_TECHNIQUE','NO_CHANGE'}
@@ -443,6 +443,11 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             try:
                 report.append(admit_reference_revision(
                     actor,experience,event_ref,c))
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
+        elif op=='REVISE_COSTLY_CARE_PRACTICE':
+            try:
+                report.append(admit_care_practice_revision(actor,experience,event_ref,c))
             except ValueError as error:
                 raise InvalidDevelopment(str(error)) from error
         elif op=='ACQUIRE_COSTLY_CARE_PRACTICE':
@@ -818,6 +823,7 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             dependency_project=bool(project.get('takeup_evidence',{}).get('dependency_takeup_basis'))
             revision_basis=c.get('dependency_means_revision_basis')
             witness_basis=c.get('productive_witness_basis')
+            provisioning_basis=c.get('provisioning_means_basis')
             lexical_basis=c.get('lexical_revaluation_basis')
             if 'lexical_revaluation_basis' in c:
                 # Exact basis issued by this actor's actual received sign and
@@ -841,6 +847,16 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                     'basis':copy(lexical_basis),'personal_significance':significance,
                     'prior_priority':project.get('priority',.4),'new_priority':priority,
                     'fallible_semantic_hypothesis_not_actor_self_report':True}
+            elif provisioning_basis is not None:
+                if c not in possible_provisioning_reorganizations(actor,experience,event_ref):
+                    raise InvalidDevelopment('PROVISIONING_REORGANIZATION_UNQUALIFIED')
+                project['provisioning_means_basis']=copy(provisioning_basis)
+                project.setdefault('provisioning_means_history',[]).append({
+                    'event_ref':event_ref,'previous_means':copy(project['means']),
+                    'basis':copy(provisioning_basis),'grade':GRADE})
+            elif project.get('provisioning_means_basis') and any(k in c for k in
+                    ('means','addressed_party_ref','provisioning_means_basis')):
+                raise InvalidDevelopment('PROVISIONING_MEANS_REQUIRE_QUALIFIED_REVISION')
             elif witness_basis is not None:
                 if c not in possible_productive_witness_reorganizations(actor,experience,event_ref):
                     raise InvalidDevelopment('PRODUCTIVE_WITNESS_REORGANIZATION_UNQUALIFIED')

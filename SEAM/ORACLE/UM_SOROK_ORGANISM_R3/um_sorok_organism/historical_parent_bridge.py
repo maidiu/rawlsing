@@ -162,7 +162,22 @@ FAMILY_FIELDS={'id','source_ref','intersection_clock','intersection_site',
                'conception_clock','birth_clock','counterpart_id','counterpart_name',
                'counterpart_packet','child_id','child_name','prior_shared_effects'}
 
-def qualify_family_pathways(world,mother,rows):
+def _existing_counterpart(world,row,actors):
+    """Only an already canonical adult, never an implicit new biography."""
+    if row.get('prior_shared_effects')!='RETAIN_EXISTING_ACTUAL_HISTORY':
+        return None
+    aid=row.get('counterpart_id')
+    person=(actors or {}).get(aid)
+    if (row.get('counterpart_packet') is not None or not person
+            or person.get('id')!=aid or person.get('role')!='adult'
+            or person.get('name')!=row.get('counterpart_name')
+            or world.get('positions',{}).get(aid)!=person.get('location')
+            or aid not in world.get('positions',{})):
+        return None
+    return person
+
+
+def qualify_family_pathways(world,mother,rows,existing_actors=None):
     if (mother.get('role')!='adult' or world['positions'].get(mother['id'])!=mother['location']
             or type(rows) is not list or not 1<=len(rows)<=16):
         raise ValueError('FAMILY_PATHWAY_UNQUALIFIED_MATERNAL_SOURCE')
@@ -174,22 +189,26 @@ def qualify_family_pathways(world,mother,rows):
                ('id','source_ref','intersection_site','counterpart_id','counterpart_name',
                 'child_id','child_name','prior_shared_effects')):
             raise ValueError('FAMILY_PATHWAY_INVALID_IDENTITY')
-        if (x['id'] in ids or x['counterpart_id'] in known or x['child_id'] in known
-                or x['counterpart_id']==x['child_id'] or x['intersection_site'] not in world['sites']
-                or x['prior_shared_effects']!='UNMODELED_NO_RETROACTIVE_WRITE'):
+        existing=_existing_counterpart(world,x,existing_actors)
+        if (x['id'] in ids or x['child_id'] in known
+                or x['counterpart_id'] in (x['child_id'],mother['id'])
+                or x['intersection_site'] not in world['sites']
+                or (existing is None and (
+                    x['counterpart_id'] in known or
+                    x['prior_shared_effects']!='UNMODELED_NO_RETROACTIVE_WRITE'))):
             raise ValueError('FAMILY_PATHWAY_OVERLAP_OR_IDENTITY')
         ids.add(x['id'])
         t,c,b=(x[k] for k in ('intersection_clock','conception_clock','birth_clock'))
         if (any(type(v) is not int for v in (t,c,b))
                 or not world['clock']<t<c<b<=world['clock']+120*365):
             raise ValueError('FAMILY_PATHWAY_INVALID_CLOCKS')
-        adult_conditioning_input(x['counterpart_packet'])
+        if existing is None:adult_conditioning_input(x['counterpart_packet'])
     return {'grade':FAMILY_GRADE,'mother':mother['id'],'proposal_clock':world['clock'],
             'maternal_proposal_state_digest':stable_id('maternal_proposal',mother),
             'candidates':copy(rows),'unknown_prior_shared_effects_not_denied':True,
             'not_empirical_couple_probability_or_reproductive_consent':True}
 
-def situated_family_pathways(world,mother,source):
+def situated_family_pathways(world,mother,source,existing_actors=None):
     if (source.get('grade')!=FAMILY_GRADE or source.get('mother')!=mother['id']
             or world['clock']<=source.get('proposal_clock',world['clock'])
             or world.get('family_genesis',{}).get('selected_pathway')):return []
@@ -202,15 +221,46 @@ def situated_family_pathways(world,mother,source):
     out=[]
     for x in source['candidates']:
         site=world['sites'][x['intersection_site']]
+        existing=_existing_counterpart(world,x,existing_actors)
+        retained=x['prior_shared_effects']=='RETAIN_EXISTING_ACTUAL_HISTORY'
         if (world['clock']!=x['intersection_clock']
                 or world['positions'].get(mother['id'])!=x['intersection_site']
-                or x['counterpart_id'] in world['positions'] or x['child_id'] in world['positions']
-                or (site.get('access')!='public' and x['counterpart_id'] not in site.get('admitted',[]))):continue
+                or x['child_id'] in world['positions']
+                or (retained and (existing is None or
+                    existing['location']!=x['intersection_site']))
+                or (not retained and (x['counterpart_id'] in world['positions'] or
+                    (site.get('access')!='public' and x['counterpart_id'] not in site.get('admitted',[]))))):continue
         # Do not put the other candidate's survey or private source packet
         # into the maternal semantic selection call.
         out.append({k:copy(x[k]) for k in ('id','source_ref','intersection_clock',
                         'intersection_site','conception_clock','birth_clock')})
     return out
+
+def existing_family_binding(world,mother,source,selected,actors,sid,sha):
+    """Exact world-only binding; same adult before, during and after selection.
+
+    Existing history is not a conditional reconstruction. The ledger verifies
+    this same producer on current canonical actors. No encounter, consent,
+    cohabitation, conception or change to either person's psyche is inferred.
+    """
+    offers=situated_family_pathways(world,mother,source,actors)
+    person=_existing_counterpart(world,selected,actors)
+    if (not person or not any(x['id']==selected['id'] for x in offers)
+            or selected not in source['candidates']):
+        raise ValueError('FAMILY_EXISTING_COUNTERPART_NOT_SITUATED')
+    row={k:copy(selected[k]) for k in ('id','source_ref','intersection_clock',
+         'intersection_site','conception_clock','birth_clock','child_id','child_name')}
+    row.update({'mother':mother['id'],'counterpart':person['id'],
+                'admitted_clock':world['clock'],'proposal_clock':source['proposal_clock'],
+                'maternal_proposal_state_digest':source['maternal_proposal_state_digest'],
+                'maternal_selection_state_digest':stable_id('maternal_proposal',mother),
+                'counterpart_selection_state_digest':stable_id('existing_counterpart',person),
+                'prior_shared_effects':'RETAIN_EXISTING_ACTUAL_HISTORY',
+                'counterpart_entrance':'EXISTING_INDEPENDENT_ADULT'})
+    return {'stage':'COUNTERPART_ADMITTED','source_seal_id':sid,
+            'source_digest':sha,'selected_pathway':row,
+            'not_relationship_household_consent_or_conception':True}
+
 
 def family_encounter_evidence(world,selected):
     """An actual directed performed act after roster admission, not a

@@ -20,6 +20,7 @@ from .attention_field import (offer_undertaking_attention, received_undertaking_
 from .ordinary_life import passage
 from .activity import (record_activity_afterlife, register_lived_activity_attempt,
                         possible_productive_witness_reorganizations,
+                        own_provisioning_receipt, possible_provisioning_reorganizations,
                        possible_dependency_project_reorganizations,
                        possible_dependency_means_revisions, qualify_interactivity_deferral,
                        possible_lexical_project_revaluations,
@@ -28,7 +29,8 @@ from .practical_difference import start_selected_expectations, offer_addressed_l
 from .lived_genesis import proposals_from_bodily_history
 from .historical_self_organization import (possible_lived_directional_orientation,
                                            possible_dependency_ambivalence,
-                                           possible_counterhistory_release)
+                                           possible_counterhistory_release,
+                                           possible_retrospective_orientation_revisions)
 from .distributed_power import record_actor_participation
 from .practical_powers import retain_exercised_power, possible_repair_technique
 from .practical_inquiry import retain_personal_notice_exposure
@@ -38,7 +40,7 @@ from .unintended_goods import (possible_unintended_goods, qualify_incidental_obj
                                possible_cross_object_significance)
 from .expectation_afterlife import (source_qualified_appraisal_candidates,
                                     possible_activity_affects, own_vocal_reception,
-                                    possible_expressive_practices)
+                                    possible_expressive_practices, possible_self_expression_affects)
 from .routine_sources import register_sourcefree_period_envelope
 from .caregiving_practice import retain_performed_material_feeding
 from .material_provisioning import offer_feeding_source_alternatives, offer_self_meal_source_alternatives
@@ -50,14 +52,14 @@ from .institutional_procedure_learning import (
 )
 from .material_dependency_history import conserve_sensed_material_nonperformance
 from .livelihood_history import (
-    conserve_incomplete_work, possible_recurrent_work_orientation,
+    conserve_incomplete_work, possible_recurrent_work_orientation, possible_relief_reconstitution,
 )
 from .psychic_genesis import (
     conserve_lived_episode,possible_contrast_end,possible_dependency_project_takeups,
     possible_productive_vocal_takeups)
 from .joint_practice_genesis import possible_joint_practice
 from .care_commitment_genesis import (
-    conserve_costly_offered_care,candidate_care_commitment)
+    conserve_costly_offered_care,candidate_care_commitment,possible_care_practice_revisions)
 from .cultural_mediation import (
     conserve_personally_heard_reference,
     possible_cultural_object_inquiry,possible_reference_revision)
@@ -75,7 +77,7 @@ from .functional_correspondence import (propose_actor_lived_correspondences,
 from .initiative import continue_life
 from .continuity_clock import continue_to_discontinuity, continue_pre_encounter, qualify_contingent_world_notice
 from .historical_parent_bridge import (render_blind_interview, qualify_family_pathways,
-    family_encounter_evidence, FAMILY_SOURCE, FAMILY_GRADE)
+    family_encounter_evidence, FAMILY_SOURCE, FAMILY_GRADE, existing_family_binding)
 from .material_conjunction import admit_authored_structural_history
 from .operative_witness import freeze_operative_witness
 from .parents import construct_parent, interview_readout, select_staged_counterpart
@@ -166,22 +168,29 @@ class ConstitutiveRuntime:
         self.ledger.initialize(world,parents+[child],source_seals=source_seals)
         return {'world':self.world_id,'actors':[a['id'] for a in parents+[child]],'grade':GRADE}
 
-    def initialize_antecedent_adult(self,actor_id,name,packet,*,authored_structural_history=None):
-        """Alternative entrance: one actually continuing adult, no precreated child."""
+    def initialize_antecedent_adult(self,actor_id,name,packet,*,authored_structural_history=None,
+                                    other_adults=()):
+        """Antecedent adult life, optionally with independently constructed adults.
+        No precreated child or inferred relationship between the adults.
+        """
         world=blank_world(self.world_id)
+        entries=[(actor_id,name,packet),*other_adults]
+        ids=[a for a,_,_ in entries]
+        if len(set(ids))!=len(ids):raise ValueError('DUPLICATE_ANTECEDENT_ACTOR')
         if authored_structural_history is not None:
-            admit_authored_structural_history(world,{actor_id},authored_structural_history)
-        person=construct_parent(actor_id,name,packet,self.semantic)
-        seals=[('fictional_source:'+actor_id,'CONDITIONING_NOT_REAL_PERSON',packet)]
+            admit_authored_structural_history(world,set(ids),authored_structural_history)
+        people=[construct_parent(a,n,p,self.semantic) for a,n,p in entries]
+        seals=[('fictional_source:'+a,'CONDITIONING_NOT_REAL_PERSON',p) for a,_,p in entries]
         if authored_structural_history is not None:
             seals.append(('authored_structural_history','FICTIONAL_WORLD_CONDITIONING',authored_structural_history))
-        self.ledger.initialize(world,[person],source_seals=seals)
-        return {'world':self.world_id,'actors':[actor_id],'grade':GRADE}
+        self.ledger.initialize(world,people,source_seals=seals)
+        return {'world':self.world_id,'actors':ids,'grade':GRADE}
 
     def register_family_pathways(self,mother_id,candidates):
         version,world=self.ledger.world(self.world_id)
         mother=self.ledger.actor(mother_id)[1]
-        source=qualify_family_pathways(world,mother,candidates)
+        actors={a:self.ledger.actor(a)[1] for a in world['positions']}
+        source=qualify_family_pathways(world,mother,candidates,actors)
         sid='family_pathways:'+mother_id
         self.ledger.seal_source(sid,FAMILY_SOURCE,source,expected_world=version)
         return {'source_seal_id':sid,'proposal_clock':source['proposal_clock'],
@@ -209,9 +218,18 @@ class ConstitutiveRuntime:
         version,world=self.ledger.world(self.world_id)
         source,sha=self._family_source(source_seal_id)
         mother=self.ledger.actor(source['mother'])[1]
-        selected=select_staged_counterpart(world,mother,source,self.semantic)
+        actors={a:self.ledger.actor(a)[1] for a in world['positions']}
+        selected=select_staged_counterpart(world,mother,source,self.semantic,actors)
         if selected is None:return {'status':'ABSTAINED','grade':FAMILY_GRADE}
         path,father=selected
+        if path['prior_shared_effects']=='RETAIN_EXISTING_ACTUAL_HISTORY':
+            family=existing_family_binding(world,mother,source,path,actors,source_seal_id,sha)
+            world['family_genesis']=copy(family)
+            result=self.ledger.commit(self.world_id,version,world,{}, {},
+                    'FAMILY_EXISTING_COUNTERPART_BOUND',father['id'],
+                    {'family_genesis':family,'no_automatic_actor_experience':True,'grade':FAMILY_GRADE})
+            return {'receipt':result['id'],'actor':father['id'],
+                    'stage':family['stage'],'grade':FAMILY_GRADE}
         row={k:copy(path[k]) for k in ('id','source_ref','intersection_clock','intersection_site',
                  'conception_clock','birth_clock','child_id','child_name')}
         row.update({'mother':mother['id'],'counterpart':father['id'],'admitted_clock':world['clock'],
@@ -1158,6 +1176,11 @@ class ConstitutiveRuntime:
                    if (experience.get('own_practical_selection') or {}).get('notice_expectation') else {}),
                 **({'own_vocal_reception':own_vocal_reception(actors[aid],experience)}
                    if own_vocal_reception(actors[aid],experience) is not None else {}),
+                **({'own_provisioning_receipt_analytic_only':receipt}
+                   if (receipt:=own_provisioning_receipt(actors[aid],experience,world)) else {}),
+                **({'performed_repair_technique_ref_analytic_only':
+                    experience['performed_repair_technique_ref_analytic_only']}
+                   if experience.get('performed_repair_technique_ref_analytic_only') else {}),
                 'received_cue_refs':[c['id'] for c in personal_cues],
                 'received_cue_tags':sorted({str(tag).lower()
                     for cue in personal_cues for tag in cue.get('tags',[])}),
@@ -1297,6 +1320,9 @@ class ConstitutiveRuntime:
                 'selected_constitution':selected,
                 'actor_forms':copy(actors[aid]['forms']),
                 'actual_private_rehearsal_analyst_only':copy(private_rehearsal),
+                **({'historically_possible_retrospective_orientation_revisions':copy(retrospective)}
+                   if (retrospective:=possible_retrospective_orientation_revisions(
+                       actors[aid],experience,objective_ref)) else {}),
                 'actual_undertaking_attention_analyst_only':copy(attention_receipt),
                 **({'historically_possible_focal_encounter_memory': {
                         'kind':'MEMORY','focal_encounter_ref':focal_receipt['attention_id'],
@@ -1323,6 +1349,9 @@ class ConstitutiveRuntime:
                 **({'historically_possible_lexical_project_revaluations':copy(lexical_revaluations)}
                    if (lexical_revaluations:=possible_lexical_project_revaluations(
                        actors[aid],experience,objective_ref)) else {}),
+                **({'historically_possible_provisioning_reorganizations':copy(provisioning)}
+                   if (provisioning:=possible_provisioning_reorganizations(
+                       actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_productive_witness_reorganizations':copy(
                     possible_productive_witness_reorganizations(actors[aid],experience,objective_ref)),
                 'historically_possible_dependency_project_reorganizations':copy(
@@ -1335,6 +1364,9 @@ class ConstitutiveRuntime:
                     possible_joint_practice_genesis),
                 'historically_possible_care_practices':copy(
                     possible_care_practice),
+                **({'historically_possible_care_practice_revisions':copy(care_revisions)}
+                   if (care_revisions:=possible_care_practice_revisions(
+                       actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_cultural_references':copy(
                     cultural_reference_candidates),
                 'historically_possible_cultural_revisions':copy(
@@ -1374,6 +1406,9 @@ class ConstitutiveRuntime:
                     possible_interactivity_relations(actors[aid],experience,objective_ref)),
                 'historically_possible_activity_affects':copy(
                     possible_activity_affects(actors[aid],experience,objective_ref)),
+                **({'historically_possible_self_expression_affects':copy(self_affects)}
+                   if (self_affects:=possible_self_expression_affects(
+                       actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_co_regulation':copy(care_genesis),
                 'historically_possible_plural_care':copy(plural_care_genesis),
                 'historically_possible_reopened_care':copy(
@@ -1399,6 +1434,9 @@ class ConstitutiveRuntime:
                         actors[aid],experience)),
                 'historically_possible_recurrent_livelihood_orientation':copy(
                     recurrent_work),
+                **({'historically_possible_relief_reconstitution':copy(relief_changes)}
+                   if (relief_changes:=possible_relief_reconstitution(
+                       actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_lived_directional_orientation':copy(
                     lived_directional_orientation),
                 'historically_possible_counterhistory_release':copy(
