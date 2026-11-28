@@ -355,7 +355,7 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                              self.expressive_arm(Path(d)/'abstain.db',False))
 
 
-    def productive_ordinary_arm(self,db,admit_end,forge=False,practice=None,witness=None,transfer=None,affect=None,local_period=None,private=None):
+    def productive_ordinary_arm(self,db,admit_end,forge=False,practice=None,witness=None,transfer=None,affect=None,local_period=None,private=None,antecedent=False):
         """From ordinary infancy through plural response to self-generated end.
         Same acquired capacity in both arms; a later trial is not a project.
         No joint SING, no actual deficit/relief required, no injected child act.
@@ -363,12 +363,29 @@ class EarlyOrdinaryPractice(unittest.TestCase):
         from copy import deepcopy
         from um_sorok_organism.development import InvalidDevelopment
         phase={'name':'signal','other':None}
-        seen=[]
+        seen=[];constructor_calls=[];adult_memory=[]
+        from um_sorok_organism.semantics import HeuristicSemanticProvider
+        fallback=HeuristicSemanticProvider()
         def model(task,p):
             aid=p.get('actor',{}).get('id')
-            if task=='expression':return {'task':task,'surface':'Ordinary life.'}
+            if task=='adult_constructor':
+                self.assertTrue(antecedent)
+                constructor_calls.append(p['actor_id'])
+                return fallback.propose(task,p)
+            if task=='family_pathway_selection':
+                self.assertTrue(antecedent)
+                self.assertNotIn('counterpart_packet',str(p['eligible_pathways']))
+                self.assertNotIn('private adult uncertainty',str(p))
+                return {'task':task,'pathway_id':'retained'}
+            if task=='expression':
+                self.assertNotIn('private adult uncertainty',str(p))
+                return {'task':task,'surface':'Ordinary life.'}
             if task=='development':
                 if aid!='nadia':
+                    if antecedent and aid=='father' and phase['name']=='antecedent_memory':
+                        phase['name']='antecedent'
+                        return {'task':task,'candidates':[{'kind':'MEMORY',
+                            'content':'private adult uncertainty','cue_terms':['care']}]}
                     if aid=='mother' and phase['name']=='own' and witness is not None:
                         choices=p.get('historically_possible_productive_witness_reorganizations',[])
                         self.assertEqual(len(choices),1)
@@ -440,11 +457,17 @@ class EarlyOrdinaryPractice(unittest.TestCase):
             if task=='actor_attempt':
                 if aid!='nadia':
                     if p.get('requesting_actor'):
+                        if phase.get('reply')=='FEED':
+                            return {'task':task,'action':'FEED'}
                         if witness is not None:
                             opts=[o for o in p['practical_options'] if o['operation']=='SPEAK' and o.get('project_id')]
                             self.assertEqual(len(opts),1)
                             return {'task':task,'practical_option_id':opts[0]['option_id']}
                         return {'task':task,'action':'SPEAK'}
+                    if antecedent and aid=='father' and phase['name']=='material_work':
+                        a=[o for o in p['practical_options'] if o['operation']=='WORK' and o.get('project_id')]
+                        self.assertEqual(len(a),1)
+                        return {'task':task,'practical_option_id':a[0]['option_id']}
                     if aid=='mother' and phase['name']=='mother_inspect':
                         rows=[o for o in p['practical_options'] if
                               o.get('grounds_status')=='UNTESTED_PERSONALLY_HEARD_PUBLIC_OBJECT_REFERENCE']
@@ -553,11 +576,51 @@ class EarlyOrdinaryPractice(unittest.TestCase):
             adults=[adult('father','Father'),adult('mother','Mother')]
             for a in adults:a['projects']=[{'id':'speech:'+a['id'],'object':'ordinary vocal activity',
                 'means':['SPEAK'],'priority':.2,'cue_terms':['home'],'status':'active'}]
-            rt.ledger.initialize(blank_world(),[newborn('nadia','Nadia'),*adults])
+            if antecedent:
+                def packet(who):
+                    return {'input_kind':'THIN_BIOGRAPHY','source_grade':'EXPLICIT_FICTIONAL_HISTORICAL_INPUT',
+                            'source_ref':'fictional:'+who,'biographical_context':{'ordinary_life':who},
+                            'fictional_seed':{'projects':[{'object':'ordinary vocal activity',
+                                'means':['SPEAK','FEED'],'priority':.2,'cue_terms':['home']},
+                                {'object':'subsistence','means':['WORK'],'priority':.4}]}}
+                rt.initialize_antecedent_adult('mother','Mother',packet('mother'),
+                    other_adults=[('father','Father',packet('father'))])
+                self.assertEqual(constructor_calls,['mother','father'])
+                self.assertEqual(set(rt.ledger.actors()),{'mother','father'})
+                path={'id':'retained','source_ref':'fictional:path','intersection_clock':2,
+                      'intersection_site':'home','conception_clock':3,'birth_clock':5,
+                      'counterpart_id':'father','counterpart_name':'Father','counterpart_packet':None,
+                      'child_id':'nadia','child_name':'Nadia','prior_shared_effects':'RETAIN_EXISTING_ACTUAL_HISTORY'}
+                sid=rt.register_family_pathways('mother',[path])['source_seal_id']
+                phase['name']='antecedent_memory'
+                self.assertEqual(rt.step('father',requested_action='CARE',target='mother')['status'],'PERFORMED')
+                self.assertEqual(rt.step('mother')['status'],'PERFORMED')
+                adult_memory=deepcopy(rt.ledger.actor('father')[1]['memories'])
+                self.assertEqual(len(adult_memory),1)
+                parent_before=deepcopy(rt.ledger.actor('father')[1])
+                self.assertEqual(rt.select_family_intersection(sid)['actor'],'father')
+                self.assertEqual(rt.ledger.actor('father')[1],parent_before)
+                self.assertEqual(rt.step('father',requested_action='CARE',target='mother')['status'],'PERFORMED')
+                rt.admit_family_conception();rt.background(2);rt.realize_family_birth()
+                self.assertEqual(self.child(rt),newborn('nadia','Nadia'))
+                self.assertEqual(rt.ledger.actor('father')[1]['memories'],adult_memory)
+                self.assertEqual(rt.step('mother',requested_action='CARE',target='nadia')['status'],'PERFORMED')
+                self.assertTrue(self.child(rt)['experienced_care_events'])
+                phase['name']='signal'
+            else:
+                rt.ledger.initialize(blank_world(),[newborn('nadia','Nadia'),*adults])
             rt.step('nadia')
             proc=self.source(rt,'SIGNAL',self.anchor(rt,'SIGNAL'),180)
             rt.background(180,[proc])
-            phase['other']='father';rt.step('nadia')
+            phase['other']='father'
+            if antecedent:
+                phase['reply']='FEED'
+                before=self.child(rt)['body']['nutrition']
+                self.assertEqual(rt.step('nadia')['coactor'],'FEED')
+                self.assertGreater(self.child(rt)['body']['nutrition'],before)
+                self.assertEqual(self.child(rt)['vocal_turn_experiences'],[])
+                phase['reply']='SPEAK'
+            rt.step('nadia')
             rt.background(14)
             phase['other']='mother';rt.step('nadia')
             rt.step('mother')
@@ -749,6 +812,22 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                         rt.close();rt=runtime()
                         phase['name']='private_conduct'
                         self.assertEqual(rt.step('nadia')['attempt'],'REST' if private else 'SING')
+                        if antecedent:
+                            # The adult's independent material undertaking
+                            # enters the same child's continuing life.
+                            self.assertEqual(rt.step('father',requested_action='MOVE',object_ref='workshop')['objective_outcome'],'MOVED')
+                            phase['name']='material_work'
+                            before=rt.ledger.world()[1]
+                            self.assertEqual(rt.step('father')['attempt'],'WORK')
+                            after=rt.ledger.world()[1]
+                            self.assertGreater(after['accounts']['father'],before['accounts']['father'])
+                            self.assertEqual(after['material_claims'][-1]['controller'],'workshop_steward')
+                            self.assertEqual(rt.ledger.actor('father')[1]['memories'],adult_memory)
+                            self.assertEqual(constructor_calls,['mother','father'])
+                            self.assertEqual(after['family_genesis']['stage'],'CHILD_BORN')
+                            self.assertTrue(self.child(rt)['experienced_care_events'])
+                            self.assertNotIn('private adult uncertainty',str(self.child(rt)))
+                            self.assertTrue(rt.verify()['valid'])
                         self.assertTrue(rt.verify()['valid'])
                         return self.child(rt)
                     self.assertEqual(rt.step('father',requested_action='MOVE',object_ref='workshop')['objective_outcome'],'MOVED')
@@ -950,3 +1029,14 @@ class EarlyOrdinaryPractice(unittest.TestCase):
             self.assertEqual(basis['ordinary_affect_memory'],yes['memories'][0]['ordinary_affect_memory'])
             self.assertEqual(p2['operational_history'][-1]['operation'],'REST')
             self.productive_ordinary_arm(p/'forge_memory.db',True,transfer=True,affect=True,private='forge')
+
+
+    def test_single_continuing_life_from_independent_antecedent_adults_birth_to_private_and_cultural_activity(self):
+        with tempfile.TemporaryDirectory() as d:
+            child=self.productive_ordinary_arm(Path(d)/'joined.db',True,transfer=True,
+                                              affect=True,private=True,antecedent=True)
+            self.assertEqual(len(child['projects']),2)
+            self.assertEqual(child['body']['language'],.35)
+            self.assertTrue(child['cultural_reference_practices'])
+            self.assertTrue(child['memories'][0]['private_rehearsals'])
+            self.assertGreater(child['age_days'],450)
