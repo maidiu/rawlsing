@@ -614,7 +614,10 @@ class ContinuingLifeCourt(unittest.TestCase):
                         reference_profile="reference",provider_options={p:opts(p+"-model",mode)
                             for p in ("reference","economy")},qualifications=qualifications,
                         sourcefree_allocation_authorized=True)
-                hp=router("HISTORICAL");lp=router("LIVE",[qualification])
+                hp=router("HISTORICAL");unqualified=router("LIVE")
+                qualification.update(reference_identity=unqualified.profile_identity("reference"),
+                    candidate_identity=unqualified.profile_identity("economy"))
+                lp=router("LIVE",[qualification])
                 two=root/"allocation";rt,sid,catalog=setup(two,None,None)
                 history=History(sid);live=Live();seen=[]
                 def hermetic(provider,payload):
@@ -643,6 +646,23 @@ class ContinuingLifeCourt(unittest.TestCase):
                     self.assertEqual(records[-1]["transport_receipt"]["allocation_qualification_digest"],
                         qualification["qualification_digest"])
                     self.assertEqual(len(b.log.read_text().splitlines()),14)
+                    historical=[]
+                    for epoch in ("epoch-000000","epoch-000001"):
+                        with sqlite3.connect(two/"operator"/epoch/"ops.sqlite") as cx:
+                            historical.extend(json.loads(x[0]) for x in cx.execute(
+                                "SELECT receipt FROM checkpoint_attempts ORDER BY id"))
+                    report=lab.reconcile_budget_owner_receipts(b,historical_receipts=historical,
+                        live_receipts=records)
+                    self.assertEqual(report["profiles"]["reference"]["owner_operations_returned"],6)
+                    self.assertEqual(report["profiles"]["economy"]["owner_operations_returned"],1)
+                    self.assertEqual(report["profiles"]["economy"]["known_rate_estimate_nanos"],350)
+                    self.assertEqual(report["profiles"]["reference"]["known_rate_estimate_nanos"],9000)
+                    self.assertEqual(report["profiles"]["reference"]["unlinked"],0)
+                    self.assertEqual(report["profiles"]["economy"]["unlinked"],0)
+                    self.assertEqual(lab.reconcile_budget_owner_receipts(b)["profiles"]["economy"]["unlinked"],1)
+                    with self.assertRaisesRegex(ValueError,"OWNER_LINK"):
+                        lab.reconcile_budget_owner_receipts(b,live_receipts=records+records)
+                    print("R59_R60_ALLOCATION",json.dumps(report["profiles"],sort_keys=True))
                     # One mutation of the actual request loses qualification.
                     changed=lab.copy(live_row["packet"]);changed["source"]="unmatched-source"
                     with patch.object(wire.ExplicitJSONLLMProvider,"_request",hermetic):
@@ -652,6 +672,8 @@ class ContinuingLifeCourt(unittest.TestCase):
                     self.assertEqual(lp.usage_snapshot()["receipts"][-1]["attempts"],0)
                 finally:rt.close()
                 bad=dict(qualification,owner_head="0"*40)
+                with self.assertRaisesRegex(ValueError,"QUALIFICATION_INVALID"):router("LIVE",[bad])
+                bad=dict(qualification,candidate_identity="0"*64)
                 with self.assertRaisesRegex(ValueError,"QUALIFICATION_INVALID"):router("LIVE",[bad])
 
 

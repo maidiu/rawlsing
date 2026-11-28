@@ -468,6 +468,7 @@ class _BudgetedWireMixin:
                 n=self.budget.calls-before
                 receipt["attempts"]=n
                 receipt["budget_profile"]=self.budget_profile
+                receipt["budget_request_sha256"]=digest(payload) if n else None
                 receipt["budget_attempt"]=self.budget.calls if n else None
                 receipt["budget_disposition"]=("RESERVATION_UNCERTAIN" if n and self.budget.stopped else
                     "RESERVATION_SETTLED" if n else "PREFLIGHT_REFUSED")
@@ -541,22 +542,34 @@ class CombinedAllocationProvider:
         if (type(provider_options) is not dict or reference_profile not in provider_options
                 or not 1<=len(provider_options)<=32):
             raise ValueError("LAB_ALLOCATION_PROVIDERS")
-        self.providers={}
+        self.providers={};self.identities={}
         for name,options in provider_options.items():
             if type(name) is not str or type(options) is not dict or "metrics_capacity" in options:
                 raise ValueError("LAB_ALLOCATION_PROVIDER_OPTIONS")
             self.providers[name]=budgeted_combined_provider(mode,budget=budget,
                 budget_profile=name,metrics_capacity=1,**options)
+            p=self.providers[name];profile=budget.profile(name)
+            self.identities[name]=digest({"mode":mode,"owner_head":self.owner_head,
+                "profile":name,"declared":{k:v for k,v in profile.items() if k!="endpoint"},
+                "endpoint_digest":digest(profile["endpoint"]),
+                "completion_limit_field":p.completion_limit_field,
+                "compact_exact_packet":p.compact_exact_packet,
+                "compact_structured_packet":p.compact_structured_packet,
+                "compact_task_prompt":p.compact_task_prompt,
+                "timeout_seconds":p.timeout_seconds})
         self.routes={}
         if type(qualifications) not in (list,tuple) or len(qualifications)>100000:
             raise ValueError("LAB_ALLOCATION_QUALIFICATIONS")
         for row in qualifications:
             if (type(row) is not dict or set(row)!={"owner_head","mode","request_digest",
-                        "reference_profile","candidate_profile","qualification_digest"}
+                        "reference_profile","candidate_profile","qualification_digest",
+                        "reference_identity","candidate_identity"}
                     or row["owner_head"]!=self.owner_head or row["mode"]!=mode
                     or row["reference_profile"]!=reference_profile
                     or row["candidate_profile"] not in self.providers
                     or row["candidate_profile"]==reference_profile
+                    or row["reference_identity"]!=self.identities[reference_profile]
+                    or row["candidate_identity"]!=self.identities[row["candidate_profile"]]
                     or any(type(row[k]) is not str or not re.fullmatch("[0-9a-f]{64}",row[k])
                            for k in ("request_digest","qualification_digest"))
                     or row["request_digest"] in self.routes):
@@ -565,6 +578,9 @@ class CombinedAllocationProvider:
         self._metrics=deque(maxlen=_integer(metrics_capacity,1,100000))
         self._total=0;self._lock=Lock()
         self.grade="SOURCEFREE_EXACT_QUALIFICATION_ROUTER_NOT_MODEL_ADEQUACY"
+
+    def profile_identity(self,name):
+        return self.identities[name]
 
     def usage_snapshot(self):
         return {"total":self._total,"evicted":self._total-len(self._metrics),
@@ -585,12 +601,101 @@ class CombinedAllocationProvider:
                     receipt=after["receipts"][-1]
                 else:
                     receipt={"attempts":None,"outcome":"ALLOCATION_RECEIPT_MISSING"}
-                receipt.update(allocation_profile=name,
+                receipt.update(allocation_profile=name,allocation_identity=self.identities[name],
                     allocation_basis="EXACT_REVIEWED_REQUEST" if row else "REFERENCE_UNMATCHED",
                     allocation_owner_head=self.owner_head,
                     allocation_qualification_digest=row["qualification_digest"] if row else None)
                 self._metrics.append(receipt);self._total+=1
         finally:self._lock.release()
+
+
+
+def reconcile_budget_owner_receipts(budget,*,historical_receipts=(),live_receipts=()):
+    """Join the existing durable budget and owner receipts; never infer admission.
+
+    This is a local completed/held operation accounting view, not a billing
+    statement, psychological quality grade, or additional ledger. Native
+    cycle/turn completion is distinguished from formation admission and from
+    model adequacy. Unlinked or uncertain reservations remain in the cost.
+    """
+    if not isinstance(budget,LiveBudget):raise TypeError("LAB_BUDGET_REQUIRED")
+    if not budget.dispatch_lock.acquire(blocking=False):
+        raise BudgetStop("LAB_ACCOUNTING_DURING_DISPATCH")
+    try:
+        raw=budget.log.read_bytes()
+        if len(raw)>MAX_TAPE_BYTES:raise ValueError("LAB_ACCOUNTING_LOG_LIMIT")
+        rows=[json.loads(line) for line in raw.splitlines()]
+        attempts={}
+        for row in rows:
+            i=row.get("attempt");event=row.get("event")
+            if type(i) is not int or i<1:raise ValueError("LAB_ACCOUNTING_ATTEMPT")
+            if event=="RESERVED_BEFORE_SEND":
+                if i in attempts or i!=len(attempts)+1:raise ValueError("LAB_ACCOUNTING_SEQUENCE")
+                p=budget.profile(row.get("budget_profile"))
+                if row.get("reserved_nanos")!=p["reserve"]:
+                    raise ValueError("LAB_ACCOUNTING_RESERVATION")
+                attempts[i]={"attempt":i,"budget_profile":row.get("budget_profile"),
+                    "wire_bytes":row["wire_bytes"],"wire_sha256":row["request_sha256"],
+                    "reserved_nanos":row["reserved_nanos"],"usage_state":"UNSETTLED",
+                    "rate_estimate_nanos":None,"owner_disposition":"UNLINKED"}
+            else:
+                if i not in attempts or row.get("budget_profile")!=attempts[i]["budget_profile"]:
+                    raise ValueError("LAB_ACCOUNTING_PROFILE_LINK")
+                a=attempts[i]
+                if event=="USAGE_REPORTED" and a["usage_state"]=="UNSETTLED":
+                    p=budget.profile(a["budget_profile"])
+                    x=_integer(row["input_tokens"],0,p["input_ceiling"])
+                    y=_integer(row["output_tokens"],0,p["output_limit"])
+                    estimate=x*p["input_rate"]+y*p["output_rate"]
+                    if row.get("declared_rate_estimate_nanos")!=estimate:
+                        raise ValueError("LAB_ACCOUNTING_RATE")
+                    a.update(usage_state="REPORTED",input_tokens=x,output_tokens=y,rate_estimate_nanos=estimate)
+                elif event=="USAGE_REJECTED" and a["usage_state"]=="UNSETTLED":
+                    a.update(usage_state="REJECTED",input_tokens=row.get("input_tokens"),
+                             output_tokens=row.get("output_tokens"))
+                elif event=="UNCERTAIN_SPEND_STOP" and a["usage_state"] in ("UNSETTLED","REJECTED"):
+                    a["usage_state"]="UNCERTAIN"
+                else:raise ValueError("LAB_ACCOUNTING_EVENT_ORDER")
+        if (len(attempts)!=budget.calls or sum(a["reserved_nanos"] for a in attempts.values())!=budget.reserved
+                or sum(a["wire_bytes"] for a in attempts.values())!=budget.wire_bytes
+                or sum(a["rate_estimate_nanos"] or 0 for a in attempts.values())!=budget.estimated_reported):
+            raise ValueError("LAB_ACCOUNTING_BUDGET_MISMATCH")
+        unlinked_receipts=0;preflight=0
+        for mode,receipts in (("HISTORICAL",historical_receipts),("LIVE",live_receipts)):
+            for row in receipts:
+                m=row.get("transport_receipt") or {}
+                if m.get("attempts")==0 and m.get("budget_disposition") in ("PREFLIGHT_REFUSED","CONCURRENT_REFUSED"):
+                    preflight+=1;continue
+                i=m.get("budget_attempt")
+                if i is None:
+                    unlinked_receipts+=1;continue
+                if type(i) is not int or i not in attempts:
+                    raise ValueError("LAB_ACCOUNTING_UNKNOWN_OWNER_ATTEMPT")
+                a=attempts[i]
+                if (a["owner_disposition"]!="UNLINKED" or m.get("attempts")!=1
+                        or m.get("budget_profile")!=a["budget_profile"]
+                        or m.get("budget_request_sha256")!=a["wire_sha256"]):
+                    raise ValueError("LAB_ACCOUNTING_OWNER_LINK")
+                d=row.get("cycle_disposition") if mode=="HISTORICAL" else row.get("outcome")
+                status=("OWNER_OPERATION_RETURNED" if d==("CYCLE_RETURNED" if mode=="HISTORICAL"
+                         else "ACTUAL_TURN_COMMITTED") else "HELD_OR_OTHER")
+                a.update(owner_mode=mode,owner_disposition=status,owner_raw_disposition=d,
+                         allocation_basis=m.get("allocation_basis"))
+        groups={}
+        for a in attempts.values():
+            key=a["budget_profile"] or "legacy"
+            g=groups.setdefault(key,{"attempts":0,"owner_operations_returned":0,"held_or_other":0,
+                "unlinked":0,"reserved_nanos":0,"known_rate_estimate_nanos":0,"unknown_usage_attempts":0})
+            g["attempts"]+=1;g["reserved_nanos"]+=a["reserved_nanos"]
+            if a["owner_disposition"]=="OWNER_OPERATION_RETURNED":g["owner_operations_returned"]+=1
+            elif a["owner_disposition"]=="UNLINKED":g["unlinked"]+=1
+            else:g["held_or_other"]+=1
+            if a["rate_estimate_nanos"] is None:g["unknown_usage_attempts"]+=1
+            else:g["known_rate_estimate_nanos"]+=a["rate_estimate_nanos"]
+        return {"scope":"OWNER_OPERATION_DISPOSITION_NOT_SEMANTIC_ADEQUACY_OR_BILLING",
+                "attempts":list(attempts.values()),"profiles":groups,"preflight_refusals":preflight,
+                "unlinked_owner_receipts":unlinked_receipts,"billing_guarantee":False}
+    finally:budget.dispatch_lock.release()
 
 
 def save_report(path,report):
