@@ -37,6 +37,7 @@ on:
       - agent/soracle-co-mulchineer-retrospective-reconstitution-20261127-r1
       - agent/soracle-co-mulchineer-existing-family-continuity-20261127-r1
       - agent/soracle-co-mulchineer-reproductive-continuity-20261127-r1
+      - agent/soracle-co-mulchineer-care-contradiction-20261127-r1
     paths:
       - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/**'
       - '.github/workflows/soracle-r20-self-precue-integrated.yml'
@@ -117,6 +118,10 @@ jobs:
         run: |
           python -m unittest discover -s tests -p 'test_reproductive_workload_r59.py' -v
           python -m unittest discover -s tests -p 'test_reproductive_continuity_r63.py' -v
+      - name: R64 care contradiction
+        if: github.ref_name == 'agent/soracle-co-mulchineer-care-contradiction-20261127-r1'
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest discover -s tests -p 'test_care_contradiction_r64.py' -v
       - name: R20 historical self and pre-cue focus
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_historical_self_precue_r19.py' -v
