@@ -111,6 +111,54 @@ class R18WorldPower(unittest.TestCase):
         self.assertTrue(can_draw_shared_food(self.w,'mother','home'))
         self.assertTrue(board['objective_control_not_a_mental_trait'])
 
+    def test_compressed_provisioning_must_cross_actual_enforcement_boundary(self):
+        from um_sorok_organism.routine_sources import register_sourcefree_period_envelope
+        from um_sorok_organism.ordinary_life import passage
+        from um_sorok_organism.continuity_clock import (
+            qualify_mixed_history_schedule,qualified_recurrent_interval)
+        from um_sorok_organism.food_access_struggle import shared_food_permission_boundaries
+        enact(self.w,self.a)
+        self.w["clock"]=1
+        self.w["holdings"]["mother"]["food"]=0
+        board=self.w["institutions"]["household_food_board"]
+        expiry=board["r18_enforced_through"]+1
+        self.assertGreater(expiry,self.w["clock"])
+        start=self.w["clock"];end=expiry+4
+        src=register_sourcefree_period_envelope(self.w,self.a,{
+            "kind":"QUALIFIED_MATERIAL_FEEDING","actor":"mother","location":"home",
+            "start_clock":start,"end_clock":end,"max_hours_per_active_day":1.,
+            "description":"explicit bounded feeding premise"})
+        proc={"kind":"QUALIFIED_MATERIAL_FEEDING","actor":"mother","recipient":"nadia",
+            "location":"home","source_ref":src["id"],"supply_origin":"SHARED_SITE_FOOD",
+            "hours_per_active_day":1.,"food_units_per_active_day":1.,
+            "provisional_exposure_fraction":1.}
+        self.assertEqual(shared_food_permission_boundaries(self.w,"mother","home",start,end),[expiry])
+        self.assertEqual(shared_food_permission_boundaries(self.w,"father","home",start,end),[])
+        initial_food=self.w["sites"]["home"]["food"]
+        initial_body=self.a["nadia"]["body"].copy()
+        with self.assertRaisesRegex(ValueError,"PROVISION_SPLIT_AT_EFFECTIVE_FOOD_PERMISSION_CHANGE"):
+            passage(self.w,self.a,end-start,[proc])
+        self.assertEqual(self.w["sites"]["home"]["food"],initial_food)
+        self.assertEqual(self.a["nadia"]["body"],initial_body)
+        self.assertEqual(self.w["clock"],start)
+        schedule=qualify_mixed_history_schedule(self.w,[proc])
+        cut,active=qualified_recurrent_interval(self.w,schedule,start,end)
+        self.assertEqual(cut,expiry)
+        passage(self.w,self.a,cut-start,active)
+        blocked=self.w["material_provisioning_periods"][-1]
+        self.assertEqual(blocked["material_status"],"INSTITUTIONAL_RIGHTS_DENIED")
+        self.assertEqual(blocked["consumed_food_units"],0)
+        self.assertEqual(self.w["sites"]["home"]["food"],initial_food)
+        cut,active=qualified_recurrent_interval(self.w,schedule,expiry,end)
+        self.assertEqual(cut,end)
+        passage(self.w,self.a,cut-expiry,active)
+        allowed=self.w["material_provisioning_periods"][-1]
+        self.assertEqual(allowed["consumed_food_units"],4)
+        self.assertEqual(self.w["sites"]["home"]["food"],initial_food-4)
+        self.assertEqual(board["food_rights"],"CONTROLLED")
+        self.assertFalse(self.a["nadia"]["co_regulation_orientations"])
+        self.assertEqual(self.w["clock"],end)
+
     def test_paid_reproduction_of_control_extends_effective_exclusion(self):
         enact(self.w,self.a)
         self.w['clock']=3

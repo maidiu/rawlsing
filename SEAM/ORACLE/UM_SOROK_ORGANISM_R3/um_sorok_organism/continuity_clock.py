@@ -92,9 +92,9 @@ def record_authored_food_offer(world,user,recipient,location,event_ref):
 
 
 MEETING_KIND='HUMAN_ACTOR_MEETING_WINDOW'
-MEETING_OPEN=frozenset(('PROPOSED','ACCEPTED','CHECKED_IN'))
-MEETING_ACTIONS={'ACCEPT_MEETING':'PROPOSE_MEETING','MEET_VISITOR':'CHECK_IN_MEETING'}
-MEETING_SIGNS={'ACCEPT_MEETING':'visitor_meeting_proposal','MEET_VISITOR':'visitor_meeting_checkin'}
+MEETING_OPEN=frozenset(('PROPOSED','ACCEPTED','CHECKED_IN','ACTOR_COUNTEROFFER_PENDING'))
+MEETING_ACTIONS={'ACCEPT_MEETING':'PROPOSE_MEETING','COUNTER_MEETING':'PROPOSE_MEETING','MEET_VISITOR':'CHECK_IN_MEETING'}
+MEETING_SIGNS={'ACCEPT_MEETING':'visitor_meeting_proposal','COUNTER_MEETING':'visitor_meeting_proposal','MEET_VISITOR':'visitor_meeting_checkin'}
 
 
 def meeting_record(world,ref):
@@ -104,7 +104,7 @@ def meeting_record(world,ref):
     return rows[0]
 
 
-def record_meeting_proposal(world,user,recipient,location,due,event_ref):
+def record_meeting_proposal(world,user,recipient,location,due,event_ref,*,replaces=None):
     # Two particular future modeled transitions, not hours or real-human
     # calendar time. Assent requires an immediate actual proposal encounter.
     if type(due) is not int or not world['clock']+3<due<=world['clock']+MAX_HORIZON:
@@ -119,8 +119,69 @@ def record_meeting_proposal(world,user,recipient,location,due,event_ref):
          'checkin_clock':due-2,'meeting_clock':due-1,
          'source_user_event_ref':event_ref,'status':'PROPOSED',
          'no_actor_assent_or_real_calendar_inferred':True,'grade':GRADE}
+    if replaces is not None:
+        old=meeting_record(world,replaces)
+        if (old['responsible_actor']!=user or old['recipient']!=recipient
+                or old['status']!='WITHDRAWN_BY_AUTHORED_ACT'
+                or old.get('replacement_meeting_ref') is not None
+                or old['due_clock']==due
+                or old['settled_at_clock']>=world['clock']):
+            raise ValueError('MEETING_REPLACEMENT_NOT_QUALIFIED')
+        row['replaces_meeting_ref']=old['id']
+        old['replacement_meeting_ref']=row['id']
     world.setdefault('scheduled_obligations',[]).append(row)
     return row['id']
+
+
+def withdraw_meeting(world,user,ref,event_ref):
+    """Close an explicitly owned open window, without rewriting its assent.
+
+    The administrative act consumes its actual transition. It neither
+    supplies a notification nor a psychological consequence to the Other.
+    A replacement is a distinct proposal with a distinct assent.
+    """
+    row=meeting_record(world,ref)
+    if (row['responsible_actor']!=user or row['status'] not in MEETING_OPEN
+            or not row['origin_clock']<world['clock']<row['meeting_clock']):
+        raise ValueError('MEETING_WITHDRAWAL_NOT_QUALIFIED')
+    row.update(status='WITHDRAWN_BY_AUTHORED_ACT',
+               withdrawn_from_status=row['status'],settled_at_clock=world['clock'],
+               withdrawal_user_event_ref=event_ref,
+               no_recipient_notification_or_appraisal_inferred=True)
+    return row
+
+
+def counter_due_choices(clock,due):
+    # Finite task-local alternatives, not a reservation of the Other's time.
+    # Both earlier and later possibilities can be chosen; no assumed calendar.
+    return [t for t in (due-3,due+3,due+7)
+            if clock+5<t<=clock+MAX_HORIZON]
+
+
+def counter_meeting_ref(world,original,clock,due):
+    return stable_id('actor_meeting_counteroffer',{'world':world['id'],
+        'original':original,'clock':clock,'due':due})
+
+
+def qualify_counter_acceptance(world,user,ref,location):
+    row=meeting_record(world,ref)
+    if (row['responsible_actor']!=user or row['location']!=location
+            or row['status']!='ACTOR_COUNTEROFFER_PENDING'
+            or world['clock']+1>=row['checkin_clock']):
+        raise ValueError('MEETING_COUNTER_ACCEPTANCE_NOT_QUALIFIED')
+    return row
+
+
+def record_counter_acceptance(world,user,ref,location,event_ref):
+    row=meeting_record(world,ref)
+    if (row['responsible_actor']!=user or row['location']!=location
+            or row['status']!='ACTOR_COUNTEROFFER_PENDING'
+            or not row['origin_clock']<world['clock']<row['checkin_clock']):
+        raise ValueError('MEETING_COUNTER_ACCEPTANCE_NOT_QUALIFIED')
+    row.update(status='ACCEPTED',accepted_at_clock=world['clock'],
+               acceptance_source_user_event_ref=event_ref,
+               no_recipient_notification_or_appraisal_inferred=True)
+    return row
 
 
 def qualify_meeting_checkin(world,user,ref,location):
@@ -148,7 +209,8 @@ def settle_meeting_deadlines(world):
                 or world['clock']<row['meeting_clock']):continue
         row.update(status={'PROPOSED':'ELAPSED_WITHOUT_ACTOR_ASSENT',
                            'ACCEPTED':'ELAPSED_WITHOUT_ACTUAL_CHECK_IN',
-                           'CHECKED_IN':'ELAPSED_WITHOUT_ACTUAL_MEETING'}[row['status']],
+                           'CHECKED_IN':'ELAPSED_WITHOUT_ACTUAL_MEETING',
+                           'ACTOR_COUNTEROFFER_PENDING':'ELAPSED_WITHOUT_USER_ACCEPTANCE'}[row['status']],
                    settled_at_clock=row['meeting_clock'],
                    waiting_breach_or_actor_appraisal='NOT_ESTABLISHED')
         settled.append(row['id'])
@@ -167,7 +229,7 @@ def meeting_options(constitution,access,action):
                        ('meeting_ref','visitor_ref','visitor_event_ref'))
                 or any(type(cue.get(k)) is not int for k in
                        ('checkin_clock','meeting_clock'))):continue
-        out.append({'option_id':stable_id('meeting_choice',{
+        base={'option_id':stable_id('meeting_choice',{
             'actor':constitution.actor,'clock':access.world_clock,
             'action':action,'cue':cue['id'],'meeting':cue['meeting_ref']}),
             'actor':constitution.actor,'as_of_clock':access.world_clock,
@@ -181,7 +243,15 @@ def meeting_options(constitution,access,action):
             'meeting_source_cue_ref':cue['id'],
             'meeting_checkin_clock':cue['checkin_clock'],
             'meeting_clock':cue['meeting_clock'],
-            'not_future_presence_or_shared_motive':True,'grade':GRADE})
+            'not_future_presence_or_shared_motive':True,'grade':GRADE}
+        if action=='COUNTER_MEETING':
+            for due in counter_due_choices(access.world_clock,cue['meeting_clock']+1):
+                row=copy(base)
+                row['counter_due_clock']=due
+                row['option_id']=stable_id('meeting_counter_choice',{
+                    'base':base['option_id'],'due':due})
+                out.append(row)
+        else:out.append(base)
     return out
 
 
@@ -213,6 +283,9 @@ def qualified_meeting_receipt(world,actor,attempt,ledger_event):
     authored={'user':attempt.target,'operation':op,'text':None,'destination':None}
     if op=='PROPOSE_MEETING':
         authored.update(target_actor_ref=actor['id'],due_clock=row['due_clock'])
+        if 'replaces_meeting_ref' in row:
+            if e.get('target_commitment_ref')!=row['replaces_meeting_ref']:return None
+            authored['target_commitment_ref']=row['replaces_meeting_ref']
         valid=(row['status']=='PROPOSED' and row['origin_clock']==world['clock']
                and row['source_user_event_ref']==e.get('event_ref')
                and world['clock']+1<row['checkin_clock'])
@@ -245,10 +318,14 @@ def qualified_meeting_receipt(world,actor,attempt,ledger_event):
            and q.get('meeting_clock')==row['meeting_clock']
            and actor['body']['sensor']>=q.get('threshold',.05)]
     if len(signs)!=1:return None
+    if attempt.action=='COUNTER_MEETING' and selected.get('counter_due_clock') not in counter_due_choices(world['clock'],row['due_clock']):
+        return None
     return {'actor':actor['id'],'visitor_ref':attempt.target,'operation':op,
             'meeting_ref':ref,'user_event_ref':e['event_ref'],
             'ledger_ref':ledger_event['id'],'clock':world['clock'],
-            'cue':dict(signs[0]),'grade':GRADE}
+            'cue':dict(signs[0]),
+            **({'counter_due_clock':selected['counter_due_clock']}
+               if attempt.action=='COUNTER_MEETING' else {}),'grade':GRADE}
 
 
 def perform_meeting_action(world,attempt,receipt):
@@ -256,6 +333,21 @@ def perform_meeting_action(world,attempt,receipt):
             or receipt.get('operation')!=MEETING_ACTIONS.get(attempt.action)):
         return 'BLOCKED','NO_QUALIFIED_CURRENT_MEETING_OCCASION',None
     row=meeting_record(world,receipt['meeting_ref'])
+    if attempt.action=='COUNTER_MEETING':
+        now=world['clock']+1;due=receipt['counter_due_clock']
+        ref=counter_meeting_ref(world,row['id'],now,due)
+        row.update(status='COUNTERED_BY_ACTOR',settled_at_clock=now,
+                   counter_meeting_ref=ref)
+        world.setdefault('scheduled_obligations',[]).append({
+            'id':ref,'kind':MEETING_KIND,'responsible_actor':row['responsible_actor'],
+            'recipient':row['recipient'],'location':row['location'],
+            'origin_clock':now,'due_clock':due,'checkin_clock':due-2,'meeting_clock':due-1,
+            'source_user_event_ref':row['source_user_event_ref'],
+            'counteroffer_from_meeting_ref':row['id'],
+            'status':'ACTOR_COUNTEROFFER_PENDING',
+            'no_actor_assent_or_real_calendar_inferred':True,
+            'conditional_actor_offer_not_user_consent':True,'grade':GRADE})
+        return 'PERFORMED','PARTICULAR_MEETING_COUNTEROFFERED',row['id']
     if attempt.action=='ACCEPT_MEETING':
         row.update(status='ACCEPTED',accepted_at_clock=world['clock']+1,
                    acceptance_source_user_event_ref=receipt['user_event_ref'])
@@ -619,6 +711,31 @@ def mixed_history_interval(schedule,clock,limit):
     return limit,active
 
 
+def qualified_recurrent_interval(world,schedule,clock,limit):
+    """One shared owner read for both mixed history and checkpoint generation.
+
+    A newly admitted ordinary-life source is operative without the analyst
+    repeating it in a period catalog. Its exact original basis still enters
+    the existing allocator, which resolves the current revision and pairing.
+    """
+    from .routine_sources import acquired_routine_processes,lived_work_permission_boundaries
+    from .food_access_struggle import shared_food_permission_boundaries
+    live=acquired_routine_processes(world)
+    explicit_refs={row['source_ref'] for _,_,row in schedule}
+    dynamic=qualify_mixed_history_schedule(world,[p for p in live
+                if p['source_ref'] not in explicit_refs])
+    end,active=mixed_history_interval(schedule+dynamic,clock,limit)
+    for p in active:
+        if p['kind']=='QUALIFIED_WAGE_LABOR':
+            times=lived_work_permission_boundaries(world,p['actor'],p['location'],clock,end)
+            if times:end=min(end,times[0])
+        if p['kind'] in ('QUALIFIED_MATERIAL_FEEDING','QUALIFIED_SELF_MEAL') and p.get('supply_origin')=='SHARED_SITE_FOOD':
+            times=shared_food_permission_boundaries(world,p['actor'],p['location'],clock,end)
+            if times:end=min(end,times[0])
+    if end<=clock:raise ValueError('MIXED_HISTORY_EMPTY_ROUTINE_INTERVAL')
+    return end,active
+
+
 def continue_mixed_history(runtime,target_clock,*,cadence_origin=0,
                            ordinary_span=30,detail_beats=3,max_segments=240,
                            period_processes=None):
@@ -632,7 +749,6 @@ def continue_mixed_history(runtime,target_clock,*,cadence_origin=0,
     resolution choice, not a biological period, human calendar or adult end.
     """
     from .initiative import choose_next_actor
-    from .routine_sources import acquired_routine_processes, lived_work_permission_boundaries
     for value,low,high,code in (
         (target_clock,0,10**9,'TARGET'),(cadence_origin,0,10**9,'ORIGIN'),
         (ordinary_span,1,MAX_HORIZON,'SPAN'),(detail_beats,1,24,'DETAIL'),
@@ -700,22 +816,7 @@ def continue_mixed_history(runtime,target_clock,*,cadence_origin=0,
             if after!=clock+1:raise ValueError('MIXED_HISTORY_DETAIL_CLOCK_CONTRADICTION')
         else:
             end=min(target_clock,detail_start,clock+MAX_HORIZON)
-            # The last detailed act may have admitted a new recurring course.
-            # Recover it from the actual source registry at each aggregate cut,
-            # including a cold resume. Explicit fixture premises stay separate.
-            live=acquired_routine_processes(world)
-            explicit_refs={row['source_ref'] for _,_,row in schedule}
-            dynamic=qualify_mixed_history_schedule(world,[p for p in live
-                        if p['source_ref'] not in explicit_refs])
-            end,active=mixed_history_interval(schedule+dynamic,clock,end)
-            # Existing employer sanctions can change material work eligibility
-            # inside a routine window. Cut before that boundary, without
-            # fabricating either a blocked work attempt or renewed assent.
-            for p in active:
-                if p['kind']=='QUALIFIED_WAGE_LABOR':
-                    times=lived_work_permission_boundaries(world,p['actor'],p['location'],clock,end)
-                    if times:end=min(end,times[0])
-            if end<=clock:raise ValueError('MIXED_HISTORY_EMPTY_ROUTINE_INTERVAL')
+            end,active=qualified_recurrent_interval(world,schedule,clock,end)
             boundary=next_discontinuity(world,actors,end-clock)
             # Stop exactly at the interruption, not one actor beat beyond it.
             # The next loop dispatches an actually due act/birth. No retroactive

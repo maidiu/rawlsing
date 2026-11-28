@@ -11,6 +11,7 @@ science, a clinical account, or a new canonical SOROK psyche owner.
 """
 from .types import copy, stable_id, GRADE
 from .reflective_regulation import private_end_ground
+from .social_vocal_development import ordinary_vocal_actor_view, ordinary_vocal_basis_still_qualified
 
 
 def _present_terms(access):
@@ -80,6 +81,14 @@ def project_trial_horizons(constitution, access, candidate_actions,
             type(source_object) is str and
             any(c.get('material_object_ref')==source_object
                 for c in access.cues if type(c) is dict))
+        ordinary_vocal_ground=False
+        vocal_basis=end.get('productive_vocal_basis',{})
+        if vocal_basis.get('source_route')=='ORDINARY_RESPONSIVE_COORDINATION_THEN_OWN_EXERCISE':
+            ordinary_vocal_ground=(type(end.get('origin_clock')) is int
+                and end['origin_clock']<constitution.clock
+                and ordinary_vocal_basis_still_qualified(ordinary_vocal_actor_view(constitution),
+                      vocal_basis,access.location,constitution.clock))
+            if not ordinary_vocal_ground:continue
         if source_object is not None:
             # A shared analyst token 'material_object' is not evidence that
             # this child has generalized a good from object A to object B.
@@ -87,7 +96,7 @@ def project_trial_horizons(constitution, access, candidate_actions,
             # can bind a different actor-recognizable correspondence.
             if not object_continuity:
                 continue
-        elif not original_match and bridge is None and not other_continuity and not private_ground:
+        elif not original_match and bridge is None and not other_continuity and not private_ground and not ordinary_vocal_ground:
             continue
         means = end.get('possible_means', [])
         if not isinstance(means, list):
@@ -171,6 +180,9 @@ def project_trial_horizons(constitution, access, candidate_actions,
                 'not_a_prediction_of_objective_success': True,
                 'grade': GRADE,
             }
+            if ordinary_vocal_ground:
+                trial['historical_ordinary_vocal_basis_ref']=vocal_basis['vocal_coordination_practice_ref']
+                trial['not_current_external_sign_or_present_other_required']=True
             if private_ground:
                 trial['private_rehearsal_ref']=private_ground['id']
                 trial['not_current_world_sign_or_recollected_fact']=True

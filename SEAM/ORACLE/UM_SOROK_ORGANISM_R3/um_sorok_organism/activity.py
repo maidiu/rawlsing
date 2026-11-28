@@ -6,6 +6,7 @@ This is a derived and then actor-owned *research* process, not native V3.
 """
 from .types import copy, stable_id, digest, GRADE
 from .distributed_power import accessible_human_counterparts
+from .social_vocal_development import ordinary_vocal_actor_view, ordinary_vocal_basis_still_qualified
 
 
 
@@ -118,20 +119,21 @@ def possible_productive_witness_reorganizations(actor,experience,event_ref):
     if len(paths)!=1:return []
     out=[]
     for p in actor.get('projects',[])[-128:]:
-        if (p.get('status')!='active' or p.get('means')!=['SING']
+        if (p.get('status')!='active' or p.get('means') not in (['SING'],['SPEAK'])
                 or p.get('addressed_party_ref') is not None
                 or p.get('productive_witness_means') or p.get('dependency_conditional_means')
                 or p.get('incidental_takeup_basis')):continue
+        source_op=p['means'][0]
         matches=[]
         for h in p.get('operational_history',[]):
-            if (h.get('project')!=p['id'] or h.get('operation')!='SING'
+            if (h.get('project')!=p['id'] or h.get('operation')!=source_op
                     or h.get('performed_status')!='PERFORMED'
                     or h.get('selected_at_actor_attempt') is not True
                     or h.get('intent_attribution')!='ACTOR_POLICY_SELECTED_PROJECT_COURSE'
                     or h.get('event')==event_ref):continue
             parts=[x for x in actor.get('participation_history',[])
                    if x.get('actor')==aid and x.get('event_ref')==h.get('event')
-                   and x.get('own_attempted_operation')=='SING'
+                   and x.get('own_attempted_operation')==source_op
                    and x.get('own_status')=='PERFORMED'
                    and x.get('joint_participation_perceived') is True
                    and x.get('reciprocated_partner_actor_visible')==other
@@ -143,19 +145,21 @@ def possible_productive_witness_reorganizations(actor,experience,event_ref):
                       if x.get('actor')==aid and x.get('event_ref')==h['event']
                       and x.get('experience_ref')==part.get('experience_ref')
                       and x.get('clock')==part['experienced_clock']
-                      and x.get('location')==loc and x.get('actor_felt_attempt')=='SING'
+                      and x.get('location')==loc and x.get('actor_felt_attempt')==source_op
                       and x.get('selected_project_refs')==[p['id']]
                       and x.get('selected_possible_end_trial_ref') is None
                       and not x.get('unfinished_own_activity')
-                      and any(z.get('kind')=='performed_sing'
-                              and z.get('source_actor') in (aid,other)
+                      and any(((source_op=='SING' and z.get('kind')=='performed_sing'
+                                and z.get('source_actor') in (aid,other))
+                               or (source_op=='SPEAK' and z.get('kind')=='performed_signal'
+                                   and z.get('source_actor')==other))
                               and z.get('cue_ref') in part.get('received_cue_refs',[])
                               for z in x.get('personally_perceived_sign_sources',[]))]
             if len(episodes)!=1:continue
             ep=episodes[0]
             lived=[x for x in p.get('lived_attempt_history',[])
                    if x.get('event')==h['event'] and x.get('project')==p['id']
-                   and x.get('attempted_operation')=='SING'
+                   and x.get('attempted_operation')==source_op
                    and set(x.get('accessible_cue_refs',[]))&set(ep.get('received_sign_refs',[]))]
             if len(lived)==1:matches.append((part,ep))
         if not matches:continue
@@ -165,8 +169,12 @@ def possible_productive_witness_reorganizations(actor,experience,event_ref):
                'joint_participation_ref':part['id'],'solo_event_ref':event_ref,
                'solo_experience_ref':experience['ref'],'solo_sign_ref':sign['id'],
                'no_other_motive_or_approval_inferred':True}
+        if source_op=='SPEAK':
+            basis.update({'source_route':'ACTUAL_RESPONSIVE_SPEECH_THEN_OTHER_SOLO_SOUND',
+                          'source_response_operation':source_op,
+                          'no_other_acquired_capacity_or_learning_inferred':True})
         out.append({'kind':'REORGANIZE_PROJECT','project_id':p['id'],
-                    'means':['SING','ORIENT'],'productive_witness_basis':basis})
+                    'means':[source_op,'ORIENT'],'productive_witness_basis':basis})
     return out[:3]
 
 
@@ -193,6 +201,157 @@ def productive_witness_option(project,access,cue):
             'not_other_conscious_purpose_or_approval':True,'grade':GRADE}
 
 
+def received_local_vocal_context(actor,experience):
+    """Conserve only personally heard, actually performed local solo sound.
+    This is neither a semantic category nor the other's intention."""
+    if experience.get('actor')!=actor.get('id'):return None
+    clock=experience.get('clock');loc=experience.get('location')
+    rows=[c for c in experience.get('perceived_cues',[])
+          if type(c.get('source_actor')) is str and c['source_actor']!=actor['id']
+          and _solo_vocal_sign(c,c['source_actor'],loc) and c.get('clock')==clock]
+    if len(rows)!=1:return None
+    c=rows[0]
+    return {'cue_ref':c['id'],'other_ref':c['source_actor'],'clock':clock,'location':loc,
+            'not_other_motive_or_invitation':True}
+
+
+def _ordinary_project_own_sing(actor,project,location,clock):
+    """Actual personally lived selected SING, not a project label."""
+    out=[]
+    for ep in actor.get('lived_genesis_episodes',[]):
+        if (ep.get('actor')!=actor['id'] or ep.get('location')!=location
+                or ep.get('actor_felt_attempt')!='SING' or ep.get('unfinished_own_activity')
+                or ep.get('selected_project_refs')!=[project['id']]
+                or ep.get('selected_possible_end_trial_ref') is not None
+                or type(ep.get('clock')) is not int or ep['clock']>clock):continue
+        paths=[p for p in actor.get('evidence_paths',[]) if p.get('event')==ep['event_ref']
+               and p.get('experience_ref')==ep['experience_ref'] and p.get('own_action')=='SING'
+               and p.get('selected_project_refs')==[project['id']]
+               and p.get('purpose_status')=='ACTOR_POLICY_SELECTED_PROJECT_COURSE'
+               and p.get('practical_option_ref')==ep.get('selected_practical_option_ref')]
+        acts=[h for h in project.get('operational_history',[]) if h.get('event')==ep['event_ref']
+              and h.get('operation')=='SING' and h.get('performed_status')=='PERFORMED'
+              and h.get('selected_at_actor_attempt') is True and h.get('project')==project['id']]
+        signs=[z for z in ep.get('personally_perceived_sign_sources',[])
+               if z.get('kind')=='performed_sing' and z.get('source_actor')==actor['id']
+               and z.get('cue_ref') in ep.get('received_sign_refs',[])]
+        if len(paths)==len(acts)==len(signs)==1:
+            out.append((ep,signs[0]['cue_ref']))
+    return out
+
+
+def ordinary_project_actor_view(c):
+    return {**ordinary_vocal_actor_view(c),'projects':c.projects,
+            'lived_genesis_episodes':c.lived_genesis_episodes}
+
+
+def _ordinary_transfer_sources(actor,p,location,clock):
+    basis=p.get('ordinary_vocal_genesis_basis')
+    if not basis or location==basis.get('location'):return []
+    origin=basis['location']
+    if not ordinary_vocal_basis_still_qualified(actor,basis,origin,clock):return []
+    old=_ordinary_project_own_sing(actor,p,origin,clock-1)
+    if not old:return []
+    home,home_sign=old[-1]
+    rows=[]
+    for path in actor.get('evidence_paths',[]):
+        r=path.get('received_local_vocal_context')
+        if (not r or r.get('location')!=location
+                or type(r.get('clock')) is not int or not home['clock']<r['clock']<clock
+                or r.get('cue_ref') not in path.get('received_cue_refs',[])
+                or r.get('other_ref')==actor['id'] or type(r.get('other_ref')) is not str):continue
+        rows.append({'project_ref':p['id'],'origin_location':origin,'location':location,
+                     'origin_exercise_event_ref':home['event_ref'],
+                     'origin_exercise_sign_ref':home_sign,
+                     'local_received_event_ref':path['event'],
+                     'local_received_experience_ref':path['experience_ref'],
+                     'local_received_cue_ref':r['cue_ref'],'local_other_ref':r['other_ref']})
+    return rows
+
+
+def ordinary_vocal_project_site(actor,p,location,clock):
+    basis=p.get('ordinary_vocal_genesis_basis')
+    if not basis:return False
+    if ordinary_vocal_basis_still_qualified(actor,basis,location,clock):return True
+    # Transfer remains historical, local, and optional; never copy all
+    # original counterpart or affective determinations into the new setting.
+    for r in p.get('ordinary_vocal_context_transfers',[]):
+        if r.get('location')!=location or r.get('project_ref')!=p['id']:continue
+        # Match immutable source identities, even if later home activity occurs.
+        source_path=[q for q in actor.get('evidence_paths',[])
+                     if q.get('event')==r.get('local_received_event_ref')
+                     and q.get('experience_ref')==r.get('local_received_experience_ref')
+                     and q.get('received_local_vocal_context',{}).get('cue_ref')==r.get('local_received_cue_ref')
+                     and q.get('received_local_vocal_context',{}).get('other_ref')==r.get('local_other_ref')
+                     and q.get('received_local_vocal_context',{}).get('location')==location]
+        old=[x for x,s in _ordinary_project_own_sing(actor,p,basis['location'],clock)
+             if x['event_ref']==r.get('origin_exercise_event_ref') and s==r.get('origin_exercise_sign_ref')]
+        ep=[x for x in actor.get('lived_genesis_episodes',[]) if x.get('event_ref')==r.get('probe_event_ref')
+            and x.get('experience_ref')==r.get('probe_experience_ref')
+            and x.get('location')==location and x.get('actor')==actor['id']
+            and x.get('actor_felt_attempt')=='SING' and not x.get('unfinished_own_activity')
+            and x.get('selected_project_refs')==[] and x.get('selected_possible_end_trial_ref') is None
+            and type(x.get('clock')) is int and x['clock']<clock
+            and any(z.get('cue_ref')==r.get('probe_sign_ref') and z.get('source_actor')==actor['id']
+                    and z.get('kind')=='performed_sing' for z in x.get('personally_perceived_sign_sources',[]))]
+        probe_paths=[q for q in actor.get('evidence_paths',[])
+                     if q.get('event')==r.get('probe_event_ref')
+                     and q.get('experience_ref')==r.get('probe_experience_ref')
+                     and q.get('own_action')=='SING'
+                     and q.get('selected_project_refs')==[]
+                     and q.get('purpose_status')=='ACTOR_POLICY_NO_ATTESTED_PROJECT_PURPOSE'
+                     and q.get('practical_option_ref')==r.get('probe_option_ref')
+                     and not q.get('provisional_end_trial_ref_analytic_only')
+                     and r.get('probe_sign_ref') in q.get('received_cue_refs',[])]
+        if (len(source_path)==len(old)==len(ep)==len(probe_paths)==1
+                and ep[0].get('selected_practical_option_ref')==r.get('probe_option_ref')
+                and old[0]['clock']<source_path[0]['received_local_vocal_context']['clock']<ep[0]['clock']
+                and ordinary_vocal_basis_still_qualified(actor,basis,basis['location'],clock)):
+            return True
+    return False
+
+
+def ordinary_vocal_context_probe(c,access):
+    from .organism import eligible
+    if c.actor!=access.actor or not eligible(c.body,'SING')[0]:return None
+    actor=ordinary_project_actor_view(c)
+    present={q.get('source_actor') for q in access.cues if q.get('kind')=='coactor_present'}
+    for p in c.projects:
+        if p.get('status')!='active' or 'SING' not in p.get('means',[]):continue
+        if ordinary_vocal_project_site(actor,p,access.location,access.world_clock):continue
+        rows=[q for q in _ordinary_transfer_sources(actor,p,access.location,access.world_clock)
+              if q['local_other_ref'] in present]
+        if rows:
+            row=rows[-1]
+            return {'action':'SING','score':.03,'basis':[row['local_received_experience_ref']],
+                    'source_event_refs':[row['origin_exercise_event_ref'],row['local_received_event_ref']],
+                    'historical_support_statuses':['LOCAL_PROBE_NOT_TRANSFERRED_PROJECT'],
+                    'opportunity':'ACTUALLY_HEARD_LOCAL_VOCAL_EXPLORATION','grade':GRADE}
+    return None
+
+
+def possible_ordinary_context_transfers(actor,experience,event_ref):
+    from .psychic_genesis import _own_vocal_episode
+    own=_own_vocal_episode(actor,experience,event_ref)
+    if own is None:return []
+    cur,sign=own;loc=cur['location'];clock=cur['clock']
+    present={q.get('source_actor') for q in experience.get('perceived_cues',[])
+             if q.get('kind')=='coactor_present'}
+    out=[]
+    for p in actor.get('projects',[]):
+        if p.get('status')!='active' or p.get('means')!=['SING']:continue
+        if ordinary_vocal_project_site(actor,p,loc,clock):continue
+        sources=[q for q in _ordinary_transfer_sources(actor,p,loc,clock)
+                 if q['local_other_ref'] in present]
+        if not sources:continue
+        basis={**sources[-1],'probe_event_ref':event_ref,'probe_experience_ref':cur['experience_ref'],
+               'probe_sign_ref':sign['id'],'probe_option_ref':cur['selected_practical_option_ref'],
+               'no_automatic_transfer_of_motive_or_other_consent':True}
+        out.append({'kind':'REORGANIZE_PROJECT','project_id':p['id'],
+                    'ordinary_vocal_context_transfer':basis})
+    return out[:3]
+
+
 def eligible_activities(constitution, recruited_form_ids, encounter):
     """A project can have its own cues or be recruited through an acquired form.
 
@@ -204,6 +363,15 @@ def eligible_activities(constitution, recruited_form_ids, encounter):
     result=[]
     for p in constitution.projects:
         if p.get('status','active')!='active': continue
+        ordinary=p.get('ordinary_vocal_genesis_basis')
+        if ordinary is not None and not ordinary_vocal_project_site(
+                ordinary_project_actor_view(constitution),p,
+                encounter.location,encounter.world_clock):
+            # Retain acquired wanting; do not grant its same-site course in
+            # every unfamiliar context or on loss of historical source.
+            continue
+        from .reflective_regulation import ordinary_private_project_site
+        if not ordinary_private_project_site(constitution,p,encounter):continue
         if p.get('incidental_takeup_basis') is not None:
             if not any(c.get('kind')=='material_object_present'
                        and c.get('material_object_ref')==p.get('material_object_ref')
@@ -237,6 +405,8 @@ def eligible_activities(constitution, recruited_form_ids, encounter):
                         for j in getattr(constitution,'joint_practices',[])))]
         if p.get('provisioning_means_basis') and encounter.location!=p['provisioning_means_basis']['provisioning_site']:
             x['means']=[m for m in x.get('means',[]) if m not in ('WORK','BUY_FOOD')]
+        if p.get('commons_provisioning_basis') and encounter.location!=p['commons_provisioning_basis']['location']:
+            x['means']=[m for m in x.get('means',[]) if m!='CONTRIBUTE_FOOD_COMMONS']
         if p.get('productive_witness_means') and not productive_witness_signs(p,encounter):
             x['means']=[m for m in x.get('means',[]) if m!='ORIENT']
         x['recruitment_basis']=['ACTIVITY_CUE'] if cue_match else []
@@ -574,13 +744,18 @@ def qualify_interactivity_deferral(alternatives, selected, deferred_id, location
     rows=[x for x in alternatives if x['option_id']==deferred_id
           and x.get('project_id') not in (None,selected['project_id'])
           and x['operation']!=selected['operation']
-          and x.get('binding_status')=='NO_ADDRESSED_PARTY'
-          and selected.get('binding_status')=='NO_ADDRESSED_PARTY'
-          and not x.get('world_request',{}).get('material_object_ref')
-          and not selected.get('world_request',{}).get('material_object_ref')]
+          and ((x.get('binding_status')=='NO_ADDRESSED_PARTY'
+                and selected.get('binding_status')=='NO_ADDRESSED_PARTY'
+                and not x.get('world_request',{}).get('material_object_ref')
+                and not selected.get('world_request',{}).get('material_object_ref'))
+               or _addressed_use_time_pair(selected,x))]
     if len(rows)!=1:raise ValueError('INTERACTIVITY_UNISSUED_DEFERRED_COURSE')
     x=rows[0]
-    return {'selected_project':selected['project_id'],'selected_operation':selected['operation'],
+    extra=({'course_relation_kind':'ADDRESSED_REPRODUCTIVE_USE_TIME',
+            'selected_addressed_party_ref':selected.get('world_request',{}).get('addressed_party_ref'),
+            'deferred_addressed_party_ref':x.get('world_request',{}).get('addressed_party_ref')}
+           if _addressed_use_time_pair(selected,x) else {})
+    return {**extra,'selected_project':selected['project_id'],'selected_operation':selected['operation'],
             'selected_option_ref':selected['option_id'],'deferred_project':x['project_id'],
             'deferred_operation':x['operation'],'deferred_option_ref':x['option_id'],
             'location':location,'not_a_performed_alternative_or_abandoned_motive':True}
@@ -632,7 +807,9 @@ def possible_interactivity_relations(actor,experience,event_ref):
           and x.get('id') in paths[0].get('received_cue_refs',[])]
     if len(cues)!=1:return []
     selected=choice['selected_project'];deferred=choice['deferred_project']
-    prior=_interactivity_history(actor,selected,deferred,event_ref)
+    prior=(_addressed_interactivity_history(actor,choice,event_ref,experience)
+           if choice.get('course_relation_kind')=='ADDRESSED_REPRODUCTIVE_USE_TIME'
+           else _interactivity_history(actor,selected,deferred,event_ref))
     if not prior:return []
     p=next(p for p in actor['projects'] if p['id']==selected)
     if any(x['basis']['deferred_project']==deferred and x['basis']['location']==choice['location']
@@ -664,14 +841,25 @@ def annotate_interactivity_relations(constitution,access,options):
             if (rec.get('status')!='ACTIVE' or b.get('actor')!=constitution.actor
                     or b.get('selected_project')!=p['id'] or b.get('location')!=access.location
                     or rec.get('id')!=stable_id('interactivity_relation',b)):continue
-            left=[x for x in alts if x.get('project_id')==b['selected_project']
-                  and x['operation']==b['selected_operation'] and x.get('binding_status')=='NO_ADDRESSED_PARTY']
-            right=[x for x in alts if x.get('project_id')==b['deferred_project']
-                   and x['operation']==b['deferred_operation'] and x.get('binding_status')=='NO_ADDRESSED_PARTY']
+            addressed=b.get('course_relation_kind')=='ADDRESSED_REPRODUCTIVE_USE_TIME'
+            def matches(x,which):
+                if (x.get('project_id')!=b[which+'_project']
+                        or x['operation']!=b[which+'_operation']):return False
+                if not addressed:return x.get('binding_status')=='NO_ADDRESSED_PARTY'
+                other=b[which+'_addressed_party_ref']
+                return (x.get('world_request',{}).get('addressed_party_ref')==other
+                        and x.get('binding_status')==(
+                            'QUALIFIED_AS_PRESENT' if other else 'NO_ADDRESSED_PARTY'))
+            left=[x for x in alts if matches(x,'selected')]
+            right=[x for x in alts if matches(x,'deferred')]
             if len(left)!=1 or len(right)!=1:continue
             row={'relation_ref':rec['id'],'selected_project':b['selected_project'],
                  'deferred_project':b['deferred_project'],'selected_option_ref':left[0]['option_id'],
                  'deferred_option_ref':right[0]['option_id'],'personal_sense':rec['personal_sense'],
+                 **({'course_relation_kind':b['course_relation_kind'],
+                     'selected_addressed_party_ref':b['selected_addressed_party_ref'],
+                     'deferred_addressed_party_ref':b['deferred_addressed_party_ref']}
+                    if addressed else {}),
                  'not_an_automatic_deferral':True,'grade':GRADE}
             for x in left+right:x.setdefault('interactivity_currents',[]).append(copy(row))
             currents.append({'kind':'INTERACTIVITY_HISTORICAL_CURRENT',**copy(row)})
@@ -749,7 +937,9 @@ def possible_provisioning_reorganizations(actor,experience,event_ref):
     if not works:return []
     work,wv=max(works,key=lambda x:x[1]['clock'])
     projects=[x for x in actor.get('projects',[]) if x.get('id')==refs[0]
-              and x.get('status','active')=='active' and x.get('means')==['FEED']
+              and x.get('status','active')=='active' and x.get('means') in (
+                  ['FEED'],['FEED','CONTRIBUTE_FOOD_COMMONS'])
+              and ('CONTRIBUTE_FOOD_COMMONS' not in x['means'] or x.get('commons_provisioning_basis'))
               and x.get('addressed_party_ref')==target
               and not x.get('provisioning_means_basis')]
     if len(projects)!=1:return []
@@ -759,4 +949,180 @@ def possible_provisioning_reorganizations(actor,experience,event_ref):
            'purchase_claim_ref':pv['material_claim_ref'],'provisioning_site':pv['site'],
            'not_proof_of_earmarked_money_or_motive_fulfillment':True}
     return [{'kind':'REORGANIZE_PROJECT','project_id':refs[0],
-             'means':['FEED','WORK','BUY_FOOD'],'provisioning_means_basis':basis}]
+             'means':copy(projects[0]['means'])+['WORK','BUY_FOOD'],'provisioning_means_basis':basis}]
+
+
+def own_commons_receipt(actor,experience,world,event_ref):
+    """The existing material commons producer, actually exercised by this actor.
+
+    A real contribution can change later practical means. The receipt is
+    actor-local and analytic; no token earmarking, political ideology or
+    unperformed feeding is inferred.
+    """
+    aid=actor['id'];clock=experience.get('clock');site=experience.get('location')
+    sel=experience.get('own_practical_selection') or {}
+    if (experience.get('actor')!=aid or type(clock) is not int
+            or experience.get('own_action')!='CONTRIBUTE_FOOD_COMMONS'
+            or experience.get('status')!='PERFORMED'
+            or experience.get('participated') is not True
+            or sel.get('actor')!=aid or sel.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+            or (sel.get('world_request') or {}).get('operation')!='CONTRIBUTE_FOOD_COMMONS'):
+        return None
+    signs=[x for x in experience.get('perceived_cues',[])
+           if x.get('kind')=='performed_contribute_food_commons'
+           and x.get('source_actor')==aid and x.get('clock')==clock
+           and x.get('location')==site
+           and x.get('description')=='INDEPENDENT_FOOD_COMMONS_ENLARGED']
+    rows=[x for x in world.get('food_commons_history',[])
+          if x.get('giver')==aid and x.get('site')==site and x.get('clock')==clock
+          and x.get('actor_selection_source')=='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+          and x.get('food_debited_from_private_holdings')==1
+          and x.get('food_credited_to_independent_commons')==1]
+    if len(signs)!=1 or len(rows)!=1:return None
+    return {'actor':aid,'event_ref':event_ref,'experience_ref':experience['ref'],
+            'clock':clock,'site':site,'cue_ref':signs[0]['id'],'commons_ref':rows[0]['id'],
+            'not_a_proof_of_earmarked_food_or_collective_ideology':True}
+
+
+def possible_commons_provisioning_reorganizations(actor,experience,event_ref):
+    """Actual blocked care, own material contribution and actual later feeding.
+
+    The project can acquire a new *means* through its own material history,
+    not because a model supplies a political slogan. Preserve the end, other
+    historically acquired means, and the former unfinished activity.
+    """
+    aid=actor['id'];site=experience.get('location');clock=experience.get('clock')
+    sel=experience.get('own_practical_selection') or {}
+    refs=sel.get('selected_project_refs',[])
+    if (experience.get('actor')!=aid or type(clock) is not int
+            or experience.get('own_action')!='FEED' or experience.get('status')!='PERFORMED'
+            or experience.get('participated') is not True
+            or sel.get('actor')!=aid or sel.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+            or len(refs)!=1 or sel.get('possible_end_trial') is not None):return []
+    target=(sel.get('world_request') or {}).get('addressed_party_ref')
+    if type(target) is not str or target==aid:return []
+    projects=[x for x in actor.get('projects',[])
+              if x.get('id')==refs[0] and x.get('status','active')=='active'
+              and x.get('addressed_party_ref')==target and 'FEED' in x.get('means',[])
+              and 'CONTRIBUTE_FOOD_COMMONS' not in x.get('means',[])
+              and not x.get('commons_provisioning_basis')]
+    if len(projects)!=1:return []
+    project=projects[0]
+    paths=actor.get('evidence_paths',[])
+    feed=[x for x in actor.get('performed_feeding_events',[])
+          if x.get('event_ref')==event_ref and x.get('giver')==aid
+          and x.get('recipient')==target and x.get('site')==site
+          and x.get('material_food_source')=='MUTUAL_AID_FOOD'
+          and x.get('original_action_was_actor_selected') is True
+          and x.get('applied_nutrition_change',0)>0]
+    if len(feed)!=1:return []
+    now=[p for p in paths if p.get('event')==event_ref and p.get('experience_ref')==experience['ref']
+         and p.get('selected_project_refs')==refs
+         and p.get('practical_option_ref')==sel.get('option_id')
+         and feed[0].get('received_action_sign_ref') in p.get('received_cue_refs',[])]
+    if len(now)!=1:return []
+    prior=[]
+    for x in actor.get('material_dependency_encounters',[]):
+        if (x.get('actor')!=aid or x.get('location')!=site
+                or x.get('own_operation_attempted')!='FEED'
+                or type(x.get('clock')) is not int or x['clock']>=clock):continue
+        own=[p for p in paths if p.get('event')==x.get('event_ref')
+             and p.get('experience_ref')==x.get('experience_ref')
+             and p.get('selected_project_refs')==refs
+             and x.get('received_nonperformance_sign_ref') in p.get('received_cue_refs',[])]
+        episodes=[e for e in actor.get('lived_genesis_episodes',[])
+                  if e.get('event_ref')==x.get('event_ref') and e.get('actor')==aid
+                  and e.get('experience_ref')==x.get('experience_ref')
+                  and e.get('selected_addressed_party_ref')==target
+                  and e.get('selected_project_refs')==refs
+                  and e.get('unfinished_own_activity')
+                  and e.get('selected_practical_option_ref') is not None]
+        if len(own)==len(episodes)==1:prior.append(x)
+    if not prior:return []
+    blocked=max(prior,key=lambda x:x['clock'])
+    donations=[]
+    for path in paths:
+        x=path.get('own_commons_receipt_analytic_only',{})
+        if (x.get('actor')==aid and x.get('site')==site
+                and x.get('event_ref')==path.get('event')
+                and x.get('experience_ref')==path.get('experience_ref')
+                and x.get('cue_ref') in path.get('received_cue_refs',[])
+                and type(x.get('clock')) is int and blocked['clock']<x['clock']<clock):
+            donations.append(x)
+    if not donations:return []
+    donation=max(donations,key=lambda x:x['clock'])
+    basis={'actor':aid,'location':site,'recipient_ref':target,
+           'blocked_feeding_ref':blocked['id'],'blocked_event_ref':blocked['event_ref'],
+           'actual_commons_ref':donation['commons_ref'],'contribution_event_ref':donation['event_ref'],
+           'feeding_event_ref':event_ref,'feeding_receipt_ref':feed[0]['id'],
+           'not_proof_of_earmarked_food_or_abandoned_other_means':True}
+    return [{'kind':'REORGANIZE_PROJECT','project_id':project['id'],
+             'means':copy(project['means'])+['CONTRIBUTE_FOOD_COMMONS'],
+             'commons_provisioning_basis':basis}]
+
+
+def _addressed_use_time_pair(selected,deferred):
+    """The exact two alternatives coexist, neither automatically dominates.
+
+    Extend the existing deferral owner to one actually addressed care course
+    versus one nonaddressed material course. No imagined access, unavailable
+    recipient, future promise or arbitrary object identity.
+    """
+    pair=[selected,deferred]
+    care=[x for x in pair if x['operation'] in ('CARE','FEED')
+          and x.get('binding_status')=='QUALIFIED_AS_PRESENT'
+          and type(x.get('world_request',{}).get('addressed_party_ref')) is str]
+    material=[x for x in pair if x['operation'] in (
+              'CONTRIBUTE_FOOD_COMMONS','WORK','BUY_FOOD','EAT','REST')
+              and x.get('binding_status')=='NO_ADDRESSED_PARTY'
+              and x.get('world_request',{}).get('addressed_party_ref') is None]
+    return len(care)==len(material)==1 and not any(
+        x.get('world_request',{}).get('material_object_ref') for x in pair)
+
+
+def _addressed_interactivity_history(actor,choice,event_ref,experience):
+    """Actual reverse allocation of the same two projects is evidence of
+    their distinct practical courses, not proof of conflict or priority."""
+    aid=actor['id'];site=choice['location'];clock=experience.get('clock')
+    if type(clock) is not int:return None
+    projects={p['id']:p for p in actor.get('projects',[]) if p.get('status','active')=='active'}
+    s=choice['selected_project'];d=choice['deferred_project']
+    if not {s,d}<=set(projects):return None
+    paths=actor.get('evidence_paths',[])
+    def actual(p,project,operation):
+        return (p.get('selected_project_refs')==[project]
+                and p.get('own_action')==operation
+                and any(x.get('event')==p.get('event') and x.get('project')==project
+                        and x.get('operation')==operation and x.get('performed_status')=='PERFORMED'
+                        and x.get('selected_at_actor_attempt') is True
+                        for x in projects[project].get('operational_history',[])))
+    current=[p for p in paths if p.get('event')==event_ref
+             and p.get('experience_ref')==experience.get('ref')
+             and p.get('interactivity_deferral')==choice
+             and actual(p,s,choice['selected_operation'])]
+    if len(current)!=1:return None
+    previous=[]
+    for p in paths:
+        b=p.get('interactivity_deferral',{})
+        if (b.get('course_relation_kind')!='ADDRESSED_REPRODUCTIVE_USE_TIME'
+                or b.get('location')!=site or p.get('event')==event_ref
+                or b.get('selected_project')!=d or b.get('deferred_project')!=s
+                or b.get('selected_operation')!=choice['deferred_operation']
+                or b.get('deferred_operation')!=choice['selected_operation']
+                or b.get('selected_addressed_party_ref')!=choice['deferred_addressed_party_ref']
+                or b.get('deferred_addressed_party_ref')!=choice['selected_addressed_party_ref']
+                or not actual(p,d,choice['deferred_operation'])):continue
+        lived=[e for e in actor.get('lived_genesis_episodes',[])
+               if e.get('event_ref')==p.get('event') and e.get('actor')==aid
+               and e.get('experience_ref')==p.get('experience_ref') and e.get('location')==site
+               and e.get('selected_practical_option_ref')==b.get('selected_option_ref')
+               and type(e.get('clock')) is int and e['clock']<clock
+               and not e.get('unfinished_own_activity')]
+        if len(lived)==1:previous.append((p,lived[0]))
+    if not previous:return None
+    p,e=max(previous,key=lambda x:x[1]['clock'])
+    return {'earlier_reverse_deferral_event_ref':p['event'],
+            'earlier_reverse_deferral_experience_ref':p['experience_ref'],
+            'earlier_reverse_deferral_episode_ref':e['id'],
+            'earlier_selected_project':d,
+            'not_proof_of_foregone_outcome_or_fixed_priority':True}

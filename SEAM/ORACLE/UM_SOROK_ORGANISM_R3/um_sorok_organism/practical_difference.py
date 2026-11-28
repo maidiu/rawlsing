@@ -42,6 +42,33 @@ def validate_expected_difference(value):
 from .activity import productive_witness_signs, productive_witness_option
 
 
+from .mediated_efficacy import preproject_vocal_basis
+
+
+def familiar_destination_rows(constitution,access):
+    """A personally lived earlier site can become a possible destination.
+
+    This is an exploratory, source-qualified practical return, not a map,
+    a travel motive, a claim of conscious recollection, or present permission.
+    In particular, do not enumerate objective world sites or other actors'
+    histories. The existing world MOVE owner settles the actual attempt.
+    """
+    if constitution.actor!=access.actor:return []
+    paths={(p.get('event'),p.get('experience_ref')) for p in constitution.evidence_paths}
+    found={}
+    for e in reversed(constitution.lived_genesis_episodes):
+        site=e.get('location')
+        if (e.get('actor')!=constitution.actor or type(site) is not str or not site
+                or site==access.location or site in found
+                or type(e.get('clock')) is not int or e['clock']>=access.world_clock
+                or (e.get('event_ref'),e.get('experience_ref')) not in paths
+                or not (e.get('actor_felt_attempt') or e.get('received_relief'))):
+            continue
+        found[site]={'site':site,'episode_ref':e['id'],'event_ref':e['event_ref'],
+                     'experience_ref':e['experience_ref'],'experienced_clock':e['clock']}
+    return list(found.values())
+
+
 def practical_alternatives(constitution,access,option):
     """A named option remains distinct beneath one executable operation.
 
@@ -82,6 +109,8 @@ def practical_alternatives(constitution,access,option):
         if project.get('provisioning_means_basis') and act in ('WORK','BUY_FOOD'):
             # Material acquisition serves a particular care undertaking but
             # is not an addressed act or a claim on the recipient.
+            target=None
+        if project.get('commons_provisioning_basis') and act=='CONTRIBUTE_FOOD_COMMONS':
             target=None
         conditional=project.get('dependency_conditional_means',{}).get(act)
         human_counterpart=False
@@ -146,6 +175,30 @@ def practical_alternatives(constitution,access,option):
             alts[-1]['counterpart_participation_kind']='HUMAN_AUTHORED_NEIGHBOR'
             accepted=food_acceptance_alternative(access,alts[-1])
             if accepted is not None:alts.append(accepted)
+    if act=='SIGNAL' and constitution.role=='child':
+        own={'id':actor,'role':constitution.role,
+             'power_exercises':constitution.power_exercises,
+             'evidence_paths':constitution.evidence_paths,
+             'practice_exposures':constitution.practice_exposures}
+        early=preproject_vocal_basis(own,access.location,clock)
+        if early is not None:
+            # An exploratory call can now be addressed without installing a
+            # caregiving orientation, goal, gratitude or consent in either actor.
+            for counterpart in sorted(present):
+                alts.append({
+                    'option_id':stable_id('preproject_addressed_vocal_trial',{
+                        'actor':actor,'clock':clock,'other':counterpart,
+                        'ordinary_basis':early['id']}),
+                    'actor':actor,'as_of_clock':clock,'operation':act,
+                    'project_id':None,'anticipated_difference':None,
+                    'beneficiary_as_apprehended':None,'priority':None,
+                    'grounds_status':'PREPROJECT_ORDINARY_VOCAL_EXPLORATION',
+                    'world_request':{'operation':act,'addressed_party_ref':counterpart,
+                                     'material_object_ref':None},
+                    'binding_status':'QUALIFIED_AS_PRESENT',
+                    'source_aggregate_ref':early['id'],
+                    'not_actor_self_account':True,'not_world_outcome':True,
+                    'other_response_not_assumed':True,'source_grade':GRADE})
     if act=='PLEDGE_CARE':
         # An actual addressee matters: a free-floating promise cannot bind
         # some convenient future person assigned by the world narration.
@@ -174,6 +227,20 @@ def practical_alternatives(constitution,access,option):
         'binding_status':'UNATTRIBUTED_OPERATION',
         'not_actor_self_account':True,'not_world_outcome':True,
         'source_grade':GRADE,'priority':None})
+    if act=='MOVE':
+        for destination in familiar_destination_rows(constitution,access):
+            site=destination['site']
+            alts.append({'option_id':stable_id('familiar_destination',{
+                'actor':actor,'clock':clock,'source':destination,'from':access.location}),
+                'actor':actor,'as_of_clock':clock,'operation':act,'project_id':None,
+                'grounds_status':'HISTORICALLY_FAMILIAR_DESTINATION',
+                'binding_status':'PAST_SITE_EXPERIENCED_CURRENT_ACCESS_NOT_ESTABLISHED',
+                'world_request':{'operation':act,'addressed_party_ref':None,
+                                 'material_object_ref':site},
+                'familiar_destination_basis':copy(destination),
+                'anticipated_difference':None,'beneficiary_as_apprehended':None,
+                'priority':None,'not_actor_self_account':True,'not_world_outcome':True,
+                'source_grade':GRADE})
     return alts
 
 def offer_addressed_lexical_alternatives(access,option,focal_refs):

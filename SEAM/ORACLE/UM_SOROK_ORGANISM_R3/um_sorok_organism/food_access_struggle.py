@@ -151,6 +151,30 @@ def can_draw_shared_food(world,giver,site):
     return giver in board["initially_permitted_givers"]
 
 
+def shared_food_permission_boundaries(world,actor,site,start,end):
+    """Actual changes of effective draw right in a half-open routine span.
+
+    The legal roster is not the same as materially reproduced enforcement.
+    Read the existing institution and compare its actual permission at
+    the two sides of each possible transition; no new clock or obligation.
+    """
+    board=_board(world,site)
+    if board is None:return []
+    times=set()
+    if board.get("r18_requires_material_enforcement"):
+        through=board.get("r18_enforced_through")
+        if type(through) is not int:raise ValueError("R18_INVALID_ENFORCEMENT_CLOCK")
+        times.add(through+1)
+    for item in board.get("r18_sanctions",[]):
+        if item.get("subject")!=actor:continue
+        begin=item.get("start_clock");through=item.get("through_clock")
+        if type(begin) is int and type(through) is int:
+            times.update((begin,through+1))
+    return [t for t in sorted(times) if start<t<=end and
+            can_draw_shared_food({**world,"clock":t-1},actor,site)!=
+            can_draw_shared_food({**world,"clock":t},actor,site)]
+
+
 def witnessed_public_procedure(actor,board,clock):
     """Reading a public notice is not conscious assent or causal mastery."""
     return any(type(x) is dict and

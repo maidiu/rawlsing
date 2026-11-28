@@ -1,0 +1,37 @@
+name: R008 single-tree continuing organism convergence
+on:
+  push:
+    branches: [agent/neighbormulch-r008-joined-co-economy-20261128-r1]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integrated-generation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact shared owner tree and inherited developmental engine
+        run: |
+          git rev-parse HEAD
+          test "$(git hash-object WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py)" = 231cab97b4bc5e2f40de3c45d179a68ba58585c5
+          test "$(git hash-object WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py)" = a777692782003e05de6c46280b5861e97516dc90
+      - name: Elastic meeting and exact R23 owner receiving (normal and optimized)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/:${{ github.workspace }}/SEAM/NEIGHBORMULCH/tests:${{ github.workspace }}/SEAM/NEIGHBORMULCH
+        run: |
+          python -m unittest -v test_neighbor_elastic_meeting_r008 test_neighbor_meeting_time_r38
+          python -O -m unittest -v test_neighbor_elastic_meeting_r008 test_neighbor_meeting_time_r38
+          python -m unittest discover -s SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests -p test_inference_lab_surface_r23.py -v
+          python -O -m unittest discover -s SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests -p test_inference_lab_surface_r23.py -v
+      - name: Actual generation and live ancestry on same tree
+        env:
+          PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/:${{ github.workspace }}/SEAM/NEIGHBORMULCH/tests:${{ github.workspace }}/SEAM/NEIGHBORMULCH
+        run: |
+          python -c 'import os,um_sorok_organism.runtime as r; os.path.commonpath([r.__file__,os.environ["GITHUB_WORKSPACE"]])==os.environ["GITHUB_WORKSPACE"] or __import__("sys").exit("WRONG_OWNER"); import unittest; unittest.main(module=None,argv=["unittest","-v","test_modern_generation_port_r28","test_joined_generation_r33","test_live_turn_r38","test_rich_formation_r44","test_continuing_life_r52"])'
+          python -O -m unittest -q test_modern_generation_port_r28 test_joined_generation_r33 test_live_turn_r38 test_rich_formation_r44 test_continuing_life_r52

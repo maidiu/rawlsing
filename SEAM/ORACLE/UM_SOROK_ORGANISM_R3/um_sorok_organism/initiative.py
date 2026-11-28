@@ -77,7 +77,7 @@ def choose_next_actor(world, actors, local_counts=None):
     return candidates[0]
 
 
-def continue_life(ledger_read, actor_read, advance, beats=1):
+def continue_life(ledger_read, actor_read, advance, beats=1, *, initial_counts=None):
     """High-resolution continuation without any player command or injected act.
 
     `advance(actor)` must be the existing unmodified actor-selected runtime
@@ -89,7 +89,12 @@ def continue_life(ledger_read, actor_read, advance, beats=1):
         raise ValueError('INITIATIVE_UNSUPPORTED_BEAT_BUDGET')
     if not all(callable(fn) for fn in (ledger_read, actor_read, advance)):
         raise TypeError('INITIATIVE_REQUIRES_EXISTING_OWNER_PORTS')
-    records, counts = [], {}
+    # The continuing owner may supply actual committed opportunity counts.
+    # Never infer motives or activities from the scheduling history.
+    if initial_counts is not None and (type(initial_counts) is not dict or
+            any(type(k) is not str or type(v) is not int or v<0 for k,v in initial_counts.items())):
+        raise ValueError('INITIATIVE_INVALID_LOCAL_HISTORY')
+    records, counts = [], dict(initial_counts or {})
     for _ in range(beats):
         world = ledger_read()
         actors = actor_read()

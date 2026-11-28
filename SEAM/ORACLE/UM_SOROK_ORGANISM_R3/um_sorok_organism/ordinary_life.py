@@ -73,6 +73,17 @@ def passage(world,actors,days,processes=None):
            'material_feeding_period_refs'],
        'material_feeding_shortfall_refs':allocation_receipt[
            'material_feeding_shortfall_refs'],
+       **({'preproject_practice_loads':allocation_receipt['preproject_practice_loads']}
+          if allocation_receipt.get('preproject_practice_loads') else {}),
+       **({'project_practice_loads':allocation_receipt['project_practice_loads']}
+          if allocation_receipt.get('project_practice_loads') else {}),
+       **({'lived_practice_loads':allocation_receipt['lived_practice_loads']}
+          if allocation_receipt.get('lived_practice_loads') else {}),
+       **({'material_self_meal_period_refs':allocation_receipt['material_self_meal_period_refs'],
+           'material_self_meal_shortfall_refs':allocation_receipt['material_self_meal_shortfall_refs']}
+          if allocation_receipt.get('material_self_meal_period_refs') else {}),
+       **({'material_purchase_period_refs':allocation_receipt['material_purchase_period_refs']}
+          if allocation_receipt.get('material_purchase_period_refs') else {}),
        'actor_time_claims':allocation_receipt['actor_hour_claims_per_day'],
        'material_object_condition_process_refs':[r['id'] for r in material_wear],
        'qualified_aggregate_practice_refs':practice_evidence,

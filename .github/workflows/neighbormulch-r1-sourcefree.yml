@@ -49,6 +49,7 @@ on:
       - agent/neighbormulch-r008-continuing-revision-20261128-r1
       - agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1
       - agent/neighbormulch-r008-interconstitutive-wage-relief-20261128-r1
+      - agent/neighbormulch-r008-joined-co-economy-20261128-r1
       - agent/neighbormulch-r33-resistant-evidence-20261126-r1
   pull_request:
     branches:
@@ -92,28 +93,28 @@ jobs:
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_commitment_time_r24.py
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_structural_absence_r25.py
       - name: Unequal material lives and earned collective provision
-        if: github.ref_name == 'agent/neighbormulch-r008-interconstitutive-wage-relief-20261128-r1'
+        if: github.ref_name == 'agent/neighbormulch-r008-interconstitutive-wage-relief-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-joined-co-economy-20261128-r1'
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_interconstitutive_wage.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_interconstitutive_wage.py' -q
       - name: Independently constituted reciprocal ordinary life
-        if: github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-interconstitutive-wage-relief-20261128-r1'
+        if: github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-interconstitutive-wage-relief-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-joined-co-economy-20261128-r1'
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_reciprocal_routine.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_reciprocal_routine.py' -q
       - name: Continuing R008 actor-owned routine revision and actual conflicting material life
-        if: github.ref_name == 'agent/neighbormulch-r008-continuing-revision-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-interconstitutive-wage-relief-20261128-r1'
+        if: github.ref_name == 'agent/neighbormulch-r008-continuing-revision-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-interconstitutive-wage-relief-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-joined-co-economy-20261128-r1'
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_recurrent_revision.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_recurrent_revision.py' -q
       - name: R008 actual recurrent life, material allocation and returning neighbor
-        if: github.ref_name == 'agent/neighbormulch-r008-recurrent-life-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-continuing-revision-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-interconstitutive-wage-relief-20261128-r1'
+        if: github.ref_name == 'agent/neighbormulch-r008-recurrent-life-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-continuing-revision-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-interconstitutive-wage-relief-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-joined-co-economy-20261128-r1'
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: |
@@ -122,7 +123,7 @@ jobs:
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_recurrent_life_r008.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_recurrent_life_r008.py' -q
       - name: Joined family genesis, historical life, acquired orientation and visitor continuation
-        if: github.ref_name == 'agent/neighbormulch-integrated-organism-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-recurrent-life-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-continuing-revision-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-interconstitutive-wage-relief-20261128-r1'
+        if: github.ref_name == 'agent/neighbormulch-integrated-organism-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-recurrent-life-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-continuing-revision-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-interconstitutive-wage-relief-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-joined-co-economy-20261128-r1'
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_integrated_life_course.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_integrated_life_course.py' -q

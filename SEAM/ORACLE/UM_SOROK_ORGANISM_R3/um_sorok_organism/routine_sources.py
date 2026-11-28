@@ -10,6 +10,7 @@ proof of events, an independent coactor's consent, or scientific evidence.
 from .types import stable_id, copy, GRADE
 from .organism import eligible
 from math import isfinite
+from .mediated_efficacy import preproject_exercise_basis, qualified_project_exercise_basis
 
 KINDS=frozenset({'QUALIFIED_ROUTINE_PRACTICE',
                  'QUALIFIED_REPRODUCTIVE_CARE',
@@ -19,7 +20,7 @@ KINDS=frozenset({'QUALIFIED_ROUTINE_PRACTICE',
 SCENARIO_CLASS='EXPLICIT_SOURCEFREE_HISTORICAL_FIXTURE'
 LIVED_CLASS='SOURCEFREE_ACTOR_LIVED_ROUTINE_PROPOSAL'
 ROUTINE_OPS={'CARE':'QUALIFIED_REPRODUCTIVE_CARE','FEED':'QUALIFIED_MATERIAL_FEEDING',
-             'WORK':'QUALIFIED_WAGE_LABOR',
+             'WORK':'QUALIFIED_WAGE_LABOR','EAT':'QUALIFIED_SELF_MEAL','BUY_FOOD':'QUALIFIED_FOOD_PURCHASE',
              'PRACTICE':'QUALIFIED_ROUTINE_PRACTICE','SING':'QUALIFIED_ROUTINE_PRACTICE'}
 MAX_ROUTINE_WINDOW=90
 # Bounded existing world-defined cooperative contributions, not a general
@@ -51,10 +52,24 @@ def register_sourcefree_period_envelope(world,actors,spec):
         raise ValueError('ROUTINE_SOURCE_INVALID_HOUR_CEILING')
     if type(spec.get('description')) is not str or not spec['description'].strip():
         raise ValueError('ROUTINE_SOURCE_MISSING_EXPLICIT_PROPOSAL')
+    developmental={}
+    if 'preproject_exercise_ref' in spec:
+        ref=spec['preproject_exercise_ref']
+        op=spec.get('operation')
+        if (spec['kind']!='QUALIFIED_ROUTINE_PRACTICE'
+                or not preproject_exercise_basis(actors[actor],op,location,ref,world['clock'])):
+            raise ValueError('PREPROJECT_SOURCE_NO_ACTUAL_OWN_EXERCISE')
+        developmental={'preproject_exercise_ref':ref,'practice_operation':op}
+    if 'practice_project_ref' in spec or 'project_exercise_ref' in spec:
+        p=spec.get('practice_project_ref');x=spec.get('project_exercise_ref');op=spec.get('operation')
+        if (developmental or spec['kind']!='QUALIFIED_ROUTINE_PRACTICE'
+                or not qualified_project_exercise_basis(actors[actor],p,x,op,location,world['clock'])):
+            raise ValueError('PROJECT_SOURCE_NO_ACTUAL_SELECTED_EXERCISE')
+        developmental={'practice_project_ref':p,'project_exercise_ref':x,'practice_operation':op}
     key=stable_id('routine_sourcefree_envelope',{
         'world':world['id'],'actor':actor,'kind':spec['kind'],
         'location':location,'start':start,'end':end,
-        'max_hours':max_daily,'description':spec['description']})
+        'max_hours':max_daily,'description':spec['description'],**developmental})
     if key in world.setdefault('routine_source_registry',{}):
         raise ValueError('ROUTINE_SOURCE_DUPLICATE')
     record={
@@ -67,7 +82,7 @@ def register_sourcefree_period_envelope(world,actors,spec):
         'does_not_authorize_PYAT_source_or_native_psyche':True,
         'coactor_willingness_not_proved':True,
         'no_actual_history_until_qualified_period_executed':True,
-        'registered_at_world_clock':world['clock'],'grade':GRADE,
+        'registered_at_world_clock':world['clock'],'grade':GRADE,**developmental,
     }
     world['routine_source_registry'][key]=record
     return record
@@ -94,8 +109,29 @@ def verify_qualified_period_envelope(world,process,start_clock,days):
     if (type(request) not in (int,float) or
             request>source['max_hours_per_active_day']):
         raise ValueError('HISTORICAL_PROCESS_SOURCE_HOUR_OVERREACH')
+    developmental={}
+    if source.get('preproject_exercise_ref') is not None:
+        if (process.get('preproject_exercise_ref')!=source['preproject_exercise_ref']
+                or process.get('operation')!=source.get('practice_operation')
+                or process.get('mode')!='SOLO_COMPONENT_PRACTICE'):
+            raise ValueError('PREPROJECT_ROUTINE_SOURCE_SCOPE_MISMATCH')
+        developmental={'preproject_exercise_ref':source['preproject_exercise_ref'],
+                       'practice_operation':source['practice_operation']}
+    elif 'preproject_exercise_ref' in process:
+        raise ValueError('PREPROJECT_ROUTINE_UNREGISTERED_BASIS')
+    if source.get('practice_project_ref') is not None:
+        if (developmental or process.get('practice_project_ref')!=source['practice_project_ref']
+                or process.get('project_exercise_ref')!=source['project_exercise_ref']
+                or process.get('operation')!=source.get('practice_operation')
+                or process.get('mode')!='SOLO_COMPONENT_PRACTICE'):
+            raise ValueError('PROJECT_ROUTINE_SOURCE_SCOPE_MISMATCH')
+        developmental={'practice_project_ref':source['practice_project_ref'],
+                       'project_exercise_ref':source['project_exercise_ref'],
+                       'practice_operation':source['practice_operation']}
+    elif 'practice_project_ref' in process or 'project_exercise_ref' in process:
+        raise ValueError('PROJECT_ROUTINE_UNREGISTERED_BASIS')
     return {
-        'source_ref':source['id'],
+        **developmental,'source_ref':source['id'],
         'source_grade':source['evidence_class'],
         'source_recorded_at':source['registered_at_world_clock'],
         'author_permission':('ADMITTED_ACTOR_LOCAL_SOURCEFREE_PROPOSAL_ONLY'
@@ -153,7 +189,23 @@ def routine_exercise_receipt(actor,experience,event_ref):
         if type(recipient) is not str or recipient==aid or project.get('addressed_party_ref')!=recipient:
             return None
     elif recipient is not None:return None
-    origin=None
+    origin=None;market_seller=None
+    if op=='BUY_FOOD':
+        purchase=rows[0].get('object_transformation',{}).get('material_purchase_basis')
+        if (rows[0].get('objective_outcome')!='FOOD_PURCHASED' or not purchase
+                or purchase.get('buyer')!=aid or purchase.get('site')!=site
+                or purchase.get('kind')!='FOOD_PURCHASE'
+                or purchase.get('goods_transferred')!=1
+                or type(purchase.get('seller')) is not str or purchase['seller']==aid):
+            return None
+        market_seller=purchase['seller'];origin='SITE_MARKET_PURCHASE'
+    if op=='EAT':
+        # Existing operational history records the actual world outcome of
+        # the actor's selected project. No future ownership or food inferred.
+        origin={'ATE_OWNED_FOOD':'GIVER_HELD_FOOD',
+                'ATE_INDEPENDENT_FOOD_COMMONS':'MUTUAL_AID_FOOD',
+                'ATE_SHARED_HOUSEHOLD_FOOD':'SHARED_SITE_FOOD'}.get(rows[0].get('objective_outcome'))
+        if origin is None or (origin=='SHARED_SITE_FOOD' and site!='home'):return None
     if op=='FEED':
         if 'CARE' not in project.get('means',[]):return None
         feeds=[x for x in actor.get('performed_feeding_events',[])
@@ -165,6 +217,7 @@ def routine_exercise_receipt(actor,experience,event_ref):
         if origin not in ('GIVER_HELD_FOOD','MUTUAL_AID_FOOD','SHARED_SITE_FOOD'):return None
     return {'actor':aid,'project_ref':project['id'],'operation':op,'location':site,
             'recipient':recipient,'food_origin':origin,
+            **({'market_seller':market_seller} if market_seller else {}),
             **({'coactivity_partner':partner} if partner else {}),'event_ref':event_ref,'experience_ref':experience['ref'],
             'clock':clock,'not_future_undertaking_or_observed_daily_history':True}
 
@@ -179,13 +232,28 @@ def possible_recurrent_routines(actor,experience,event_ref):
     current=routine_exercise_receipt(actor,experience,event_ref)
     if current is None:return []
     project=next(p for p in actor['projects'] if p['id']==current['project_ref'])
+    # Different particular reciprocal relationships can recruit the same
+    # component. They are distinct courses, not competing descriptions of
+    # one event. Keep the original component-wide exclusion for solitary
+    # courses and for the same project or counterpart. The period allocator
+    # still owns the total finite time of every actor and every matched pair.
     all_routines=[row for p in actor['projects'] for row in p.get('recurrent_routines',[])
-                  if row.get('operation')==current['operation']]
+                  if row.get('operation')==current['operation']
+                  and not (current.get('coactivity_partner') and row.get('coactivity_partner')
+                           and row.get('coactivity_partner')!=current['coactivity_partner']
+                           and row.get('project_ref')!=current['project_ref'])]
     clock=current['clock']
-    if any(x.get('through_clock',0)>clock for x in all_routines):return []
-    last=max((x.get('admitted_clock',-1) for x in all_routines),default=-1)
+    # A retired claim has no future standing. A new course requires three
+    # new particular exercises after retirement, not revival of its source.
+    if any(x.get('through_clock',0)>clock and
+           effective_routine_dose(x)['state']!='RETIRED' for x in all_routines):return []
+    last=max((max(x.get('admitted_clock',-1),
+                  x['revisions'][-1]['clock'] if x.get('revisions') and
+                  effective_routine_dose(x)['state']=='RETIRED' else -1)
+              for x in all_routines),default=-1)
     keys=('actor','project_ref','operation','location','recipient','food_origin')
     if current.get('coactivity_partner'):keys+=('coactivity_partner',)
+    if current.get('market_seller'):keys+=('market_seller',)
     paths=actor.get('evidence_paths',[])
     prior=[]
     for path in reversed(paths):
@@ -215,7 +283,7 @@ def possible_recurrent_routines(actor,experience,event_ref):
     return [{'kind':'ACQUIRE_RECURRENT_ROUTINE','basis':basis,
              'maximum_window_days':MAX_ROUTINE_WINDOW,
              'maximum_hours_per_active_day':4.,
-             **({'maximum_food_units_per_active_day':1.} if current['operation']=='FEED' else {}),
+             **({'maximum_food_units_per_active_day':1.} if current['operation'] in ('FEED','EAT','BUY_FOOD') else {}),
              'not_actor_self_report_or_proof_of_future_repetition':True}]
 
 
@@ -224,7 +292,7 @@ def admit_recurrent_routine(actor,experience,event_ref,candidate):
     basis=candidate.get('basis')
     if not isinstance(basis,dict):raise ValueError('LIVED_ROUTINE_CANDIDATE_CONTRACT')
     fields={'kind','basis','window_days','hours_per_active_day','provisional_exposure_fraction'}
-    if basis.get('operation')=='FEED':fields.add('food_units_per_active_day')
+    if basis.get('operation') in ('FEED','EAT','BUY_FOOD'):fields.add('food_units_per_active_day')
     if set(candidate)!=fields:raise ValueError('LIVED_ROUTINE_CANDIDATE_CONTRACT')
     if not any(x['basis']==basis for x in possible_recurrent_routines(actor,experience,event_ref)):
         raise ValueError('LIVED_ROUTINE_UNQUALIFIED_BASIS')
@@ -238,7 +306,7 @@ def admit_recurrent_routine(actor,experience,event_ref,candidate):
     if food is not None and (type(food) not in (int,float) or not isfinite(food)
                               or not 0<food<=1 or round(food,5)!=food):
         raise ValueError('LIVED_ROUTINE_UNQUALIFIED_FOOD_DOSE')
-    if basis['operation']=='FEED' and food is None:
+    if basis['operation'] in ('FEED','EAT','BUY_FOOD') and food is None:
         raise ValueError('LIVED_ROUTINE_UNQUALIFIED_FOOD_DOSE')
     project=next(p for p in actor['projects'] if p['id']==basis['project_ref'])
     clock=experience['clock']
@@ -246,6 +314,7 @@ def admit_recurrent_routine(actor,experience,event_ref,candidate):
     row={'id':ref,'actor':actor['id'],'project_ref':project['id'],
          'operation':basis['operation'],'location':basis['location'],
          'recipient':basis['recipient'],'food_origin':basis['food_origin'],
+         **({'market_seller':basis['market_seller']} if basis.get('market_seller') else {}),
          **({'coactivity_partner':basis['coactivity_partner']} if basis.get('coactivity_partner') else {}),
          **({'food_units_per_active_day':food} if food is not None else {}),'admitted_clock':clock,'through_clock':clock+days,
          'hours_per_active_day':hours,'provisional_exposure_fraction':fraction,
@@ -282,8 +351,9 @@ def register_admitted_routine(world,actor,report,event_ref):
              'provisional_exposure_fraction':row['provisional_exposure_fraction']}
     if row.get('coactivity_partner'):process['coactivity_partner']=row['coactivity_partner']
     if op in ('CARE','FEED'):process['recipient']=row['recipient']
-    if op=='FEED':process.update({'supply_origin':row['food_origin'],
+    if op in ('FEED','EAT','BUY_FOOD'):process.update({'supply_origin':row['food_origin'],
                             'food_units_per_active_day':row['food_units_per_active_day']})
+    if op=='BUY_FOOD':process['market_seller']=row['market_seller']
     if process['kind']=='QUALIFIED_ROUTINE_PRACTICE':
         process.update({'operation':op,'mode':'SOLO_COMPONENT_PRACTICE'})
         if row.get('coactivity_partner'):
@@ -340,6 +410,11 @@ def live_routine_situational_reason(world,actors,process):
             return 'PARTICULAR_COACTIVITY_COUNTERPART_CHANGED'
     if op in ('CARE','FEED') and project.get('addressed_party_ref')!=process.get('recipient'):
         return 'PARTICULAR_CARE_RECIPIENT_CHANGED'
+    if op=='BUY_FOOD':
+        from .world import _effective_material_controller
+        seller,error=_effective_material_controller(world,process['location'],world['sites'][process['location']])
+        if error or seller!=process.get('market_seller') or seller==a['id']:
+            return 'PARTICULAR_PURCHASE_SELLER_NOT_AVAILABLE'
     if op=='WORK':
         from .labor_dependency import work_permission
         permission=work_permission(world,a['id'],process['location'])
@@ -377,7 +452,7 @@ def effective_routine_dose(row):
     return {'state':'ACTIVE','hours_per_active_day':row['hours_per_active_day'],
             'provisional_exposure_fraction':row['provisional_exposure_fraction'],
             **({'food_units_per_active_day':row['food_units_per_active_day']}
-               if row['operation']=='FEED' else {})}
+               if row['operation'] in ('FEED','EAT','BUY_FOOD') else {})}
 
 
 def possible_routine_revisions(actor,experience,event_ref):
@@ -555,11 +630,11 @@ def conserve_routine_period(world,actors,period,allocation):
                  'not_individual_experience_or_conscious_reason':True}
         if actual:
             own_refs=[]
-            for key in ('reproductive_labor_periods','wage_labor_periods','material_provisioning_periods'):
+            for key in ('reproductive_labor_periods','wage_labor_periods','material_provisioning_periods','material_self_meal_periods','material_purchase_periods'):
                 for effect in reversed(world.get(key,[])):
                     if effect.get('end_clock',-1)<end:break
                     if effect.get('source_ref')!=ref or effect.get('end_clock')!=end:continue
-                    if effect.get('giver',effect.get('worker'))!=aid:continue
+                    if effect.get('giver',effect.get('worker',effect.get('buyer')))!=aid:continue
                     own_refs.append(effect['id'])
                     if key=='wage_labor_periods':
                         receipt['own_wage_paid_model']=effect['actual_paid_model']
@@ -569,8 +644,24 @@ def conserve_routine_period(world,actors,period,allocation):
                         receipt['own_nominal_care_rest_expenditure_model']=effect['giver_rest_expenditure_model']
                     elif key=='material_provisioning_periods':
                         receipt['own_provisioning_food_contribution_model']=effect['consumed_food_units']
+                    elif key=='material_self_meal_periods':
+                        receipt['own_self_meal_consumption_model']=effect['consumed_food_units']
+                        receipt['own_self_meal_nutrition_gain_model']=effect['actual_recipient_nutrition_gain']
+                    elif key=='material_purchase_periods':
+                        receipt['own_purchased_food_units_model']=effect['purchased_food_units']
+                        receipt['own_purchase_paid_model']=effect['actual_paid_model']
             own_refs.extend(x['id'] for x in actor.get('practice_exposures',[])
                             if x.get('source_ref')==ref and x.get('end_clock')==end)
+            for load in allocation.get('lived_practice_loads',[]):
+                if load['actor']!=aid:continue
+                claim=next((x for x in load['claims'] if x['source_ref']==ref),None)
+                if claim is None:continue
+                own_refs.append(load['id'])
+                receipt['own_practice_nominal_rest_expenditure_model']=claim['nominal_rest_expenditure_model']
+                # Saturation is borne by the body once across its claims.
+                # No invented attribution of the actual depletion among
+                # overlapping commitments or other people's bodies.
+                receipt['own_combined_practice_load_ref']=load['id']
             receipt['own_aggregate_effect_refs']=own_refs
         records=row.setdefault('modeled_course_receipts',[])
         if any(x.get('period_ref')==period['id'] for x in records):

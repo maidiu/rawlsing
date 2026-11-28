@@ -18,9 +18,11 @@ from .attention_field import (offer_undertaking_attention, received_undertaking_
     offer_focal_encounters, received_focal_encounter, personally_received_directed_act,
     possible_monitoring_changes)
 from .ordinary_life import passage
+from .activity import received_local_vocal_context, possible_ordinary_context_transfers
 from .activity import (record_activity_afterlife, register_lived_activity_attempt,
                         possible_productive_witness_reorganizations,
                         own_provisioning_receipt, possible_provisioning_reorganizations,
+                        own_commons_receipt, possible_commons_provisioning_reorganizations,
                        possible_dependency_project_reorganizations,
                        possible_dependency_means_revisions, qualify_interactivity_deferral,
                        possible_lexical_project_revaluations,
@@ -47,7 +49,7 @@ from .routine_sources import (register_sourcefree_period_envelope, routine_exerc
 from .caregiving_practice import retain_performed_material_feeding
 from .material_provisioning import offer_feeding_source_alternatives, offer_self_meal_source_alternatives
 from .food_access_struggle import configure_food_power
-from .food_power_reproduction import register_concession
+from .food_power_reproduction import register_concession, received_enacted_food_power
 from .institutional_procedure_learning import (
     possible_institutional_learning, possible_lived_institutional_differences,
     possible_notice_expectations, possible_notice_revisions,
@@ -61,7 +63,7 @@ from .psychic_genesis import (
     possible_productive_vocal_takeups)
 from .joint_practice_genesis import possible_joint_practice
 from .care_commitment_genesis import (
-    conserve_costly_offered_care,candidate_care_commitment,possible_care_practice_revisions)
+    conserve_costly_offered_care,candidate_care_commitment,possible_all_care_practice_revisions)
 from .cultural_mediation import (
     conserve_personally_heard_reference,
     possible_cultural_object_inquiry,possible_reference_revision)
@@ -87,7 +89,7 @@ from .parents import construct_parent, interview_readout, select_staged_counterp
 from .semantics import ValidatingSemanticService
 from .relational_metabolism import (
     possible_witnessed_third_party_relation,
-    possible_lived_cross_context_revaluations)
+    possible_lived_cross_context_revaluations, possible_care_authority_revaluations)
 from .world import (IndependentWorldAuthority, COOPERATIVE, add_cue,
                     register_recursive_encounter_paths, qualified_human_vocal_receipt)
 
@@ -764,13 +766,15 @@ class ConstitutiveRuntime:
                 practical['selected_speech_address']={'recipient':bound_target,
                     'presence_cue_ref':selected_alternative['speech_address_presence_ref'],
                     'option_ref':selected_alternative['option_id']}
-            if action in ('ACCEPT_MEETING','MEET_VISITOR'):
+            if action in ('ACCEPT_MEETING','COUNTER_MEETING','MEET_VISITOR'):
                 if (trial_choice is not None or not selected_alternative
                         or selected_alternative.get('binding_status')!='EXACT_CURRENT_HUMAN_MEETING_SIGN'
                         or proposed.get('practical_option_id')!=selected_alternative['option_id']):
                     raise ValueError('MEETING_REQUIRES_EXACT_ACTOR_SELECTED_OPTION')
                 practical['selected_meeting']={k:copy(selected_alternative[k]) for k in (
                     'meeting_ref','meeting_source_user_event_ref','meeting_source_cue_ref')}
+                if action=='COUNTER_MEETING':
+                    practical['selected_meeting']['counter_due_clock']=selected_alternative['counter_due_clock']
             if (action=='EAT' and selected_alternative
                     and selected_alternative.get('selected_self_meal_source')
                     and proposed.get('practical_option_id')==selected_alternative['option_id']
@@ -805,6 +809,8 @@ class ConstitutiveRuntime:
                 if len(rows)!=1 or len(selected_refs)!=1:
                     raise ValueError('INTERACTIVITY_UNISSUED_RELATION')
                 practical['interactivity_relation_analytic_only']=copy(rows[0])
+            if selected_alternative and selected_alternative.get('care_contradictions_analytic_only'):
+                practical['care_contradictions_analytic_only']=copy(selected_alternative['care_contradictions_analytic_only'])
             if selected_alternative and selected_alternative.get('course_historical_currents'):
                 practical['course_historical_currents_analytic_only']=copy(
                     selected_alternative['course_historical_currents'])
@@ -941,7 +947,7 @@ class ConstitutiveRuntime:
         # A caller never supplies another actor's response. The world owner
         # obtains it from the installed independently constituted actor policy.
         human_vocal = None
-        if (principal.action in ('SING','SIGNAL','REFUSE','ACCEPT_MEETING','MEET_VISITOR') and principal.target in
+        if (principal.action in ('SING','SIGNAL','REFUSE','ACCEPT_MEETING','COUNTER_MEETING','MEET_VISITOR') and principal.target in
                 world.get('neighbor_users', {}) and requested_action is None):
             history = self.ledger.events()
             human_vocal = qualified_human_vocal_receipt(
@@ -1006,7 +1012,9 @@ class ConstitutiveRuntime:
             if chosen is None:continue
             activity_effects[row['actor']]=record_activity_afterlife(actors[row['actor']],
                 row['action'],row['status'],summary['outcome'],chosen.basis,objective_ref,
-                {'material_claim_ref':summary.get('material_claim_ref')},
+                {'material_claim_ref':summary.get('material_claim_ref'),
+                 **({'material_purchase_basis':copy(summary['material_purchase_basis'])}
+                    if row['actor']==actor_id and summary.get('material_purchase_basis') else {})},
                 purpose_selection=chosen.purpose_selection)
         developmental={};subjective={};post_event_psychodynamics={}
         for aid in actors:
@@ -1175,15 +1183,32 @@ class ConstitutiveRuntime:
                        'cross_object_attention_analytic_only') else {}),
                 **({'focal_encounter':copy(focal_receipt)} if focal_receipt else {}),
                 **({'directed_encounter':copy(directed_receipt)} if directed_receipt else {}),
+                **({'received_enacted_food_power':power_receipt}
+                   if (power_receipt:=received_enacted_food_power(
+                       actors[aid],experience,world,summary,objective_ref)) else {}),
+                **({'witnessed_directed_power':{'source_actor_ref':witness['source_actor_ref'],
+                       'clock':experience['clock'],'location':experience['location'],
+                       'cue_ref':witness['witnessed_cue_ref']}}
+                   if (witness:=next((v for v in possible_witnessed_third_party_relation(
+                       actors[aid],experience) if v['witnessed_act']=='IMPOSE'),None)) else {}),
+                **({'selected_care_contradictions_analytic_only':copy(
+                       experience['own_practical_selection']['care_contradictions_analytic_only'])}
+                   if (experience.get('own_practical_selection') or {}).get(
+                       'care_contradictions_analytic_only') else {}),
                 **({'notice_expectation':copy(experience['own_practical_selection']['notice_expectation'])}
                    if (experience.get('own_practical_selection') or {}).get('notice_expectation') else {}),
                 **({'own_vocal_reception':own_vocal_reception(actors[aid],experience)}
                    if own_vocal_reception(actors[aid],experience) is not None else {}),
+                **({'own_commons_receipt_analytic_only':commons_receipt}
+                   if (commons_receipt:=own_commons_receipt(
+                       actors[aid],experience,world,objective_ref)) else {}),
                 **({'own_provisioning_receipt_analytic_only':receipt}
                    if (receipt:=own_provisioning_receipt(actors[aid],experience,world)) else {}),
                 **({'performed_repair_technique_ref_analytic_only':
                     experience['performed_repair_technique_ref_analytic_only']}
                    if experience.get('performed_repair_technique_ref_analytic_only') else {}),
+                **({'received_local_vocal_context':local_vocal}
+                   if (local_vocal:=received_local_vocal_context(actors[aid],experience)) else {}),
                 'received_cue_refs':[c['id'] for c in personal_cues],
                 'received_cue_tags':sorted({str(tag).lower()
                     for cue in personal_cues for tag in cue.get('tags',[])}),
@@ -1355,6 +1380,9 @@ class ConstitutiveRuntime:
                 **({'historically_possible_lexical_project_revaluations':copy(lexical_revaluations)}
                    if (lexical_revaluations:=possible_lexical_project_revaluations(
                        actors[aid],experience,objective_ref)) else {}),
+                **({'historically_possible_commons_provisioning_reorganizations':copy(commons_provisioning)}
+                   if (commons_provisioning:=possible_commons_provisioning_reorganizations(
+                       actors[aid],experience,objective_ref)) else {}),
                 **({'historically_possible_provisioning_reorganizations':copy(provisioning)}
                    if (provisioning:=possible_provisioning_reorganizations(
                        actors[aid],experience,objective_ref)) else {}),
@@ -1363,6 +1391,9 @@ class ConstitutiveRuntime:
                        actors[aid],experience,objective_ref)) else {}),
                 **({'historically_possible_routine_revisions':routine_revisions}
                    if (routine_revisions:=possible_routine_revisions(
+                       actors[aid],experience,objective_ref)) else {}),
+                **({'historically_possible_ordinary_context_transfers':copy(transfers)}
+                   if (transfers:=possible_ordinary_context_transfers(
                        actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_productive_witness_reorganizations':copy(
                     possible_productive_witness_reorganizations(actors[aid],experience,objective_ref)),
@@ -1377,7 +1408,7 @@ class ConstitutiveRuntime:
                 'historically_possible_care_practices':copy(
                     possible_care_practice),
                 **({'historically_possible_care_practice_revisions':copy(care_revisions)}
-                   if (care_revisions:=possible_care_practice_revisions(
+                   if (care_revisions:=possible_all_care_practice_revisions(
                        actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_cultural_references':copy(
                     cultural_reference_candidates),
@@ -1455,6 +1486,9 @@ class ConstitutiveRuntime:
                     possible_counterhistory_release(actors[aid],experience,objective_ref)),
                 'historically_possible_monitoring_changes':copy(
                     possible_monitoring_changes(actors[aid],experience,objective_ref)),
+                **({'historically_possible_care_authority_revaluations':care_relation_revisions}
+                   if (care_relation_revisions:=possible_care_authority_revaluations(
+                       actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_lived_cross_context_revaluations':copy(
                     possible_lived_cross_context_revaluations(
                         actors[aid],experience,objective_ref)),
@@ -1517,6 +1551,7 @@ class ConstitutiveRuntime:
             expression_access['own_practical_selection'].pop('interactivity_relation_analytic_only',None)
             expression_access['own_practical_selection'].pop('selected_course_affects_analytic_only',None)
             expression_access['own_practical_selection'].pop('course_historical_currents_analytic_only',None)
+            expression_access['own_practical_selection'].pop('care_contradictions_analytic_only',None)
         expression_access.pop('undertaking_attention_receipt',None)
         expression_access.pop('focal_encounter_receipt',None)
         if correspondence_cue is not None:
@@ -1563,7 +1598,7 @@ class ConstitutiveRuntime:
             'developmental_effect_count':{aid:len(e) for aid,e in developmental.items()},
             'grade':GRADE}
 
-    def continue_without_user(self,beats=1):
+    def continue_without_user(self,beats=1,*,interval_origin=None):
         """Commit bounded real actor-selected, world-resolved life while absent.
 
         Unlike compressed background passage, each beat is a real transaction.
@@ -1571,10 +1606,16 @@ class ConstitutiveRuntime:
         it passes no external action, target, consent or forced developmental
         proposition into the continuing organism.
         """
+        counts=None
+        if interval_origin is not None:
+            clock=self.ledger.world(self.world_id)[1]['clock']
+            if type(interval_origin) is not int or not 0<=interval_origin<=clock:
+                raise ValueError('INITIATIVE_INVALID_CONTINUING_ORIGIN')
+            counts=self.ledger.actor_life_counts_after(self.world_id,interval_origin,clock)
         return continue_life(
             lambda: self.ledger.world(self.world_id)[1],
             self.ledger.actors,
-            lambda actor_id: self.step(actor_id), beats)
+            lambda actor_id: self.step(actor_id), beats,initial_counts=counts)
 
     def advance_to_discontinuity(self,horizon=30,processes=None):
         """Cover ordinary time only to the next real material interruption.
