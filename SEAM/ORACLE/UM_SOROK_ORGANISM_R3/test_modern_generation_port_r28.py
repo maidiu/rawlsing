@@ -354,14 +354,48 @@ class ModernGenerationCourt(unittest.TestCase):
                             g.finish()
                             self.assertEqual(len(p.requests),5)
                             self.assertEqual(len(records),13)
-                            self.assertEqual(len(rt.ledger.world()[1]["wage_labor_periods"]),3 if work else 0)
+                            receipts=g.owner.checkpoint_receipts()
+                            self.assertEqual([r["mode"] for r in receipts],["BOOTSTRAP","ORDINARY","ORDINARY","ORDINARY","TERMINAL"])
+                            self.assertTrue(all(r["cycle_disposition"]=="CYCLE_RETURNED" and r["provider_called"] and
+                                                r["transport_receipt"]["attempts"]==1 for r in receipts))
+                            self.assertEqual(len(rt.ledger.world()[1].get("wage_labor_periods",[])),3 if work else 0)
                             print("R31_REPRODUCTION "+json.dumps({"work":work,"child_age_days":child["age_days"],
                               "checkpoints":len(p.requests),"ordinary_calls":3,"surfaces":len(records),
                               "first_address":first_address,"actual_received_care_events":len(child["experienced_care_events"]),
                               "local_semantic_tasks":sum(sum(r["consequences"]["local_semantic_tasks"].values()) for r in records),
                               "canonical_checkpoint_bytes":sum(len(json.dumps(r,sort_keys=True,separators=(",",":")).encode()) for r in p.requests),
-                              "wage_periods":len(rt.ledger.world()[1]["wage_labor_periods"])},sort_keys=True))
+                              "wage_periods":len(rt.ledger.world()[1].get("wage_labor_periods",[]))},sort_keys=True))
                     finally:g.close();rt.close()
+    def test_failed_checkpoint_attempt_accounting_and_hold(self):
+        class InvalidOrdinary(FamilyCheckpoint):
+            def call(self,r):
+                result=super().call(r)
+                if r["mode"]=="ORDINARY":
+                    result["retrospective"]["impressions"][0]["interpretations"]=[
+                        {"actor":"foreign","meaning":"not received","disposition":"INTERPRET_ONLY"}]
+                return result
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);p=InvalidOrdinary()
+            rt=ConstitutiveRuntime(str(folder/"life.sqlite"))
+            rt.ledger.initialize(blank_world(),[adult("mother","Mother"),adult("father","Father","workshop"),newborn("nadia","Nadia")])
+            g=self.generation(rt,folder,"nadia",p)
+            try:
+                g.bootstrap();before=g.owner.snapshot()
+                with self.assertRaises(AmbiguousModelCall):g.advance()
+                self.assertEqual(g.owner.snapshot(),before)
+                receipts=g.owner.checkpoint_receipts()
+                self.assertEqual(len(receipts),2)
+                self.assertEqual(receipts[-1]["outcome"],"RESPONSE_REJECTED")
+                self.assertEqual(receipts[-1]["cycle_disposition"],"HELD_OR_FAILED")
+                self.assertEqual(receipts[-1]["transport_receipt"]["attempts"],1)
+            finally:g.close();rt.close()
+            rt=ConstitutiveRuntime(str(folder/"life.sqlite"));g=self.generation(rt,folder,"nadia",p)
+            try:
+                with self.assertRaises(RecursionRefusal):g.advance()
+                self.assertEqual(len(p.requests),2)
+                self.assertEqual(len(g.owner.checkpoint_receipts()),2)
+                self.assertEqual(g.owner.snapshot(),before)
+            finally:g.close();rt.close()
     def test_foreign_retrospective_and_unbound_carrier_refused(self):
         req={"mode":"ORDINARY","context":{},"previous":{"batch_id":"b","history_hash":"h",
              "events":[{"event_id":"e","accessible":{"objective_ref":"o","by_actor":{"a":{}}}}]}}

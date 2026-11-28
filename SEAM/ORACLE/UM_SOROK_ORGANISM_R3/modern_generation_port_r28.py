@@ -261,12 +261,29 @@ class ModernDevelopmentOwner:
         self.db.execute("CREATE TABLE IF NOT EXISTS binding (id INTEGER PRIMARY KEY,value TEXT)")
         self.db.execute("CREATE TABLE IF NOT EXISTS operations "
                         "(id TEXT PRIMARY KEY, proposal TEXT NOT NULL, before_state TEXT NOT NULL, result TEXT)")
+        self.db.execute("CREATE TABLE IF NOT EXISTS checkpoint_attempts (id INTEGER PRIMARY KEY, receipt TEXT NOT NULL)")
         binding=canonical({"root":self.root,"branch":self.branch,"actor":actor,
                            "catalog":self.period_catalog,"family_sources":self.family_sources,"grade":GRADE})
         row=self.db.execute("SELECT value FROM binding WHERE id=1").fetchone()
         if row is None:self.db.execute("INSERT INTO binding VALUES (1,?)",(binding,))
         else:require(row[0]==binding,"GEN_RECEIPT_BINDING")
         self.db.commit()
+
+    def record_checkpoint_start(self,receipt):
+        cur=self.db.execute("INSERT INTO checkpoint_attempts(receipt) VALUES (?)",(canonical(receipt),))
+        self.db.commit()
+        return cur.lastrowid
+
+    def record_checkpoint_update(self,attempt_id,**fields):
+        row=self.db.execute("SELECT receipt FROM checkpoint_attempts WHERE id=?",(attempt_id,)).fetchone()
+        require(row is not None,"GEN_CHECKPOINT_RECEIPT_MISSING")
+        rec=json.loads(row[0]);rec.update(detached(fields))
+        self.db.execute("UPDATE checkpoint_attempts SET receipt=? WHERE id=?",(canonical(rec),attempt_id))
+        self.db.commit()
+
+    def checkpoint_receipts(self):
+        return [{"id":i,**json.loads(r)} for i,r in self.db.execute(
+            "SELECT id,receipt FROM checkpoint_attempts ORDER BY id")]
 
     def snapshot(self):
         # Native verification binds current actors, world and entire ancestry.
@@ -410,10 +427,12 @@ class ModernDevelopmentOwner:
                     "GEN_EVENT_CLOCK_NOT_SEQUENTIAL")
             self.db.execute("INSERT INTO operations VALUES (?,?,?,NULL)",(operation_id,ph,before))
             self.db.commit()
-            interval=None
+            interval=None;interval_event=None
             c=p.circumstances
             if span:
                 interval=self.rt.background(span,processes=detached(self.period_catalog.get(c.get("period_ref"),[])))
+                interval_event=self.rt.ledger.events()[-1]
+                require(interval_event["clock"]==expected.clock+span,"GEN_INTERVAL_RECEIPT_CLOCK")
             policy=ConditionalPolicy(c["policies"],c.get("rehearsal"),c.get("family"))
             old=self.rt.semantic
             step_event=None;out=None;family_result=None
@@ -436,6 +455,7 @@ class ModernDevelopmentOwner:
             # A birth or genealogy binding is not an invented lived receipt.
             # Preserve the actual step separately from a same-clock family op.
             readset=tuple(dict.fromkeys([self.source_ref,
+                       *([interval_event["chain_hash"]] if interval_event else []),
                        *([step_event["chain_hash"]] if step_event else []),event["chain_hash"]]))
             result=RealizedEvent(operation_id,ph,expected,after,"REALIZED",
                 {"native_receipt":event["id"],"step_receipt":step_event["id"] if step_event else None,
@@ -464,21 +484,43 @@ class CheckpointProvider:
     hypothesis to be tested through an actual owner-selected private activity.
     Interpret-only content is conserved, never called admitted psychology.
     """
-    def __init__(self,provider,*,max_request_bytes=1024*1024):
+    def __init__(self,provider,*,owner,max_request_bytes=1024*1024):
         require(hasattr(provider,"call"),"GEN_EXPLICIT_CALL_PROVIDER")
-        self.provider=provider;self.max_request_bytes=max_request_bytes;self.attempts=[]
+        self.provider=provider;self.owner=owner;self.max_request_bytes=max_request_bytes
+        self.attempts=[];self.current_attempt_id=None
     def call(self,request):
         raw_bytes=len(canonical(request).encode("utf-8"))
-        require(raw_bytes<=self.max_request_bytes,"GEN_CHECKPOINT_CONTEXT_LIMIT")
-        rec={"mode":request["mode"],"request_bytes":raw_bytes,"outcome":"STARTED"}
+        rec={"mode":request["mode"],"request_bytes":raw_bytes,"request_digest":digest(request),
+             "outcome":"STARTED","provider_called":False,"cycle_disposition":"PENDING"}
+        aid=self.owner.record_checkpoint_start(rec);self.current_attempt_id=aid
         self.attempts.append(rec);start=perf_counter_ns()
+        usage=getattr(self.provider,"usage_snapshot",None)
+        before=len(usage()["receipts"]) if usage else None
         try:
+            if raw_bytes>self.max_request_bytes:
+                rec["outcome"]="PREFLIGHT_REJECTED"
+                raise RecursionRefusal("GEN_CHECKPOINT_CONTEXT_LIMIT")
+            rec["provider_called"]=True
+            self.owner.record_checkpoint_update(aid,provider_called=True)
             raw=detached(self.provider.call(detached(request)))
             rec["response_bytes"]=len(canonical(raw).encode("utf-8"))
+            rec["outcome"]="RESPONSE_REJECTED"
             response=self.bind(request,raw)
             rec["outcome"]="RETURNED"
             return response
-        finally:rec["elapsed_ns"]=perf_counter_ns()-start
+        except BaseException as exc:
+            if rec["outcome"]=="STARTED":rec["outcome"]="PROVIDER_FAILED_OR_AMBIGUOUS"
+            rec["exception_type"]=type(exc).__name__
+            raise
+        finally:
+            rec["elapsed_ns"]=perf_counter_ns()-start
+            if usage:
+                after=usage()["receipts"]
+                if len(after)==before+1:
+                    rec["transport_receipt"]={k:detached(v) for k,v in after[-1].items()
+                        if k in ("task","transport","attempts","outcome","request_bytes","response_bytes",
+                                 "prompt_bytes","completion_bytes","usage","elapsed_ns")}
+            self.owner.record_checkpoint_update(aid,**rec)
     @staticmethod
     def bind(request,response):
         require(exact_keys(response,("retrospective","prospective")),"GEN_CHECKPOINT_RESPONSE")
@@ -514,11 +556,23 @@ class CheckpointProvider:
             require(pros is None and not plans,"GEN_TERMINAL_PROSPECTIVE")
             return response
         require(isinstance(pros,list) and 3<=len(pros)<=5,"GEN_PROSPECTIVE_COUNT")
+        prior_clock=request["context"].get("clock")
         for p in pros:
             require(isinstance(p,dict) and isinstance(p.get("circumstances"),dict) and
                     isinstance(p.get("participants"),list) and len(p["participants"])==1,
                     "GEN_PROSPECTIVE_SURFACE")
             c=p["circumstances"]
+            if prior_clock is not None:
+                interval=p.get("interval")
+                require(interval is None or (exact_keys(interval,("mode","span")) and
+                    interval["mode"]=="ACTUAL" and type(interval["span"]) is int and
+                    1<=interval["span"]<=3650),"GEN_INTERVAL")
+                op=p.get("operation")
+                require(op in ("CONTINUE_ACTOR_LIFE","REALIZE_FAMILY_BIRTH"),"GEN_OPERATION")
+                expected=prior_clock+(interval["span"] if interval else 0)+(op=="CONTINUE_ACTOR_LIFE")
+                require(type(p.get("event_time")) is int and p["event_time"]==expected and
+                        expected>prior_clock,"GEN_EVENT_CLOCK_NOT_SEQUENTIAL")
+                prior_clock=expected
             require("rehearsal" not in c,"GEN_PROVIDER_INVENTED_REHEARSAL_BASIS")
             if "retrospective_event_id" in c:
                 key=(c["retrospective_event_id"],p["participants"][0])
@@ -530,10 +584,21 @@ class CheckpointProvider:
 class ModernGeneration:
     """Existing durable P2 cycle with a modern owner, not a new scheduler."""
     def __init__(self,owner,provider,journal_path,cycle_path):
-        self.owner=owner;self.provider=CheckpointProvider(provider)
+        self.owner=owner;self.provider=CheckpointProvider(provider,owner=owner)
         self.engine=BatchEngine(owner,journal_path)
         self.cycle=RecursionCycle(self.engine,self.provider,cycle_path)
-    def bootstrap(self):return self.cycle.bootstrap(self.owner.context())
-    def advance(self):return self.cycle.advance(self.owner.context())
-    def finish(self):return self.cycle.finish(self.owner.context())
+    def _run(self,method):
+        self.provider.current_attempt_id=None
+        try:
+            result=method(self.owner.context())
+        except BaseException:
+            if self.provider.current_attempt_id is not None:
+                self.owner.record_checkpoint_update(self.provider.current_attempt_id,cycle_disposition="HELD_OR_FAILED")
+            raise
+        if self.provider.current_attempt_id is not None:
+            self.owner.record_checkpoint_update(self.provider.current_attempt_id,cycle_disposition="CYCLE_RETURNED")
+        return result
+    def bootstrap(self):return self._run(self.cycle.bootstrap)
+    def advance(self):return self._run(self.cycle.advance)
+    def finish(self):return self._run(self.cycle.finish)
     def close(self):self.engine.close();self.owner.close()
