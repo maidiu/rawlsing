@@ -578,7 +578,9 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                 opts=lambda: [o for a in rt.situated('nadia')['candidate_actions'] for o in a.get('practical_alternatives',[]) if o['operation']=='SING']
                 self.assertFalse(any(o.get('project_id') for o in opts()))
                 self.assertEqual(rt.step('father',requested_action='SING')['status'],'PERFORMED')
-                self.assertTrue(any(not o.get('project_id') for o in opts()))
+                # The same settlement clock is not yet a prior historical cut.
+                self.assertEqual(rt.step('mother',requested_action='REST')['status'],'PERFORMED')
+                self.assertTrue(any(not o.get('project_id') for o in opts()), self.child(rt)['evidence_paths'][-4:])
                 phase['name']='transfer_probe'
                 if transfer=='forge':
                     before=self.child(rt);count=rt.verify()['events']
