@@ -155,7 +155,7 @@ class JoinedGenerationCourt(unittest.TestCase):
                         ans={"task":task,"practical_option_id":opts[0]["option_id"],"speech_intent":"Greet the actual visitor."}
                     else:
                         print("R33_SPEECH_UNAVAILABLE",json.dumps({"options":[o.get("action") for o in packet.get("options",[])], "addressed_count":len(opts),"body":packet.get("actor",{}).get("body")},sort_keys=True))
-                        ans={"task":task,"action":"WAIT"}
+                        ans={"task":task,"action":"REST" if any(o.get("action")=="REST" for o in packet.get("options",[])) else "WAIT"}
                 elif task=="expression":
                     ans={"task":task,"speech":WORDS} if packet.get("expression_phase")=="LEXICAL_REALIZATION_BEFORE_EXPERIENCE" else {"task":task,"surface":"Ordinary life."}
                 elif task=="development":ans={"task":task,"candidates":[]}
@@ -182,10 +182,20 @@ class JoinedGenerationCourt(unittest.TestCase):
                          "sightline":"unobstructed","hearing":True,"sound_path":"audible"}
                          for a in ("father","mother","nadia")}},request_id="geometry")
                 self.assertEqual(n.contribute("enter","MOVE",destination="home")["status"],"PERFORMED")
-                out=n.independent_actor_beat("father")
+                # The prior 300-day trajectory actually leaves father fatigued.
+                # Respect his body's refusal of SPEAK. Rest is selected via
+                # the real actor policy; no injected state or forced greeting.
+                attempts=[];expression_calls=None
+                for _ in range(3):
+                    old_count=wire.usage_snapshot()["total"]
+                    out=n.independent_actor_beat("father");attempts.append(out["attempt"])
+                    if out["attempt"]=="SPEAK":
+                        expression_calls=sum(x["task"]=="expression" for x in wire.usage_snapshot()["receipts"][old_count:])
+                        break
+                self.assertEqual(attempts[0],"REST")
                 self.assertEqual(out["attempt"],"SPEAK")
                 self.assertEqual(out["status"],"PERFORMED")
-                self.assertEqual(sum(x["task"]=="expression" for x in wire.usage_snapshot()["receipts"]),1)
+                self.assertEqual(expression_calls,1)
                 surface=n.private_surface(n.new_private_profile())
                 self.assertTrue(any(x.get("spoken_text")==WORDS and
                     x.get("lexical_acquisition_route")=="VOLUNTARILY_ADDRESSED_TO_SELF" for x in surface["mandatory"]))
