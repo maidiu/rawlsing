@@ -1,5 +1,77 @@
 # Proposed protected SOROK PROGRAMMA / paired CURRENT_PROGRESS receiving — 2026-11-21 R1
 
+## PM R008 — mid-round exact observation / continuing frontier (2026-11-28)
+
+Current ledger exact Git **blob `513ef19ab0641e8417d4c58a8aa7caddcc49ca6e`**; machine CIC `33995f2dc1bd0986d4d8baa96b93ff4b84240d24`. Five interim events added; existing 202 primary PR records/722 relations, 187 criteria/58 clusters/719 frozen routes and all construction assessments unchanged. NOT full R008 functional crosswalk. [PM input](https://github.com/maidiu/rawlsing/blob/1e18991b5d7a249edb362afbd15c897175843dba/SOROK_PRODUCT_CONTROL_ROOM/SOROK-PM/CURRENT_ROUND.md).
+
+- #1433 `c42661f628081b0919e54206d30ce783c8b62e6f`: Selected exact development/mediated efficacy source, return and raw result lines: 10 focused, 25 historical, 752 full each mode. Actual local project transfer from qualified lived encounter and actor-owned affective contradiction; not whole criterion or joined runtime. 4–7 further turns author estimate. Full R66–73 functional crosswalk not yet reconciled. [Receipt](https://github.com/maidiu/rawlsing/actions/runs/46123193549/job/140911933058).
+- #1435 `3bafa19fda1ee7597583a649e8c3d1d0ee20ca21`: Selected exact routine_sources/mediated_efficacy source, return and raw result lines; job terminal success incl 743 inherited each mode. Independently qualified reciprocal aggregate routine, finite costs, unmatched/withdrawal/absence and distinct actual later selection. Prior #1434 19c508bb exact completed job 140893200980 per return. 3–5 further turns author estimate. Full R008 functional crosswalk not yet reconciled. [Receipt](https://github.com/maidiu/rawlsing/actions/runs/46122470350/job/140909748983).
+- #1378 `75d2fcda5aefcc432f80af45ad228362f5a6f551`: R51 joined 19 tests per mode actual raw result lines and terminal success, R50 object-selection RED conserved by author; R48 exact row retrieval 1023 vs 16668 serialized retrieval bytes per author, not total packet/adequacy/cost. 3–4 further turns estimate at R50/51 cut. Full successor functional crosswalk not yet reconciled. [Receipt](https://github.com/maidiu/rawlsing/actions/runs/46122831567/job/140910850119).
+- #1378 `db4b59b1b4a28f4ea1046576e5a29e8216b4fd45`: Selected exact new continuing_life_r52.py and test source: wrapper existing generation/live sessions, epoch handoff, pending reservation and native transition consistency; no automatic retry following ambiguous expenditure. Actual tests not yet established at reviewed cut; newer than current attributed return. No R51 test transfer, no general owner acceptance. Reconcile operation disposition/recovery and existing owner authority. [Receipt](https://github.com/maidiu/rawlsing/commit/db4b59b1b4a28f4ea1046576e5a29e8216b4fd45).
+- #1431 `604f3d1a51a21c53523a2040b30e234b556785fa`: Same integrated baseline remains RED: raw normal 741/743, two failures test_body_world_and_qualified_acquisition and test_cross_context_recruitment_becomes_real_after_new_life. CO R73 passes both on separate tree, NOT repair of #1431. Competent integration owner must compare actual offer/admission contracts and conserve prior positive/negative scope; no deletion or blanket merge. [Receipt](https://github.com/maidiu/rawlsing/actions/runs/46110484203/job/140872676035).
+
+Cross-owner concern: CO R73 and NEIGHBOR #1435 both change existing mediated_efficacy.py, separate exact blobs 0f5f1cb6c4f2fbc9cf19cf191c461d3034940030 and bb68415937988b6f5399f1c4dba8bd3a8dc207cd. Their operations are complementary: context-local availability/affect vs independently qualified reciprocal practice and bounded aggregate exposure/cost. Preserve both, no claim semantic compatibility or joint execution. #1431 exact adverse result not fixed. Economy R52 source is promising but its actual execution and owner intake remain held. Existing HOME-local proposals need owner incorporation, unchanged HOME heads 1b040e10/f1ed9d41. Full canonical/27-task authority, full R008 ledger crosswalk, independent/native/protected and actual HOME incorporation held; no engineering pause. R008 remains active, worker selection independent.
+
+### Proposed paired interim amendment — competent PROGRAMMA owner only
+Protected PRE-MAIN 827714e83743056939894a39736d72ea16bdc6dd, MD a565e6239ee730bf8aae796d1c5afb35207b1e93 / JSON f2081d41452a5fb5d7061fcf340af725e4ee07af. Preserve R39+MII and existing history. MD add preceding scoped interim observation; JSON proposed member:
+
+```json
+{
+  "sorok_pm_r008_interim": {
+    "pm_cut": "1e18991b5d7a249edb362afbd15c897175843dba",
+    "ledger_blob": "513ef19ab0641e8417d4c58a8aa7caddcc49ca6e",
+    "cic_blob": "33995f2dc1bd0986d4d8baa96b93ff4b84240d24",
+    "events": [
+      {
+        "id": "PM-R008-MID-CO-R73",
+        "pr": 1433,
+        "head": "c42661f628081b0919e54206d30ce783c8b62e6f",
+        "grade": "INTERIM_EXACT_RETURN_AND_SCOPED_EXECUTION_OBSERVED",
+        "receipt": "https://github.com/maidiu/rawlsing/actions/runs/46123193549/job/140911933058",
+        "protected_received": false
+      },
+      {
+        "id": "PM-R008-MID-NEIGHBOR-1435",
+        "pr": 1435,
+        "head": "3bafa19fda1ee7597583a649e8c3d1d0ee20ca21",
+        "grade": "INTERIM_EXACT_RETURN_AND_SCOPED_EXECUTION_OBSERVED",
+        "receipt": "https://github.com/maidiu/rawlsing/actions/runs/46122470350/job/140909748983",
+        "protected_received": false
+      },
+      {
+        "id": "PM-R008-MID-ECONOMY-R51",
+        "pr": 1378,
+        "head": "75d2fcda5aefcc432f80af45ad228362f5a6f551",
+        "grade": "INTERIM_EXACT_SOURCEFREE_EXECUTION_OBSERVED",
+        "receipt": "https://github.com/maidiu/rawlsing/actions/runs/46122831567/job/140910850119",
+        "protected_received": false
+      },
+      {
+        "id": "PM-R008-MID-ECONOMY-R52",
+        "pr": 1378,
+        "head": "db4b59b1b4a28f4ea1046576e5a29e8216b4fd45",
+        "grade": "INTERIM_COMMITTED_UNTESTED_AT_OBSERVED_CUT",
+        "receipt": "https://github.com/maidiu/rawlsing/commit/db4b59b1b4a28f4ea1046576e5a29e8216b4fd45",
+        "protected_received": false
+      },
+      {
+        "id": "PM-R008-MID-JOIN-1431",
+        "pr": 1431,
+        "head": "604f3d1a51a21c53523a2040b30e234b556785fa",
+        "grade": "INTERIM_ADVERSE_EXECUTION_RECONFIRMED",
+        "receipt": "https://github.com/maidiu/rawlsing/actions/runs/46110484203/job/140872676035",
+        "protected_received": false
+      }
+    ],
+    "full_functional_crosswalk": "HELD",
+    "joined_baseline": "RED_NOT_FIXED",
+    "round": "CONTINUING"
+  }
+}
+```
+No protected write lease.
+
+
 ## PM R007 — exact bounded receiving and scale correction (2026-11-28)
 
 Current ledger exact Git **blob `0c14927ac95c955f73b9055c3fb2372fc05f18db`**; machine CIC `104d80425b83f3b5260547563e6c46a2f1b916a8`. 202 PR records, 722 relations, 144 original identities, 187 criteria/58 clusters/719 frozen routes. Construction {"UNEXAMINED":136,"PARTIAL_CONSTRUCTION":48,"FIRST_DRAFT_IMPLEMENTED":2,"INTEGRATED_FIRST_DRAFT":1}, clusters {"UNEXAMINED":31,"PARTIAL_CONSTRUCTION":27}. No criterion review or protected promotion.
