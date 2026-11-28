@@ -25,6 +25,7 @@ from um_sorok_organism.semantics import HeuristicSemanticProvider, ValidatingSem
 from um_sorok_organism.historical_parent_bridge import (
     FAMILY_SOURCE, situated_family_pathways, family_encounter_evidence)
 from um_sorok_organism.plural_care_paths import choose_one_grounded_plural_acquisition
+from um_sorok_organism.relational_metabolism import RELATIONS, POLARITIES
 
 GRADE = "PROVISIONAL_SOURCEFREE_MODERN_GENERATION_PORT_NOT_NATIVE_OR_MODEL_ADEQUACY"
 MAX_TEXT = 512
@@ -185,6 +186,8 @@ TYPED_FORMATION_OFFERS = {
                         "historically_possible_self_expression_affects"),
     "EXPRESSIVE_PRACTICE": ("historically_possible_expressive_practices",),
     "RECURRENT_WORK_ORIENTATION": ("historically_possible_recurrent_livelihood_orientation",),
+    "LIVED_CROSS_CONTEXT_REVALUATION": ("historically_possible_lived_cross_context_revaluations",),
+    "WITNESSED_OTHER_RELATION": ("historically_possible_witnessed_third_party_relations",),
 }
 
 def rich_meaning_check(kind,v):
@@ -199,6 +202,14 @@ def rich_meaning_check(kind,v):
     elif kind=="RECURRENT_WORK_ORIENTATION":
         require(exact_keys(v,("orientation_mode",)) and
                 v["orientation_mode"] in ("APPROACH","WITHHOLD"),"GEN_RECURRENT_ORIENTATION")
+    elif kind=="LIVED_CROSS_CONTEXT_REVALUATION":
+        require(exact_keys(v,("new_relation","new_polarity"),("interpretive_hypothesis",)) and
+                text(v["new_relation"],80) and v["new_relation"] in RELATIONS and
+                text(v["new_polarity"],80) and v["new_polarity"] in POLARITIES and
+                ("interpretive_hypothesis" not in v or text(v["interpretive_hypothesis"])),
+                "GEN_CROSS_CONTEXT_MEANING")
+    elif kind=="WITNESSED_OTHER_RELATION":
+        require(exact_keys(v,("hypothesis",)) and text(v["hypothesis"]),"GEN_OTHER_RELATION_HYPOTHESIS")
 
 def rich_candidate(kind,q,v):
     if kind=="DELAYED_APPRAISAL":
@@ -213,6 +224,16 @@ def rich_candidate(kind,q,v):
                 "perceived_cue_ref":q["current_received_work_sign_ref"],
                 "recurrent_work_practice":{k:q[k] for k in (
                     "prior_exercised_work_refs","current_received_work_sign_ref","current_world_event_ref")},**v}
+    if kind=="LIVED_CROSS_CONTEXT_REVALUATION":
+        choices=q["semantic_choice_required"]
+        require(v["new_relation"] in choices["new_relation"] and
+                v["new_polarity"] in choices["new_polarity"],"GEN_CROSS_CONTEXT_UNOFFERED_MEANING")
+        return {"kind":"REORGANIZE_RELATIONAL_MOTIF","motif_id":q["motif_id"],
+                "lived_cross_context_basis":q["lived_cross_context_basis"],**v}
+    if kind=="WITNESSED_OTHER_RELATION":
+        return {"kind":"CHANGE_OTHER_MODEL","other_ref":q["source_actor_ref"],
+                "about_relation_with_ref":q["target_actor_ref"],
+                "witnessed_cue_ref":q["witnessed_cue_ref"],**v}
     raise RecursionRefusal("GEN_UNKNOWN_RICH_CONSTRUCTION")
 
 class ConditionalPolicy:

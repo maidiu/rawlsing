@@ -261,4 +261,110 @@ class ContinuingLifeCourt(unittest.TestCase):
                 "full_by_checkpoint":full,"compact_by_checkpoint":small,"memories":a["memories"],
                 "native_events":len(a["events"]),"exact_native_history":True},sort_keys=True))
 
+
+    def test_acquired_relational_contradiction_revaluation_consumed_in_live_turn(self):
+        from copy import deepcopy
+        from modern_generation_port_r28 import ConditionalPolicy
+        from live_turn_port_r38 import LiveTurnSession
+        from neighbor_runtime import NeighborEncounter
+        from um_sorok_organism.semantics import CallbackLLMProvider,ValidatingSemanticService,HeuristicSemanticProvider
+        # Reuse the native R32 lived cross-context mechanism. The actual
+        # setup/rest in the inhibited field is a disclosed research act.
+        # The later independent live policy never forces a suppressed action.
+        parent={"source_ref":"R56_FICTIONAL_PARENT","source_grade":"SOURCEFREE_TEST_FIXTURE_NOT_EMPIRICAL",
+                "answers":{"r56":"not_a_survey_observation"},"fictional_seed":{"projects":[]}}
+        for nominate in (True,False):
+            with self.subTest(nominate=nominate),tempfile.TemporaryDirectory() as d:
+                root=Path(d);db=root/"life.sqlite"
+                fallback=HeuristicSemanticProvider()
+                def setup(task,p):
+                    if task!="development":return fallback.propose(task,p)
+                    if p["actor"]["id"]!="mother":return {"task":task,"candidates":[]}
+                    if p["experience"].get("own_action")=="WAIT" and "r56_care" not in p["actor_forms"]:
+                        forms=[{"kind":"ADD_FORM","form":{"id":ident,"kind":"PRACTICE","cues":["rest"],
+                            "enables":[op],"always_recruitable":True,"scope":{"locations":["workshop"]}}}
+                            for ident,op in (("r56_care","CARE"),("r56_duty","REST"))]
+                        forms.append({"kind":"ACQUIRE_RELATIONAL_MOTIF","motif":{
+                            "source_forms":["r56_care","r56_duty"],"locations":["workshop"],"effects":[{
+                                "kind":"RELATION_MEDIATION","source":"r56_care","target":"r56_duty",
+                                "relation":"SUBORDINATES","mediated_action":"REST","polarity":"WITHHOLD"}]}})
+                        return {"task":task,"candidates":forms}
+                    return {"task":task,"candidates":p.get("historically_possible_lived_directional_orientation",[])
+                        if p["experience"].get("location")=="home" else []}
+                rt=ConstitutiveRuntime(str(db),semantic=ValidatingSemanticService(CallbackLLMProvider(setup)))
+                try:
+                    rt.initialize([("mother","Mother",parent),("father","Father",parent)])
+                    rt.step("mother",requested_action="WAIT")
+                    rt.step("mother",requested_action="REST");rt.step("mother",requested_action="REST")
+                    old=deepcopy(rt.snapshot("mother")["relational_motifs"][0])
+                    orientation=deepcopy(rt.snapshot("mother")["historical_orientations"])
+                    self.assertTrue(orientation)
+                    rt.step("mother",requested_action="MOVE",object_ref="workshop")
+                    self.assertNotIn("REST",{o["action"] for o in rt.situated("mother")["candidate_actions"]})
+                    rule={"offer":"historically_possible_lived_cross_context_revaluations",
+                          "construct":"LIVED_CROSS_CONTEXT_REVALUATION",
+                          "augment":{"new_relation":"SUPPORTS","new_polarity":"APPROACH",
+                              "interpretive_hypothesis":"Rest may sustain care rather than betray duty."}}
+                    from modern_generation_port_r28 import policy_check
+                    pol=policy([], [rule] if nominate else []);policy_check(pol)
+                    compiler=ConditionalPolicy({"mother":pol})
+                    rt.semantic=ValidatingSemanticService(compiler)
+                    self.assertEqual(rt.step("mother",requested_action="REST")["status"],"PERFORMED")
+                    row=deepcopy(rt.snapshot("mother")["relational_motifs"][0])
+                    self.assertEqual(compiler.routes["typed_lived_cross_context_revaluation"],int(nominate))
+                    self.assertEqual(row["origin"],old["origin"])
+                    self.assertEqual(rt.snapshot("mother")["historical_orientations"],orientation)
+                    self.assertEqual(row["effects"][0]["polarity"],"APPROACH" if nominate else "WITHHOLD")
+                finally:rt.close()
+                rt=ConstitutiveRuntime(str(db));provider=Live()
+                session=LiveTurnSession(rt,provider,root/"live.sqlite",sourcefree_attested=True)
+                try:
+                    n=NeighborEncounter(rt,"visitor",mii_module=mii)
+                    out=session.owner_actor_beat(n,"mother")
+                    self.assertEqual(out["attempt"],"REST" if nominate else "WAIT")
+                    self.assertEqual(len(provider.requests),1)
+                    self.assertEqual(rt.snapshot("mother")["relational_motifs"][0],row)
+                    self.assertTrue(rt.verify()["valid"])
+                    print("R56_RELATIONAL_REVALUE",json.dumps({"nominate":nominate,
+                        "later":out["attempt"],"live_calls":len(provider.requests)},sort_keys=True))
+                finally:session.close();rt.close()
+
+    def test_witnessed_other_relation_formed_only_from_actual_received_directed_act(self):
+        from live_turn_port_r38 import LiveTurnSession
+        from neighbor_runtime import NeighborEncounter
+        for present,nominate in ((True,True),(True,False),(False,True)):
+            with self.subTest(present=present,nominate=nominate),tempfile.TemporaryDirectory() as d:
+                root=Path(d);db=root/"life.sqlite";rt=ConstitutiveRuntime(str(db))
+                a=adult("father","Father");a["projects"]=[{"id":"impose","object":"obtain compliance",
+                    "means":["IMPOSE"],"addressed_party_ref":"mother","status":"active","priority":.6}]
+                rt.ledger.initialize(blank_world(),[a,adult("mother","Mother"),
+                    adult("witness","Witness","home" if present else "workshop")])
+                class Provider:
+                    def __init__(self):self.calls=0
+                    def call(self,r):
+                        self.calls+=1
+                        policies={"father":policy([action("IMPOSE",{"project_id":"impose",
+                            "world_request":{"addressed_party_ref":"mother"}})])}
+                        if "witness" in r["peer_tips"]:
+                            policies["witness"]=policy([], [{"offer":"historically_possible_witnessed_third_party_relations",
+                                "construct":"WITNESSED_OTHER_RELATION","match":{"source_actor_ref":"father",
+                                    "target_actor_ref":"mother","witnessed_act":"IMPOSE"},
+                                "augment":{"hypothesis":"I may have misunderstood their relation."}}] if nominate else [])
+                        return {"policies":policies}
+                p=Provider();session=LiveTurnSession(rt,p,root/"live.sqlite",sourcefree_attested=True)
+                try:
+                    n=NeighborEncounter(rt,"visitor",mii_module=mii)
+                    out=session.owner_actor_beat(n,"father")
+                    self.assertEqual(out["attempt"],"IMPOSE");self.assertEqual(out["status"],"PERFORMED")
+                    models=rt.snapshot("witness")["other_models"].get("father",[])
+                    self.assertEqual(len(models),int(present and nominate))
+                    if models:
+                        self.assertEqual(models[0]["about_relation_with_ref"],"mother")
+                        self.assertTrue(models[0]["not_other_private_state_or_target_consent"])
+                    self.assertTrue(rt.verify()["valid"])
+                    self.assertEqual(p.calls,1)
+                    print("R56_WITNESSED_RELATION",json.dumps({"present":present,"nominate":nominate,
+                        "retained_hypotheses":len(models),"live_calls":p.calls},sort_keys=True))
+                finally:session.close();rt.close()
+
 if __name__=="__main__":unittest.main()
