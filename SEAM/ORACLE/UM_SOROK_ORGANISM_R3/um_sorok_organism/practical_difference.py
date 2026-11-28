@@ -54,15 +54,33 @@ def familiar_destination_rows(constitution,access):
     histories. The existing world MOVE owner settles the actual attempt.
     """
     if constitution.actor!=access.actor:return []
-    paths={(p.get('event'),p.get('experience_ref')) for p in constitution.evidence_paths}
+    paths={}
+    for path in constitution.evidence_paths:
+        ref=path.get('event')
+        paths[ref]=None if ref in paths else path
+    episode_counts={}
+    for e in constitution.lived_genesis_episodes:
+        ref=e.get('event_ref')
+        episode_counts[ref]=episode_counts.get(ref,0)+1
     found={}
     for e in reversed(constitution.lived_genesis_episodes):
+        ref=e.get('event_ref');path=paths.get(ref)
+        if (type(ref) is not str or not path or episode_counts[ref]!=1
+                or type(e.get('experience_ref')) is not str
+                or path.get('experience_ref')!=e['experience_ref']
+                or e.get('id')!=stable_id('personally_lived_genesis_episode',{
+                    'actor':constitution.actor,'event':ref,'experience':e['experience_ref']})):
+            continue
+        felt=e.get('actor_felt_attempt')
+        actual_felt=type(felt) is str and felt==path.get('own_action')
+        received_relief=bool(e.get('received_relief')) and bool(
+            set(e.get('received_sign_refs',[]))&set(path.get('received_cue_refs',[])))
+        if not (actual_felt or received_relief):continue
         site=e.get('location')
         if (e.get('actor')!=constitution.actor or type(site) is not str or not site
                 or site==access.location or site in found
                 or type(e.get('clock')) is not int or e['clock']>=access.world_clock
-                or (e.get('event_ref'),e.get('experience_ref')) not in paths
-                or not (e.get('actor_felt_attempt') or e.get('received_relief'))):
+                ):
             continue
         found[site]={'site':site,'episode_ref':e['id'],'event_ref':e['event_ref'],
                      'experience_ref':e['experience_ref'],'experienced_clock':e['clock']}

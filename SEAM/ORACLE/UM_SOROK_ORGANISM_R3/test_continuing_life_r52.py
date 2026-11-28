@@ -871,6 +871,25 @@ class ContinuingLifeCourt(unittest.TestCase):
                 self.assertEqual(opts[0]["world_request"]["material_object_ref"],"hall")
                 self.assertEqual(destinations("b"),[])
                 self.assertNotIn("workshop",[v["world_request"]["material_object_ref"] for v in opts])
+                # Hostile detached read: actual familiar site with an ambiguous
+                # origin must not become valid by last-write-wins/set collapse.
+                from copy import deepcopy
+                from um_sorok_organism.constitution import materialize,actor_access
+                from um_sorok_organism.practical_difference import familiar_destination_rows
+                world=rt.ledger.world()[1];actual=rt.ledger.actor("a")[1]
+                source=opts[0]["familiar_destination_basis"];origin=source["event_ref"]
+                def grounds(a):return familiar_destination_rows(materialize(a,world),actor_access(a,world))
+                self.assertIn(source,grounds(actual))
+                for fault in ("duplicate-path","duplicate-episode","forged-episode-id"):
+                    with self.subTest(fault=fault):
+                        detached=deepcopy(actual)
+                        if fault=="duplicate-path":
+                            detached["evidence_paths"].append(deepcopy(next(v for v in detached["evidence_paths"] if v["event"]==origin)))
+                        elif fault=="duplicate-episode":
+                            detached["lived_genesis_episodes"].append(deepcopy(next(v for v in detached["lived_genesis_episodes"] if v["event_ref"]==origin)))
+                        else:
+                            next(v for v in detached["lived_genesis_episodes"] if v["event_ref"]==origin)["id"]="fabricated"
+                        self.assertNotIn(origin,[v["event_ref"] for v in grounds(detached)])
                 # An action label by itself cannot silently pick a destination.
                 rt.semantic=ValidatingSemanticService(ConditionalPolicy({"a":policy([action("MOVE")])}))
                 self.assertIsNone(rt.plan("a").object_ref)
