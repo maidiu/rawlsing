@@ -37,7 +37,8 @@ def geometry(n,actors):
        "actor_conditions":{a:{"facing":"entrance","visual":True,"light":"lit",
           "sightline":"unobstructed","hearing":True,"sound_path":"audible"} for a in actors}},
           request_id="geometry")
-    assert n.contribute("entry","MOVE",destination="workshop")["status"]=="PERFORMED"
+    if n.contribute("entry","MOVE",destination="workshop")["status"]!="PERFORMED":
+        raise AssertionError("entry not performed")
 
 class OneResponseLiveCourt(unittest.TestCase):
     def setup_lexical(self,db):
