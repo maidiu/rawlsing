@@ -834,6 +834,12 @@ class ContinuingLifeCourt(unittest.TestCase):
                 self.assertEqual(actual.objective["attempt"],"REST")
                 self.assertEqual(rt.ledger.world()[1]["scheduled_obligations"][0]["status"],"PENDING")
                 n=NeighborEncounter(rt,"visitor",mii_module=mii)
+                n.install_sourcefree_conditions({"grade":"SOURCEFREE_TEST_ONLY",
+                    "user_conditions":{"home":{"light":"lit","sightline":"unobstructed","hearing":True,
+                        "sound_path":"audible","legibility":"readable"}},
+                    "actor_conditions":{a:{"facing":"entrance","visual":True,"light":"lit",
+                        "sightline":"unobstructed","hearing":True,"sound_path":"audible"}
+                        for a in ("a","b")}},request_id="geometry")
                 self.assertEqual(n.contribute("enter","MOVE",destination="home")["status"],"PERFORMED")
                 prefix=rt.ledger.events()
                 with self.assertRaisesRegex(RecursionRefusal,"GEN_PRESENT_VISITOR_REQUIRES_LIVE_OWNER"):
