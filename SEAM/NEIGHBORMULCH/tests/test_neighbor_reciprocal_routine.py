@@ -23,6 +23,10 @@ class ReciprocalOrdinaryLife(unittest.TestCase):
                 op=other_op if p.get('requesting_actor') else phase['op'];aid=p['actor']['id']
                 if p.get('requesting_actor') and phase['refuse']:
                     return {'task':task,'action':'REFUSE'}
+                if op=='LATER':
+                    value=next((x['situated_component_facility']['technical_component_facility_estimate']
+                                for x in p['options'] if x['action']==own_op),None)
+                    op=own_op if value is not None and value>phase['threshold'] else 'WAIT'
                 rows=[x for x in p.get('practical_options',[]) if x.get('operation')==op
                       and x.get('project_id')==('a-song' if aid=='a' else 'b-song')]
                 if rows and op in operations:
@@ -155,10 +159,21 @@ class ReciprocalOrdinaryLife(unittest.TestCase):
             else:self.assertEqual(f1,f0)
             n=NeighborEncounter(rt,'visitor',mii_module=mii)
             self.assertEqual(n.contribute('return','MOVE',destination='home')['status'],'PERFORMED')
-            phase['refuse']=True;beat('a',own_op,'PARTIAL')
+            # Same controlled recruitment policy and threshold, but the
+            # earlier independently co-produced aggregate history changes
+            # the operative component estimate. Later assent remains fresh.
+            phase['threshold']=f0['a']+.005
+            phase['op']='LATER';phase['refuse']=True
+            later=rt.step('a')
+            self.assertEqual((later['attempt'],later['status']),
+                             (own_op,'PARTIAL') if both else ('WAIT','PERFORMED'))
+            self.assertNotEqual(later['selection_grade'],'INJECTED_NOT_NATIVE_ACTOR_CHOICE')
+            surface=n.private_surface(n.new_private_profile())
+            self.assertNotIn('matched_counterpart_source_ref',str(surface))
+            self.assertNotIn('recurrent_routines',str(surface))
             self.assertNotIn('visitor',rt.ledger.actors())
             self.assertTrue(rt.verify()['valid'])
-            print('RECIPROCAL_ROUTINE',both,f0,f1)
+            print('RECIPROCAL_ROUTINE',operations,both,f0,f1,later['attempt'],later['status'])
         finally:rt.close()
 
     def material_course(self,db,op,both):
