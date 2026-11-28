@@ -47,13 +47,18 @@ def policy_check(policy):
     actions=policy.get("actions",[])
     require(isinstance(actions,list) and len(actions)<=MAX_POLICY_ITEMS,"GEN_ACTION_POLICY_SIZE")
     for rule in actions:
-        require(exact_keys(rule,("action",),("option_match","project_id","speech_intent","rank_by","pool")) and
+        require(exact_keys(rule,("action",),("option_match","project_id","speech_intent","rank_by","pool","project_course_actions")) and
                 text(rule["action"],80),"GEN_ACTION_RULE")
         if "option_match" in rule:
             require(isinstance(rule["option_match"],dict) and bool(rule["option_match"]) and
                     set(rule["option_match"])<= {"project_id","world_request","binding_status",
                                                "grounds_status","operation","source_material_object_ref","genesis_family","productive_witness_attention","cross_object_attention_analytic_only"},
                     "GEN_ACTION_MATCH")
+        if "project_course_actions" in rule:
+            require(rule["action"]=="SELECT_HIGHEST_CURRENT_PROJECT_COURSE" and
+                    isinstance(rule["project_course_actions"],list) and 1<=len(rule["project_course_actions"])<=12
+                    and all(text(v,80) for v in rule["project_course_actions"]) and
+                    set(rule)=={"action","project_course_actions"},"GEN_PROJECT_COURSE_RANK")
         if "pool" in rule:
             require(rule["pool"] in ("practical_options","addressed_lexical_options","possible_end_trials") and
                     "option_match" in rule,"GEN_ACTION_POOL")
@@ -166,6 +171,17 @@ class ConditionalPolicy:
                 self.routes["retrospective_rehearsal_not_currently_eligible"]+=1
             for rule in policy.get("actions",[]):
                 action=rule["action"]
+                if action=="SELECT_HIGHEST_CURRENT_PROJECT_COURSE":
+                    courses=[(c["priority"],o["action"],c["project_id"])
+                             for o in packet.get("options",[]) if o["action"] in rule["project_course_actions"]
+                             for c in o.get("project_courses",[])
+                             if type(c.get("priority")) in (int,float) and c.get("project_id")]
+                    best=[x for x in courses if x[0]==max(v[0] for v in courses)] if courses else []
+                    if len(best)==1:
+                        self.routes["checkpoint_current_project_rank"]+=1
+                        return {"task":task,"action":best[0][1],"project_id":best[0][2]}
+                    self.routes["checkpoint_project_rank_tie_or_absent"]+=1
+                    continue
                 if not any(o.get("action")==action for o in packet.get("options",[])):
                     continue
                 if "option_match" in rule:
@@ -462,7 +478,7 @@ class ModernDevelopmentOwner:
             return {"kind":kind,"status":"NOT_REALIZED_CONDITIONS_UNMET"}
         return {"kind":kind,"status":"CHILD_BORN","native":self.rt.realize_family_birth()}
 
-    def advance_interval(self,span,processes,*,birth_surface=False):
+    def advance_interval(self,span,processes,*,birth_surface=False,principal=None):
         """Reuse the joined owner's source windows and discontinuity reader.
 
         No independent calendar or invented event. Passive boundaries are
@@ -489,7 +505,8 @@ class ModernDevelopmentOwner:
                 if kind=="CONDITIONAL_FAMILY_BIRTH":
                     require(birth_surface and at==target,"GEN_UNPLANNED_CONDITIONAL_BIRTH")
                 if kind=="OBLIGATION_DUE":
-                    require(at==target and not birth_surface,"GEN_DUE_OCCASION_REQUIRES_EXPLICIT_SURFACE")
+                    require(at==target and not birth_surface and boundary["actor"]==principal,
+                            "GEN_DUE_OCCASION_REQUIRES_EXPLICIT_SURFACE")
                 end=at
             require(end>clock,"GEN_ZERO_INTERVAL")
             out=self.rt.background(end-clock,processes=active)
@@ -523,7 +540,7 @@ class ModernDevelopmentOwner:
             c=p.circumstances
             if span:
                 intervals,interval_events=self.advance_interval(span,detached(self.period_catalog.get(c.get("period_ref"),[])),
-                    birth_surface=p.operation=="REALIZE_FAMILY_BIRTH")
+                    birth_surface=p.operation=="REALIZE_FAMILY_BIRTH",principal=p.participants[0])
                 interval=intervals[0] if len(intervals)==1 else {"segments":intervals}
                 require(interval_events[-1]["clock"]==expected.clock+span,"GEN_INTERVAL_RECEIPT_CLOCK")
             policy=ConditionalPolicy(c["policies"],c.get("rehearsal"),c.get("family"))
@@ -683,7 +700,15 @@ class ModernGeneration:
     def _run(self,method):
         self.provider.current_attempt_id=None
         try:
-            result=method(self.owner.context())
+            context=self.owner.context()
+            if self.owner.continuity_link and method.__name__!="bootstrap":
+                link=context["prior_generation_and_live_ancestry"]
+                context["prior_generation_and_live_ancestry"]={
+                    "root":link["root"],"actor":link["actor"],"resumption_chain_hash":link["resumption_chain_hash"],
+                    "exact_link_digest":digest(link),"event_count":len(link["events"]),
+                    "grade":"CANONICAL_ACTUAL_ANCESTRY_LINK_NOT_ACTOR_RECOLLECTION",
+                    "retained_full_actual_link_in_owner_receipt_binding":True}
+            result=method(context)
         except BaseException:
             if self.provider.current_attempt_id is not None:
                 self.owner.record_checkpoint_update(self.provider.current_attempt_id,cycle_disposition="HELD_OR_FAILED")

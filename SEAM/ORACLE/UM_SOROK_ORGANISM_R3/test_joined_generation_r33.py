@@ -145,10 +145,12 @@ class JoinedGenerationCourt(unittest.TestCase):
                 doc=json.loads(req["messages"][1]["content"]);task=doc["task"];packet=doc["actor_source_packet"]
                 if task=="actor_attempt":
                     opts=[q for q in packet.get("addressed_lexical_options",[]) if
-                          q.get("world_request",{}).get("addressed_party_ref")==phase["target"]]
+                          q.get("world_request",{}).get("addressed_party_ref")==phase["target"] and q.get("project_id")]
                     if len(opts)==1:
                         ans={"task":task,"practical_option_id":opts[0]["option_id"],"speech_intent":"Greet the actual visitor."}
-                    else:ans={"task":task,"action":"WAIT"}
+                    else:
+                        print("R33_SPEECH_UNAVAILABLE",json.dumps({"options":[o.get("action") for o in packet.get("options",[])], "addressed_count":len(opts),"body":packet.get("actor",{}).get("body")},sort_keys=True))
+                        ans={"task":task,"action":"WAIT"}
                 elif task=="expression":
                     ans={"task":task,"speech":WORDS} if packet.get("expression_phase")=="LEXICAL_REALIZATION_BEFORE_EXPERIENCE" else {"task":task,"surface":"Ordinary life."}
                 elif task=="development":ans={"task":task,"candidates":[]}
@@ -250,7 +252,7 @@ class JoinedGenerationCourt(unittest.TestCase):
                             return {"retrospective":retro(r),"prospective":[
                               event(ctx,"worked",t+1,"listener",{"listener":policy([{"action":"WORK","project_id":"work"}])}),
                               event(ctx,"speech",t+2,"speaker",{"speaker":speech,"listener":formation}),
-                              event(ctx,"later",t+3,"listener",{"listener":policy([action("REST") if addressed else action("WORK")])})]}
+                              event(ctx,"later",t+3,"listener",{"listener":policy([{"action":"SELECT_HIGHEST_CURRENT_PROJECT_COURSE","project_course_actions":["WORK","REST"]},action("WAIT")])})]}
                     p=LexicalCheckpoint();folder=Path(d)/("generation"+str(addressed))
                     folder.mkdir();g=ModernGeneration(ModernDevelopmentOwner(rt,"listener",folder/"ops.sqlite",
                         sourcefree_attested=True),p,folder/"batch.sqlite",folder/"cycle.json")
@@ -260,6 +262,7 @@ class JoinedGenerationCourt(unittest.TestCase):
                         self.assertEqual(rs[1]["consequences"]["conditional_routes"].get("typed_lexical_project_revaluation",0),int(addressed))
                         a=rt.ledger.actor("listener")[1]
                         self.assertEqual(a["projects"][0]["priority"],.1 if addressed else .65)
+                        self.assertEqual(rs[2]["objective"]["attempt"],"REST" if addressed else "WORK")
                         g.finish();self.assertTrue(rt.verify()["valid"])
                     finally:g.close()
                 finally:rt.close()
