@@ -132,4 +132,106 @@ class RichFormationCourt(unittest.TestCase):
                          "checkpoint_calls":len(p.requests)},sort_keys=True))
                 finally:g.close();rt.close()
 
+
+    def test_actual_family_then_wage_dependence_and_reconstitution(self):
+        # Existing family owner and same actual ledger, not prepared parents or
+        # a second newborn. Explicit route/contract and suspension research
+        # premises are actual native acts, separately graded as injections.
+        import test_joined_generation_r33 as joined
+        from modern_generation_port_r28 import link_actual_live_interval
+        for nominate in (True,False):
+            with self.subTest(nominate=nominate),tempfile.TemporaryDirectory() as d:
+                root=Path(d);db=root/"life.sqlite";rt,sid,catalog,constructors=joined.JoinedGenerationCourt.setup(self,db)
+                args={"family_sources":(sid,),"period_catalog":catalog,"qualified_interval_cuts":True}
+                first=root/"first";first.mkdir()
+                p=joined.LifeCheckpoint(sid)
+                g=inherited.ModernGenerationCourt.generation(self,rt,first,"mother",p,**args)
+                try:
+                    g.bootstrap();g.advance();g.finish();handoff=g.terminal_handoff()
+                    prefix=rt.ledger.events();self.assertEqual(constructors,["mother","father"])
+                    self.assertTrue(rt.snapshot("nadia")["co_regulation_orientations"])
+                finally:g.close()
+                # No movement or institutional terms automatically inferred
+                # from the parents' psyche. These exact external research
+                # premises are not evidence of autonomous route selection.
+                try:
+                    spec=rt.register_sourcefree_work_regime({"grade":"EXPLICIT_SOURCEFREE_INSTITUTIONAL_SCENARIO",
+                        "source_ref":"R46_fictional_work_regime","site":"workshop","controller":"workshop_steward",
+                        "eligible_workers":["mother","father"],"delegates":["father"]})
+                    for aid in ("mother","father"):
+                        self.assertEqual(rt.step(aid,requested_action="MOVE",object_ref="workshop")["status"],"PERFORMED")
+                        rt.step(aid,requested_action="INSPECT",object_ref=spec["terms_notice_ref"])
+                        self.assertEqual(rt.step(aid,requested_action="ACCEPT_WORK_TERMS")["status"],"PERFORMED")
+                    link=link_actual_live_interval(rt,handoff,first/"cycle.json")
+                finally:rt.close()
+                second=root/"work";second.mkdir()
+                def m(op,rules=()):return own("mother",[action(op)],rules)
+                work=m("WORK",[rich("recurrent_livelihood_orientation","RECURRENT_WORK_ORIENTATION",
+                                   orientation_mode="APPROACH")])
+                rest=m("REST")
+                p2=Course([[rest,rest,work,rest,rest],[work,rest,rest,work,rest]])
+                rt=ConstitutiveRuntime(str(db));g=inherited.ModernGenerationCourt.generation(self,rt,second,"mother",p2,
+                                continuity_link=link,**args)
+                try:
+                    a=g.bootstrap();b=g.advance()
+                    self.assertEqual([x["objective"]["attempt"] for x in a["records"]+b["records"]].count("WORK"),3)
+                    self.assertTrue(all(x["objective"]["status"]=="PERFORMED" for x in a["records"]+b["records"]))
+                    old=deepcopy(rt.snapshot("mother")["historical_orientations"][0])
+                    self.assertEqual(old["orientation_mode"],"APPROACH")
+                    g.finish();handoff=g.terminal_handoff()
+                finally:g.close();rt.close()
+                # Stipulate the historically actual institutional conflict;
+                # never attribute the research's imposed actions to a model.
+                rt=ConstitutiveRuntime(str(db))
+                try:
+                    for aid,op,target in [("mother","REST",None),("mother","REST",None),
+                            ("father","REST",None),("father","WORK",None),
+                            ("father","CONTRIBUTE_WAGE_RELIEF",None),("father","SUSPEND_WAGE_WORK","mother")]:
+                        self.assertEqual(rt.step(aid,requested_action=op,target=target)["status"],"PERFORMED")
+                    self.assertEqual(rt.step("mother",requested_action="WORK")["status"],"BLOCKED")
+                    link2=link_actual_live_interval(rt,handoff,second/"cycle.json")
+                    before=rt.ledger.world()[1]["accounts"]["mother"]
+                finally:rt.close()
+                third=root/"relief";third.mkdir()
+                later={"action":"WORK","current_match":{"action":"WORK","kind":"HISTORICALLY_RECRUITED_PRE_CUE_PRESSURE"}}
+                p3=Course([[m("DRAW_WAGE_RELIEF",[offer("relief_reconstitution")] if nominate else []),rest,rest,rest,rest],
+                            [rest,own("mother",[later,action("WAIT")]),rest]])
+                rt=ConstitutiveRuntime(str(db));g=inherited.ModernGenerationCourt.generation(self,rt,third,"mother",p3,
+                                continuity_link=link2,**args)
+                try:
+                    r=g.bootstrap();self.assertEqual(r["records"][0]["objective"]["attempt"],"DRAW_WAGE_RELIEF")
+                    self.assertEqual(r["records"][0]["objective"]["status"],"PERFORMED")
+                    self.assertEqual(rt.ledger.world()[1]["accounts"]["mother"],before+.25)
+                    new=rt.snapshot("mother")["historical_orientations"][0]
+                    self.assertEqual({k:v for k,v in old.items() if k!="revisions"},{k:v for k,v in new.items() if k!="revisions"})
+                    self.assertEqual(len(new["revisions"]),int(nominate))
+                finally:g.close();rt.close()
+                rt=ConstitutiveRuntime(str(db));g=inherited.ModernGenerationCourt.generation(self,rt,third,"mother",p3,
+                                continuity_link=link2,**args)
+                try:
+                    r=g.advance();self.assertEqual(r["records"][1]["objective"]["attempt"],"WAIT" if nominate else "WORK")
+                    g.finish();handoff=g.terminal_handoff()
+                    self.assertEqual(rt.ledger.events()[:len(prefix)],prefix)
+                    self.assertEqual(rt.ledger.world()[1]["work_regimes"]["workshop"]["contracts"]["mother"]["status"],"ACTIVE")
+                    self.assertEqual(constructors,["mother","father"])
+                finally:g.close()
+                try:
+                    # Return is a distinct sourcefree research route, not
+                    # generated initiative. Resume actual family life again.
+                    for aid in ("mother","father"):rt.step(aid,requested_action="MOVE",object_ref="home")
+                    link3=link_actual_live_interval(rt,handoff,third/"cycle.json")
+                    tail=root/"later";tail.mkdir()
+                    p4=joined.LifeCheckpoint(sid,resumed=True)
+                    g=inherited.ModernGenerationCourt.generation(self,rt,tail,"mother",p4,continuity_link=link3,**args)
+                    try:
+                        g.bootstrap();g.finish()
+                        self.assertEqual(rt.snapshot("nadia")["age_days"],70)
+                        self.assertEqual(rt.ledger.events()[:len(prefix)],prefix)
+                        self.assertTrue(rt.verify()["valid"]);self.assertTrue(g.engine.verify())
+                        print("R46_FAMILY_LIVELIHOOD",json.dumps({"nominate":nominate,"later":r["records"][1]["objective"]["attempt"],
+                            "child_age_days":70,"native_events":len(rt.ledger.events()),"checkpoint_calls":
+                            sum(len(x.requests) for x in (p,p2,p3,p4)),"constructors":len(constructors)},sort_keys=True))
+                    finally:g.close()
+                finally:rt.close()
+
 if __name__=="__main__":unittest.main()
