@@ -87,6 +87,8 @@ class ContradictoryLife(unittest.TestCase):
                                     'interpretive_hypothesis':'Keep these experiences apart here.'})
                     if s=='commons_feed':
                         out+=p.get('historically_possible_commons_provisioning_reorganizations',[])
+                    if s=='wage_feed':
+                        out+=p.get('historically_possible_provisioning_reorganizations',[])
                     if s=='defer_material':
                         out.extend({'kind':'ACQUIRE_INTERACTIVITY_RELATION','basis':x,
                             'personal_sense':'Both demands occupy this life.'}
@@ -107,7 +109,7 @@ class ContradictoryLife(unittest.TestCase):
                             return selection(task,o,defer_course_option_id=options(
                                 p,'CONTRIBUTE_FOOD_COMMONS','feed_child')[0]['option_id'])
                         return selection(task,o)
-                    if s in ('blocked','blocked_again','commons_feed'):
+                    if s in ('blocked','blocked_again','commons_feed','wage_feed'):
                         return selection(task,options(p,'FEED','feed_child')[0])
                     if s=='donate':
                         return selection(task,options(p,'CONTRIBUTE_FOOD_COMMONS')[0])
@@ -227,6 +229,28 @@ class ContradictoryLife(unittest.TestCase):
                 ['SUSPEND_PARTICULAR_RECRUITMENT','REOPEN_PARTICULAR_RECRUITMENT'])
             self.assertTrue(any(x.get('grounds_status')=='HISTORICALLY_PRACTICED_PARTICULAR_CARE'
                                 for x in practical(rt.situated('giver'),'CARE')))
+            # The same project can acquire market-mediated and independent
+            # means without treating either as a total motive replacement.
+            phase['stage']='setup'
+            spec=rt.register_sourcefree_work_regime({
+                'grade':'EXPLICIT_SOURCEFREE_INSTITUTIONAL_SCENARIO',
+                'source_ref':'r65:employment','site':'workshop',
+                'controller':'workshop_steward','eligible_workers':['giver','controller'],
+                'delegates':['controller']})
+            rt.step('giver',requested_action='MOVE',object_ref='workshop')
+            rt.step('giver',requested_action='INSPECT',object_ref=spec['terms_notice_ref'])
+            self.assertEqual(rt.step('giver',requested_action='ACCEPT_WORK_TERMS')['status'],'PERFORMED')
+            rt.step('giver',requested_action='REST')
+            self.assertEqual(rt.step('giver',requested_action='WORK')['status'],'PERFORMED')
+            self.assertEqual(rt.step('giver',requested_action='BUY_FOOD')['status'],'PERFORMED')
+            rt.step('giver',requested_action='MOVE',object_ref='home')
+            rt.step('giver',requested_action='REST')
+            phase['stage']='wage_feed'
+            self.assertEqual(rt.step('giver')['status'],'PERFORMED')
+            project=next(x for x in rt.ledger.actor('giver')[1]['projects'] if x['id']=='feed_child')
+            self.assertEqual(project['means'],['FEED','CONTRIBUTE_FOOD_COMMONS','WORK','BUY_FOOD'])
+            self.assertTrue(project['commons_provisioning_basis'])
+            self.assertTrue(project['provisioning_means_basis'])
             self.assertTrue(rt.verify()['valid'])
         finally:rt.close()
     def test_longitudinal_contradiction_partition_commons_time_and_reopening(self):
