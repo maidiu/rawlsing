@@ -296,7 +296,7 @@ class RichFormationCourt(unittest.TestCase):
                                 event(ctx,"care",clock+232,"father",{"father":policy([joined.care("nadia"),action("REST")])}),
                                 event(ctx,"object",clock+233,"nadia",{"nadia":policy([action("INSPECT",{
                                     "project_id":project["id"],"world_request":{"material_object_ref":project["material_object_ref"]}}),
-                                    action("REST"),action("WAIT")])]}
+                                    action("REST"),action("WAIT")])})]}
                     p6=Later();folder2=root/"post-visit";folder2.mkdir()
                     g=inherited.ModernGenerationCourt.generation(self,rt,folder2,"mother",p6,continuity_link=link5,**args)
                     try:
