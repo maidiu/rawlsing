@@ -353,3 +353,135 @@ class EarlyOrdinaryPractice(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             self.assertEqual(self.expressive_arm(Path(d)/'admit.db',True),
                              self.expressive_arm(Path(d)/'abstain.db',False))
+
+
+    def productive_ordinary_arm(self,db,admit_end,forge=False):
+        """From ordinary infancy through plural response to self-generated end.
+        Same acquired capacity in both arms; a later trial is not a project.
+        No joint SING, no actual deficit/relief required, no injected child act.
+        """
+        from copy import deepcopy
+        from um_sorok_organism.development import InvalidDevelopment
+        phase={'name':'signal','other':None}
+        seen=[]
+        def model(task,p):
+            aid=p.get('actor',{}).get('id')
+            if task=='expression':return {'task':task,'surface':'Ordinary life.'}
+            if task=='development':
+                if aid!='nadia':return {'task':task,'candidates':[]}
+                candidates=p.get('historically_possible_social_vocal_development',[])
+                ends=[x for x in p.get('historically_possible_genetic_ends',[])
+                      if x.get('productive_vocal_basis',{}).get('source_route')==
+                         'ORDINARY_RESPONSIVE_COORDINATION_THEN_OWN_EXERCISE']
+                if ends:
+                    seen.extend(deepcopy(ends))
+                    if forge:
+                        ends[0]['productive_vocal_basis']['source_other_refs']=['invented','mother']
+                    if admit_end:candidates=candidates+ends
+                if phase['name']=='takeup':
+                    candidates=candidates+p.get('historically_possible_productive_vocal_takeups',[])
+                return {'task':task,'candidates':candidates}
+            if task=='actor_attempt':
+                if aid!='nadia':
+                    return {'task':task,'action':'SPEAK' if p.get('requesting_actor') else 'REST'}
+                if phase['name']=='signal':
+                    if phase['other'] is None:return {'task':task,'action':'SIGNAL'}
+                    a=[x for x in p['practical_options']
+                       if x.get('grounds_status')=='PREPROJECT_ORDINARY_VOCAL_EXPLORATION'
+                       and x['world_request']['addressed_party_ref']==phase['other']]
+                    self.assertEqual(len(a),1)
+                    return {'task':task,'practical_option_id':a[0]['option_id']}
+                if phase['name']=='trial':
+                    a=[t for t in p['possible_end_trials'] if t.get('historical_ordinary_vocal_basis_ref')]
+                    if not admit_end:
+                        self.assertEqual(a,[])
+                        return {'task':task,'action':'WAIT'}
+                    self.assertEqual(len(a),1)
+                    self.assertTrue(a[0]['not_current_external_sign_or_present_other_required'])
+                    return {'task':task,'possible_end_trial_id':a[0]['trial_id']}
+                if phase['name']=='project':
+                    a=[o for o in p['practical_options'] if o['operation']=='SING' and o.get('project_id')]
+                    if not admit_end:
+                        self.assertEqual(a,[])
+                        return {'task':task,'action':'WAIT'}
+                    self.assertEqual(len(a),1)
+                    return {'task':task,'practical_option_id':a[0]['option_id']}
+                return {'task':task,'action':'SING'}
+            raise AssertionError(task)
+        def runtime():
+            return ConstitutiveRuntime(str(db),semantic=ValidatingSemanticService(CallbackLLMProvider(model)))
+        rt=runtime()
+        try:
+            adults=[adult('father','Father'),adult('mother','Mother')]
+            for a in adults:a['projects']=[{'id':'speech:'+a['id'],'object':'ordinary vocal activity',
+                'means':['SPEAK'],'priority':.2,'cue_terms':['home'],'status':'active'}]
+            rt.ledger.initialize(blank_world(),[newborn('nadia','Nadia'),*adults])
+            rt.step('nadia')
+            proc=self.source(rt,'SIGNAL',self.anchor(rt,'SIGNAL'),180)
+            rt.background(180,[proc])
+            phase['other']='father';rt.step('nadia')
+            rt.background(14)
+            phase['other']='mother';rt.step('nadia')
+            rt.step('mother')
+            child=self.child(rt)
+            self.assertEqual(child['body']['language'],.07)
+            self.assertEqual(child['projects'],[])
+            self.assertEqual(child['possible_ends'],[])
+            self.assertFalse(any(x.get('own_attempted_operation')=='SING'
+                                 for x in child['participation_history']))
+            phase['name']='own'
+            if forge:
+                before=rt.verify()['events']
+                with self.assertRaisesRegex(InvalidDevelopment,'GENESIS_PRODUCTIVE_VOCAL_HISTORY_FORGERY'):
+                    rt.step('nadia')
+                self.assertEqual(rt.verify()['events'],before)
+                self.assertEqual(self.child(rt),child)
+                return
+            self.assertEqual(rt.step('nadia')['attempt'],'SING')
+            child=self.child(rt)
+            self.assertTrue(seen)
+            self.assertEqual(len(child['possible_ends']),int(admit_end))
+            self.assertEqual(child['projects'],[])
+            if admit_end:
+                end=child['possible_ends'][0]
+                self.assertEqual(end['productive_vocal_basis']['source_other_refs'],['father','mother'])
+                self.assertEqual(len(set(end['source_event_refs'])),3)
+            # Actual intervening passage removes the initiating vocal cue;
+            # prospective recruitment is historical rather than cue replay.
+            rt.background(2)
+            self.assertTrue(rt.verify()['valid'])
+        finally:rt.close()
+        rt=runtime()
+        try:
+            phase['name']='trial'
+            self.assertEqual(rt.step('nadia')['attempt'],'SING' if admit_end else 'WAIT')
+            if admit_end:
+                self.assertEqual(len(self.child(rt)['possible_ends'][0]['trial_history']),1)
+                self.assertEqual(self.child(rt)['projects'],[])
+            phase['name']='takeup'
+            self.assertEqual(rt.step('nadia')['status'],'PERFORMED')
+            child=self.child(rt)
+            self.assertEqual(len(child['projects']),int(admit_end))
+            if admit_end:
+                project=child['projects'][0]
+                self.assertEqual(len(set(project['takeup_evidence']['productive_vocal_takeup_basis']['source_event_refs'])),5)
+                self.assertEqual(project['ordinary_vocal_genesis_basis']['source_other_refs'],['father','mother'])
+            self.assertTrue(rt.verify()['valid'])
+        finally:rt.close()
+        rt=runtime()
+        try:
+            phase['name']='project'
+            self.assertEqual(rt.step('nadia')['attempt'],'SING' if admit_end else 'WAIT')
+            self.assertTrue(rt.verify()['valid'])
+            return self.child(rt)
+        finally:rt.close()
+
+    def test_ordinary_acquired_power_can_become_own_end_and_later_project(self):
+        with tempfile.TemporaryDirectory() as d:
+            path=Path(d)
+            yes=self.productive_ordinary_arm(path/'yes.db',True)
+            no=self.productive_ordinary_arm(path/'no.db',False)
+            self.assertEqual(yes['body']['language'],no['body']['language'])
+            self.assertEqual(len(yes['projects']),1)
+            self.assertEqual(no['projects'],[])
+            self.productive_ordinary_arm(path/'forged.db',True,True)
