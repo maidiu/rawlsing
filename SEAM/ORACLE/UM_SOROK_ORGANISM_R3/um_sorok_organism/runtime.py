@@ -406,10 +406,13 @@ class ConstitutiveRuntime:
                 elif o.get('action')=='EAT' and requesting_actor is None:
                     o.setdefault('practical_alternatives',[]).extend(
                         offer_self_meal_source_alternatives(world,e,o))
-                elif o.get('action')=='SPEAK' and requesting_actor is None:
-                    o.setdefault('practical_alternatives',[]).extend(
-                        offer_addressed_lexical_alternatives(e,o,set(situated.get(
-                            'attention_frame',{}).get('focally_eligible_cue_refs',[]))))
+            # Keep the ordinary practical roster exact. An addressed lexical
+            # refinement is offered separately, but uses the same option ID
+            # selection and qualification path when explicitly selected.
+            addressed_options=[alt for o in options
+                for alt in offer_addressed_lexical_alternatives(e,o,set(situated.get(
+                    'attention_frame',{}).get('focally_eligible_cue_refs',[])))]
+            if requesting_actor is not None:addressed_options=[]
             flat_alternatives=[copy(alt) for o in options
                                for alt in o.get('practical_alternatives',[])]
             flat_trials=[copy(t) for o in options for t in o.get('possible_end_trials',[])]
@@ -433,6 +436,7 @@ class ConstitutiveRuntime:
                 'accessible':{k:v for k,v in asdict(e).items() if k!='inaccessible_count'},
                 'situated':situated,'options':options,
                 'practical_options':flat_alternatives,
+                **({'addressed_lexical_options':copy(addressed_options)} if addressed_options else {}),
                 'possible_end_trials':flat_trials,
                 'private_rehearsal_options':copy(private_options),
                 'undertaking_attention_options':copy(undertaking_options),
@@ -495,7 +499,7 @@ class ConstitutiveRuntime:
             if requested_option is not None:
                 if type(requested_option) is not str:
                     raise ValueError('INVALID_PRACTICAL_OPTION_ID')
-                matches=[a for a in flat_alternatives
+                matches=[a for a in flat_alternatives+addressed_options
                          if a['option_id']==requested_option]
                 if len(matches)!=1:
                     raise ValueError('UNKNOWN_OR_AMBIGUOUS_PRACTICAL_OPTION_ID')
@@ -548,6 +552,8 @@ class ConstitutiveRuntime:
                     raise ValueError('PROVISIONAL_TRIAL_NOT_IN_SELECTED_OPERATION')
             alternatives=opt.get('practical_alternatives',[])
             option_id=proposed.get('practical_option_id')
+            if action=='SPEAK' and option_id is not None:
+                alternatives=alternatives+addressed_options
             if option_id is not None:
                 if type(option_id) is not str:
                     raise ValueError('INVALID_PRACTICAL_OPTION_ID')

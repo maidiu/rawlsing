@@ -44,7 +44,7 @@ class VoluntaryAddressR42(unittest.TestCase):
                 _,op,project=max(courses);return {'task':task,'action':op,'project_id':project}
             if mode=='silent':return {'task':task,'action':'WAIT'}
             if target is None:return {'task':task,'action':'SPEAK','project_id':'talk','speech_intent':'Share a worry.'}
-            choices=[q for q in p['practical_options'] if q.get('binding_status')==
+            choices=[q for q in p.get('addressed_lexical_options',[]) if q.get('binding_status')==
                 'EXACT_CURRENT_VOLUNTARY_SPEECH_ADDRESS' and q['project_id']=='talk'
                 and q['world_request']['addressed_party_ref']==target]
             self.assertEqual(len(choices),1)
