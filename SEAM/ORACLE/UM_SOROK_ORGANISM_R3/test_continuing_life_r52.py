@@ -367,4 +367,71 @@ class ContinuingLifeCourt(unittest.TestCase):
                         "retained_hypotheses":len(models),"live_calls":p.calls},sort_keys=True))
                 finally:session.close();rt.close()
 
+
+    def test_affect_qualified_private_rehearsal_new_end_trial_and_later_project(self):
+        from live_turn_port_r38 import LiveTurnSession
+        from neighbor_runtime import NeighborEncounter
+        from test_rich_formation_r44 import rich
+        from copy import deepcopy
+        for nominate in (True,False):
+            with self.subTest(nominate=nominate),tempfile.TemporaryDirectory() as d:
+                root=Path(d);db=root/"life.sqlite";rt=ConstitutiveRuntime(str(db))
+                a=adult("worker","Mara");a["projects"]=[{"id":"duty","object":"sustain availability",
+                    "means":["REST","SPEAK"],"status":"active","priority":.5,
+                    "expected_difference":{"feature":"availability","direction":"PRESERVE","sign_tags":["wait"]}}]
+                rt.ledger.initialize(blank_world(),[a])
+                secret="Quiet need not mean abandoning a commitment."
+                class Provider:
+                    def __init__(self):self.calls=0;self.stage=0
+                    def call(self,r):
+                        self.calls+=1;stage=self.stage
+                        if stage==0:p=policy([{"action":"REST","project_id":"duty"}])
+                        elif stage==1:p=policy([action("WAIT")],[rich("delayed_appraisals","DELAYED_APPRAISAL",appraisal="ACTOR_INTERPRETS_DISAPPOINTED")])
+                        elif stage==2:p=policy([action("WAIT")],[
+                            rich("activity_affects","ACTIVITY_AFFECT",affect_name="unease",personal_sense="quiet conflicts with duty",course_orientation="APPROACH"),
+                            {"candidate":{"kind":"MEMORY","content":"The quiet interval felt like letting someone down.","cue_terms":["wait"]},
+                             "when":{"own_action":"WAIT","status":"PERFORMED"}}])
+                        elif stage==3:
+                            p=policy([action("WAIT")],[{"private_construct":"NOTICE_END","augment":{
+                                "possible_object":"Attend without promising availability","means":["ORIENT"]}}] if nominate else [])
+                            p["private_rehearsal"]={"affect":"REQUIRED","meaning":secret}
+                        elif stage==4:
+                            rows=[q for q in r["principal_packet"]["possible_end_trials"] if q.get("private_rehearsal_ref")]
+                            p=policy(([{"action":"ORIENT","pool":"possible_end_trials","option_match":{
+                                "possible_end_ref":rows[0]["possible_end_ref"]}}] if rows else [])+[action("WAIT")])
+                        elif stage==5:p=policy([action("ORIENT")],[{"private_construct":"TAKE_UP_END",
+                                "augment":{"means":["ORIENT"]},"match":{"possible_object":"Attend without promising availability"}}])
+                        else:p=policy([{"action":"SELECT_HIGHEST_CURRENT_PROJECT_COURSE","project_course_actions":["ORIENT"]},action("WAIT")])
+                        return {"policies":{"worker":p}}
+                p=Provider();session=LiveTurnSession(rt,p,root/"live.sqlite",sourcefree_attested=True)
+                try:
+                    n=NeighborEncounter(rt,"visitor",mii_module=mii)
+                    for stage in range(4):
+                        p.stage=stage;self.assertEqual(session.owner_actor_beat(n,"worker")["status"],"PERFORMED")
+                    before=rt.snapshot("worker")
+                    recs=[x for m in before["memories"] for x in m.get("private_rehearsals",[])]
+                    self.assertEqual(len(recs),1);self.assertTrue(recs[0]["affect_ref"])
+                    ends=[e for e in before["possible_ends"] if e.get("genesis_family")=="ACTUAL_PRIVATE_REHEARSAL"]
+                    self.assertEqual(len(ends),int(nominate))
+                    self.assertNotIn(secret,json.dumps(rt.ledger.world()[1]))
+                    p.stage=4;out=session.owner_actor_beat(n,"worker")
+                    self.assertEqual(out["attempt"],"ORIENT" if nominate else "WAIT")
+                    self.assertFalse(any(x.get("possible_end_ref") for x in rt.snapshot("worker")["projects"]))
+                    p.stage=5;self.assertEqual(session.owner_actor_beat(n,"worker")["status"],"PERFORMED")
+                    after=rt.snapshot("worker")
+                    projects=[x for x in after["projects"] if x.get("possible_end_ref")]
+                    self.assertEqual(len(projects),int(nominate))
+                    self.assertEqual(after["memories"],before["memories"])
+                    if nominate:self.assertTrue(projects[0]["takeup_evidence"]["private_takeup_basis"])
+                finally:session.close();rt.close()
+                rt=ConstitutiveRuntime(str(db));session=LiveTurnSession(rt,p,root/"live.sqlite",sourcefree_attested=True)
+                try:
+                    p.stage=6;out=session.owner_actor_beat(NeighborEncounter(rt,"visitor",mii_module=mii),"worker")
+                    self.assertEqual(out["attempt"],"ORIENT" if nominate else "WAIT")
+                    self.assertTrue(rt.verify()["valid"])
+                    self.assertEqual(p.calls,7)
+                    print("R57_PRIVATE_END",json.dumps({"nominate":nominate,"later":out["attempt"],
+                        "projects":len(projects),"calls":p.calls,"affect_qualified":True},sort_keys=True))
+                finally:session.close();rt.close()
+
 if __name__=="__main__":unittest.main()

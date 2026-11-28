@@ -75,7 +75,13 @@ def subset(row, match):
     return isinstance(row,dict) and all(k in row and (subset(row[k],v) if isinstance(v,dict) else row[k]==v) for k,v in match.items())
 
 def policy_check(policy):
-    require(exact_keys(policy,(),("actions","formation","expression")),"GEN_POLICY_SHAPE")
+    require(exact_keys(policy,(),("actions","formation","expression","private_rehearsal")),"GEN_POLICY_SHAPE")
+    if "private_rehearsal" in policy:
+        r=policy["private_rehearsal"]
+        require(exact_keys(r,("affect","meaning"),("memory_event_ref","memory_ref","affect_ref")) and
+                r["affect"] in ("REQUIRED","NONE") and text(r["meaning"]) and
+                all(text(r[k]) for k in ("memory_event_ref","memory_ref","affect_ref") if k in r) and
+                ("affect_ref" not in r or r["affect"]=="REQUIRED"),"GEN_PRIVATE_REHEARSAL_POLICY")
     actions=policy.get("actions",[])
     require(isinstance(actions,list) and len(actions)<=MAX_POLICY_ITEMS,"GEN_ACTION_POLICY_SIZE")
     for rule in actions:
@@ -84,7 +90,7 @@ def policy_check(policy):
         if "option_match" in rule:
             require(isinstance(rule["option_match"],dict) and bool(rule["option_match"]) and
                     set(rule["option_match"])<= {"project_id","world_request","binding_status",
-                                               "grounds_status","operation","source_material_object_ref","genesis_family","productive_witness_attention","cross_object_attention_analytic_only"},
+                                               "grounds_status","operation","source_material_object_ref","genesis_family","productive_witness_attention","cross_object_attention_analytic_only","possible_end_ref","private_rehearsal_ref"},
                     "GEN_ACTION_MATCH")
         if "current_match" in rule:
             m=rule["current_match"]
@@ -126,7 +132,17 @@ def policy_check(policy):
             isinstance(formation["rules"],list) and len(formation["rules"])<=MAX_POLICY_ITEMS,
             "GEN_FORMATION_POLICY")
     for rule in formation["rules"]:
-        if exact_keys(rule,("candidate",),("when",)):
+        if exact_keys(rule,("private_construct","augment"),("match",)):
+            kind=rule["private_construct"];v=rule["augment"];m=rule.get("match",{})
+            require(isinstance(m,dict) and set(m)<={"private_affect_ref","possible_end_ref","possible_object"} and
+                    all(text(x) for x in m.values()),"GEN_PRIVATE_CONSTRUCT_MATCH")
+            require(kind in ("NOTICE_END","TAKE_UP_END"),"GEN_PRIVATE_CONSTRUCT_KIND")
+            require(exact_keys(v,("possible_object","means") if kind=="NOTICE_END" else ("means",)) and
+                    ("possible_object" not in v or text(v["possible_object"])) and
+                    isinstance(v["means"],list) and 1<=len(v["means"])<=3 and
+                    all(x in ("REST","ORIENT","EAT") for x in v["means"]) and
+                    len(set(v["means"]))==len(v["means"]),"GEN_PRIVATE_CONSTRUCT_MEANING")
+        elif exact_keys(rule,("candidate",),("when",)):
             c=rule["candidate"]
             require(isinstance(c,dict) and c.get("kind") in
                     ("MEMORY","ACQUIRE_HISTORICAL_ORIENTATION"),"GEN_DIRECT_KIND")
@@ -273,6 +289,16 @@ class ConditionalPolicy:
                     return {"task":task,"action":"WAIT","private_rehearsal_id":rows[0]["rehearsal_id"],
                             "private_rehearsal_content":retro["meaning"]}
                 self.routes["retrospective_rehearsal_not_currently_eligible"]+=1
+            r=policy.get("private_rehearsal")
+            if r and packet.get("requesting_actor") is None:
+                rows=[q for q in packet.get("private_rehearsal_options",[])
+                      if (q.get("affect_ref") is not None)==(r["affect"]=="REQUIRED")
+                      and all(q.get(k)==r[k] for k in ("memory_event_ref","memory_ref","affect_ref") if k in r)]
+                if len(rows)==1:
+                    self.routes["private_rehearsal_selected"]+=1
+                    return {"task":task,"action":"WAIT","private_rehearsal_id":rows[0]["rehearsal_id"],
+                            "private_rehearsal_content":r["meaning"]}
+                self.routes["private_rehearsal_absent_or_ambiguous"]+=1
             for rule in policy.get("actions",[]):
                 action=rule["action"]
                 if "current_match" in rule and not any(subset(c,rule["current_match"]) for c in packet.get("situated",{}).get("currents",[])):
@@ -343,7 +369,38 @@ class ConditionalPolicy:
                 elif packet.get("actual_private_rehearsal_analyst_only"):
                     self.routes["retrospective_no_qualified_revision"]+=1
             for rule in form["rules"]:
-                if "candidate" in rule:
+                if "private_construct" in rule:
+                    kind=rule["private_construct"];v=rule["augment"];m=rule.get("match",{})
+                    experience=packet.get("experience",{});sel=experience.get("own_practical_selection") or {}
+                    rec=packet.get("actual_private_rehearsal_analyst_only")
+                    if kind=="NOTICE_END":
+                        if (rec and rec.get("actor")==actor and set(v["means"])<=set(rec.get("possible_means",[]))
+                                and subset({"private_affect_ref":rec.get("affect_ref")},m)):
+                            candidates.append({"kind":"NOTICE_PRIVATE_POSSIBLE_END","rehearsal_ref":rec["id"],
+                                "possible_object":v["possible_object"],"possible_means":v["means"]})
+                            self.routes["private_end_nominated"]+=1
+                    else:
+                        # Derive only from retained actual ends and a later own
+                        # performed course. Native admission rechecks all grounds.
+                        rows=[e for e in packet.get("actor_possible_ends",[])
+                              if e.get("genesis_family")=="ACTUAL_PRIVATE_REHEARSAL"
+                              and e.get("status")=="POSSIBLE_NOT_ACQUIRED_MOTIVE"
+                              and subset({**e,"possible_end_ref":e.get("id")},m)
+                              and e.get("private_location")==experience.get("location")
+                              and type(e.get("origin_clock")) is int and e["origin_clock"]<experience.get("clock",-1)
+                              and set(v["means"])<=set(e.get("possible_means",[]))
+                              and any(t.get("actor_experienced_status")=="PERFORMED"
+                                  and t.get("private_rehearsal_ref")==e.get("private_rehearsal_ref")
+                                  and t.get("operation")==experience.get("own_action")
+                                  and t.get("event_ref")!=packet.get("evidence_path",{}).get("event")
+                                  for t in e.get("trial_history",[]))]
+                        if (len(rows)==1 and experience.get("status")=="PERFORMED"
+                                and experience.get("perceived_cues") and sel.get("status")=="ACTOR_POLICY_PRACTICAL_ATTEMPT"
+                                and sel.get("selected_project_refs")==[] and sel.get("possible_end_trial") is None):
+                            candidates.append({"kind":"TAKE_UP_POSSIBLE_END","possible_end_ref":rows[0]["id"],
+                                               "means":v["means"]})
+                            self.routes["private_end_takeup_nominated"]+=1
+                elif "candidate" in rule:
                     if subset(packet.get("experience",{}),rule.get("when",{})):
                         candidates.append(detached(rule["candidate"]))
                         self.routes["checkpoint_direct_candidate"]+=1
