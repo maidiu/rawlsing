@@ -107,6 +107,7 @@ class OneTurnPolicy:
                 require(n<=MAX_PACKET,"LIVE_CONTEXT_BUDGET_HOLD")
                 self.custody.update(self.source,provider_called=True)
                 result=detached(self.provider.call(req))
+                require(self.rt.ledger.latest_event()["chain_hash"]==self.source,"LIVE_PROVIDER_MUTATED_OWNER")
                 require(isinstance(result,dict) and set(result)=={"policies"} and
                         isinstance(result["policies"],dict),"LIVE_BAD_POLICY_RESPONSE")
                 policies=result["policies"]
@@ -182,10 +183,29 @@ class LiveTurnSession:
             finally:self.rt.semantic=old
     def after_user_contribution(self,encounter,*,profile=None):
         require(encounter.runtime is self.rt,"LIVE_FOREIGN_ENCOUNTER")
+        if getattr(encounter,"_live_session",None) is self:
+            return encounter.continue_independent_life_during_visit(profile=profile)
         return self._run(lambda:encounter.continue_independent_life_during_visit(profile=profile))
     def owner_actor_beat(self,encounter,actor):
         require(encounter.runtime is self.rt,"LIVE_FOREIGN_ENCOUNTER")
+        if getattr(encounter,"_live_session",None) is self:return encounter.independent_actor_beat(actor)
         return self._run(lambda:encounter.independent_actor_beat(actor))
     def continue_independent(self):
         return self._run(lambda:self.rt.continue_without_user(beats=1))
+    def bind_neighbor(self,user_id,*,mii_module=None):
+        """Attach to the existing multi-beat owner without a second scheduler.
+
+        The inherited present-occasion reader decides WHO and when to stop.
+        Each native independent beat gets a fresh one-response reservation.
+        The inherited MII reader produces actual per-beat surfaces and refuses
+        replay; no generation policy or user-supplied actor selection.
+        """
+        from neighbor_runtime import NeighborEncounter
+        session=self
+        class BoundNeighbor(NeighborEncounter):
+            _live_session=session
+            def independent_actor_beat(self,actor_id):
+                return session._run(lambda:super(BoundNeighbor,self).independent_actor_beat(actor_id))
+        return BoundNeighbor(self.rt,user_id,mii_module=mii_module)
+
     def close(self):self.custody.close()

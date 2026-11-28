@@ -142,4 +142,85 @@ class OneResponseLiveCourt(unittest.TestCase):
                     self.assertEqual(len(session.custody.receipts()),1)
                 finally:session.close();rt.close()
 
+
+    def test_present_polycentric_owner_four_beats_cold_resume_and_no_replayed_exposure(self):
+        with TemporaryDirectory() as d:
+            f=Path(d);rt=self.setup_lexical(f/"life.sqlite")
+            def call(req):
+                return {"policies":{req["principal"]:policy([action("WAIT")])}}
+            wire=transport(call);session=LiveTurnSession(rt,wire,f/"attempts.sqlite",sourcefree_attested=True)
+            try:
+                n=session.bind_neighbor("visitor",mii_module=mii)
+                geometry(n,["speaker","listener"])
+                w=rt.ledger.world()[1];ref=w["neighbor_user_events"][-1]["event_ref"]
+                target=w["clock"]+4
+                profile=n.new_private_profile()
+                first=n.continue_present_life_until(ref,target,max_beats=2,profile=profile)
+                self.assertEqual(first["status"],"HELD_AT_BOUNDED_PRESENT_CONTINUATION")
+                self.assertEqual(first["beats_committed_this_call"],2)
+                self.assertEqual(len(first["new_present_surfaces"]),2)
+                self.assertEqual(wire.usage_snapshot()["total"],2)
+            finally:session.close();rt.close()
+            rt=ConstitutiveRuntime(str(f/"life.sqlite"));session=LiveTurnSession(rt,wire,f/"attempts.sqlite",sourcefree_attested=True)
+            try:
+                n=session.bind_neighbor("visitor",mii_module=mii)
+                second=n.continue_present_life_until(ref,target,profile=profile)
+                self.assertEqual(second["status"],"AT_OR_PAST_PRESENT_TARGET")
+                self.assertEqual(second["beats_committed_this_call"],2)
+                self.assertEqual(len(second["new_present_surfaces"]),2)
+                rows=session.custody.receipts()
+                self.assertEqual({x["principal"] for x in rows},{"speaker","listener"})
+                self.assertEqual(len(rows),4)
+                self.assertTrue(all(x["transport_receipt"]["attempts"]==1 for x in rows))
+                retry=n.continue_present_life_until(ref,target,profile=profile)
+                self.assertEqual(retry["beats_committed_this_call"],0)
+                self.assertEqual(retry["new_present_surfaces"],[])
+                self.assertEqual(wire.usage_snapshot()["total"],4)
+                self.assertTrue(rt.verify()["valid"])
+                print("R40_PRESENT "+json.dumps({"beats":len(rows),"transport_calls":wire.usage_snapshot()["total"],
+                      "per_mode_actual_exposures":len(first["new_present_surfaces"])+len(second["new_present_surfaces"]),
+                      "actor_roster":sorted({x["principal"] for x in rows})},sort_keys=True))
+            finally:session.close();rt.close()
+
+    def test_actual_developmental_care_and_independent_refusal_in_one_response(self):
+        # Actual R63 acquired personal regulation, not stipulated child trust.
+        with TemporaryDirectory() as d:
+            f=Path(d);rt=ConstitutiveRuntime(str(f/"life.sqlite"))
+            m=adult("mother","Mother","workshop");m["body"]["rest"]=.35
+            father=adult("father","Father","workshop")
+            child=newborn("nadia","Nadia","workshop");child["body"]["comfort"]=.2
+            for a in (m,father):
+                a["projects"]=[{"id":"care:"+a["id"],"object":"care for Nadia","means":["CARE"],
+                  "addressed_party_ref":"nadia","priority":.6,"status":"active"}]
+            rt.ledger.initialize(blank_world(),[m,father,child])
+            def call(req):
+                a=req["principal"]
+                acquire=policy([], [{"offer":"historically_possible_plural_care",
+                      "resolver":"EXISTING_PLURAL_CARE_SOURCE_RESOLUTION"}])
+                if a!="nadia":
+                    return {"policies":{a:policy([action("CARE",{"project_id":"care:"+a,
+                        "world_request":{"addressed_party_ref":"nadia"}}),action("REST")]),"nadia":acquire}}
+                acquire["actions"]=[{"action":"SIGNAL","option_match":{"grounds_status":"HISTORICALLY_ACQUIRED_CO_REGULATION"},
+                    "rank_by":"LATEST_PERSONALLY_SENSED_REGULATION"},action("ORIENT"),action("WAIT")]
+                return {"policies":{"nadia":acquire,"mother":policy([action("REFUSE")]),"father":policy([action("REFUSE")])}}
+            wire=transport(call);session=LiveTurnSession(rt,wire,f/"attempts.sqlite",sourcefree_attested=True)
+            try:
+                n=NeighborEncounter(rt,"visitor",mii_module=mii)
+                for aid in ("father","mother"):
+                    self.assertEqual(session.owner_actor_beat(n,aid)["attempt"],"CARE")
+                self.assertEqual({x["caregiver_ref"] for x in rt.ledger.actor("nadia")[1]["co_regulation_orientations"]},
+                                 {"mother","father"})
+                out=session.owner_actor_beat(n,"nadia")
+                self.assertEqual(out["attempt"],"SIGNAL")
+                self.assertEqual(out["status"],"PARTIAL")
+                evt=rt.ledger.latest_event()["envelope"]["payload"]
+                self.assertIsNotNone(evt["coactor_attempt"])
+                row=session.custody.receipts()[-1]
+                self.assertEqual(row["local_semantic_tasks"]["actor_attempt"],2)
+                self.assertEqual(wire.usage_snapshot()["total"],3)
+                self.assertTrue(rt.verify()["valid"])
+                print("R40_CARE "+json.dumps({"calls":3,"child_attempt":out["attempt"],"actual_status":out["status"],
+                    "actual_coactor_attempt":evt["coactor_attempt"]["action"],"local_attempt_tasks":2},sort_keys=True))
+            finally:session.close();rt.close()
+
 if __name__=="__main__":unittest.main()
