@@ -119,6 +119,52 @@ class CountryNativeEconomics(unittest.TestCase):
             memo.evaluate("target",("b",),respondent,registry,[],[],compute)
         self.assertEqual(calls,[authority,authority])
 
+    def test_operation_authority_material_is_not_a_verdict(self):
+        from rawlsing_next._pre553_query_eval import _ConstituentOperationAuthorityReads
+        from rawlsing_next.pre553_empirical_authority import AuthorityRegistry,Pre553AuthorityError
+        from rawlsing_next.pre553_empirical_objects import AuthorityRef
+        fx=_fixture("r13-authority")
+        registry=AuthorityRegistry(fx["authorities"])
+        snapshot=next(s for s in fx["authorities"] if s.authority_kind=="ROUTING_RISK_SET")
+        ref=snapshot.authority_ref
+        material=((ref.authority_id,ref.authority_version,ref.authority_content_hash),)
+        reads=_ConstituentOperationAuthorityReads(registry)
+        self.assertEqual(reads.read(material,"routing",registry),(ref,))
+        self.assertEqual(reads.read(material,"routing",registry),(ref,))
+        self.assertEqual((reads.local_reads,reads.fallback_reads,len(reads.sets)),(2,0,1))
+        old=snapshot.typed_state
+        try:
+            object.__setattr__(snapshot,"typed_state","REVOKED")
+            with self.assertRaises(Pre553AuthorityError):
+                reads.read(material,"routing",registry)
+        finally:object.__setattr__(snapshot,"typed_state",old)
+        foreign=AuthorityRef("missing","1","a"*64)
+        with self.assertRaises(Pre553AuthorityError):
+            reads.read(((foreign.authority_id,foreign.authority_version,foreign.authority_content_hash),),
+                       "routing",registry)
+        # A replaced registry map cannot consume the fast-path material.
+        registry._by_key=AuthorityRegistry(fx["authorities"])._by_key
+        self.assertIsNone(reads.read(material,"routing",registry))
+
+    def test_packed_provenance_accumulation_preserves_exact_order_and_dedup(self):
+        from rawlsing_next._pre553_query_eval import (
+            _UsedObjectAccumulator,_ConstituentEvidenceRef,_constituent_identity_unpack,
+        )
+        from rawlsing_next.pre553_empirical_objects import RespondentEvent
+        packed=(bytes.fromhex("ab"*32),bytes.fromhex("01"*32),
+                bytes.fromhex("ab"*32),(RespondentEvent.FAMILY,"external","cd"*32))
+        actual=_UsedObjectAccumulator()
+        actual.extend_packed_constituents("target",packed)
+        expected=_UsedObjectAccumulator()
+        expected.extend(_ConstituentEvidenceRef(_constituent_identity_unpack("target",x))
+                        for x in packed)
+        self.assertEqual(tuple(x.ref for x in actual),tuple(x.ref for x in expected))
+        self.assertEqual(tuple(x.ref for x in actual.canonical_objects()),
+                         tuple(x.ref for x in sorted(expected,key=lambda o:o.ref.key)))
+        # Both ordinary and packed ingestion must deduplicate the same key.
+        actual.extend(expected)
+        self.assertEqual(len(actual),3)
+
     def test_mixed_cardinality_sav_distinct_native_batch_and_cold_product(self):
         self._native_batch(wide=False)
 

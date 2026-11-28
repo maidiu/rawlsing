@@ -10,7 +10,7 @@ from pathlib import Path
 from statistics import median
 from unittest.mock import patch
 
-BASE="451c9448c45e70d04bd47bfa0f41c63624201d17"
+BASE="21ebacaa631d07f91c6d368a856207ebd2c56d77"
 
 def worker(root,mode,report):
     from tools.pyat_country_preparation_court import read,write,geometry,target_domains
@@ -109,10 +109,13 @@ def worker(root,mode,report):
         kwargs["preparation_pin"]=CountryPreparationPin(**read(report.parent/"pin.json"))
     from rawlsing_next import pre553_c11_ingest as ingest
     from rawlsing_next import _pre553_country_preparation as prep
+    from rawlsing_next import pre553_empirical_query as query_owner
+    from rawlsing_next import _pre553_query_eval as query_eval
     counts={k:0 for k in ("I02","I03","I05","admission","scope_check","scope_current","nonrouting_pin","projection_identity","full_file_auth",
                            "replay_projection_hash","replay_closure_census","routing_authority_validation",
                            "namespace_validation","question_occurrence_validation",
-                           "physical_projection","event_constructor","event_collector","preparation_finish")}
+                           "physical_projection","event_constructor","event_collector","preparation_finish",
+                           "query_core","query_materialization","query_fact","core_fingerprint")}
     phases={k:0. for k in counts}
     def monitor(owner,name,label):
         original=getattr(owner,name)
@@ -185,6 +188,11 @@ def worker(root,mode,report):
             (facade,"_event","event_constructor"),
             (ingest._CountryEventCollector,"add","event_collector"),
             (prep._CountryPreparation,"finish","preparation_finish"),
+            (query_owner,"_evaluate_index_group_core","query_core"),
+            (query_owner,"_materialize_grouped_evaluation","query_materialization"),
+            (query_owner,"_build_fact","query_fact"),
+            (query_owner,"_group_core_fingerprint","core_fingerprint"),
+            (query_eval,"_group_core_fingerprint","core_fingerprint"),
         ):
             stack.enter_context(monitor(owner,name,label))
         with carrier.CountryWorkloadSession(db,receipt,**kwargs) as session:
@@ -210,6 +218,9 @@ def worker(root,mode,report):
         assert counts["I02"]==1 and counts["I03"]>=(60 if novel else 161) and counts["I05"]==(0 if novel else 1),counts
         if novel and "reuse_query_constituents" in kwargs:
             assert group_receipt["core_hits"]==0,group_receipt
+            if "constituent_operation_local_authority_reads" in group_receipt:
+                assert group_receipt["constituent_operation_local_authority_reads"]>rows*10,group_receipt
+                assert group_receipt["constituent_operation_fallback_authority_reads"]==0,group_receipt
             assert group_receipt["constituent_cache_hits"]["routing"]>rows*10,group_receipt
             assert group_receipt["constituent_cache_hits"]["target"]>rows*5,group_receipt
             assert group_receipt["constituent_cache_bytes_estimate"]<=32*1024*1024
