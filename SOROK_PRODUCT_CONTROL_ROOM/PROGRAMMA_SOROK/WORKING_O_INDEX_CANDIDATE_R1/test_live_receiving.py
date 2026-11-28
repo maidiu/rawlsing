@@ -2,7 +2,7 @@ import copy
 import tempfile
 from pathlib import Path
 import unittest
-from check_live_receiving import audit, BASE_SHA, verify_readable_status, sha_blob
+from check_live_receiving import audit, BASE_SHA, verify_readable_status, sha_blob, functional_link_errors, function_snapshot
 
 
 def fixture():
@@ -110,6 +110,46 @@ class ReceivingCheckerAdversaries(unittest.TestCase):
         e, _ = audit(d, s)
         self.assertIn('SUPERSEDED_WITHOUT_FUNCTION_CONSERVATION:1234', e)
         self.assertIn('SUPERSEDED_WITHOUT_TRACKED_SUCCESSOR:1234', e)
+
+
+    def test_function_first_lookup_preserves_unknown_and_exact_identity(self):
+        ledger, _ = fixture()
+        registry = {'rows': [{'id': 'C8', 'title': 'World'}, {'id': 'N07', 'title': 'Other'}]}
+        row = ledger['records'][0]
+        row['functional_relationships'] = [
+            dict(original_id='C8', original_title='World', grade='SOURCEFREE_HELD',
+                 relation='SCOPED_RELATION')]
+        self.assertEqual(functional_link_errors(ledger, registry), [])
+        self.assertEqual(function_snapshot(ledger, registry, 'C8')['functions'][0]
+                         ['linked_observations'][0]['head_sha'], 'a'*40)
+        self.assertEqual(function_snapshot(ledger, registry, 'N07')['functions'][0]
+                         ['observation_status'], 'UNKNOWN_AT_THIS_INTAKE_NOT_MISSING')
+        self.assertEqual(len(function_snapshot(ledger, registry, 'all')['functions']), 2)
+
+    def test_function_link_rejects_invented_duplicate_or_unqualified_identity(self):
+        ledger, _ = fixture()
+        registry = {'rows': [{'id': 'C8', 'title': 'World'}]}
+        row = ledger['records'][0]
+        row['functional_relationships'] = [
+            dict(original_id='C8', original_title='Wrong', grade='', relation='SCOPED'),
+            dict(original_id='C8', original_title='World', grade='HELD', relation='SCOPED'),
+            dict(original_id='INVENTED', original_title='Unknown', grade='HELD', relation='SCOPED')]
+        errors = functional_link_errors(ledger, registry)
+        self.assertIn('FUNCTION_TITLE_DRIFT:1234:C8', errors)
+        self.assertIn('DUPLICATE_FUNCTION_LINK:1234:C8', errors)
+        self.assertIn('UNQUALIFIED_FUNCTION_LINK:1234:C8', errors)
+        self.assertIn('UNKNOWN_ORIGINAL_FUNCTION:1234:INVENTED', errors)
+
+    def test_rejected_dependency_cannot_appear_as_unheld_function_link(self):
+        ledger, _ = fixture()
+        registry = {'rows': [{'id': 'C8', 'title': 'World'}]}
+        row = ledger['records'][0]
+        row['disposition'] = 'EXECUTED_AT_SHA__DEPENDENCY_REJECTED_RECEIVING_HELD'
+        row['functional_relationships'] = [
+            dict(original_id='C8', original_title='World', grade='CANDIDATE',
+                 relation='SCOPED')]
+        self.assertIn('REJECTED_DEPENDENCY_NOT_HELD:1234:C8',
+                      functional_link_errors(ledger, registry))
 
 
 if __name__ == '__main__':

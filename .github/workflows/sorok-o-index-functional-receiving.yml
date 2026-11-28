@@ -1,0 +1,65 @@
+name: SOROK O-Index documentary functional receiving
+on:
+  push:
+    paths:
+      - 'SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/**'
+      - '.github/workflows/sorok-o-index-functional-receiving.yml'
+  pull_request:
+    paths:
+      - 'SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/**'
+      - '.github/workflows/sorok-o-index-functional-receiving.yml'
+permissions:
+  contents: read
+jobs:
+  documentary:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Existing receiving checker adversaries
+        run: python -m unittest -v test_live_receiving.py
+      - name: Function-first readback from the same ledger
+        run: |
+          python check_live_receiving.py --function all > "$RUNNER_TEMP/all-functions.json"
+          python check_live_receiving.py --function C8 > "$RUNNER_TEMP/c8.json"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          folder = Path(os.environ['RUNNER_TEMP'])
+          doc = json.loads((folder / 'all-functions.json').read_text())
+          rows = doc['functions']
+          assert doc['mode'] == 'PINNED_DOCUMENTARY_SNAPSHOT_NOT_LIVE_NOT_PARITY'
+          assert doc['original_identity_count'] == len(rows) == 144
+          assert len({x['original']['id'] for x in rows}) == 144
+          ledger = json.loads(Path('LIVE_RECEIVING_LEDGER.json').read_text())
+          expected = {(r['pr'], f['original_id']) for r in ledger['records'] for f in r.get('functional_relationships', [])}
+          actual = [(o['pr'], row['original']['id']) for row in rows for o in row['linked_observations']]
+          assert len(actual) == len(set(actual)) == len(expected)
+          assert set(actual) == expected
+          # Preserve the frozen November 23 predecessor scope and direct P3 identities.
+          predecessor = {1265, 1274, 1293, 1296, 1297, 1298, 1300, 1272, 1277, 1278, 1294}
+          old = {(pr, identity) for pr, identity in actual if pr in predecessor and (pr != 1272 or identity in {'C3', 'C8', 'C10', 'N04', 'N05', 'N07', 'O05'}) and (pr != 1278 or identity in {'C3','N05','N07','S1','S11','S13'})}
+          assert len(old) == 50 and len({identity for pr, identity in old}) == 22
+          legacy = {identity for pr, identity in actual if pr == 1272 and identity.startswith('M')}
+          assert legacy == {f'M{i:02d}' for i in range(1,41)}
+          assert {identity for _, identity in actual} == {row['original']['id'] for row in rows}
+          assert {identity for pr, identity in actual if pr == 1272 and identity.startswith('RCFB_')} == {'RCFB_E3','RCFB_E4','RCFB_E5','RCFB_E6','RCFB_E7'}
+          p3 = {identity for pr, identity in actual if pr == 746}
+          assert p3 == {'C3', 'C9', 'C10', 'A2', 'N04', 'N05', 'N08', 'N11', 'O15', 'E05', 'E09', 'S6', 'S10', 'B1', 'S39_S52'}
+          assert all('PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY' in o['relation']['grade'] for row in rows for o in row['linked_observations'] if o['pr'] == 746)
+          c8 = json.loads((folder / 'c8.json').read_text())['functions'][0]
+          assert c8['original']['id'] == 'C8'
+          assert any(x['pr'] == 1300 and 'HELD' in x['relation']['grade'] for x in c8['linked_observations'])
+          assert all(x['pr'] != 1294 for row in rows for x in row['linked_observations'])
+          print(f'144 inherited identities; {len({identity for _, identity in actual})} linked identities; {len(actual)} scoped links; rejected dependency held; no new protected receiving claim.')
+          PY
+
+      - name: CIC source and evidence correspondence, adversarial documentary checks
+        run: |
+          python check_cic.py --self-test
+          python check_cic.py --function C3 > "$RUNNER_TEMP/cic-c3.json"
