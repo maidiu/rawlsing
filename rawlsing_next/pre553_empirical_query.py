@@ -595,6 +595,8 @@ class I03GroupedExecutionScope:
             "constituent_cache_misses":{k:sum(m.misses[k] for m in self._constituent_memos.values())
                                         for k in ("routing","target")},
             "constituent_cache_refusals":sum(m.refusals for m in self._constituent_memos.values()),
+            "constituent_operation_local_authority_reads":sum(m.operation_authority_local_reads for m in self._constituent_memos.values()),
+            "constituent_operation_fallback_authority_reads":sum(m.operation_authority_fallback_reads for m in self._constituent_memos.values()),
             "condition_cache_bytes_estimate":self._condition_bytes,
             "condition_cache_hits":sum(m.hits for m in self._condition_memos.values()),
             "condition_cache_misses":sum(m.misses for m in self._condition_memos.values()),

@@ -32,6 +32,26 @@ class _UsedObjectAccumulator(list[CanonicalSemanticObject | C11InternalRecord | 
         for obj in objects:
             self.append(obj)
 
+    def extend_packed_constituents(self,kind,identities):
+        # Only a previously proved canonical 32-byte ID can use this
+        # path. Explicit/noncanonical refs retain the validating constructor.
+        for packed in identities:
+            if type(packed) is bytes and len(packed)==32:
+                identity=_constituent_identity_unpack(kind,packed)
+                key="|".join(identity)
+                if key not in self._seen_keys:
+                    self._seen_keys.add(key)
+                    super().append(_ConstituentEvidenceRef(identity))
+            else:
+                self.append(_ConstituentEvidenceRef(_constituent_identity_unpack(kind,packed)))
+
+    def canonical_objects(self):
+        # Re-read actual references at the final proof boundary; do NOT
+        # treat the earlier dedup keys as an attestation of unchanged data.
+        # Preserve the incumbent last-wins final dictionary and key ordering.
+        by_key={obj.ref.key:obj for obj in self}
+        return tuple(by_key[key] for key in sorted(by_key))
+
 
 class _UsedAuthorityAccumulator(list[AuthorityRef]):
     """Append-compatible exact-authority deduplication for evaluation closure."""
@@ -567,6 +587,61 @@ def _constituent_extent(value):
                                  if type(value) is tuple else 0)
 
 
+class _ConstituentOperationAuthorityReads:
+    """Query-local exact reference material, never a cached authority verdict.
+
+    The incumbent exact registry lookup is repeated on every use. For
+    locally packaged snapshots the lookup can be performed at its own
+    actual grain, without recreating AuthorityRef and AuthorityResolution
+    objects for every respondent. Unusual registries and missing keys use
+    the original resolver, including its runtime fallback semantics.
+    """
+    def __init__(self,registry):
+        self.registry=registry
+        self.registry_map=registry._by_key
+        self.sets={}
+        self.bytes=0
+        self.local_reads=0
+        self.fallback_reads=0
+
+    def read(self,authorities,kind,registry):
+        if (registry is not self.registry or type(registry) is not AuthorityRegistry
+                or set(vars(registry))!={"_by_key"}
+                or registry._by_key is not self.registry_map
+                or type(self.registry_map) is not MappingProxyType):
+            return None
+        material=self.sets.get(authorities)
+        if material is None:
+            refs=tuple(AuthorityRef(*a) for a in authorities)
+            material=tuple((ref.key,ref) for ref in refs)
+            # Pure reference material, retained only within this I03 core.
+            # Never cache a snapshot, state, or permission decision.
+            size=256+sum(256+len(key)+sum(len(v) for v in a)
+                         for (key,_),a in zip(material,authorities))
+            if len(self.sets)<1024 and self.bytes+size<=1024*1024:
+                self.sets[authorities]=material
+                self.bytes+=size
+        routing_authority=False
+        refs=[]
+        for key,ref in material:
+            snapshot=registry._by_key.get(key)
+            if snapshot is None:
+                snapshot=registry.resolve_exact(ref).snapshot
+                self.fallback_reads+=1
+            else:
+                self.local_reads+=1
+            # Always inspect the actual currently returned state/kind.
+            if snapshot.typed_state!="ALLOW":
+                raise Pre553AuthorityError("constituent authority is no longer positive")
+            routing_authority |= snapshot.authority_kind=="ROUTING_RISK_SET"
+            refs.append(ref)
+        if kind=="routing" and not routing_authority:
+            raise Pre553AuthorityError("constituent lacks routing authority")
+        if registry._by_key is not self.registry_map:
+            raise Pre553AuthorityError("constituent authority registry changed during local lookup")
+        return tuple(refs)
+
+
 class _CountryConstituentMemo:
     """Bounded lazy exact constituent reuse, owned by one live country scope.
 
@@ -591,12 +666,14 @@ class _CountryConstituentMemo:
         self.hits={"routing":0,"target":0}
         self.misses={"routing":0,"target":0}
         self.refusals=0
+        self.operation_authority_local_reads=0
+        self.operation_authority_fallback_reads=0
 
     def compatible(self,index,registry):
         return (index is self.index and len(registry._by_key)==len(self.registry_map)
                 and all(registry._by_key.get(k) is v for k,v in self.registry_map.items()))
 
-    def evaluate(self,kind,key,respondent,registry,used,used_auth,compute):
+    def evaluate(self,kind,key,respondent,registry,used,used_auth,compute,*,operation_reads=None):
         # Plan identities are compiled once per core, not per respondent.
         # Exact respondent keys are part of every retained observation.
         respondent_key=respondent.ref.key
@@ -605,21 +682,30 @@ class _CountryConstituentMemo:
         entry=None if plane is None else plane.get(respondent_key)
         if entry is not None:
             value,identities,authorities=entry
-            refs=tuple(AuthorityRef(*a) for a in authorities)
-            # No retained ALLOW verdict: independently resolve every
-            # authority used by the original constituent.
-            routing_authority=False
-            for ref in refs:
-                snapshot=registry.resolve_exact(ref).snapshot
-                if snapshot.typed_state!="ALLOW":
-                    raise Pre553AuthorityError("constituent authority is no longer positive")
-                routing_authority |= snapshot.authority_kind=="ROUTING_RISK_SET"
-            if kind=="routing" and not routing_authority:
-                raise Pre553AuthorityError("constituent lacks routing authority")
-            # A group core may retain the provenance views, but never
-            # shares a mutable wrapper with the underlying memo entry.
-            used.extend(_ConstituentEvidenceRef(_constituent_identity_unpack(kind,i))
-                        for i in identities)
+            refs=None
+            if operation_reads is not None:
+                before=(operation_reads.local_reads,operation_reads.fallback_reads)
+                refs=operation_reads.read(authorities,kind,registry)
+                self.operation_authority_local_reads+=operation_reads.local_reads-before[0]
+                self.operation_authority_fallback_reads+=operation_reads.fallback_reads-before[1]
+            if refs is None:
+                refs=tuple(AuthorityRef(*a) for a in authorities)
+                # Unusual or changed registry: incumbent full resolution.
+                routing_authority=False
+                for ref in refs:
+                    snapshot=registry.resolve_exact(ref).snapshot
+                    if snapshot.typed_state!="ALLOW":
+                        raise Pre553AuthorityError("constituent authority is no longer positive")
+                    routing_authority |= snapshot.authority_kind=="ROUTING_RISK_SET"
+                if kind=="routing" and not routing_authority:
+                    raise Pre553AuthorityError("constituent lacks routing authority")
+            # Preserve detached provenance views. No mutable wrapper is
+            # shared with the constituent memo, nor across I03 operations.
+            if type(used) is _UsedObjectAccumulator:
+                used.extend_packed_constituents(kind,identities)
+            else:
+                used.extend(_ConstituentEvidenceRef(_constituent_identity_unpack(kind,i))
+                            for i in identities)
             used_auth.extend(refs)
             self.hits[kind]+=1
             return value
@@ -735,6 +821,7 @@ def _evaluate_index_group_core(
                                   else _compile_derived_branch_memberships(predicate.predicate_ast))
 
     component_keys=_target_plan_identity(plan)[2] if constituent_memo is not None else ()
+    operation_reads=(_ConstituentOperationAuthorityReads(registry) if constituent_memo is not None else None)
     route_keys=tuple((c.target_ref.key,risk_set_ref.key) for c in plan.components)
     used.extend([index.universe, index.release.replay_manifest])
     used_auth.extend(_validate_public_object_authorities(index.universe, registry))
@@ -747,7 +834,8 @@ def _evaluate_index_group_core(
             else:
                 state=constituent_memo.evaluate("routing",route_keys[i],respondent,registry,used,used_auth,
                     lambda o,a:str(_routing_fact_for(respondent,index,target_ref=component.target_ref,
-                        risk_set_ref=risk_set_ref,registry=registry,used=o,used_auth=a).routing_state))
+                        risk_set_ref=risk_set_ref,registry=registry,used=o,used_auth=a).routing_state),
+                    operation_reads=operation_reads)
             per_target_states.append(state)
             if state in ELIGIBLE_ROUTING_STATES:
                 component_positive[i] = True
@@ -781,7 +869,8 @@ def _evaluate_index_group_core(
             resolved=True
             for i,component in enumerate(plan.components):
                 resolved,value=constituent_memo.evaluate("target",component_keys[i],respondent,registry,
-                    used,used_auth,lambda o,a:_target_component_value(respondent,index,component,registry,o,a))
+                    used,used_auth,lambda o,a:_target_component_value(respondent,index,component,registry,o,a),
+                    operation_reads=operation_reads)
                 if not resolved:break
                 values.append(value)
             cell=canonicalize(values[0] if plan.arity==1 else values) if resolved else None
@@ -845,7 +934,7 @@ def _evaluate_index_group_core(
         raw_cells=MappingProxyType(dict(sorted(raw_cells.items()))),
         cell_material=MappingProxyType(dict(sorted(cell_material.items()))),
         cell_by_respondent=MappingProxyType(dict(sorted(cell_by_respondent.items()))),
-        used_objects=tuple(sorted({obj.ref.key: obj for obj in used}.values(), key=lambda obj: obj.ref.key)),
+        used_objects=used.canonical_objects(),
         used_authority_refs=_canonical_authorities(used_auth),
         unresolved_condition_member_refs=_canonical_refs(unresolved_condition_members),
         fingerprint="",
@@ -924,7 +1013,7 @@ def _materialize_grouped_evaluation(
         cell_material=core.cell_material,
         weighted_denominator=weighted_denominator,
         weighted_cells=MappingProxyType(dict(sorted(weighted_cells.items()))),
-        used_objects=tuple(sorted({obj.ref.key: obj for obj in used}.values(), key=lambda obj: obj.ref.key)),
+        used_objects=used.canonical_objects(),
         used_authority_refs=_canonical_authorities(used_auth),
         unresolved_condition_member_refs=core.unresolved_condition_member_refs,
     )
@@ -1136,7 +1225,7 @@ def _evaluate_index_group(
         weighted_denominator=weighted_denominator,
         weighted_cells=(MappingProxyType(dict(sorted(weighted_cells.items())))
                         if weighted_cells is not None else None),
-        used_objects=tuple(sorted({obj.ref.key: obj for obj in used}.values(), key=lambda obj: obj.ref.key)),
+        used_objects=used.canonical_objects(),
         used_authority_refs=_canonical_authorities(used_auth),
         unresolved_condition_member_refs=_canonical_refs(unresolved_condition_members),
     )
