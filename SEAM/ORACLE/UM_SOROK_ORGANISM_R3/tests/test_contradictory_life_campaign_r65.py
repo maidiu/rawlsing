@@ -218,7 +218,7 @@ class ContradictoryLife(unittest.TestCase):
             g=rt.ledger.actor('giver')[1]
             project=next(x for x in g['projects'] if x['id']=='feed_child')
             self.assertEqual(len(project['interactivity_relations']),1)
-            self.assertTrue(any(x.get('interactivity_relations') for x in practical(
+            self.assertTrue(any(x.get('interactivity_currents') for x in practical(
                 rt.situated('giver'),'CARE')+practical(rt.situated('giver'),'CONTRIBUTE_FOOD_COMMONS')))
             phase['stage']='renew'
             self.assertEqual(rt.step('giver')['status'],'PERFORMED')
@@ -238,3 +238,60 @@ class ContradictoryLife(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:self.arm(Path(d)/'forge.sqlite','forge')
     def test_absent_actor_not_given_power_reception(self):
         with tempfile.TemporaryDirectory() as d:self.arm(Path(d)/'absent.sqlite','absent')
+
+    def test_materially_reproduced_power_can_depend_on_received_feeding(self):
+        def arm(db,feed):
+            phase={'stage':'setup','threshold':0.}
+            def cb(task,p):
+                if task=='expression':return {'task':task,'surface':'Ordinary life.'}
+                if task=='development':return {'task':task,'candidates':[]}
+                if task=='actor_attempt':
+                    if p.get('requesting_actor') is not None:return {'task':task,'action':'REFUSE'}
+                    a=p['actor']['id'];s=phase['stage']
+                    if a=='giver' and s=='support' and feed:
+                        return selection(task,options(p,'FEED','support')[0])
+                    if a=='controller' and s=='power' and p['actor']['body']['nutrition']>=phase['threshold']:
+                        return selection(task,options(p,'SANCTION_PANTRY_ACCESS','enforce')[0])
+                    if a=='third' and s=='child':
+                        return selection(task,options(p,'FEED','child')[0])
+                    return {'task':task,'action':'WAIT'}
+                raise AssertionError(task)
+            svc=ValidatingSemanticService(CallbackLLMProvider(cb))
+            rt=ConstitutiveRuntime(str(db),semantic=svc)
+            try:
+                g=adult('giver','Giver');g['projects']=[proj('support',['FEED'],'controller')]
+                c=adult('controller','Controller');c['body']['nutrition']=.4;c['body']['rest']=1.
+                c['projects']=[proj('enforce',['SANCTION_PANTRY_ACCESS'],'third')]
+                t=adult('third','Third');t['projects']=[proj('child',['FEED'],'nadia')]
+                n=newborn('nadia','Nadia');n['body']['nutrition']=.4
+                w=blank_world();w['accounts']['controller']=9.
+                w['holdings']={'controller':{'food':2.},'giver':{'food':1.}}
+                rt.ledger.initialize(w,[g,c,t,n])
+                src=rt.register_sourcefree_pantry_concession({
+                    'grade':'EXPLICIT_SOURCEFREE_INSTITUTIONAL_SCENARIO','site':'home',
+                    'possible_controller':'controller','eligible_petitioners':['controller','giver'],
+                    'quorum':2,'source_ref':'r65:material-reproduction'})
+                rt.step('controller',requested_action='INSPECT',object_ref=src['notice_ref'])
+                self.assertEqual(rt.step('controller',requested_action='INSTALL_PANTRY_GATE')['status'],'PERFORMED')
+                board=rt.ledger.world()[1]['institutions']['household_food_board']
+                for a in ('controller','giver'):
+                    rt.step(a,requested_action='INSPECT',object_ref=board['public_notice_ref'])
+                self.assertEqual(rt.step('controller',requested_action='MAINTAIN_PANTRY_GATE')['status'],'PERFORMED')
+                for a in ('giver','controller'):
+                    self.assertEqual(rt.step(a,requested_action='SIGN_FOOD_PETITION')['status'],'PERFORMED')
+                phase['threshold']=rt.ledger.actor('controller')[1]['body']['nutrition']+.05
+                phase['stage']='support'
+                self.assertEqual(rt.step('giver')['status'],'PERFORMED')
+                phase['stage']='power'
+                self.assertEqual(rt.step('controller')['attempt'],'SANCTION_PANTRY_ACCESS' if feed else 'WAIT')
+                phase['stage']='child'
+                self.assertEqual(rt.step('third')['status'],'BLOCKED' if feed else 'PERFORMED')
+                world=rt.ledger.world()[1]
+                self.assertEqual(world['institutions']['household_food_board']['food_rights'],'SHARED_BY_COLLECTIVE_ACTS')
+                self.assertEqual(world['accounts']['controller'],5. if feed else 7.)
+                self.assertTrue(rt.verify()['valid'])
+                return rt.ledger.actor('nadia')[1]['body']['nutrition'],world['sites']['home']['food']
+            finally:rt.close()
+        with tempfile.TemporaryDirectory() as d:
+            a=arm(Path(d)/'support.sqlite',True);b=arm(Path(d)/'no-support.sqlite',False)
+            self.assertLess(a[0],b[0]);self.assertEqual(a[1],b[1]+1)
