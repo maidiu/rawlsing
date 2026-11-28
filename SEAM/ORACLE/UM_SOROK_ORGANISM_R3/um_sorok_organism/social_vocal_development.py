@@ -77,6 +77,7 @@ def conserve_reciprocated_vocal_turn(actor,experience,event_ref):
         "id":ident,"actor":actor["id"],"event_ref":event_ref,
         "experience_ref":experience["ref"],
         "clock":experience["clock"],"age_days":age,
+        **({"ordinary_location":experience["location"]} if early is not None else {}),
         "independently_responding_other_ref":other,
         "personally_received_response_sign_ref":cue["id"],
         **({"prior_public_object_speech_ref":earliest["id"],
@@ -203,3 +204,54 @@ def admit_vocal_coordination(actor,experience,event_ref,proposal):
             "status":"ACTUALLY_ACQUIRED_BOUNDED_SOCIAL_VOCAL_CAPACITY",
             "language_eligible_after_event":eligible(b,"SPEAK")[0],
             "grade":GRADE}
+
+
+def ordinary_expressive_opportunity(constitution,access):
+    """Actually acquired vocal coordination is now recruited into expression.
+
+    The prior responder must be present, but need not participate again.
+    The operation is bodily/public SPEAK, not a lexical realization or a
+    proposition. A model remains free to select another act or no act.
+    """
+    if (constitution.actor!=access.actor or constitution.role!='child'
+            or not eligible(constitution.body,'SPEAK')[0]):
+        return None
+    present={c.get('source_actor') for c in access.cues
+             if c.get('kind')=='coactor_present'}
+    turns={v['id']:v for v in constitution.vocal_turn_experiences
+           if v.get('actor')==constitution.actor and type(v.get('id')) is str}
+    own={'id':constitution.actor,'role':constitution.role,
+         'practice_exposures':constitution.practice_exposures,
+         'power_exercises':constitution.power_exercises,
+         'evidence_paths':constitution.evidence_paths}
+    early=preproject_vocal_basis(own,access.location,access.world_clock)
+    if early is None:return None
+    for acquired in reversed(constitution.vocal_coordination_practices):
+        if (acquired.get('actor')!=constitution.actor
+                or acquired.get('source_route')!='ORDINARY_ACTOR_ADDRESSED_RESPONSIVE_LIFE'):
+            continue
+        a=turns.get(acquired.get('origin_earlier_turn_ref'))
+        b=turns.get(acquired.get('origin_later_turn_ref'))
+        if (a is None or b is None or a.get('event_ref')==b.get('event_ref')
+                or acquired.get('origin_event')!=b.get('event_ref')
+                or a.get('ordinary_location')!=access.location
+                or b.get('ordinary_location')!=access.location
+                or acquired.get('earlier_source_other_ref')!=a.get('independently_responding_other_ref')
+                or acquired.get('source_other_ref')!=b.get('independently_responding_other_ref')
+                or acquired.get('ordinary_basis_refs')!=[a.get('ordinary_preproject_vocal_basis_ref'),
+                                                          b.get('ordinary_preproject_vocal_basis_ref')]
+                or not present.intersection({acquired.get('source_other_ref'),
+                                             acquired.get('earlier_source_other_ref')})
+                or type(b.get('clock')) is not int or b['clock']>=access.world_clock
+                or type(a.get('age_days')) is not int or type(b.get('age_days')) is not int
+                or b['age_days']-a['age_days']<MIN_AGE_GAP_DAYS):
+            continue
+        return {'action':'SPEAK','score':.03,
+                'basis':[a['experience_ref'],b['experience_ref']],
+                'source_event_refs':[a['event_ref'],b['event_ref']],
+                'source_aggregate_refs':list(dict.fromkeys(acquired['ordinary_basis_refs'])),
+                'historical_support_statuses':['ACQUIRED_ORDINARY_SOCIAL_VOCAL_COORDINATION_NOT_WORDS'],
+                'opportunity':'HISTORICALLY_MEDIATED_PUBLIC_VOCAL_EXPRESSION',
+                'vocal_coordination_practice_ref':acquired['id'],
+                'grade':GRADE}
+    return None

@@ -13,6 +13,7 @@ scientifically measured theory of skill acquisition.
 from .types import copy, stable_id, GRADE
 from .organism import eligible
 from .mediated_efficacy import preproject_exercise_basis
+from .social_vocal_development import ordinary_expressive_opportunity
 
 # The physical vocabulary is inherited.  Substitution is allowed only for
 # operations whose plausible component practice is already expressed by the
@@ -232,6 +233,9 @@ def situated_exercised_repertoire(constitution, access):
                 'source_aggregate_refs':[q['id']],
                 'historical_support_statuses':['RUDIMENTARY_VOCAL_EXPLORATION_NOT_LEARNED_SONG'],
                 'opportunity':'PREPROJECT_BODILY_VOCAL_EXPLORATION','grade':GRADE})
+    expression=ordinary_expressive_opportunity(constitution,access)
+    if expression is not None and not any(r['action']=='SPEAK' for r in out):
+        out.append(expression)
     return {'offered':out,'retained_but_unqualified_refs':sorted(set(
                     x for x in held_back if type(x) is str)),
             'readset':sorted(set(r for row in out
