@@ -542,8 +542,8 @@ class CountryNumeric(unittest.TestCase):
                 # The direct packed lane must preserve exact references, order
                 # and duplicate multiplicity; exceptional IDs use old path.
                 from rawlsing_next.pre553_c11_integrity import C11IntegrityError
-                lane=ingest._country_packed_replay_section(full_headers,full_headers)
-                self.assertEqual(lane,_PackedClosureRefs.pack(h.ref for h in full_headers))
+                replay_lane=ingest._country_packed_replay_section(full_headers,full_headers)
+                self.assertEqual(replay_lane,_PackedClosureRefs.pack(h.ref for h in full_headers))
                 duplicate=(full_headers[0],full_headers[0])
                 self.assertEqual(tuple(ingest._country_packed_replay_section(duplicate,duplicate)),
                                  (duplicate[0].ref,duplicate[0].ref))
