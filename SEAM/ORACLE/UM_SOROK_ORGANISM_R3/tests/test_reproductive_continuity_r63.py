@@ -25,6 +25,8 @@ class ReproductiveContinuity(unittest.TestCase):
                         p.get('historically_possible_plural_care',[]))}
                 return {'task':task,'candidates':[]}
             if task=='actor_attempt':
+                if p.get('requesting_actor') is not None:
+                    return {'task':task,'action':'REFUSE'}
                 if phase['stage']=='care' and aid in ('mother','father'):
                     opts=[o for o in p['practical_options'] if o['operation']=='CARE'
                           and o.get('world_request',{}).get('addressed_party_ref')=='nadia']
@@ -92,7 +94,7 @@ class ReproductiveContinuity(unittest.TestCase):
             self.assertEqual(choice.target,expected)
             result=rt.step('nadia')
             self.assertEqual(result['attempt'],'SIGNAL')
-            self.assertEqual(result['status'],'PARTIAL') # independently selected WAIT, not assumed care
+            self.assertEqual(result['status'],'PARTIAL') # independently selected REFUSE, not assumed care
             current=rt.ledger.actor('nadia')[1]
             self.assertEqual({x['caregiver_ref'] for x in current['co_regulation_orientations']},
                              {'mother','father'})
