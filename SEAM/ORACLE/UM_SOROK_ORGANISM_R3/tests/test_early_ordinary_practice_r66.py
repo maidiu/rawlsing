@@ -355,7 +355,7 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                              self.expressive_arm(Path(d)/'abstain.db',False))
 
 
-    def productive_ordinary_arm(self,db,admit_end,forge=False):
+    def productive_ordinary_arm(self,db,admit_end,forge=False,practice=None):
         """From ordinary infancy through plural response to self-generated end.
         Same acquired capacity in both arms; a later trial is not a project.
         No joint SING, no actual deficit/relief required, no injected child act.
@@ -399,6 +399,11 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                     self.assertEqual(len(a),1)
                     self.assertTrue(a[0]['not_current_external_sign_or_present_other_required'])
                     return {'task':task,'possible_end_trial_id':a[0]['trial_id']}
+                if phase['name']=='recovery':
+                    return {'task':task,'action':'REST'}
+                if phase['name']=='after_period':
+                    a=[o for o in p['practical_options'] if o['operation']=='SING' and o.get('project_id')]
+                    return {'task':task,'practical_option_id':a[0]['option_id']} if a else {'task':task,'action':'REST'}
                 if phase['name']=='project':
                     a=[o for o in p['practical_options'] if o['operation']=='SING' and o.get('project_id')]
                     if not admit_end:
@@ -473,7 +478,60 @@ class EarlyOrdinaryPractice(unittest.TestCase):
             phase['name']='project'
             self.assertEqual(rt.step('nadia')['attempt'],'SING' if admit_end else 'WAIT')
             self.assertTrue(rt.verify()['valid'])
-            return self.child(rt)
+            if practice is None:return self.child(rt)
+            child=self.child(rt)
+            project=child['projects'][0]
+            exercises=[x for x in child['power_exercises'] if x['operation']=='SING']
+            clock=rt.ledger.world()[1]['clock']
+            spec={'kind':'QUALIFIED_ROUTINE_PRACTICE','actor':'nadia','location':'home',
+                  'start_clock':clock,'end_clock':clock+365,'max_hours_per_active_day':3,
+                  'description':'sourcefree stress court: ordinary recurrent vocal project activity',
+                  'operation':'SING','practice_project_ref':project['id'],
+                  'project_exercise_ref':exercises[-1]['id']}
+            before=rt.verify()['events']
+            with self.assertRaisesRegex(ValueError,'PROJECT_SOURCE_NO_ACTUAL_SELECTED_EXERCISE'):
+                rt.register_historical_routine_source(dict(spec,project_exercise_ref=exercises[0]['id']))
+            self.assertEqual(rt.verify()['events'],before)
+            source=rt.register_historical_routine_source(spec)
+            proc={'kind':spec['kind'],'actor':'nadia','location':'home','source_ref':source['source_ref'],
+                  'hours_per_active_day':3,'provisional_exposure_fraction':1.,
+                  'operation':'SING','mode':'SOLO_COMPONENT_PRACTICE',
+                  'practice_project_ref':project['id'],'project_exercise_ref':exercises[-1]['id']}
+            before=rt.verify()['events']
+            with self.assertRaisesRegex(ValueError,'PROJECT_ROUTINE_SOURCE_SCOPE_MISMATCH'):
+                rt.background(1,[dict(proc,practice_project_ref='forged')])
+            with self.assertRaisesRegex(ValueError,'PROJECT_ROUTINE_DUPLICATE_COMPONENT_WINDOW'):
+                rt.background(1,[proc,proc])
+            self.assertEqual(rt.verify()['events'],before)
+            period=rt.background(365,[proc] if practice else [])['period']
+            after=self.child(rt)
+            self.assertEqual(after['age_days'],child['age_days']+365)
+            self.assertEqual(after['projects'],child['projects'])
+            self.assertEqual(after['power_exercises'],child['power_exercises'])
+            self.assertEqual(after['memories'],child['memories'])
+            self.assertEqual(len(period['qualified_aggregate_practice_refs']),int(practice))
+            if practice:
+                load=period['project_practice_loads'][0]
+                self.assertEqual(load['modeled_hours'],1095)
+                self.assertEqual(load['practice_project_ref'],project['id'])
+                self.assertEqual(after['practice_exposures'][-1]['anchor_actual_event_ref'],
+                                 exercises[-1]['event_ref'])
+            self.assertEqual(eligible(after['body'],'SING')[0],not practice)
+            self.assertTrue(rt.verify()['valid'])
+        finally:rt.close()
+        rt=runtime()
+        try:
+            self.assertEqual(self.child(rt),after)
+            phase['name']='after_period'
+            first=rt.step('nadia')
+            self.assertEqual(first['attempt'],'REST' if practice else 'SING')
+            self.assertEqual(first['status'],'PERFORMED')
+            self.assertEqual(self.child(rt)['projects'][0]['id'],project['id'])
+            if practice:
+                self.assertTrue(eligible(self.child(rt)['body'],'SING')[0])
+                self.assertEqual(rt.step('nadia')['attempt'],'SING')
+            self.assertTrue(rt.verify()['valid'])
+            return after
         finally:rt.close()
 
     def test_ordinary_acquired_power_can_become_own_end_and_later_project(self):
@@ -485,3 +543,13 @@ class EarlyOrdinaryPractice(unittest.TestCase):
             self.assertEqual(len(yes['projects']),1)
             self.assertEqual(no['projects'],[])
             self.productive_ordinary_arm(path/'forged.db',True,True)
+
+
+    def test_acquired_project_ordinary_activity_changes_body_without_erasing_wanting(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)
+            active=self.productive_ordinary_arm(p/'active.db',True,practice=True)
+            absent=self.productive_ordinary_arm(p/'absent.db',True,practice=False)
+            self.assertEqual(active['age_days'],absent['age_days'])
+            self.assertEqual(active['projects'],absent['projects'])
+            self.assertLess(active['body']['rest'],absent['body']['rest'])
