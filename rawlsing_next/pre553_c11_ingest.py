@@ -718,6 +718,8 @@ class _CountryEventCollector:
         self.finished=None
         self.restored=False
         self.deferred_occurrences=False
+        self.restored_routing_proof=None
+        self.validated_routing_proof=None
 
     def add(self,event,*,source_coordinates):
         if self.finished is not None or type(event) is not RespondentEvent:
@@ -792,7 +794,7 @@ def _validate_packed_routing_authorities(routes,registry):
     registry_pin=registry._by_key
     templates=set();template_bytes=0
     dynamic=set();dynamic_bytes=0
-    materialized=0;rows=0
+    materialized=0;rows=0;local_only=True
     expected=tuple(sorted(RoutingEligibilityFact.REQUIRED_FIELDS))
     for i in range(len(routes)):
         ordinal=routes._ordinal(i)
@@ -800,6 +802,7 @@ def _validate_packed_routing_authorities(routes,registry):
         keys,columns,digests=run
         rows+=1
         if keys!=expected:
+            local_only=False # conservative: unusual shapes never receive historical reuse
             _validate_routing_body(routes[i],registry);materialized+=1
             continue
         names=(*_PackedRoutingFacts._top,*keys)
@@ -813,6 +816,7 @@ def _validate_packed_routing_authorities(routes,registry):
         if template not in templates:
             obj=routes[i];materialized+=1
             refs=_validate_routing_body(obj,registry)
+            local_only=local_only and all(ref.key in registry_pin for ref in refs)
             # Constructor normalization must agree with the actual exact
             # byte lanes. No malformed/noncanonical raw value is generalized.
             if canonical_json(obj.semantic_projection()).encode("utf-8")!=projection:
@@ -844,7 +848,45 @@ def _validate_packed_routing_authorities(routes,registry):
     if registry._by_key is not registry_pin:
         raise C11IntegrityError("routing authority registry changed during validation")
     return {"rows":rows,"materialized":materialized,"shared_templates":len(templates),
-            "dynamic_values_retained":len(dynamic),"bounded_cache_bytes":template_bytes+dynamic_bytes}
+            "dynamic_values_retained":len(dynamic),"bounded_cache_bytes":template_bytes+dynamic_bytes,
+            "local_only":local_only}
+
+
+def _routing_validation_binding(routes,registry):
+    """Commit the actual detached field/digest/order lanes and local authority set.
+
+    This is a physical commitment, not a second semantic representation.
+    Exact typed length framing avoids ambiguity and costs no row expansion.
+    The producer and fresh consumer independently calculate it; a digest
+    supplied by the artifact itself is never sufficient.
+    """
+    from rawlsing_next.pre553_source_backed_c11_facade import _SortedPackedRoutingFacts,_PackedRoutingFacts
+    if (type(routes) is not _SortedPackedRoutingFacts or type(routes.source) is not _PackedRoutingFacts
+            or type(registry) is not AuthorityRegistry
+            or routes.source._storage is not routes.storage
+            or type(routes.order) is not bytes or routes.order is not routes._order_pin):
+        raise C11IntegrityError("routing proof requires exact sealed storage and local registry")
+    registry_pin=registry._by_key
+    storage=routes.storage
+    order=routes.order
+    h=hashlib.sha256(b"PYAT_LOCAL_ROUTING_VALIDATION@1\x00")
+    def feed(value):
+        if type(value) is tuple:
+            h.update(b"T"+len(value).to_bytes(8,"big"))
+            for item in value:feed(item)
+            return
+        if type(value) is bytes:tag=b"B";raw=value
+        elif type(value) is str:tag=b"S";raw=value.encode("utf-8")
+        elif type(value) is int:tag=b"I";raw=str(value).encode("ascii")
+        else:raise C11IntegrityError("unsupported routing proof storage leaf")
+        h.update(tag+len(raw).to_bytes(8,"big"));h.update(raw)
+    feed(storage);feed(order)
+    feed(authority_snapshot_set_hash(registry_pin.values()))
+    if (routes.source._storage is not storage or routes.storage is not storage
+            or routes.order is not order or routes._order_pin is not order
+            or registry._by_key is not registry_pin):
+        raise C11IntegrityError("routing proof input changed")
+    return h.hexdigest()
 
 
 def _validate_authorities(candidate: C11SourceReleaseCandidate, *, country_collector=None) -> AuthorityRegistry:
@@ -869,7 +911,16 @@ def _validate_authorities(candidate: C11SourceReleaseCandidate, *, country_colle
             for ref in _walk_authority_refs(obj.semantic_fields):
                 registry.resolve_exact(ref)
         if packed:
-            _validate_packed_routing_authorities(routes,registry)
+            prior=country_collector.restored_routing_proof
+            if prior is not None:
+                if _routing_validation_binding(routes,registry)!=prior:
+                    raise C11IntegrityError("restored routing validation binding differs from producer pin")
+            else:
+                result=_validate_packed_routing_authorities(routes,registry)
+                if result.get("local_only") is True:
+                    country_collector.validated_routing_proof=_routing_validation_binding(routes,registry)
+        elif country_collector is not None and country_collector.restored_routing_proof is not None:
+            raise C11IntegrityError("restored routing proof requires packed routing")
         for record in _iter_internal_records(candidate):
             for ref in _walk_authority_refs(record.semantic_projection()):
                 registry.resolve_exact(ref)
@@ -1089,7 +1140,8 @@ def validate_c11_source_release(candidate: C11SourceReleaseCandidate) -> C11Logi
 
 
 def _validate_country_produced_release(*,produce,authority_snapshots,compact_builder,
-                                       _restored_headers=None,_restored_occurrence_proof=False):
+                                       _restored_headers=None,_restored_occurrence_proof=False,
+                                       _country_preparation=None):
     """Same I02 seal from one private physical producer transaction.
 
     Neither an externally supplied event summary nor a caller's claimed
@@ -1106,13 +1158,18 @@ def _validate_country_produced_release(*,produce,authority_snapshots,compact_bui
         collector.builder=None
         collector.restored=True
         collector.deferred_occurrences=_restored_occurrence_proof is True
+        if _country_preparation is not None:
+            collector.restored_routing_proof=_country_preparation._loaded_routing_proof
     elif _restored_occurrence_proof:
         raise C11IntegrityError("deferred occurrence proof requires private restored headers")
     candidate=produce(collector)
     if collector.finished is None or candidate.respondent_events is not collector.finished:
         raise C11IntegrityError("country producer did not return its exact event census")
-    return _validate_c11_source_release(candidate,country_collector=collector,
+    release=_validate_c11_source_release(candidate,country_collector=collector,
                                         compact_builder=compact_builder)
+    if _country_preparation is not None:
+        _country_preparation._validated_routing_proof=collector.validated_routing_proof
+    return release
 
 
 def _validate_c11_source_release(candidate,*,country_collector=None,compact_builder=None):

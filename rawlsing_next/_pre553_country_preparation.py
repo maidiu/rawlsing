@@ -74,9 +74,12 @@ class CountryPreparationPin:
     facade_key: str
     release_identity: str
     owner_abi: str
+    # Independently retained producer receipt, not data read from the gzip.
+    # None preserves the full routing validation path.
+    routing_proof: str | None = None
 
     def __post_init__(self):
-        for value in (self.artifact_sha256,self.owner_abi):
+        for value in (self.artifact_sha256,self.owner_abi,*(() if self.routing_proof is None else (self.routing_proof,))):
             if type(value) is not str or len(value)!=64 or any(c not in "0123456789abcdef" for c in value):
                 raise _error("invalid exact pin digest")
         if type(self.artifact_bytes) is not int or not 0<self.artifact_bytes<=MAX_COMPRESSED:
@@ -264,6 +267,8 @@ class _CountryPreparation:
         self.omit_groups=omit_groups
         self.omit_occurrences=omit_occurrences
         self._deferred_occurrences=False
+        self._loaded_routing_proof=None
+        self._validated_routing_proof=None
         self.path=Path(path).absolute()
         if pin is not None and type(pin) is not CountryPreparationPin:
             raise _error("exact external producer pin required")
@@ -271,6 +276,8 @@ class _CountryPreparation:
         self._pin_material=None if pin is None else canonical_json(asdict(pin))
 
     def load(self,key):
+        self._loaded_routing_proof=None
+        self._validated_routing_proof=None
         if self.pin is None:
             if self.path.exists() or self.path.is_symlink():
                 raise _error("existing artifact without independently held pin")
@@ -283,6 +290,7 @@ class _CountryPreparation:
             # permitted to restore a historical occurrence-distinct proof.
             headers=_decode_headers(_read_pinned(self.path,self.pin),_key(key),allow_deferred=True)
             self._deferred_occurrences=all(h.occurrence_identity is None for h in headers)
+            self._loaded_routing_proof=self.pin.routing_proof
             return headers
         except (OSError,ValueError,TypeError,IndexError,EOFError) as exc:
             raise _error("pinned preparation refused: "+str(exc)) from exc
@@ -316,7 +324,8 @@ class _CountryPreparation:
             with stage.open("rb") as file:
                 for chunk in iter(lambda:file.read(1024**2),b""):
                     digest.update(chunk)
-            pin=CountryPreparationPin(digest.hexdigest(),size,_key(key),_release(release),_abi())
+            pin=CountryPreparationPin(digest.hexdigest(),size,_key(key),_release(release),_abi(),
+                                      self._validated_routing_proof)
             # No replacement or silently trusted preexisting artifact.
             os.link(stage,self.path)
             self.pin=pin

@@ -10,7 +10,7 @@ from pathlib import Path
 from statistics import median
 from unittest.mock import patch
 
-BASE="6d1f5e83b67784a55a089479c81cffa1adda6ff2"
+BASE="58ecf9c53a4659bc15bb050640182d14e336be19"
 
 def worker(root,mode,report):
     from tools.pyat_country_preparation_court import read,write,geometry,target_domains
@@ -195,6 +195,9 @@ def worker(root,mode,report):
             scope=getattr(session,"_query_scope",None)
             if scope is not None:group_receipt=dict(scope.receipt())
             pin=session.preparation_pin
+        if hasattr(pin,"routing_proof"):
+            assert pin.routing_proof is not None,"actual local routing proof not issued"
+            assert counts["routing_authority_validation"]==(1 if mode=="save" else 0),counts
         assert counts["I02"]==1 and counts["I03"]>=(60 if novel else 161) and counts["I05"]==(0 if novel else 1),counts
         if novel and "reuse_query_constituents" in kwargs:
             assert group_receipt["core_hits"]==0,group_receipt
@@ -215,7 +218,9 @@ def worker(root,mode,report):
     if mode=="save":write(report.parent/"pin.json",asdict(pin))
     write(report,{"mode":mode,"issuance_s":issuance,"all_issuance_s":issue_all,
         "country_bytes":db.stat().st_size,"routing_payload_bytes":workload.projection.routing.payload_bytes,
-        "preparation_bytes":prepared.stat().st_size,"counts":counts,"inclusive_s":phases,
+        "preparation_bytes":prepared.stat().st_size,"pin_bytes":(report.parent/"pin.json").stat().st_size,
+        "local_routing_proof":getattr(pin,"routing_proof",None) is not None,
+        "counts":counts,"inclusive_s":phases,
         "investigations":times,"group_receipt":group_receipt,
         "capture_receipts":capture_receipts,"evidence":evidence})
     print("LIFETIME_WORKER",json.dumps({k:v for k,v in read(report).items() if k!="evidence"}),flush=True)

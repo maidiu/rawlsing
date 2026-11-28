@@ -611,6 +611,33 @@ class CountryNumeric(unittest.TestCase):
                         _country_preparation=deferred_owner)
                     self.assertEqual(deferred_saved.release_ref,direct.release_ref)
                 deferred_pin=deferred_owner.pin
+                self.assertIsNotNone(deferred_pin.routing_proof)
+                # A matching independently retained proof may replace the
+                # prior local-only routing semantic validation, not fresh
+                # authority registry or release identity checks.
+                with CountryReader(path,rec,require_current=lambda:None) as reopening:
+                    with patch.object(ingest,"_validate_packed_routing_authorities",
+                            side_effect=AssertionError("qualified local routing revalidated")):
+                        _,proof_release=facade._build_source_backed_c11_repository(
+                            reopening._native_stream(subset),subset,current_authorities=fx["authorities"],
+                            _country_preparation=prep._CountryPreparation(deferred_path,deferred_pin))
+                    self.assertEqual(proof_release.release_ref,direct.release_ref)
+                with CountryReader(path,rec,require_current=lambda:None) as reopening:
+                    # No proof: actual validator must run again.
+                    with patch.object(ingest,"_validate_packed_routing_authorities",
+                            wraps=ingest._validate_packed_routing_authorities) as check:
+                        _,fallback_release=facade._build_source_backed_c11_repository(
+                            reopening._native_stream(subset),subset,current_authorities=fx["authorities"],
+                            _country_preparation=prep._CountryPreparation(deferred_path,
+                                replace(deferred_pin,routing_proof=None)))
+                    self.assertEqual(check.call_count,1)
+                    self.assertEqual(fallback_release.release_ref,direct.release_ref)
+                with CountryReader(path,rec,require_current=lambda:None) as reopening:
+                    with self.assertRaisesRegex(C11IntegrityError,"routing validation binding"):
+                        facade._build_source_backed_c11_repository(
+                            reopening._native_stream(subset),subset,current_authorities=fx["authorities"],
+                            _country_preparation=prep._CountryPreparation(deferred_path,
+                                replace(deferred_pin,routing_proof="0"*64)))
                 with self.assertRaisesRegex(CountryCarrierError,"authenticated producer pin"):
                     prep._decode_headers(deferred_path.read_bytes(),deferred_pin.facade_key)
                 deferred_headers=prep._decode_headers(deferred_path.read_bytes(),deferred_pin.facade_key,allow_deferred=True)
