@@ -219,7 +219,17 @@ def ordinary_vocal_project_site(actor,p,location,clock):
             and type(x.get('clock')) is int and x['clock']<clock
             and any(z.get('cue_ref')==r.get('probe_sign_ref') and z.get('source_actor')==actor['id']
                     and z.get('kind')=='performed_sing' for z in x.get('personally_perceived_sign_sources',[]))]
-        if (len(source_path)==len(old)==len(ep)==1
+        probe_paths=[q for q in actor.get('evidence_paths',[])
+                     if q.get('event')==r.get('probe_event_ref')
+                     and q.get('experience_ref')==r.get('probe_experience_ref')
+                     and q.get('own_action')=='SING'
+                     and q.get('selected_project_refs')==[]
+                     and q.get('purpose_status')=='ACTOR_POLICY_NO_ATTESTED_PROJECT_PURPOSE'
+                     and q.get('practical_option_ref')==r.get('probe_option_ref')
+                     and not q.get('provisional_end_trial_ref_analytic_only')
+                     and r.get('probe_sign_ref') in q.get('received_cue_refs',[])]
+        if (len(source_path)==len(old)==len(ep)==len(probe_paths)==1
+                and ep[0].get('selected_practical_option_ref')==r.get('probe_option_ref')
                 and old[0]['clock']<source_path[0]['received_local_vocal_context']['clock']<ep[0]['clock']
                 and ordinary_vocal_basis_still_qualified(actor,basis,basis['location'],clock)):
             return True

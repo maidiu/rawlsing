@@ -391,15 +391,19 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                         for c in new:c['expected_difference']={'feature':'further own vocal exercise',
                             'direction':'MORE','sign_tags':['sing']}
                     candidates=candidates+new
-                if affect is not None and phase['name'] in ('home_affect','local_affect','local_opposition'):
+                if affect is not None and phase['name'] in ('home_affect','local_affect','local_opposition','higher_affect'):
+                    higher=phase['name']=='higher_affect'
                     choices=[b for b in p.get('historically_possible_activity_affects',[])
                              if b.get('formation_source')=='OWN_ORDINARY_PROJECT_EXERCISE'
-                             and b.get('object_affect_ref') is None]
-                    self.assertEqual(len(choices),1)
-                    orientation='WITHHOLD' if phase['name']=='local_affect' else 'APPROACH'
+                             and (b.get('object_affect_ref') is not None)==higher]
+                    # No higher-order object exists in the abstention arm.
+                    self.assertEqual(len(choices),0 if higher and not affect else 1)
+                    orientation=('NO_DIRECT_TENDENCY' if higher else
+                                 'WITHHOLD' if phase['name']=='local_affect' else 'APPROACH')
                     if affect=='forge':choices[0]['origin_exercise_sign_ref']='invented'
-                    if affect:candidates=candidates+[{'kind':'ACQUIRE_ACTIVITY_AFFECT','basis':choices[0],
-                         'affect_name':'reticence' if orientation=='WITHHOLD' else 'absorbed interest',
+                    if affect and choices:candidates=candidates+[{'kind':'ACQUIRE_ACTIVITY_AFFECT','basis':choices[0],
+                         'affect_name':('conflicted attachment to earlier interest' if higher else
+                                        'reticence' if orientation=='WITHHOLD' else 'absorbed interest'),
                          'personal_sense':'a provisional significance of the actually exercised concern',
                          'course_orientation':orientation}]
                 if phase['name']=='transfer_probe' and transfer is not None:
@@ -442,14 +446,24 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                     self.assertTrue(a)
                     self.assertTrue(all(not o.get('project_id') for o in a))
                     return {'task':task,'practical_option_id':a[0]['option_id']}
-                if phase['name'] in ('home_affect','local_affect','local_opposition','affect_choice','home_choice','local_alone'):
+                if phase['name'] in ('home_affect','local_affect','local_opposition','affect_choice','home_choice','local_alone','higher_affect','higher_choice'):
                     a=[o for o in p['practical_options'] if o['operation']=='SING' and o.get('project_id')]
                     self.assertEqual(len(a),1)
                     rows=a[0].get('course_affective_organizations',[])
                     if phase['name']=='affect_choice':
                         self.assertEqual({x['course_orientation'] for x in rows},
                                          {'APPROACH','WITHHOLD'} if affect else set())
-                        return {'task':task,'action':'WAIT'} if affect else {'task':task,'practical_option_id':a[0]['option_id']}
+                        return {'task':task,'action':'WAIT'} if any(
+                            x['course_orientation']=='WITHHOLD' for x in rows) else {'task':task,'practical_option_id':a[0]['option_id']}
+                    if phase['name']=='higher_affect':
+                        self.assertEqual({x['course_orientation'] for x in rows},
+                                         {'APPROACH','WITHHOLD'} if affect else set())
+                    if phase['name']=='higher_choice':
+                        self.assertEqual({x['course_orientation'] for x in rows},
+                            {'APPROACH','WITHHOLD','NO_DIRECT_TENDENCY'} if affect else set())
+                        if rows:
+                            self.assertEqual(len([x for x in rows if x['depth']==2]),1)
+                            self.assertEqual(a[0]['affective_course_status'],'OPPOSED_AFFECTIVE_ORIENTATIONS')
                     if phase['name']=='home_choice':
                         self.assertEqual({x['course_orientation'] for x in rows},{'APPROACH'} if affect else set())
                         self.assertTrue(all(x['basis']['location']=='home' for x in rows))
@@ -608,6 +622,11 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                     self.assertEqual(rt.step('nadia')['attempt'],'WAIT' if affect else 'SING')
                     self.assertEqual(rt.step('father',requested_action='MOVE',object_ref='home')['objective_outcome'],'MOVED')
                     phase['name']='local_alone';self.assertEqual(rt.step('nadia')['attempt'],'SING')
+                    self.assertEqual(rt.step('father',requested_action='MOVE',object_ref='workshop')['objective_outcome'],'MOVED')
+                    phase['name']='recovery';rt.step('nadia')
+                    phase['name']='higher_affect';self.assertEqual(rt.step('nadia')['attempt'],'SING')
+                    rt.close();rt=runtime()
+                    phase['name']='higher_choice';self.assertEqual(rt.step('nadia')['attempt'],'SING')
                 phase['name']='recovery';rt.step('nadia')
                 self.assertEqual(rt.step('nadia',requested_action='MOVE',object_ref='home')['objective_outcome'],'MOVED')
                 phase['name']='home_choice' if affect is not None else 'project'
@@ -721,9 +740,12 @@ class EarlyOrdinaryPractice(unittest.TestCase):
             yes=self.productive_ordinary_arm(p/'opposed.db',True,transfer=True,affect=True)
             no=self.productive_ordinary_arm(p/'abstain.db',True,transfer=True,affect=False)
             aff=[a for e in yes['expectations'] for a in e.get('affective_organizations',[])]
-            self.assertEqual(len(aff),3)
+            self.assertEqual(len(aff),4)
             self.assertEqual({a['basis']['location'] for a in aff},{'home','workshop'})
-            self.assertEqual(len({a['origin_event_ref'] for a in aff}),3)
+            self.assertEqual(len({a['origin_event_ref'] for a in aff}),4)
+            higher=next(a for a in aff if a['depth']==2)
+            self.assertEqual(higher['basis']['object_affect_ref'],
+                             next(a['id'] for a in aff if a['basis']['location']=='home'))
             self.assertFalse(any(e.get('affective_organizations') for e in no['expectations']))
             self.assertEqual(yes['projects'][0]['object'],no['projects'][0]['object'])
             self.productive_ordinary_arm(p/'forge_affect.db',True,transfer=True,affect='forge')
