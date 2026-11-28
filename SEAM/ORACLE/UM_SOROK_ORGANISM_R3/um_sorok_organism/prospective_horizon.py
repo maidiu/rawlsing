@@ -49,7 +49,7 @@ def project_trial_horizons(constitution, access, candidate_actions,
         if end.get('status') != 'POSSIBLE_NOT_ACQUIRED_MOTIVE':
             continue
         private_ground=private_end_ground(constitution.memories,end,constitution.actor,
-                                           access.location,constitution.clock)
+                                           access.location,constitution.clock,history=constitution)
         if not (end.get('origin_event') and end.get('experience_ref')
                 and (end.get('actor_perceived_cue_ref') or private_ground)):
             continue
@@ -292,7 +292,7 @@ def record_possible_end_trial(actor, experience, event_ref, proposal):
     end = matches[0]
     if end.get('genesis_family')=='ACTUAL_PRIVATE_REHEARSAL':
         ground=private_end_ground(actor.get('memories',[]),end,actor['id'],
-                                   experience.get('location'),experience.get('clock',-1))
+                                   experience.get('location'),experience.get('clock',-1),history=actor)
         if (not ground or trial.get('private_rehearsal_ref')!=ground['id']
                 or (experience.get('own_practical_selection') or {}).get('possible_end_trial')!=trial):
             raise ValueError('PRIVATE_END_TRIAL_UNQUALIFIED_REHEARSAL')

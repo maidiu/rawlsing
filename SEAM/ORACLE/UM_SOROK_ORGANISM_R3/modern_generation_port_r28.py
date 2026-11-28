@@ -432,6 +432,8 @@ class ConditionalPolicy:
                               and e.get("private_location")==experience.get("location")
                               and type(e.get("origin_clock")) is int and e["origin_clock"]<experience.get("clock",-1)
                               and set(v["means"])<=set(e.get("possible_means",[]))
+                              and (e.get("private_ordinary_affect_memory") is None
+                                   or v["means"]==[experience.get("own_action")])
                               and any(t.get("actor_experienced_status")=="PERFORMED"
                                   and t.get("private_rehearsal_ref")==e.get("private_rehearsal_ref")
                                   and t.get("operation")==experience.get("own_action")

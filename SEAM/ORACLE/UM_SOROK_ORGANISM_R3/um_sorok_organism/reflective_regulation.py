@@ -142,15 +142,75 @@ def qualified_ordinary_affect_memory(actor,experience,event_ref,basis):
 
 def _qualified_ordinary_memory_link(m,a,path,episode):
     b=m.get('ordinary_affect_memory')
-    return (type(b) is dict and a.get('id')==b.get('affect_ref')
+    if type(b) is not dict:return False
+    basis=a.get('basis',{})
+    return (a.get('actor')==episode.get('actor')
+            and basis.get('formation_source')=='OWN_ORDINARY_PROJECT_EXERCISE'
+            and a.get('id')==b.get('affect_ref')==stable_id('activity_affect',{'actor':a.get('actor'),'basis':basis})
             and a.get('expectation_ref')==b.get('expectation_ref')
             and a.get('project_ref')==b.get('project_ref')
             and a.get('origin_event_ref')==b.get('event_ref')==path.get('event')==episode.get('event_ref')
-            and b.get('experience_ref')==m.get('experience')==path.get('experience_ref')
-            and b.get('location')==episode.get('location')==a.get('basis',{}).get('location')
-            and b.get('received_sign_ref')==a.get('basis',{}).get('current_cue_ref')
+            and m.get('origin')==[b.get('event_ref')]
+            and b.get('experience_ref')==m.get('experience')==path.get('experience_ref')==episode.get('experience_ref')
+            and b.get('location')==episode.get('location')==basis.get('location')
+            and basis.get('current_event_ref')==b.get('event_ref')
+            and basis.get('current_experience_ref')==b.get('experience_ref')
+            and path.get('own_action')=='SING'
+            and path.get('selected_project_refs')==[b.get('project_ref')]
+            and b.get('received_sign_ref')==basis.get('current_cue_ref')
             and b.get('received_sign_ref') in path.get('received_cue_refs',[])
             and b.get('received_sign_ref') in episode.get('received_sign_refs',[]))
+
+
+def _history_rows(history,name):
+    return history.get(name,[]) if isinstance(history,dict) else getattr(history,name,[])
+
+
+def _unique_origins(rows,key,wanted):
+    # Exact origin lookup in the existing owner history. An ambiguous event
+    # does not become a witness through dictionary last-write-wins.
+    found={}
+    for row in rows:
+        ref=row.get(key)
+        if ref in wanted:
+            found[ref]=None if ref in found else row
+    return found
+
+
+def _affects_at_origins(history,aid,wanted):
+    found={}
+    for exp in _history_rows(history,'expectations'):
+        if exp.get('actor')!=aid:continue
+        for a in exp.get('affective_organizations',[]):
+            ref=a.get('origin_event_ref')
+            if (ref in wanted and a.get('actor')==aid
+                    and a.get('expectation_ref')==exp.get('id')):
+                found.setdefault(ref,[]).append(a)
+    return found
+
+
+def _ordinary_memory_origin_qualified(history,aid,m,clock):
+    source=m.get('ordinary_affect_memory')
+    if not isinstance(source,dict) or type(source.get('event_ref')) is not str:return False
+    ref=source['event_ref'];wanted={ref}
+    path=_unique_origins(_history_rows(history,'evidence_paths'),'event',wanted).get(ref)
+    episode=_unique_origins(_history_rows(history,'lived_genesis_episodes'),'event_ref',wanted).get(ref)
+    if (not path or not episode or episode.get('actor')!=aid
+            or type(episode.get('clock')) is not int or episode['clock']>clock):return False
+    matches=[a for a in _affects_at_origins(history,aid,wanted).get(ref,[])
+             if _qualified_ordinary_memory_link(m,a,path,episode)]
+    return len(matches)==1
+
+
+def private_trial_path_matches(history,trial):
+    """Verify the exact issued trial, not just a successful action label."""
+    ref=trial.get('event_ref')
+    if type(ref) is not str or type(trial.get('original_situated_trial_ref')) is not str:return False
+    p=_unique_origins(_history_rows(history,'evidence_paths'),'event',{ref}).get(ref)
+    return bool(p and p.get('experience_ref')==trial.get('experience_ref')
+                and p.get('own_action')==trial.get('operation')
+                and p.get('provisional_end_trial_ref_analytic_only')==trial['original_situated_trial_ref']
+                and p.get('selected_project_refs')==[])
 
 
 def offer_private_rehearsals(actor,clock,location,available_operations,*,body=None):
@@ -165,13 +225,17 @@ def offer_private_rehearsals(actor,clock,location,available_operations,*,body=No
     means=[m for m in _PRIVATE_MEANS if m in available_operations]
     if not means:return []
     aid=actor['id'];out=[]
-    paths={x.get('event'):x for x in actor.get('evidence_paths',[])[-256:]}
-    episodes={x.get('event_ref'):x for x in actor.get('lived_genesis_episodes',[])[-256:]
-              if x.get('actor')==aid}
-    affects=[a for e in actor.get('expectations',[])[-128:]
-             if e.get('actor')==aid for a in e.get('affective_organizations',[])[-16:]
-             if a.get('actor')==aid and a.get('expectation_ref')==e.get('id')]
-    for m in reversed(actor.get('memories',[])[-32:]):
+    # Limit what is offered, not the age of evidence. A memory that remains
+    # explicitly accessible is not silently forgotten because unrelated
+    # events displaced its origin from an arbitrary tail window.
+    memories=[m for m in actor.get('memories',[]) if m.get('status')=='ACTOR_ACCESSIBLE'
+              and isinstance(m.get('origin'),list) and len(m['origin'])==1
+              and type(m['origin'][0]) is str]
+    origins={m['origin'][0] for m in memories}
+    paths=_unique_origins(actor.get('evidence_paths',[]),'event',origins)
+    episodes=_unique_origins(actor.get('lived_genesis_episodes',[]),'event_ref',origins)
+    affects=_affects_at_origins(actor,aid,origins)
+    for m in reversed(memories):
         origins=m.get('origin',[])
         if (m.get('status')!='ACTOR_ACCESSIBLE' or len(origins)!=1
                 or type(m.get('content')) is not str or not m['content'].strip()
@@ -179,18 +243,21 @@ def offer_private_rehearsals(actor,clock,location,available_operations,*,body=No
         path=paths.get(origins[0]);episode=episodes.get(origins[0])
         if (not path or not episode or path.get('experience_ref')!=m.get('experience')
                 or episode.get('experience_ref')!=m.get('experience')
-                or episode.get('clock',clock)>clock
+                or episode.get('actor')!=aid
+                or type(episode.get('clock')) is not int or episode['clock']>clock
                 or episode.get('location')!=location):continue
         cues=sorted(set(path.get('received_cue_refs',[]))&set(episode.get('received_sign_refs',[])))
         if not cues:continue
-        linked=[a for a in affects if a.get('origin_event_ref')==origins[0]
-                and (a.get('basis',{}).get('formation_source')!='OWN_ORDINARY_PROJECT_EXERCISE'
-                     or _qualified_ordinary_memory_link(m,a,path,episode))]
-        # A specially formed memory does not become an affect-directed
-        # source on loss of its exact ancestry; a generic memory never
-        # borrows a coincident ordinary affect's identity.
-        if m.get('ordinary_affect_memory') and not any(
-                _qualified_ordinary_memory_link(m,a,path,episode) for a in linked):continue
+        if m.get('ordinary_affect_memory'):
+            linked=[a for a in affects.get(origins[0],[])
+                    if _qualified_ordinary_memory_link(m,a,path,episode)]
+            # A specially formed memory can refer only to its exact affect,
+            # never to another formation sharing the same actual event.
+            if len(linked)!=1:continue
+        else:
+            # Generic memory never borrows a coincident ordinary affect.
+            linked=[a for a in affects.get(origins[0],[])
+                    if a.get('basis',{}).get('formation_source')!='OWN_ORDINARY_PROJECT_EXERCISE']
         # Keep the memory-only course distinct from affect-directed rehearsal.
         for aff in [*linked,None]:
             ar=aff['id'] if aff else None
@@ -311,7 +378,7 @@ def admit_private_possible_end(actor,experience,event_ref,proposal):
     return {'kind':'NOTICE_PRIVATE_POSSIBLE_END','possible_end':ident,'grade':GRADE}
 
 
-def private_end_ground(memories,end,aid,location,clock):
+def private_end_ground(memories,end,aid,location,clock,*,history=None):
     if end.get('genesis_family')!='ACTUAL_PRIVATE_REHEARSAL':return None
     rows=[r for m in memories if m.get('id')==end.get('private_memory_ref')
           for r in m.get('private_rehearsals',[])
@@ -323,7 +390,10 @@ def private_end_ground(memories,end,aid,location,clock):
           and r.get('affect_ref')==end.get('private_affect_ref')
           and r.get('ordinary_affect_memory')==end.get('private_ordinary_affect_memory')
           and (r.get('ordinary_affect_memory') is None
-               or r['ordinary_affect_memory']==m.get('ordinary_affect_memory'))]
+               or (r['ordinary_affect_memory']==m.get('ordinary_affect_memory')
+                   and r.get('affect_ref')==r['ordinary_affect_memory'].get('affect_ref')
+                   and history is not None
+                   and _ordinary_memory_origin_qualified(history,aid,m,clock)))]
     return rows[0] if len(rows)==1 else None
 
 
@@ -337,7 +407,9 @@ def ordinary_private_project_site(constitution,project,access):
     if source is None:return True
     if (source.get('location')!=access.location
             or constitution.actor!=access.actor
-            or project.get('means')!=['REST']):return False
+            or type(project.get('means')) is not list
+            or len(project['means'])!=1 or project['means'][0] not in _PRIVATE_MEANS):return False
+    operation=project['means'][0]
     ends=[e for e in constitution.possible_ends
           if e.get('id')==project.get('possible_end_ref')
           and e.get('status')=='TAKEN_UP_AS_PRACTICAL_PROJECT'
@@ -349,28 +421,22 @@ def ordinary_private_project_site(constitution,project,access):
     if len(ends)!=1:return False
     end=ends[0]
     ground=private_end_ground(constitution.memories,end,constitution.actor,
-                              access.location,access.world_clock)
+                              access.location,access.world_clock,history=constitution)
     if not ground:return False
     trials=[t for t in end.get('trial_history',[])
             if t.get('id')==takeup.get('prior_trial_ref')
             and t.get('private_rehearsal_ref')==ground['id']
             and t.get('actor_experienced_status')=='PERFORMED'
-            and t.get('operation')=='REST']
+            and t.get('operation')==operation
+            and private_trial_path_matches(constitution,t)]
     if len(trials)!=1:return False
     t=trials[0]
     paths=constitution.evidence_paths
-    a=[p for p in paths if p.get('event')==t.get('event_ref')
-       and p.get('own_action')=='REST'
-       and p.get('provisional_end_trial_ref_analytic_only') is not None]
-    b=[p for p in paths if p.get('event')==takeup.get('later_event_ref')
-       and p.get('own_action')=='REST'
-       and p.get('selected_project_refs')==[]
-       and p.get('provisional_end_trial_ref_analytic_only') is None]
-    affects=[v for e in constitution.expectations
-             if e.get('actor')==constitution.actor and e.get('id')==source.get('expectation_ref')
-             for v in e.get('affective_organizations',[])
-             if v.get('actor')==constitution.actor and v.get('id')==source.get('affect_ref')
-             and v.get('origin_event_ref')==source.get('event_ref')
-             and v.get('project_ref')==source.get('project_ref')
-             and v.get('basis',{}).get('current_cue_ref')==source.get('received_sign_ref')]
-    return len(a)==len(b)==len(affects)==1
+    a=[i for i,p in enumerate(paths) if p.get('event')==t.get('event_ref')]
+    b=[i for i,p in enumerate(paths) if p.get('event')==takeup.get('later_event_ref')]
+    if len(a)!=1 or len(b)!=1 or a[0]>=b[0]:return False
+    later=paths[b[0]]
+    return (later.get('experience_ref')==project.get('takeup_evidence',{}).get('later_experience_ref')
+            and later.get('own_action')==operation
+            and later.get('selected_project_refs')==[]
+            and later.get('provisional_end_trial_ref_analytic_only') is None)
