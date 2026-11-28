@@ -831,6 +831,7 @@ class ActorCounterofferEpochCourt(unittest.TestCase):
     """
     def test_counteroffer_requires_actual_user_assent_and_actual_later_meeting(self):
         from neighbor_runtime import EncounterRefusal
+        from um_sorok_organism.material_conjunction import admit_authored_structural_history
         class History:
             def __init__(self):self.requests=[];self.target=None
             def call(self,r):
@@ -839,10 +840,17 @@ class ActorCounterofferEpochCourt(unittest.TestCase):
                 horizon=3 if self.target is None else self.target-clock
                 self.target=None
                 n=len(self.requests)
-                return {"retrospective":retro(r),"prospective":[
-                    event(ctx,str(n)+":1",clock+1,"worker",{"worker":policy([action("WAIT")])}),
-                    event(ctx,str(n)+":2",clock+2,"worker",{"worker":policy([action("WAIT")])}),
-                    event(ctx,str(n)+":3",clock+horizon,"worker",{"worker":policy([action("WAIT")])},span=horizon-3)]}
+                moments=[(clock+1,"WAIT"),(clock+2,"WAIT")]
+                end=clock+horizon
+                if clock+2<17<=end:moments.append((17,"WORK"))
+                if moments[-1][0]<end:moments.append((end,"WAIT"))
+                prev=clock;rows=[]
+                for j,(at,op) in enumerate(moments):
+                    rule={"action":"WORK","project_id":"work"} if op=="WORK" else action("WAIT")
+                    rows.append(event(ctx,str(n)+":"+str(j),at,"worker",
+                        {"worker":policy([rule])},span=at-prev-1))
+                    prev=at
+                return {"retrospective":retro(r),"prospective":rows}
         class LiveCounter:
             def __init__(self):self.requests=[];self.phase="COUNTER_MEETING"
             def call(self,r):
@@ -854,8 +862,18 @@ class ActorCounterofferEpochCourt(unittest.TestCase):
         for accept in (True,False):
             with self.subTest(accept=accept),tempfile.TemporaryDirectory() as d:
                 root=Path(d);db=root/"life.sqlite"
-                rt=ConstitutiveRuntime(str(db))
-                rt.ledger.initialize(blank_world(),[adult("worker","Worker","workshop")])
+                rt=ConstitutiveRuntime(str(db));w=blank_world()
+                w["ambient"]["work_shifts"]={"worker":[{"start":16,"end":17,"source_ref":"fictional:counter-shift"}]}
+                w["ambient"]["work_shift_coverage_complete"]=True
+                worker=adult("worker","Worker","workshop")
+                worker["projects"]=[{"id":"work","object":"earn wage","means":["WORK"],"priority":.8,"status":"active"}]
+                spec={"grade":"EXPLICIT_SOURCEFREE_STRUCTURAL_HISTORY","source_ref":"fictional:counter-shift",
+                    "positions":[],"rules":[{"id":"counter_shift","operation":"WORK",
+                    "location":"workshop","source_ref":"fictional:counter-shift-gate",
+                    "effective_from":0,"effective_until":None,"all_of":[{"kind":"SHIFT_OCCUPIED"}]}]}
+                admit_authored_structural_history(w,{"worker"},spec)
+                rt.ledger.initialize(w,[worker],source_seals=[("authored_structural_history",
+                    "FICTIONAL_WORLD_CONDITIONING",spec)])
                 hist=History();live=LiveCounter()
                 def open_life():return ContinuingLife(rt,root/"operator","worker",
                     historical_provider=hist,live_provider=live,sourcefree_attested=True,mii_module=mii)
@@ -907,6 +925,11 @@ class ActorCounterofferEpochCourt(unittest.TestCase):
                     s.contribute("visitor","leave","LEAVE")
                     hist.target=17 if accept else 21
                     s.resume_history();s.finish_history()
+                    # Actual alternative life at the abandoned original
+                    # meeting time, not a counterfactual wage or reason.
+                    self.assertEqual(rt.ledger.world()[1]["accounts"].get("worker",0),.25)
+                    work=[x for x in rt.ledger.world()[1]["public_history"] if x.get("action")=="WORK"]
+                    self.assertEqual([(x["clock"],x["status"]) for x in work],[(17,"PERFORMED")])
                     self.assertEqual(rt.ledger.events()[:len(prefix)],prefix)
                 finally:s.close();rt.close()
                 rt=ConstitutiveRuntime(str(db));s=open_life()
