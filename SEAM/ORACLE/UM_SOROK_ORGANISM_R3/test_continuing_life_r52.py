@@ -821,3 +821,109 @@ class GenealogicalSubsistenceCourt(unittest.TestCase):
                 self.assertFalse(s.status()["held"])
                 print("R008_GENEALOGICAL_SUBSISTENCE",rt.snapshot("nadia")["age_days"],len(hist.requests),len(live.requests))
             finally:s.close();rt.close()
+
+
+class ActorCounterofferEpochCourt(unittest.TestCase):
+    """A visitor proposes, an independent Other counters, a visitor chooses.
+
+    Neither the actor's proposed time nor an actual user acceptance is
+    permission to fabricate attendance, notice, thought, or lost wages.
+    """
+    def test_counteroffer_requires_actual_user_assent_and_actual_later_meeting(self):
+        from neighbor_runtime import EncounterRefusal
+        class History:
+            def __init__(self):self.requests=[];self.target=None
+            def call(self,r):
+                self.requests.append(r);ctx=r["context"];clock=ctx["clock"]
+                if r["mode"]=="TERMINAL":return {"retrospective":retro(r),"prospective":None}
+                horizon=3 if self.target is None else self.target-clock
+                self.target=None
+                n=len(self.requests)
+                return {"retrospective":retro(r),"prospective":[
+                    event(ctx,str(n)+":1",clock+1,"worker",{"worker":policy([action("WAIT")])}),
+                    event(ctx,str(n)+":2",clock+2,"worker",{"worker":policy([action("WAIT")])}),
+                    event(ctx,str(n)+":3",clock+horizon,"worker",{"worker":policy([action("WAIT")])},span=horizon-3)]}
+        class LiveCounter:
+            def __init__(self):self.requests=[];self.phase="COUNTER_MEETING"
+            def call(self,r):
+                self.requests.append(r)
+                match={"grounds_status":"ACTUAL_ADDRESSED_MEETING_SIGN",
+                       "world_request":{"addressed_party_ref":"visitor"}}
+                if self.phase=="COUNTER_MEETING":match["counter_due_clock"]=21
+                return {"policies":{r["principal"]:policy([action(self.phase,match),action("WAIT")])}}
+        for accept in (True,False):
+            with self.subTest(accept=accept),tempfile.TemporaryDirectory() as d:
+                root=Path(d);db=root/"life.sqlite"
+                rt=ConstitutiveRuntime(str(db))
+                rt.ledger.initialize(blank_world(),[adult("worker","Worker","workshop")])
+                hist=History();live=LiveCounter()
+                def open_life():return ContinuingLife(rt,root/"operator","worker",
+                    historical_provider=hist,live_provider=live,sourcefree_attested=True,mii_module=mii)
+                def clock():return rt.ledger.world()[1]["clock"]
+                def rows(s):return {x["id"]:x for x in s.own_meetings("visitor")}
+                s=open_life()
+                try:
+                    s.historical_checkpoint();s.finish_history()
+                    s.configure_encounter("visitor",{"grade":"SOURCEFREE_TEST_ONLY",
+                        "user_conditions":{"workshop":{"light":"lit","sightline":"unobstructed",
+                            "hearing":True,"sound_path":"audible","legibility":"readable"}},
+                        "actor_conditions":{"worker":{"facing":"entrance","visual":True,
+                            "light":"lit","sightline":"unobstructed","hearing":True,
+                            "sound_path":"audible"}}},request_id="geometry")
+                    s.contribute("visitor","enter","MOVE",destination="workshop")
+                    first=s.contribute("visitor","proposal","PROPOSE_MEETING",target_actor_ref="worker",due_clock=18)
+                    old=first["meeting_ref"]
+                    self.assertEqual(rows(s)[old]["status"],"PROPOSED")
+                    before=rt.snapshot("worker")["body"]["rest"]
+                    s.present_until("visitor",first["event_ref"],clock()+1)
+                    self.assertEqual(clock(),7)
+                    self.assertEqual(rows(s)[old]["status"],"COUNTERED_BY_ACTOR")
+                    new=rows(s)[old]["counter_meeting_ref"]
+                    self.assertNotEqual(old,new)
+                    self.assertEqual(rows(s)[old]["due_clock"],18)
+                    self.assertEqual(rows(s)[new]["due_clock"],21)
+                    self.assertEqual(rows(s)[new]["counteroffer_from_meeting_ref"],old)
+                    self.assertEqual(rows(s)[new]["status"],"ACTOR_COUNTEROFFER_PENDING")
+                    self.assertLess(rt.snapshot("worker")["body"]["rest"],before)
+                    prefix=deepcopy(rt.ledger.events())
+                finally:s.close();rt.close()
+                rt=ConstitutiveRuntime(str(db));s=open_life()
+                try:
+                    before=deepcopy(rt.ledger.world())
+                    with self.assertRaisesRegex(ValueError,"MEETING_COUNTER_ACCEPTANCE_NOT_QUALIFIED"):
+                        s.contribute("visitor","wrong","ACCEPT_COUNTER_MEETING",target_commitment_ref=old)
+                    self.assertEqual(rt.ledger.world(),before)
+                    self.assertEqual(s.own_meetings("outsider"),[])
+                    self.assertFalse(s.status()["held"])
+                    if accept:
+                        old_actor=deepcopy(rt.ledger.actors())
+                        consent=s.contribute("visitor","accept","ACCEPT_COUNTER_MEETING",target_commitment_ref=new)
+                        self.assertEqual(consent["potential_actor_evidence"],[])
+                        self.assertEqual(rt.ledger.actors(),old_actor)
+                        self.assertEqual(rows(s)[new]["status"],"ACCEPTED")
+                        self.assertEqual(rows(s)[new]["acceptance_source_user_event_ref"],consent["event_ref"])
+                        self.assertTrue(s.contribute("visitor","accept","ACCEPT_COUNTER_MEETING",
+                                                     target_commitment_ref=new)["idempotent_replay"])
+                    s.contribute("visitor","leave","LEAVE")
+                    hist.target=17 if accept else 21
+                    s.resume_history();s.finish_history()
+                    self.assertEqual(rt.ledger.events()[:len(prefix)],prefix)
+                finally:s.close();rt.close()
+                rt=ConstitutiveRuntime(str(db));s=open_life()
+                try:
+                    if accept:
+                        s.contribute("visitor","return","MOVE",destination="workshop")
+                        check=s.contribute("visitor","checkin","CHECK_IN_MEETING",target_commitment_ref=new)
+                        live.phase="MEET_VISITOR"
+                        s.present_until("visitor",check["event_ref"],clock()+1)
+                        self.assertEqual(rows(s)[new]["status"],"MEETING_PERFORMED")
+                        self.assertEqual(len(live.requests),2)
+                    else:
+                        self.assertEqual(rows(s)[new]["status"],"ELAPSED_WITHOUT_USER_ACCEPTANCE")
+                        self.assertEqual(len(live.requests),1)
+                    self.assertEqual(rows(s)[old]["status"],"COUNTERED_BY_ACTOR")
+                    self.assertEqual(rows(s)[old]["due_clock"],18)
+                    self.assertFalse(s.status()["held"])
+                    self.assertTrue(rt.verify()["valid"])
+                    print("R008_ACTOR_COUNTEROFFER",accept,clock(),len(hist.requests),len(live.requests))
+                finally:s.close();rt.close()
