@@ -11,7 +11,8 @@ from .material_objects import (
     produce_artifact, repair_artifact, material_objects_present)
 from .mediated_efficacy import objective_arrangement
 from .expectation_afterlife import realized_vocal_cadence, CADENCES
-from .material_provisioning import perform_one_actual_feeding, visitor_held_food_available
+from .material_provisioning import (perform_one_actual_feeding, visitor_held_food_available,
+                                   settle_selected_self_meal)
 from .food_access_struggle import (
     contribute_food_petition,can_draw_shared_food)
 from .food_power_reproduction import (
@@ -494,6 +495,7 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     policy_receipt=None
     care_labor_receipt=None
     material_feeding_ref=None
+    selected_self_meal_receipt=None
     future_care_obligation_ref=None
     actual_meeting_ref=None
     inspected_public_notice=None
@@ -525,6 +527,9 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                 output='MOVED'
             else:status='BLOCKED';output='INSTITUTIONAL_ACCESS_DENIED'
         else:status='BLOCKED';output='UNKNOWN_DESTINATION'
+    elif attempt.action=='EAT' and attempt.practical_selection.get('selected_self_meal_source') is not None:
+        status,output,selected_self_meal_receipt=settle_selected_self_meal(
+            world,aid,loc,attempt.practical_selection['selected_self_meal_source'],attempt.intention)
     elif attempt.action=='EAT':
         site=_site(world,aid)
         inventory=world.get('holdings',{}).get(aid,{'food':0})
@@ -1019,7 +1024,12 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     # must not publish the actor's private financial/material explanation.
     # A blocked act is observable as an unfinished attempt, not an accounting diagnosis.
     perceptible_outcome=(output if status=='PERFORMED' else 'ATTEMPT_NOT_COMPLETED')
-    public_event={**event_summary,'outcome':perceptible_outcome}
+    if selected_self_meal_receipt is not None:
+        # The objective debit is not another person's view of the meal.
+        event_summary['selected_self_meal_receipt']=selected_self_meal_receipt
+        perceptible_outcome='ATE_FOOD'
+    public_event={k:v for k,v in event_summary.items() if k!='selected_self_meal_receipt'}
+    public_event['outcome']=perceptible_outcome
     world['public_history'].append(public_event)
     # New cues are actual public world consequences, not actor introspection.
     # World effects persist even when no participant currently perceives them.

@@ -41,7 +41,7 @@ from .expectation_afterlife import (source_qualified_appraisal_candidates,
                                     possible_expressive_practices)
 from .routine_sources import register_sourcefree_period_envelope
 from .caregiving_practice import retain_performed_material_feeding
-from .material_provisioning import offer_feeding_source_alternatives
+from .material_provisioning import offer_feeding_source_alternatives, offer_self_meal_source_alternatives
 from .food_access_struggle import configure_food_power
 from .food_power_reproduction import register_concession
 from .institutional_procedure_learning import (
@@ -403,6 +403,9 @@ class ConstitutiveRuntime:
                         source_options=[v for v in source_options
                             if v['world_request']['addressed_party_ref']==requesting_actor]
                     o.setdefault('practical_alternatives',[]).extend(source_options)
+                elif o.get('action')=='EAT' and requesting_actor is None:
+                    o.setdefault('practical_alternatives',[]).extend(
+                        offer_self_meal_source_alternatives(world,e,o))
             flat_alternatives=[copy(alt) for o in options
                                for alt in o.get('practical_alternatives',[])]
             flat_trials=[copy(t) for o in options for t in o.get('possible_end_trials',[])]
@@ -728,6 +731,12 @@ class ConstitutiveRuntime:
                     raise ValueError('MEETING_REQUIRES_EXACT_ACTOR_SELECTED_OPTION')
                 practical['selected_meeting']={k:copy(selected_alternative[k]) for k in (
                     'meeting_ref','meeting_source_user_event_ref','meeting_source_cue_ref')}
+            if (action=='EAT' and selected_alternative
+                    and selected_alternative.get('selected_self_meal_source')
+                    and proposed.get('practical_option_id')==selected_alternative['option_id']
+                    and trial_choice is None):
+                practical['selected_self_meal_source']=selected_alternative['selected_self_meal_source']
+                practical['selected_self_meal_source_option_ref']=selected_alternative['option_id']
             if (selected_alternative and selected_alternative.get('selected_feeding_source')
                     and proposed.get('practical_option_id')==selected_alternative['option_id']
                     and trial_choice is None):
@@ -1418,6 +1427,8 @@ class ConstitutiveRuntime:
         expression_access=copy(observed)
         expression_access.pop('performed_repair_technique_ref_analytic_only',None)
         if expression_access.get('own_practical_selection'):
+            expression_access['own_practical_selection'].pop('selected_self_meal_source',None)
+            expression_access['own_practical_selection'].pop('selected_self_meal_source_option_ref',None)
             expression_access['own_practical_selection'].pop('selected_meeting',None)
             expression_access['own_practical_selection'].pop('private_rehearsal',None)
             expression_access['own_practical_selection'].pop('undertaking_attention',None)
