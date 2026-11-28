@@ -434,7 +434,6 @@ class ContinuingLifeCourt(unittest.TestCase):
                         "projects":len(projects),"calls":p.calls,"affect_qualified":True},sort_keys=True))
                 finally:session.close();rt.close()
 
-if __name__=="__main__":unittest.main()
 
 
     def test_one_existing_budget_across_history_live_resume_and_cold_hold(self):
@@ -547,3 +546,6 @@ if __name__=="__main__":unittest.main()
                 self.assertEqual([x["attempts"] for x in lp.usage_snapshot()["receipts"]],[0,0])
                 self.assertIn('"input_tokens":23',b.log.read_text())
                 self.assertIn("UNCERTAIN_SPEND_STOP",b.log.read_text())
+
+
+if __name__=="__main__":unittest.main()
