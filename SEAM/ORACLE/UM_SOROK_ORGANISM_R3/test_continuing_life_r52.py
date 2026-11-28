@@ -182,4 +182,83 @@ class ContinuingLifeCourt(unittest.TestCase):
                 "aliases":sum(r["alias_count"] for r in b["metrics"]),
                 "structured":sum(r["structured_field_count"] for r in b["metrics"])},sort_keys=True))
 
+
+    def test_matched_longer_history_selective_context_whole_wire_and_native_equality(self):
+        import sqlite3
+        from copy import deepcopy
+        from importlib.util import spec_from_file_location,module_from_spec
+        from modern_generation_port_r28 import ModernDevelopmentOwner,ModernGeneration
+        spec=spec_from_file_location("um_sorok_organism.r54_transport",
+             Path(__file__).parent/"um_sorok_organism"/"live_psychological_llm.py")
+        mod=module_from_spec(spec);spec.loader.exec_module(mod)
+        class MemoryCourse:
+            def __init__(self):self.requests=[]
+            def call(self,r):
+                self.requests.append(r);ctx=r["context"];n=len(self.requests)
+                if r["mode"]=="TERMINAL":return {"retrospective":retro(r),"prospective":None}
+                # The older memory informs an identical semantic decision in
+                # both profiles through exact selected retrieval, not through
+                # a forced equivalence of actual model reasoning.
+                reads=ctx["selected_exact_analytic_reads"]
+                recovered=(n==6 and len(reads)==1 and
+                           reads[0]["value"]["content"].startswith("Actual rest 1:0:"))
+                rows=[]
+                for i in range(5):
+                    c={"kind":"MEMORY","content":f"Actual rest {n}:{i}: "+("the afternoon passed. "*18),
+                       "cue_terms":["rest"]}
+                    op="WAIT" if recovered and i==0 else "REST"
+                    rows.append(event(ctx,f"{n}:{i}",ctx["clock"]+i+1,"worker",{"worker":policy(
+                        [action(op)],[{"candidate":c,"when":{"own_action":"REST","status":"PERFORMED"}}])}))
+                if n==4:
+                    rows[-1]["circumstances"]["next_analytic_reads"]=[
+                        {"kind":"ACTOR_DOMAIN_PAGE","actor":"worker","domain":"memories","offset":0,"limit":3}]
+                if n==5:
+                    page=reads[0]["value"]
+                    rows[-1]["circumstances"]["next_analytic_reads"]=[
+                        {"kind":"ACTOR_ROW","actor":"worker","domain":"memories","row_ref":page["rows"][0]["row_ref"]}]
+                return {"retrospective":retro(r),"prospective":rows}
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);source=root/"source.sqlite";rt=ConstitutiveRuntime(str(source))
+            rt.ledger.initialize(blank_world(),[adult("worker","Mara")]);rt.close()
+            results=[]
+            for compact in (False,True):
+                folder=root/str(compact);folder.mkdir();db=folder/"life.sqlite"
+                with sqlite3.connect(source) as origin,sqlite3.connect(db) as dest:origin.backup(dest)
+                p=MemoryCourse()
+                def mock(req):
+                    ans=p.call(json.loads(req["messages"][1]["content"]))
+                    return {"choices":[{"message":{"content":json.dumps(ans)}}]}
+                wire=mod.ExplicitDevelopmentalCheckpointProvider(endpoint="https://example.invalid/chat/completions",
+                    model="fixture",api_key="not-a-key",allow_private_actor_data=True,
+                    sourcefree_checkpoint_attested=True,transport=mock,metrics_capacity=12)
+                def open_g(rt):
+                    return ModernGeneration(ModernDevelopmentOwner(rt,"worker",folder/"ops.sqlite",
+                        sourcefree_attested=True,selective_memory_context=compact),
+                        wire,folder/"batch.sqlite",folder/"cycle.json")
+                rt=ConstitutiveRuntime(str(db));g=open_g(rt)
+                try:
+                    g.bootstrap()
+                    for _ in range(4):g.advance()
+                    self.assertEqual(len(rt.snapshot("worker")["memories"]),25)
+                finally:g.close();rt.close()
+                rt=ConstitutiveRuntime(str(db));g=open_g(rt)
+                try:
+                    batch=g.advance()
+                    self.assertEqual(batch["records"][0]["objective"]["attempt"],"WAIT")
+                    g.advance();g.finish()
+                    self.assertTrue(g.engine.verify());self.assertTrue(rt.verify()["valid"])
+                    rows=wire.usage_snapshot()["receipts"]
+                    results.append({"events":rt.ledger.events(),"actors":rt.ledger.actors(),
+                        "world":rt.ledger.world(),"records":rows,"retrieved":p.requests[5]["context"]["selected_exact_analytic_reads"],
+                        "memories":len(rt.snapshot("worker")["memories"])})
+                finally:g.close();rt.close()
+            a,b=results
+            for k in ("events","actors","world","retrieved","memories"):self.assertEqual(a[k],b[k],k)
+            full=[r["request_bytes"] for r in a["records"]];small=[r["request_bytes"] for r in b["records"]]
+            self.assertEqual(len(full),8);self.assertEqual(len(small),8)
+            self.assertLess(sum(small),sum(full))
+            print("R54_HISTORY_CONTEXT",json.dumps({"full_bytes":sum(full),"compact_bytes":sum(small),
+                "full_by_checkpoint":full,"compact_by_checkpoint":small,"memories":a["memories"],
+                "native_events":len(a["events"]),"exact_native_history":True},sort_keys=True))
+
 if __name__=="__main__":unittest.main()
