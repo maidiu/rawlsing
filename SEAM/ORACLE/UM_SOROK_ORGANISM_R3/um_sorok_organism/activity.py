@@ -6,6 +6,7 @@ This is a derived and then actor-owned *research* process, not native V3.
 """
 from .types import copy, stable_id, GRADE
 from .distributed_power import accessible_human_counterparts
+from .social_vocal_development import ordinary_vocal_actor_view, ordinary_vocal_basis_still_qualified
 
 
 
@@ -129,6 +130,13 @@ def eligible_activities(constitution, recruited_form_ids, encounter):
     result=[]
     for p in constitution.projects:
         if p.get('status','active')!='active': continue
+        ordinary=p.get('ordinary_vocal_genesis_basis')
+        if ordinary is not None and not ordinary_vocal_basis_still_qualified(
+                ordinary_vocal_actor_view(constitution),ordinary,
+                encounter.location,encounter.world_clock):
+            # Retain acquired wanting; do not grant its same-site course in
+            # every unfamiliar context or on loss of historical source.
+            continue
         if p.get('incidental_takeup_basis') is not None:
             if not any(c.get('kind')=='material_object_present'
                        and c.get('material_object_ref')==p.get('material_object_ref')

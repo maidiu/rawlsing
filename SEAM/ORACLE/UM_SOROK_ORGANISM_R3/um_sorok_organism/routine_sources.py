@@ -9,7 +9,7 @@ proof of events, an independent coactor's consent, or scientific evidence.
 """
 from .types import stable_id, copy, GRADE
 from .organism import eligible
-from .mediated_efficacy import preproject_exercise_basis
+from .mediated_efficacy import preproject_exercise_basis, qualified_project_exercise_basis
 
 KINDS=frozenset({'QUALIFIED_ROUTINE_PRACTICE',
                  'QUALIFIED_REPRODUCTIVE_CARE',
@@ -48,6 +48,12 @@ def register_sourcefree_period_envelope(world,actors,spec):
                 or not preproject_exercise_basis(actors[actor],op,location,ref,world['clock'])):
             raise ValueError('PREPROJECT_SOURCE_NO_ACTUAL_OWN_EXERCISE')
         developmental={'preproject_exercise_ref':ref,'practice_operation':op}
+    if 'practice_project_ref' in spec or 'project_exercise_ref' in spec:
+        p=spec.get('practice_project_ref');x=spec.get('project_exercise_ref');op=spec.get('operation')
+        if (developmental or spec['kind']!='QUALIFIED_ROUTINE_PRACTICE'
+                or not qualified_project_exercise_basis(actors[actor],p,x,op,location,world['clock'])):
+            raise ValueError('PROJECT_SOURCE_NO_ACTUAL_SELECTED_EXERCISE')
+        developmental={'practice_project_ref':p,'project_exercise_ref':x,'practice_operation':op}
     key=stable_id('routine_sourcefree_envelope',{
         'world':world['id'],'actor':actor,'kind':spec['kind'],
         'location':location,'start':start,'end':end,
@@ -96,6 +102,17 @@ def verify_qualified_period_envelope(world,process,start_clock,days):
                        'practice_operation':source['practice_operation']}
     elif 'preproject_exercise_ref' in process:
         raise ValueError('PREPROJECT_ROUTINE_UNREGISTERED_BASIS')
+    if source.get('practice_project_ref') is not None:
+        if (developmental or process.get('practice_project_ref')!=source['practice_project_ref']
+                or process.get('project_exercise_ref')!=source['project_exercise_ref']
+                or process.get('operation')!=source.get('practice_operation')
+                or process.get('mode')!='SOLO_COMPONENT_PRACTICE'):
+            raise ValueError('PROJECT_ROUTINE_SOURCE_SCOPE_MISMATCH')
+        developmental={'practice_project_ref':source['practice_project_ref'],
+                       'project_exercise_ref':source['project_exercise_ref'],
+                       'practice_operation':source['practice_operation']}
+    elif 'practice_project_ref' in process or 'project_exercise_ref' in process:
+        raise ValueError('PROJECT_ROUTINE_UNREGISTERED_BASIS')
     return {
         **developmental,'source_ref':source['id'],
         'source_grade':source['evidence_class'],
