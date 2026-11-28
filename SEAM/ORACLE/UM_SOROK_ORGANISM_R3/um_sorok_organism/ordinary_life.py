@@ -78,5 +78,7 @@ def passage(world,actors,days,processes=None):
        'qualified_aggregate_practice_refs':practice_evidence,
        'cannot_warrant':'UNRECORDED_SPECIFIC_OCCURRENCE',
        'grade':GRADE}
+    from .routine_sources import conserve_routine_period
+    conserve_routine_period(world,actors,period,allocation_receipt)
     world['historical_periods'].append(period)
     return period

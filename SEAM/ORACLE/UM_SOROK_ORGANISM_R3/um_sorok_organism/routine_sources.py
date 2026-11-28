@@ -403,6 +403,7 @@ def possible_routine_revisions(actor,experience,event_ref):
                    'experience_ref':experience['ref'],'clock':clock,
                    'prior_revision_ref':row.get('revisions',[{}])[-1].get('id') if row.get('revisions') else None,
                    'prior_effective_dose':dose,
+                   'recent_modeled_own_course_analytic_only':copy(row.get('modeled_course_receipts',[])[-3:]),
                    'own_attempt':({'operation':own,'status':experience.get('status'),
                                     'selected_project_refs':copy(selected.get('selected_project_refs',[])),
                                     'option_ref':selected.get('option_id')} if own_witness else None),
@@ -487,3 +488,65 @@ def realized_lived_process(world,process):
     if dose['state']!='ACTIVE':raise ValueError('LIVED_ROUTINE_INACTIVE_REALIZATION')
     return {**process,**{k:v for k,v in dose.items() if k!='state'},
             'routine_revision_ref':revision['id']}
+
+
+def conserve_routine_period(world,actors,period,allocation):
+    """Retain actor-local references to actual aggregate coverage and costs.
+
+    This is a compact derived analytic carrier on the existing acquired
+    routine, not a second history or a recollection of daily activity.
+    Do not assign another's nutrition, private account or objective reason
+    for withholding to this actor's conscious evidence. The full receipt
+    remains in the existing world history.
+    """
+    registry=world.get('routine_source_registry',{})
+    start=period['start'];end=period['end']
+    held=[x for key in ('structurally_withheld_processes','bodily_withheld_processes',
+                        'situationally_withheld_processes')
+          for x in allocation.get(key,[])]
+    effective={x['source_ref']:x for x in period['processes']
+               if isinstance(x,dict) and x.get('source_ref') in registry
+               and registry[x['source_ref']].get('evidence_class')==LIVED_CLASS}
+    refs=set(effective)|{x['source_ref'] for x in held
+                         if registry.get(x.get('source_ref'),{}).get('evidence_class')==LIVED_CLASS}
+    for ref in sorted(refs):
+        source=registry[ref];aid=source['actor'];proc=source['process']
+        actor=actors[aid]
+        p=next((x for x in actor.get('projects',[]) if x['id']==proc['routine_project_ref']),None)
+        rows=[] if p is None else [x for x in p.get('recurrent_routines',[]) if x['id']==ref]
+        if len(rows)!=1:
+            # A missing project is a qualified withholding, not evidence
+            # of a surviving actor-owned routine to which to attach receipt.
+            if ref in effective:raise ValueError('LIVED_ROUTINE_EFFECT_WITHOUT_ACTOR_SOURCE')
+            continue
+        row=rows[0];actual=effective.get(ref)
+        receipt={'period_ref':period['id'],'allocation_ref':allocation['id'],
+                 'from_clock':start,'through_clock':end,
+                 'coverage':'AGGREGATE_MODELED' if actual else 'NOT_QUALIFIED_FOR_MODELED_COVERAGE',
+                 'own_modeled_hours':round((end-start)*actual['hours_per_active_day']*
+                                    actual['provisional_exposure_fraction'],5) if actual else 0.,
+                 'routine_revision_ref':(actual or {}).get('routine_revision_ref'),
+                 'not_individual_experience_or_conscious_reason':True}
+        if actual:
+            own_refs=[]
+            for key in ('reproductive_labor_periods','wage_labor_periods','material_provisioning_periods'):
+                for effect in reversed(world.get(key,[])):
+                    if effect.get('end_clock',-1)<end:break
+                    if effect.get('source_ref')!=ref or effect.get('end_clock')!=end:continue
+                    if effect.get('giver',effect.get('worker'))!=aid:continue
+                    own_refs.append(effect['id'])
+                    if key=='wage_labor_periods':
+                        receipt['own_wage_paid_model']=effect['actual_paid_model']
+                        receipt['own_wage_arrears_model']=effect['wage_arrears']
+                        receipt['own_work_rest_expenditure_model']=effect['worker_rest_expenditure_model']
+                    elif key=='reproductive_labor_periods':
+                        receipt['own_nominal_care_rest_expenditure_model']=effect['giver_rest_expenditure_model']
+                    elif key=='material_provisioning_periods':
+                        receipt['own_provisioning_food_contribution_model']=effect['consumed_food_units']
+            own_refs.extend(x['id'] for x in actor.get('practice_exposures',[])
+                            if x.get('source_ref')==ref and x.get('end_clock')==end)
+            receipt['own_aggregate_effect_refs']=own_refs
+        records=row.setdefault('modeled_course_receipts',[])
+        if any(x.get('period_ref')==period['id'] for x in records):
+            raise ValueError('LIVED_ROUTINE_DUPLICATE_PERIOD_RECEIPT')
+        records.append(receipt)
