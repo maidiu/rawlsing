@@ -466,3 +466,111 @@ class JoinedRoutineContinuityCourt(unittest.TestCase):
                 self.assertEqual(len(routine("b")["revisions"]),2)
                 print("R008_JOINED_ROUTINE_EPOCHS",len(hist.requests),len(live.requests),s.status()["epoch"])
             finally:s.close();rt.close()
+
+
+class ElasticAppointmentEpochCourt(unittest.TestCase):
+    """The same actual appointment owner across historical and live epochs."""
+    def test_replacement_requires_fresh_actor_choice_after_absence_and_cold_history(self):
+        from um_sorok_organism.material_conjunction import admit_authored_structural_history
+        class History:
+            def __init__(self):self.requests=[]
+            def call(self,r):
+                self.requests.append(r);ctx=r["context"];clock=ctx["clock"]
+                if r["mode"]=="TERMINAL":return {"retrospective":retro(r),"prospective":None}
+                n=len(self.requests)
+                offsets=(1,2,4) if clock==16 else (1,2,3)
+                prev=0;rows=[]
+                for i,offset in enumerate(offsets):
+                    rows.append(event(ctx,str(n)+":"+str(i),clock+offset,"worker",
+                        {"worker":policy([action("WAIT")])},span=offset-prev-1))
+                    prev=offset
+                return {"retrospective":retro(r),"prospective":rows}
+        class LiveAppointment:
+            def __init__(self):self.requests=[];self.phase="ACCEPT_MEETING"
+            def call(self,r):
+                self.requests.append(r)
+                op=self.phase
+                rule=(action(op,{"grounds_status":"ACTUAL_ADDRESSED_MEETING_SIGN",
+                                  "world_request":{"addressed_party_ref":"visitor"}})
+                      if op in ("ACCEPT_MEETING","MEET_VISITOR")
+                      else {"action":"WORK","project_id":"work"})
+                return {"policies":{r["principal"]:policy([rule,action("WAIT")])}}
+        for choose in (True,False):
+            with self.subTest(choose=choose),tempfile.TemporaryDirectory() as d:
+                root=Path(d);db=root/"life.sqlite"
+                rt=ConstitutiveRuntime(str(db));w=blank_world()
+                w["ambient"]["work_shifts"]={"worker":[{"start":14,"end":15,"source_ref":"fictional:shift"}]}
+                w["ambient"]["work_shift_coverage_complete"]=True
+                worker=adult("worker","Worker","workshop")
+                worker["projects"]=[{"id":"work","object":"earn wage","means":["WORK"],"priority":.8,"status":"active"}]
+                spec={"grade":"EXPLICIT_SOURCEFREE_STRUCTURAL_HISTORY","source_ref":"fictional:shift",
+                      "positions":[],"rules":[{"id":"short_shift","operation":"WORK",
+                          "location":"workshop","source_ref":"fictional:shift_gate",
+                          "effective_from":0,"effective_until":None,"all_of":[{"kind":"SHIFT_OCCUPIED"}]}]}
+                admit_authored_structural_history(w,{"worker"},spec)
+                rt.ledger.initialize(w,[worker],source_seals=[("authored_structural_history",
+                    "FICTIONAL_WORLD_CONDITIONING",spec)])
+                hist=History();live=LiveAppointment()
+                def open_life():return ContinuingLife(rt,root/"operator","worker",
+                    historical_provider=hist,live_provider=live,sourcefree_attested=True,mii_module=mii)
+                def clock():return rt.ledger.world()[1]["clock"]
+                def rows(s):return {x["id"]:x for x in s.own_meetings("visitor")}
+                def beat(s,occasion):
+                    out=s.present_until("visitor",occasion,clock()+1)
+                    self.assertEqual(out["beats_committed_this_call"],1)
+                s=open_life()
+                try:
+                    s.historical_checkpoint();s.finish_history();self.assertEqual(clock(),3)
+                    s.configure_encounter("visitor",{"grade":"SOURCEFREE_TEST_ONLY",
+                        "user_conditions":{"workshop":{"light":"lit","sightline":"unobstructed",
+                            "hearing":True,"sound_path":"audible","legibility":"readable"}},
+                        "actor_conditions":{"worker":{"facing":"entrance","visual":True,
+                            "light":"lit","sightline":"unobstructed","hearing":True,
+                            "sound_path":"audible"}}},request_id="geometry")
+                    s.contribute("visitor","enter","MOVE",destination="workshop")
+                    first=s.contribute("visitor","old","PROPOSE_MEETING",target_actor_ref="worker",due_clock=18)
+                    old=first["meeting_ref"];beat(s,first["event_ref"])
+                    self.assertEqual(rows(s)[old]["status"],"ACCEPTED")
+                    s.contribute("visitor","leave","LEAVE")
+                    before=rt.ledger.actors()
+                    s.contribute("visitor","withdraw","WITHDRAW_MEETING",target_commitment_ref=old)
+                    self.assertEqual(rt.ledger.actors(),before)
+                    self.assertEqual(rows(s)[old]["status"],"WITHDRAWN_BY_AUTHORED_ACT")
+                    self.assertEqual(clock(),9)
+                    s.resume_history();s.finish_history();self.assertEqual(clock(),12)
+                    old_events=deepcopy(rt.ledger.events())
+                finally:s.close();rt.close()
+                rt=ConstitutiveRuntime(str(db));s=open_life()
+                try:
+                    s.contribute("visitor","return","MOVE",destination="workshop")
+                    fresh=s.contribute("visitor","new","PROPOSE_MEETING",target_actor_ref="worker",
+                                       target_commitment_ref=old,due_clock=24)
+                    new=fresh["meeting_ref"];self.assertEqual(clock(),14)
+                    live.phase="ACCEPT_MEETING" if choose else "WORK"
+                    beat(s,fresh["event_ref"])
+                    self.assertEqual(rows(s)[new]["status"],"ACCEPTED" if choose else "PROPOSED")
+                    self.assertEqual(rt.ledger.world()[1]["accounts"].get("worker",0),0 if choose else .25)
+                    s.contribute("visitor","leave-again","LEAVE");self.assertEqual(clock(),16)
+                    s.resume_history();s.finish_history();self.assertEqual(clock(),20)
+                    self.assertEqual(rt.ledger.events()[:len(old_events)],old_events)
+                finally:s.close();rt.close()
+                rt=ConstitutiveRuntime(str(db));s=open_life()
+                try:
+                    s.contribute("visitor","arrive","MOVE",destination="workshop")
+                    if choose:
+                        check=s.contribute("visitor","checkin","CHECK_IN_MEETING",target_commitment_ref=new)
+                        live.phase="MEET_VISITOR";beat(s,check["event_ref"])
+                        self.assertEqual(rows(s)[new]["status"],"MEETING_PERFORMED")
+                        self.assertEqual(len(live.requests),3)
+                    else:
+                        with self.assertRaisesRegex(ValueError,"MEETING_CHECKIN_NOT_AUTHORIZED"):
+                            s.contribute("visitor","checkin","CHECK_IN_MEETING",target_commitment_ref=new)
+                        self.assertEqual(len(live.requests),2)
+                        self.assertFalse(s.status()["held"])
+                    self.assertEqual(rows(s)[old]["status"],"WITHDRAWN_BY_AUTHORED_ACT")
+                    self.assertEqual(rows(s)[old]["replacement_meeting_ref"],new)
+                    self.assertEqual(rows(s)[new]["replaces_meeting_ref"],old)
+                    self.assertEqual(s.status()["epoch"],2)
+                    self.assertTrue(rt.verify()["valid"])
+                    print("R008_ELASTIC_APPOINTMENT_EPOCHS",choose,len(hist.requests),len(live.requests),clock())
+                finally:s.close();rt.close()

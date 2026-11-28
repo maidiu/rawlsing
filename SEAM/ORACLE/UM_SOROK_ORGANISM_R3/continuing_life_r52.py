@@ -198,6 +198,15 @@ class ContinuingLife:
                     return out
             return self.execute(s,"PRESENT_INDEPENDENT_LIFE",work)
 
+    def own_meetings(self,visitor):
+        # Same qualified, finite administrative readback as NEIGHBOR.
+        # Not the visitor's perception, another actor's state, or a write.
+        with self.lock():
+            s=self.ready("LIVE")
+            with self.live(visitor) as n:out=n.own_meetings()
+            require(self.native()==s["expected"],"LIFE_MEETING_READ_MUTATED_NATIVE")
+            return out
+
     def private_surface(self,visitor,*,command=None,target=None):
         # Same finite MII sidecar and native reader; no actor history returned.
         with self.lock():
