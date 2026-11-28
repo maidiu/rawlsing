@@ -63,12 +63,12 @@ class IntegratedLifeCourse(unittest.TestCase):
                 held=[x for period in w['historical_periods'] for x in period.get('situationally_withheld_processes',[])]
                 self.assertTrue(held)
                 self.assertTrue(all(x['reason']=='ACTOR_ELSEWHERE' for x in held))
-                self.assertFalse(w['social_reproductive_labor'])
+                self.assertFalse(w.get('reproductive_labor_periods',[]))
                 self.assertEqual(rt.step('a',requested_action='MOVE',object_ref='home')['status'],'PERFORMED')
                 out=rt.continue_mixed_history(15,ordinary_span=20,detail_beats=3,period_processes=[p])
                 self.assertEqual(out['status'],'MODELED_HISTORY_CUT_REACHED')
                 w=rt.ledger.world()[1]
-                self.assertTrue(w['social_reproductive_labor'])
+                self.assertTrue(w.get('reproductive_labor_periods',[]))
                 for period in w['historical_periods']:
                     if period['processes']:
                         self.assertGreaterEqual(period['start'],2)

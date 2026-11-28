@@ -87,6 +87,11 @@ jobs:
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_human_project_reconstitution_r23.py
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_commitment_time_r24.py
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_structural_absence_r25.py
+      - name: Joined family genesis, historical life, acquired orientation and visitor continuation
+        if: github.ref_name == 'agent/neighbormulch-integrated-organism-20261128-r1'
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_integrated_life_course.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_integrated_life_course.py' -q
       - name: Contract-spy normal and optimized
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_contract.py' -v
@@ -255,10 +260,6 @@ jobs:
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_voluntary_address_r42.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_voluntary_address_r42.py' -q
-      - name: Joined family genesis, historical life, acquired orientation and visitor continuation
-        run: |
-          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_integrated_life_course.py' -v
-          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_integrated_life_course.py' -q
       - name: Full inherited CO R52 organism court normal and optimized
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3

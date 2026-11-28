@@ -544,7 +544,7 @@ def run_integrated_life_course(db, *, resume=True, acquire=True):
                     require(src['from_clock']<=period['start']<period['end']<=src['through_clock'],
                             'INTEGRATED_ROUTINE_WINDOW_OVERREACH')
         previsit={'clock':world()['clock'],'age':actor('nadia')['age_days'],
-                  'care_periods':len(world()['social_reproductive_labor']),
+                  'care_periods':len(world().get('reproductive_labor_periods',[])),
                   'practice_events':len(actor('nadia')['power_exercises']),
                   'detailed_beats':sum(x['kind']=='INDEPENDENT_DETAIL' for x in history_receipts)}
         require(previsit['detailed_beats']>=12,'INTEGRATED_INSUFFICIENT_POLYCENTRIC_DETAIL')
