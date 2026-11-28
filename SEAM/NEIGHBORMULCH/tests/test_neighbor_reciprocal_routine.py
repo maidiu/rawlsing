@@ -242,6 +242,7 @@ class ReciprocalOrdinaryLife(unittest.TestCase):
                     self.assertEqual(p['actor_time_claims']['mother'],2.)
                     self.assertEqual(p['actor_time_claims']['child'],2.)
             after=deepcopy(actor('child'))
+            mother_rest_after=actor('mother')['body']['rest']
             self.assertEqual(after['experienced_care_events'],prior['experienced_care_events'])
             self.assertEqual(after['memories'],prior['memories'])
             self.assertEqual(len(world().get('material_feeding_events',[])),before_feeds)
@@ -266,7 +267,7 @@ class ReciprocalOrdinaryLife(unittest.TestCase):
                                  mother_before[0]['recurrent_routines'][0].get('revisions',[]))
                 self.assertEqual(world()['historical_periods'][:len(old)],old)
             self.assertTrue(rt.verify()['valid'])
-            return after['body']['nutrition'],after['body']['comfort']
+            return after['body']['nutrition'],after['body']['comfort'],mother_rest_after
         finally:rt.close()
 
     def test_complementary_independent_care_and_nourishment(self):
@@ -274,7 +275,12 @@ class ReciprocalOrdinaryLife(unittest.TestCase):
             for op in ('CARE','FEED'):
                 yes=self.material_course(Path(d)/(op+'-yes.sqlite'),op,True)
                 no=self.material_course(Path(d)/(op+'-no.sqlite'),op,False)
-                self.assertGreater(yes[1 if op=='CARE' else 0],no[1 if op=='CARE' else 0])
+                if op=='CARE':
+                    # Saturation is material reality, not a reason to erase
+                    # actual caregiver expenditure or invent extra relief.
+                    self.assertGreaterEqual(yes[1],no[1])
+                    self.assertLess(yes[2],no[2])
+                else:self.assertGreater(yes[0],no[0])
                 print('RECIPROCAL_MATERIAL',op,yes,no)
 
     def test_separate_admissions_match_without_future_consent(self):
