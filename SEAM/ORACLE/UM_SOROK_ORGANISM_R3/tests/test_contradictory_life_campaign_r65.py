@@ -267,8 +267,11 @@ class ContradictoryLife(unittest.TestCase):
                 t=adult('third','Third');t['projects']=[proj('child',['FEED'],'nadia')]
                 n=newborn('nadia','Nadia');n['body']['nutrition']=.4
                 w=blank_world();w['accounts']['controller']=9.
-                w['holdings']={'controller':{'food':2.},'giver':{'food':1.}}
+                w['holdings']={'controller':{'food':3.},'giver':{'food':2.}}
                 rt.ledger.initialize(w,[g,c,t,n])
+                # Independently witnessed own material care history qualifies the petition.
+                for a in ('giver','controller'):
+                    self.assertEqual(rt.step(a,requested_action='FEED',target='third')['status'],'PERFORMED')
                 src=rt.register_sourcefree_pantry_concession({
                     'grade':'EXPLICIT_SOURCEFREE_INSTITUTIONAL_SCENARIO','site':'home',
                     'possible_controller':'controller','eligible_petitioners':['controller','giver'],

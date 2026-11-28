@@ -842,9 +842,6 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                 project.setdefault('provisioning_means_history',[]).append({
                     'event_ref':event_ref,'previous_means':copy(project['means']),
                     'commons_basis':copy(commons_basis),'grade':GRADE})
-            elif project.get('commons_provisioning_basis') and any(k in c for k in
-                    ('means','addressed_party_ref','commons_provisioning_basis')):
-                raise InvalidDevelopment('COMMONS_MEANS_REQUIRE_QUALIFIED_REVISION')
             elif provisioning_basis is not None:
                 if c not in possible_provisioning_reorganizations(actor,experience,event_ref):
                     raise InvalidDevelopment('PROVISIONING_REORGANIZATION_UNQUALIFIED')
@@ -852,6 +849,9 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                 project.setdefault('provisioning_means_history',[]).append({
                     'event_ref':event_ref,'previous_means':copy(project['means']),
                     'basis':copy(provisioning_basis),'grade':GRADE})
+            elif project.get('commons_provisioning_basis') and any(k in c for k in
+                    ('means','addressed_party_ref','commons_provisioning_basis')):
+                raise InvalidDevelopment('COMMONS_MEANS_REQUIRE_QUALIFIED_REVISION')
             elif project.get('provisioning_means_basis') and any(k in c for k in
                     ('means','addressed_party_ref','provisioning_means_basis')):
                 raise InvalidDevelopment('PROVISIONING_MEANS_REQUIRE_QUALIFIED_REVISION')

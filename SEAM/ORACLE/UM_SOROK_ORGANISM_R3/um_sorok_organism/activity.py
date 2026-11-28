@@ -694,7 +694,9 @@ def possible_provisioning_reorganizations(actor,experience,event_ref):
     if not works:return []
     work,wv=max(works,key=lambda x:x[1]['clock'])
     projects=[x for x in actor.get('projects',[]) if x.get('id')==refs[0]
-              and x.get('status','active')=='active' and x.get('means')==['FEED']
+              and x.get('status','active')=='active' and x.get('means') in (
+                  ['FEED'],['FEED','CONTRIBUTE_FOOD_COMMONS'])
+              and ('CONTRIBUTE_FOOD_COMMONS' not in x['means'] or x.get('commons_provisioning_basis'))
               and x.get('addressed_party_ref')==target
               and not x.get('provisioning_means_basis')]
     if len(projects)!=1:return []
@@ -704,7 +706,7 @@ def possible_provisioning_reorganizations(actor,experience,event_ref):
            'purchase_claim_ref':pv['material_claim_ref'],'provisioning_site':pv['site'],
            'not_proof_of_earmarked_money_or_motive_fulfillment':True}
     return [{'kind':'REORGANIZE_PROJECT','project_id':refs[0],
-             'means':['FEED','WORK','BUY_FOOD'],'provisioning_means_basis':basis}]
+             'means':copy(projects[0]['means'])+['WORK','BUY_FOOD'],'provisioning_means_basis':basis}]
 
 
 def own_commons_receipt(actor,experience,world,event_ref):
