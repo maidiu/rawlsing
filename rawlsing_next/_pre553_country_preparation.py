@@ -27,11 +27,13 @@ from ._pre553_c11_execution_view import (
 SCHEMA_V1="PYAT_COUNTRY_PREPARED_HEADERS@1"
 SCHEMA="PYAT_COUNTRY_PREPARED_HEADERS@2"
 SCHEMA_ELIDED="PYAT_COUNTRY_PREPARED_HEADERS@3"
+SCHEMA_DEFERRED="PYAT_COUNTRY_PREPARED_HEADERS@4"
 # Three independent SHA256 identities, six uint32 locators/dictionary
 # indices and one dependency-count byte. Neither digest is regenerated
 # from another, and arbitrary/noncompact headers retain the JSON path.
 _BINARY_HEADER=struct.Struct("<32s32s32s6IB")
 _BINARY_HEADER_ELIDED=struct.Struct("<32s32s6IB")
+_BINARY_HEADER_DEFERRED=struct.Struct("<32s6IB")
 _U32=struct.Struct("<I")
 MAX_COMPRESSED=128*1024**2
 MAX_EXPANDED=512*1024**2
@@ -94,7 +96,7 @@ def _read_pinned(path,pin):
         raise _error("external artifact digest mismatch")
     return data
 
-def _encode_headers(out,headers,key,*,legacy=False,omit_groups=False):
+def _encode_headers(out,headers,key,*,legacy=False,omit_groups=False,omit_occurrences=False):
     # The complete old group plane is retained for every exceptional
     # population. Elision is lawful only for a globally distinct occurrence
     # census, not merely a digest-looking group ID.
@@ -107,6 +109,12 @@ def _encode_headers(out,headers,key,*,legacy=False,omit_groups=False):
                     and len(h.dependency_refs)<=255 for h in headers))
     else:
         omit_groups=False
+    # Both omitted identities were independently checked during the actual
+    # I02 construction, not inferred from a different digest. The new
+    # transport can reuse that prior proof ONLY under the external exact pin.
+    # Every omitted occurrence remains recoverable from the existing sealed
+    # event body's exact physical locator. Exceptional populations keep V1/V2.
+    deferred=bool(omit_groups and omit_occurrences)
     total=0
     def emit(raw):
         nonlocal total
@@ -116,7 +124,7 @@ def _encode_headers(out,headers,key,*,legacy=False,omit_groups=False):
         out.write(raw)
     def line(value):
         emit((canonical_json(value)+"\n").encode())
-    line([SCHEMA_V1 if legacy else SCHEMA_ELIDED if omit_groups else SCHEMA,key,len(headers)])
+    line([SCHEMA_V1 if legacy else SCHEMA_DEFERRED if deferred else SCHEMA_ELIDED if omit_groups else SCHEMA,key,len(headers)])
     # Compact records refer to already emitted shared payload and reference
     # dictionaries. No expanded response body, per-event selector object,
     # or repeated long question/respondent IDs retained on disk.
@@ -148,7 +156,10 @@ def _encode_headers(out,headers,key,*,legacy=False,omit_groups=False):
         if (not legacy and all(type(x) is bytes and len(x)==32 for x in (event,occ,group))
                 and type(coords) is tuple and len(coords)==3 and len(deps)<=255
                 and all(type(x) is int and 0<=x<2**32 for x in (*nums,*deps))):
-            if omit_groups:
+            if deferred:
+                emit(b"K"+_BINARY_HEADER_DEFERRED.pack(event,*nums,len(deps))
+                     +b"".join(_U32.pack(i) for i in deps))
+            elif omit_groups:
                 emit(b"J"+_BINARY_HEADER_ELIDED.pack(event,occ,*nums,len(deps))
                      +b"".join(_U32.pack(i) for i in deps))
             else:
@@ -161,7 +172,7 @@ def _encode_headers(out,headers,key,*,legacy=False,omit_groups=False):
                   header.event_group_id,payloads[pkey],u,respondent,deps,coords])
     line(["end",len(headers)])
 
-def _decode_headers(data,key):
+def _decode_headers(data,key,*,allow_deferred=False):
     refs=[]; payloads=[]; headers=[]; total=0
     with gzip.GzipFile(fileobj=BytesIO(data),mode="rb") as stream:
         def account(raw):
@@ -180,16 +191,22 @@ def _decode_headers(data,key):
                 raise _error("invalid preparation dictionary index")
             return items[i]
         start=json.loads(account(stream.readline(MAX_LINE+1)))
-        if (type(start) is not list or len(start)!=3 or start[0] not in (SCHEMA,SCHEMA_V1,SCHEMA_ELIDED)
+        if (type(start) is not list or len(start)!=3 or start[0] not in (SCHEMA,SCHEMA_V1,SCHEMA_ELIDED,SCHEMA_DEFERRED)
                 or start[1]!=key or type(start[2]) is not int or start[2]<1):
             raise _error("preparation schema/binding mismatch")
+        if start[0]==SCHEMA_DEFERRED and not allow_deferred:
+            raise _error("deferred occurrences require authenticated producer pin")
         count=start[2]
         while True:
             lead=account(stream.read(1))
-            if (lead==b"H" and start[0]==SCHEMA) or (lead==b"J" and start[0]==SCHEMA_ELIDED):
+            if ((lead==b"H" and start[0]==SCHEMA) or (lead==b"J" and start[0]==SCHEMA_ELIDED)
+                    or (lead==b"K" and start[0]==SCHEMA_DEFERRED)):
                 if len(headers)>=count:
                     raise _error("preparation census overflow")
-                if lead==b"J":
+                if lead==b"K":
+                    event,p,u,respondent,r,s,o,n=_BINARY_HEADER_DEFERRED.unpack(exact(_BINARY_HEADER_DEFERRED.size))
+                    occ=group=None
+                elif lead==b"J":
                     event,occ,p,u,respondent,r,s,o,n=_BINARY_HEADER_ELIDED.unpack(exact(_BINARY_HEADER_ELIDED.size))
                     group=None
                 else:
@@ -211,9 +228,9 @@ def _decode_headers(data,key):
                 if row!=["end",count] or len(headers)!=count or account(stream.read(1)):
                     raise _error("preparation census mismatch")
                 result=tuple(headers)
-                if start[0]==SCHEMA_ELIDED:
+                if start[0] in (SCHEMA_ELIDED,SCHEMA_DEFERRED):
                     from .pre553_c11_integrity import _validate_restored_country_occurrences
-                    try:_validate_restored_country_occurrences(result)
+                    try:_validate_restored_country_occurrences(result,allow_deferred=start[0]==SCHEMA_DEFERRED)
                     except ValueError as exc:raise _error(str(exc)) from exc
                 return result
             if row[0]=="r" and len(row)==4:
@@ -225,7 +242,7 @@ def _decode_headers(data,key):
                 payloads.append((p[0],*(None if x is None else tuple(x) for x in p[1:4]),
                     tuple(tuple(x) for x in p[4]),
                     *(_freeze_semantic_descendants(x) for x in p[5:])))
-            elif start[0]!=SCHEMA_ELIDED and row[0]=="h" and len(row)==9 and len(headers)<count:
+            elif start[0] not in (SCHEMA_ELIDED,SCHEMA_DEFERRED) and row[0]=="h" and len(row)==9 and len(headers)<count:
                 _,event,occ,group,p,u,respondent,deps,coords=row
                 identity=bytes.fromhex(event) if type(event) is str else tuple(event)
                 if type(identity) is bytes and len(identity)!=32:
@@ -239,9 +256,14 @@ def _decode_headers(data,key):
                 raise _error("invalid preparation record")
 
 class _CountryPreparation:
-    def __init__(self,path,pin,*,omit_groups=False):
-        if type(omit_groups) is not bool:raise _error("explicit group plane selection required")
+    def __init__(self,path,pin,*,omit_groups=False,omit_occurrences=False):
+        if type(omit_groups) is not bool or type(omit_occurrences) is not bool:
+            raise _error("explicit preparation plane selection required")
+        if omit_occurrences and not omit_groups:
+            raise _error("deferred occurrence plane requires group elision")
         self.omit_groups=omit_groups
+        self.omit_occurrences=omit_occurrences
+        self._deferred_occurrences=False
         self.path=Path(path).absolute()
         if pin is not None and type(pin) is not CountryPreparationPin:
             raise _error("exact external producer pin required")
@@ -257,7 +279,11 @@ class _CountryPreparation:
                 or self.pin.facade_key!=_key(key) or self.pin.owner_abi!=_abi()):
             raise _error("external pin or current producer binding drift")
         try:
-            return _decode_headers(_read_pinned(self.path,self.pin),_key(key))
+            # Authentication precedes the only production decoder entrance
+            # permitted to restore a historical occurrence-distinct proof.
+            headers=_decode_headers(_read_pinned(self.path,self.pin),_key(key),allow_deferred=True)
+            self._deferred_occurrences=all(h.occurrence_identity is None for h in headers)
+            return headers
         except (OSError,ValueError,TypeError,IndexError,EOFError) as exc:
             raise _error("pinned preparation refused: "+str(exc)) from exc
 
@@ -280,7 +306,8 @@ class _CountryPreparation:
         try:
             with os.fdopen(fd,"wb") as file:
                 with gzip.GzipFile(fileobj=file,mode="wb",mtime=0,filename="") as out:
-                    _encode_headers(out,headers,_key(key),omit_groups=self.omit_groups)
+                    _encode_headers(out,headers,_key(key),omit_groups=self.omit_groups,
+                                    omit_occurrences=self.omit_occurrences)
                 file.flush();os.fsync(file.fileno())
             size=stage.stat().st_size
             if not 0<size<=MAX_COMPRESSED:

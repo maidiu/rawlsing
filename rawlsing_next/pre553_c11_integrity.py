@@ -713,7 +713,7 @@ def _country_occurrence_ids_distinct(events,*,omitted_group_plane=False):
     return True
 
 
-def _validate_restored_country_occurrences(events):
+def _validate_restored_country_occurrences(events,*,allow_deferred=False):
     """Only the authenticated private preparation path may omit group bytes.
 
     Global distinct occurrence IDs are a sufficient proof independently of
@@ -723,6 +723,25 @@ def _validate_restored_country_occurrences(events):
     from rawlsing_next._pre553_c11_execution_view import _CountryEventHeader
     if not all(type(event) is _CountryEventHeader for event in events):
         raise C11IntegrityError("restored private country headers required")
+    if allow_deferred and all(e.occurrence_identity is None and e.group_identity is None for e in events):
+        # This validates transport geometry, NOT a new proof of occurrence
+        # distinctness. The authenticated private producer pin carries the
+        # previously executed proof. Event digests commit the complete event;
+        # exact body access reconstructs the original occurrence identity.
+        prior=b""
+        for event in events:
+            digest=event.event_identity
+            coords=event.source_coordinates
+            if (type(digest) is not bytes or len(digest)!=32 or digest<=prior
+                    or type(coords) is not tuple or len(coords)!=3
+                    or any(type(x) is not int or not 0<=x<2**32 for x in coords)):
+                raise C11IntegrityError("deferred occurrence transport identity or geometry drift")
+            event.component_or_subitem_ref
+            _field_ref(event,"empirical_universe_ref")
+            _field_ref(event,"scoped_respondent_ref")
+            _field_ref(event,"native_question_ref")
+            prior=digest
+        return
     if not _country_occurrence_ids_distinct(events,omitted_group_plane=True):
         raise C11IntegrityError("omitted group plane lacks globally distinct exact occurrence identities")
 

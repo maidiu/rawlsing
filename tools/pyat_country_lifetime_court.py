@@ -10,7 +10,7 @@ from pathlib import Path
 from statistics import median
 from unittest.mock import patch
 
-BASE="68dd308a980c758e9be9ab01a0caeb01faa259ab"
+BASE="3d8b13693b4137f25a56d2107b03dc3ef6068606"
 
 def worker(root,mode,report):
     from tools.pyat_country_preparation_court import read,write,geometry,target_domains
@@ -100,6 +100,8 @@ def worker(root,mode,report):
         kwargs["reuse_query_preparation"]=True
     if "omit_preparation_group_plane" in inspect.signature(carrier.CountryWorkloadSession).parameters:
         kwargs["omit_preparation_group_plane"]=True
+    if "omit_preparation_occurrence_plane" in inspect.signature(carrier.CountryWorkloadSession).parameters:
+        kwargs["omit_preparation_occurrence_plane"]=True
     if novel and "reuse_query_constituents" in inspect.signature(carrier.CountryWorkloadSession).parameters:
         kwargs["reuse_query_constituents"]=True
     if mode=="restore":
@@ -239,6 +241,13 @@ def court(rows):
                     reports[(variant,mode)]=value
             first=reports[("baseline","save")]["evidence"]
             assert all(x["evidence"]==first for x in reports.values()),"exact release/census drift"
+            # Compare the complete retained physical carrier + preparation,
+            # not a percentage of the omitted field alone.
+            old=reports[("baseline","restore")]
+            new=reports[("candidate","restore")]
+            old_total=old["country_bytes"]+old["preparation_bytes"]
+            new_total=new["country_bytes"]+new["preparation_bytes"]
+            assert new_total<=.8*old_total,(old_total,new_total)
             print("LIFETIME_MATCHED",json.dumps({"novel":os.environ.get("PYAT_LIFETIME_NOVEL") in ("1","2"),"novel_mode":os.environ.get("PYAT_LIFETIME_NOVEL","0"),"rows":rows,"width":613,"governed":390,
                 "physical_setup":read(data/"fixture.json"),
                 "exact_census_and_release_parity":True,

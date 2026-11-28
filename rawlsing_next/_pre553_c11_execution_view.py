@@ -36,6 +36,18 @@ def _ref_identity(ref: ExactRef) -> tuple[str, str, str]:
 
 
 @dataclass(frozen=True, slots=True)
+class _DeferredCountryOccurrence:
+    """Private locator; never a substitute event identity."""
+    bodies: Any
+    row: int
+
+    def resolve(self):
+        # The incumbent body reader checks current file identity and the
+        # complete sealed event ref, including its original occurrence ID.
+        return self.bodies.materialize(self.row).response_event_id_or_deterministic_index
+
+
+@dataclass(frozen=True, slots=True)
 class _EventRead:
     """Selector v1 fields; reference exports are detached from immutable backing."""
 
@@ -49,7 +61,12 @@ class _EventRead:
     raw_response_value: Any
     canonical_response_value_if_authorized: Any
     multiplicity_order_rank_fields: Any
-    response_event_id_or_deterministic_index: Any
+    _occurrence_value: Any
+
+    @property
+    def response_event_id_or_deterministic_index(self):
+        value=self._occurrence_value
+        return value.resolve() if type(value) is _DeferredCountryOccurrence else value
 
     @property
     def ref(self) -> ExactRef:
@@ -143,7 +160,7 @@ class _CountryEventHeader:
     The private selector interface remains available for legacy consumers.
     """
     event_identity: bytes | tuple
-    occurrence_identity: bytes | tuple
+    occurrence_identity: bytes | tuple | None
     payload: tuple
     empirical_universe_ref: ExactRef
     scoped_respondent_ref: ExactRef
@@ -179,6 +196,8 @@ class _CountryEventHeader:
         return ExactRef(*self.payload[3]) if self.payload[3] else None
     @property
     def response_event_id_or_deterministic_index(self):
+        if self.occurrence_identity is None:
+            raise ValueError("restored occurrence identity requires exact event body")
         return _expand_identity(self.occurrence_identity,_COUNTRY_OCCURRENCE_PREFIX)
     @property
     def event_group_id(self):
@@ -261,6 +280,7 @@ class _PackedCountrySelectors(Sequence):
     occurrence_hashes: bytes
     codes: memoryview
     payloads: tuple
+    deferred_bodies: Any = None
     _prefix: ClassVar[str] = "urn:rawlsing:pre553:c05r2a:event:sha256:"
     _dimensions: ClassVar[tuple] = ("_native_question_identity",
         "_canonical_question_identity","_component_identity")
@@ -275,15 +295,24 @@ class _PackedCountrySelectors(Sequence):
         codes=array("I" if len(headers)<2**32 else "Q")
         occurrence=bytearray()
         payloads=[]; pooled={}
+        deferred=bool(headers) and all(type(h) is _CountryEventHeader and
+                     h.occurrence_identity is None and h.group_identity is None for h in headers)
+        if deferred:
+            from rawlsing_next.pre553_country_numeric_carrier import _CountryEventBodies
+            if type(bodies) is not _CountryEventBodies or not bodies.direct:
+                raise ValueError("deferred occurrences require sealed direct country bodies")
         for i,header in enumerate(headers):
             if type(header) is _CountryEventHeader:
                 digest=header.event_identity
                 occ=header.occurrence_identity
-                if (type(digest) is not bytes or type(occ) is not bytes
-                        or len(digest)!=32 or len(occ)!=32
-                        or digest!=bodies.hashes[32*i:32*(i+1)]):
+                if (type(digest) is not bytes or len(digest)!=32
+                        or digest!=bodies.hashes[32*i:32*(i+1)]
+                        or (not deferred and (type(occ) is not bytes or len(occ)!=32))):
+                    if deferred or occ is None:
+                        raise ValueError("deferred event selector identity mismatch")
                     return tuple(x.selector for x in headers)
-                occurrence.extend(occ)
+                if not deferred:
+                    occurrence.extend(occ)
                 payload=header.payload
             else:
                 # Historical header transport: keep the original exact gate.
@@ -313,7 +342,8 @@ class _PackedCountrySelectors(Sequence):
                     pooled[key]=code
             codes.append(code)
         return cls(bodies.hashes,bytes(occurrence),
-                   memoryview(codes.tobytes()).cast(codes.typecode),tuple(payloads))
+                   memoryview(codes.tobytes()).cast(codes.typecode),tuple(payloads),
+                   bodies if deferred else None)
 
     def __len__(self):
         return len(self.codes)
@@ -338,7 +368,8 @@ class _PackedCountrySelectors(Sequence):
         from .pre553_empirical_objects import URN_PREFIX
         h=self.hashes[32*i:32*(i+1)].hex()
         ref=(RespondentEvent.FAMILY,f"{URN_PREFIX}:RespondentEvent:sha256:{h}",h)
-        eid=self._prefix+self.occurrence_hashes[32*i:32*(i+1)].hex()
+        eid=(_DeferredCountryOccurrence(self.deferred_bodies,i) if self.deferred_bodies is not None
+             else self._prefix+self.occurrence_hashes[32*i:32*(i+1)].hex())
         return _EventRead(ref,*self.payloads[self.codes[i]],eid)
 
 
