@@ -10,7 +10,7 @@ from pathlib import Path
 from statistics import median
 from unittest.mock import patch
 
-BASE="3d8b13693b4137f25a56d2107b03dc3ef6068606"
+BASE="bb1f792a71f7057510f8d303bf22a27ae6ad269e"
 
 def worker(root,mode,report):
     from tools.pyat_country_preparation_court import read,write,geometry,target_domains
@@ -107,7 +107,10 @@ def worker(root,mode,report):
     if mode=="restore":
         from rawlsing_next._pre553_country_preparation import CountryPreparationPin
         kwargs["preparation_pin"]=CountryPreparationPin(**read(report.parent/"pin.json"))
-    counts={k:0 for k in ("I02","I03","I05","admission","scope_check","scope_current","nonrouting_pin","projection_identity","full_file_auth")}
+    from rawlsing_next import pre553_c11_ingest as ingest
+    counts={k:0 for k in ("I02","I03","I05","admission","scope_check","scope_current","nonrouting_pin","projection_identity","full_file_auth",
+                           "replay_projection_hash","replay_closure_census","routing_authority_validation",
+                           "namespace_validation","question_occurrence_validation")}
     phases={k:0. for k in counts}
     def monitor(owner,name,label):
         original=getattr(owner,name)
@@ -162,6 +165,11 @@ def worker(root,mode,report):
             (issued._NonRoutingEnvelopePin,"matches","nonrouting_pin"),
             (facade._CountryProjectionPin,"matches","projection_identity"),
             (carrier.CountryReader,"verify_full","full_file_auth"),
+            (ingest,"_candidate_projection_semantic_hash","replay_projection_hash"),
+            (ingest,"_all_nonmanifest_refs","replay_closure_census"),
+            (ingest,"_validate_packed_routing_authorities","routing_authority_validation"),
+            (ingest,"_validate_universe_and_respondent_scope","namespace_validation"),
+            (ingest,"_validate_questions_and_events","question_occurrence_validation"),
         ):
             stack.enter_context(monitor(owner,name,label))
         with carrier.CountryWorkloadSession(db,receipt,**kwargs) as session:
@@ -247,7 +255,9 @@ def court(rows):
             new=reports[("candidate","restore")]
             old_total=old["country_bytes"]+old["preparation_bytes"]
             new_total=new["country_bytes"]+new["preparation_bytes"]
-            assert new_total<=.8*old_total,(old_total,new_total)
+            # R8's gain is inherited, not an obligation to remove another
+            # 20% of identical transport. This change must not inflate it.
+            assert new_total==old_total,(old_total,new_total)
             print("LIFETIME_MATCHED",json.dumps({"novel":os.environ.get("PYAT_LIFETIME_NOVEL") in ("1","2"),"novel_mode":os.environ.get("PYAT_LIFETIME_NOVEL","0"),"rows":rows,"width":613,"governed":390,
                 "physical_setup":read(data/"fixture.json"),
                 "exact_census_and_release_parity":True,

@@ -321,6 +321,90 @@ def _country_replay_section_refs(candidate,section,events):
         yield ref
 
 
+def _country_packed_replay_section(section, events):
+    """Consume existing ordered binary evidence directly, with no ref roundtrip.
+
+    Both producer and independent I02 validation call this against their
+    actual current sections. No prior result, authority or seal is cached.
+    Foreign event identities and other section types retain the old path.
+    """
+    from rawlsing_next._pre553_c11_execution_view import _CountryEventHeader
+    from rawlsing_next.pre553_source_backed_c11_facade import (
+        _PackedRoutingFacts, _SortedPackedRoutingFacts,
+    )
+    if section is events:
+        kind=RespondentEvent.FAMILY
+        def digests():
+            for item in section:
+                if type(item) is not _CountryEventHeader:
+                    raise C11IntegrityError("invalid private country event header")
+                yield item.event_identity
+    elif type(section) is _SortedPackedRoutingFacts:
+        if (type(section.source) is not _PackedRoutingFacts
+                or section.source._prefix != _PackedClosureRefs._derived_prefix(RoutingEligibilityFact.FAMILY)):
+            return None
+        kind=RoutingEligibilityFact.FAMILY
+        def digests():
+            for i in range(len(section)):
+                # _ordinal retains the incumbent sealed storage/order guard.
+                yield section.source.digest_at(section._ordinal(i))
+    else:
+        return None
+    lane=bytearray()
+    prior=None
+    for digest in digests():
+        if type(digest) is not bytes:
+            if section is events:
+                return None
+            raise C11IntegrityError("private country routing digest drift")
+        if len(digest)!=32 or (prior is not None and digest<prior):
+            raise C11IntegrityError("private country replay digest/order drift")
+        lane.extend(digest)
+        prior=digest
+    if len(lane)!=32*len(section):
+        raise C11IntegrityError("private country replay digest census drift")
+    if not lane:
+        return _PackedClosureRefs((),())
+    return _PackedClosureRefs(((kind,_PackedClosureRefs._derived_prefix(kind),bytes(lane)),),
+                              (len(section),))
+
+
+def _country_packed_replay_closure(candidate, sections, events, roots):
+    """Merge the two large disjoint public families at packed run grain.
+
+    Other refs are still independently traversed and sorted. If an external
+    reference can interleave either family, use the incumbent exact merge;
+    never infer ordering from a hash suffix or discard a duplicate ref.
+    """
+    route=candidate.routing_eligibility_facts_or_exact_rules
+    event_run=_country_packed_replay_section(events,events)
+    route_run=_country_packed_replay_section(route,events)
+    if event_run is None or route_run is None or not event_run or not route_run:
+        return None
+    direct={RespondentEvent.FAMILY:event_run,RoutingEligibilityFact.FAMILY:route_run}
+    other=list(roots)
+    for section in sections:
+        if section is events or section is route or isinstance(section,TypedAbsence):
+            continue
+        other.extend(_country_replay_section_refs(candidate,section,events))
+    groups={}
+    for ref in other:
+        if type(ref) is not ExactRef or ref.kind in direct or "|" in ref.kind:
+            return None
+        groups.setdefault(ref.kind,[]).append(ref)
+    runs=[];ends=[];count=0
+    # The kind plus its actual separator controls exact key ordering,
+    # including a kind that is a strict prefix of another.
+    for kind in sorted(set(groups)|set(direct),key=lambda k:k+"|"):
+        packed=direct.get(kind)
+        if packed is None:
+            packed=_PackedClosureRefs.pack(sorted(groups[kind],key=lambda ref:ref.key))
+        runs.extend(packed.runs)
+        ends.extend(count+end for end in packed.ends)
+        count+=len(packed)
+    return _PackedClosureRefs(tuple(runs),tuple(ends))
+
+
 def _candidate_projection_semantic_hash(candidate: C11SourceReleaseCandidate, *, _country_events=None) -> str:
     """Hash the canonical candidate projection without materializing ref dictionaries.
 
@@ -339,7 +423,9 @@ def _candidate_projection_semantic_hash(candidate: C11SourceReleaseCandidate, *,
             write(canonical_json(section.as_dict()))
             return
         if _country_events is not None:
-            packed=_PackedClosureRefs.pack(_country_replay_section_refs(candidate,section,_country_events))
+            packed=_country_packed_replay_section(section,_country_events)
+            if packed is None:
+                packed=_PackedClosureRefs.pack(_country_replay_section_refs(candidate,section,_country_events))
             h.update(b"[")
             for index,encoded in enumerate(packed.canonical_ref_bytes()):
                 if index:
@@ -425,6 +511,9 @@ def _all_nonmanifest_refs(candidate: C11SourceReleaseCandidate, *, _country_even
         candidate.structural_admission_replay_bindings_or_typed_not_applicable_state,
     )
     if _country_events is not None:
+        packed=_country_packed_replay_closure(candidate,sections,_country_events,refs)
+        if packed is not None:
+            return packed
         # Merge ordered, checked producer sections at reference grain;
         # independent validation traverses the actual current candidate again.
         streams=[iter(sorted(refs,key=lambda r:r.key))]

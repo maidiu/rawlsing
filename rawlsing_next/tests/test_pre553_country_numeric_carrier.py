@@ -419,7 +419,14 @@ class CountryNumeric(unittest.TestCase):
                 # event graph and then call the old compactor.
                 from unittest.mock import PropertyMock
                 from rawlsing_next._pre553_c11_execution_view import _CountryEventHeader
-                with patch("rawlsing_next.pre553_source_backed_c11_facade._compact_public_objects",
+                from rawlsing_next import pre553_c11_ingest as ingest
+                from rawlsing_next.pre553_source_backed_c11_facade import _SortedPackedRoutingFacts
+                original_refs=ingest._country_replay_section_refs
+                def small_refs(candidate,section,events):
+                    if section is events or type(section) is _SortedPackedRoutingFacts:
+                        raise AssertionError("large canonical digest lane expanded into refs")
+                    return original_refs(candidate,section,events)
+                with patch.object(ingest,"_country_replay_section_refs",side_effect=small_refs), patch("rawlsing_next.pre553_source_backed_c11_facade._compact_public_objects",
                            side_effect=AssertionError("eager event graph compactor")), patch.object(
                            _CountryEventHeader,"selector",new_callable=PropertyMock,
                            side_effect=AssertionError("validated header expanded before selection")):
@@ -532,6 +539,29 @@ class CountryNumeric(unittest.TestCase):
                             saving._native_stream(subset),subset,
                             current_authorities=fx["authorities"],_country_preparation=owner)
                     full_headers=encoder.call_args.args[1]
+                # The direct packed lane must preserve exact references, order
+                # and duplicate multiplicity; exceptional IDs use old path.
+                from rawlsing_next.pre553_c11_integrity import C11IntegrityError
+                replay_lane=ingest._country_packed_replay_section(full_headers,full_headers)
+                self.assertEqual(replay_lane,_PackedClosureRefs.pack(h.ref for h in full_headers))
+                duplicate=(full_headers[0],full_headers[0])
+                self.assertEqual(tuple(ingest._country_packed_replay_section(duplicate,duplicate)),
+                                 (duplicate[0].ref,duplicate[0].ref))
+                reverse=tuple(reversed(full_headers))
+                with self.assertRaisesRegex(C11IntegrityError,"digest/order"):
+                    ingest._country_packed_replay_section(reverse,reverse)
+                foreign=(replace(full_headers[0],event_identity=(
+                    RespondentEvent.FAMILY,"external-event","a"*64)),)
+                self.assertIsNone(ingest._country_packed_replay_section(foreign,foreign))
+                # Same-kind source roots may interleave a packed run; refusal
+                # of the optimization, not refusal of the empirical release.
+                from types import SimpleNamespace
+                route=_SortedPackedRoutingFacts.build(subset.routing)
+                fake=SimpleNamespace(routing_eligibility_facts_or_exact_rules=route)
+                self.assertIsNone(ingest._country_packed_replay_closure(
+                    fake,(full_headers,route),full_headers,(full_headers[0].ref,)))
+                self.assertIsNone(ingest._country_packed_replay_closure(
+                    fake,(full_headers,route),full_headers,(ExactRef("external|kind","id","a"*64),)))
                 pin=owner.pin
                 decoded=prep._decode_headers(artifact.read_bytes(),pin.facade_key)
                 self.assertTrue(all(h.group_identity is None for h in decoded))
