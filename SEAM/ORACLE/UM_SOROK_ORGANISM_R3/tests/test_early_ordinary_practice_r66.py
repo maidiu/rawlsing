@@ -355,7 +355,7 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                              self.expressive_arm(Path(d)/'abstain.db',False))
 
 
-    def productive_ordinary_arm(self,db,admit_end,forge=False,practice=None,witness=None,transfer=None,affect=None,local_period=None,private=None,antecedent=False,material_period=None):
+    def productive_ordinary_arm(self,db,admit_end,forge=False,practice=None,witness=None,transfer=None,affect=None,local_period=None,private=None,antecedent=False,material_period=None,continuation=None):
         """From ordinary infancy through plural response to self-generated end.
         Same acquired capacity in both arms; a later trial is not a project.
         No joint SING, no actual deficit/relief required, no injected child act.
@@ -782,6 +782,10 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                 phase['name']='transferred'
                 self.assertEqual(rt.step('nadia')['attempt'],'SING' if transfer else 'WAIT')
                 self.assertTrue(rt.verify()['valid'])
+                if continuation is not None:
+                    # Handoff actual acquired history, never reconstruct a
+                    # synthetic iceberg or inject a private project.
+                    return continuation(rt, runtime)
                 if affect is not None:
                     phase['name']='local_affect'
                     if private=='forge':

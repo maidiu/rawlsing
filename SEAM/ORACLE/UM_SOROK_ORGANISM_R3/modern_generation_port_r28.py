@@ -200,6 +200,7 @@ TYPED_FORMATION_OFFERS = {
     "DELAYED_APPRAISAL": ("historically_possible_delayed_appraisals",),
     "ACTIVITY_AFFECT": ("historically_possible_activity_affects",
                         "historically_possible_self_expression_affects"),
+    "ORDINARY_AFFECT_MEMORY": ("historically_possible_activity_affects",),
     "EXPRESSIVE_PRACTICE": ("historically_possible_expressive_practices",),
     "RECURRENT_WORK_ORIENTATION": ("historically_possible_recurrent_livelihood_orientation",),
     "LIVED_CROSS_CONTEXT_REVALUATION": ("historically_possible_lived_cross_context_revaluations",),
@@ -213,6 +214,10 @@ def rich_meaning_check(kind,v):
         require(exact_keys(v,("affect_name","personal_sense","course_orientation")) and
                 text(v["affect_name"],120) and text(v["personal_sense"]) and
                 v["course_orientation"] in ("APPROACH","WITHHOLD"),"GEN_ACTIVITY_AFFECT")
+    elif kind=="ORDINARY_AFFECT_MEMORY":
+        require(exact_keys(v,("content","cue_terms")) and text(v["content"])
+                and isinstance(v["cue_terms"],list) and 1<=len(v["cue_terms"])<=12
+                and all(text(k,80) for k in v["cue_terms"]),"GEN_ORDINARY_AFFECT_MEMORY_MEANING")
     elif kind=="EXPRESSIVE_PRACTICE":
         require(exact_keys(v,("cadence",)) and text(v["cadence"],40),"GEN_EXPRESSIVE_PRACTICE")
     elif kind=="RECURRENT_WORK_ORIENTATION":
@@ -416,7 +421,19 @@ class ConditionalPolicy:
                         continue
                     q=detached(rows[0]);extra=rule.get("augment",{})
                     construct=rule.get("construct")
-                    if construct in TYPED_FORMATION_OFFERS:
+                    if construct=="ORDINARY_AFFECT_MEMORY":
+                        # Never let a generic memory borrow a coincident affect.
+                        # Only the exact fresh owner offer AND an earlier same
+                        # dispatch affect nomination can supply this memory.
+                        # Native development still checks actual admission,
+                        # expressive capacity, source, actor and chronology.
+                        prior=[c for c in candidates if c.get("kind")=="ACQUIRE_ACTIVITY_AFFECT"
+                               and c.get("basis")==q]
+                        if q.get("formation_source")!="OWN_ORDINARY_PROJECT_EXERCISE" or len(prior)!=1:
+                            self.routes["ordinary_affect_memory_unqualified"]+=1
+                            continue
+                        c={"kind":"MEMORY","ordinary_affect_memory_basis":q,**detached(extra)}
+                    elif construct in TYPED_FORMATION_OFFERS:
                         c=rich_candidate(construct,q,detached(extra))
                     elif construct=="LEXICAL_PROJECT_REVALUATION":
                         c={"kind":"REORGANIZE_PROJECT","project_id":q["project_id"],
