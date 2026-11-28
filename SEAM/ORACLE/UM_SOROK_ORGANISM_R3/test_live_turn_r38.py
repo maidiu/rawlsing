@@ -215,6 +215,13 @@ class OneResponseLiveCourt(unittest.TestCase):
                     self.assertEqual(session.owner_actor_beat(n,"nadia")["attempt"],"ORIENT")
                 self.assertEqual({x["caregiver_ref"] for x in rt.ledger.actor("nadia")[1]["co_regulation_orientations"]},
                                  {"mother","father"})
+                # Exactly as R63: an acquired orientation does not itself
+                # prove later relief. Real subsequent elapsed life and care
+                # create the personally sensed support history used by rank.
+                rt.background(50);rt.background(50)
+                self.assertEqual(rt.ledger.actor("nadia")[1]["age_days"],100)
+                for aid in ("father","mother"):
+                    self.assertEqual(session.owner_actor_beat(n,aid)["attempt"],"CARE")
                 stage["address"]=True
                 out=session.owner_actor_beat(n,"nadia")
                 self.assertEqual(out["attempt"],"SIGNAL")
@@ -223,9 +230,9 @@ class OneResponseLiveCourt(unittest.TestCase):
                 self.assertIsNotNone(evt["coactor_attempt"])
                 row=session.custody.receipts()[-1]
                 self.assertEqual(row["local_semantic_tasks"]["actor_attempt"],2)
-                self.assertEqual(wire.usage_snapshot()["total"],5)
+                self.assertEqual(wire.usage_snapshot()["total"],7)
                 self.assertTrue(rt.verify()["valid"])
-                print("R40_CARE "+json.dumps({"calls":5,"child_attempt":out["attempt"],"actual_status":out["status"],
+                print("R40_CARE "+json.dumps({"calls":7,"child_attempt":out["attempt"],"actual_status":out["status"],
                     "actual_coactor_attempt":evt["coactor_attempt"]["action"],"local_attempt_tasks":2},sort_keys=True))
             finally:session.close();rt.close()
 
