@@ -2,6 +2,8 @@
 
 **OPEN / READY — ORDINARY R006.** R005 three construction returns received into existing candidate estate. Rouse CO-MULCHINEER, NEIGHBOR-UX-MULCHINEER and INFERENCE-ECONOMY together. CO HQ standing; not requested. User cue **New round is in (R006)**; on returns **They're in.**
 
+**R006 autonomy clarification (user correction, 2026-11-27):** Each worker independently selects what most needs MULCHING across its own entire authorized domain. PM's R006 concerns are serious cross-domain inputs, not the default assignment. Read [the corrected mandate](MANDATE.md#independent-mulch-judgment-is-primary-user-correction-2026-11-27). Workers may pursue materially different neglected work without permission; explain the consequential difference briefly in the existing return. No restart or change to the published R006 briefs required. PM will receive discoveries outside its proposed theme on their own merits.
+
 | Lane | R006 deliberation | Return |
 |---|---|---|
 | CO-MULCHINEER | [R006](CO-MULCHINEER/deliberations/R006.md) | CO-MULCHINEER/returns/R006.md |
