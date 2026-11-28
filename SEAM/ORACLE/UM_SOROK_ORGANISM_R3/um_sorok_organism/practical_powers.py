@@ -205,6 +205,33 @@ def situated_exercised_repertoire(constitution, access):
                 'historical_support_statuses':['RUDIMENTARY_EXPLORATORY_OPPORTUNITY_NOT_ACQUIRED_MEANS'],
                 'opportunity':'PREPROJECT_MODELED_BODILY_EXPLORATION',
                 'grade':GRADE})
+    # In the inherited physical grammar SING may resolve as SOLO_PRACTICE.
+    # This narrowly offers bodily vocal exploration, not a learned song,
+    # communicative language, partner consent or culturally acquired means.
+    # Both actual own operations and source-qualified ordinary signal
+    # participation must precede this occasion; motor readiness alone cannot.
+    if (constitution.role=='child' and eligible(constitution.body,'SING')[0]
+            and not any(r['action']=='SING' for r in out)):
+        actor={'id':constitution.actor,'role':constitution.role,
+               'power_exercises':constitution.power_exercises,
+               'evidence_paths':constitution.evidence_paths}
+        practiced=[r for r in prior if preproject_exercise_basis(
+            actor,'PRACTICE',access.location,r.get('id'),access.world_clock)]
+        signaled=[r for r in constitution.practice_exposures
+            if r.get('operation')=='SIGNAL' and r.get('actor')==constitution.actor
+            and r.get('location')==access.location and r.get('modeled_practice_hours',0)>0
+            and type(r.get('end_clock')) is int and r['end_clock']<=access.world_clock
+            and preproject_exercise_basis(actor,'SIGNAL',access.location,
+                 r.get('preproject_exercise_ref'),r.get('start_clock'))]
+        if practiced and signaled:
+            p=max(practiced,key=lambda x:(x['event_clock'],x['id']))
+            q=max(signaled,key=lambda x:(x['end_clock'],x['id']))
+            out.append({'action':'SING','score':.03,
+                'basis':[p['experience_ref'],q['anchor_actual_experience_ref']],
+                'source_event_refs':[p['event_ref'],q['anchor_actual_event_ref']],
+                'source_aggregate_refs':[q['id']],
+                'historical_support_statuses':['RUDIMENTARY_VOCAL_EXPLORATION_NOT_LEARNED_SONG'],
+                'opportunity':'PREPROJECT_BODILY_VOCAL_EXPLORATION','grade':GRADE})
     return {'offered':out,'retained_but_unqualified_refs':sorted(set(
                     x for x in held_back if type(x) is str)),
             'readset':sorted(set(r for row in out
