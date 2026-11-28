@@ -457,6 +457,8 @@ class ContinuingLifeCourt(unittest.TestCase):
                     entry=deepcopy(rt.ledger.actor("nadia")[1]);proj=entry["projects"][0]["id"]
                     work=[p for p in rt.ledger.actor("father")[1]["projects"] if p["object"]=="subsistence"]
                     self.assertEqual(len(work),1);work_proj=work[0]["id"]
+                    shared_projects={a:next(p["id"] for p in rt.ledger.actor(a)[1]["projects"]
+                        if p["object"]=="ordinary shared singing") for a in ("father","mother")}
                     self.assertEqual(entry["location"],"workshop")
                     self.assertEqual(entry["body"]["language"],.35)
                     self.assertEqual(entry["memories"],[])
@@ -517,6 +519,37 @@ class ContinuingLifeCourt(unittest.TestCase):
                                         ("nadia",course(),5),
                                         ("father",policy([action("REST")],[revise("RESUME")]),0),
                                         ("nadia",course(),5)])
+                                def move(site):
+                                    return policy([action("MOVE",{"grounds_status":"HISTORICALLY_FAMILIAR_DESTINATION",
+                                        "world_request":{"material_object_ref":site}})])
+                                def shared(nominate_routine=False,refuse=False):
+                                    out={}
+                                    for a,peer in (("father","mother"),("mother","father")):
+                                        rule={"offer":"historically_possible_recurrent_routines",
+                                            "construct":"RECURRENT_ROUTINE",
+                                            "match":{"basis":{"actor":a,"operation":"SING","project_ref":shared_projects[a],
+                                                              "coactivity_partner":peer}},
+                                            "augment":{"window_days":45,"hours_per_active_day":2.,
+                                                       "provisional_exposure_fraction":.5}}
+                                        out[a]=policy([action("REFUSE")] if refuse and a=="mother" else
+                                              [action("SING",{"project_id":shared_projects[a]})],
+                                              [rule] if nominate_routine else [])
+                                    return out
+                                if n==4:
+                                    return rows(r,[("father",policy([action("REST")]),0),
+                                        ("father",move("home"),0),("nadia",move("home"),0),
+                                        ("father",shared(refuse=True),0),("father",policy([action("REST")]),0),
+                                        ("mother",policy([action("REST")]),0),("father",shared(),0)])
+                                if n==5:
+                                    return rows(r,[("father",policy([action("REST")]),0),
+                                        ("mother",policy([action("REST")]),0),("father",shared(),0),
+                                        ("father",policy([action("REST")]),0),("mother",policy([action("REST")]),0),
+                                        ("father",shared(nominate_routine=True),0)])
+                                if n==6:
+                                    return rows(r,[("nadia",course(),4),
+                                        ("father",policy([action("REST")]),0),
+                                        ("father",move("workshop"),0),("nadia",move("workshop"),0),
+                                        ("nadia",course(),4)])
                                 raise AssertionError("unexpected resumed call")
                             n=len(self.calls)
                             if n==1:
@@ -644,6 +677,41 @@ class ContinuingLifeCourt(unittest.TestCase):
                         self.assertEqual(result["memories"],child_before["memories"])
                         self.assertEqual(p["operational_history"][-1]["operation"],"REST" if nominate else "SING")
                         self.assertEqual(cold.ledger.events()[:len(actual)],actual)
+                        # R82: the same actual family can return to personally
+                        # experienced sites, form independent reciprocal routines,
+                        # and carry both private and material history across departure.
+                        s.historical_checkpoint()
+                        w=cold.ledger.world()[1]
+                        self.assertEqual(w["positions"]["father"],"home")
+                        self.assertEqual(w["positions"]["nadia"],"home")
+                        s.historical_checkpoint()
+                        w=cold.ledger.world()[1]
+                        pair=[q for q in w["routine_source_registry"].values()
+                              if q.get("operation")=="SING"]
+                        self.assertEqual({q["actor"] for q in pair},{"father","mother"})
+                        self.assertEqual(len(pair),2)
+                        self.assertEqual(pair[0]["basis_event_refs"],pair[1]["basis_event_refs"])
+                        self.assertEqual(len(set(pair[0]["basis_event_refs"])),3)
+                        before_pair=deepcopy(w);before_pair_events=cold.ledger.events()
+                    finally:s.close();cold.close()
+                    cold=ConstitutiveRuntime(str(db));s=op(cold,h2)
+                    try:
+                        s.historical_checkpoint()
+                        w=cold.ledger.world()[1]
+                        self.assertEqual(w["positions"]["father"],"workshop")
+                        self.assertEqual(w["positions"]["nadia"],"workshop")
+                        pair_refs={q["id"] for q in pair}
+                        periods=[q for q in w["historical_periods"] if q["start"]>=before_pair["clock"]]
+                        self.assertEqual(sum(q["end"]-q["start"] for q in periods
+                            if pair_refs.issubset({v["source_ref"] for v in q["processes"]})),4)
+                        self.assertEqual(sum(q["end"]-q["start"] for q in periods
+                            if any(v["source_ref"]==src["id"] for v in q["processes"])),4)
+                        self.assertTrue(all(not (pair_refs & {v["source_ref"] for v in q["processes"]}
+                            and any(v["source_ref"]==src["id"] for v in q["processes"])) for q in periods))
+                        self.assertEqual(cold.ledger.events()[:len(before_pair_events)],before_pair_events)
+                        result=cold.ledger.actor("nadia")[1];p=result["projects"][-1]
+                        self.assertEqual(result["memories"],child_before["memories"])
+                        self.assertEqual(p["operational_history"][-1]["operation"],"REST" if nominate else "SING")
                         s.finish_history()
                         self.assertTrue(cold.verify()["valid"])
                         self.assertTrue(all(x["status"]=="RETURNED" for x in s.receipts()))
@@ -652,11 +720,12 @@ class ContinuingLifeCourt(unittest.TestCase):
                             "projects":len(result["projects"]),"historical_calls":len(h.calls)+len(h2.calls),
                             "live_calls":calls,"native_events":len(cold.ledger.events()),
                             "actual_later_course":p["operational_history"][-1]["operation"],
-                            "modeled_wage_hours":15,"paused_days":5,"actual_work_anchor_events":3},sort_keys=True))
+                            "modeled_wage_hours":19,"paused_days":5,"actual_work_anchor_events":3,
+                            "same_family_reciprocal_days":4,"actual_reciprocal_anchor_events":3},sort_keys=True))
                         return result
                     finally:s.close();cold.close()
                 result=mod.EarlyOrdinaryPractice().productive_ordinary_arm(db,True,transfer=True,affect=True,
-                    private=nominate,antecedent=True,continuation=continue_actual)
+                    private=nominate,antecedent=True,continuation=continue_actual,reciprocal_antecedent=True)
                 self.assertEqual(len(result["projects"]),1+int(nominate))
 
 
