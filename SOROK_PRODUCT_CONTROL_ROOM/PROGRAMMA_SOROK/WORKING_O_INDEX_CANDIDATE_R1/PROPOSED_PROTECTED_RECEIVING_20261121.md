@@ -1,5 +1,56 @@
 # Proposed protected SOROK PROGRAMMA / paired CURRENT_PROGRESS receiving — 2026-11-21 R1
 
+## PM R006 — bounded exact receiving (2026-11-27/28)
+
+Current ledger exact Git **blob `c67f5c562d6d426ce684a38d3290593e12788bf2`**; machine CIC `baee35cbfab7f410c8c1a04d75e6137c8555da83`. 199 PR records, 704 relationships, 144 original identities; 187 criteria/58 clusters/719 frozen routes. Construction {"UNEXAMINED":142,"PARTIAL_CONSTRUCTION":42,"FIRST_DRAFT_IMPLEMENTED":2,"INTEGRATED_FIRST_DRAFT":1}, clusters {"UNEXAMINED":33,"PARTIAL_CONSTRUCTION":25}. Unexamined is not absent. No criterion review or protected promotion.
+
+- [CO R63 #1424](https://github.com/maidiu/rawlsing/pull/1424) `48acef94058a141aa86b97dd07410afca8258e5e`: Recovered R59 #1409 aggregate work bodily load; two matched 50-day periods change mother's actual CARE eligibility while earlier plural-care history and age remain unchanged. Cold father CARE, mother WAIT versus CARE, child selects actual addressed SIGNAL to latest personally sensed relief giver; independent REFUSE yields PARTIAL. Objective workload distinct from recipient's lived history and from unwillingness. [735 each mode](https://github.com/maidiu/rawlsing/actions/runs/46101111910/job/140843528366). Provisional fatigue coefficient, controlled callbacks, no within-period equivalence, medical calibration, whole household or live adequacy; R41 separate; no modern P2/P3 checkpoint. Earlier #1409 duplicate actor RED at d2bd9a7f93199b26494d162c48d13cc9f713d4bc job 140719948573 verified; recovered code and corrected fixture, not acceptance of red branch. R63 initial non-issued WAIT response fixture error corrected to REFUSE.
+- [NEIGHBOR R41 #1425](https://github.com/maidiu/rawlsing/pull/1425) `2e81a6cdbfaea85ff6691b61d3d7360868215465`: Existing EAT refined with exact source-specific alternatives where multiple lawful pools exist. Adult own-food vs common-food selection leaves or consumes common stock; same child's later EAT succeeds or blocks; independently selected carer FEED consumes own stock and later carer meal blocks; refusal or unseen attempt preserves stock. Actual authored visitor offer plus independent child acceptance can alter outcome. Same outward sign, private audit source not exposed by that cue; invalid source no fallback. [877 each mode](https://github.com/maidiu/rawlsing/actions/runs/46101088458/job/140843452976). Controlled older-child fixture, not birth lineage, no new acquisition or general nutritional/age science, no full prolonged household or general audit redaction. R63 separate; no cost/adequacy measured.
+- [Economy R26 #1378](https://github.com/maidiu/rawlsing/pull/1378) `dc548b48ac9cd83ee951762eaa87ab8609875c12`: R26 same capture owner extends exact separate R39/R61/R40/R62 fixtures; R40 admit/null 69 calls each, forged 40, first actual REST vs WORK/wage, second priority changes without act difference; lexical 1007 bytes, three actor-local target packets 81618 total; R62 retained adult selection 1 family call, zero additional adult constructors, deterministic registration/conception/birth zero calls; 22 full positive course calls and 7 negative, no unassigned calls. Four matrix jobs success (15 cases/mode); exact full joined regression job 140843314463 success 737 CO/economy plus 133 NEIGHBOR per mode. Separate owner fixtures, not integrated modern runtime. [full regression](https://github.com/maidiu/rawlsing/actions/runs/46101045277/job/140843314463). Canonical local packet bytes and controlled callback calls, not wire/tokens/price/latency/adequacy or live savings; no regenerated-adult matched comparator; R63/R41 not measured; qualified lexical/revaluation ABI and modern two-half ordinary checkpoint remain distinct; archive audit NOT_RUN.
+
+R006 exact returns at PM `1964a12f0769ab3ac467ed72ebb16f757a73ebf3`. Prior R25 record and 6 evidence/review pairs conserved. Related partial criterion witnesses CO-CIC-019.01, CO-CIC-019.02, CO-CIC-024.02, CO-CIC-007.02, CO-CIC-028.01, CO-CIC-028.02, NEIGHBOR-CIC-013.01, NEIGHBOR-CIC-020.01, NEIGHBOR-CIC-020.03, NEIGHBOR-CIC-024.03. R63/R41 complementary not joined: materially independent workload and allocation alter another person's actual possibilities before interpretation; distinct body, history, access, response and later recruitment owners. No duty, willingness, affection or scientific fidelity inferred. No full #1409 branch intake; exact stranded source and adverse job recorded with R63. Independent worker whole-domain selection precedes PM suggestions. Full canonical front-door/27-task, actual HOME adoption, independent/native/protected receiving held. No local rerun.
+
+### Proposed matching paired amendment — competent PROGRAMMA owner only
+Protected PRE-MAIN 827714e83743056939894a39736d72ea16bdc6dd; MD a565e6239ee730bf8aae796d1c5afb35207b1e93, JSON f2081d41452a5fb5d7061fcf340af725e4ee07af unchanged. Preserve R39+MII and MI #907 correction. Proposed MD addition above and JSON member:
+
+```json
+{
+  "sorok_pm_r006_operational_candidate": {
+    "pm_cut": "1964a12f0769ab3ac467ed72ebb16f757a73ebf3",
+    "ledger_blob": "c67f5c562d6d426ce684a38d3290593e12788bf2",
+    "cic_blob": "baee35cbfab7f410c8c1a04d75e6137c8555da83",
+    "returns": [
+      {
+        "pr": 1424,
+        "head": "48acef94058a141aa86b97dd07410afca8258e5e",
+        "execution": "https://github.com/maidiu/rawlsing/actions/runs/46101111910/job/140843528366",
+        "grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK",
+        "protected_received": false
+      },
+      {
+        "pr": 1425,
+        "head": "2e81a6cdbfaea85ff6691b61d3d7360868215465",
+        "execution": "https://github.com/maidiu/rawlsing/actions/runs/46101088458/job/140843452976",
+        "grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK",
+        "protected_received": false
+      },
+      {
+        "pr": 1378,
+        "head": "dc548b48ac9cd83ee951762eaa87ab8609875c12",
+        "execution": "https://github.com/maidiu/rawlsing/actions/runs/46101045277/job/140843314463",
+        "grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK",
+        "protected_received": false
+      }
+    ],
+    "r24_archive_audit": "NOT_RUN",
+    "joined_runtime": "NOT_ESTABLISHED",
+    "receiving": "HELD"
+  }
+}
+```
+No protected write lease.
+
+
 ## PM R005 — bounded exact receiving (2026-11-27)
 
 Current ledger exact Git **blob `30e2b07660d4485e321edae2f920e9714f0f9800`**; machine CIC `71aa355cf12dd6b8a0327e122e7c5ef30edfce3e`. 197 PR records, 695 relationships, 144 original identities; 187 criteria/58 clusters/719 frozen routes. Construction observations {"UNEXAMINED":147,"PARTIAL_CONSTRUCTION":37,"FIRST_DRAFT_IMPLEMENTED":2,"INTEGRATED_FIRST_DRAFT":1}, clusters {"UNEXAMINED":34,"PARTIAL_CONSTRUCTION":24}. Unexamined is not absent. No criterion review or protected promotion.
