@@ -259,7 +259,9 @@ class RelationalRoutineRevision(unittest.TestCase):
             def world():return rt.ledger.world()[1]
             def actor(aid):return rt.ledger.actor(aid)[1]
             prior=deepcopy(actor('giver'))
-            self.assertEqual(len(prior['care_practical_commitments']),1)
+            # Three contributions yield two actually admitted overlapping
+            # care-practice pairs in the inherited R64 owner.
+            self.assertEqual(len(prior['care_practical_commitments']),2)
             self.assertEqual(len(acquired_routine_processes(world())),2)
             phase['revision']=True;phase['action']='WAIT'
             # Inherited R64 explicit scenario act, not asserted autonomous.
@@ -270,7 +272,10 @@ class RelationalRoutineRevision(unittest.TestCase):
             phase['revision']=False
             after=actor('giver')
             self.assertEqual(after['care_contribution_episodes'],prior['care_contribution_episodes'])
-            self.assertEqual(bool(after['care_practical_commitments'][0].get('revisions')),nominate)
+            self.assertEqual(len(after['care_practical_commitments']),2)
+            for old,new in zip(prior['care_practical_commitments'],after['care_practical_commitments']):
+                self.assertEqual({k:v for k,v in new.items() if k!='revisions'},old)
+                self.assertEqual(bool(new.get('revisions')),nominate)
             row=after['projects'][0]['recurrent_routines'][0]
             self.assertEqual(bool(row.get('revisions')),nominate)
             self.assertFalse(actor('second')['projects'][0]['recurrent_routines'][0].get('revisions'))
