@@ -24,7 +24,10 @@ ROUTINE_OPS={'CARE':'QUALIFIED_REPRODUCTIVE_CARE','FEED':'QUALIFIED_MATERIAL_FEE
 MAX_ROUTINE_WINDOW=90
 # Same-operation singing and complementary practice/join are the bounded
 # joint arrangements admitted here. No inference of general teamwork.
-JOINT_ROUTINE_COMPLEMENTS={'SING':{'SING'},'PRACTICE':{'JOIN'},'JOIN':{'PRACTICE'}}
+JOINT_ROUTINE_COMPLEMENTS={
+    'SING':{'SING','JOIN','MAKE_SPACE'},'PRACTICE':{'JOIN','MAKE_SPACE'},
+    'JOIN':{'PRACTICE','SING','MAKE_SPACE'},'MAKE_SPACE':{'SING','PRACTICE','JOIN'},
+    'SIGNAL':{'CARE','FEED'},'CARE':{'SIGNAL'},'FEED':{'SIGNAL'}}
 
 
 def register_sourcefree_period_envelope(world,actors,spec):
@@ -114,7 +117,7 @@ def routine_exercise_receipt(actor,experience,event_ref):
     sel=experience.get('own_practical_selection') or {}
     refs=sel.get('selected_project_refs',[])
     partner=experience.get('reciprocated_partner')
-    if (experience.get('actor')!=aid or (op not in ROUTINE_OPS and not (op=='JOIN' and partner))
+    if (experience.get('actor')!=aid or (op not in ROUTINE_OPS and not (op in JOINT_ROUTINE_COMPLEMENTS and partner))
             or experience.get('status')!='PERFORMED'
             or experience.get('participated') is not True
             or type(clock) is not int or clock<0
@@ -143,7 +146,8 @@ def routine_exercise_receipt(actor,experience,event_ref):
         if (op not in JOINT_ROUTINE_COMPLEMENTS or type(partner) is not str
                 or partner==aid or recipient!=partner
                 or project.get('addressed_party_ref')!=partner
-                or not experience.get('perceived_cues')):
+                or not any(c.get('kind')=='coactor_present' and c.get('source_actor')==partner
+                           for c in experience.get('perceived_cues',[]))):
             return None
     elif op in ('CARE','FEED'):
         if type(recipient) is not str or recipient==aid or project.get('addressed_party_ref')!=recipient:
@@ -275,6 +279,7 @@ def register_admitted_routine(world,actor,report,event_ref):
     process={'kind':ROUTINE_OPS.get(op,'QUALIFIED_ROUTINE_PRACTICE'),'actor':aid,'location':site,'source_ref':ref,
              'routine_project_ref':project['id'],'hours_per_active_day':row['hours_per_active_day'],
              'provisional_exposure_fraction':row['provisional_exposure_fraction']}
+    if row.get('coactivity_partner'):process['coactivity_partner']=row['coactivity_partner']
     if op in ('CARE','FEED'):process['recipient']=row['recipient']
     if op=='FEED':process.update({'supply_origin':row['food_origin'],
                             'food_units_per_active_day':row['food_units_per_active_day']})

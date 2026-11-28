@@ -130,6 +130,22 @@ class ReciprocalOrdinaryLife(unittest.TestCase):
                 self.assertTrue(all(len(x['processes'])==2 for x in resumed))
                 self.assertTrue(all(x['actor_time_claims']=={'a':1.,'b':1.} for x in resumed))
                 self.assertTrue(all(len(actor(a)['practice_exposures'])>count[a] for a in before))
+                # An actual conflicting independently authored time premise
+                # holds B's contingent shared course and thus A's half as well.
+                start=world()['clock']
+                source=rt.register_historical_routine_source({
+                    'kind':'QUALIFIED_OTHER_OBLIGATION','actor':'b','location':'home',
+                    'start_clock':start,'end_clock':start+3,'max_hours_per_active_day':16.,
+                    'description':'Explicit bounded competing time premise'})
+                rt.continue_mixed_history(start+3,cadence_origin=start,ordinary_span=3,
+                    period_processes=[{'kind':'QUALIFIED_OTHER_OBLIGATION','actor':'b','location':'home',
+                       'source_ref':source['source_ref'],'hours_per_active_day':16.,
+                       'provisional_exposure_fraction':1.}])
+                competing=[x for x in world()['historical_periods'] if x['start']>=start]
+                self.assertTrue(all(len(x['processes'])==1 and x['processes'][0]['actor']=='b'
+                                    for x in competing))
+                self.assertTrue(any(y['reason']=='RECIPROCAL_COUNTERPART_TIME_UNRESOLVED'
+                         for x in competing for y in x['situationally_withheld_processes']))
                 # Actual separation prevents both sides from spending time.
                 self.assertEqual(rt.step('b',requested_action='MOVE',object_ref='workshop')['status'],'PERFORMED')
                 self.assertTrue(all(not x['processes'] for x in interval(3)))
@@ -143,6 +159,122 @@ class ReciprocalOrdinaryLife(unittest.TestCase):
             self.assertTrue(rt.verify()['valid'])
             print('RECIPROCAL_ROUTINE',both,f0,f1)
         finally:rt.close()
+
+    def material_course(self,db,op,both):
+        from um_sorok_organism.types import newborn
+        from um_sorok_organism.organism import mature
+        phase={'op':'REST','refuse':False,'retire':False}
+        def policy(task,p):
+            if task=='expression':return {'task':task,'surface':'Ordinary care.'}
+            aid=p['actor']['id']
+            if task=='actor_attempt':
+                action=op if p.get('requesting_actor') else phase['op']
+                if p.get('requesting_actor') and phase['refuse']:return {'task':task,'action':'REFUSE'}
+                rows=[x for x in p.get('practical_options',[]) if x['operation']==action
+                      and x.get('project_id') in ('mother-care','child-call','other-care')]
+                if rows and action not in ('WAIT','REST'):
+                    # Exact own project, with material source chosen by the
+                    # existing feeder's qualified practical option if offered.
+                    if action=='FEED':
+                        source=[x for x in rows if x.get('selected_feeding_source')=='GIVER_HELD_FOOD']
+                        if source:rows=source
+                    return {'task':task,'practical_option_id':rows[0]['option_id']}
+                return {'task':task,'action':action}
+            if task=='development':
+                for offer in p.get('historically_possible_recurrent_routines',[]):
+                    basis=offer['basis']
+                    if aid=='child' and not both:continue
+                    out={'kind':'ACQUIRE_RECURRENT_ROUTINE','basis':basis,'window_days':60,
+                         'hours_per_active_day':2.,'provisional_exposure_fraction':1.}
+                    if basis['operation']=='FEED':out['food_units_per_active_day']=1.
+                    return {'task':task,'candidates':[out]}
+                if aid=='child' and phase['retire']:
+                    options=[x for x in p.get('historically_possible_routine_revisions',[])
+                             if x['basis']['operation']=='SIGNAL']
+                    if options:return {'task':task,'candidates':[{'kind':'REVISE_RECURRENT_ROUTINE',
+                        'basis':options[0]['basis'],'mode':'RETIRE',
+                        'interpretive_hypothesis':'No longer undertake this particular recurring call.'}]}
+                return {'task':task,'candidates':[]}
+            raise AssertionError(task)
+        service=ValidatingSemanticService(CallbackLLMProvider(policy))
+        rt=ConstitutiveRuntime(str(db),semantic=service)
+        child=newborn('child','Child');mature(child,365)
+        child['body']['nutrition']=.25;child['body']['comfort']=.15
+        mother=adult('mother','Mother');other=adult('other','Other')
+        child['projects']=[{'id':'child-call','object':'seek contingent support','means':['SIGNAL'],
+                            'addressed_party_ref':'mother','priority':.7,'status':'active'}]
+        mother['projects']=[{'id':'mother-care','object':'contribute care','means':['CARE','FEED'],
+                            'addressed_party_ref':'child','priority':.7,'status':'active'}]
+        other['projects']=[{'id':'other-care','object':'own caring course','means':['CARE'],
+                            'addressed_party_ref':'child','priority':.7,'status':'active'}]
+        w=blank_world();w['holdings']={'mother':{'food':8}}
+        rt.ledger.initialize(w,[mother,other,child])
+        def world():return rt.ledger.world()[1]
+        def actor(aid):return rt.ledger.actor(aid)[1]
+        def beat(aid,action):
+            phase['op']=action;out=rt.step(aid)
+            self.assertEqual((out['attempt'],out['status']),(action,'PERFORMED'))
+            self.assertNotEqual(out['selection_grade'],'INJECTED_NOT_NATIVE_ACTOR_CHOICE')
+        def interval(days):
+            start=world()['clock'];phase['op']='WAIT'
+            result=rt.continue_mixed_history(start+days,cadence_origin=start,ordinary_span=days)
+            self.assertEqual(result['status'],'MODELED_HISTORY_CUT_REACHED')
+            return [p for p in world()['historical_periods'] if p['start']>=start]
+        try:
+            for _ in range(3):
+                beat('mother','REST');beat('child','REST');beat('child','SIGNAL')
+                beat('other','REST');beat('other','CARE')
+            beat('mother','REST');beat('child','REST');beat('other','REST')
+            sources=world()['routine_source_registry']
+            self.assertEqual(len(sources),3 if both else 2)
+            self.assertTrue(any(x['actor']=='other' and not x['process'].get('coactivity_partner')
+                                for x in sources.values()))
+            prior=deepcopy(actor('child'))
+            food=world()['holdings']['mother']['food']
+            before_feeds=len(world().get('material_feeding_events',[]))
+            periods=interval(8)
+            for p in periods:
+                self.assertEqual({x['actor'] for x in p['processes']},
+                                {'mother','child','other'} if both else {'other'})
+                self.assertEqual(p['actor_time_claims']['other'],2.)
+                if both:
+                    self.assertEqual(p['actor_time_claims']['mother'],2.)
+                    self.assertEqual(p['actor_time_claims']['child'],2.)
+            after=deepcopy(actor('child'))
+            self.assertEqual(after['experienced_care_events'],prior['experienced_care_events'])
+            self.assertEqual(after['memories'],prior['memories'])
+            self.assertEqual(len(world().get('material_feeding_events',[])),before_feeds)
+            if op=='FEED':
+                self.assertEqual(world()['holdings']['mother']['food'],0 if both else food)
+                self.assertEqual(bool(world().get('material_provisioning_periods')),both)
+                if both:self.assertTrue(any(x['uncovered_food_units']>0
+                              for x in world()['material_provisioning_periods']))
+            elif both:
+                self.assertTrue(any(x.get('giver')=='mother' for x in world()['reproductive_labor_periods']))
+            self.assertEqual(bool(after['practice_exposures']),both)
+            if both:
+                # Retirement belongs to the child. Mother's project and
+                # independent other-care remain, but no joint claim survives.
+                phase['retire']=True;beat('child','REST');phase['retire']=False
+                mother_before=deepcopy(actor('mother')['projects'])
+                old=deepcopy(world()['historical_periods'])
+                rt.close();rt=ConstitutiveRuntime(str(db),semantic=service)
+                later=interval(4)
+                self.assertTrue(all({x['actor'] for x in p['processes']}=={'other'} for p in later))
+                self.assertEqual(actor('mother')['projects'][0]['recurrent_routines'][0].get('revisions',[]),
+                                 mother_before[0]['recurrent_routines'][0].get('revisions',[]))
+                self.assertEqual(world()['historical_periods'][:len(old)],old)
+            self.assertTrue(rt.verify()['valid'])
+            return after['body']['nutrition'],after['body']['comfort']
+        finally:rt.close()
+
+    def test_complementary_independent_care_and_nourishment(self):
+        with tempfile.TemporaryDirectory() as d:
+            for op in ('CARE','FEED'):
+                yes=self.material_course(Path(d)/(op+'-yes.sqlite'),op,True)
+                no=self.material_course(Path(d)/(op+'-no.sqlite'),op,False)
+                self.assertGreater(yes[1 if op=='CARE' else 0],no[1 if op=='CARE' else 0])
+                print('RECIPROCAL_MATERIAL',op,yes,no)
 
     def test_separate_admissions_match_without_future_consent(self):
         with tempfile.TemporaryDirectory() as d:
