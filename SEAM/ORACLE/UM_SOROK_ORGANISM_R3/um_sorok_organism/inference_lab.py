@@ -524,6 +524,153 @@ class CombinedCaptureProvider:
         return self.capture.invoke(self.provider,self.task,request)
 
 
+
+# A whole-request structural demand envelope, not a measure of inner life.
+# Known map containers are normalized by value shape, but new field families
+# elsewhere remain visible. No text, actor names or latent values are retained.
+_DEMAND_MAP_FIELDS=frozenset(("actor_contexts","peer_tips","conditional_family_sources_analyst_only"))
+_DEMAND_AXES=("packet_bytes","nodes","max_depth","max_list","max_map","text_bytes","max_text")
+_DEMAND_SCHEMA="RAWLSING_COMBINED_DEMAND_ENVELOPE_R61_V1"
+
+
+def combined_demand(mode,request):
+    if mode=="HISTORICAL":
+        if type(request) is not dict or set(request)!={"mode","context","previous"} or request["mode"] not in ("BOOTSTRAP","ORDINARY","TERMINAL"):
+            raise ValueError("LAB_DEMAND_REQUEST")
+        stage=request["mode"];limit=_packet_limit(CHECKPOINT_TASK)
+    elif mode=="LIVE":
+        if type(request) is not dict or set(request)!={"grade","source","principal","principal_packet","peer_tips"}:
+            raise ValueError("LAB_DEMAND_REQUEST")
+        stage="LIVE";limit=_packet_limit(LIVE_TURN_TASK)
+    else:raise ValueError("LAB_COMBINED_PROVIDER_MODE")
+    n=size(request)
+    if n>limit:raise ValueError("LAB_DEMAND_SIZE")
+    axes=dict.fromkeys(_DEMAND_AXES,0);axes["packet_bytes"]=n
+    def visit(value,depth=0,field=None):
+        axes["nodes"]+=1;axes["max_depth"]=max(axes["max_depth"],depth)
+        if depth>96 or axes["nodes"]>250000:raise ValueError("LAB_DEMAND_COMPLEXITY")
+        typ=type(value)
+        if typ is dict:
+            axes["max_map"]=max(axes["max_map"],len(value))
+            if field in _DEMAND_MAP_FIELDS:
+                shapes=sorted({visit(v,depth+1) for v in value.values()})
+                return digest(["MAP",shapes])
+            return digest(["OBJECT",[(k,visit(v,depth+1,k)) for k,v in sorted(value.items())]])
+        if typ is list:
+            axes["max_list"]=max(axes["max_list"],len(value))
+            return digest(["LIST",sorted({visit(v,depth+1) for v in value})])
+        if typ is str:
+            m=len(value.encode("utf-8"));axes["text_bytes"]+=m
+            axes["max_text"]=max(axes["max_text"],m)
+        if typ not in (str,int,float,bool,type(None)):raise ValueError("LAB_DEMAND_VALUE")
+        return typ.__name__
+    return {"shape":digest([_DEMAND_SCHEMA,mode,stage,visit(request)]),"axes":axes,"stage":stage}
+
+
+def _within(d,bounds):
+    return all(bounds[k][0]<=d["axes"][k]<=bounds[k][1] for k in _DEMAND_AXES)
+
+
+class CombinedDemandEnvelope:
+    """Fit on explicitly reviewed paired courses; veto failures, test held-out.
+
+    Reuses verified private workload tapes. Each review refers to a particular
+    captured request and separately retained actual owner evidence. The caller
+    supplies review judgments: a digest does not authenticate them. This is an
+    experimental coverage mechanism, not validation of model adequacy or a
+    claim that structural similarity proves psychological interchangeability.
+    No labels, proposals, or private packet content in the compiled envelope.
+    """
+    def __init__(self,*,mode,owner_head,reference_profile,candidate_profile,
+                 reference_identity,candidate_identity,courses,sourcefree_review_attested=False):
+        if sourcefree_review_attested is not True:raise ValueError("LAB_DEMAND_REVIEW_REQUIRED")
+        self.mode=mode;self.owner_head=_head(owner_head)
+        self.reference=reference_profile;self.candidate=candidate_profile
+        self.reference_identity=reference_identity;self.candidate_identity=candidate_identity
+        if (mode not in ("HISTORICAL","LIVE") or type(reference_profile) is not str
+                or type(candidate_profile) is not str or reference_profile==candidate_profile
+                or any(type(v) is not str or not re.fullmatch("[0-9a-f]{64}",v)
+                       for v in (reference_identity,candidate_identity))):
+            raise ValueError("LAB_DEMAND_PROFILE_BINDING")
+        if type(courses) not in (list,tuple) or not 3<=len(courses)<=1000:
+            raise ValueError("LAB_DEMAND_COURSES")
+        task=CHECKPOINT_TASK if mode=="HISTORICAL" else LIVE_TURN_TASK
+        groups={};course_ids=set();request_ids=set();evidence_ids=set();manifest=[]
+        for c in courses:
+            if (type(c) is not dict or set(c)!={"workload","partition","reviews"}
+                    or c["partition"] not in ("FIT","HOLDOUT")):
+                raise ValueError("LAB_DEMAND_COURSE")
+            tape=c["workload"];p=verify_workload(tape,source_head=owner_head)
+            cid=tape["sha256"]
+            # Distinct actual course state and fixture identity, not simply a
+            # different elapsed time or name on a duplicated workload.
+            course_key=p["owner_state_sha256"]
+            if course_key is None or course_key in course_ids:raise ValueError("LAB_DEMAND_COURSE_STATE")
+            course_ids.add(course_key)
+            want={r["seq"]:r for r in p["rows"] if r["task"]==task}
+            if not want or type(c["reviews"]) is not list:raise ValueError("LAB_DEMAND_EMPTY")
+            seen=set()
+            for review in c["reviews"]:
+                required={"seq","request_digest","reference_identity","candidate_identity",
+                          "reference_disposition","candidate_disposition","quality_verdict",
+                          "reference_cost_nanos","candidate_cost_nanos","review_digest"}
+                if type(review) is not dict or set(review)!=required:raise ValueError("LAB_DEMAND_REVIEW")
+                i=review["seq"]
+                if type(i) is not int or i not in want or i in seen:raise ValueError("LAB_DEMAND_REVIEW_SEQUENCE")
+                seen.add(i);row=want[i];rd=row["packet_digest"]
+                if (review["request_digest"]!=rd or rd in request_ids
+                        or review["reference_identity"]!=reference_identity
+                        or review["candidate_identity"]!=candidate_identity
+                        or type(review["review_digest"]) is not str
+                        or not re.fullmatch("[0-9a-f]{64}",review["review_digest"])
+                        or review["review_digest"] in evidence_ids
+                        or review["quality_verdict"] not in ("ADEQUATE","INADEQUATE","UNRESOLVED")):
+                    raise ValueError("LAB_DEMAND_REVIEW_BINDING")
+                request_ids.add(rd);evidence_ids.add(review["review_digest"])
+                costs=[]
+                for k in ("reference_cost_nanos","candidate_cost_nanos"):
+                    v=review[k]
+                    if v is not None:_integer(v,0,10**15)
+                    costs.append(v)
+                ok=(review["quality_verdict"]=="ADEQUATE"
+                    and review["reference_disposition"]==review["candidate_disposition"]=="OWNER_OPERATION_RETURNED"
+                    and None not in costs and costs[1]<costs[0])
+                d=combined_demand(mode,row["packet"])
+                g=groups.setdefault(d["shape"],{"FIT":[],"HOLDOUT":[]})
+                g[c["partition"]].append((course_key,d,ok))
+                manifest.append({"workload":cid,"partition":c["partition"],"review":copy(review)})
+            # No dropping adverse or unreviewed operations from a course.
+            if seen!=set(want):raise ValueError("LAB_DEMAND_INCOMPLETE_REVIEW")
+        self._rules={};self._summary={}
+        for shape,g in groups.items():
+            fit=g["FIT"];hold=g["HOLDOUT"];reason="QUALIFIED_EXPERIMENTAL_ENVELOPE"
+            if any(not x[2] for x in fit+hold):reason="ADVERSE_OR_UNKNOWN_REVIEW"
+            elif len({x[0] for x in fit})<2 or not hold:reason="INSUFFICIENT_DISTINCT_COURSES"
+            else:
+                bounds={k:[min(x[1]["axes"][k] for x in fit),max(x[1]["axes"][k] for x in fit)]
+                        for k in _DEMAND_AXES}
+                if any(not _within(x[1],bounds) for x in hold):reason="HELDOUT_OUTSIDE_FIT"
+                else:self._rules[shape]=bounds
+            self._summary[shape]={"disposition":reason,"fit_rows":len(fit),"holdout_rows":len(hold)}
+        self.digest=digest({"schema":_DEMAND_SCHEMA,"mode":mode,"owner_head":owner_head,
+            "reference_profile":reference_profile,"candidate_profile":candidate_profile,
+            "reference_identity":reference_identity,"candidate_identity":candidate_identity,
+            "reviews":manifest,"rules":self._rules})
+        self._request_ids=frozenset(request_ids)
+
+    def summary(self):
+        return {"schema":_DEMAND_SCHEMA,"qualification_digest":self.digest,
+                "scope":"SOURCEFREE_REVIEW_ASSERTIONS_NOT_MODEL_ADEQUACY",
+                "qualified_shapes":len(self._rules),"shapes":copy(self._summary)}
+
+    def assess(self,request):
+        try:d=combined_demand(self.mode,request)
+        except (TypeError,ValueError,RecursionError):return "UNSUPPORTED_REQUEST"
+        if d["shape"] not in self._rules:return "NO_QUALIFIED_SHAPE"
+        if not _within(d,self._rules[d["shape"]]):return "OUTSIDE_DEMAND_BOUNDS"
+        return "MATCHED_REVIEWED_ENVELOPE" if digest(request) in self._request_ids else "NOVEL_WITHIN_REVIEWED_ENVELOPE"
+
+
 class CombinedAllocationProvider:
     """Select an explicitly qualified profile at an actual owner request.
 
@@ -534,7 +681,8 @@ class CombinedAllocationProvider:
     No retry or automatic fallback after any attempt, even after rejection.
     """
     def __init__(self,mode,*,owner_head,budget,reference_profile,provider_options,
-                 qualifications=(),sourcefree_allocation_authorized=False,metrics_capacity=128):
+                 qualifications=(),sourcefree_allocation_authorized=False,metrics_capacity=128,
+                 demand_envelope=None,sourcefree_envelope_dispatch=False):
         if sourcefree_allocation_authorized is not True:
             raise ValueError("LAB_ALLOCATION_AUTHORIZATION_REQUIRED")
         if mode not in ("HISTORICAL","LIVE"):raise ValueError("LAB_COMBINED_PROVIDER_MODE")
@@ -557,6 +705,16 @@ class CombinedAllocationProvider:
                 "compact_structured_packet":p.compact_structured_packet,
                 "compact_task_prompt":p.compact_task_prompt,
                 "timeout_seconds":p.timeout_seconds})
+        self.envelope=demand_envelope;self.envelope_dispatch=sourcefree_envelope_dispatch
+        if type(sourcefree_envelope_dispatch) is not bool or (sourcefree_envelope_dispatch and demand_envelope is None):
+            raise ValueError("LAB_DEMAND_DISPATCH_OPTIONS")
+        if demand_envelope is not None:
+            e=demand_envelope
+            if (not isinstance(e,CombinedDemandEnvelope) or e.mode!=mode or e.owner_head!=owner_head
+                    or e.reference!=reference_profile or e.candidate not in self.providers
+                    or e.reference_identity!=self.identities[reference_profile]
+                    or e.candidate_identity!=self.identities[e.candidate]):
+                raise ValueError("LAB_DEMAND_ROUTER_BINDING")
         self.routes={}
         if type(qualifications) not in (list,tuple) or len(qualifications)>100000:
             raise ValueError("LAB_ALLOCATION_QUALIFICATIONS")
@@ -592,6 +750,14 @@ class CombinedAllocationProvider:
         try:
             d=digest(request);row=self.routes.get(d)
             name=row["candidate_profile"] if row else self.reference
+            basis="EXACT_REVIEWED_REQUEST" if row else "REFERENCE_UNMATCHED"
+            qualification=row["qualification_digest"] if row else None
+            envelope_decision=None
+            if not row and self.envelope is not None:
+                envelope_decision=self.envelope.assess(request)
+                if self.envelope_dispatch and envelope_decision in ("MATCHED_REVIEWED_ENVELOPE","NOVEL_WITHIN_REVIEWED_ENVELOPE"):
+                    name=self.envelope.candidate;basis="SOURCEFREE_EXPERIMENTAL_ENVELOPE"
+                    qualification=self.envelope.digest
             p=self.providers[name];before=p.usage_snapshot()["total"]
             try:
                 return p.call(copy(request))
@@ -602,9 +768,10 @@ class CombinedAllocationProvider:
                 else:
                     receipt={"attempts":None,"outcome":"ALLOCATION_RECEIPT_MISSING"}
                 receipt.update(allocation_profile=name,allocation_identity=self.identities[name],
-                    allocation_basis="EXACT_REVIEWED_REQUEST" if row else "REFERENCE_UNMATCHED",
-                    allocation_owner_head=self.owner_head,
-                    allocation_qualification_digest=row["qualification_digest"] if row else None)
+                    allocation_basis=basis,allocation_owner_head=self.owner_head,
+                    allocation_qualification_digest=qualification,
+                    envelope_decision=envelope_decision,
+                    envelope_qualification_digest=self.envelope.digest if self.envelope else None)
                 self._metrics.append(receipt);self._total+=1
         finally:self._lock.release()
 
@@ -680,7 +847,7 @@ def reconcile_budget_owner_receipts(budget,*,historical_receipts=(),live_receipt
                 status=("OWNER_OPERATION_RETURNED" if d==("CYCLE_RETURNED" if mode=="HISTORICAL"
                          else "ACTUAL_TURN_COMMITTED") else "HELD_OR_OTHER")
                 a.update(owner_mode=mode,owner_disposition=status,owner_raw_disposition=d,
-                         allocation_basis=m.get("allocation_basis"))
+                         allocation_basis=m.get("allocation_basis"),envelope_decision=m.get("envelope_decision"))
         groups={}
         for a in attempts.values():
             key=a["budget_profile"] or "legacy"

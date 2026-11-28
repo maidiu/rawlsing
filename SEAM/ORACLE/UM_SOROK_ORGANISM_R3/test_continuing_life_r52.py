@@ -677,4 +677,165 @@ class ContinuingLifeCourt(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError,"QUALIFICATION_INVALID"):router("LIVE",[bad])
 
 
+
+    def test_reviewed_demand_envelope_on_varying_actual_owner_courses(self):
+        from importlib.util import spec_from_file_location,module_from_spec
+        from unittest.mock import patch
+        import sys
+        folder=Path(__file__).parent/"um_sorok_organism"
+        def module(name,path):
+            spec=spec_from_file_location(name,path)
+            mod=module_from_spec(spec);spec.loader.exec_module(mod);return mod
+        wire=module("um_sorok_organism.r61_wire",folder/"live_psychological_llm.py")
+        with patch.dict(sys.modules,{"um_sorok_organism.live_psychological_llm":wire}):
+            lab=module("um_sorok_organism.r61_lab",folder/"inference_lab.py")
+            with tempfile.TemporaryDirectory() as d:
+                root=Path(d);head="604f3d1a51a21c53523a2040b30e234b556785fa"
+                endpoint="https://example.invalid/chat/completions"
+                def profile(name,rate):
+                    return dict(model=name,endpoint=endpoint,input_token_ceiling=100000,
+                        completion_token_limit=1000,input_nanos_per_token=rate,output_nanos_per_token=rate)
+                def budget(label):
+                    return lab.LiveBudget(journal=root/label,max_calls=20,max_wire_bytes=20000000,
+                        input_token_ceiling=100000,completion_token_limit=1000,input_nanos_per_token=5,
+                        output_nanos_per_token=5,max_budget_nanos=10000000,sourcefree_live_authorized=True,
+                        profiles={"reference":profile("reference",5),"economy":profile("economy",1)})
+                def opts(name,mode):
+                    return dict(model=name,endpoint=endpoint,api_key="not-a-key",allow_private_actor_data=True,
+                        **({"sourcefree_checkpoint_attested":True} if mode=="HISTORICAL"
+                        else {"sourcefree_live_attested":True}))
+                def router(mode,b,env=None,dispatch=False):
+                    return lab.CombinedAllocationProvider(mode,owner_head=head,budget=b,
+                        reference_profile="reference",provider_options={n:opts(n,mode)
+                        for n in ("reference","economy")},sourcefree_allocation_authorized=True,
+                        demand_envelope=env,sourcefree_envelope_dispatch=dispatch)
+                def setup(label,n):
+                    path=root/label;path.mkdir()
+                    rt,sid,catalog,_=joined.JoinedGenerationCourt.setup(self,path/"life.sqlite",
+                        extra_projects={"father":[{"object":"ordinary "+("x"*n),
+                                                  "means":["REST"],"priority":.1}]})
+                    return path,rt,sid,catalog
+                class History:
+                    def __init__(self,sid):
+                        self.a=joined.LifeCheckpoint(sid);self.b=joined.LifeCheckpoint(sid,resumed=True)
+                    def call(self,r):
+                        return (self.a if len(self.a.requests)<4 else self.b).call(r)
+                def execute(path,rt,sid,catalog,hp,lp,full=False):
+                    s=ContinuingLife(rt,path/"operator","mother",historical_provider=hp,live_provider=lp,
+                        sourcefree_attested=True,period_catalog=catalog,family_sources=(sid,),mii_module=mii)
+                    try:
+                        s.historical_checkpoint()
+                        if full:
+                            s.historical_checkpoint();s.historical_checkpoint();s.finish_history()
+                            s.independent_absent_beat();s.resume_history();s.finish_history()
+                        self.assertTrue(rt.verify()["valid"])
+                        return rt.ledger.events()
+                    finally:s.close();rt.close()
+                def capture_course(label,n):
+                    path,rt,sid,catalog=setup(label,n)
+                    c=lab.WorkloadCapture(source_head=head,fixture=label,sourcefree_fixture_attested=True)
+                    baseline=execute(path,rt,sid,catalog,
+                        lab.CombinedCaptureProvider(History(sid),c,"HISTORICAL"),
+                        lab.CombinedCaptureProvider(Live(),c,"LIVE"))
+                    return c.document(owner_state_sha256=lab.digest(baseline)),baseline
+                b=budget("calibration-budget");identity=router("HISTORICAL",b)
+                ids={n:identity.profile_identity(n) for n in ("reference","economy")}
+                courses=[]
+                for label,n,partition in (("fit-small",1,"FIT"),("fit-large",90,"FIT"),("heldout",35,"HOLDOUT")):
+                    tape,baseline=capture_course(label,n)
+                    # Both declared mock profiles traverse the actual same owner.
+                    # Review is explicitly hermetic, not an external adequacy judgment.
+                    owner_results={}
+                    for arm in ("reference","economy"):
+                        path,rt,sid,catalog=setup(label+"-"+arm,n)
+                        provider=lab.budgeted_combined_provider("HISTORICAL",budget=b,budget_profile=arm,
+                            metrics_capacity=1,**opts(arm,"HISTORICAL"))
+                        history=History(sid)
+                        def answer(self,payload):
+                            req=json.loads(payload["messages"][1]["content"])
+                            return {"choices":[{"message":{"content":json.dumps(history.call(req))}}],
+                                    "usage":{"prompt_tokens":200,"completion_tokens":50}}
+                        with patch.object(wire.ExplicitJSONLLMProvider,"_request",answer):
+                            outcome=execute(path,rt,sid,catalog,provider,Live())
+                        self.assertEqual(outcome,baseline)
+                        import sqlite3
+                        with sqlite3.connect(path/"operator"/"epoch-000000"/"ops.sqlite") as cx:
+                            rec=json.loads(cx.execute("SELECT receipt FROM checkpoint_attempts").fetchone()[0])
+                        self.assertEqual(rec["cycle_disposition"],"CYCLE_RETURNED")
+                        owner_results[arm]={"receipt":rec,"native_digest":lab.digest(outcome)}
+                    row=tape["payload"]["rows"][0]
+                    review={"seq":0,"request_digest":row["packet_digest"],
+                        "reference_identity":ids["reference"],"candidate_identity":ids["economy"],
+                        "reference_disposition":"OWNER_OPERATION_RETURNED","candidate_disposition":"OWNER_OPERATION_RETURNED",
+                        "quality_verdict":"ADEQUATE","reference_cost_nanos":1250,"candidate_cost_nanos":250,
+                        "review_digest":lab.digest({"fixture_only":True,"arms":owner_results})}
+                    courses.append({"workload":tape,"partition":partition,"reviews":[review]})
+                def envelope(c):
+                    return lab.CombinedDemandEnvelope(mode="HISTORICAL",owner_head=head,
+                        reference_profile="reference",candidate_profile="economy",
+                        reference_identity=ids["reference"],candidate_identity=ids["economy"],
+                        courses=c,sourcefree_review_attested=True)
+                e=envelope(courses);print("R61_ENVELOPE",json.dumps(e.summary(),sort_keys=True))
+                self.assertGreater(e.summary()["qualified_shapes"],0)
+                unseen,baseline=capture_course("novel",55)
+                packet=unseen["payload"]["rows"][0]["packet"]
+                self.assertEqual(e.assess(packet),"NOVEL_WITHIN_REVIEWED_ENVELOPE")
+                novel=lab.copy(packet);novel["context"]["new_qualified_owner_field"]=[]
+                self.assertEqual(e.assess(novel),"NO_QUALIFIED_SHAPE")
+                adverse=lab.copy(courses);adverse[-1]["reviews"][0]["quality_verdict"]="INADEQUATE"
+                self.assertEqual(envelope(adverse).summary()["qualified_shapes"],0)
+                partial=lab.copy(courses);partial[-1]["reviews"]=[]
+                with self.assertRaisesRegex(ValueError,"INCOMPLETE_REVIEW"):envelope(partial)
+                # Actual fourth course, not in the fit or holdout. Shadow is
+                # safe default; explicit sourcefree trial actually routes.
+                b2=budget("unseen-budget")
+                shadow=router("HISTORICAL",b2,e)
+                path,rt,sid,catalog=setup("novel-reference",55)
+                history=History(sid);sent=[]
+                def transport(self,payload):
+                    sent.append(payload["model"]);req=json.loads(payload["messages"][1]["content"])
+                    return {"choices":[{"message":{"content":json.dumps(history.call(req))}}],
+                            "usage":{"prompt_tokens":200,"completion_tokens":50}}
+                with patch.object(wire.ExplicitJSONLLMProvider,"_request",transport):
+                    self.assertEqual(execute(path,rt,sid,catalog,shadow,Live()),baseline)
+                self.assertEqual(sent,["reference"])
+                self.assertEqual(shadow.usage_snapshot()["receipts"][-1]["envelope_decision"],
+                    "NOVEL_WITHIN_REVIEWED_ENVELOPE")
+                active=router("HISTORICAL",b2,e,True)
+                path,rt,sid,catalog=setup("novel-active",55);history=History(sid)
+                with patch.object(wire.ExplicitJSONLLMProvider,"_request",transport):
+                    self.assertEqual(execute(path,rt,sid,catalog,active,Live()),baseline)
+                self.assertEqual(sent,["reference","economy"])
+                self.assertEqual(active.usage_snapshot()["receipts"][-1]["allocation_basis"],
+                    "SOURCEFREE_EXPERIMENTAL_ENVELOPE")
+                # A failed actual owner operation still costs money; there
+                # must be no opportunistic fallback or repeated send.
+                path,rt,sid,catalog=setup("novel-failure",55)
+                failing=router("HISTORICAL",b2,e,True)
+                def bad(self,payload):
+                    sent.append(payload["model"])
+                    return {"choices":[{"message":{"content":"{}"}}],
+                            "usage":{"prompt_tokens":200,"completion_tokens":50}}
+                life=ContinuingLife(rt,path/"operator","mother",historical_provider=failing,
+                    live_provider=Live(),sourcefree_attested=True,period_catalog=catalog,
+                    family_sources=(sid,),mii_module=mii)
+                try:
+                    before=rt.ledger.events()
+                    with patch.object(wire.ExplicitJSONLLMProvider,"_request",bad):
+                        with self.assertRaises(Exception):life.historical_checkpoint()
+                    self.assertEqual(rt.ledger.events(),before);self.assertTrue(life.status()["held"])
+                    self.assertEqual(sent,["reference","economy","economy"])
+                finally:life.close();rt.close()
+                records=[]
+                for label in ("novel-reference","novel-active","novel-failure"):
+                    with sqlite3.connect(root/label/"operator"/"epoch-000000"/"ops.sqlite") as cx:
+                        records.extend(json.loads(x[0]) for x in cx.execute("SELECT receipt FROM checkpoint_attempts"))
+                report=lab.reconcile_budget_owner_receipts(b2,historical_receipts=records)
+                self.assertEqual(report["profiles"]["economy"]["held_or_other"],1)
+                self.assertEqual(report["profiles"]["economy"]["owner_operations_returned"],1)
+                self.assertEqual(report["profiles"]["economy"]["known_rate_estimate_nanos"],500)
+                self.assertEqual(report["profiles"]["reference"]["owner_operations_returned"],1)
+                print("R61_HELD_COST",json.dumps(report["profiles"],sort_keys=True))
+
+
 if __name__=="__main__":unittest.main()
