@@ -35,7 +35,7 @@ jobs:
           test "$(git -C specialist hash-object WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py)" = a777692782003e05de6c46280b5861e97516dc90
       - name: Actual generation, cold continuation and adverse courts
         env:
-          PYTHONPATH: ${{ github.workspace }}/owner/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+          PYTHONPATH: ${{ github.workspace }}/owner/SEAM/ORACLE/UM_SOROK_ORGANISM_R3:${{ github.workspace }}/specialist/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: |
-          python specialist/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/test_modern_generation_port_r28.py
-          python -O specialist/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/test_modern_generation_port_r28.py
+          python -c 'import um_sorok_organism.runtime as r; assert "/owner/" in r.__file__; import unittest; unittest.main(module="test_modern_generation_port_r28")'
+          python -O -c 'import um_sorok_organism.runtime as r; "/owner/" in r.__file__ or __import__("sys").exit("WRONG_OWNER"); import unittest; unittest.main(module="test_modern_generation_port_r28")'

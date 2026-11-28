@@ -37,7 +37,7 @@ def exact_keys(value, required, optional=()):
     return isinstance(value,dict) and set(required)<=set(value)<=set(required)|set(optional)
 
 def subset(row, match):
-    return isinstance(row,dict) and all(k in row and row[k]==v for k,v in match.items())
+    return isinstance(row,dict) and all(k in row and (subset(row[k],v) if isinstance(v,dict) else row[k]==v) for k,v in match.items())
 
 def policy_check(policy):
     require(exact_keys(policy,(),("actions","formation","expression")),"GEN_POLICY_SHAPE")
