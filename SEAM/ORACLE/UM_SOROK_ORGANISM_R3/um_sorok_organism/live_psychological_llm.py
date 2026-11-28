@@ -594,7 +594,7 @@ class ExplicitJSONLLMProvider:
             instructions+=(" For historically_possible_lexical_project_revaluations "
                 "you may abstain or emit REORGANIZE_PROJECT with exactly kind, "
                 "project_id, lexical_revaluation_basis copied from this actor's "
-                "issued offer, priority (changed valid activity priority), and "
+                "issued offer, priority (a changed finite nonnegative number, no upper cap; not a boolean), and "
                 "personal_significance (nonblank string at most 512 characters). "
                 "Never use another actor's basis, change project means or claim "
                 "objective truth, necessary understanding or later action. "
@@ -653,22 +653,7 @@ class ExplicitJSONLLMProvider:
                 else self._request(req))
         if receipt is not None:
             receipt["usage"]=self._reported_usage(result)
-        if type(result) is not dict or type(result.get("choices")) is not list:
-            raise ValueError("REMOTE_MODEL_RESPONSE_SCHEMA_INVALID")
-        choices=result["choices"]
-        if len(choices)!=1 or type(choices[0]) is not dict:
-            raise ValueError("REMOTE_MODEL_AMBIGUOUS_CHOICES")
-        message=choices[0].get("message")
-        if type(message) is not dict or type(message.get("content")) is not str:
-            raise ValueError("REMOTE_MODEL_NO_JSON_CONTENT")
-        content_bytes=len(message["content"].encode("utf-8"))
-        if receipt is not None:
-            receipt["response_content_bytes"]=content_bytes
-        if content_bytes>256000:
-            raise ValueError("REMOTE_MODEL_RESPONSE_TOO_LARGE")
-        data=json.loads(message["content"])
-        if type(data) is not dict:
-            raise ValueError("REMOTE_MODEL_NOT_JSON_OBJECT")
+        data=self._decode_json_response(result,receipt)
         if data.get("task")!=task:
             raise ValueError("REMOTE_MODEL_TASK_MISMATCH")
         if task=="development" and type(data.get("candidates")) is not list:
@@ -688,3 +673,178 @@ class ExplicitJSONLLMProvider:
             receipt["proposed_candidate_count"]=len(data["candidates"])
         # No underlying authoring authority is conferred by this transport.
         return copy(data)
+
+    @staticmethod
+    def _decode_json_response(result,receipt=None):
+        if type(result) is not dict or type(result.get("choices")) is not list:
+            raise ValueError("REMOTE_MODEL_RESPONSE_SCHEMA_INVALID")
+        choices=result["choices"]
+        if len(choices)!=1 or type(choices[0]) is not dict:
+            raise ValueError("REMOTE_MODEL_AMBIGUOUS_CHOICES")
+        message=choices[0].get("message")
+        if type(message) is not dict or type(message.get("content")) is not str:
+            raise ValueError("REMOTE_MODEL_NO_JSON_CONTENT")
+        content_bytes=len(message["content"].encode("utf-8"))
+        if receipt is not None:
+            receipt["response_content_bytes"]=content_bytes
+        if content_bytes>256000:
+            raise ValueError("REMOTE_MODEL_RESPONSE_TOO_LARGE")
+        data=json.loads(message["content"])
+        if type(data) is not dict:
+            raise ValueError("REMOTE_MODEL_NOT_JSON_OBJECT")
+        return data
+
+
+# This is deliberately a different transport operation from live-V3 propose().
+# P2 owns call reservations; the modern generation port owns actual bind/dispatch.
+# No generic campaign or per-event live adapter can use this to bypass those.
+_CHECKPOINT_INSTRUCTIONS = """You are the analyst-level sourcefree developmental construction machinery
+for a continuing fictional material-social organism. You are not any actor's
+conscious self and not the world owner. One response is one checkpoint:
+interpret the preceding ACTUAL event receipts individually in order, then
+propose 3-5 salient next event surfaces, with conditionally specified,
+actor-local practical and developmental hypotheses. Use the changed current
+actors, not an invented original personality or predicted adult destination.
+Select substantial formative, revealing, consolidating, or contradictory
+ordinary-life developments; compressed intervals stand for elapsed life,
+not fabricated microevents. Do not force drama, consent, successful activity,
+acquisition, or a predetermined relationship. Other actors have independently
+separated policies, needs and histories. No shared psychic state. The model
+may construct meanings; only the existing owner can admit actual effects.
+Return ONE JSON object with exactly retrospective and prospective keys.
+
+Request mode BOOTSTRAP: retrospective=null. ORDINARY: both halves required.
+TERMINAL: prospective=null, retrospective only. The retrospective object must
+copy batch_id, history_hash and ordered event_ids from previous, and provide
+impressions: one {event_id, interpretations:[...]} per actual event in order.
+Each interpretation is {actor,meaning,disposition}; actor must have an actual
+receipt in previous.events[i].accessible.by_actor; meaning is nonblank <=512
+characters; disposition is INTERPRET_ONLY, ABSTAIN, or REHEARSE. No attribution
+to an unexposed person, no privileged analyst information as self-knowledge.
+REHEARSE is an optional operative hypothesis, not a guaranteed change: on
+ORDINARY only, link to exactly one next prospective surface for that actor by
+circumstances.retrospective_event_id. The owner will recheck accessible memory,
+current practical eligibility, and the exact actual historically possible
+retrospective revision after the actual selected rehearsal. No rewrite of
+earlier awareness. INTERPRET_ONLY/ABSTAIN do not install psychology. Terminal
+interpretations have no present carrier; never nominate REHEARSE there.
+
+Each prospective surface:
+{event_id:unique string, event_time:integer strictly forward,
+ operation:"CONTINUE_ACTOR_LIFE",source_refs:[context.source_ref],
+ participants:[one currently existing principal actor id],
+ circumstances:{policies:{actor_id:actor_policy,...}}, interval?:{mode:"ACTUAL",span:integer 1..3650}}.
+Event time = preceding actual clock + optional interval span + 1.
+Optional circumstances.period_ref must be in context.period_refs; never author
+new material period data. Family conditional surfaces ONLY from the explicit
+context.conditional_family_sources_analyst_only catalog: circumstances.family
+={kind:"INTERSECTION",source_seal_id,pathway_id:offered id or null} on the
+mother's actual step at the sealed intersection clock; {kind:"CONCEPTION",
+source_seal_id} on an actual continuing step at sealed conception clock.
+Conception is a separately authorized fictional premise, never inferred consent.
+Birth surface operation REALIZE_FAMILY_BIRTH, participants:[mother], policies:{},
+family:{kind:"BIRTH",source_seal_id}, positive ACTUAL interval reaching sealed
+birth clock WITHOUT +1. No actor appears before actual admitted birth. A
+candidate pathway can fail, abstain, or remain unbound; no regeneration or
+forced subsequent family stage. Do not invent private actor experience of
+genealogy/birth. Every actual next event will recheck current eligibility.
+
+actor_policy may contain actions (ordered conditional alternatives),
+formation, expression. actions:[{action:operation name, option_match?:{project_id?,
+world_request?:{material_object_ref?,addressed_party_ref?,operation?},binding_status?,
+grounds_status?,operation?},project_id?:id,speech_intent?:nonblank <=500}].
+Use action names that may be offered by current_situated.candidate_actions
+or become relevant through actual next life; no fake option ids or guaranteed
+outcomes. An option_match must uniquely bind a fresh exact practical option.
+For independent SPEAK only, speech_intent is prospective, not actual utterance.
+The actual lexical phase (where owner supports it) may use expression.speech,
+a nonblank string <=500. expression.surface is limited to actor-accessible
+situated expression, never privileged analyst information or private
+interpretations. The world/other's actual response is never authored here.
+Absent/ambiguous matches fall through other alternatives, then the existing
+local policy. Coactor choices come from their own actor_policy or existing
+local policy. Do not select another actor's response on behalf of the principal.
+
+formation:{base:"LOCAL" or "NONE",rules:[...]} chooses whether to retain
+existing local hypotheses, plus additional conditional model nominations.
+A direct rule is {candidate:{kind:"MEMORY",content:string <=512,cue_terms:[1..12
+short terms]},when?:{own_action?,status?,participated?}} or candidate with
+kind:"ACQUIRE_HISTORICAL_ORIENTATION",operation,orientation_mode:"APPROACH"
+or "WITHHOLD". These remain hypotheses about personally lived circumstances.
+Prefer source-qualified nominations {offer:actual owner packet field beginning
+historically_possible_ or historically_proposed_,match?:subset of offered
+candidate,augment?:semantic fields}. Example offer families:
+historically_possible_repair_techniques, historically_possible_joint_practices,
+historically_possible_care_practices, historically_possible_genetic_ends,
+historically_possible_dependency_means_revisions,
+historically_possible_dependency_project_reorganizations,
+historically_possible_functional_revisions, historically_possible_retrospective_orientation_revisions,
+historically_possible_lexical_project_revaluations where supported.
+Nominate only where current actual packet has exactly one matching offer.
+Augment only missing interpretive_hypothesis, personal_significance,
+personal_sense, affect_name, course_orientation, priority, anticipated_availability,
+revision, new_relation or new_polarity; never overwrite source basis, operation
+or identity. Priority must be a finite nonnegative numeric value, not boolean.
+Empty/no-change is lawful. The owner may reject invalid candidates; don't
+fabricate current source identifiers or precompute actual event-specific refs.
+The context is actor-separated analyst-only evidence; never conflate actor
+experience with objective history, public expression or another person's
+private history. No empirical or real-person claims. Return valid JSON only."""
+
+
+class ExplicitDevelopmentalCheckpointProvider(ExplicitJSONLLMProvider):
+    """Explicitly opted-in sourcefree combined-checkpoint JSON transport.
+
+    Same network/credential restrictions, response parser, bounded metrics
+    and model-agnostic interface as the live adapter, but NOT live propose().
+    The caller still needs actual source/export/paid-use authority. The
+    transport cannot infer that authority from an attestation or a hash.
+    """
+    grade="EXPLICIT_SOURCEFREE_CHECKPOINT_LLM_UNCALIBRATED_CONSTRUCTION"
+    def __init__(self,*,sourcefree_checkpoint_attested=False,**kwargs):
+        if sourcefree_checkpoint_attested is not True:
+            raise ValueError("CHECKPOINT_SOURCEFREE_ATTESTATION_REQUIRED")
+        super().__init__(**kwargs)
+    def call(self,request):
+        receipt={"task":"developmental_checkpoint",
+                 "transport":"MOCK" if self._transport is not None else "HTTPS",
+                 "attempts":0,"outcome":"REJECTED_OR_FAILED",
+                 "instruction_bytes":None,"packet_bytes":None,"request_bytes":None,
+                 "response_content_bytes":None,"prompt_variant":"CHECKPOINT_CONTRACT",
+                 "packet_variant":"FULL","wire_packet_bytes":None,
+                 "alias_count":0,"structured_field_count":0,
+                 "usage":self._reported_usage(None)}
+        start=perf_counter_ns()
+        try:
+            if (type(request) is not dict or set(request)!={"mode","context","previous"}
+                    or request["mode"] not in ("BOOTSTRAP","ORDINARY","TERMINAL")
+                    or type(request["context"]) is not dict
+                    or request["context"].get("grade")!=
+                    "PROVISIONAL_SOURCEFREE_MODERN_GENERATION_PORT_NOT_NATIVE_OR_MODEL_ADEQUACY"
+                    or (request["previous"] is None)!=(request["mode"]=="BOOTSTRAP")):
+                raise ValueError("CHECKPOINT_UNQUALIFIED_REQUEST")
+            body=canonical(request)
+            n=len(body.encode("utf-8"))
+            receipt["packet_bytes"]=n;receipt["wire_packet_bytes"]=n
+            if n>1024*1024:raise ValueError("CHECKPOINT_PACKET_LIMIT")
+            req={"model":self.model,
+                 "messages":[{"role":"system","content":_CHECKPOINT_INSTRUCTIONS},
+                             {"role":"user","content":body}],
+                 "response_format":{"type":"json_object"},
+                 **({self.completion_limit_field:self.completion_token_limit}
+                    if self.completion_token_limit is not None else {})}
+            receipt["instruction_bytes"]=len(_CHECKPOINT_INSTRUCTIONS.encode("utf-8"))
+            receipt["request_bytes"]=len(canonical(req).encode("utf-8"))
+            receipt["attempts"]=1
+            result=self._transport(copy(req)) if self._transport is not None else self._request(req)
+            receipt["usage"]=self._reported_usage(result)
+            data=self._decode_json_response(result,receipt)
+            if set(data)!={"retrospective","prospective"}:
+                raise ValueError("CHECKPOINT_RESPONSE_SHAPE")
+            receipt["outcome"]="PROPOSAL_RETURNED"
+            return copy(data)
+        finally:
+            receipt["elapsed_ns"]=perf_counter_ns()-start
+            if self._metrics.maxlen:
+                with self._metrics_lock:
+                    self._metrics_total+=1;self._metrics.append(receipt)

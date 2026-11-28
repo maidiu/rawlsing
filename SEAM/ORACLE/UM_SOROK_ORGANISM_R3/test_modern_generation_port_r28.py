@@ -1,5 +1,6 @@
 """Actual modern owner consequences through inherited P2 checkpoint custody."""
 import json
+import importlib.util
 from pathlib import Path
 import tempfile
 import unittest
@@ -134,8 +135,25 @@ class ModernGenerationCourt(unittest.TestCase):
         rt.step("worker",requested_action="REST")
         return rt,refs
     def generation(self,rt,folder,actor,provider,**kwargs):
+        # Load the exact specialist transport against the actual owner types.
+        # Mock endpoint returns the fixture's policy; not a model-quality test.
+        path=Path(__file__).resolve().parent/"um_sorok_organism/live_psychological_llm.py"
+        spec=importlib.util.spec_from_file_location("um_sorok_organism.r29_checkpoint_overlay",path)
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        def mock(req):
+            prompt=req["messages"][0]["content"]
+            self.assertIn("3-5 salient next event surfaces",prompt)
+            self.assertIn("retrospective_event_id",prompt)
+            self.assertIn("No actor appears before actual admitted birth",prompt)
+            request=json.loads(req["messages"][1]["content"])
+            reply=provider.call(request)
+            return {"choices":[{"message":{"content":json.dumps(reply)}}]}
+        transport=module.ExplicitDevelopmentalCheckpointProvider(
+            endpoint="https://example.invalid/chat/completions",model="sourcefree-fixture-only",
+            api_key="not-a-credential",allow_private_actor_data=True,
+            sourcefree_checkpoint_attested=True,transport=mock,metrics_capacity=10)
         return ModernGeneration(ModernDevelopmentOwner(rt,actor,folder/"ops.sqlite",
-            sourcefree_attested=True,**kwargs),provider,folder/"batch.sqlite",folder/"cycle.json")
+            sourcefree_attested=True,**kwargs),transport,folder/"batch.sqlite",folder/"cycle.json")
     def repair_arm(self,folder,admit):
         rt,refs=self.setup_repair(folder/"life.sqlite");p=RepairCheckpoint(refs,admit)
         g=self.generation(rt,folder,"worker",p)
@@ -165,6 +183,10 @@ class ModernGenerationCourt(unittest.TestCase):
             if admit:self.assertEqual(row["revisions"][0]["interpretive_hypothesis_not_causal_truth"],MEANING)
             self.assertNotIn(MEANING,str(rt.ledger.world()[1]))
             g.finish();self.assertEqual(len(p.requests),3)
+            receipts=g.provider.provider.usage_snapshot()["receipts"]
+            self.assertEqual(len(receipts),2) # ordinary and terminal after cold reopen
+            self.assertTrue(all(r["attempts"]==1 and r["transport"]=="MOCK" and
+                                r["outcome"]=="PROPOSAL_RETURNED" for r in receipts))
             self.assertTrue(g.engine.verify());self.assertTrue(rt.verify()["valid"])
             print("R28_REPAIR "+json.dumps({"admit":admit,"checkpoints":len(p.requests),
                 "ordinary_calls":1,"events":8,"later_attempt":second["records"][1]["objective"]["attempt"],
