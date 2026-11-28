@@ -188,6 +188,8 @@ TYPED_FORMATION_OFFERS = {
     "RECURRENT_WORK_ORIENTATION": ("historically_possible_recurrent_livelihood_orientation",),
     "LIVED_CROSS_CONTEXT_REVALUATION": ("historically_possible_lived_cross_context_revaluations",),
     "WITNESSED_OTHER_RELATION": ("historically_possible_witnessed_third_party_relations",),
+    "RECURRENT_ROUTINE": ("historically_possible_recurrent_routines",),
+    "RECURRENT_ROUTINE_REVISION": ("historically_possible_routine_revisions",),
 }
 
 def rich_meaning_check(kind,v):
@@ -210,6 +212,28 @@ def rich_meaning_check(kind,v):
                 "GEN_CROSS_CONTEXT_MEANING")
     elif kind=="WITNESSED_OTHER_RELATION":
         require(exact_keys(v,("hypothesis",)) and text(v["hypothesis"]),"GEN_OTHER_RELATION_HYPOTHESIS")
+    elif kind=="RECURRENT_ROUTINE":
+        require(exact_keys(v,("window_days","hours_per_active_day","provisional_exposure_fraction"),
+                           ("food_units_per_active_day",)) and
+                type(v["window_days"]) is int and 1<=v["window_days"]<=90 and
+                type(v["hours_per_active_day"]) in (int,float) and 0<v["hours_per_active_day"]<=4 and
+                type(v["provisional_exposure_fraction"]) in (int,float) and 0<v["provisional_exposure_fraction"]<=1 and
+                ("food_units_per_active_day" not in v or
+                 type(v["food_units_per_active_day"]) in (int,float) and
+                 0<v["food_units_per_active_day"]<=1 and
+                 round(v["food_units_per_active_day"],5)==v["food_units_per_active_day"]),
+                "GEN_ROUTINE_DOSE")
+    elif kind=="RECURRENT_ROUTINE_REVISION":
+        require(exact_keys(v,("mode","interpretive_hypothesis"),("dose",)) and
+                v["mode"] in ("PAUSE","RESUME","RETIRE","RESIZE") and
+                text(v["interpretive_hypothesis"],512) and
+                (("dose" in v)==(v["mode"]=="RESIZE")),"GEN_ROUTINE_REVISION_MODE")
+        if v["mode"]=="RESIZE":
+            dose=v["dose"]
+            require(exact_keys(dose,("hours_per_active_day","provisional_exposure_fraction"),
+                               ("food_units_per_active_day",)) and
+                    all(type(x) in (int,float) and isfinite(x) and x>0 for x in dose.values()),
+                    "GEN_ROUTINE_REVISION_DOSE")
 
 def rich_candidate(kind,q,v):
     if kind=="DELAYED_APPRAISAL":
@@ -234,6 +258,24 @@ def rich_candidate(kind,q,v):
         return {"kind":"CHANGE_OTHER_MODEL","other_ref":q["source_actor_ref"],
                 "about_relation_with_ref":q["target_actor_ref"],
                 "witnessed_cue_ref":q["witnessed_cue_ref"],**v}
+    if kind=="RECURRENT_ROUTINE":
+        require(q.get("kind")=="ACQUIRE_RECURRENT_ROUTINE" and
+                (("food_units_per_active_day" in v)==(q["basis"]["operation"]=="FEED")) and
+                v["window_days"]<=q["maximum_window_days"] and
+                v["hours_per_active_day"]<=q["maximum_hours_per_active_day"] and
+                ("food_units_per_active_day" not in v or
+                 v["food_units_per_active_day"]<=q["maximum_food_units_per_active_day"]),
+                "GEN_ROUTINE_UNOFFERED_DOSE")
+        return {"kind":"ACQUIRE_RECURRENT_ROUTINE","basis":q["basis"],**v}
+    if kind=="RECURRENT_ROUTINE_REVISION":
+        require(q.get("kind")=="REVISE_RECURRENT_ROUTINE" and v["mode"] in q["allowed_modes"],
+                "GEN_ROUTINE_UNOFFERED_REVISION")
+        if v["mode"]=="RESIZE":
+            ceiling={k:x for k,x in q["original_ceiling"].items() if k!="state"}
+            require(set(v["dose"])==set(ceiling) and
+                    all(x<=ceiling[k] for k,x in v["dose"].items()),
+                    "GEN_ROUTINE_UNOFFERED_RESIZE")
+        return {"kind":"REVISE_RECURRENT_ROUTINE","basis":q["basis"],**v}
     raise RecursionRefusal("GEN_UNKNOWN_RICH_CONSTRUCTION")
 
 class ConditionalPolicy:
@@ -681,7 +723,7 @@ class ModernDevelopmentOwner:
             out=self.rt.background(span,processes=processes)
             return [out],[latest_native_event(self.rt)]
         from um_sorok_organism.continuity_clock import (
-            qualify_mixed_history_schedule,mixed_history_interval,next_discontinuity,MAX_HORIZON)
+            qualify_mixed_history_schedule,qualified_recurrent_interval,next_discontinuity,MAX_HORIZON)
         world=self.rt.ledger.world(self.rt.world_id)[1];target=world["clock"]+span
         require(not any(x.get("present") is True for x in world.get("neighbor_users",{}).values()),
                 "GEN_PRESENT_VISITOR_REQUIRES_LIVE_OWNER")
@@ -689,7 +731,7 @@ class ModernDevelopmentOwner:
         receipts=[];events=[]
         while world["clock"]<target:
             clock=world["clock"]
-            end,active=mixed_history_interval(schedule,clock,min(target,clock+MAX_HORIZON))
+            end,active=qualified_recurrent_interval(world,schedule,clock,min(target,clock+MAX_HORIZON))
             boundary=next_discontinuity(world,self.rt.ledger.actors(),end-clock)
             if boundary:
                 kind=boundary["kind"];at=boundary["at"]

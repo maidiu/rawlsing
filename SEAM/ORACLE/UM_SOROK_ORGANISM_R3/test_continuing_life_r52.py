@@ -1,5 +1,6 @@
 """R52 actual owner-mode operation, no manually stitched epoch internals."""
 import json
+from copy import deepcopy
 from pathlib import Path
 import tempfile
 import unittest
@@ -368,3 +369,96 @@ class ContinuingLifeCourt(unittest.TestCase):
                 finally:session.close();rt.close()
 
 if __name__=="__main__":unittest.main()
+
+
+class JoinedRoutineContinuityCourt(unittest.TestCase):
+    """Actual independently acquired practice across generation/live/generation.
+
+    No external routine envelope, injected behavior or invented daily exercise.
+    The same compiled policy can revise a particular course on a fresh own act.
+    """
+    def test_shared_acquired_course_survives_and_changes_across_live_epochs(self):
+        class History:
+            def __init__(self):self.requests=[];self.resumed=False
+            def call(self,r):
+                self.requests.append(r);ctx=r["context"];clock=ctx["clock"];n=len(self.requests)
+                if r["mode"]=="TERMINAL":return {"retrospective":retro(r),"prospective":None}
+                def e(label,offset,actor,acts,rules=(),span=0,peers=None):
+                    return event(ctx,str(n)+":"+label,clock+offset,actor,
+                        {actor:policy(acts,rules),**(peers or {})},span=span)
+                if self.resumed or n==4:
+                    rows=[e("coarse",7,"a",[action("REST")],span=6),
+                          e("rest-b",8,"b",[action("REST")]),
+                          e("rest-a",9,"a",[action("REST")])]
+                else:
+                    nomination={"offer":"historically_possible_recurrent_routines",
+                        "construct":"RECURRENT_ROUTINE","match":{"basis":{"operation":"SING"}},
+                        "augment":{"window_days":80,"hours_per_active_day":2.,
+                                   "provisional_exposure_fraction":.5}}
+                    rows=[e("rest-a",1,"a",[action("REST")]),
+                          e("rest-b",2,"b",[action("REST")]),
+                          e("song",3,"a",[action("SING",{"project_id":"a-song"})],[nomination],
+                            peers={"b":policy([action("SING",{"project_id":"b-song"})],[nomination])})]
+                return {"retrospective":retro(r),"prospective":rows}
+        class Revision:
+            def __init__(self):self.requests=[];self.mode="PAUSE"
+            def call(self,r):
+                self.requests.append(r);aid=r["principal"]
+                rules=[{"offer":"historically_possible_routine_revisions",
+                    "construct":"RECURRENT_ROUTINE_REVISION","match":{"basis":{"operation":"SING"}},
+                    "augment":{"mode":self.mode,"interpretive_hypothesis":"Alter my own ordinary contribution."}}] if aid=="b" else []
+                return {"policies":{aid:policy([action("REST")],rules)}}
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);db=root/"life.sqlite"
+            rt=ConstitutiveRuntime(str(db));a=adult("a","A");b=adult("b","B")
+            for person,peer in ((a,"b"),(b,"a")):
+                person["projects"]=[{"id":person["id"]+"-song","object":"sing together",
+                    "means":["SING"],"addressed_party_ref":peer,"status":"active","priority":.7}]
+            rt.ledger.initialize(blank_world(),[a,b])
+            hist=History();live=Revision()
+            def open_life():return ContinuingLife(rt,root/"operator","a",historical_provider=hist,
+                        live_provider=live,sourcefree_attested=True,mii_module=mii)
+            def world():return rt.ledger.world()[1]
+            def routine(aid):return rt.snapshot(aid)["projects"][0]["recurrent_routines"][0]
+            def periods(start):return [x for x in world()["historical_periods"] if x["start"]>=start]
+            def revise(s,mode):
+                live.mode=mode
+                for _ in range(8):
+                    s.independent_absent_beat()
+                    rows=routine("b").get("revisions",[])
+                    if rows and rows[-1]["mode"]==mode:return
+                self.fail("independent actor did not revise own routine")
+            s=open_life()
+            try:
+                for _ in range(3):s.historical_checkpoint()
+                self.assertEqual(len(world()["routine_source_registry"]),2)
+                source_a=routine("a")["id"];source_b=routine("b")["id"]
+                start=world()["clock"];s.historical_checkpoint()
+                self.assertTrue(periods(start))
+                self.assertTrue(all({p["source_ref"] for p in x["processes"]}=={source_a,source_b}
+                                    for x in periods(start)))
+                self.assertEqual(sum(x["end"]-x["start"] for x in periods(start)),6)
+                s.finish_history()
+                revise(s,"PAUSE");self.assertFalse(routine("a").get("revisions"))
+                old=deepcopy(world()["historical_periods"])
+            finally:s.close();rt.close()
+            rt=ConstitutiveRuntime(str(db));s=open_life()
+            try:
+                hist.resumed=True;start=world()["clock"];s.resume_history()
+                self.assertTrue(periods(start));self.assertTrue(all(not x["processes"] for x in periods(start)))
+                self.assertEqual(world()["historical_periods"][:len(old)],old)
+                self.assertEqual(s.status()["epoch"],1)
+                s.finish_history();revise(s,"RESUME")
+                self.assertFalse(routine("a").get("revisions"))
+                start=world()["clock"];s.resume_history()
+                self.assertTrue(periods(start))
+                self.assertTrue(all({p["source_ref"] for p in x["processes"]}=={source_a,source_b}
+                                    for x in periods(start)))
+                self.assertEqual(s.status()["epoch"],2)
+                self.assertTrue(rt.verify()["valid"])
+                self.assertTrue(all(x["status"]=="RETURNED" for x in s.receipts()))
+                self.assertFalse(s.status()["held"])
+                self.assertEqual(len(world()["routine_source_registry"]),2)
+                self.assertEqual(len(routine("b")["revisions"]),2)
+                print("R008_JOINED_ROUTINE_EPOCHS",len(hist.requests),len(live.requests),s.status()["epoch"])
+            finally:s.close();rt.close()
