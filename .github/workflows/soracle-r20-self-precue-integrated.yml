@@ -39,6 +39,7 @@ on:
       - agent/soracle-co-mulchineer-reproductive-continuity-20261127-r1
       - agent/soracle-co-mulchineer-care-contradiction-20261127-r1
       - agent/soracle-co-mulchineer-contradictory-life-campaign-20261128-r1
+      - agent/soracle-co-mulch-r008-developmental-practice-20261128-r1
     paths:
       - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/**'
       - '.github/workflows/soracle-r20-self-precue-integrated.yml'
@@ -127,6 +128,10 @@ jobs:
         if: github.ref_name == 'agent/soracle-co-mulchineer-contradictory-life-campaign-20261128-r1'
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_contradictory_life_campaign_r65.py' -v
+      - name: R008 actual preproject ordinary developmental history
+        if: github.ref_name == 'agent/soracle-co-mulch-r008-developmental-practice-20261128-r1'
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest discover -s tests -p 'test_early_ordinary_practice_r66.py' -v
       - name: R20 historical self and pre-cue focus
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_historical_self_precue_r19.py' -v

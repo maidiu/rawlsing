@@ -18,6 +18,7 @@ from .attention_field import (offer_undertaking_attention, received_undertaking_
     offer_focal_encounters, received_focal_encounter, personally_received_directed_act,
     possible_monitoring_changes)
 from .ordinary_life import passage
+from .activity import received_local_vocal_context, possible_ordinary_context_transfers
 from .activity import (record_activity_afterlife, register_lived_activity_attempt,
                         possible_productive_witness_reorganizations,
                         own_provisioning_receipt, possible_provisioning_reorganizations,
@@ -1093,6 +1094,8 @@ class ConstitutiveRuntime:
                 **({'performed_repair_technique_ref_analytic_only':
                     experience['performed_repair_technique_ref_analytic_only']}
                    if experience.get('performed_repair_technique_ref_analytic_only') else {}),
+                **({'received_local_vocal_context':local_vocal}
+                   if (local_vocal:=received_local_vocal_context(actors[aid],experience)) else {}),
                 'received_cue_refs':[c['id'] for c in personal_cues],
                 'received_cue_tags':sorted({str(tag).lower()
                     for cue in personal_cues for tag in cue.get('tags',[])}),
@@ -1263,6 +1266,9 @@ class ConstitutiveRuntime:
                        actors[aid],experience,objective_ref)) else {}),
                 **({'historically_possible_provisioning_reorganizations':copy(provisioning)}
                    if (provisioning:=possible_provisioning_reorganizations(
+                       actors[aid],experience,objective_ref)) else {}),
+                **({'historically_possible_ordinary_context_transfers':copy(transfers)}
+                   if (transfers:=possible_ordinary_context_transfers(
                        actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_productive_witness_reorganizations':copy(
                     possible_productive_witness_reorganizations(actors[aid],experience,objective_ref)),

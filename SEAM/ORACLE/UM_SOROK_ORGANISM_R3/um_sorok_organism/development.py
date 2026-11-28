@@ -14,7 +14,8 @@ from .organism import ACTIONS
 from .practical_difference import validate_expected_difference, appraise_expected_difference
 from .expectation_afterlife import admit_activity_affect, admit_expressive_practice
 from .preproject_agency import admit_preproject_anticipation, revise_preproject_anticipation
-from .reflective_regulation import acquire_reflective_regulation, admit_private_possible_end, private_end_ground
+from .reflective_regulation import (acquire_reflective_regulation, admit_private_possible_end,
+                                    private_end_ground, qualified_ordinary_affect_memory)
 from .attention_field import (received_undertaking_attention, received_correspondence_attention,
                               received_focal_encounter)
 from .practical_powers import admit_repair_technique, active_repair_technique
@@ -23,7 +24,7 @@ from .historical_self_organization import (
     revise_operative_self, admit_lived_directional_orientation)
 from .psychic_genesis import (admit_contrast_end, possible_dependency_project_takeups,
                              PRODUCTIVE_VOCAL_FAMILY, possible_productive_vocal_takeups)
-from .activity import (possible_productive_witness_reorganizations, possible_provisioning_reorganizations,
+from .activity import (possible_ordinary_context_transfers, possible_productive_witness_reorganizations, possible_provisioning_reorganizations,
                        possible_commons_provisioning_reorganizations,
                         possible_dependency_project_reorganizations,
                        possible_dependency_means_revisions, admit_interactivity_relation)
@@ -668,6 +669,8 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                     raise InvalidDevelopment('PRIVATE_END_TAKEUP_REQUIRES_LATER_LIVED_COURSE')
                 private_takeup={'rehearsal_ref':ground['id'],'prior_trial_ref':trials[-1]['id'],
                                 'later_event_ref':event_ref}
+                if ground.get('ordinary_affect_memory'):
+                    private_takeup['ordinary_affect_memory']=copy(ground['ordinary_affect_memory'])
             dependency_takeup=None
             if end.get('genesis_family')=='INTERRUPTED_ACQUIRED_SUPPORT_THEN_INDEPENDENT_RELIEF':
                 matches=[p for p in possible_dependency_project_takeups(actor,experience,event_ref)
@@ -754,6 +757,20 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             if end.get('addressed_party_ref') is not None:
                 project['addressed_party_ref']=end['addressed_party_ref']
                 project['other_future_conduct']='INDEPENDENT_NOT_PROMISED'
+            if productive_takeup is not None and productive_takeup.get('ordinary_vocal_genesis_basis'):
+                project['ordinary_vocal_genesis_basis']=copy(productive_takeup['ordinary_vocal_genesis_basis'])
+                # An optional actor-relative anticipated difference is not an
+                # outcome, pleasure or conscious self-description. Only the
+                # personally received own-sign vocabulary may anchor it.
+                if 'expected_difference' in c:
+                    expected=validate_expected_difference(c['expected_difference'])
+                    if (not expected or not expected.get('sign_tags')
+                            or any(t.casefold() not in {x.casefold() for x in end['cue_terms']}
+                                   for t in expected['sign_tags'])
+                            or any(expected.get(k) not in (None,actor['id'])
+                                   for k in ('affected_party_ref','beneficiary_ref'))):
+                        raise InvalidDevelopment('ORDINARY_VOCAL_EXPECTATION_UNQUALIFIED')
+                    project['expected_difference']=expected
             if incidental is not None:
                 project['material_object_ref']=incidental['source_object_ref']
                 project['incidental_takeup_basis']=copy(incidental)
@@ -835,7 +852,12 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             witness_basis=c.get('productive_witness_basis')
             provisioning_basis=c.get('provisioning_means_basis')
             commons_basis=c.get('commons_provisioning_basis')
-            if commons_basis is not None:
+            if 'ordinary_vocal_context_transfer' in c:
+                if c not in possible_ordinary_context_transfers(actor,experience,event_ref):
+                    raise InvalidDevelopment('ORDINARY_VOCAL_CONTEXT_TRANSFER_UNQUALIFIED')
+                project.setdefault('ordinary_vocal_context_transfers',[]).append(
+                    copy(c['ordinary_vocal_context_transfer']))
+            elif commons_basis is not None:
                 if c not in possible_commons_provisioning_reorganizations(actor,experience,event_ref):
                     raise InvalidDevelopment('COMMONS_PROVISIONING_UNQUALIFIED_HISTORY')
                 project['commons_provisioning_basis']=copy(commons_basis)
@@ -927,6 +949,15 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                    'grade':GRADE,'status':'NONDECLARATIVE' if op=='TRACE' else 'ACTOR_ACCESSIBLE',
                    'cue_terms':c.get('cue_terms',[]),'content':c.get('content',''),
                    'manifestation':c.get('manifestation','uninterpreted')}
+            if 'ordinary_affect_memory_basis' in c:
+                receipt=qualified_ordinary_affect_memory(actor,experience,event_ref,
+                                                         c['ordinary_affect_memory_basis'])
+                if (op!='MEMORY' or not receipt or type(entry['content']) is not str
+                        or not entry['content'].strip() or len(entry['content'])>512
+                        or any(m.get('ordinary_affect_memory',{}).get('affect_ref')==receipt['affect_ref']
+                               for m in actor['memories'])):
+                    raise InvalidDevelopment('ORDINARY_AFFECT_MEMORY_UNQUALIFIED')
+                entry['ordinary_affect_memory']=copy(receipt)
             if 'undertaking_attention_ref' in c:
                 receipt=received_undertaking_attention(actor,
                     experience.get('own_practical_selection'),experience)

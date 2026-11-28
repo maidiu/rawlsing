@@ -11,6 +11,7 @@ These are typed fictional hypotheses, not a universal social-learning law.
 """
 from .types import copy, stable_id, GRADE
 from .organism import eligible
+from .social_vocal_development import ordinary_expressive_opportunity
 
 DEMONSTRATION_KIND="performed_speak"
 ACQUIRED="ACQUIRED_SITUATED_PUBLIC_OBJECT_REFERENCE"
@@ -144,6 +145,45 @@ def admit_cultural_reference(actor,experience,event_ref,proposal):
 
 def cultural_object_alternatives(constitution,access,option):
     """One person's own exposure changes their next exact-object option."""
+    if option.get("action")=="SPEAK":
+        # A previously acquired way of attending to a particular thing can
+        # become an occasion of *one's own* expression once independent
+        # social vocal life has actually generated expressive capacity.
+        # Do not produce a lexical item, project, correct concept or teaching
+        # intention. World authority still settles material presence.
+        expression=ordinary_expressive_opportunity(constitution,access)
+        if expression is None:return []
+        present={c.get("material_object_ref") for c in access.cues
+                 if c.get("kind")=="material_object_present"}
+        out=[];seen=set()
+        for record,demo,investigation in qualified_exercised_cultural_sources(
+                constitution.actor,constitution.clock,
+                constitution.cultural_reference_practices,
+                constitution.cultural_demonstrations,constitution.object_encounters):
+            obj=record["object_ref"]
+            if (obj in seen or obj not in present
+                    or record.get("location")!=access.location):continue
+            seen.add(obj)
+            basis={"actor":constitution.actor,"clock":constitution.clock,
+                   "reference":record["id"],
+                   "vocal_coordination":expression["vocal_coordination_practice_ref"],
+                   "object":obj}
+            out.append({"option_id":stable_id("cultural_reference_to_own_expression",basis),
+                "actor":constitution.actor,"as_of_clock":constitution.clock,
+                "operation":"SPEAK","project_id":None,"priority":None,
+                "anticipated_difference":None,"beneficiary_as_apprehended":None,
+                "grounds_status":"ACQUIRED_CULTURAL_ATTENTION_MEETS_ACQUIRED_VOCAL_COORDINATION",
+                "world_request":{"operation":"SPEAK","material_object_ref":obj,
+                                 "addressed_party_ref":None},
+                "binding_status":"ACTUAL_PRESENT_OBJECT_NOT_SEMANTIC_MASTERY",
+                "cultural_reference_ref":record["id"],
+                "vocal_coordination_practice_ref":expression["vocal_coordination_practice_ref"],
+                "source_event_refs":list(dict.fromkeys(record["source_event_refs"]+
+                                     expression["source_event_refs"])),
+                "source_aggregate_refs":copy(expression["source_aggregate_refs"]),
+                "not_a_learned_word_or_intended_teaching":True,
+                "not_a_granted_property_right":True,"grade":GRADE})
+        return out
     if option.get("action")!="INSPECT" or "INSPECT" not in access.affordances:
         return []
     ok,_=eligible(constitution.body,"INSPECT")

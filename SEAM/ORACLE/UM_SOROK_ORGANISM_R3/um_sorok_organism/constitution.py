@@ -516,8 +516,11 @@ def compose(constitution,access,limit=50):
         action=candidate['action']
         entry=actions.setdefault(action,{
             'action':action,'score':candidate['score'],'basis':[],
-            'opportunity':'HISTORICALLY_EXERCISED_POSSIBILITY'})
+            'opportunity':candidate['opportunity']})
         entry['basis']+=['exercise:'+r for r in candidate['basis']]
+        if candidate.get('source_aggregate_refs'):
+            entry.setdefault('practical_aggregate_sources',[]).extend(
+                candidate['source_aggregate_refs'])
         entry.setdefault('practical_exercise_sources',[]).extend(
             candidate['source_event_refs'])
         entry.setdefault('historical_support_statuses',[]).extend(
