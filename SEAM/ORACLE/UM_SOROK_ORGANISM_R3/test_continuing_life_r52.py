@@ -659,4 +659,109 @@ class ContinuingLifeCourt(unittest.TestCase):
                     private=nominate,antecedent=True,continuation=continue_actual)
                 self.assertEqual(len(result["projects"]),1+int(nominate))
 
+
+    def test_R81_independent_reciprocal_routine_through_actual_checkpoint_interval_and_revision(self):
+        """Same shared semantic compiler and owner; no injected future assent."""
+        from copy import deepcopy
+        from um_sorok_organism.mediated_efficacy import situated_component_efficacy
+        for both in (True,False):
+            with self.subTest(both=both),tempfile.TemporaryDirectory() as d:
+                root=Path(d);db=root/"life.sqlite";rt=ConstitutiveRuntime(str(db))
+                aa=adult("a","A");bb=adult("b","B")
+                for actor,peer in ((aa,"b"),(bb,"a")):
+                    actor["projects"]=[{"id":actor["id"]+"-song","object":"a particular shared practice",
+                        "means":["SING"],"addressed_party_ref":peer,"status":"active","priority":.7}]
+                rt.ledger.initialize(blank_world(),[aa,bb])
+                def own(a,op,rules=()):
+                    return {a:policy([action(op)],rules)}
+                def shared(nominate=False,refuse=False):
+                    out={}
+                    for a,peer in (("a","b"),("b","a")):
+                        f=[]
+                        if nominate and (a=="a" or both):
+                            f=[{"offer":"historically_possible_recurrent_routines","construct":"RECURRENT_ROUTINE",
+                                "match":{"basis":{"actor":a,"operation":"SING","project_ref":a+"-song",
+                                                  "coactivity_partner":peer}},
+                                "augment":{"window_days":80,"hours_per_active_day":3. if a=="a" else 2.,
+                                           "provisional_exposure_fraction":1. if a=="a" else .5}}]
+                        out[a]=policy([action("REFUSE")] if refuse and a=="b" else
+                                      [action("SING",{"project_id":a+"-song"})],f)
+                    return out
+                def revise(mode):
+                    return [{"offer":"historically_possible_routine_revisions","construct":"ROUTINE_REVISION",
+                        "match":{"basis":{"actor":"b","operation":"SING","project_ref":"b-song"}},
+                        "augment":{"mode":mode,"interpretive_hypothesis":"Change my own involvement."}}]
+                class H:
+                    def __init__(self):self.calls=[]
+                    def call(self,r):
+                        self.calls.append(r)
+                        if r["mode"]=="TERMINAL":return {"retrospective":retro(r),"prospective":None}
+                        n=len(self.calls);ctx=r["context"];t=ctx["clock"];out=[]
+                        if n==1:
+                            plan=[("a",shared(refuse=True),0),("a",own("a","REST"),0),
+                                  ("b",own("b","REST"),0),("a",shared(),0)]
+                        elif n==2:
+                            plan=[("a",own("a","REST"),0),("b",own("b","REST"),0),
+                                  ("a",shared(),0),("a",own("a","REST"),0),
+                                  ("b",own("b","REST"),0)]
+                        elif n==3:
+                            plan=[("a",shared(nominate=True),0),("a",own("a","REST"),0),
+                                  ("b",own("b","REST"),0)]
+                        elif n==4:
+                            plan=[("a",own("a","REST"),10),("b",own("b","REST",revise("PAUSE") if both else []),0),
+                                  ("a",own("a","REST"),5),("b",own("b","REST",revise("RESUME") if both else []),0),
+                                  ("a",own("a","REST"),5)]
+                        else:raise AssertionError("unexpected checkpoint")
+                        for i,(a,pol,span) in enumerate(plan):
+                            t+=span+1
+                            out.append(event(ctx,"r81:"+str(n)+":"+str(i),t,a,pol,span=span))
+                        return {"retrospective":retro(r),"prospective":out}
+                h=H();live=Live()
+                def open_session(runtime):return ContinuingLife(runtime,root/"operator","a",
+                    historical_provider=h,live_provider=live,sourcefree_attested=True)
+                s=open_session(rt)
+                try:
+                    for _ in range(3):s.historical_checkpoint()
+                    w=rt.ledger.world()[1];sources=w["routine_source_registry"]
+                    self.assertEqual(len(sources),2 if both else 1)
+                    self.assertTrue(all(len(set(x["basis_event_refs"]))==3 for x in sources.values()))
+                    if both:
+                        a,b=sorted(sources.values(),key=lambda q:q["actor"])
+                        self.assertEqual(a["basis_event_refs"],b["basis_event_refs"])
+                    prefix=rt.ledger.events();before=deepcopy(rt.ledger.actors());clock=w["clock"]
+                    f0={a:situated_component_efficacy(before[a],"SING","home")[
+                        "technical_component_facility_estimate"] for a in before}
+                finally:s.close();rt.close()
+                rt=ConstitutiveRuntime(str(db));s=open_session(rt)
+                try:
+                    s.historical_checkpoint()
+                    w=rt.ledger.world()[1];periods=[q for q in w["historical_periods"] if q["start"]>=clock]
+                    active=[q for q in periods if q["processes"]]
+                    self.assertEqual(sum(q["end"]-q["start"] for q in active),15 if both else 0)
+                    self.assertTrue(all(len(q["processes"])==2 and q["actor_time_claims"]=={"a":1.,"b":1.}
+                                        and len({p["reciprocal_routine_pair_ref"] for p in q["processes"]})==1
+                                        for q in active))
+                    held=[q for q in periods if not q["processes"]]
+                    self.assertEqual(sum(q["end"]-q["start"] for q in held),5 if both else 20)
+                    if both:
+                        self.assertTrue(any(p["reason"]=="ACTOR_ROUTINE_PAUSED"
+                            for q in held for p in q.get("situationally_withheld_processes",[])))
+                    self.assertTrue(any(p["reason"]=="NO_UNAMBIGUOUS_INDEPENDENT_RECIPROCAL_ROUTINE"
+                        for q in held for p in q.get("situationally_withheld_processes",[])))
+                    for a in before:
+                        q=rt.ledger.actor(a)[1]
+                        self.assertEqual(q["memories"],before[a]["memories"])
+                        self.assertEqual(q["power_exercises"],before[a]["power_exercises"])
+                        f1=situated_component_efficacy(q,"SING","home")["technical_component_facility_estimate"]
+                        self.assertEqual(f1>f0[a],both)
+                    self.assertEqual(rt.ledger.events()[:len(prefix)],prefix)
+                    s.finish_history()
+                    self.assertTrue(rt.verify()["valid"])
+                    self.assertTrue(all(q["status"]=="RETURNED" for q in s.receipts()))
+                    self.assertFalse(live.requests)
+                    print("R81_RECIPROCAL_CHECKPOINT",json.dumps({"both":both,
+                        "active_days":15 if both else 0,"withheld_days":5 if both else 20,
+                        "actual_anchor_events":3,"historical_calls":len(h.calls)},sort_keys=True))
+                finally:s.close();rt.close()
+
 if __name__=="__main__":unittest.main()
