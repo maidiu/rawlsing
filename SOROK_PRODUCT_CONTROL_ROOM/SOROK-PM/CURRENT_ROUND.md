@@ -1,15 +1,23 @@
-# Current round — R004
+# Current round — R005
 
-**OPEN / READY — ORDINARY R004.** R003 construction returns 3/3 and requested CO HQ consultation 1/1 received. User: rouse CO-MULCHINEER, NEIGHBOR-UX-MULCHINEER and INFERENCE-ECONOMY together. CO HQ not requested now: actual HOME additions supply sufficient theory for first-draft construction and correspondence, no theory wait. User cue **New round is in (R004)**; on returns **They're in.**
+**OPEN / READY — ORDINARY R005.** R004 construction returns 3/3 received, including late economy supplement. Rouse CO-MULCHINEER, NEIGHBOR-UX-MULCHINEER and INFERENCE-ECONOMY together. CO HQ not requested: R003 theory sufficient for these provisional concerns. User cue **New round is in (R005)**; on returns **They're in.**
 
-| Lane | R004 deliberation | Worker return |
+| Lane | R005 deliberation | Worker return |
 |---|---|---|
-| CO-HQ (standing; not requested) | [R003 received](./CO-HQ/returns/R003.md) | No required R004 return |
-| CO-MULCHINEER | [R004](./CO-MULCHINEER/deliberations/R004.md) | `CO-MULCHINEER/returns/R004.md` |
-| NEIGHBOR-UX-MULCHINEER | [R004](./NEIGHBOR-UX-MULCHINEER/deliberations/R004.md) | `NEIGHBOR-UX-MULCHINEER/returns/R004.md` |
-| INFERENCE-ECONOMY | [R004](./INFERENCE-ECONOMY/deliberations/R004.md) | `INFERENCE-ECONOMY/returns/R004.md` |
+| CO-HQ (standing; not requested) | R003 consultation retained | No required R005 return |
+| CO-MULCHINEER | [R005](./CO-MULCHINEER/deliberations/R005.md) | `CO-MULCHINEER/returns/R005.md` |
+| NEIGHBOR-UX-MULCHINEER | [R005](./NEIGHBOR-UX-MULCHINEER/deliberations/R005.md) | `NEIGHBOR-UX-MULCHINEER/returns/R005.md` |
+| INFERENCE-ECONOMY | [R005](./INFERENCE-ECONOMY/deliberations/R005.md) | `INFERENCE-ECONOMY/returns/R005.md` |
 
-## R003 close / successor-ready receipt
+## R004 close / successor-ready receipt
+
+Input PM 27a8612b5757bc360785ed6d8bb3bc4547c63655; exact CO b9972af9911c5eb07d532ed1d466c5f567a0fdb7, NEIGHBOR 31e0ac50878a9cee7d04d345714a3387b857e115, economy a1c94a268e91913e8374ae13566c2d3f8eb2c166. Raw exact execution logs and selected actual sources inspected, not locally rerun. #1418 2bef1d25fb6faa87fe9c97656febf4bb92876d83 job 140784295632 730/mode; #1419 4d104a17c4ec9126484faac4e6f13d5050162051 job 140784500054 726/mode plus NEIGHBOR courts; #1378 7e3c20baa8848601af8166e09d645cb5d2d3cc97 job 140784155667 734/mode and joined job 140784155740. No independent review or combined R61/R39/R23 execution. Earlier adverse fixture results in returns conserved. Late R24 ee55cbb196eac7f2104d5cbf0b72dcb6f78d0981 source/tests inspected, author-local 2/mode synthetic, full CI in progress at intake; archive audit NOT_RUN. R23 last fully executed cut.
+
+#1302 b1e2c5e3db9339512e8585baa39f1918948a664e, ledger 923a49f9b026c09db80375a387322449ccbebb77, CIC 2a0c07ae9beaad26dff0c8bc85e3058b6fa94e20: 195 records/686 relationships/144 identities; 187 criteria/58 clusters/719 routes; 150 unexamined, 34 partial, 2 first draft, 1 integrated first draft; 36 unexamined clusters, 22 partial. 11 criteria gain bounded witnesses; prior exact R22/R23 evidence conserved. Initial documentary CI RED REFINEMENT_FUNCTION_CROSSWALK at ef19c70e job 140804106200 corrected by removing only new invalid C8 pointer from NEIGHBOR-CIC-024.03, original C12 crosswalk and R23 witness retained. New documentary CI not yet established at opening. [Existing receiving](https://github.com/maidiu/rawlsing/blob/b1e2c5e3db9339512e8585baa39f1918948a664e/SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/START_HERE.md). Protected PRE-MAIN 827714e83743056939894a39736d72ea16bdc6dd paired R39+MII blobs a565e6239ee730bf8aae796d1c5afb35207b1e93/f2081d41452a5fb5d7061fcf340af725e4ee07af. No lease; matching proposed pair in #1302. #1095 75581fa9 unchanged; 27-task authority/currentness not exhaustively reconciled. CO HOME #1371 1b040e10, NEIGHBOR HOME #1332 f1ed9d41 unchanged at observed cut; actual R004 owner-local incorporation not established. SOROKUDA reciprocal update outstanding at this publication. HQ_CURRENTNESS_HOLD scoped to those claims, independent/native/protected status and modern causal correspondence; no general stop.
+
+**Next successor:** recheck exact heads, CI, actual HOME/PROGRAMMA/SOROKUDA receiving and new R005 returns, then whole-HOME compare. R61 admitted actual reconstitution, R39 actual lexical event, R23 older R35 capture complementary not joined. No new source authority or automatic spend.
+
+## Conserved R003 close (historical)
 
 Input PM `f03dafc8128122e0be5860ce80d1f9e003f26d88`: CO HQ blob `29bd428294479620654ecfc2cd0568bbf3a2f4a5`, CO `25f6aa1e4a98a6c5965a497fc1714e37f0125bc7`, NEIGHBOR `fe8258cb19cc1deb05ab50aacd0c98b332ac54b8`, economy `7b178c88b6bea3232a70fd60567897d5687ff4e2`. All attributed actual returns read, selected exact source/tests and raw direct logs read.
 - R60 #1414 `593afc583e1e0a49b31e25a985e78472310dbdfc` job 140749370975 728 full each mode; R38 #1415 `82aa13dc0bdf1bb88b0493fb580cfe57003b6dbb` job 140749855291 726 CO/economy each mode plus NEIGHBOR courts; R22 #1378 `f85fff8dad58d035f9c955fe163de45698a48790` jobs 140748653535 and 140748653914 733 each mode + NEIGHBOR courts all OK. Earlier adverse runs conserved in worker returns; no independent/scientific/protected promotion. R22 actual raw primary/control, 3 calls / 6 events / 4311 request bytes each; local P3 effect not retrospective admission; no network/model cost.
@@ -17,8 +25,3 @@ Input PM `f03dafc8128122e0be5860ce80d1f9e003f26d88`: CO HQ blob `29bd42829447962
 - CO HOME #1371 exact `1b040e100c07d4100b87389fd03cf8542a154f65`, blob `c5ef750c75c79f0bc3a0a664084c93aabd4d36ca`, L629–633 and 720–724 directly read, all 1056 prior lines ordered subsequence. Actual candidate incorporation of R003 theoretical correspondence; no claim earlier specific R002 proposal or protected receipt. NEIGHBOR HOME #1332 f1ed9d41 unchanged; reciprocal R003 route proposed; actual incorporation not verified.
 - Protected PRE-MAIN `827714e83743056939894a39736d72ea16bdc6dd`, OATH `3264d0a60ab61ca4e3f3fa9c85e66dc99c08fbcd`, paired MD `a565e6239ee730bf8aae796d1c5afb35207b1e93` / JSON `f2081d41452a5fb5d7061fcf340af725e4ee07af` unchanged from prior check; #1095 75581fa9, #1333 e81fad10, #1171 85e7166a, SOROKUDA 015402b8 unchanged. No protected writer lease. Proposed matching pair only. HQ_CURRENTNESS_HOLD scoped to modern checkpoint equivalence, exhaustive authority/currentness, independent/native/science/protected receiving and HOME parity. No general stop.
 
-## Governing R004 concern
-
-Actual history develops between events (R60); alternative opportunities really expire (R38); inherited P2/P3 checkpoint and sequential local causal work are real capital (R22); retrospective proposal is not admission (CO HQ). Bring these into correspondence with current actor-owned operative reconstitution and subsequent independent activity, plus lawful typed live surfaces. Preserve breadth (two entrances, ordinary multi-actor life, expression) and compare neglected functions before engineering. CO HQ has answered materially relevant theory; do not recruit routinely. Next PM: verify CI and exact HOME owner receiving, receive R004 actual returns, reconcile existing estate and compare whole organism anew. No automatic model spending.
-
-**Reciprocal routes and custody:** [CO HOME](https://github.com/maidiu/rawlsing/pull/1371#issuecomment-7230014711), [NEIGHBOR HOME](https://github.com/maidiu/rawlsing/pull/1332#issuecomment-7230015136), [paired PROGRAMMA proposal](https://github.com/maidiu/rawlsing/pull/1333#issuecomment-7230015581), [G4 continuation](https://github.com/maidiu/rawlsing/pull/1302#issuecomment-7230015994). These proposed supplements are not verified incorporation; actual CO HQ R003 earlier addition is independently verified. All three R004 briefs read back at 849958af4e7bd2275d1a4f32f528a1562ff5e9df.
