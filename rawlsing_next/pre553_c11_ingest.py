@@ -22,7 +22,7 @@ from rawlsing_next.pre553_empirical_authority import (
 )
 from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
-    AuthoritySnapshot,
+    AuthoritySnapshot, _FrozenSemanticList,
     CanonicalSemanticObject,
     EmpiricalCoordinateFact,
     EmpiricalUniverse,
@@ -702,6 +702,153 @@ def _validate_sections(candidate: C11SourceReleaseCandidate) -> None:
         )
 
 
+class _UnsharedEventShape(Exception):
+    """Private optimization miss, not a semantic disposition."""
+
+
+def _event_template_token(value):
+    """Exact typed key for constructor-frozen JSON, never object identity.
+
+    In particular True and 1 cannot share a token. Foreign containers and
+    subclasses use the incumbent complete validator.
+    """
+    t=type(value)
+    if t is str:return ("s",value)
+    if t is int:return ("i",value)
+    if t is bool:return ("b",value)
+    if value is None:return ("n",)
+    if t is MappingProxyType:
+        if any(type(k) is not str for k in value):raise _UnsharedEventShape()
+        return ("m",tuple((k,_event_template_token(v)) for k,v in value.items()))
+    if t in (tuple,_FrozenSemanticList):
+        return ("l",tuple(_event_template_token(v) for v in value))
+    raise _UnsharedEventShape()
+
+
+class _CountryEventValidation:
+    """One construction transaction: share only identical qualified fields.
+
+    Every row still undergoes a fresh, independent full semantic hash.
+    No persistent permission, no cross-registry verdict, no supplied digest
+    substituted for actual row bytes. The first real event for every shared
+    template passes the incumbent field/authority and identity validators.
+    """
+    _varying=frozenset(("scoped_respondent_ref","event_group_id",
+                        "response_event_id_or_deterministic_index"))
+    _fields=tuple(sorted(RespondentEvent.REQUIRED_FIELDS))
+
+    def __init__(self,registry):
+        self.registry=registry
+        self.registry_pin=registry._by_key
+        self.templates={}
+        self.bytes=0
+        self.hits=0
+        self.full=0
+
+    def _full(self,event):
+        self.full+=1
+        validate_public_carrier_object(event,self.registry)
+        refs=tuple(_walk_authority_refs(event.semantic_fields))
+        for ref in refs:
+            self.registry.resolve_exact(ref)
+        return (*event.authority_snapshot_refs,*refs)
+
+    def _geometry(self,event):
+        fields=event.semantic_fields
+        if (type(self.registry) is not AuthorityRegistry
+                or self.registry._by_key is not self.registry_pin
+                or type(event) is not RespondentEvent
+                or getattr(event,"__dict__",{})
+                or type(fields) is not MappingProxyType
+                or fields.keys()!=RespondentEvent.REQUIRED_FIELDS
+                or any(type(x) is not str for x in
+                       (event.schema_id,event.schema_version,event.typed_state))
+                or type(event.authority_snapshot_refs) is not tuple
+                or any(type(r) is not AuthorityRef or any(type(x) is not str for x in
+                       (r.authority_id,r.authority_version,r.authority_content_hash))
+                       for r in event.authority_snapshot_refs)):
+            raise _UnsharedEventShape()
+        respondent=fields["scoped_respondent_ref"]
+        if (type(respondent) is not MappingProxyType
+                or respondent.keys()!={"kind","object_id","content_hash"}
+                or any(type(v) is not str for v in respondent.values())
+                or any(type(fields[n]) is not str or not fields[n]
+                       for n in self._varying if n!="scoped_respondent_ref")):
+            raise _UnsharedEventShape()
+        # These varying fields have exact ref/string shapes: they cannot
+        # conceal any embedded authority material. Validate the actual ref
+        # on every row, even when every static field is already qualified.
+        exact_ref(respondent,"scoped_respondent_ref")
+        auth=tuple((r.authority_id,r.authority_version,r.authority_content_hash)
+                   for r in event.authority_snapshot_refs)
+        key=(event.schema_id,event.schema_version,event.typed_state,auth,
+             tuple(_event_template_token(fields[n]) for n in self._fields
+                   if n not in self._varying))
+        return fields,key
+
+    def _compile(self,event,fields):
+        # Exact canonical key order; only the three varying semantic fields
+        # and the per-event dependency/replay lanes are regenerated.
+        prefix=b'{"authority_snapshot_refs":'+canonical_json(
+            event.authority_snapshot_refs).encode("utf-8")+b',"dependency_refs":'
+        middle=(b',"schema_id":'+canonical_json(event.schema_id).encode("utf-8")
+                +b',"schema_version":'+canonical_json(event.schema_version).encode("utf-8")
+                +b',"semantic_fields":{')
+        pieces=tuple((canonical_json(n).encode("utf-8")+b":",
+                     None if n in self._varying else canonical_json(fields[n]).encode("utf-8"))
+                     for n in self._fields)
+        tail=b'},"typed_state":'+canonical_json(event.typed_state).encode("utf-8")+b"}"
+        return prefix,middle,pieces,tail
+
+    def _bytes(self,event,fields,template):
+        prefix,middle,pieces,tail=template
+        body=b",".join(k+(v if v is not None else canonical_json(fields[n]).encode("utf-8"))
+                       for n,(k,v) in zip(self._fields,pieces))
+        return (prefix+canonical_json(event.dependency_refs).encode("utf-8")
+                +b',"producer_replay_locator_or_reference_root":'
+                +canonical_json(event.producer_replay_locator_or_reference_root).encode("utf-8")
+                +middle+body+tail)
+
+    def validate(self,event):
+        try:
+            fields,key=self._geometry(event)
+        except _UnsharedEventShape:
+            self._full(event)
+            return
+        except Pre553IntegrityError:
+            # Keep incumbent typed failure and validation ordering.
+            self._full(event)
+            return
+        template=self.templates.get(key)
+        if template is None:
+            refs=self._full(event)
+            if (self.registry._by_key is not self.registry_pin
+                    or not all(ref.key in self.registry_pin for ref in refs)
+                    or len(self.templates)>=8192):
+                return
+            template=self._compile(event,fields)
+            actual=self._bytes(event,fields,template)
+            oracle=canonical_json(event.semantic_projection()).encode("utf-8")
+            if actual!=oracle:
+                raise C11IntegrityError("shared event preimage differs from incumbent canonical projection")
+            # Conservative bounded estimate includes typed key tree and
+            # detached static bytes, not only the bytes of the value lane.
+            cost=4096+4*len(oracle)
+            if self.bytes+cost<=32*1024**2:
+                self.templates[key]=template
+                self.bytes+=cost
+            return
+        actual=self._bytes(event,fields,template)
+        if hashlib.sha256(actual).hexdigest()!=event.content_hash:
+            raise C11IntegrityError("public object semantic projection/hash mismatch")
+        ref=event.ref
+        if ref.object_id!=event.object_id or ref.content_hash!=event.content_hash:
+            raise C11IntegrityError("public object ExactRef does not match object identity")
+        if self.registry._by_key is not self.registry_pin:
+            raise C11IntegrityError("event authority registry changed during validation")
+        self.hits+=1
+
+
 class _CountryEventCollector:
     """Private I02 construction transaction, not a caller-supplied seal.
 
@@ -714,6 +861,7 @@ class _CountryEventCollector:
         from rawlsing_next._pre553_c11_execution_view import _CountryHeaderBuilder
         self.registry=AuthorityRegistry(tuple(materialize_public_object(a.as_dict()) for a in snapshots))
         self.builder=_CountryHeaderBuilder()
+        self.validation=_CountryEventValidation(self.registry)
         self.headers=[]
         self.finished=None
         self.restored=False
@@ -725,10 +873,14 @@ class _CountryEventCollector:
     def add(self,event,*,source_coordinates):
         if self.finished is not None or type(event) is not RespondentEvent:
             raise C11IntegrityError("country event collector closed or wrong family")
-        validate_public_carrier_object(event,self.registry)
         try:
-            for ref in _walk_authority_refs(event.semantic_fields):
-                self.registry.resolve_exact(ref)
+            if self.validation.registry is self.registry:
+                self.validation.validate(event)
+            else:
+                # A replacement registry cannot inherit template proof.
+                validate_public_carrier_object(event,self.registry)
+                for ref in _walk_authority_refs(event.semantic_fields):
+                    self.registry.resolve_exact(ref)
         except Pre553AuthorityError as exc:
             raise C11IngestValidationError(
                 IngestDisposition.BLOCKED_MISSING_REQUIRED_AUTHORITY,str(exc)) from exc
@@ -747,6 +899,7 @@ class _CountryEventCollector:
             self.finished=tuple(sorted(self.headers,key=lambda x:x.ref.key))
         self.headers.clear()
         self.builder=None
+        self.validation=None
         return self.finished
 
 

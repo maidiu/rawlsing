@@ -10,7 +10,7 @@ from pathlib import Path
 from statistics import median
 from unittest.mock import patch
 
-BASE="58ecf9c53a4659bc15bb050640182d14e336be19"
+BASE="451c9448c45e70d04bd47bfa0f41c63624201d17"
 
 def worker(root,mode,report):
     from tools.pyat_country_preparation_court import read,write,geometry,target_domains
@@ -152,8 +152,17 @@ def worker(root,mode,report):
         details["root_type"]=type(obj).__name__
         capture_receipts.append(details)
         return pin
+    event_validation_receipts=[]
+    original_finish=ingest._CountryEventCollector.finish
+    def collector_finish(collector):
+        validator=getattr(collector,"validation",None)
+        if validator is not None:
+            event_validation_receipts.append(dict(hits=validator.hits,full=validator.full,
+                templates=len(validator.templates),estimated_bytes=validator.bytes))
+        return original_finish(collector)
     from contextlib import ExitStack
     with ExitStack() as stack:
+        stack.enter_context(patch.object(ingest._CountryEventCollector,"finish",collector_finish))
         if "diagnostics" in inspect.signature(original_capture).parameters:
             stack.enter_context(patch.object(issued._NonRoutingEnvelopePin,"capture",
                                               side_effect=capture_with_receipt))
@@ -215,6 +224,10 @@ def worker(root,mode,report):
             # The scale-dependent economic claim requires actually reaching
             # the private R4 fast path, not simply compacting a witness.
             assert counts["admission"]<=8,counts
+    if event_validation_receipts:
+        assert mode=="save" and len(event_validation_receipts)==1,event_validation_receipts
+        assert event_validation_receipts[0]["hits"]>0,event_validation_receipts
+        assert event_validation_receipts[0]["hits"]+event_validation_receipts[0]["full"]==counts["event_collector"],event_validation_receipts
     if mode=="save":write(report.parent/"pin.json",asdict(pin))
     write(report,{"mode":mode,"issuance_s":issuance,"all_issuance_s":issue_all,
         "country_bytes":db.stat().st_size,"routing_payload_bytes":workload.projection.routing.payload_bytes,
@@ -222,7 +235,7 @@ def worker(root,mode,report):
         "local_routing_proof":getattr(pin,"routing_proof",None) is not None,
         "counts":counts,"inclusive_s":phases,
         "investigations":times,"group_receipt":group_receipt,
-        "capture_receipts":capture_receipts,"evidence":evidence})
+        "capture_receipts":capture_receipts,"event_validation_receipts":event_validation_receipts,"evidence":evidence})
     print("LIFETIME_WORKER",json.dumps({k:v for k,v in read(report).items() if k!="evidence"}),flush=True)
 
 def court(rows):
