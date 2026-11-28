@@ -27,14 +27,26 @@ PINS={
     R3+"/um_sorok_organism/semantics.py":"3dd67a27b1cc02df68808f32318a9ace7c583fb5",
     "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/mii.py":"5d0a816a6fe298beb7eac23baed0129ca72669c0",
 }
+# R008 current candidate re-executes the SAME R35 course on a separately
+# qualified exact owner cut. Old receipts retain the original pins; never
+# derive an allowed profile from the bytes that happen to be checked out.
+HISTORICAL_PROFILE="R23_HISTORICAL"
+JOINED_PROFILE="R008_JOINED_R78"
+OWNER_PROFILES={HISTORICAL_PROFILE:PINS,JOINED_PROFILE:{
+    **PINS,
+    NEIGHBOR+"/neighbor_runtime.py":"22b6c45f360213ec642e8e85a4d9889fb8a20e7d",
+    R3+"/um_sorok_organism/runtime.py":"8334f274184ffb9061ba75eb85544f7aa4cfd312",
+}}
 ARMS={"acquired":{},"unheard":{"visitor_hears":False},
       "unacquired":{"learn":False},"unaddressed":{"acknowledge":False}}
 
-def source_pins():
-    for path,expected in PINS.items():
+def source_pins(owner_profile=HISTORICAL_PROFILE):
+    if owner_profile not in OWNER_PROFILES:raise ValueError("R23_UNKNOWN_OWNER_PROFILE")
+    pins=OWNER_PROFILES[owner_profile]
+    for path,expected in pins.items():
         actual=subprocess.check_output(["git","-C",str(REPO),"hash-object",str(REPO/path)],text=True).strip()
         if actual!=expected:raise ValueError("R23_INHERITED_SOURCE_DRIFT:"+path)
-    return copy(PINS)
+    return copy(pins)
 
 def _fixture():
     tests=REPO/NEIGHBOR/"tests"
@@ -49,8 +61,8 @@ class _Call:
     def __init__(self,fn):self.fn=fn
     def propose(self,task,packet):return self.fn(task,packet)
 
-def capture_surface(head,arm="acquired"):
-    pins=source_pins();owner=_fixture()
+def capture_surface(head,arm="acquired",*,owner_profile=HISTORICAL_PROFILE):
+    pins=source_pins(owner_profile);owner=_fixture()
     if arm not in ARMS:raise ValueError("R23_ARM")
     cap=WorkloadCapture(source_head=head,fixture="R35_SURFACE_"+arm,
         sourcefree_fixture_attested=True)
@@ -101,17 +113,20 @@ def capture_surface(head,arm="acquired"):
         outcome=owner.ExpressiveReentryR35().course(**ARMS[arm])
     witness={"schema":"R23_LOCAL_SURFACE_WITNESS_V1","source_head":head,
         "source_pins":pins,"arm":arm,"steps":steps,"surfaces":surfaces,
+        **({"owner_profile":owner_profile} if owner_profile!=HISTORICAL_PROFILE else {}),
         "course_outcome":outcome,"task_counts":dict(calls)}
     document=cap.document(owner_state_sha256=digest(witness))
-    return document,witness,verify_surface(document,witness,source_head=head)
+    return document,witness,verify_surface(document,witness,source_head=head,owner_profile=owner_profile)
 
-def verify_surface(document,witness,*,source_head):
+def verify_surface(document,witness,*,source_head,owner_profile=HISTORICAL_PROFILE):
+    if owner_profile not in OWNER_PROFILES:raise ValueError("R23_UNKNOWN_OWNER_PROFILE")
     p=verify_workload(document,source_head=source_head)
     arm=witness.get("arm")
     if (arm not in ARMS or p["fixture"]!="R35_SURFACE_"+arm
             or p["owner_state_sha256"]!=digest(witness)
             or witness.get("source_head")!=source_head
-            or witness.get("source_pins")!=PINS
+            or witness.get("source_pins")!=OWNER_PROFILES[owner_profile]
+            or witness.get("owner_profile",HISTORICAL_PROFILE)!=owner_profile
             or witness.get("schema")!="R23_LOCAL_SURFACE_WITNESS_V1"):
         raise ValueError("R23_WITNESS_BINDING")
     rows=p["rows"];steps=witness["steps"];surfaces=witness["surfaces"]
@@ -161,6 +176,7 @@ def verify_surface(document,witness,*,source_head):
         raise ValueError("R23_EXPRESSION_REPLAY")
     return {"schema":"R23_ACTUAL_SURFACE_INTAKE_V1","source_head":source_head,
         "arm":arm,"workload_sha256":document["sha256"],"witness_sha256":p["owner_state_sha256"],
+        **({"owner_profile":owner_profile} if owner_profile!=HISTORICAL_PROFILE else {}),
         "task_counts":witness["task_counts"],"expression_calls":len(rows),
         "expression_packet_bytes":sum(size(r["packet"]) for r in rows),
         "target_expression_seq":seq,"target_expression_packet_bytes":size(rows[seq]["packet"]),
@@ -179,14 +195,15 @@ def main(argv=None):
     parser.add_argument("--arm",choices=list(ARMS),default="acquired")
     for name in ("workload","witness","report"):parser.add_argument("--"+name,required=True)
     parser.add_argument("--verify",action="store_true")
-    a=parser.parse_args(argv);head=checkout_head();source_pins()
+    parser.add_argument("--owner-profile",choices=list(OWNER_PROFILES),default=HISTORICAL_PROFILE)
+    a=parser.parse_args(argv);head=checkout_head();source_pins(a.owner_profile)
     if a.verify:
-        report=verify_surface(_local_read(a.workload),_local_read(a.witness),source_head=head)
+        report=verify_surface(_local_read(a.workload),_local_read(a.witness),source_head=head,owner_profile=a.owner_profile)
     else:
         paths=[Path(x).resolve() for x in (a.workload,a.witness,a.report)]
         if len(set(paths))!=3 or any(x.exists() for x in paths):
             raise ValueError("R23_FRESH_DISTINCT_OUTPUTS_REQUIRED")
-        doc,witness,report=capture_surface(head,a.arm)
+        doc,witness,report=capture_surface(head,a.arm,owner_profile=a.owner_profile)
         save_report(a.workload,doc);save_report(a.witness,witness)
     save_report(a.report,report);print(canonical(report))
 
