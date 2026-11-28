@@ -465,7 +465,10 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                             return {'task':task,'practical_option_id':opts[0]['option_id']}
                         return {'task':task,'action':'SPEAK'}
                     if antecedent and aid=='father' and phase['name']=='material_work':
-                        a=[o for o in p['practical_options'] if o['operation']=='WORK' and o.get('project_id')]
+                        from um_sorok_organism.types import stable_id
+                        work=stable_id('seed_project',{'actor':'father','p':
+                            {'object':'subsistence','means':['WORK'],'priority':.4}})
+                        a=[o for o in p['practical_options'] if o['operation']=='WORK' and o.get('project_id')==work]
                         self.assertEqual(len(a),1)
                         return {'task':task,'practical_option_id':a[0]['option_id']}
                     if aid=='mother' and phase['name']=='mother_inspect':
