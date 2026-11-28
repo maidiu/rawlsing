@@ -14,7 +14,7 @@ import math
 from .types import GRADE, copy, stable_id
 from .routine_sources import (verify_qualified_period_envelope, live_routine_situational_reason,
                               LIVED_CLASS, lived_work_permission_boundaries,
-                              realized_lived_process)
+                              realized_lived_process, match_reciprocal_routine_claims)
 from .organism import eligible
 from .mediated_efficacy import COMPONENTS
 from .material_conjunction import qualify_aggregate_material_gate
@@ -204,7 +204,7 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
                     raise ValueError('ROUTINE_UNKNOWN_COMPONENT_OR_SITE')
                 if raw.get('mode','ARRANGEMENT_UNRESOLVED') not in (
                         'SOLO_COMPONENT_PRACTICE','ASSISTED_COMPONENT_PRACTICE',
-                        'ARRANGEMENT_UNRESOLVED'):
+                        'ARRANGEMENT_UNRESOLVED','RECIPROCAL_COMPONENT_PRACTICE'):
                     raise ValueError('ROUTINE_UNQUALIFIED_SUPPORT')
                 ok,why=eligible(actors[a]['body'],operation)
                 if not ok:
@@ -216,6 +216,8 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
                         'not_proof_of_later_inability_or_actor_experience':True})
                     continue
             mode=raw.get('mode','ARRANGEMENT_UNRESOLVED')
+            if mode=='RECIPROCAL_COMPONENT_PRACTICE' and (not lived_source or not raw.get('coactivity_partner')):
+                raise ValueError('RECIPROCAL_ROUTINE_REQUIRES_ACTOR_LOCAL_SOURCE')
             if mode=='ASSISTED_COMPONENT_PRACTICE':
                 supporter=raw.get('support_actor')
                 if (type(supporter) is not str or
@@ -238,6 +240,28 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
         normalized.append(copy(raw))
         claims.append((i,raw,lived_source,hours*fraction))
         fraction_by_actor[a]=fraction_by_actor.get(a,0.)+hours*fraction
+    # Unlike a legacy authored assisted fixture, actual reciprocal routines
+    # each claim only their author's own time. Match before the budget check;
+    # neither unilateral admission nor another's prior aid can spend time.
+    matched,unmatched=match_reciprocal_routine_claims(world,claims)
+    def hold_joint(i,raw,reason):
+        situationally_withheld.append({'input_index':i,'source_ref':raw['source_ref'],
+            'actor':raw['actor'],'location':raw['location'],'start_clock':start_clock,
+            'end_clock':start_clock+days,'reason':reason,'proposed_routine':copy(raw),
+            'unexecuted_premise_not_missed_duty_or_sensed_event':True})
+    if matched or unmatched:
+        revised=[]
+        for i,raw,lived,amount in claims:
+            if i in unmatched:
+                fraction_by_actor[raw['actor']]-=amount
+                hold_joint(i,raw,unmatched[i]);continue
+            if i in matched:
+                actual=matched[i];dose=actual['hours_per_active_day']*actual['provisional_exposure_fraction']
+                fraction_by_actor[raw['actor']]+=dose-amount
+                revised.append((i,actual,lived,dose))
+            else:revised.append((i,raw,lived,amount))
+        claims=revised
+        normalized=[copy(raw) for _,raw,_,_ in claims]
     over={a:round(x,6) for a,x in fraction_by_actor.items()
           if x>ACTIVE_HOURS+1e-9}
     if over:
@@ -259,6 +283,14 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
                 'unexecuted_premise_not_missed_duty_or_sensed_event':True,
                 'no_choice_between_routines_or_actor_knowledge_inferred':True})
             fraction_by_actor[a]-=amount
+        # Losing a counterpart's available contribution makes the remaining
+        # half unqualified too. No substitution or unilateral assistance.
+        lost_pairs={raw['reciprocal_routine_pair_ref'] for i,raw,_,_ in claims
+                    if i in removed and raw.get('reciprocal_routine_pair_ref')}
+        for i,raw,_,amount in claims:
+            if i not in removed and raw.get('reciprocal_routine_pair_ref') in lost_pairs:
+                removed.add(i);fraction_by_actor[raw['actor']]-=amount
+                hold_joint(i,raw,'RECIPROCAL_COUNTERPART_TIME_UNRESOLVED')
         still_over={a for a,x in fraction_by_actor.items() if x>ACTIVE_HOURS+1e-9}
         if still_over:
             raise ValueError('HISTORICAL_TIME_OVERBOOKED_ACTOR:'+','.join(sorted(still_over)))
