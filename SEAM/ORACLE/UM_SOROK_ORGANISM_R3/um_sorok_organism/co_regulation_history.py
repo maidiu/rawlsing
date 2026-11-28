@@ -54,6 +54,55 @@ def conserve_received_period_care(recipient, period):
     return row
 
 
+def conserve_received_period_provision(recipient,period):
+    """Bodily nutrition history, NOT a claim of personally recognized care."""
+    if period.get('recipient')!=recipient.get('id') or period.get('grade')!=(
+            'SOURCEFREE_QUALIFIED_MATERIAL_PROVISIONING'):
+        raise ValueError('COREGULATION_UNQUALIFIED_PROVISION_PERIOD')
+    gain=period['actual_recipient_nutrition_gain']
+    hours=period['modeled_labor_hours']
+    if gain<=0 or hours<=0 or recipient['body']['sensor']<.05:return None
+    ident=stable_id('undergone_provision_period',{'actor':recipient['id'],
+                                                  'world_ref':period['id']})
+    records=recipient.setdefault('undergone_care_periods',[])
+    if any(x.get('id')==ident for x in records):
+        raise ValueError('COREGULATION_DUPLICATE_PERIOD_EXPOSURE')
+    row={'id':ident,'actor':recipient['id'],'caregiver_ref':period['giver'],
+         'world_period_ref':period['id'],'source_ref':period['source_ref'],
+         'location':period['location'],'from_clock':period['start_clock'],
+         'through_clock':period['end_clock'],'aggregate_modeled_care_hours':hours,
+         'aggregate_modeled_nutrition_gain':gain,
+         'historical_exposure_kind':'MODELED_BODILY_PROVISIONING',
+         'actor_identified_source_of_relief':'NOT_ESTABLISHED',
+         'caregiver_consent_at_individual_unrendered_times':'NOT_PROVED',
+         'attachment_or_trust':'NOT_ESTABLISHED',
+         'conscious_memories_of_each_episode':'NOT_GENERATED','grade':GRADE}
+    records.append(row)
+    return row
+
+
+def relational_period_eligible(actor,row,experience):
+    """Aggregate nutrition alone cannot tell a child who fed them.
+
+    A separately lived positive nutrition event from this person and a
+    later actual encounter are required before this bounded model can
+    use the aggregate as material for actor-local relational formation.
+    """
+    clock=experience.get('clock',-1)
+    if row.get('through_clock',float('inf'))>clock:return False
+    if row.get('historical_exposure_kind')!='MODELED_BODILY_PROVISIONING':
+        return True
+    if (experience.get('own_action') in ('RECEIVED_CARE','RECEIVED_FEEDING')
+            or row.get('actor')!=actor.get('id')
+            or row.get('aggregate_modeled_nutrition_gain',0)<=0):return False
+    return any(x.get('actor')==actor.get('id')
+               and x.get('giver_ref')==row.get('caregiver_ref')
+               and type(x.get('clock')) is int and x['clock']<clock
+               and x.get('received_cue_ref')
+               and x.get('actual_felt_body_change_model',{}).get('nutrition',0)>0
+               for x in actor.get('experienced_care_events',[]))
+
+
 def possible_acquired_regulation(actor,experience,event_ref):
     """Current received co-presence is required to reinterpret a prior period."""
     if actor.get('id')!=experience.get('actor') or not event_ref:
@@ -72,8 +121,7 @@ def possible_acquired_regulation(actor,experience,event_ref):
         history=[x for x in actor.get('undergone_care_periods',[])
                  if x.get('caregiver_ref')==partner and
                  x.get('aggregate_modeled_care_hours',0)>0 and
-                 x.get('through_clock',float('inf'))<=
-                      experience.get('clock',float('inf'))]
+                 relational_period_eligible(actor,x,experience)]
         if not history:continue
         cues=[c for c in received.values() if c['source_actor']==partner]
         results.append({
@@ -111,7 +159,8 @@ def admit_co_regulation(actor,experience,event_ref,proposal):
             len(set(referenced+lived_refs))!=len(referenced)+len(lived_refs)):
         raise ValueError('COREGULATION_ADMISSION_NO_QUALIFIED_SOURCES')
     personal={x['id']:x for x in actor.get('undergone_care_periods',[])
-              if x.get('caregiver_ref')==partner}
+              if x.get('caregiver_ref')==partner
+              and relational_period_eligible(actor,x,experience)}
     lived={x['id']:x for x in actor.get('experienced_care_events',[])
            if x.get('giver_ref')==partner and
            x.get('event_ref')!=event_ref and

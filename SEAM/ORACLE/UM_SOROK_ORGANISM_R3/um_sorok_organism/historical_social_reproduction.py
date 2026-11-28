@@ -11,6 +11,7 @@ Existing ordinary_life.passage and existing actor-specific practice learning
 remain the first writer/reader. No new canonical P2/P6/SDTF or native rights.
 """
 import math
+from decimal import Decimal
 from .types import GRADE, copy, stable_id
 from .routine_sources import (verify_qualified_period_envelope, live_routine_situational_reason,
                               LIVED_CLASS, lived_work_permission_boundaries,
@@ -20,7 +21,7 @@ from .mediated_efficacy import COMPONENTS
 from .material_conjunction import qualify_aggregate_material_gate
 from .co_regulation_history import conserve_received_period_care
 from .material_provisioning import (
-    PROVISION_KIND,qualify_feeding,settle_provisioning)
+    PROVISION_KIND,qualify_feeding,settle_provisioning,_allocate)
 
 DAY_HOURS=24.0
 PROVISIONAL_REST_RESERVE=8.0
@@ -103,7 +104,7 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
         if lived_source:
             if raw['source_ref'] in seen_lived:raise ValueError('LIVED_ROUTINE_DUPLICATE_ALLOCATION')
             seen_lived.add(raw['source_ref'])
-        if lived_source and raw['kind']=='QUALIFIED_WAGE_LABOR' and lived_work_permission_boundaries(
+        if raw['kind']=='QUALIFIED_WAGE_LABOR' and lived_work_permission_boundaries(
                 world,a,site,start_clock,start_clock+days-1):
             raise ValueError('LIVED_ROUTINE_SPLIT_AT_WORK_PERMISSION_CHANGE')
         if lived_source and conditional!='SITUATED_CONDITIONAL_ROUTINE':
@@ -161,6 +162,17 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
                        p.get('status','active')=='active'
                        for p in actors[a].get('projects',[])):
                 raise ValueError('HISTORICAL_TIME_NO_PRACTICED_WORK_COURSE')
+            from .labor_dependency import work_permission
+            permission=work_permission(world,a,site)
+            if permission not in ('QUALIFIED_WORK_CONTRACT_ACTIVE','NO_ADDITIONAL_CONTRACT_REGIME'):
+                withheld.append({'input_index':i,'source_ref':raw['source_ref'],
+                    'actor':a,'location':site,'operation':'WORK',
+                    'start_clock':start_clock,'end_clock':start_clock+days,
+                    'reason':'CURRENT_WORK_PERMISSION_NOT_QUALIFIED:'+permission,
+                    'proposed_routine':copy(raw),
+                    'actual_time_lost_or_actor_experience':'NOT_INFERRED',
+                    'not_a_performed_or_experienced_event':True})
+                continue
         operation=({'QUALIFIED_REPRODUCTIVE_CARE':'CARE',
                     'QUALIFIED_WAGE_LABOR':'WORK',
                     PROVISION_KIND:'FEED'}.get(raw['kind']))
@@ -352,22 +364,62 @@ def _care(world,actors,proc,start,days):
     return row
 
 
-def _work(world,actors,proc,start,days):
+def _plan_wages(world, processes, start, days):
+    """Settle simultaneous coarse claims against each employer's finite cash.
+
+    Reuse the existing scarce-claim allocator at five decimal places.
+    Provisional unordered aggregate settlement, not a justice or payroll law.
+    """
+    from .world import _cash_amount
+    pools={};seen=set()
+    for proc in processes:
+        if proc['kind']!='QUALIFIED_WAGE_LABOR':continue
+        a=proc['actor'];site=proc['location']
+        controller=world['sites'][site]['controller']
+        wage=_cash_amount(world['institutions'][controller]['wage'],'AGGREGATE_WAGE')
+        hours=proc['hours_per_active_day']*proc['provisional_exposure_fraction']*days
+        owed=round(hours/8*wage,5)
+        _cash_amount(owed,'AGGREGATE_WAGE_DUE')
+        ref=stable_id('aggregate_wage_work',{'world':world['id'],'worker':a,
+                    'controller':controller,'source':proc['source_ref'],
+                    'start':start,'days':days})
+        if ref in seen:raise ValueError('HISTORICAL_TIME_DUPLICATE_WAGE_CLAIM')
+        seen.add(ref)
+        regime=world.get('work_regimes',{}).get(site)
+        claim={'id':ref,'requested_units':str(Decimal(str(owed))),
+               'worker':a,'controller':controller,'source_ref':proc['source_ref'],
+               'regime_ref':regime['id'] if regime else None}
+        pools.setdefault(controller,[]).append(claim)
+    planned={}
+    for controller,claims in sorted(pools.items()):
+        cash=_cash_amount(world['accounts'].get(controller,0),'AGGREGATE_EMPLOYER_BALANCE')
+        paid={claim['id']:amount for claim,amount in _allocate(Decimal(str(cash)),claims)}
+        for claim in claims:
+            planned[claim['id']]={**claim,'paid':float(paid.get(claim['id'],Decimal(0))),
+                                 'simultaneous_claim_count':len(claims),
+                                 'employer_opening_balance':cash}
+    return planned
+
+
+def _work(world,actors,proc,start,days,plan):
     a=proc['actor'];site=proc['location']
     actual_site=world['sites'][site]
     controller=actual_site['controller']
     institution=world['institutions'][controller]
-    wage=_number(institution.get('wage'),'WORKSITE_WAGE')
+    from .world import _cash_amount,_exact_material_delta
     hours=proc['hours_per_active_day']*proc[
         'provisional_exposure_fraction']*days
-    # Explicitly provisional 8-hour-normalized period claim, not a verified
-    # historical labor productivity/wage law. The world does not invent goods
-    # it did not model. Actual creditor account and employer account differ.
-    owed=round(hours/8*wage,5)
-    cash=_number(world.get('accounts',{}).get(controller,0),
-                 'EMPLOYER_BALANCE')
-    paid=round(min(owed,cash),5)
-    unpaid=round(max(0,owed-paid),5)
+    ref=stable_id('aggregate_wage_work',{'world':world['id'],'worker':a,
+                  'controller':controller,'source':proc['source_ref'],
+                  'start':start,'days':days})
+    claim=plan[ref]
+    owed=float(Decimal(claim['requested_units']))
+    paid=claim['paid']
+    unpaid=round(owed-paid,5)
+    cash=_cash_amount(world['accounts'].get(controller,0),'AGGREGATE_EMPLOYER_BALANCE')
+    worker_cash=_cash_amount(world['accounts'].get(a,0),'AGGREGATE_WORKER_BALANCE')
+    employer_after=_exact_material_delta(cash,-paid,'AGGREGATE_EMPLOYER_PAYMENT')
+    worker_after=_exact_material_delta(worker_cash,paid,'AGGREGATE_WORKER_PAYMENT')
     # The source-qualified activity consumes bodily capacity even if the
     # controller cannot pay. Hours reserved outside modeled activity are
     # not actual rest. Use the existing care model's provisional hourly
@@ -380,12 +432,8 @@ def _work(world,actors,proc,start,days):
     nominal_load=round(hours*.00012,5)
     rest_after=round(max(0.,rest_before-nominal_load),5)
     body['rest']=rest_after
-    world['accounts'][controller]=round(cash-paid,5)
-    world['accounts'][a]=round(_number(
-        world['accounts'].get(a,0),'WORKER_BALANCE')+paid,5)
-    ref=stable_id('aggregate_wage_work',{
-        'world':world['id'],'worker':a,'controller':controller,
-        'source':proc['source_ref'],'start':start,'days':days})
+    world['accounts'][controller]=employer_after
+    world['accounts'][a]=worker_after
     row={
         'id':ref,'source_ref':proc['source_ref'],
         'start_clock':start,'end_clock':start+days,
@@ -398,6 +446,10 @@ def _work(world,actors,proc,start,days):
         'rest_recovery_in_unmodeled_hours':'NOT_INFERRED',
         'wage_due_sourcefree_model':owed,
         'actual_paid_model':paid,'wage_arrears':unpaid,
+        'work_regime_ref':claim['regime_ref'],
+        'allocation_policy':'PROPORTIONAL_UNORDERED_AGGREGATE_WAGE_CLAIMS_R1',
+        'simultaneous_employer_claim_count':claim['simultaneous_claim_count'],
+        'employer_opening_balance_model':claim['employer_opening_balance'],
         'physical_goods_output':'NOT_INFERRED_WITHOUT_MATERIAL_PRODUCTION_MODEL',
         'worker_control_of_output':'NOT_CONFERRED_BY_WAGE',
         'no_observed_individual_work_events':True,
@@ -434,12 +486,13 @@ def apply_period_allocation(world,actors,allocation):
            world.get('historical_time_allocations',[])):
         raise ValueError('HISTORICAL_TIME_DUPLICATE_SETTLEMENT')
     care=[];wages=[]
+    wage_plan=_plan_wages(world,allocation['qualified'],start,days)
     # All qualification and per-person time budgets are checked before writes.
     for proc in allocation['qualified']:
         if proc['kind']=='QUALIFIED_REPRODUCTIVE_CARE':
             care.append(_care(world,actors,proc,start,days))
         elif proc['kind']=='QUALIFIED_WAGE_LABOR':
-            wages.append(_work(world,actors,proc,start,days))
+            wages.append(_work(world,actors,proc,start,days,wage_plan))
     provisioned=settle_provisioning(world,actors,allocation)
     receipt={
         'id':ref,'start_clock':start,'end_clock':start+days,

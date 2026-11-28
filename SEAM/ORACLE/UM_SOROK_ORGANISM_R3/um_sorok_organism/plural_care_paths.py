@@ -125,10 +125,10 @@ def plural_acquisition_candidate(actor,experience,event_ref):
                  if h.get('giver_ref')==caregiver
                  and type(h.get('clock')) is int
                  and h['clock']<experience.get('clock',-1)]
+        from .co_regulation_history import relational_period_eligible
         aggregate=[h for h in actor.get('undergone_care_periods',[])
                    if h.get('caregiver_ref')==caregiver
-                   and h.get('through_clock',float('inf'))<=
-                       experience.get('clock',-1)]
+                   and relational_period_eligible(actor,h,experience)]
         if not highres and not aggregate:continue
         rows.append({
             'caregiver_ref':caregiver,'perceived_cue_ref':cue,

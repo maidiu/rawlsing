@@ -253,6 +253,38 @@ def _uncommitted_paid_wage(world,regime,who,site):
         and x.get("controller")==regime["controller"]
         and type(x.get("clock")) is int and x["clock"]<=world["clock"]
         and type(x.get("wage")) in (int,float)),Decimal(0))
+    # The existing world has actually settled coarse wages. Compression
+    # must not erase materially earned capacity for independent solidarity.
+    # Old rows without exact regime identity and unrelated cash stay out.
+    allocations=world.get('historical_time_allocations',[])
+    seen=set()
+    for row in world.get('wage_labor_periods',[]):
+        if (row.get('worker')!=who or row.get('site')!=site or
+                row.get('controller')!=regime['controller'] or
+                row.get('work_regime_ref')!=regime['id']):continue
+        end=row.get('end_clock');start=row.get('start_clock')
+        if type(end) is not int or type(start) is not int or not 0<=start<end:
+            raise ValueError('R19_INVALID_AGGREGATE_WAGE_CLOCK')
+        if end>world['clock']:continue
+        ref=row.get('id');source=row.get('source_ref')
+        src=world.get('routine_source_registry',{}).get(source,{})
+        matches=[a for a in allocations if ref in a.get('wage_period_refs',[])]
+        if (type(ref) is not str or not ref or ref in seen or
+                row.get('grade')!='SOURCEFREE_QUALIFIED_AGGREGATE_WAGE' or
+                len(matches)!=1 or matches[0].get('start_clock')!=start or
+                matches[0].get('end_clock')!=end or
+                source not in matches[0].get('source_qualified_process_refs',[]) or
+                src.get('actor')!=who or src.get('location')!=site or
+                src.get('kind')!='QUALIFIED_WAGE_LABOR' or
+                not src.get('from_clock',end)<=start<end<=src.get('through_clock',-1)):
+            raise ValueError('R19_UNQUALIFIED_AGGREGATE_WAGE_PROVENANCE')
+        actual=_money(row.get('actual_paid_model'),'AGGREGATE_WAGE_PAID')
+        due=_money(row.get('wage_due_sourcefree_model'),'AGGREGATE_WAGE_DUE')
+        arrears=_money(row.get('wage_arrears'),'AGGREGATE_WAGE_ARREARS')
+        if Decimal(str(actual))+Decimal(str(arrears))!=Decimal(str(due)):
+            raise ValueError('R19_AGGREGATE_WAGE_NONCONSERVATION')
+        seen.add(ref)
+        paid+=Decimal(str(actual))
     assigned=sum((Decimal(str(_money(x["amount"],"PAST_RELIEF_TRANSFER")))
         for x in world.get("material_claims",[])
         if type(x) is dict and x.get("kind")=="ACTUAL_WAGE_FUNDED_RELIEF"
