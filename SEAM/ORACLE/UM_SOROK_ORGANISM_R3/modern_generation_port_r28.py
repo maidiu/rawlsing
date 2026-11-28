@@ -47,13 +47,20 @@ def policy_check(policy):
     actions=policy.get("actions",[])
     require(isinstance(actions,list) and len(actions)<=MAX_POLICY_ITEMS,"GEN_ACTION_POLICY_SIZE")
     for rule in actions:
-        require(exact_keys(rule,("action",),("option_match","project_id","speech_intent","rank_by")) and
+        require(exact_keys(rule,("action",),("option_match","project_id","speech_intent","rank_by","pool")) and
                 text(rule["action"],80),"GEN_ACTION_RULE")
         if "option_match" in rule:
             require(isinstance(rule["option_match"],dict) and bool(rule["option_match"]) and
                     set(rule["option_match"])<= {"project_id","world_request","binding_status",
-                                               "grounds_status","operation"},
+                                               "grounds_status","operation","source_material_object_ref","genesis_family","productive_witness_attention","cross_object_attention_analytic_only"},
                     "GEN_ACTION_MATCH")
+        if "pool" in rule:
+            require(rule["pool"] in ("practical_options","addressed_lexical_options","possible_end_trials") and
+                    "option_match" in rule,"GEN_ACTION_POOL")
+            if rule["pool"]=="addressed_lexical_options":
+                require(rule["action"]=="SPEAK" and text(rule.get("speech_intent"),500),"GEN_LEXICAL_ADDRESS_INTENT")
+            if rule["pool"]=="possible_end_trials":
+                require("speech_intent" not in rule and "project_id" not in rule,"GEN_TRIAL_POLICY")
         if "rank_by" in rule:
             require(rule["rank_by"]=="LATEST_PERSONALLY_SENSED_REGULATION" and
                     rule["action"]=="SIGNAL" and
@@ -87,7 +94,7 @@ def policy_check(policy):
                     set(rule.get("when",{}))<= {"own_action","status","participated"},
                     "GEN_DIRECT_CONDITION")
         else:
-            require(exact_keys(rule,("offer",),("match","augment","resolver")) and
+            require(exact_keys(rule,("offer",),("match","augment","resolver","construct")) and
                     isinstance(rule["offer"],str) and
                     rule["offer"].startswith(("historically_possible_","historically_proposed_")) and
                     isinstance(rule.get("match",{}),dict) and isinstance(rule.get("augment",{}),dict),
@@ -96,11 +103,29 @@ def policy_check(policy):
                 require(rule["offer"]=="historically_possible_plural_care" and
                         rule["resolver"]=="EXISTING_PLURAL_CARE_SOURCE_RESOLUTION" and
                         not rule.get("augment"),"GEN_RESOLVER_SCOPE")
+            if "construct" in rule:
+                require(rule["construct"] in ("LEXICAL_PROJECT_REVALUATION","CROSS_OBJECT_POSSIBLE_END","INCIDENTAL_END_TAKEUP")
+                        and not rule.get("resolver"),"GEN_TYPED_CONSTRUCTION")
+                require(rule["offer"]=={"LEXICAL_PROJECT_REVALUATION":"historically_possible_lexical_project_revaluations",
+                    "CROSS_OBJECT_POSSIBLE_END":"historically_possible_cross_object_significance",
+                    "INCIDENTAL_END_TAKEUP":"historically_possible_incidental_takeup"}[rule["construct"]],
+                    "GEN_TYPED_CONSTRUCTION_OFFER")
             # Only semantic fields, never an invented source ref or owner basis.
             allowed={"interpretive_hypothesis","personal_significance","personal_sense",
                      "affect_name","course_orientation","priority","anticipated_availability",
                      "revision","new_relation","new_polarity"}
-            require(set(rule.get("augment",{}))<=allowed,"GEN_NOMINATION_AUGMENT")
+            if rule.get("construct")=="LEXICAL_PROJECT_REVALUATION":
+                v=rule.get("augment",{});require(exact_keys(v,("priority","personal_significance")) and
+                    type(v["priority"]) in (int,float) and v["priority"]>=0 and
+                    text(v["personal_significance"]),"GEN_LEXICAL_MEANING")
+            elif rule.get("construct")=="CROSS_OBJECT_POSSIBLE_END":
+                v=rule.get("augment",{});require(exact_keys(v,("possible_object","possible_means","cue_terms")) and
+                    text(v["possible_object"]) and v["possible_means"]==["INSPECT"] and
+                    isinstance(v["cue_terms"],list) and 1<=len(v["cue_terms"])<=12 and
+                    all(text(k,80) for k in v["cue_terms"]),"GEN_CROSS_OBJECT_MEANING")
+            elif rule.get("construct")=="INCIDENTAL_END_TAKEUP":
+                require(rule.get("augment")=={"means":["INSPECT"]},"GEN_TAKEUP_MEANS")
+            else:require(set(rule.get("augment",{}))<=allowed,"GEN_NOMINATION_AUGMENT")
 
 class ConditionalPolicy:
     """Compile checkpoint-supplied hypotheses against fresh owner offers.
@@ -144,7 +169,8 @@ class ConditionalPolicy:
                 if not any(o.get("action")==action for o in packet.get("options",[])):
                     continue
                 if "option_match" in rule:
-                    rows=[o for o in packet.get("practical_options",[])
+                    pool=rule.get("pool","practical_options")
+                    rows=[o for o in packet.get(pool,[])
                           if o.get("operation")==action and subset(o,rule["option_match"])]
                     if rule.get("rank_by")=="LATEST_PERSONALLY_SENSED_REGULATION":
                         # A declared conditional selection, not a universal
@@ -161,7 +187,8 @@ class ConditionalPolicy:
                     if len(rows)!=1:
                         self.routes["option_not_unique_or_absent"]+=1
                         continue
-                    out={"task":task,"practical_option_id":rows[0]["option_id"]}
+                    out=({"task":task,"possible_end_trial_id":rows[0]["trial_id"]}
+                         if pool=="possible_end_trials" else {"task":task,"practical_option_id":rows[0]["option_id"]})
                 else:
                     out={"task":task,"action":action}
                     if "project_id" in rule:
@@ -204,7 +231,22 @@ class ConditionalPolicy:
                     if len(rows)!=1:
                         self.routes["nomination_not_unique_or_absent"]+=1
                         continue
-                    c=detached(rows[0]);extra=rule.get("augment",{})
+                    q=detached(rows[0]);extra=rule.get("augment",{})
+                    construct=rule.get("construct")
+                    if construct=="LEXICAL_PROJECT_REVALUATION":
+                        c={"kind":"REORGANIZE_PROJECT","project_id":q["project_id"],
+                           "lexical_revaluation_basis":q["lexical_revaluation_basis"],**detached(extra)}
+                    elif construct=="CROSS_OBJECT_POSSIBLE_END":
+                        c={"kind":"NOTICE_POSSIBLE_END","perceived_cue_ref":q["source_cue_ref"],
+                           "origin_material_object_ref":q["world_material_object_ref"],
+                           "incidental_object_end_basis":q["incidental_object_end_basis"],**detached(extra)}
+                    elif construct=="INCIDENTAL_END_TAKEUP":
+                        c={"kind":"TAKE_UP_POSSIBLE_END","possible_end_ref":q["possible_end_ref"],
+                           "later_perceived_cue_ref":q["later_perceived_cue_ref"],
+                           "incidental_takeup_basis":q,**detached(extra)}
+                    else:c=q
+                    if construct:
+                        candidates.append(c);self.routes["typed_"+construct.lower()]+=1;continue
                     if set(extra)&set(c):
                         self.routes["nomination_augmentation_conflict"]+=1
                         continue
@@ -241,7 +283,7 @@ class ModernDevelopmentOwner:
     """
     grade=GRADE
     def __init__(self,runtime,actor,receipt_path,*,sourcefree_attested=False,period_catalog=None,
-                 family_sources=()):
+                 family_sources=(),qualified_interval_cuts=False,continuity_link=None):
         require(sourcefree_attested is True,"GEN_SOURCEFREE_ATTESTATION_REQUIRED")
         self.rt=runtime;self.actor=actor
         self.rt.ledger.actor(actor)
@@ -250,6 +292,11 @@ class ModernDevelopmentOwner:
         self.root=genesis[0]["chain_hash"];self.branch="modern:"+runtime.world_id
         self.source_ref="SOURCEFREE_MODERN_ROOT:"+self.root
         self.period_catalog=detached(period_catalog or {})
+        self.qualified_interval_cuts=qualified_interval_cuts
+        self.continuity_link=detached(continuity_link)
+        if self.continuity_link:
+            require(self.continuity_link["root"]==self.root,"GEN_CONTINUITY_ROOT")
+            require(self.continuity_link["actor"]==actor,"GEN_CONTINUITY_ACTOR")
         self.family_sources=tuple(sorted(set(family_sources)))
         for sid in self.family_sources:
             row=self.rt.ledger.source(sid)
@@ -263,7 +310,8 @@ class ModernDevelopmentOwner:
                         "(id TEXT PRIMARY KEY, proposal TEXT NOT NULL, before_state TEXT NOT NULL, result TEXT)")
         self.db.execute("CREATE TABLE IF NOT EXISTS checkpoint_attempts (id INTEGER PRIMARY KEY, receipt TEXT NOT NULL)")
         binding=canonical({"root":self.root,"branch":self.branch,"actor":actor,
-                           "catalog":self.period_catalog,"family_sources":self.family_sources,"grade":GRADE})
+                           "catalog":self.period_catalog,"family_sources":self.family_sources,"qualified_interval_cuts":self.qualified_interval_cuts,
+                           "continuity_link":self.continuity_link,"grade":GRADE})
         row=self.db.execute("SELECT value FROM binding WHERE id=1").fetchone()
         if row is None:self.db.execute("INSERT INTO binding VALUES (1,?)",(binding,))
         else:require(row[0]==binding,"GEN_RECEIPT_BINDING")
@@ -320,6 +368,14 @@ class ModernDevelopmentOwner:
                          "conditional_family_sources_analyst_only":family,
                          "family_stage_analyst_only":world.get("family_genesis",{}).get("stage"),
                          "actor_contexts":result,"period_refs":sorted(self.period_catalog),
+                         "qualified_routine_windows":{key:[{
+                            "source_ref":p["source_ref"],
+                            "kind":p["kind"],"actor":p["actor"],
+                            "from_clock":world["routine_source_registry"][p["source_ref"]]["from_clock"],
+                            "through_clock":world["routine_source_registry"][p["source_ref"]]["through_clock"]}
+                            for p in rows] for key,rows in self.period_catalog.items()},
+                         **({"prior_generation_and_live_ancestry":self.continuity_link}
+                            if self.continuity_link else {}),
                          "actor_contexts_are_separate_analyst_only_not_actor_self_report":True})
 
     def validate_proposal(self,p):
@@ -406,6 +462,42 @@ class ModernDevelopmentOwner:
             return {"kind":kind,"status":"NOT_REALIZED_CONDITIONS_UNMET"}
         return {"kind":kind,"status":"CHILD_BORN","native":self.rt.realize_family_birth()}
 
+    def advance_interval(self,span,processes,*,birth_surface=False):
+        """Reuse the joined owner's source windows and discontinuity reader.
+
+        No independent calendar or invented event. Passive boundaries are
+        reached in actual native periods. A due actor turn or unplanned birth
+        is held rather than silently erased by a speculative time budget.
+        A planned birth is settled by the existing family operation.
+        """
+        if not self.qualified_interval_cuts:
+            out=self.rt.background(span,processes=processes)
+            return [out],[self.rt.ledger.events()[-1]]
+        from um_sorok_organism.continuity_clock import (
+            qualify_mixed_history_schedule,mixed_history_interval,next_discontinuity,MAX_HORIZON)
+        world=self.rt.ledger.world(self.rt.world_id)[1];target=world["clock"]+span
+        require(not any(x.get("present") is True for x in world.get("neighbor_users",{}).values()),
+                "GEN_PRESENT_VISITOR_REQUIRES_LIVE_OWNER")
+        schedule=qualify_mixed_history_schedule(world,processes)
+        receipts=[];events=[]
+        while world["clock"]<target:
+            clock=world["clock"]
+            end,active=mixed_history_interval(schedule,clock,min(target,clock+MAX_HORIZON))
+            boundary=next_discontinuity(world,self.rt.ledger.actors(),end-clock)
+            if boundary:
+                kind=boundary["kind"];at=boundary["at"]
+                if kind=="CONDITIONAL_FAMILY_BIRTH":
+                    require(birth_surface and at==target,"GEN_UNPLANNED_CONDITIONAL_BIRTH")
+                if kind=="OBLIGATION_DUE":
+                    require(at==target and not birth_surface,"GEN_DUE_OCCASION_REQUIRES_EXPLICIT_SURFACE")
+                end=at
+            require(end>clock,"GEN_ZERO_INTERVAL")
+            out=self.rt.background(end-clock,processes=active)
+            evt=self.rt.ledger.events()[-1]
+            require(evt["id"]==out["receipt"] and evt["clock"]==end,"GEN_NATIVE_INTERVAL_RECEIPT")
+            receipts.append(out);events.append(evt);world=self.rt.ledger.world(self.rt.world_id)[1]
+        return receipts,events
+
     def realize(self,operation_id,p,expected):
         with self.path.with_suffix(self.path.suffix+".lock").open("a") as lock:
             fcntl.flock(lock,fcntl.LOCK_EX)
@@ -427,12 +519,13 @@ class ModernDevelopmentOwner:
                     "GEN_EVENT_CLOCK_NOT_SEQUENTIAL")
             self.db.execute("INSERT INTO operations VALUES (?,?,?,NULL)",(operation_id,ph,before))
             self.db.commit()
-            interval=None;interval_event=None
+            interval=None;interval_events=[]
             c=p.circumstances
             if span:
-                interval=self.rt.background(span,processes=detached(self.period_catalog.get(c.get("period_ref"),[])))
-                interval_event=self.rt.ledger.events()[-1]
-                require(interval_event["clock"]==expected.clock+span,"GEN_INTERVAL_RECEIPT_CLOCK")
+                intervals,interval_events=self.advance_interval(span,detached(self.period_catalog.get(c.get("period_ref"),[])),
+                    birth_surface=p.operation=="REALIZE_FAMILY_BIRTH")
+                interval=intervals[0] if len(intervals)==1 else {"segments":intervals}
+                require(interval_events[-1]["clock"]==expected.clock+span,"GEN_INTERVAL_RECEIPT_CLOCK")
             policy=ConditionalPolicy(c["policies"],c.get("rehearsal"),c.get("family"))
             old=self.rt.semantic
             step_event=None;out=None;family_result=None
@@ -455,7 +548,7 @@ class ModernDevelopmentOwner:
             # A birth or genealogy binding is not an invented lived receipt.
             # Preserve the actual step separately from a same-clock family op.
             readset=tuple(dict.fromkeys([self.source_ref,
-                       *([interval_event["chain_hash"]] if interval_event else []),
+                       *[e["chain_hash"] for e in interval_events],
                        *([step_event["chain_hash"]] if step_event else []),event["chain_hash"]]))
             result=RealizedEvent(operation_id,ph,expected,after,"REALIZED",
                 {"native_receipt":event["id"],"step_receipt":step_event["id"] if step_event else None,
@@ -495,7 +588,7 @@ class CheckpointProvider:
         aid=self.owner.record_checkpoint_start(rec);self.current_attempt_id=aid
         self.attempts.append(rec);start=perf_counter_ns()
         usage=getattr(self.provider,"usage_snapshot",None)
-        before=len(usage()["receipts"]) if usage else None
+        before=usage()["total"] if usage else None
         try:
             if raw_bytes>self.max_request_bytes:
                 rec["outcome"]="PREFLIGHT_REJECTED"
@@ -515,11 +608,11 @@ class CheckpointProvider:
         finally:
             rec["elapsed_ns"]=perf_counter_ns()-start
             if usage:
-                after=usage()["receipts"]
-                if len(after)==before+1:
+                snap=usage();after=snap["receipts"]
+                if snap["total"]==before+1 and after:
                     rec["transport_receipt"]={k:detached(v) for k,v in after[-1].items()
                         if k in ("task","transport","attempts","outcome","request_bytes","response_bytes",
-                                 "prompt_bytes","completion_bytes","usage","elapsed_ns")}
+                                 "instruction_bytes","packet_bytes","response_content_bytes","usage","elapsed_ns")}
             self.owner.record_checkpoint_update(aid,**rec)
     @staticmethod
     def bind(request,response):
@@ -598,7 +691,54 @@ class ModernGeneration:
         if self.provider.current_attempt_id is not None:
             self.owner.record_checkpoint_update(self.provider.current_attempt_id,cycle_disposition="CYCLE_RETURNED")
         return result
-    def bootstrap(self):return self._run(self.cycle.bootstrap)
+    def bootstrap(self):
+        link=self.owner.continuity_link
+        if link:require(self.owner.snapshot().state_hash==link["resumption_chain_hash"],
+                        "GEN_LIVE_LINK_STALE_RESUMPTION")
+        return self._run(self.cycle.bootstrap)
     def advance(self):return self._run(self.cycle.advance)
     def finish(self):return self._run(self.cycle.finish)
+    def terminal_handoff(self):
+        """Only an actually completed P2 cycle can yield a mode boundary."""
+        store=self.cycle._load()
+        require(store["phase"]=="COMPLETE" and store["pending"] is None and
+                store["model_call"] is None,"GEN_HANDOFF_REQUIRES_TERMINAL")
+        require(self.engine.verify(),"GEN_HANDOFF_JOURNAL_INVALID")
+        state=self.owner.snapshot().document()
+        require(state==store["expected_owner_state"],"GEN_HANDOFF_STATE_MOVED")
+        return {"state":state,"cycle_digest":digest(store),
+                "retrospectives_digest":digest(store["retrospectives"]),
+                "grade":"SOURCEFREE_TERMINAL_GENERATION_MODE_BOUNDARY"}
+
     def close(self):self.engine.close();self.owner.close()
+
+
+def link_actual_live_interval(runtime,handoff,prior_cycle_path,*,max_events=128):
+    """Bind later generation to the same actual ledger after an explicit live mode.
+
+    No human action is selected by the generation model. No prior-cycle
+    event is rewritten. The native ledger is the durable ancestry; the
+    caller retains the completed cycle/journal and separate live receipts.
+    """
+    store=json.loads(Path(prior_cycle_path).read_text())
+    state=handoff["state"]
+    require(handoff["cycle_digest"]==digest(store) and store["phase"]=="COMPLETE" and
+            store["expected_owner_state"]==state and store["pending"] is None and
+            store["model_call"] is None,"GEN_LIVE_LINK_PRIOR_CYCLE")
+    require(runtime.verify()["valid"],"GEN_LIVE_LINK_NATIVE_CHAIN")
+    events=runtime.ledger.events()
+    require(events[0]["chain_hash"]==state["root"],"GEN_LIVE_LINK_ROOT")
+    anchors=[i for i,e in enumerate(events) if e["chain_hash"]==state["state_hash"]]
+    require(len(anchors)==1,"GEN_LIVE_LINK_MISSING_ANCESTOR")
+    tail=events[anchors[0]+1:]
+    require(0<len(tail)<=max_events,"GEN_LIVE_LINK_BOUNDED_ACTUAL_HISTORY")
+    world=runtime.ledger.world(runtime.world_id)[1]
+    require(not any(x.get("present") is True for x in world.get("neighbor_users",{}).values()),
+            "GEN_LIVE_LINK_PRESENT_VISITOR")
+    return detached({"root":state["root"],"actor":state["actor"],
+        "prior_terminal":handoff,"resumption_chain_hash":events[-1]["chain_hash"],
+        "events":[{"native_ref":e["id"],"chain_hash":e["chain_hash"],"clock":e["clock"],
+                   "kind":e["kind"],"actor":e["actor_id"],
+                   "actor_accessible":e["envelope"].get("payload",{}).get("private_actor_experience_receipts",{})}
+                  for e in tail],
+        "grade":"ACTUAL_LEDGER_LINK_NOT_ACTOR_RECOLLECTION_OR_HUMAN_AUTHORITY"})

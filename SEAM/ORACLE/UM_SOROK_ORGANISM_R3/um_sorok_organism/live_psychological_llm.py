@@ -792,7 +792,7 @@ Augment only missing interpretive_hypothesis, personal_significance,
 personal_sense, affect_name, course_orientation, priority, anticipated_availability,
 revision, new_relation or new_polarity; never overwrite source basis, operation
 or identity. Priority must be a finite nonnegative numeric value, not boolean.
-Empty/no-change is lawful. The owner may reject invalid candidates; don't
+For current joined owner only, action.pool may be addressed_lexical_options (SPEAK with speech_intent and exact option_match), or possible_end_trials (exact operation and trial predicate); no preissued trial ID. Typed offer construction: construct LEXICAL_PROJECT_REVALUATION on historically_possible_lexical_project_revaluations, augment {priority,personal_significance}; CROSS_OBJECT_POSSIBLE_END on historically_possible_cross_object_significance, augment {possible_object,possible_means:["INSPECT"],cue_terms}; INCIDENTAL_END_TAKEUP on historically_possible_incidental_takeup, augment {means:["INSPECT"]}. The adapter copies the exact offered source basis; do not invent identifiers. An explicit prior_generation_and_live_ancestry on BOOTSTRAP describes actual previous epochs, not a blank psyche; bootstrap retrospective remains null for the new batch. Qualified routine windows may split elapsed intervals; do not cross a conditional birth or a due actor occasion without an actual explicit surface. Empty/no-change is lawful. The owner may reject invalid candidates; don't
 fabricate current source identifiers or precompute actual event-specific refs.
 The context is actor-separated analyst-only evidence; never conflate actor
 experience with objective history, public expression or another person's
