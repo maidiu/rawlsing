@@ -544,6 +544,60 @@ class CountryNumeric(unittest.TestCase):
                     self.assertEqual(restored_release.replay_manifest.ref,direct.replay_manifest.ref)
                     for event in events:
                         self.assertEqual(restored_repo.resolve_object_exact(event.ref),event)
+                # R8: same actual producer, no second permanent digest plane.
+                # Read every occurrence and exact body against the independent
+                # expanded release; scalar selector access must not construct
+                # an event, occurrence access must use the exact body owner.
+                deferred_path=Path(d)/"deferred.gz"
+                deferred_owner=prep._CountryPreparation(deferred_path,None,omit_groups=True,omit_occurrences=True)
+                with CountryReader(path,rec,require_current=lambda:None) as saving:
+                    _,deferred_saved=facade._build_source_backed_c11_repository(
+                        saving._native_stream(subset),subset,current_authorities=fx["authorities"],
+                        _country_preparation=deferred_owner)
+                    self.assertEqual(deferred_saved.release_ref,direct.release_ref)
+                deferred_pin=deferred_owner.pin
+                with self.assertRaisesRegex(CountryCarrierError,"authenticated producer pin"):
+                    prep._decode_headers(deferred_path.read_bytes(),deferred_pin.facade_key)
+                deferred_headers=prep._decode_headers(deferred_path.read_bytes(),deferred_pin.facade_key,allow_deferred=True)
+                self.assertTrue(all(h.occurrence_identity is None and h.group_identity is None for h in deferred_headers))
+                with self.assertRaises(C11IntegrityError):
+                    _validate_restored_country_occurrences(deferred_headers)
+                with self.assertRaises(C11IntegrityError):
+                    _validate_restored_country_occurrences((deferred_headers[0],deferred_headers[0]),allow_deferred=True)
+                with self.assertRaises(C11IntegrityError):
+                    _validate_restored_country_occurrences((deferred_headers[0],full_headers[1]),allow_deferred=True)
+                with CountryReader(path,rec,require_current=lambda:None) as restoring:
+                    deferred_repo,deferred_release=facade._build_source_backed_c11_repository(
+                        restoring._native_stream(subset),subset,current_authorities=fx["authorities"],
+                        _country_preparation=prep._CountryPreparation(deferred_path,deferred_pin))
+                    self.assertEqual(deferred_release.release_ref,direct.release_ref)
+                    self.assertEqual(deferred_release.replay_manifest.ref,direct.replay_manifest.ref)
+                    selectors=deferred_release.public_objects.lane.selectors
+                    self.assertEqual(selectors.occurrence_hashes,b"")
+                    with patch.object(facade,"_event",wraps=facade._event) as creates:
+                        for selector,event in zip(selectors,events):
+                            self.assertEqual(selector.ref,event.ref)
+                            self.assertEqual(selector.raw_response_value,event.raw_response_value)
+                        self.assertEqual(creates.call_count,0)
+                        for selector,event in zip(selectors,events):
+                            self.assertEqual(selector.response_event_id_or_deterministic_index,
+                                             event.response_event_id_or_deterministic_index)
+                        self.assertEqual(creates.call_count,len(events))
+                    for event in events:
+                        self.assertEqual(deferred_repo.resolve_object_exact(event.ref),event)
+                    # Even a valid alternate locator must refuse; a digest is
+                    # never substituted for the original occurrence identity.
+                    from array import array
+                    bodies=selectors.deferred_bodies
+                    prior_codes=bodies.question_codes
+                    wrong=array("I",prior_codes)
+                    wrong[0]=next(v for v in wrong if v!=wrong[0])
+                    bodies.question_codes=memoryview(wrong)
+                    try:
+                        with self.assertRaises(CountryCarrierError):
+                            _=selectors[0].response_event_id_or_deterministic_index
+                    finally:
+                        bodies.question_codes=prior_codes
                 # A repeated occurrence identifier may legally have another
                 # group. Preserve the complete fallback instead of collapsing it.
                 from io import BytesIO
@@ -552,7 +606,7 @@ class CountryNumeric(unittest.TestCase):
                     occurrence_identity=full_headers[0].occurrence_identity))
                 out=BytesIO()
                 with gzip.GzipFile(fileobj=out,mode="wb",mtime=0) as gz:
-                    prep._encode_headers(gz,exceptional,pin.facade_key,omit_groups=True)
+                    prep._encode_headers(gz,exceptional,pin.facade_key,omit_groups=True,omit_occurrences=True)
                 full_again=prep._decode_headers(out.getvalue(),pin.facade_key)
                 self.assertEqual([h.group_identity for h in full_again],
                                  [h.group_identity for h in exceptional])

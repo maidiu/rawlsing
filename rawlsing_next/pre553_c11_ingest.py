@@ -628,6 +628,7 @@ class _CountryEventCollector:
         self.headers=[]
         self.finished=None
         self.restored=False
+        self.deferred_occurrences=False
 
     def add(self,event,*,source_coordinates):
         if self.finished is not None or type(event) is not RespondentEvent:
@@ -880,7 +881,7 @@ def _validate_questions_and_events(candidate: C11SourceReleaseCandidate,*,countr
                     or country_collector.finished is not events):
                 raise C11IntegrityError("group elision requires private restored producer headers")
             from rawlsing_next.pre553_c11_integrity import _validate_restored_country_occurrences
-            _validate_restored_country_occurrences(events)
+            _validate_restored_country_occurrences(events,allow_deferred=country_collector.deferred_occurrences)
         else:
             ensure_distinct_event_occurrences(events)
     except C11IntegrityError as exc:
@@ -999,7 +1000,7 @@ def validate_c11_source_release(candidate: C11SourceReleaseCandidate) -> C11Logi
 
 
 def _validate_country_produced_release(*,produce,authority_snapshots,compact_builder,
-                                       _restored_headers=None):
+                                       _restored_headers=None,_restored_occurrence_proof=False):
     """Same I02 seal from one private physical producer transaction.
 
     Neither an externally supplied event summary nor a caller's claimed
@@ -1015,6 +1016,9 @@ def _validate_country_produced_release(*,produce,authority_snapshots,compact_bui
         collector.finished=_restored_headers
         collector.builder=None
         collector.restored=True
+        collector.deferred_occurrences=_restored_occurrence_proof is True
+    elif _restored_occurrence_proof:
+        raise C11IntegrityError("deferred occurrence proof requires private restored headers")
     candidate=produce(collector)
     if collector.finished is None or candidate.respondent_events is not collector.finished:
         raise C11IntegrityError("country producer did not return its exact event census")
