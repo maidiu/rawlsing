@@ -841,4 +841,145 @@ class ContinuingLifeCourt(unittest.TestCase):
                 print("R61_HELD_COST",json.dumps(report["profiles"],sort_keys=True))
 
 
+
+    def test_adaptive_paired_whole_life_including_actual_live_and_resumed_history(self):
+        from importlib.util import spec_from_file_location,module_from_spec
+        from unittest.mock import patch
+        import sqlite3,sys
+        folder=Path(__file__).parent/"um_sorok_organism"
+        def module(name,path):
+            spec=spec_from_file_location(name,path)
+            mod=module_from_spec(spec);spec.loader.exec_module(mod);return mod
+        wire=module("um_sorok_organism.r64_wire",folder/"live_psychological_llm.py")
+        with patch.dict(sys.modules,{"um_sorok_organism.live_psychological_llm":wire}):
+            lab=module("um_sorok_organism.r64_lab",folder/"inference_lab.py")
+            with tempfile.TemporaryDirectory() as d:
+                root=Path(d);head="604f3d1a51a21c53523a2040b30e234b556785fa"
+                endpoint="https://example.invalid/chat/completions"
+                modes=("HISTORICAL","LIVE")
+                def profile(name,rate):
+                    return dict(model=name,endpoint=endpoint,input_token_ceiling=100000,
+                        completion_token_limit=1000,input_nanos_per_token=rate,output_nanos_per_token=rate)
+                def budget(label):
+                    return lab.LiveBudget(journal=root/label,max_calls=60,max_wire_bytes=100000000,
+                        input_token_ceiling=100000,completion_token_limit=1000,input_nanos_per_token=5,
+                        output_nanos_per_token=5,max_budget_nanos=40000000,sourcefree_live_authorized=True,
+                        profiles={"reference":profile("reference",5),"economy":profile("economy",1)})
+                def opts(name,mode):
+                    return dict(model=name,endpoint=endpoint,api_key="not-a-key",allow_private_actor_data=True,
+                        **({"sourcefree_checkpoint_attested":True} if mode=="HISTORICAL"
+                        else {"sourcefree_live_attested":True,"compact_exact_packet":True}))
+                def router(mode,b,reference="reference",env=None,dispatch=False):
+                    return lab.CombinedAllocationProvider(mode,owner_head=head,budget=b,
+                        reference_profile=reference,provider_options={n:opts(n,mode)
+                        for n in ("reference","economy")},sourcefree_allocation_authorized=True,
+                        demand_envelope=env,sourcefree_envelope_dispatch=dispatch)
+                def setup(label,n):
+                    path=root/label;path.mkdir()
+                    rt,sid,catalog,_=joined.JoinedGenerationCourt.setup(self,path/"life.sqlite",
+                        extra_projects={"father":[{"object":"ordinary "+("x"*n),
+                                                  "means":["REST"],"priority":.1}]})
+                    return path,rt,sid,catalog
+                class History:
+                    def __init__(self,sid):
+                        self.a=joined.LifeCheckpoint(sid);self.b=joined.LifeCheckpoint(sid,resumed=True)
+                    def call(self,r):
+                        return (self.a if len(self.a.requests)<4 else self.b).call(r)
+                def execute(path,rt,sid,catalog,hp,lp):
+                    s=ContinuingLife(rt,path/"operator","mother",historical_provider=hp,live_provider=lp,
+                        sourcefree_attested=True,period_catalog=catalog,family_sources=(sid,),
+                        selective_memory_context=True,mii_module=mii)
+                    try:
+                        for _ in range(3):s.historical_checkpoint()
+                        s.finish_history();s.independent_absent_beat();s.resume_history();s.finish_history()
+                        self.assertEqual(rt.snapshot("nadia")["age_days"],170)
+                        self.assertTrue(rt.verify()["valid"])
+                        self.assertFalse(s.status()["held"])
+                        return rt.ledger.events()
+                    finally:s.close();rt.close()
+                def capture_course(label,n):
+                    path,rt,sid,catalog=setup(label,n)
+                    c=lab.WorkloadCapture(source_head=head,fixture=label,sourcefree_fixture_attested=True)
+                    native=execute(path,rt,sid,catalog,
+                        lab.CombinedCaptureProvider(History(sid),c,"HISTORICAL"),
+                        lab.CombinedCaptureProvider(Live(),c,"LIVE"))
+                    return c.document(owner_state_sha256=lab.digest(native)),native
+                def receipts(path):
+                    historical=[]
+                    for epoch in ("epoch-000000","epoch-000001"):
+                        with sqlite3.connect(path/"operator"/epoch/"ops.sqlite") as cx:
+                            historical.extend(json.loads(x[0]) for x in cx.execute(
+                                "SELECT receipt FROM checkpoint_attempts ORDER BY id"))
+                    with sqlite3.connect(path/"operator"/"live.sqlite") as cx:
+                        live=[json.loads(x[0]) for x in cx.execute("SELECT receipt FROM turns ORDER BY rowid")]
+                    return {"HISTORICAL":historical,"LIVE":live}
+                def actual_arm(label,n,b,reference="reference",envelopes=None,dispatch=False):
+                    path,rt,sid,catalog=setup(label,n);history=History(sid);live=Live()
+                    providers={m:router(m,b,reference,(envelopes or {}).get(m),dispatch) for m in modes}
+                    sent=[]
+                    def answer(self,payload):
+                        req=json.loads(payload["messages"][1]["content"])
+                        if "mode" in req:
+                            mode="HISTORICAL";result=history.call(req)
+                        else:
+                            mode="LIVE";result=live.call(wire.expand_live_wire_request(req))
+                        sent.append((mode,payload["model"],lab.size(payload)))
+                        return {"choices":[{"message":{"content":json.dumps(result)}}],
+                                "usage":{"prompt_tokens":200,"completion_tokens":50}}
+                    with patch.object(wire.ExplicitJSONLLMProvider,"_request",answer):
+                        native=execute(path,rt,sid,catalog,providers["HISTORICAL"],providers["LIVE"])
+                    return native,receipts(path),sent
+                b=budget("calibration");ids={m:{n:router(m,b).profile_identity(n)
+                        for n in ("reference","economy")} for m in modes}
+                courses={m:[] for m in modes}
+                for label,n,partition in (("fit-low",1,"FIT"),("fit-high",90,"FIT"),("heldout",35,"HOLDOUT")):
+                    tape,base=capture_course(label,n)
+                    arms={}
+                    for arm in ("reference","economy"):
+                        native,rec,sent=actual_arm(label+"-"+arm,n,b,reference=arm)
+                        self.assertEqual(native,base);self.assertEqual(len(sent),7)
+                        arms[arm]=rec
+                    for mode in modes:
+                        reviews=[]
+                        task=lab.CHECKPOINT_TASK if mode=="HISTORICAL" else lab.LIVE_TURN_TASK
+                        rows=[q for q in tape["payload"]["rows"] if q["task"]==task]
+                        for row,ref,cand in zip(rows,arms["reference"][mode],arms["economy"][mode]):
+                            review=lab.paired_owner_review(tape,row["seq"],mode=mode,budget=b,
+                                reference_receipt=ref,candidate_receipt=cand,
+                                reference_identity=ids[mode]["reference"],candidate_identity=ids[mode]["economy"],
+                                quality_verdict="ADEQUATE",quality_evidence_digest=lab.digest(
+                                    {"fixture_only_native_equality":lab.digest(base),"seq":row["seq"]}))
+                            reviews.append(review)
+                        self.assertEqual(len(reviews),len(rows))
+                        courses[mode].append({"workload":tape,"partition":partition,"reviews":reviews})
+                env={m:lab.CombinedDemandEnvelope(mode=m,owner_head=head,reference_profile="reference",
+                    candidate_profile="economy",reference_identity=ids[m]["reference"],
+                    candidate_identity=ids[m]["economy"],courses=courses[m],
+                    sourcefree_review_attested=True) for m in modes}
+                novel,base=capture_course("novel",55)
+                decisions=[]
+                for row in novel["payload"]["rows"]:
+                    mode="HISTORICAL" if row["task"]==lab.CHECKPOINT_TASK else "LIVE"
+                    decisions.append((mode,env[mode].assess(row["packet"])))
+                self.assertIn(("LIVE","NOVEL_WITHIN_REVIEWED_ENVELOPE"),decisions)
+                self.assertTrue(any(m=="HISTORICAL" and v=="NOVEL_WITHIN_REVIEWED_ENVELOPE"
+                    for m,v in decisions[1:]))
+                b2=budget("novel-budget")
+                shadow,shadow_rec,shadow_sent=actual_arm("novel-shadow",55,b2,envelopes=env)
+                active,active_rec,active_sent=actual_arm("novel-active",55,b2,envelopes=env,dispatch=True)
+                self.assertEqual(shadow,base);self.assertEqual(active,base)
+                self.assertTrue(all(x[1]=="reference" for x in shadow_sent))
+                self.assertTrue(any(x[:2]==("LIVE","economy") for x in active_sent))
+                self.assertTrue(any(x[:2]==("HISTORICAL","economy") for x in active_sent))
+                report=lab.reconcile_budget_owner_receipts(b2,
+                    historical_receipts=shadow_rec["HISTORICAL"]+active_rec["HISTORICAL"],
+                    live_receipts=shadow_rec["LIVE"]+active_rec["LIVE"])
+                self.assertEqual(sum(p["owner_operations_returned"] for p in report["profiles"].values()),14)
+                self.assertTrue(all(p["unlinked"]==p["unknown_usage_attempts"]==0 for p in report["profiles"].values()))
+                print("R64_WHOLE_LIFE_ADAPTIVE",json.dumps({"decisions":decisions,
+                    "qualified_shapes":{m:env[m].summary()["qualified_shapes"] for m in modes},
+                    "native_events":len(base),"shadow_sent":shadow_sent,"active_sent":active_sent,
+                    "profiles":report["profiles"]},sort_keys=True))
+
+
 if __name__=="__main__":unittest.main()
