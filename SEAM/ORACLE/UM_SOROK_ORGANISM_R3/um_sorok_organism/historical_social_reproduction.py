@@ -13,6 +13,8 @@ remain the first writer/reader. No new canonical P2/P6/SDTF or native rights.
 import math
 from .types import GRADE, copy, stable_id
 from .routine_sources import verify_qualified_period_envelope
+from .organism import eligible
+from .mediated_efficacy import COMPONENTS
 from .material_conjunction import qualify_aggregate_material_gate
 from .co_regulation_history import conserve_received_period_care
 from .material_provisioning import (
@@ -84,13 +86,38 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
         raise ValueError('HISTORICAL_TIME_INVALID_CLOCK')
     if type(processes) is not list or len(processes)>512:
         raise ValueError('HISTORICAL_TIME_INVALID_PROCESS_BUDGET')
-    normalized=[];fraction_by_actor={};support_downgrades=[];withheld=[]
+    normalized=[];fraction_by_actor={};support_downgrades=[];withheld=[];bodily_withheld=[];situationally_withheld=[]
     for i,raw in enumerate(processes):
         hours,fraction=_typecheck(raw)
         source_confirmation=verify_qualified_period_envelope(
             world,raw,start_clock,days)
         raw={**raw,'source_registry_confirmation':source_confirmation}
         a=raw['actor'];site=raw['location']
+        conditional=raw.get('routine_window_application')
+        if conditional not in (None,'SITUATED_CONDITIONAL_ROUTINE'):
+            raise ValueError('HISTORICAL_TIME_UNKNOWN_ROUTINE_APPLICATION')
+        if conditional:
+            # The explicit aggregate premise is not unconditional conduct.
+            # Withhold a known course that is now situationally unavailable.
+            # Unregistered sources/participants remain hard failures.
+            if a not in actors or site not in world.get('sites',{}):
+                raise ValueError('HISTORICAL_TIME_UNKNOWN_ROUTINE_PARTICIPANT_OR_SITE')
+            recipient=raw.get('recipient')
+            care_kind=raw['kind'] in ('QUALIFIED_REPRODUCTIVE_CARE',PROVISION_KIND)
+            if care_kind and (type(recipient) is not str or recipient==a or recipient not in actors):
+                raise ValueError('HISTORICAL_TIME_UNKNOWN_ROUTINE_RECIPIENT')
+            active_means={op for p in actors[a].get('projects',[])
+                          if p.get('status','active')=='active' for op in p.get('means',[])}
+            reason=('ACTOR_ELSEWHERE' if not _actor_at_site(world,actors,a,site) else
+                    'RECIPIENT_ELSEWHERE' if care_kind and not _actor_at_site(world,actors,recipient,site) else
+                    'NO_ACTIVE_CARE_COURSE' if care_kind and 'CARE' not in active_means else
+                    'NO_ACTIVE_WORK_COURSE' if raw['kind']=='QUALIFIED_WAGE_LABOR' and 'WORK' not in active_means else None)
+            if reason:
+                situationally_withheld.append({'input_index':i,'source_ref':raw['source_ref'],
+                    'actor':a,'location':site,'start_clock':start_clock,
+                    'end_clock':start_clock+days,'reason':reason,'proposed_routine':copy(raw),
+                    'unexecuted_premise_not_missed_duty_or_sensed_event':True})
+                continue
         if not _actor_at_site(world,actors,a,site):
             raise ValueError('HISTORICAL_TIME_ACTOR_NOT_AT_RECORDED_SITE')
         if raw['kind']==PROVISION_KIND:
@@ -138,6 +165,29 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
                 continue
             raw={**raw,'aggregate_objective_gate':copy(gate)}
         if raw['kind']=='QUALIFIED_ROUTINE_PRACTICE':
+            # A future age or future relief cannot retroactively establish
+            # a child's bodily participation throughout the preceding period.
+            # A start-boundary refusal is uncertainty about coverage, not a
+            # claim that every day was physically impossible or that the
+            # child experienced a refusal. Reconsider at a later checkpoint.
+            if actors[a].get('role')=='child':
+                # Withheld coverage must not disguise an invalid practice
+                # contract that the existing learning owner would refuse.
+                if type(operation) is not str or operation not in COMPONENTS:
+                    raise ValueError('ROUTINE_UNKNOWN_COMPONENT_OR_SITE')
+                if raw.get('mode','ARRANGEMENT_UNRESOLVED') not in (
+                        'SOLO_COMPONENT_PRACTICE','ASSISTED_COMPONENT_PRACTICE',
+                        'ARRANGEMENT_UNRESOLVED'):
+                    raise ValueError('ROUTINE_UNQUALIFIED_SUPPORT')
+                ok,why=eligible(actors[a]['body'],operation)
+                if not ok:
+                    bodily_withheld.append({'input_index':i,'source_ref':raw['source_ref'],
+                        'actor':a,'location':site,'operation':operation,
+                        'start_clock':start_clock,'end_clock':start_clock+days,
+                        'entry_body_reason':why,'proposed_routine':copy(raw),
+                        'coverage':'UNRESOLVED_FROM_ENTRY_BODY_NOT_ELIGIBLE',
+                        'not_proof_of_later_inability_or_actor_experience':True})
+                    continue
             mode=raw.get('mode','ARRANGEMENT_UNRESOLVED')
             if mode=='ASSISTED_COMPONENT_PRACTICE':
                 supporter=raw.get('support_actor')
@@ -168,6 +218,8 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
     return {
         'qualified':normalized,
         **({'structurally_withheld_processes':withheld} if withheld else {}),
+        **({'bodily_withheld_processes':bodily_withheld} if bodily_withheld else {}),
+        **({'situationally_withheld_processes':situationally_withheld} if situationally_withheld else {}),
         'actor_active_hour_claim_per_day':{
             a:round(h,5) for a,h in sorted(fraction_by_actor.items())},
         'unmodeled_free_hours_per_day':{
@@ -236,6 +288,18 @@ def _work(world,actors,proc,start,days):
                  'EMPLOYER_BALANCE')
     paid=round(min(owed,cash),5)
     unpaid=round(max(0,owed-paid),5)
+    # The source-qualified activity consumes bodily capacity even if the
+    # controller cannot pay. Hours reserved outside modeled activity are
+    # not actual rest. Use the existing care model's provisional hourly
+    # coefficient, without its per-period cap (which would make wage
+    # load depend on arbitrary partition). This is not a medical rate.
+    body=actors[a]['body']
+    from .organism import eligible
+    eligible(body,'WAIT')  # validate; do not equate a period with a micro-act
+    rest_before=body['rest']
+    nominal_load=round(hours*.00012,5)
+    rest_after=round(max(0.,rest_before-nominal_load),5)
+    body['rest']=rest_after
     world['accounts'][controller]=round(cash-paid,5)
     world['accounts'][a]=round(_number(
         world['accounts'].get(a,0),'WORKER_BALANCE')+paid,5)
@@ -247,6 +311,11 @@ def _work(world,actors,proc,start,days):
         'start_clock':start,'end_clock':start+days,
         'worker':a,'controller':controller,'site':site,
         'modeled_labor_hours':round(hours,3),
+        'worker_rest_before_modeled_work':rest_before,
+        'worker_rest_after_modeled_work':rest_after,
+        'worker_rest_expenditure_model':round(rest_before-rest_after,5),
+        'nominal_bodily_load_model':nominal_load,
+        'rest_recovery_in_unmodeled_hours':'NOT_INFERRED',
         'wage_due_sourcefree_model':owed,
         'actual_paid_model':paid,'wage_arrears':unpaid,
         'physical_goods_output':'NOT_INFERRED_WITHOUT_MATERIAL_PRODUCTION_MODEL',
@@ -276,7 +345,11 @@ def apply_period_allocation(world,actors,allocation):
         'world':world['id'],'start':start,'days':days,
         'processes':allocation['qualified'],
         **({'structurally_withheld_processes':allocation['structurally_withheld_processes']}
-           if allocation.get('structurally_withheld_processes') else {})})
+           if allocation.get('structurally_withheld_processes') else {}),
+        **({'bodily_withheld_processes':allocation['bodily_withheld_processes']}
+           if allocation.get('bodily_withheld_processes') else {}),
+        **({'situationally_withheld_processes':allocation['situationally_withheld_processes']}
+           if allocation.get('situationally_withheld_processes') else {})})
     if any(r.get('id')==ref for r in
            world.get('historical_time_allocations',[])):
         raise ValueError('HISTORICAL_TIME_DUPLICATE_SETTLEMENT')
@@ -305,6 +378,10 @@ def apply_period_allocation(world,actors,allocation):
             allocation['support_downgraded_to_unresolved_indices']),
         **({'structurally_withheld_processes':copy(allocation['structurally_withheld_processes'])}
            if allocation.get('structurally_withheld_processes') else {}),
+        **({'bodily_withheld_processes':copy(allocation['bodily_withheld_processes'])}
+           if allocation.get('bodily_withheld_processes') else {}),
+        **({'situationally_withheld_processes':copy(allocation['situationally_withheld_processes'])}
+           if allocation.get('situationally_withheld_processes') else {}),
         'absent_high_resolution_scenes':'NOT_DEEMED_TO_HAVE_OCCURRED',
         'work_and_care_bearer_differentiation':True,
         'not_a_human_time_use_or_developmental_law':True,

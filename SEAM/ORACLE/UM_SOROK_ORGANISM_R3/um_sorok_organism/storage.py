@@ -363,7 +363,8 @@ class ResearchLedger:
                         or path['counterpart']!=chosen['counterpart_id']):
                     raise Conflict('FAMILY_PATHWAY_SOURCE_MISMATCH')
                 if kind=='FAMILY_COUNTERPART_ADMITTED':
-                    if (family['stage']!='COUNTERPART_ADMITTED' or aid!=path['counterpart']
+                    if (chosen['prior_shared_effects']!='UNMODELED_NO_RETROACTIVE_WRITE'
+                            or family['stage']!='COUNTERPART_ADMITTED' or aid!=path['counterpart']
                             or loc!=path['intersection_site'] or world['clock']!=path['intersection_clock']
                             or prior_world['positions'].get(path['mother'])!=loc):
                         raise Conflict('FAMILY_COUNTERPART_BOUNDARY_MISMATCH')
@@ -387,7 +388,29 @@ class ResearchLedger:
                     raise Conflict('FAMILY_COUNTERPART_NOT_INDEPENDENT_ADULT')
                 full_actors[aid]=_family_actor
             prior_family=prior_world.get('family_genesis',{})
-            if kind=='FAMILY_CONCEPTION':
+            if kind=='FAMILY_EXISTING_COUNTERPART_BOUND':
+                from .historical_parent_bridge import existing_family_binding, FAMILY_GRADE
+                family=payload.get('family_genesis',{});path=family.get('selected_pathway',{})
+                sid=family.get('source_seal_id');sha=family.get('source_digest')
+                source=self.conn.execute('SELECT type,content FROM source_seals WHERE id=?',(sid,)).fetchone()
+                if (actors or actor_versions or prior_family or not source
+                        or source[0]!='FICTIONAL_FAMILY_PATHWAY_CANDIDATES'
+                        or digest({'category':source[0],'content':json.loads(source[1])})!=sha
+                        or actor_id!=path.get('counterpart')
+                        or path.get('mother') not in full_actors or actor_id not in full_actors):
+                    raise Conflict('FAMILY_EXISTING_BINDING_AUTHORITY_REQUIRED')
+                content=json.loads(source[1])
+                matches=[x for x in content['candidates'] if x['id']==path.get('id')]
+                if len(matches)!=1:raise Conflict('FAMILY_EXISTING_BINDING_SOURCE_MISMATCH')
+                try:
+                    expected_family=existing_family_binding(prior_world,full_actors[path['mother']],
+                        content,matches[0],full_actors,sid,sha)
+                except ValueError as e:raise Conflict(str(e)) from e
+                expected=copy(prior_world);expected['family_genesis']=expected_family
+                if (world!=expected or payload!={'family_genesis':expected_family,
+                        'no_automatic_actor_experience':True,'grade':FAMILY_GRADE}):
+                    raise Conflict('FAMILY_EXISTING_BINDING_REWRITES_HISTORY')
+            elif kind=='FAMILY_CONCEPTION':
                 from .historical_parent_bridge import family_encounter_evidence, FAMILY_GRADE
                 from .types import stable_id
                 if (actors or actor_versions or actor_id is not None
@@ -452,6 +475,17 @@ class ResearchLedger:
             yield {'id':e,'world_id':wid,'clock':clock,'actor_id':aid,'kind':kind,
                    'envelope':json.loads(p),'envelope_bytes':p,
                    'previous_hash':prev,'chain_hash':h}
+
+    def actor_life_counts_after(self,wid,after_clock,through_clock):
+        """Count committed primary actor opportunities without hydrating tapes."""
+        if (type(after_clock) is not int or type(through_clock) is not int
+                or after_clock<0 or through_clock<after_clock):
+            raise ValueError('ACTOR_LIFE_COUNT_CLOCK_RANGE')
+        return {a:int(n) for a,n in self.conn.execute(
+            "SELECT actor_id,COUNT(*) FROM events WHERE world_id=? "
+            "AND kind='ACTOR_LIFE_TRANSITION' AND clock>? AND clock<=? "
+            "AND actor_id IS NOT NULL GROUP BY actor_id",
+            (wid,after_clock,through_clock))}
 
     def events(self,limit=None):
         # Retain the existing public materialized reader contract.
@@ -537,6 +571,13 @@ class ResearchLedger:
                     raise AssertionError('FAMILY_ADMISSION_ANCESTRY_INVALID')
             elif previous_roster is not None and roster!=previous_roster:
                 raise AssertionError('UNAUTHORIZED_HISTORICAL_ROSTER_CHANGE')
+            if r['kind']=='FAMILY_EXISTING_COUNTERPART_BOUND':
+                family=envelope['payload']['family_genesis'];path=family['selected_pathway']
+                if (previous_actor_digests!=envelope['actor_digests']
+                        or r['actor_id']!=path.get('counterpart')
+                        or r['actor_id'] not in roster or path.get('mother') not in roster
+                        or anchored.get(family['source_seal_id'])!=family['source_digest']):
+                    raise AssertionError('FAMILY_EXISTING_BINDING_ANCESTRY_INVALID')
             if r['kind']=='FAMILY_CONCEPTION' and (envelope['actor_digests']!=previous_actor_digests
                     or anchored.get(envelope['payload']['family_genesis']['source_seal_id'])!=
                        envelope['payload']['family_genesis']['source_digest']):

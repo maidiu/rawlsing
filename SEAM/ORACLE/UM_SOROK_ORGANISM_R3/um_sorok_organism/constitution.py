@@ -650,6 +650,14 @@ def compose(constitution,access,limit=50):
     for a in ('WAIT','REST','ORIENT','SIGNAL'):
         status,why=eligible(constitution.body,a)
         if status:actions.setdefault(a,{'action':a,'score':.06,'basis':['organism'],'opportunity':'ORGANISM'})
+    # An immature organism need not already possess an exercised power
+    # to try moving its body. A first, unpurposed, physically eligible
+    # exploration is an occasion for actual exercise, not installed skill.
+    if (constitution.role=='child' and 'SITE_ACCESS' in access.affordances
+            and eligible(constitution.body,'PRACTICE')[0]):
+        actions.setdefault('PRACTICE',{'action':'PRACTICE','score':.025,
+            'basis':['BODILY_EXPLORATION_POSSIBLE_WITHOUT_PRIOR_PRACTICE'],
+            'opportunity':'FIRST_OR_RENEWED_EXERCISE_NOT_ACQUIRED_PURPOSE'})
     if 'PLEDGE_CARE' in access.affordances:
         status,why=eligible(constitution.body,'PLEDGE_CARE')
         if status:

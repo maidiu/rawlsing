@@ -30,6 +30,14 @@ on:
       - agent/inference-economy-semantic-port-r1-20261126
       - agent/soracle-co-mulchineer-cross-object-generability-20261126-r1
       - agent/soracle-co-mulchineer-acquired-apprehension-20261127-r1
+      - agent/soracle-co-mulchineer-expressive-self-reconstitution-20261127-r1
+      - agent/soracle-co-mulchineer-relief-reconstitution-20261127-r1
+      - agent/soracle-co-mulchineer-provisioning-purpose-20261127-r1
+      - agent/soracle-co-mulchineer-embodied-history-20261127-r1
+      - agent/soracle-co-mulchineer-retrospective-reconstitution-20261127-r1
+      - agent/soracle-co-mulchineer-existing-family-continuity-20261127-r1
+      - agent/soracle-co-mulchineer-reproductive-continuity-20261127-r1
+      - agent/soracle-co-mulchineer-care-contradiction-20261127-r1
     paths:
       - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/**'
       - '.github/workflows/soracle-r20-self-precue-integrated.yml'
@@ -80,6 +88,40 @@ jobs:
         if: github.ref_name == 'agent/soracle-co-mulchineer-acquired-apprehension-20261127-r1'
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_acquired_apprehension_r56.py' -v
+      - name: R57 expressive self reconstitution
+        if: github.ref_name == 'agent/soracle-co-mulchineer-expressive-self-reconstitution-20261127-r1'
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest discover -s tests -p 'test_expressive_self_reconstitution_r57.py' -v
+      - name: R58 livelihood reconstitution
+        if: github.ref_name == 'agent/soracle-co-mulchineer-relief-reconstitution-20261127-r1'
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest discover -s tests -p 'test_livelihood_reconstitution_r58.py' -v
+      - name: R59 provisioning purpose
+        if: github.ref_name == 'agent/soracle-co-mulchineer-provisioning-purpose-20261127-r1'
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest discover -s tests -p 'test_provisioning_purpose_r59.py' -v
+      - name: R60 embodied historical readiness
+        if: github.ref_name == 'agent/soracle-co-mulchineer-embodied-history-20261127-r1'
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest discover -s tests -p 'test_embodied_history_r60.py' -v
+      - name: R61 actual retrospective reconstitution
+        if: github.ref_name == 'agent/soracle-co-mulchineer-retrospective-reconstitution-20261127-r1'
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest discover -s tests -p 'test_retrospective_reconstitution_r61.py' -v
+      - name: R62 existing family continuity
+        if: github.ref_name == 'agent/soracle-co-mulchineer-existing-family-continuity-20261127-r1'
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest discover -s tests -p 'test_existing_family_continuity_r62.py' -v
+      - name: R63 reproductive continuity
+        if: github.ref_name == 'agent/soracle-co-mulchineer-reproductive-continuity-20261127-r1'
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest discover -s tests -p 'test_reproductive_workload_r59.py' -v
+          python -m unittest discover -s tests -p 'test_reproductive_continuity_r63.py' -v
+      - name: R64 care contradiction
+        if: github.ref_name == 'agent/soracle-co-mulchineer-care-contradiction-20261127-r1'
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest discover -s tests -p 'test_care_contradiction_r64.py' -v
       - name: R20 historical self and pre-cue focus
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_historical_self_precue_r19.py' -v

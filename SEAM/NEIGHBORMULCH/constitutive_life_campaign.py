@@ -372,5 +372,239 @@ def run_campaign():
     with tempfile.TemporaryDirectory(prefix='r34_acquired_life_') as tmp:
         return {a:run_course(Path(tmp)/(a+'.sqlite'),a) for a in ARMS}
 
+
+
+def run_integrated_life_course(db, *, resume=True, acquire=True):
+    """One persistent family from antecedent adults to later visitor return.
+
+    This is a sourcefree executable composition of existing historical and
+    constitutive owners, not a scripted player story, native PYAT evidence,
+    or an automatic endpoint in adult psychology. Controlled semantic policy
+    selects only actual options; every event passes the real ledger/world.
+    """
+    from um_sorok_organism.types import newborn
+    from um_sorok_organism.plural_care_paths import choose_one_grounded_plural_acquisition
+    fallback=HeuristicSemanticProvider()
+    phase='ancestor'
+    constructor_calls=[]
+    def seed(aid):
+        projects=[{'object':'continue embodied life','means':['REST','EAT'],'priority':.4},
+                  {'object':'ordinary speech','means':['SPEAK'],'priority':.6},
+                  {'object':'care for Nadia if present','means':['CARE'],
+                   'addressed_party_ref':'nadia','priority':.7}]
+        if aid=='father':
+            projects.append({'object':'care for Mother','means':['CARE'],
+                             'addressed_party_ref':'mother','priority':.8})
+        return {'input_kind':'THIN_BIOGRAPHY',
+                'source_grade':'EXPLICIT_FICTIONAL_HISTORICAL_INPUT',
+                'source_ref':'fictional:integrated:'+aid,
+                'biographical_context':{'ordinary_life':aid},
+                'fictional_seed':{'projects':projects}}
+    def policy(task,p):
+        aid=p.get('actor',{}).get('id')
+        if task=='adult_constructor':
+            constructor_calls.append(p['actor_id'])
+            return fallback.propose(task,p)
+        if task=='family_pathway_selection':
+            return {'task':task,'pathway_id':'existing-family'}
+        if task=='expression':
+            if p.get('expression_phase')=='LEXICAL_REALIZATION_BEFORE_EXPERIENCE':
+                return {'task':task,'speech':'We have been living our ordinary lives.'}
+            return {'task':task,'surface':'Ordinary activity continues.'}
+        if task=='development':
+            if aid=='nadia' and acquire:
+                return {'task':task,'candidates':choose_one_grounded_plural_acquisition(
+                    p.get('historically_possible_plural_care',[]))}
+            return {'task':task,'candidates':[]}
+        if task=='actor_attempt':
+            opts=p.get('practical_options',[])
+            actions={x['action'] for x in p.get('options',[])}
+            if p.get('requesting_actor') is not None:
+                return {'task':task,'action':'REFUSE'}
+            def exact(op,target=None):
+                return next((x for x in opts if x['operation']==op and
+                    x.get('world_request',{}).get('addressed_party_ref')==target),None)
+            def choose(row):
+                return {'task':task,'practical_option_id':row['option_id']}
+            if phase=='ancestor':
+                q=exact('CARE','mother') if aid=='father' else None
+                return choose(q) if q else {'task':task,'action':'WAIT'}
+            if phase=='initial-care':
+                if aid=='nadia':return {'task':task,'action':'ORIENT'}
+                q=exact('CARE','nadia')
+                return choose(q) if q else {'task':task,'action':'REST'}
+            if phase=='visitor-speech' and aid=='father':
+                q=next((x for x in p.get('addressed_lexical_options',[])
+                        if x.get('world_request',{}).get('addressed_party_ref')=='visitor'),None)
+                if q:
+                    return {**choose(q),'speech_intent':'Acknowledge this actual visitor.'}
+            if phase=='child-address' and aid=='nadia':
+                rows=[o for o in opts if o.get('grounds_status')=='HISTORICALLY_ACQUIRED_CO_REGULATION']
+                if rows:
+                    ranked=[]
+                    for row in rows:
+                        clocks=[x['event_clock'] for x in row.get('personally_sensed_support_history',[])
+                                if x.get('bodily_regulation_sensed') is True]
+                        if clocks:ranked.append((max(clocks),row))
+                    if ranked:return choose(max(ranked,key=lambda x:x[0])[1])
+                return {'task':task,'action':'ORIENT'}
+            # No authored user choice here. Body conditions and current
+            # practical alternatives determine what this controlled policy does.
+            body=p['actor']['body']
+            if body['rest']<.42 and 'REST' in actions:
+                return {'task':task,'action':'REST'}
+            if body['nutrition']<.38 and 'EAT' in actions:
+                return {'task':task,'action':'EAT'}
+            if aid=='nadia' and 'PRACTICE' in actions:
+                return {'task':task,'action':'PRACTICE'}
+            if aid!='nadia':
+                q=exact('CARE','nadia')
+                if q and body['rest']>.65:return choose(q)
+            return {'task':task,'action':'WAIT'}
+        return fallback.propose(task,p)
+    wire=CourseWire('E',policy)
+    semantic=ValidatingSemanticService(wire)
+    rt=ConstitutiveRuntime(str(db),semantic=semantic)
+    n=None
+    def cold():
+        nonlocal rt,n
+        rt.close();rt=ConstitutiveRuntime(str(db),semantic=semantic)
+        if n is not None:n=NeighborEncounter(rt,'visitor',mii_module=mii)
+        require(rt.verify()['valid'],'INTEGRATED_COLD_CHAIN')
+    def world():return rt.ledger.world(rt.world_id)[1]
+    def actor(aid):return rt.ledger.actor(aid)[1]
+    def step(aid,operation=None):
+        out=rt.step(aid)
+        require(out.get('selection_grade')!='INJECTED_NOT_NATIVE_ACTOR_CHOICE',
+                'INTEGRATED_NONINDEPENDENT_CHOICE')
+        if operation:require(out['attempt']==operation and out['status']=='PERFORMED',
+            'INTEGRATED_EXPECTED_'+operation+':'+str(out.get('attempt'))+':'+str(out.get('status')))
+        return out
+    try:
+        rt.initialize_antecedent_adult('mother','Mother',seed('mother'),
+            other_adults=[('father','Father',seed('father'))])
+        sid=rt.register_family_pathways('mother',[{
+            'id':'existing-family','source_ref':'fictional:family-path',
+            'intersection_clock':2,'intersection_site':'home',
+            'conception_clock':3,'birth_clock':5,
+            'counterpart_id':'father','counterpart_name':'Father','counterpart_packet':None,
+            'child_id':'nadia','child_name':'Nadia',
+            'prior_shared_effects':'RETAIN_EXISTING_ACTUAL_HISTORY'}])['source_seal_id']
+        step('father','CARE');step('mother','WAIT')
+        old_actors=deepcopy(rt.ledger.actors());old_events=deepcopy(rt.ledger.events())
+        require(rt.select_family_intersection(sid)['actor']=='father','INTEGRATED_FAMILY_SELECTION')
+        require(rt.ledger.actors()==old_actors,'INTEGRATED_RECREATED_ADULT')
+        require(rt.ledger.events()[:len(old_events)]==old_events,'INTEGRATED_REWROTE_ANCESTOR_HISTORY')
+        step('father','CARE');rt.admit_family_conception()
+        require('nadia' not in rt.ledger.actors(),'INTEGRATED_PREBORN_PSYCHOLOGY')
+        birth=rt.continue_mixed_history(5,ordinary_span=20,detail_beats=3)
+        require(birth['status']=='MODELED_HISTORY_CUT_REACHED' and birth['conditional_births']==1,
+                'INTEGRATED_EXACT_BIRTH')
+        require(actor('nadia')==newborn('nadia','Nadia'),'INTEGRATED_NEWBORN_INHERITED_PURPOSE')
+        phase='initial-care'
+        step('father','CARE');step('mother','CARE');step('nadia','ORIENT');step('nadia','ORIENT')
+        care=deepcopy(actor('nadia')['experienced_care_events'])
+        require({q['giver_ref'] for q in care}=={'mother','father'},'INTEGRATED_PLURAL_ACTUAL_CARE')
+        before_orientations=deepcopy(actor('nadia')['co_regulation_orientations'])
+        require({q['caregiver_ref'] for q in before_orientations}==
+                ({'mother','father'} if acquire else set()),'INTEGRATED_PLURAL_ACQUISITION')
+        start=world()['clock'];sources=[]
+        for aid,begin,end in [('mother',start,start+45),('father',start+10,start+90)]:
+            src=rt.register_historical_routine_source({
+                'kind':'QUALIFIED_REPRODUCTIVE_CARE','actor':aid,'location':'home',
+                'start_clock':begin,'end_clock':end,'max_hours_per_active_day':2,
+                'description':'Explicit fictional bounded aggregate care arrangement'})
+            sources.append({'kind':'QUALIFIED_REPRODUCTIVE_CARE','actor':aid,'location':'home',
+                'source_ref':src['source_ref'],'recipient':'nadia',
+                'hours_per_active_day':1.,'provisional_exposure_fraction':.25})
+        phase='ordinary'
+        cadence={'cadence_origin':0,'ordinary_span':30,'detail_beats':3}
+        target=start+320
+        history_receipts=[]
+        if resume:
+            part=rt.continue_mixed_history(target,period_processes=sources,max_segments=3,**cadence)
+            require(part['status']=='HELD_AT_MIXED_HISTORY_BOUNDARY','INTEGRATED_EXPECTED_PARTIAL')
+            history_receipts.extend(part['segments'])
+            cold()
+        rest=rt.continue_mixed_history(target,period_processes=sources,**cadence)
+        require(rest['status']=='MODELED_HISTORY_CUT_REACHED','INTEGRATED_PREVISIT_CUT')
+        history_receipts.extend(rest['segments'])
+        require(not world().get('neighbor_user_events'),'INTEGRATED_FABRICATED_VISITOR')
+        require(actor('nadia')['experienced_care_events'][:len(care)]==care,'INTEGRATED_LOST_CARE_HISTORY')
+        require(actor('nadia')['co_regulation_orientations'][:len(before_orientations)]==before_orientations,
+                'INTEGRATED_LOST_ORIENTATION_HISTORY')
+        require(actor('nadia')['age_days']>250,'INTEGRATED_AGE_DID_NOT_ADVANCE')
+        require(any(x.get('operation')=='PRACTICE' for x in actor('nadia')['power_exercises']),
+                'INTEGRATED_NO_ACTUAL_CHILD_EXERCISE')
+        registry=world()['routine_source_registry']
+        for period in world()['historical_periods']:
+            for proc in period['processes']:
+                if proc.get('source_ref') in registry:
+                    src=registry[proc['source_ref']]
+                    require(src['from_clock']<=period['start']<period['end']<=src['through_clock'],
+                            'INTEGRATED_ROUTINE_WINDOW_OVERREACH')
+        previsit={'clock':world()['clock'],'age':actor('nadia')['age_days'],
+                  'care_periods':len(world().get('reproductive_labor_periods',[])),
+                  'practice_events':len(actor('nadia')['power_exercises']),
+                  'detailed_beats':sum(x['kind']=='INDEPENDENT_DETAIL' for x in history_receipts)}
+        require(previsit['detailed_beats']>=12,'INTEGRATED_INSUFFICIENT_POLYCENTRIC_DETAIL')
+        cold()
+        n=NeighborEncounter(rt,'visitor',mii_module=mii)
+        n.install_sourcefree_conditions({
+            'grade':'SOURCEFREE_TEST_ONLY',
+            'user_conditions':{'home':{'light':'lit','sightline':'unobstructed',
+               'hearing':True,'sound_path':'audible','legibility':'readable'}},
+            'actor_conditions':{a:{'facing':'entrance','visual':True,'light':'lit',
+                'sightline':'unobstructed','hearing':True,'sound_path':'audible'}
+                for a in ('mother','father','nadia')}},request_id='geometry')
+        require(n.contribute('enter','MOVE',destination='home')['status']=='PERFORMED','INTEGRATED_ENTRY')
+        phase='visitor-speech'
+        speech=n.independent_actor_beat('father')
+        require(speech['attempt']=='SPEAK' and speech['status']=='PERFORMED','INTEGRATED_VOLUNTARY_SPEECH')
+        profile=n.new_private_profile()
+        surface=n.private_surface(profile)
+        require(any(x.get('spoken_text')=='We have been living our ordinary lives.'
+                    and x.get('lexical_acquisition_route')=='VOLUNTARILY_ADDRESSED_TO_SELF'
+                    for x in surface['mandatory']),'INTEGRATED_ACTUAL_WORDS_NOT_RENDERED')
+        # An actual later care occasion, not an inference from the aggregate period.
+        phase='initial-care'
+        step('nadia','ORIENT')
+        later_care=len(actor('nadia')['experienced_care_events'])
+        step('mother','CARE')
+        require(len(actor('nadia')['experienced_care_events'])>later_care,'INTEGRATED_LATER_CARE_NOT_SENSED')
+        phase='child-address'
+        child=n.independent_actor_beat('nadia')
+        require(child['attempt']==('SIGNAL' if acquire else 'ORIENT'),'INTEGRATED_ACQUIRED_ADDRESS:'+str(child['attempt'])+':'+str(child['status']))
+        if acquire:require(child['status']=='PARTIAL','INTEGRATED_NO_INDEPENDENT_REFUSAL')
+        require(n.contribute('depart','LEAVE')['status']=='PERFORMED','INTEGRATED_DEPARTURE')
+        absent_history=deepcopy(world()['neighbor_user_events'])
+        dep=absent_history[-1]['event_ref'];departure_clock=world()['clock']
+        phase='ordinary';cold()
+        continued=n.continue_absent_life_until(dep,departure_clock+70,
+            historical_cadence=cadence,period_processes=sources)
+        require(continued['status']=='AT_OR_PAST_ABSENCE_TARGET' and
+                continued['independent_actor_beats']>=3,'INTEGRATED_ABSENT_LIFE')
+        require(world()['neighbor_user_events']==absent_history,'INTEGRATED_ABSENT_VISITOR_FABRICATED')
+        age_after=actor('nadia')['age_days']
+        require(age_after>previsit['age'],'INTEGRATED_ABSENCE_DID_NOT_AGE')
+        cold()
+        arrival=n.contribute('return','MOVE',destination='home')
+        require(arrival['status']=='PERFORMED','INTEGRATED_RETURN')
+        frames=n.continue_present_life_until(arrival['event_ref'],world()['clock']+6,profile=profile)
+        require(frames['beats_committed_this_call']==6,'INTEGRATED_PRESENT_POLYCENTRIC_LIFE')
+        require(len(frames['new_present_surfaces'])==6,'INTEGRATED_PRESENT_ACTUAL_EXPOSURES')
+        require('visitor' not in rt.ledger.actors(),'INTEGRATED_FAKE_VISITOR_PSYCHOLOGY')
+        require(constructor_calls==['mother','father'],'INTEGRATED_RECONSTRUCTED_PERSON')
+        require(rt.verify()['valid'],'INTEGRATED_FINAL_CHAIN')
+        final={'world':world(),'actors':rt.ledger.actors(),'events':rt.ledger.events()}
+        return {'state_digest':digest(final),'clock':world()['clock'],'events':len(final['events']),
+                'previsit':previsit,'age_after_absence':age_after,
+                'child_address_operation':child['attempt'],'child_address_status':child['status'],
+                'present_beats':frames['beats_committed_this_call'],
+                'absence_beats':continued['independent_actor_beats'],
+                'constructor_calls':constructor_calls,'cost':wire.stats(),
+                'not_live_model_or_native_evidence':True}
+    finally:rt.close()
+
 if __name__=='__main__':
     print(canonical(run_campaign()))

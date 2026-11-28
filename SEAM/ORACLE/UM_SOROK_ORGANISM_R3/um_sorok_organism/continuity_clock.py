@@ -6,7 +6,7 @@ chooses the action. This does not invent unperformed micro-events, pretend a
 scheduling threshold was an experienced violation, or close other actors'
 rights. The actual runtime/world owners still author their own transactions.
 """
-from .types import GRADE, stable_id
+from .types import GRADE, stable_id, copy
 from .material_conjunction import next_material_gate_discontinuity
 
 MAX_HORIZON=3650
@@ -584,3 +584,148 @@ def qualify_contingent_world_notice(world, actors, proposal):
             'offer_id':offer_id,'world_id':world.get('id'),
             'no_world_outcome_or_actor_knowledge_inferred':True,
             'not_an_external_news_source_verification':True}
+
+
+def qualify_mixed_history_schedule(world,processes):
+    """Registered aggregate premises, not an unconditional life script."""
+    from .routine_sources import verify_qualified_period_envelope
+    from .historical_social_reproduction import _typecheck
+    if type(processes) is not list or len(processes)>512:
+        raise ValueError('MIXED_HISTORY_INVALID_ROUTINE_SCHEDULE')
+    result=[];seen=set()
+    for process in processes:
+        _typecheck(process)
+        if process['source_ref'] in seen:
+            raise ValueError('MIXED_HISTORY_DUPLICATE_ROUTINE_SOURCE')
+        seen.add(process['source_ref'])
+        source=world.get('routine_source_registry',{}).get(process['source_ref'])
+        if type(source) is not dict:
+            raise ValueError('HISTORICAL_PROCESS_UNREGISTERED_SOURCE_ENVELOPE')
+        start=source['from_clock'];end=source['through_clock']
+        verify_qualified_period_envelope(world,process,start,1)
+        row=copy(process)
+        row['routine_window_application']='SITUATED_CONDITIONAL_ROUTINE'
+        result.append((start,end,row))
+    return result
+
+
+def mixed_history_interval(schedule,clock,limit):
+    """Cut at the first source boundary; expired/future premises are inactive."""
+    active=[]
+    for start,end,row in schedule:
+        if clock<start:limit=min(limit,start)
+        elif clock<end:
+            limit=min(limit,end);active.append(copy(row))
+    return limit,active
+
+
+def continue_mixed_history(runtime,target_clock,*,cadence_origin=0,
+                           ordinary_span=30,detail_beats=3,max_segments=240,
+                           period_processes=None):
+    """One continuing life before and between actual visitor encounters.
+
+    Alternate aggregate reproduction and genuinely selected detailed activity.
+    The existing continuity owner handles discontinuities and conditional birth;
+    the existing initiative owner selects who, never what. Absolute modeled
+    phase and actual ledger counts, not a new scheduler cursor, permit cold
+    continuation without replaying a person. The cadence is a research
+    resolution choice, not a biological period, human calendar or adult end.
+    """
+    from .initiative import choose_next_actor
+    for value,low,high,code in (
+        (target_clock,0,10**9,'TARGET'),(cadence_origin,0,10**9,'ORIGIN'),
+        (ordinary_span,1,MAX_HORIZON,'SPAN'),(detail_beats,1,24,'DETAIL'),
+        (max_segments,1,240,'SEGMENTS')):
+        if type(value) is not int or not low<=value<=high:
+            raise ValueError('MIXED_HISTORY_INVALID_'+code)
+    world=runtime.ledger.world(runtime.world_id)[1];initial=world['clock']
+    if cadence_origin>initial or target_clock<initial:
+        raise ValueError('MIXED_HISTORY_NONPROSPECTIVE_CLOCK')
+    if any(x.get('present') is True for x in world.get('neighbor_users',{}).values()):
+        raise ValueError('MIXED_HISTORY_PRESENT_VISITOR_REQUIRES_PRESENT_OWNER')
+    schedule=qualify_mixed_history_schedule(world,period_processes if period_processes is not None else [])
+    visitor_history=copy(world.get('neighbor_user_events',[]))
+    entries=[];reason=None;cycle=ordinary_span+detail_beats
+    def read():
+        w=runtime.ledger.world(runtime.world_id)[1]
+        if (any(x.get('present') is True for x in w.get('neighbor_users',{}).values())
+                or w.get('neighbor_user_events',[])!=visitor_history):
+            raise ValueError('MIXED_HISTORY_VISITOR_BOUNDARY_CHANGED')
+        return w
+    while len(entries)<max_segments:
+        world=read();clock=world['clock']
+        family=world.get('family_genesis',{})
+        if family.get('stage')=='CONCEPTION_ADMITTED':
+            birth=family['selected_pathway']['birth_clock']
+            if birth<clock:
+                reason='MISSED_CONDITIONAL_BIRTH_BOUNDARY';break
+            if birth==clock:
+                result=runtime.advance_to_discontinuity(horizon=1,processes=[])
+                if not result.get('family_birth_receipt') or read()['clock']!=clock:
+                    raise ValueError('MIXED_HISTORY_BIRTH_OWNER_RETURN')
+                entries.append({'kind':'CONDITIONAL_BIRTH','from_clock':clock,
+                    'through_clock':clock,'receipt':result['family_birth_receipt']})
+                continue
+        if clock>=target_clock:break
+        actors=runtime.ledger.actors()
+        position=(clock-cadence_origin)%cycle
+        detail_start=clock-position+ordinary_span
+        boundary=next_discontinuity(world,actors,1)
+        if boundary and boundary['kind']=='OBLIGATION_DUE' and boundary['at']==clock:
+            result=runtime.advance_to_discontinuity(horizon=1,processes=[])
+            after=read()['clock']
+            row={'kind':'DUE_ACTOR_OCCASION','source_ref':boundary['source_ref'],
+                'receipt':result.get('high_resolution_actor_event'),'from_clock':clock,
+                'through_clock':after}
+            if not row['receipt']:raise ValueError('MIXED_HISTORY_DUE_OWNER_NO_RECEIPT')
+            entries.append(row)
+            if after!=clock+1:raise ValueError('MIXED_HISTORY_DETAIL_CLOCK_CONTRADICTION')
+            # Stop at an unresolved due act rather than making an actor repeat
+            # the same occasion forever. Prior real progress remains committed.
+            if any(x.get('id')==row['source_ref'] and x.get('status')=='PENDING'
+                   for x in read().get('scheduled_obligations',[])):
+                reason='DUE_OBLIGATION_STILL_UNRESOLVED';break
+        elif position>=ordinary_span:
+            counts=runtime.ledger.actor_life_counts_after(runtime.world_id,detail_start,clock)
+            choice=choose_next_actor(world,actors,counts)
+            if choice is None:reason='NO_SITUATED_ACTOR';break
+            result=runtime.step(choice['actor'])
+            if (result.get('selection_grade')=='INJECTED_NOT_NATIVE_ACTOR_CHOICE'
+                    or not result.get('receipt')):
+                raise ValueError('MIXED_HISTORY_NONINDEPENDENT_ACTOR_RETURN')
+            after=read()['clock']
+            entries.append({'kind':'INDEPENDENT_DETAIL','receipt':result['receipt'],
+                'from_clock':clock,'through_clock':after})
+            if after!=clock+1:raise ValueError('MIXED_HISTORY_DETAIL_CLOCK_CONTRADICTION')
+        else:
+            end=min(target_clock,detail_start,clock+MAX_HORIZON)
+            end,active=mixed_history_interval(schedule,clock,end)
+            if end<=clock:raise ValueError('MIXED_HISTORY_EMPTY_ROUTINE_INTERVAL')
+            boundary=next_discontinuity(world,actors,end-clock)
+            # Stop exactly at the interruption, not one actor beat beyond it.
+            # The next loop dispatches an actually due act/birth. No retroactive
+            # care, assumed consent or fabricated microscenes.
+            if boundary:end=boundary['at']
+            if end<=clock:raise ValueError('MIXED_HISTORY_ZERO_PROGRESS_BOUNDARY')
+            result=runtime.background(end-clock,processes=active)
+            after=read()['clock']
+            entries.append({'kind':'QUALIFIED_ORDINARY_INTERVAL','receipt':result['receipt'],
+                'from_clock':clock,'through_clock':after,
+                'source_refs':[p['source_ref'] for p in active],
+                'discontinuity':boundary['kind'] if boundary else None})
+            if after!=end:raise ValueError('MIXED_HISTORY_AGGREGATE_CLOCK_CONTRADICTION')
+        if after<=clock or after>target_clock:
+            raise ValueError('MIXED_HISTORY_OWNER_ADVANCED_OUTSIDE_BOUNDARY')
+    final=read();clock=final['clock'];family=final.get('family_genesis',{})
+    unresolved_birth=(family.get('stage')=='CONCEPTION_ADMITTED'
+                      and family['selected_pathway']['birth_clock']<=clock)
+    reached=(clock==target_clock and not unresolved_birth and reason is None)
+    return {'status':'MODELED_HISTORY_CUT_REACHED' if reached else 'HELD_AT_MIXED_HISTORY_BOUNDARY',
+        'hold_reason':None if reached else reason or 'FINITE_SEGMENT_BUDGET',
+        'initial_modeled_clock':initial,'target_modeled_clock':target_clock,
+        'actual_modeled_clock':clock,'segments':entries,
+        'ordinary_intervals':sum(e['kind']=='QUALIFIED_ORDINARY_INTERVAL' for e in entries),
+        'independent_actor_beats':sum(e['kind'] in ('INDEPENDENT_DETAIL','DUE_ACTOR_OCCASION') for e in entries),
+        'conditional_births':sum(e['kind']=='CONDITIONAL_BIRTH' for e in entries),
+        'no_visitor_action_or_reconstructed_microevent':True,
+        'not_real_time_or_developmental_science':True,'grade':GRADE}
