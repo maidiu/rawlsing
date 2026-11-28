@@ -4,7 +4,7 @@ Leontiev/Sève distinction: technical success != fulfillment of the motive; a
 single performed operation can belong to multiple contradictory activities.
 This is a derived and then actor-owned *research* process, not native V3.
 """
-from .types import copy, stable_id, GRADE
+from .types import copy, stable_id, digest, GRADE
 from .distributed_power import accessible_human_counterparts
 from .social_vocal_development import ordinary_vocal_actor_view, ordinary_vocal_basis_still_qualified
 
@@ -18,6 +18,81 @@ def _solo_vocal_sign(cue,other,location):
             and cue.get('location')==location
             and 'solo_practice' in cue.get('tags',[])
             and type(cue.get('id')) is str)
+
+
+def possible_lexical_project_revaluations(actor,experience,event_ref):
+    """A received utterance can acquire significance for a lived undertaking.
+
+    Reuse actor-owned project organization, not a lexical sentiment rule,
+    new motive store, shared mind, or inferred trust in the words. The offer
+    is a bounded source identity for optional semantic revaluation. It grants
+    no new physical means, permission, or truth of another person's claim.
+    """
+    aid=actor.get('id');clock=experience.get('clock')
+    if (experience.get('actor')!=aid or type(clock) is not int
+            or experience.get('status')!='OBSERVED'
+            or experience.get('participated') is not False):return []
+    paths=[v for v in actor.get('evidence_paths',[])[-128:]
+           if v.get('event')==event_ref
+           and v.get('experience_ref')==experience.get('ref')
+           and v.get('purpose_status')=='NO_ACTOR_AUTHORED_ATTEMPT']
+    if len(paths)!=1:return []
+    signs=[c for c in experience.get('perceived_cues',[])
+           if c.get('kind') in ('performed_speak','heard_voice')
+           and c.get('modality')=='auditory'
+           and c.get('clock')==clock and c.get('location')==experience.get('location')
+           and c.get('source_actor')!=aid
+           and c.get('utterance_grade')=='SOURCEFREE_REALIZED_LEXICAL_OCCURRENCE'
+           and c.get('lexical_comprehension')=='SOURCEFREE_CAPACITY_ELIGIBLE'
+           and type(c.get('spoken_text')) is str and c['spoken_text'].strip()
+           and c.get('utterance_text_hash')==digest(c['spoken_text'])
+           and c.get('id') in paths[0].get('received_cue_refs',[])]
+    if len(signs)!=1:return []
+    sign=signs[0];out=[]
+    episodes=actor.get('lived_genesis_episodes',[])[-128:]
+    prior_paths=actor.get('evidence_paths',[])[-128:]
+    for project in actor.get('projects',[])[-128:]:
+        if project.get('status','active')!='active':continue
+        pid=project.get('id')
+        if type(pid) is not str:continue
+        lived=project.get('lived_attempt_history',[])[-32:]
+        ops=project.get('operational_history',[])[-32:]
+        for ep in reversed(episodes):
+            if (ep.get('actor')!=aid or ep.get('event_ref')==event_ref
+                    or type(ep.get('clock')) is not int or ep['clock']>=clock
+                    or ep.get('selected_project_refs')!=[pid]
+                    or ep.get('selection_source')!='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+                    or ep.get('selected_possible_end_trial_ref') is not None):continue
+            source=ep['event_ref'];operation=ep.get('actor_felt_attempt')
+            actual=[v for v in ops if v.get('event')==source
+                and v.get('project')==pid and v.get('operation')==operation
+                and v.get('selected_at_actor_attempt') is True
+                and v.get('intent_attribution')=='ACTOR_POLICY_SELECTED_PROJECT_COURSE']
+            personal=[v for v in lived if v.get('event')==source
+                and v.get('project')==pid and v.get('attempted_operation')==operation
+                and v.get('felt')=='SOMATIC_ATTEMPT_ONLY']
+            receipts=[v for v in prior_paths if v.get('event')==source
+                and v.get('experience_ref')==ep.get('experience_ref')
+                and v.get('selected_project_refs')==[pid]]
+            if not (len(actual)==len(personal)==len(receipts)==1):continue
+            basis={'actor':aid,'project_ref':pid,'origin_event_ref':source,
+                'origin_experience_ref':ep['experience_ref'],'prior_own_operation':operation,
+                'received_event_ref':event_ref,'received_experience_ref':experience['ref'],
+                'received_cue_ref':sign['id'],'received_words_hash':sign['utterance_text_hash'],
+                'visually_eligible_source_ref':sign.get('source_actor'),
+                **({'lexical_acquisition_route':sign['lexical_acquisition_route']}
+                   if sign.get('lexical_acquisition_route') in (
+                       'VOLUNTARILY_ADDRESSED_TO_SELF','AUDIBLE_NOT_ADDRESSED_TO_SELF') else {}),
+                'previous_priority':project.get('priority',.4),
+                'not_speaker_recognition_claim_truth_or_motive_fulfillment':True}
+            out.append({'kind':'REORGANIZE_PROJECT','project_id':pid,
+                'lexical_revaluation_basis':basis,
+                'allowed_change':'PRIORITY_AND_FALLIBLE_PERSONAL_SIGNIFICANCE_ONLY',
+                'project_object':project.get('object'),
+                'no_change_is_lawful':True})
+            break
+        if len(out)>=8:break
+    return out
 
 
 def possible_productive_witness_reorganizations(actor,experience,event_ref):

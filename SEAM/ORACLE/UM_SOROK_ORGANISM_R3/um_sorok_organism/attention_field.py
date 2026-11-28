@@ -171,7 +171,7 @@ def situate_attention(constitution, access, *, ceiling=8, historical=None):
 # Explicitly undertaken focal reception is distinct from the read-only
 # attention budget. The producer's authored act and the recipient's own
 # experienced sign must remain two different historical events.
-from .types import stable_id
+from .types import stable_id, digest
 
 def offer_undertaking_attention(actor, world, access, focal_refs):
     """Existing actor pledge and R24 visitor undertaking, one recipient law.
@@ -335,18 +335,91 @@ def received_correspondence_attention(actor,selection,experience):
             'comprehension_not_established':True}
 
 
-def offer_focal_encounters(actor, access, focal_refs):
-    """A bounded existing ORIENT operation can deliberately receive a present
-    coactor sign. Only open this sourcefree family after personally received
-    directed imposition; do not infer vigilance from co-presence alone.
+def _directed_visitor_speech_options(actor, access, focal_refs, world, ledger_event):
+    """A real, adjacent, explicitly addressed human utterance can be attended.
+
+    Reuse the actor's bounded ORIENT and existing focal-memory owner. Never
+    consult MII, infer an earlier visitor perception, or require an adverse
+    history to make ordinary speech psychologically consequential.
     """
-    if access.actor != actor['id'] or not (
-            any(row.get('acquisition')=='LIVED_DIRECTED_MONITORING_PRACTICE'
+    if (not isinstance(world,dict) or not isinstance(ledger_event,dict)
+            or access.actor!=actor['id'] or access.world_clock!=world['clock']
+            or actor['body'].get('language',0)<.35):
+        return []
+    env=ledger_event.get('envelope',{});payload=env.get('payload',{})
+    if (ledger_event.get('kind')!='NEIGHBOR_USER_CONTRIBUTION'
+            or env.get('world')!=world['id']
+            or ledger_event.get('clock')!=world['clock']
+            or payload.get('performed') is not True):
+        return []
+    ref=payload.get('user_event_ref');visitor=payload.get('user')
+    if type(ref) is not str or type(visitor) is not str or visitor in world['positions']:
+        return []
+    # The current world row is not independently authoritative without its
+    # immutable actual contribution receipt.
+    events=world.get('neighbor_user_events',[])
+    if not events:return []
+    event=events[-1]
+    text=event.get('authored_text')
+    authored={'user':visitor,'operation':'SAY','text':text,'destination':None,
+              'target_actor_ref':actor['id']}
+    person=world.get('neighbor_users',{}).get(visitor,{})
+    if (event.get('event_ref')!=ref or event.get('user')!=visitor
+            or event.get('operation')!='SAY' or event.get('status')!='PERFORMED'
+            or event.get('target_actor_ref')!=actor['id']
+            or event.get('destination')!=access.location
+            or event.get('clock')!=world['clock']
+            or type(text) is not str or not text.strip()
+            or person.get('present') is not True
+            or person.get('location')!=access.location
+            or event.get('payload_hash')!=digest(authored)
+            or payload.get('payload_hash')!=event['payload_hash']
+            or ref!=stable_id('neighbor_user',{'user':visitor,
+                'request_id':event.get('request_id'),'payload_hash':event['payload_hash']})):
+        return []
+    out=[]
+    for cue in access.cues:
+        if (cue.get('id') not in focal_refs
+                or cue.get('id') not in payload.get('candidate_cue_refs',[])
+                or cue.get('kind')!='visitor_speech'
+                or cue.get('modality')!='auditory'
+                or cue.get('source_actor') is not None
+                or cue.get('private_to')!=actor['id']
+                or cue.get('visitor_event_ref')!=ref
+                or cue.get('visitor_ref')!=visitor
+                or cue.get('visitor_speech_addressed_to_recipient') is not True
+                or cue.get('description')!=text
+                or cue.get('lexical_comprehension')!='SOURCEFREE_CAPACITY_ELIGIBLE'
+                or cue.get('location')!=access.location
+                or cue.get('clock')!=access.world_clock):
+            continue
+        candidates=[row for row in event.get('perceptual_candidates',[])
+                    if row.get('actor')==actor['id'] and row.get('cue_ref')==cue['id']
+                    and row.get('event_ref')==ref and row.get('modality')=='auditory']
+        if len(candidates)!=1:continue
+        basis={'actor':actor['id'],'as_of_clock':access.world_clock,
+               'location':access.location,'cue_ref':cue['id'],
+               'counterpart_ref':visitor,'encounter_kind':'DIRECTED_VISITOR_SPEECH',
+               'source_user_event_ref':ref,'source_ledger_ref':ledger_event['id']}
+        out.append({**basis,'attention_id':stable_id('focal_encounter',basis),
+                    'operation':'ORIENT','outward_sign':copy(cue),
+                    'not_private_mind_or_actual_attention_yet':True})
+    return out if len(out)==1 else []
+
+
+def offer_focal_encounters(actor, access, focal_refs, *, world=None, ledger_event=None):
+    """Existing focal reception, with two noninterchangeable source families.
+
+    Coactor monitoring remains qualified by earlier imposition. Ordinary
+    explicitly addressed human speech is independent of that history.
+    """
+    if access.actor!=actor['id']:return []
+    out=_directed_visitor_speech_options(actor,access,focal_refs,world,ledger_event)
+    if not (any(row.get('acquisition')=='LIVED_DIRECTED_MONITORING_PRACTICE'
                 for row in actor.get('historical_orientations', []))
             or any(p.get('directed_encounter', {}).get('operation') == 'IMPOSE'
                    for p in actor.get('evidence_paths', []))):
-        return []
-    out = []
+        return out
     for cue in access.cues:
         if (cue.get('id') not in focal_refs or cue.get('kind') != 'coactor_present'
                 or type(cue.get('source_actor')) is not str
@@ -378,11 +451,27 @@ def received_focal_encounter(actor, selection, experience):
             or selection.get('possible_end_trial') is not None):return None
     cue=chosen.get('outward_sign')
     if (not isinstance(cue,dict) or cue.get('id')!=chosen.get('cue_ref')
-            or cue.get('kind')!='coactor_present'
-            or cue.get('source_actor')!=chosen.get('counterpart_ref')
             or sum(c==cue for c in experience.get('perceived_cues',[]))!=1):
         return None
     basis={k:copy(chosen[k]) for k in ('actor','as_of_clock','location','cue_ref','counterpart_ref')}
+    kind=chosen.get('encounter_kind')
+    if kind=='DIRECTED_VISITOR_SPEECH':
+        if (cue.get('kind')!='visitor_speech'
+                or cue.get('modality')!='auditory'
+                or cue.get('source_actor') is not None
+                or cue.get('visitor_ref')!=chosen.get('counterpart_ref')
+                or cue.get('private_to')!=actor['id']
+                or cue.get('visitor_speech_addressed_to_recipient') is not True
+                or cue.get('visitor_event_ref')!=chosen.get('source_user_event_ref')
+                or type(chosen.get('source_ledger_ref')) is not str
+                or type(chosen.get('source_user_event_ref')) is not str):
+            return None
+        basis.update(encounter_kind=kind,
+                     source_user_event_ref=chosen['source_user_event_ref'],
+                     source_ledger_ref=chosen['source_ledger_ref'])
+    elif (kind is not None or cue.get('kind')!='coactor_present'
+            or cue.get('source_actor')!=chosen.get('counterpart_ref')):
+        return None
     if chosen.get('attention_id')!=stable_id('focal_encounter',basis):return None
     return {**basis,'attention_id':chosen['attention_id'],
             'received_at_clock':experience['clock'],
@@ -433,6 +522,9 @@ def possible_monitoring_changes(actor, experience, event_ref):
     if focal and focal!=received_focal_encounter(
             actor,experience.get('own_practical_selection'),experience):return []
     if directed and directed!=personally_received_directed_act(experience):return []
+    # Ordinary visitor speech is not historical monitoring of a CO coactor.
+    if focal and focal.get('encounter_kind')=='DIRECTED_VISITOR_SPEECH':
+        return []
     latest=focal or directed
     if not latest:return []
     other=latest['counterpart_ref']

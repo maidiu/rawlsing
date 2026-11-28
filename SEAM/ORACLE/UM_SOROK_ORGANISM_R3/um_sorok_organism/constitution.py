@@ -34,6 +34,7 @@ from .expectation_afterlife import annotate_practical_expectations, annotate_act
 from .co_regulation_history import (
     recruit_co_regulation, addressed_signal_alternatives)
 from .caregiving_practice import project_repeat_feeding
+from .continuity_clock import MEETING_ACTIONS, meeting_options
 from .food_access_struggle import (
     live_food_petition_opportunity, offered_food_petition)
 from .food_power_reproduction import (
@@ -663,6 +664,19 @@ def compose(constitution,access,limit=50):
     for a in ('WAIT','REST','ORIENT','SIGNAL'):
         status,why=eligible(constitution.body,a)
         if status:actions.setdefault(a,{'action':a,'score':.06,'basis':['organism'],'opportunity':'ORGANISM'})
+    # An immature organism need not already possess an exercised power
+    # to try moving its body. A first, unpurposed, physically eligible
+    # exploration is an occasion for actual exercise, not installed skill.
+    if (constitution.role=='child' and 'SITE_ACCESS' in access.affordances
+            and not any(set(f.get('enables',[])) & {'PRACTICE','SING'}
+                        for f in constitution.forms.values())
+            and not any(x.get('operation') in ('PRACTICE','SING')
+                        and x.get('attempt_status_analyst_receipt')=='PERFORMED'
+                        for x in constitution.power_exercises)
+            and eligible(constitution.body,'PRACTICE')[0]):
+        actions.setdefault('PRACTICE',{'action':'PRACTICE','score':.025,
+            'basis':['BODILY_EXPLORATION_POSSIBLE_WITHOUT_PRIOR_PRACTICE'],
+            'opportunity':'FIRST_EXERCISE_NOT_ACQUIRED_PURPOSE'})
     if 'PLEDGE_CARE' in access.affordances:
         status,why=eligible(constitution.body,'PLEDGE_CARE')
         if status:
@@ -685,6 +699,11 @@ def compose(constitution,access,limit=50):
         actions.setdefault('REFUSE',{'action':'REFUSE','score':.055,
             'basis':['CURRENT_ACTOR_ACCESSIBLE_MATERIAL_OFFER'],
             'opportunity':'PARTICULAR_OFFER_MAY_BE_REFUSED_NOT_REQUIRED'})
+    for action in MEETING_ACTIONS:
+        if eligible(constitution.body,action)[0] and meeting_options(constitution,access,action):
+            actions.setdefault(action,{'action':action,'score':.045,
+                'basis':['ACTUAL_ADDRESSED_MEETING_SIGN'],
+                'opportunity':'PARTICULAR_TIME_BOUND_MEETING_NOT_ASSUMED_DUTY'})
     for a,q in actions.items():
         if a in ('WORK','REPAIR','SING','JOIN','MAKE_SPACE','OPEN_HALL') and access.location not in ('workshop','home','hall'):
             q['score']*=.45
@@ -742,6 +761,9 @@ def compose(constitution,access,limit=50):
             constitution,attention['focus_access'],option)
         option['practical_alternatives']+=situated_suspension_targets(
             constitution,attention['focus_access'],option)
+        if option['action'] in MEETING_ACTIONS:
+            option['practical_alternatives']=meeting_options(
+                constitution,attention['focus_access'],option['action'])
         annotate_material_alternatives(option,invested)
         if option['action']=='INSPECT':
             for alt in option['practical_alternatives']:
@@ -788,7 +810,9 @@ def compose(constitution,access,limit=50):
         constitution,attention['focus_access'],dynamics['candidate_actions'],
         functional_correspondences=functional['active'])
     currents+=prospective['currents']
-    ordered=sorted(dynamics['candidate_actions'],key=lambda x:(-x['score'],x['action']))[:limit]
+    ordered=sorted((o for o in dynamics['candidate_actions']
+                    if o['action'] not in MEETING_ACTIONS or o.get('practical_alternatives')),
+                   key=lambda x:(-x['score'],x['action']))[:limit]
     return Situated(actor=constitution.actor,clock=constitution.clock,recruited=list(active.values()),
        dormant=sorted(set(dormant)),inhibited=sorted(set(inhibited)),currents=currents,
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,

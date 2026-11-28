@@ -25,8 +25,9 @@ from .activity import (record_activity_afterlife, register_lived_activity_attemp
                         own_commons_receipt, possible_commons_provisioning_reorganizations,
                        possible_dependency_project_reorganizations,
                        possible_dependency_means_revisions, qualify_interactivity_deferral,
+                       possible_lexical_project_revaluations,
                        possible_interactivity_relations)
-from .practical_difference import start_selected_expectations
+from .practical_difference import start_selected_expectations, offer_addressed_lexical_alternatives
 from .lived_genesis import proposals_from_bodily_history
 from .historical_self_organization import (possible_lived_directional_orientation,
                                            possible_dependency_ambivalence,
@@ -42,8 +43,11 @@ from .unintended_goods import (possible_unintended_goods, qualify_incidental_obj
 from .expectation_afterlife import (source_qualified_appraisal_candidates,
                                     possible_activity_affects, own_vocal_reception,
                                     possible_expressive_practices, possible_self_expression_affects)
-from .routine_sources import register_sourcefree_period_envelope
+from .routine_sources import (register_sourcefree_period_envelope, routine_exercise_receipt,
+    possible_recurrent_routines, register_admitted_routine,
+    possible_routine_revisions, register_routine_revision)
 from .caregiving_practice import retain_performed_material_feeding
+from .material_provisioning import offer_feeding_source_alternatives, offer_self_meal_source_alternatives
 from .food_access_struggle import configure_food_power
 from .food_power_reproduction import register_concession, received_enacted_food_power
 from .institutional_procedure_learning import (
@@ -75,7 +79,8 @@ from .plural_care_paths import (
 from .functional_correspondence import (propose_actor_lived_correspondences,
                                         possible_functional_revisions)
 from .initiative import continue_life
-from .continuity_clock import continue_to_discontinuity, continue_pre_encounter, qualify_contingent_world_notice
+from .continuity_clock import (continue_to_discontinuity, continue_pre_encounter,
+    qualify_contingent_world_notice, continue_mixed_history)
 from .historical_parent_bridge import (render_blind_interview, qualify_family_pathways,
     family_encounter_evidence, FAMILY_SOURCE, FAMILY_GRADE, existing_family_binding)
 from .material_conjunction import admit_authored_structural_history
@@ -316,6 +321,8 @@ class ConstitutiveRuntime:
                     modality=modality,private_to=private_to,source_actor=actor_id,
                     clock_offset=1,lasting_ticks=lasting_ticks)
         world['clock']+=1
+        from .continuity_clock import settle_meeting_deadlines
+        settle_meeting_deadlines(world)
         receipt=self.ledger.commit(self.world_id,wv,world,{}, {},'OBJECTIVE_CUE',actor_id,
             {'cue_ref':cue['id'],'issuer':'EXTERNAL_RESEARCH_FIXTURE','not_actor_memory':True})
         return {'receipt':receipt['id'],'cue':cue,'grade':GRADE}
@@ -353,6 +360,8 @@ class ConstitutiveRuntime:
         cue['contingent_offer_hash']=offer_hash
         cue['external_sign_only_not_verified_news_or_world_damage']=True
         world['clock']+=1
+        from .continuity_clock import settle_meeting_deadlines
+        settle_meeting_deadlines(world)
         committed=self.ledger.commit(self.world_id,v,world,{}, {},
              'SOURCEFREE_CONTINGENT_WORLD_NOTICE',None,{
                 'offer_id':proposal['offer_id'],
@@ -409,6 +418,24 @@ class ConstitutiveRuntime:
             # alternatives, not merely operation names. It also accepts the
             # older action-only policy with explicitly unresolved purposes.
             # A model policy is NOT a conscious iceberg manager.
+            for o in options:
+                if o.get('action')=='FEED':
+                    # Same actor-owned practical selector; no new semantic call.
+                    source_options=offer_feeding_source_alternatives(world,e,o)
+                    if requesting_actor is not None:
+                        source_options=[v for v in source_options
+                            if v['world_request']['addressed_party_ref']==requesting_actor]
+                    o.setdefault('practical_alternatives',[]).extend(source_options)
+                elif o.get('action')=='EAT' and requesting_actor is None:
+                    o.setdefault('practical_alternatives',[]).extend(
+                        offer_self_meal_source_alternatives(world,e,o))
+            # Keep the ordinary practical roster exact. An addressed lexical
+            # refinement is offered separately, but uses the same option ID
+            # selection and qualification path when explicitly selected.
+            addressed_options=[alt for o in options
+                for alt in offer_addressed_lexical_alternatives(e,o,set(situated.get(
+                    'attention_frame',{}).get('focally_eligible_cue_refs',[])))]
+            if requesting_actor is not None:addressed_options=[]
             flat_alternatives=[copy(alt) for o in options
                                for alt in o.get('practical_alternatives',[])]
             flat_trials=[copy(t) for o in options for t in o.get('possible_end_trials',[])]
@@ -419,14 +446,20 @@ class ConstitutiveRuntime:
                 if requesting_actor is None and any(o['action']=='ORIENT' for o in options) else [])
             correspondence_options=(offer_correspondence_attention(actor,world,e)
                 if requesting_actor is None and any(o['action']=='ORIENT' for o in options) else [])
+            # Query one committed tail row only for a potentially receivable
+            # directed human utterance; no whole-history hydration per beat.
             focal_options=(offer_focal_encounters(actor,e,
-                situated.get('attention_frame',{}).get('focally_eligible_cue_refs',[]))
+                situated.get('attention_frame',{}).get('focally_eligible_cue_refs',[]),
+                world=world,ledger_event=(self.ledger.latest_event()
+                    if any(c.get('visitor_speech_addressed_to_recipient') is True
+                           for c in e.cues) else None))
                 if requesting_actor is None and any(o['action']=='ORIENT' for o in options) else [])
             proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role'],
                 'body':copy(actor['body'])},
                 'accessible':{k:v for k,v in asdict(e).items() if k!='inaccessible_count'},
                 'situated':situated,'options':options,
                 'practical_options':flat_alternatives,
+                **({'addressed_lexical_options':copy(addressed_options)} if addressed_options else {}),
                 'possible_end_trials':flat_trials,
                 'private_rehearsal_options':copy(private_options),
                 'undertaking_attention_options':copy(undertaking_options),
@@ -489,7 +522,7 @@ class ConstitutiveRuntime:
             if requested_option is not None:
                 if type(requested_option) is not str:
                     raise ValueError('INVALID_PRACTICAL_OPTION_ID')
-                matches=[a for a in flat_alternatives
+                matches=[a for a in flat_alternatives+addressed_options
                          if a['option_id']==requested_option]
                 if len(matches)!=1:
                     raise ValueError('UNKNOWN_OR_AMBIGUOUS_PRACTICAL_OPTION_ID')
@@ -542,6 +575,8 @@ class ConstitutiveRuntime:
                     raise ValueError('PROVISIONAL_TRIAL_NOT_IN_SELECTED_OPERATION')
             alternatives=opt.get('practical_alternatives',[])
             option_id=proposed.get('practical_option_id')
+            if action=='SPEAK' and option_id is not None:
+                alternatives=alternatives+addressed_options
             if option_id is not None:
                 if type(option_id) is not str:
                     raise ValueError('INVALID_PRACTICAL_OPTION_ID')
@@ -716,6 +751,39 @@ class ConstitutiveRuntime:
                            selected_alternative.get('origin_orientation_ref')
                            if selected_alternative else None),
                        'material_object_not_automatically_owned_by_actor':True}
+            if 'speech_intent' in proposed:
+                intent=proposed['speech_intent']
+                if (action!='SPEAK' or requesting_actor is not None
+                        or type(intent) is not str or not intent.strip() or len(intent)>500):
+                    raise ValueError('SPEECH_INTENT_NOT_QUALIFIED_PRINCIPAL_SPEAK')
+                practical['prospective_speech_intent']=intent
+            if (selected_alternative and selected_alternative.get('binding_status')
+                    =='EXACT_CURRENT_VOLUNTARY_SPEECH_ADDRESS'):
+                if (proposed.get('practical_option_id')!=selected_alternative['option_id']
+                        or not practical.get('prospective_speech_intent')
+                        or requesting_actor is not None or trial_choice is not None):
+                    raise ValueError('VOLUNTARY_ADDRESS_REQUIRES_EXACT_LEXICAL_CHOICE')
+                practical['selected_speech_address']={'recipient':bound_target,
+                    'presence_cue_ref':selected_alternative['speech_address_presence_ref'],
+                    'option_ref':selected_alternative['option_id']}
+            if action in ('ACCEPT_MEETING','MEET_VISITOR'):
+                if (trial_choice is not None or not selected_alternative
+                        or selected_alternative.get('binding_status')!='EXACT_CURRENT_HUMAN_MEETING_SIGN'
+                        or proposed.get('practical_option_id')!=selected_alternative['option_id']):
+                    raise ValueError('MEETING_REQUIRES_EXACT_ACTOR_SELECTED_OPTION')
+                practical['selected_meeting']={k:copy(selected_alternative[k]) for k in (
+                    'meeting_ref','meeting_source_user_event_ref','meeting_source_cue_ref')}
+            if (action=='EAT' and selected_alternative
+                    and selected_alternative.get('selected_self_meal_source')
+                    and proposed.get('practical_option_id')==selected_alternative['option_id']
+                    and trial_choice is None):
+                practical['selected_self_meal_source']=selected_alternative['selected_self_meal_source']
+                practical['selected_self_meal_source_option_ref']=selected_alternative['option_id']
+            if (selected_alternative and selected_alternative.get('selected_feeding_source')
+                    and proposed.get('practical_option_id')==selected_alternative['option_id']
+                    and trial_choice is None):
+                practical['selected_feeding_source']=selected_alternative['selected_feeding_source']
+                practical['selected_feeding_source_option_ref']=selected_alternative['option_id']
             if (selected_alternative and selected_alternative.get('human_food_offer_ref')
                     and (proposed.get('practical_option_id')==selected_alternative['option_id']
                          or (trial_choice is not None and trial_choice.get('selected_offer_option_ref')==selected_alternative['option_id']))):
@@ -848,6 +916,14 @@ class ConstitutiveRuntime:
         bodily_before={aid:copy(person['body']) for aid,person in actors.items()}
         principal=self._actor_plan(actor_id,world,actors,requested_action,
                                    _principal_projection=principal_projection)[0]
+        # A selected lexical act may use the already available actor-local
+        # encounter. No new read of another psyche or visitor's private MII.
+        speech_intent=principal.practical_selection.get('prospective_speech_intent')
+        speech_access=None
+        if speech_intent is not None:
+            if target is not None or object_ref is not None:
+                raise ValueError('LEXICAL_ACT_CANNOT_BE_EXTERNALLY_REBOUND')
+            speech_access=principal_projection[0]
         # No cross-phase, cross-beat or persisted projection cache.
         del principal_projection
         if principal.practical_selection.get('productive_witness_attention') is not None and (target is not None or object_ref is not None):
@@ -869,7 +945,7 @@ class ConstitutiveRuntime:
         # A caller never supplies another actor's response. The world owner
         # obtains it from the installed independently constituted actor policy.
         human_vocal = None
-        if (principal.action in ('SING','SIGNAL','REFUSE') and principal.target in
+        if (principal.action in ('SING','SIGNAL','REFUSE','ACCEPT_MEETING','MEET_VISITOR') and principal.target in
                 world.get('neighbor_users', {}) and requested_action is None):
             history = self.ledger.events()
             human_vocal = qualified_human_vocal_receipt(
@@ -882,6 +958,34 @@ class ConstitutiveRuntime:
         resolved=asdict(actual)
         summary=resolved['world_delta']['event']
         primary_cue_ref=world['cues'][-1]['id']
+        # Use the existing expression task ONCE, at the point where the
+        # actual SPEAK is locally settled but no event/experience committed.
+        # This is lexical realization, not post-hoc narration or a new act.
+        lexical_expression=None
+        if speech_intent is not None and summary['status']=='PERFORMED':
+            # Finite outward/access-qualified encounter only. Do not forward
+            # the selected constitution, private correspondence or analyst
+            # state. The actor's selected communicative aim is not fact.
+            selected_cues=[]
+            for cue in speech_access.cues:
+                if cue.get('kind')=='opened_correspondence':continue
+                selected_cues.append({k:copy(cue[k]) for k in
+                    ('kind','modality','description','spoken_text','lexical_comprehension')
+                    if k in cue})
+            lexical_expression=self.semantic.proposal('expression',{
+                'actor_id':actor_id,
+                'actual':{'action':'SPEAK','status':'PERFORMED',
+                          'outcome':'SPEECH_ACT_LOCALLY_SETTLED'},
+                'actor_accessible':{'location':speech_access.location,
+                    'perceived_cues':selected_cues},
+                'prospective_speech_intent':speech_intent,
+                **({'addressed_party_ref':principal.target,
+                    'address_is_not_privacy_or_recipient_assent':True}
+                   if principal.practical_selection.get('selected_speech_address') else {}),
+                'expression_phase':'LEXICAL_REALIZATION_BEFORE_EXPERIENCE',
+                'restriction':'ONLY_SPOKEN_WORDS_NO_NEW_ACTS_OR_WORLD_FACTS; CLAIMS_NOT_TRUTH'})
+            from .world import attach_actual_utterance
+            attach_actual_utterance(world,principal,summary,lexical_expression.get('speech'))
         correspondence_cue=None
         chosen_correspondence=principal.practical_selection.get('correspondence_attention')
         if chosen_correspondence is not None and summary['status']=='PERFORMED':
@@ -971,7 +1075,8 @@ class ConstitutiveRuntime:
             if (aid == actor_id and personally_done and human_vocal is not None
                     and (summary.get('human_vocal_event_ref') or
                          summary.get('human_food_offer_event_ref') or
-                         summary.get('human_food_offer_refused_event_ref')) == human_vocal['user_event_ref']
+                         summary.get('human_food_offer_refused_event_ref') or
+                         summary.get('human_meeting_event_ref')) == human_vocal['user_event_ref']
                     and personally_done['status'] == 'PERFORMED'):
                 # The human act was personally accessible immediately before
                 # the actor's own settlement, not an omniscient reconstruction.
@@ -1007,6 +1112,10 @@ class ConstitutiveRuntime:
                             and (aid!=actor_id or requested_action is None)
                             else None),
                         'actor_access_grade':GRADE}
+            # A proposed utterance aim is not an experienced or spoken word.
+            # Actual lexical content arrives only through the settled cue.
+            if experience['own_practical_selection'] is not None:
+                experience['own_practical_selection'].pop('prospective_speech_intent',None)
             # Read the actual material owner receipt, not the model's account
             # of its own expertise. The actor need not know this causal source.
             if own=='REPAIR' and experience['own_practical_selection'] is not None:
@@ -1115,6 +1224,9 @@ class ConstitutiveRuntime:
                 actors[aid],experience,objective_ref)
             retain_performed_material_feeding(
                 actors[aid],experience,objective_ref,world)
+            routine_exercise=routine_exercise_receipt(actors[aid],experience,objective_ref)
+            if routine_exercise:
+                actors[aid]['evidence_paths'][-1]['routine_exercise_analytic_only']=routine_exercise
             conserve_sensed_material_nonperformance(
                 actors[aid],experience,objective_ref)
             conserve_incomplete_work(actors[aid],experience,objective_ref)
@@ -1264,11 +1376,20 @@ class ConstitutiveRuntime:
                 **({'historically_possible_commons_provisioning_reorganizations':copy(commons_provisioning)}
                    if (commons_provisioning:=possible_commons_provisioning_reorganizations(
                        actors[aid],experience,objective_ref)) else {}),
+                **({'historically_possible_lexical_project_revaluations':copy(lexical_revaluations)}
+                   if (lexical_revaluations:=possible_lexical_project_revaluations(
+                       actors[aid],experience,objective_ref)) else {}),
                 **({'historically_possible_provisioning_reorganizations':copy(provisioning)}
                    if (provisioning:=possible_provisioning_reorganizations(
                        actors[aid],experience,objective_ref)) else {}),
                 **({'historically_possible_ordinary_context_transfers':copy(transfers)}
                    if (transfers:=possible_ordinary_context_transfers(
+                       actors[aid],experience,objective_ref)) else {}),
+                **({'historically_possible_recurrent_routines':routine_candidates}
+                   if (routine_candidates:=possible_recurrent_routines(
+                       actors[aid],experience,objective_ref)) else {}),
+                **({'historically_possible_routine_revisions':routine_revisions}
+                   if (routine_revisions:=possible_routine_revisions(
                        actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_productive_witness_reorganizations':copy(
                     possible_productive_witness_reorganizations(actors[aid],experience,objective_ref)),
@@ -1396,6 +1517,11 @@ class ConstitutiveRuntime:
             developmental[aid]=admit(actors[aid],experience,objective_ref,
                                     developmental_candidates,
                                     issued_trial=issued_trial)
+            for report in developmental[aid]:
+                if report.get('kind')=='ACQUIRE_RECURRENT_ROUTINE':
+                    report['source_ref']=register_admitted_routine(world,actors[aid],report,objective_ref)
+                elif report.get('kind')=='REVISE_RECURRENT_ROUTINE':
+                    report['source_ref']=register_routine_revision(world,actors[aid],report,objective_ref)
         observed=subjective.get(actor_id,{})
         # A privileged world audit outcome is NOT automatically what this
         # person saw or can disclose. The event's public sign is deliberately
@@ -1408,6 +1534,9 @@ class ConstitutiveRuntime:
         expression_access=copy(observed)
         expression_access.pop('performed_repair_technique_ref_analytic_only',None)
         if expression_access.get('own_practical_selection'):
+            expression_access['own_practical_selection'].pop('selected_self_meal_source',None)
+            expression_access['own_practical_selection'].pop('selected_self_meal_source_option_ref',None)
+            expression_access['own_practical_selection'].pop('selected_meeting',None)
             expression_access['own_practical_selection'].pop('private_rehearsal',None)
             expression_access['own_practical_selection'].pop('undertaking_attention',None)
             expression_access['own_practical_selection'].pop('focal_encounter',None)
@@ -1426,9 +1555,10 @@ class ConstitutiveRuntime:
             expression_access.get('own_practical_selection',{}).pop('correspondence_attention',None)
             expression_access['perceived_cues']=[c for c in expression_access.get('perceived_cues',[])
                 if c.get('kind')!='opened_correspondence']
-        expression=self.semantic.proposal('expression',{'actor_id':actor_id,'actual':actual_tip,
+        expression=(lexical_expression if lexical_expression is not None else
+            self.semantic.proposal('expression',{'actor_id':actor_id,'actual':actual_tip,
                'actor_accessible':expression_access,
-               'restriction':'NO_INNER_PSYCHIC_OMNISCIENCE'})
+               'restriction':'NO_INNER_PSYCHIC_OMNISCIENCE'}))
         payload={'attempt':principal.document(),'actor_selection_grade':principal.intention,
                  'external_research_plan_context':copy(research_plan_context),
                  'external_plan_is_not_actor_chosen_undertaking':True,
@@ -1457,7 +1587,10 @@ class ConstitutiveRuntime:
         return {'receipt':committed['id'],'clock':world['clock'],'actor':actor_id,
             'attempt':principal.action,'selection_grade':principal.intention,
             'coactor':partner.action if partner else None,'status':resolved['status'],
-            'objective_outcome':resolved['objective_description'],'public_tip':expression.get('surface'),
+            'objective_outcome':resolved['objective_description'],
+            # An opted-in utterance (even if blocked) is never an untyped
+            # visual tip; only the actual finite acoustic projection applies.
+            'public_tip':None if speech_intent is not None else expression.get('surface'),
             'developmental_effect_count':{aid:len(e) for aid,e in developmental.items()},
             'grade':GRADE}
 
@@ -1481,6 +1614,14 @@ class ConstitutiveRuntime:
         response; no caller script forces fulfillment or another's consent.
         """
         return continue_to_discontinuity(self,horizon,processes=processes)
+
+    def continue_mixed_history(self,target_clock,*,cadence_origin=0,
+                               ordinary_span=30,detail_beats=3,max_segments=240,
+                               period_processes=None):
+        """Owner-native life continuation across both historical entrances."""
+        return continue_mixed_history(self,target_clock,cadence_origin=cadence_origin,
+            ordinary_span=ordinary_span,detail_beats=detail_beats,max_segments=max_segments,
+            period_processes=period_processes)
 
     def construct_pre_encounter_history(self,subject_id, target_age_days, *,
                                         horizon_days=365, autonomous_beats=2,

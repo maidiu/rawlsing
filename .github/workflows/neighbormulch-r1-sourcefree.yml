@@ -2,6 +2,7 @@ name: NEIGHBORMULCH R1 actual organism first consumer
 on:
   push:
     branches:
+      - agent/soracle-co-neighbor-r008-join-candidate-20261128-r1
       - agent/neighbormulch-one-world-encounter-r1-20261121
       - agent/neighbormulch-r2-live-independent-actor-occurrence-20261121-r1
       - agent/neighbormulch-r3-observable-visitor-conduct-20261123-r1
@@ -36,6 +37,18 @@ on:
       - agent/neighbormulch-r32-earned-recognition-20261126-r1
       - agent/inference-economy-semantic-port-r1-20261126
       - agent/neighbormulch-r34-acquired-life-economy-20261127-r1
+      - agent/neighbormulch-r35-expressive-reentry-20261127-r1
+      - agent/neighbormulch-r36-withdrawal-20261127-r1
+      - agent/neighbormulch-r37-reproductive-cost-20261127-r1
+      - agent/neighbormulch-r38-competing-appointment-20261127-r1
+      - agent/neighbormulch-r39-lexical-occurrence-20261127-r1
+      - agent/neighbormulch-r40-polycentric-lexical-afterlife-20261127-r1
+      - agent/neighbormulch-r41-shared-reproduction-20261127-r1
+      - agent/neighbormulch-r42-addressed-self-giving-20261128-r1
+      - agent/neighbormulch-integrated-organism-20261128-r1
+      - agent/neighbormulch-r008-recurrent-life-20261128-r1
+      - agent/neighbormulch-r008-continuing-revision-20261128-r1
+      - agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1
       - agent/neighbormulch-r33-resistant-evidence-20261126-r1
   pull_request:
     branches:
@@ -78,6 +91,34 @@ jobs:
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_human_project_reconstitution_r23.py
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_commitment_time_r24.py
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_structural_absence_r25.py
+      - name: Independently constituted reciprocal ordinary life
+        if: github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/soracle-co-neighbor-r008-join-candidate-20261128-r1'
+        env:
+          PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_reciprocal_routine.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_reciprocal_routine.py' -q
+      - name: Continuing R008 actor-owned routine revision and actual conflicting material life
+        if: github.ref_name == 'agent/neighbormulch-r008-continuing-revision-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/soracle-co-neighbor-r008-join-candidate-20261128-r1'
+        env:
+          PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_recurrent_revision.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_recurrent_revision.py' -q
+      - name: R008 actual recurrent life, material allocation and returning neighbor
+        if: github.ref_name == 'agent/neighbormulch-r008-recurrent-life-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-continuing-revision-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/soracle-co-neighbor-r008-join-candidate-20261128-r1'
+        env:
+          PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest discover -s SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests -p 'test_whole_organism.py' -v
+          python -O -m unittest discover -s SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests -p 'test_whole_organism.py' -q
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_recurrent_life_r008.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_recurrent_life_r008.py' -q
+      - name: Joined family genesis, historical life, acquired orientation and visitor continuation
+        if: github.ref_name == 'agent/neighbormulch-integrated-organism-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-recurrent-life-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-continuing-revision-20261128-r1' || github.ref_name == 'agent/neighbormulch-r008-reciprocal-ordinary-life-20261128-r1' || github.ref_name == 'agent/soracle-co-neighbor-r008-join-candidate-20261128-r1'
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_integrated_life_course.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_integrated_life_course.py' -q
       - name: Contract-spy normal and optimized
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_contract.py' -v
@@ -214,6 +255,38 @@ jobs:
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_acquired_life_economy_r34.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_acquired_life_economy_r34.py' -q
+      - name: R35 expressive reentry through actual addressed human speech
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_expressive_reentry_r35.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_expressive_reentry_r35.py' -q
+      - name: R36 authored withdrawal, independent notification and continuing material life
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_withdrawal_r36.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_withdrawal_r36.py' -q
+      - name: R37 source-specific reproductive cost and independent continuation
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_reproductive_cost_r37.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_reproductive_cost_r37.py' -q
+      - name: R38 actual accepted appointment and competing historical time
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_meeting_time_r38.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_meeting_time_r38.py' -q
+      - name: R39 lexical occurrence, finite auditory access and actual independent afterlife
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_lexical_occurrence_r39.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_lexical_occurrence_r39.py' -q
+      - name: R40 polycentric lexical significance and independent material afterlife
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_polycentric_lexical_r40.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_polycentric_lexical_r40.py' -q
+      - name: R41 shared reproduction across independently lived household courses
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_shared_reproduction_r41.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_shared_reproduction_r41.py' -q
+      - name: R42 voluntary addressed speech and overheard distinction
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_voluntary_address_r42.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_voluntary_address_r42.py' -q
       - name: Full inherited CO R52 organism court normal and optimized
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3

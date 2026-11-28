@@ -12,7 +12,9 @@ remain the first writer/reader. No new canonical P2/P6/SDTF or native rights.
 """
 import math
 from .types import GRADE, copy, stable_id
-from .routine_sources import verify_qualified_period_envelope
+from .routine_sources import (verify_qualified_period_envelope, live_routine_situational_reason,
+                              LIVED_CLASS, lived_work_permission_boundaries,
+                              realized_lived_process, match_reciprocal_routine_claims)
 from .organism import eligible
 from .mediated_efficacy import COMPONENTS, preproject_exercise_basis, qualified_project_exercise_basis
 from .material_conjunction import qualify_aggregate_material_gate
@@ -86,7 +88,8 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
         raise ValueError('HISTORICAL_TIME_INVALID_CLOCK')
     if type(processes) is not list or len(processes)>512:
         raise ValueError('HISTORICAL_TIME_INVALID_PROCESS_BUDGET')
-    normalized=[];fraction_by_actor={};support_downgrades=[];withheld=[];bodily_withheld=[]
+    normalized=[];fraction_by_actor={};support_downgrades=[];withheld=[];bodily_withheld=[];situationally_withheld=[]
+    claims=[];seen_lived=set()
     preproject_slots=set()
     routine_slots=set()
     scoped_project_slots=set()
@@ -96,6 +99,45 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
             world,raw,start_clock,days)
         raw={**raw,'source_registry_confirmation':source_confirmation}
         a=raw['actor'];site=raw['location']
+        conditional=raw.get('routine_window_application')
+        if conditional not in (None,'SITUATED_CONDITIONAL_ROUTINE'):
+            raise ValueError('HISTORICAL_TIME_UNKNOWN_ROUTINE_APPLICATION')
+        lived_source=source_confirmation['source_grade']==LIVED_CLASS
+        if lived_source:
+            if raw['source_ref'] in seen_lived:raise ValueError('LIVED_ROUTINE_DUPLICATE_ALLOCATION')
+            seen_lived.add(raw['source_ref'])
+        if lived_source and raw['kind']=='QUALIFIED_WAGE_LABOR' and lived_work_permission_boundaries(
+                world,a,site,start_clock,start_clock+days-1):
+            raise ValueError('LIVED_ROUTINE_SPLIT_AT_WORK_PERMISSION_CHANGE')
+        if lived_source and conditional!='SITUATED_CONDITIONAL_ROUTINE':
+            raise ValueError('LIVED_ROUTINE_REQUIRES_SITUATED_APPLICATION')
+        if conditional:
+            # The explicit aggregate premise is not unconditional conduct.
+            # Withhold a known course that is now situationally unavailable.
+            # Unregistered sources/participants remain hard failures.
+            if a not in actors or site not in world.get('sites',{}):
+                raise ValueError('HISTORICAL_TIME_UNKNOWN_ROUTINE_PARTICIPANT_OR_SITE')
+            recipient=raw.get('recipient')
+            care_kind=raw['kind'] in ('QUALIFIED_REPRODUCTIVE_CARE',PROVISION_KIND)
+            if care_kind and (type(recipient) is not str or recipient==a or recipient not in actors):
+                raise ValueError('HISTORICAL_TIME_UNKNOWN_ROUTINE_RECIPIENT')
+            active_means={op for p in actors[a].get('projects',[])
+                          if p.get('status','active')=='active' for op in p.get('means',[])}
+            reason=('ACTOR_ELSEWHERE' if not _actor_at_site(world,actors,a,site) else
+                    'RECIPIENT_ELSEWHERE' if care_kind and not _actor_at_site(world,actors,recipient,site) else
+                    'NO_ACTIVE_CARE_COURSE' if care_kind and 'CARE' not in active_means else
+                    'NO_ACTIVE_WORK_COURSE' if raw['kind']=='QUALIFIED_WAGE_LABOR' and 'WORK' not in active_means else None)
+            if not reason and lived_source:
+                reason=live_routine_situational_reason(world,actors,raw)
+            if reason:
+                situationally_withheld.append({'input_index':i,'source_ref':raw['source_ref'],
+                    'actor':a,'location':site,'start_clock':start_clock,
+                    'end_clock':start_clock+days,'reason':reason,'proposed_routine':copy(raw),
+                    'unexecuted_premise_not_missed_duty_or_sensed_event':True})
+                continue
+        if lived_source:
+            raw=realized_lived_process(world,raw)
+            hours,fraction=_typecheck(raw)
         if not _actor_at_site(world,actors,a,site):
             raise ValueError('HISTORICAL_TIME_ACTOR_NOT_AT_RECORDED_SITE')
         if raw['kind']==PROVISION_KIND:
@@ -162,6 +204,16 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
                     'not_a_performed_or_experienced_event':True})
                 continue
             raw={**raw,'aggregate_objective_gate':copy(gate)}
+        if lived_source and operation is not None:
+            ok,why=eligible(actors[a]['body'],operation)
+            if not ok:
+                bodily_withheld.append({'input_index':i,'source_ref':raw['source_ref'],
+                    'actor':a,'location':site,'operation':operation,
+                    'start_clock':start_clock,'end_clock':start_clock+days,
+                    'entry_body_reason':why,'proposed_routine':copy(raw),
+                    'coverage':'UNRESOLVED_FROM_ENTRY_BODY_NOT_ELIGIBLE',
+                    'not_proof_of_later_inability_or_actor_experience':True})
+                continue
         if raw['kind']=='QUALIFIED_ROUTINE_PRACTICE':
             # A future age or future relief cannot retroactively establish
             # a child's bodily participation throughout the preceding period.
@@ -175,7 +227,7 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
                     raise ValueError('ROUTINE_UNKNOWN_COMPONENT_OR_SITE')
                 if raw.get('mode','ARRANGEMENT_UNRESOLVED') not in (
                         'SOLO_COMPONENT_PRACTICE','ASSISTED_COMPONENT_PRACTICE',
-                        'ARRANGEMENT_UNRESOLVED'):
+                        'ARRANGEMENT_UNRESOLVED','RECIPROCAL_COMPONENT_PRACTICE'):
                     raise ValueError('ROUTINE_UNQUALIFIED_SUPPORT')
                 ok,why=eligible(actors[a]['body'],operation)
                 if not ok:
@@ -187,6 +239,8 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
                         'not_proof_of_later_inability_or_actor_experience':True})
                     continue
             mode=raw.get('mode','ARRANGEMENT_UNRESOLVED')
+            if mode=='RECIPROCAL_COMPONENT_PRACTICE' and (not lived_source or not raw.get('coactivity_partner')):
+                raise ValueError('RECIPROCAL_ROUTINE_REQUIRES_ACTOR_LOCAL_SOURCE')
             if mode=='ASSISTED_COMPONENT_PRACTICE':
                 supporter=raw.get('support_actor')
                 if (type(supporter) is not str or
@@ -207,16 +261,68 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
                 fraction_by_actor[supporter]=(
                     fraction_by_actor.get(supporter,0.)+hours*fraction)
         normalized.append(copy(raw))
+        claims.append((i,raw,lived_source,hours*fraction))
         fraction_by_actor[a]=fraction_by_actor.get(a,0.)+hours*fraction
+    # Unlike a legacy authored assisted fixture, actual reciprocal routines
+    # each claim only their author's own time. Match before the budget check;
+    # neither unilateral admission nor another's prior aid can spend time.
+    matched,unmatched=match_reciprocal_routine_claims(world,claims)
+    def hold_joint(i,raw,reason):
+        situationally_withheld.append({'input_index':i,'source_ref':raw['source_ref'],
+            'actor':raw['actor'],'location':raw['location'],'start_clock':start_clock,
+            'end_clock':start_clock+days,'reason':reason,'proposed_routine':copy(raw),
+            'unexecuted_premise_not_missed_duty_or_sensed_event':True})
+    if matched or unmatched:
+        revised=[]
+        for i,raw,lived,amount in claims:
+            if i in unmatched:
+                fraction_by_actor[raw['actor']]-=amount
+                hold_joint(i,raw,unmatched[i]);continue
+            if i in matched:
+                actual=matched[i];dose=actual['hours_per_active_day']*actual['provisional_exposure_fraction']
+                fraction_by_actor[raw['actor']]+=dose-amount
+                revised.append((i,actual,lived,dose))
+            else:revised.append((i,raw,lived,amount))
+        claims=revised
+        normalized=[copy(raw) for _,raw,_,_ in claims]
     over={a:round(x,6) for a,x in fraction_by_actor.items()
           if x>ACTIVE_HOURS+1e-9}
     if over:
-        raise ValueError('HISTORICAL_TIME_OVERBOOKED_ACTOR:'+','.join(
-            sorted(over)))
+        # Explicit historical scenario allocations remain strict. They are
+        # fixed premises of this research cut, not a moral priority. If
+        # those alone fit, do NOT silently choose among an actor's competing
+        # contingent acquired routines. Conserve the unresolved whole set;
+        # only later actor-local admission can revise its distribution.
+        removed=set()
+        for i,raw,lived,amount in claims:
+            a=raw['actor']
+            if a not in over or not lived:continue
+            removed.add(i)
+            situationally_withheld.append({'input_index':i,'source_ref':raw['source_ref'],
+                'actor':a,'location':raw['location'],'start_clock':start_clock,
+                'end_clock':start_clock+days,'reason':'UNRESOLVED_COMPETING_ROUTINE_TIME_CLAIMS',
+                'total_modeled_actor_hours_claimed_per_day':over[a],
+                'daily_active_hour_ceiling':ACTIVE_HOURS,'proposed_routine':copy(raw),
+                'unexecuted_premise_not_missed_duty_or_sensed_event':True,
+                'no_choice_between_routines_or_actor_knowledge_inferred':True})
+            fraction_by_actor[a]-=amount
+        # Losing a counterpart's available contribution makes the remaining
+        # half unqualified too. No substitution or unilateral assistance.
+        lost_pairs={raw['reciprocal_routine_pair_ref'] for i,raw,_,_ in claims
+                    if i in removed and raw.get('reciprocal_routine_pair_ref')}
+        for i,raw,_,amount in claims:
+            if i not in removed and raw.get('reciprocal_routine_pair_ref') in lost_pairs:
+                removed.add(i);fraction_by_actor[raw['actor']]-=amount
+                hold_joint(i,raw,'RECIPROCAL_COUNTERPART_TIME_UNRESOLVED')
+        still_over={a for a,x in fraction_by_actor.items() if x>ACTIVE_HOURS+1e-9}
+        if still_over:
+            raise ValueError('HISTORICAL_TIME_OVERBOOKED_ACTOR:'+','.join(sorted(still_over)))
+        normalized=[copy(raw) for i,raw,_,_ in claims if i not in removed]
     return {
         'qualified':normalized,
         **({'structurally_withheld_processes':withheld} if withheld else {}),
         **({'bodily_withheld_processes':bodily_withheld} if bodily_withheld else {}),
+        **({'situationally_withheld_processes':situationally_withheld} if situationally_withheld else {}),
         'actor_active_hour_claim_per_day':{
             a:round(h,5) for a,h in sorted(fraction_by_actor.items())},
         'unmodeled_free_hours_per_day':{
@@ -344,7 +450,9 @@ def apply_period_allocation(world,actors,allocation):
         **({'structurally_withheld_processes':allocation['structurally_withheld_processes']}
            if allocation.get('structurally_withheld_processes') else {}),
         **({'bodily_withheld_processes':allocation['bodily_withheld_processes']}
-           if allocation.get('bodily_withheld_processes') else {})})
+           if allocation.get('bodily_withheld_processes') else {}),
+        **({'situationally_withheld_processes':allocation['situationally_withheld_processes']}
+           if allocation.get('situationally_withheld_processes') else {})})
     if any(r.get('id')==ref for r in
            world.get('historical_time_allocations',[])):
         raise ValueError('HISTORICAL_TIME_DUPLICATE_SETTLEMENT')
@@ -397,6 +505,8 @@ def apply_period_allocation(world,actors,allocation):
            if allocation.get('structurally_withheld_processes') else {}),
         **({'bodily_withheld_processes':copy(allocation['bodily_withheld_processes'])}
            if allocation.get('bodily_withheld_processes') else {}),
+        **({'situationally_withheld_processes':copy(allocation['situationally_withheld_processes'])}
+           if allocation.get('situationally_withheld_processes') else {}),
         'absent_high_resolution_scenes':'NOT_DEEMED_TO_HAVE_OCCURRED',
         'work_and_care_bearer_differentiation':True,
         'not_a_human_time_use_or_developmental_law':True,

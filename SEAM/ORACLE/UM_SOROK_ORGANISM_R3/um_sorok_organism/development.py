@@ -27,7 +27,8 @@ from .psychic_genesis import (admit_contrast_end, possible_dependency_project_ta
 from .activity import (possible_ordinary_context_transfers, possible_productive_witness_reorganizations, possible_provisioning_reorganizations,
                        possible_commons_provisioning_reorganizations,
                         possible_dependency_project_reorganizations,
-                       possible_dependency_means_revisions, admit_interactivity_relation)
+                       possible_dependency_means_revisions, admit_interactivity_relation,
+                       possible_lexical_project_revaluations)
 from .joint_practice_genesis import admit_joint_practice
 from .care_commitment_genesis import admit_care_commitment, admit_care_practice_revision
 from .cultural_mediation import (
@@ -46,6 +47,7 @@ from .institutional_procedure_learning import (
     admit_public_procedure_expectation, admit_notice_expectation, admit_notice_revision,
     qualify_lived_institutional_difference,
 )
+from .routine_sources import admit_recurrent_routine, admit_routine_revision
 import math
 
 class InvalidDevelopment(ValueError): pass
@@ -76,7 +78,7 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'ACQUIRE_NOTICE_EXPECTATION','REVISE_NOTICE_EXPECTATION',
          'ACQUIRE_GENETIC_POSSIBLE_END',
          'ACQUIRE_CONDITIONAL_JOINT_PRACTICE',
-         'ACQUIRE_COSTLY_CARE_PRACTICE','REVISE_COSTLY_CARE_PRACTICE',
+         'ACQUIRE_COSTLY_CARE_PRACTICE','REVISE_COSTLY_CARE_PRACTICE','ACQUIRE_RECURRENT_ROUTINE','REVISE_RECURRENT_ROUTINE',
          'ACQUIRE_SITUATED_CULTURAL_REFERENCE',
          'REVISE_SITUATED_CULTURAL_REFERENCE',
          'ACQUIRE_SOCIAL_VOCAL_COORDINATION','ACQUIRE_REPAIR_TECHNIQUE','NO_CHANGE'}
@@ -456,6 +458,12 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                     actor,experience,event_ref,c))
             except ValueError as error:
                 raise InvalidDevelopment(str(error)) from error
+        elif op=='ACQUIRE_RECURRENT_ROUTINE':
+            try:report.append(admit_recurrent_routine(actor,experience,event_ref,c))
+            except ValueError as err:raise InvalidDevelopment(str(err)) from err
+        elif op=='REVISE_RECURRENT_ROUTINE':
+            try:report.append(admit_routine_revision(actor,experience,event_ref,c))
+            except ValueError as err:raise InvalidDevelopment(str(err)) from err
         elif op=='REVISE_COSTLY_CARE_PRACTICE':
             try:
                 report.append(admit_care_practice_revision(actor,experience,event_ref,c))
@@ -852,7 +860,30 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             witness_basis=c.get('productive_witness_basis')
             provisioning_basis=c.get('provisioning_means_basis')
             commons_basis=c.get('commons_provisioning_basis')
-            if 'ordinary_vocal_context_transfer' in c:
+            lexical_basis=c.get('lexical_revaluation_basis')
+            if 'lexical_revaluation_basis' in c:
+                # Exact basis issued by this actor's actual received sign and
+                # previously lived course. Preserve the old project and its
+                # history. No objective truth or new means are admitted.
+                offered=possible_lexical_project_revaluations(actor,experience,event_ref)
+                significance=c.get('personal_significance')
+                if (set(c)!={'kind','project_id','lexical_revaluation_basis',
+                            'priority','personal_significance'}
+                        or not any(q['project_id']==ident
+                                   and q['lexical_revaluation_basis']==lexical_basis for q in offered)
+                        or type(significance) is not str or not significance.strip()
+                        or len(significance)>512
+                        or any(v.get('event')==event_ref and v.get('lexical_revaluation')
+                               for v in project.get('history',[]))):
+                    raise InvalidDevelopment('LEXICAL_PROJECT_REVALUATION_UNQUALIFIED')
+                priority=validate_activity_priority(c['priority'])
+                if priority==project.get('priority',.4):
+                    raise InvalidDevelopment('LEXICAL_REVALUATION_NO_OPERATIVE_PRIORITY_CHANGE')
+                evidence['lexical_revaluation']={
+                    'basis':copy(lexical_basis),'personal_significance':significance,
+                    'prior_priority':project.get('priority',.4),'new_priority':priority,
+                    'fallible_semantic_hypothesis_not_actor_self_report':True}
+            elif 'ordinary_vocal_context_transfer' in c:
                 if c not in possible_ordinary_context_transfers(actor,experience,event_ref):
                     raise InvalidDevelopment('ORDINARY_VOCAL_CONTEXT_TRANSFER_UNQUALIFIED')
                 project.setdefault('ordinary_vocal_context_transfers',[]).append(

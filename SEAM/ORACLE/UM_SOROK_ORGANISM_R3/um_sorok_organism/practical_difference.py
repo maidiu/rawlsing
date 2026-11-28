@@ -205,6 +205,41 @@ def practical_alternatives(constitution,access,option):
         'source_grade':GRADE,'priority':None})
     return alts
 
+def offer_addressed_lexical_alternatives(access,option,focal_refs):
+    """One person's voluntary speech can be addressed, without a right to reply.
+
+    Reuse existing unaddressed project/operation choices and focal presence.
+    Address is not confidentiality: others may hear the actual utterance.
+    """
+    if option.get('action')!='SPEAK':return []
+    peers=[]
+    for cue in access.cues:
+        if cue.get('id') not in focal_refs:continue
+        other=(cue.get('source_actor') if cue.get('kind')=='coactor_present' else
+               cue.get('visitor_ref') if cue.get('kind')=='visitor_vocal_partner' else None)
+        if type(other) is str and other!=access.actor and not any(x[0]==other for x in peers):
+            peers.append((other,cue['id']))
+    out=[]
+    for base in option.get('practical_alternatives',[]):
+        request=base.get('world_request',{})
+        if (request.get('operation')!='SPEAK' or request.get('addressed_party_ref') is not None
+                or request.get('material_object_ref') is not None
+                or base.get('binding_status') not in ('NO_ADDRESSED_PARTY','UNATTRIBUTED_OPERATION')):
+            continue
+        for other,cue_ref in peers[:8]:
+            row=copy(base)
+            row.update(option_id=stable_id('addressed_lexical_choice',{
+                'actor':access.actor,'clock':access.world_clock,'base':base['option_id'],
+                'recipient':other,'presence_cue':cue_ref}),
+                binding_status='EXACT_CURRENT_VOLUNTARY_SPEECH_ADDRESS',
+                grounds_status='POSSIBLE_ADDRESSED_LEXICAL_ACT',
+                speech_address_presence_ref=cue_ref,
+                no_reply_consent_confidentiality_or_truth_inferred=True)
+            row['world_request']['addressed_party_ref']=other
+            out.append(row)
+    return out
+
+
 def start_expectation(actor,practical_selection,experience,event_ref):
     """Record an anticipation at its actual time, NOT its objective success."""
     if not practical_selection or practical_selection.get('project_id') is None:

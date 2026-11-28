@@ -269,7 +269,8 @@ class ExplicitJSONLLMProvider:
     def __init__(self,*,endpoint,model,api_key,allow_private_actor_data=False,
                  timeout_seconds=45,transport=None,compact_task_prompt=False,
                  metrics_capacity=0,compact_exact_packet=False,compact_structured_packet=False,
-                 profile_semantic_demand=False):
+                 profile_semantic_demand=False,completion_token_limit=None,
+                 completion_limit_field="max_completion_tokens"):
         u=urlparse(endpoint)
         if (u.scheme!="https" or not u.hostname or u.username or
                 u.password or u.fragment or u.query or
@@ -298,6 +299,13 @@ class ExplicitJSONLLMProvider:
             raise TypeError("MODEL_SEMANTIC_PROFILE_FLAG_INVALID")
         if profile_semantic_demand and not metrics_capacity:
             raise ValueError("MODEL_SEMANTIC_PROFILE_NEEDS_METRICS")
+        if (completion_token_limit is not None and
+                (type(completion_token_limit) is not int or not 1<=completion_token_limit<=131072)):
+            raise ValueError("MODEL_COMPLETION_LIMIT_INVALID")
+        if completion_limit_field not in ("max_completion_tokens","max_tokens"):
+            raise ValueError("MODEL_COMPLETION_LIMIT_FIELD_INVALID")
+        self.completion_token_limit=completion_token_limit
+        self.completion_limit_field=completion_limit_field
         self.profile_semantic_demand=profile_semantic_demand
         self.compact_structured_packet=compact_structured_packet
         self.compact_exact_packet=compact_exact_packet
@@ -564,11 +572,69 @@ class ExplicitJSONLLMProvider:
             if receipt is not None and compact!=instructions:
                 receipt["prompt_variant"]="TASK_ONLY_EXPERIMENT"
             instructions=compact
+        # Qualified task-local clauses. They survive task-only projection and
+        # apply only to the matching issued operation. Owner admission remains
+        # authoritative; the adapter neither manufactures offers nor repairs replies.
+        if task=="actor_attempt":
+            options=packet.get("options",[])
+            if any(type(o) is dict and o.get("action")=="SPEAK" for o in options):
+                instructions+=(" For an independently selected eligible SPEAK, "
+                    "you may nominate speech_intent as a nonblank string of at most "
+                    "500 characters. This is prospective intent, not actual words. "
+                    "Do not nominate speech_intent with another action.")
+        if task=="actor_attempt" and packet.get("addressed_lexical_options"):
+            instructions+=(" To voluntarily address a particular presently accessible person, "
+                "you may select the exact practical_option_id in addressed_lexical_options "
+                "AND supply speech_intent. Otherwise use the ordinary practical options. "
+                "Address is not privacy, assent, trust or a demand for reply.")
+        if task=="expression" and packet.get("expression_phase")=="LEXICAL_REALIZATION_BEFORE_EXPERIENCE":
+            instructions+=(" For LEXICAL_REALIZATION_BEFORE_EXPERIENCE return "
+                "task expression and speech, a nonblank string of at most 500 "
+                "characters: the words actually proposed for this already locally "
+                "settled SPEAK. Use only actor_accessible and prospective_speech_intent. "
+                "Do not narrate additional acts, private contents, truth, reception "
+                "or effects. The owner binds the occurrence before experience; "
+                "ordinary expression is not an occurrence.")
+        if task=="development" and packet.get("historically_possible_lexical_project_revaluations"):
+            instructions+=(" For historically_possible_lexical_project_revaluations "
+                "you may abstain or emit REORGANIZE_PROJECT with exactly kind, "
+                "project_id, lexical_revaluation_basis copied from this actor's "
+                "issued offer, priority (changed finite nonnegative numeric activity priority), and "
+                "personal_significance (nonblank string at most 512 characters). "
+                "Never use another actor's basis, change project means or claim "
+                "objective truth, necessary understanding or later action. "
+                "The owner independently qualifies this actor's receipt and history.")
+        if task=="development" and packet.get("historically_possible_recurrent_routines"):
+            instructions+=(" An actually repeated selected project course may acquire "
+                "a bounded ordinary-life premise. You may abstain or return "
+                "ACQUIRE_RECURRENT_ROUTINE with exactly kind, basis copied from the issued "
+                "offer, window_days (integer 1 to 90), hours_per_active_day (positive, at "
+                "most 4), and provisional_exposure_fraction (positive, at most 1). "
+                "For a FEED basis also include food_units_per_active_day (positive at most 1, "
+                "five decimal places); its actual source is fixed by the received basis. "
+                "A coactivity_partner in the exact basis means only this actor may nominate their own "
+                "bounded contribution; coverage needs a separately admitted compatible counterpart course. "
+                "Do not nominate the other person or assume their assent. "
+                "These are provisional future modeled coverage, not a diary, guaranteed "
+                "compliance, consent, permission, skill or a claim of every day. "
+                "Choose a conservative window and dose; current owner requalifies actual "
+                "site, body, project, scarcity and other material constraints.")
+        if task=="development" and packet.get("historically_possible_routine_revisions"):
+            instructions+=(" For historically_possible_routine_revisions optionally "
+                "emit REVISE_RECURRENT_ROUTINE with exact issued basis, mode from allowed_modes, "
+                "and nonblank interpretive_hypothesis at most 512 characters. For RESIZE "
+                "also supply dose with exactly the numeric fields of original_ceiling "
+                "(omit state), strictly positive and within original ceilings. FEED "
+                "food units retain five decimals. PAUSE/RESUME/RETIRE require no dose. "
+                "Do not rewrite earlier activity, extend the window, infer the Other's "
+                "motive or require continued assent. Abstention retains the earlier premise.")
         def request(prompt,body):
             return {"model":self.model,
                  "messages":[{"role":"system","content":prompt},
                              {"role":"user","content":canonical(body)}],
-                 "response_format":{"type":"json_object"}}
+                 "response_format":{"type":"json_object"},
+                 **({self.completion_limit_field:self.completion_token_limit}
+                    if self.completion_token_limit is not None else {})}
         body={"task":task,"actor_source_packet":packet}
         req=request(instructions,body)
         if self.compact_exact_packet:
