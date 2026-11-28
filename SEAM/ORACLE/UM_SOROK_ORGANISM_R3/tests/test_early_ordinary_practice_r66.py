@@ -225,16 +225,28 @@ class EarlyOrdinaryPractice(unittest.TestCase):
         def policy(task,packet):
             if task=='expression':return {'task':task,'surface':'Ordinary activity.'}
             if task=='development':
-                return {'task':task,'candidates':packet.get(
-                    'historically_possible_social_vocal_development',[]) if admit else []}
+                vocal=packet.get('historically_possible_social_vocal_development',[]) if admit else []
+                culture=packet.get('historically_possible_cultural_references',[])
+                return {'task':task,'candidates':vocal+culture}
             if task=='actor_attempt':
                 aid=packet['actor']['id']
                 if aid!='nadia':
+                    if aid=='mother' and stage.get('observer_inspect'):
+                        found=[o for o in packet['practical_options'] if
+                            o.get('grounds_status')=='UNTESTED_PERSONALLY_HEARD_PUBLIC_OBJECT_REFERENCE']
+                        self.assertEqual(len(found),1)
+                        return {'task':task,'practical_option_id':found[0]['option_id']}
                     return {'task':task,'action':stage['reply'] if packet.get('requesting_actor') else 'REST'}
                 action=stage['action']
                 if action=='LATER':
                     action='SPEAK' if any(o['action']=='SPEAK' for o in packet['options']) else 'SIGNAL'
                 out={'task':task,'action':action}
+                if action in ('INSPECT','SPEAK'):
+                    ground=('UNTESTED_PERSONALLY_HEARD_PUBLIC_OBJECT_REFERENCE' if action=='INSPECT'
+                            else 'ACQUIRED_CULTURAL_ATTENTION_MEETS_ACQUIRED_VOCAL_COORDINATION')
+                    found=[o for o in packet['practical_options'] if o.get('grounds_status')==ground]
+                    self.assertEqual(len(found),1)
+                    out['practical_option_id']=found[0]['option_id']
                 if action=='SIGNAL' and stage['other'] is not None:
                     options=[o for o in packet['practical_options'] if
                         o.get('grounds_status')=='PREPROJECT_ORDINARY_VOCAL_EXPLORATION'
@@ -285,6 +297,20 @@ class EarlyOrdinaryPractice(unittest.TestCase):
             self.assertEqual(len(child['vocal_coordination_practices']),5 if admit else 0)
             self.assertEqual(child['projects'],[])
             self.assertEqual(child['cultural_demonstrations'],[])
+            # Actual material production, actual public speech, then the
+            # child's independently selected exact-object inquiry. Both
+            # arms acquire this reference; only the vocal arm can enact it
+            # as a new publicly accessible expression.
+            self.assertEqual(rt.step('father',requested_action='MAKE_OBJECT')['status'],'PERFORMED')
+            world=rt.ledger.world()[1]
+            obj=next(iter(world['material_objects']))
+            self.assertEqual(rt.step('father',requested_action='SPEAK',object_ref=obj)['status'],'PERFORMED')
+            stage['action']='INSPECT';stage['other']=None
+            self.assertEqual(rt.step('nadia')['status'],'PERFORMED')
+            child=self.child(rt)
+            self.assertEqual(len(child['cultural_reference_practices']),1)
+            self.assertEqual(child['cultural_reference_practices'][0]['object_ref'],obj)
+            self.assertEqual(child['projects'],[])
             self.assertTrue(rt.verify()['valid'])
         finally:rt.close()
         cold=runtime()
@@ -301,6 +327,18 @@ class EarlyOrdinaryPractice(unittest.TestCase):
             self.assertEqual(result['status'],'PERFORMED')
             world=cold.ledger.world()[1]
             self.assertEqual(world['cues'][-1]['kind'],'performed_speak' if admit else 'performed_signal')
+            if admit:
+                self.assertEqual(world['cues'][-1]['material_object_ref'],obj)
+                self.assertTrue(world['cues'][-1]['actual_spoken_object_demonstration'])
+            # The child becomes an actual cultural source for the adult
+            # through her own activity, not just the recipient of culture.
+            stage['observer_inspect']=True
+            self.assertEqual(cold.step('mother')['status'],'PERFORMED')
+            learned=cold.ledger.actor('mother')[1]['cultural_reference_practices']
+            self.assertEqual(len(learned),1)
+            self.assertEqual(learned[0]['particular_speaker_ref'],'nadia' if admit else 'father')
+            self.assertEqual(learned[0]['object_ref'],obj)
+            self.assertEqual(cold.ledger.world()[1]['material_objects'][obj]['owner'],'father')
             self.assertTrue(cold.verify()['valid'])
             return child['age_days']
         finally:cold.close()
