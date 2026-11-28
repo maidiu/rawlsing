@@ -9,7 +9,7 @@ Author/role, date, brief read (exact PM ref), own branch/PR/head and baseline; e
 - Historical capital used, disproved or still needed; exact paths/symbols/refs, not bulk transcripts.
 - Cross-lane needs: named owner, actual missing input/output or integration, why consequential, what should NOT be conflated.
 - Theory discoveries, computational/phenomenal economy and concrete friction where relevant.
-- Remaining construction vs refinement/validation/independent review/authority.
+- Remaining-frontier assessment (update only changed understanding): overlap of PM direction and independently judged neglected value; substantial remaining capability chains with existing CIC/HOME/source anchors; integrated first-draft exit condition; estimated further substantial turns as a range or why unknown, assumptions/dependencies and real blockers; next consequential construction. Separate construction from refinement/validation/independent review/native/protected authority. No quota, promised deadline or new inventory.
 - Your own next direction; response to PM concerns (agree, modify, contest, or show already realized), basis and stronger alternative if relevant.
 - What PM should know/do differently; links to already updated existing estate, no claim of receiving without readback.
 
