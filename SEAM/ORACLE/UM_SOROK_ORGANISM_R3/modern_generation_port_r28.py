@@ -850,6 +850,31 @@ class ModernDevelopmentOwner:
             span=p.interval["span"] if p.interval else 0
             require(p.event_time==expected.clock+span+(p.operation=="CONTINUE_ACTOR_LIFE"),
                     "GEN_EVENT_CLOCK_NOT_SEQUENTIAL")
+            if self.qualified_interval_cuts:
+                # The interval cutter is not the authority for a detail beat:
+                # span=0 bypasses it, and a span+one detail beat could land on
+                # a pending birth after the last compressed cut. Check the
+                # entire proposed event against actual current owner state
+                # BEFORE any native write or pending operation receipt.
+                world=self.rt.ledger.world(self.rt.world_id)[1]
+                require(not any(v.get("present") is True for v in world.get("neighbor_users",{}).values()),
+                        "GEN_PRESENT_VISITOR_REQUIRES_LIVE_OWNER")
+                current=world.get("family_genesis",{})
+                if current.get("stage")=="CONCEPTION_ADMITTED":
+                    birth=current["selected_pathway"]["birth_clock"]
+                    if p.operation=="REALIZE_FAMILY_BIRTH":
+                        require(p.event_time==birth and
+                                p.circumstances["family"]["source_seal_id"]==current["source_seal_id"],
+                                "GEN_UNPLANNED_CONDITIONAL_BIRTH")
+                    else:
+                        require(p.event_time<birth,"GEN_UNPLANNED_CONDITIONAL_BIRTH")
+                if not span:
+                    from um_sorok_organism.continuity_clock import next_discontinuity
+                    boundary=next_discontinuity(world,self.rt.ledger.actors(),1)
+                    if (boundary and boundary["kind"]=="OBLIGATION_DUE"
+                            and boundary["at"]==world["clock"]):
+                        require(boundary["actor"]==p.participants[0],
+                                "GEN_DUE_OCCASION_REQUIRES_EXPLICIT_SURFACE")
             self.db.execute("INSERT INTO operations VALUES (?,?,?,NULL)",(operation_id,ph,before))
             self.db.commit()
             interval=None;interval_events=[]

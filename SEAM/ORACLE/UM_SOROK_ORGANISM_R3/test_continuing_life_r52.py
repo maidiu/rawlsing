@@ -775,6 +775,76 @@ class ContinuingLifeCourt(unittest.TestCase):
                 self.assertEqual(len(result["projects"]),1+int(nominate))
 
 
+    def test_R84_pending_birth_cannot_be_swallowed_by_detail_or_interval_plus_detail(self):
+        from modern_generation_port_r28 import ModernDevelopmentOwner
+        from developmental_recursion.contracts import EventProposal
+        for span in (0,1):
+            with self.subTest(span=span),tempfile.TemporaryDirectory() as d:
+                root=Path(d);rt,sid,_,_=joined.JoinedGenerationCourt.setup(self,root/"life.sqlite")
+                owner=ModernDevelopmentOwner(rt,"mother",root/"ops.sqlite",
+                    family_sources=(sid,),sourcefree_attested=True,qualified_interval_cuts=True)
+                def step(name,clock,who,pol,*,interval=0,family=None,op="CONTINUE_ACTOR_LIFE"):
+                    c={"policies":pol}
+                    if family:c["family"]={"source_seal_id":sid,**family}
+                    q=EventProposal(name,clock,op,(owner.source_ref,),(who,),c,
+                                    {"mode":"ACTUAL","span":interval} if interval else None)
+                    return owner.realize(name,q,owner.snapshot())
+                try:
+                    step("care",1,"father",{"father":policy([joined.care("mother")])})
+                    step("intersection",2,"mother",{"mother":policy([action("WAIT")])},
+                         family={"kind":"INTERSECTION","pathway_id":"retained"})
+                    step("conception",3,"father",{"father":policy([joined.care("mother")])},
+                         family={"kind":"CONCEPTION"})
+                    self.assertEqual(rt.ledger.world()[1]["family_genesis"]["stage"],"CONCEPTION_ADMITTED")
+                    if span==0:step("ordinary-before-birth",4,"mother",{"mother":policy([action("REST")])})
+                    before=rt.ledger.events()
+                    with self.assertRaisesRegex(RecursionRefusal,"GEN_UNPLANNED_CONDITIONAL_BIRTH"):
+                        step("would-swallow-birth",5,"father",{"father":policy([action("REST")])},interval=span)
+                    self.assertEqual(rt.ledger.events(),before)
+                    self.assertNotIn("nadia",rt.ledger.actors())
+                    step("qualified-birth",5,"mother",{},interval=5-owner.snapshot().clock,
+                         family={"kind":"BIRTH"},op="REALIZE_FAMILY_BIRTH")
+                    self.assertIn("nadia",rt.ledger.actors())
+                    self.assertEqual(rt.ledger.events()[:len(before)],before)
+                    self.assertTrue(rt.verify()["valid"])
+                finally:owner.close();rt.close()
+
+    def test_R84_due_occasion_and_live_presence_cannot_bypass_interval_guard(self):
+        from modern_generation_port_r28 import ModernDevelopmentOwner
+        from developmental_recursion.contracts import EventProposal
+        from neighbor_runtime import NeighborEncounter
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);rt=ConstitutiveRuntime(str(root/"life.sqlite"))
+            rt.ledger.initialize(blank_world(),[adult("a","A"),adult("b","B")])
+            owner=ModernDevelopmentOwner(rt,"a",root/"ops.sqlite",
+                    sourcefree_attested=True,qualified_interval_cuts=True)
+            def step(name,who,pol):
+                q=EventProposal(name,owner.snapshot().clock+1,"CONTINUE_ACTOR_LIFE",
+                                (owner.source_ref,),(who,),{"policies":{who:pol}})
+                return owner.realize(name,q,owner.snapshot())
+            try:
+                step("pledge","a",policy([action("PLEDGE_CARE",{"world_request":{"addressed_party_ref":"b"}})]))
+                due=rt.ledger.world()[1]["scheduled_obligations"][0]
+                rt.background(due["due_clock"]-owner.snapshot().clock)
+                prefix=rt.ledger.events()
+                with self.assertRaisesRegex(RecursionRefusal,"GEN_DUE_OCCASION_REQUIRES_EXPLICIT_SURFACE"):
+                    step("wrong-bearer","b",policy([action("REST")]))
+                self.assertEqual(rt.ledger.events(),prefix)
+                actual=step("independent-bearer","a",policy([action("REST")]))
+                self.assertEqual(actual.objective["attempt"],"REST")
+                self.assertEqual(rt.ledger.world()[1]["scheduled_obligations"][0]["status"],"PENDING")
+                n=NeighborEncounter(rt,"visitor",mii_module=mii)
+                self.assertEqual(n.contribute("enter","MOVE",destination="home")["status"],"PERFORMED")
+                prefix=rt.ledger.events()
+                with self.assertRaisesRegex(RecursionRefusal,"GEN_PRESENT_VISITOR_REQUIRES_LIVE_OWNER"):
+                    step("historical-during-visit","a",policy([action("REST")]))
+                self.assertEqual(rt.ledger.events(),prefix)
+                self.assertEqual(n.contribute("leave","LEAVE")["status"],"PERFORMED")
+                step("after-visitor-departure","a",policy([action("REST")]))
+                self.assertTrue(rt.verify()["valid"])
+            finally:owner.close();rt.close()
+
+
     def test_R82_familiar_destination_is_actor_local_not_world_permission(self):
         from modern_generation_port_r28 import ConditionalPolicy
         from um_sorok_organism.semantics import ValidatingSemanticService
