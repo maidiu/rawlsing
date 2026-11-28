@@ -401,7 +401,20 @@ def run_course(db, arm, *, routine_admission=None):
             require(current['power_exercises']==before['power_exercises'],
                     'ROUTINE_INVENTED_INDIVIDUAL_PRACTICE')
             require(current['memories']==before['memories'],'ROUTINE_INVENTED_MEMORIES')
-            require(current['projects']==before['projects'],'ROUTINE_REPLACED_PURPOSE')
+            # R008 extension now conserves actual aggregate afterlife ON the
+            # same project/routine. Compare everything except this new receipt
+            # carrier; verify it actually exists only in the admitted arm.
+            def purpose_only(projects):
+                result=deepcopy(projects)
+                for project in result:
+                    for row in project.get('recurrent_routines',[]):
+                        row.pop('modeled_course_receipts',None)
+                return result
+            require(purpose_only(current['projects'])==purpose_only(before['projects']),
+                    'ROUTINE_REPLACED_PURPOSE')
+            require(bool([x for p in current['projects'] for row in p.get('recurrent_routines',[])
+                          for x in row.get('modeled_course_receipts',[])])==routine_admission,
+                    'ROUTINE_MODELED_AFTERLIFE_MISSING')
             later_component=situated_component_efficacy(current,'SING','home')
             require(later_component['technical_component_facility_estimate']>
                     routine_threshold if routine_admission else later_component==prior_component,
