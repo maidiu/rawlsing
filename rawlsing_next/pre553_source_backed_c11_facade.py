@@ -1594,7 +1594,8 @@ def _build_source_backed_c11_repository(
                 source.compact_events(ref,replay,non_events,headers,projection,closure_refs,routing),
             _restored_headers=restored_headers,
             _restored_occurrence_proof=(_country_preparation is not None and
-                                        _country_preparation._deferred_occurrences))
+                                        _country_preparation._deferred_occurrences),
+            _country_preparation=_country_preparation)
         if binding_key(source)!=key:
             raise SourceBackedC11FacadeError("cache input changed during C11 build")
         repo=C11Repository((release,))
