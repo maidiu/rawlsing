@@ -318,7 +318,7 @@ def qualified_human_vocal_receipt(world, actor, attempt, ledger_event):
     No caller-supplied future consent or other-actor Attempt is accepted.
     Adjacent turn coordination only, not simultaneous singing.
     """
-    if attempt.action in ('ACCEPT_MEETING','MEET_VISITOR'):
+    if attempt.action in ('ACCEPT_MEETING','COUNTER_MEETING','MEET_VISITOR'):
         from .continuity_clock import qualified_meeting_receipt
         return qualified_meeting_receipt(world,actor,attempt,ledger_event)
     human_operation = {'SING':'SING', 'SIGNAL':'OFFER_FEED', 'REFUSE':'OFFER_FEED'}.get(attempt.action)
@@ -707,7 +707,7 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         members=_qualified_members(world['institutions']['hall_board'],'members','INVALID_INSTITUTION_MEMBERSHIP')
         if aid not in members:status='BLOCKED';output='NO_INSTITUTIONAL_AUTHORITY'
         else:world['sites']['hall']['access']='controlled';output='HALL_ACCESS_RESTRICTED'
-    elif attempt.action in ('ACCEPT_MEETING','MEET_VISITOR'):
+    elif attempt.action in ('ACCEPT_MEETING','COUNTER_MEETING','MEET_VISITOR'):
         from .continuity_clock import perform_meeting_action
         status,output,actual_meeting_ref=perform_meeting_action(world,attempt,human_vocal)
     elif attempt.action=='PLEDGE_CARE':
@@ -1049,6 +1049,9 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     if actual_meeting_ref is not None:
         event_summary['meeting_ref']=actual_meeting_ref
         event_summary['human_meeting_event_ref']=human_vocal['user_event_ref']
+        if attempt.action=='COUNTER_MEETING':
+            from .continuity_clock import meeting_record
+            event_summary['counter_meeting_ref']=meeting_record(world,actual_meeting_ref)['counter_meeting_ref']
     if human_vocal is not None and output == 'JOINT_ACTIVITY_PERFORMED':
         event_summary['human_food_offer_event_ref' if human_vocal.get('operation')=='OFFER_FEED'
                       else 'human_vocal_event_ref'] = human_vocal['user_event_ref']

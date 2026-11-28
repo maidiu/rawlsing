@@ -92,9 +92,9 @@ def record_authored_food_offer(world,user,recipient,location,event_ref):
 
 
 MEETING_KIND='HUMAN_ACTOR_MEETING_WINDOW'
-MEETING_OPEN=frozenset(('PROPOSED','ACCEPTED','CHECKED_IN'))
-MEETING_ACTIONS={'ACCEPT_MEETING':'PROPOSE_MEETING','MEET_VISITOR':'CHECK_IN_MEETING'}
-MEETING_SIGNS={'ACCEPT_MEETING':'visitor_meeting_proposal','MEET_VISITOR':'visitor_meeting_checkin'}
+MEETING_OPEN=frozenset(('PROPOSED','ACCEPTED','CHECKED_IN','ACTOR_COUNTEROFFER_PENDING'))
+MEETING_ACTIONS={'ACCEPT_MEETING':'PROPOSE_MEETING','COUNTER_MEETING':'PROPOSE_MEETING','MEET_VISITOR':'CHECK_IN_MEETING'}
+MEETING_SIGNS={'ACCEPT_MEETING':'visitor_meeting_proposal','COUNTER_MEETING':'visitor_meeting_proposal','MEET_VISITOR':'visitor_meeting_checkin'}
 
 
 def meeting_record(world,ref):
@@ -151,6 +151,39 @@ def withdraw_meeting(world,user,ref,event_ref):
     return row
 
 
+def counter_due_choices(clock,due):
+    # Finite task-local alternatives, not a reservation of the Other's time.
+    # Both earlier and later possibilities can be chosen; no assumed calendar.
+    return [t for t in (due-3,due+3,due+7)
+            if clock+5<t<=clock+MAX_HORIZON]
+
+
+def counter_meeting_ref(world,original,clock,due):
+    return stable_id('actor_meeting_counteroffer',{'world':world['id'],
+        'original':original,'clock':clock,'due':due})
+
+
+def qualify_counter_acceptance(world,user,ref,location):
+    row=meeting_record(world,ref)
+    if (row['responsible_actor']!=user or row['location']!=location
+            or row['status']!='ACTOR_COUNTEROFFER_PENDING'
+            or world['clock']+1>=row['checkin_clock']):
+        raise ValueError('MEETING_COUNTER_ACCEPTANCE_NOT_QUALIFIED')
+    return row
+
+
+def record_counter_acceptance(world,user,ref,location,event_ref):
+    row=meeting_record(world,ref)
+    if (row['responsible_actor']!=user or row['location']!=location
+            or row['status']!='ACTOR_COUNTEROFFER_PENDING'
+            or not row['origin_clock']<world['clock']<row['checkin_clock']):
+        raise ValueError('MEETING_COUNTER_ACCEPTANCE_NOT_QUALIFIED')
+    row.update(status='ACCEPTED',accepted_at_clock=world['clock'],
+               acceptance_source_user_event_ref=event_ref,
+               no_recipient_notification_or_appraisal_inferred=True)
+    return row
+
+
 def qualify_meeting_checkin(world,user,ref,location):
     row=meeting_record(world,ref)
     if (row['responsible_actor']!=user or row['location']!=location
@@ -176,7 +209,8 @@ def settle_meeting_deadlines(world):
                 or world['clock']<row['meeting_clock']):continue
         row.update(status={'PROPOSED':'ELAPSED_WITHOUT_ACTOR_ASSENT',
                            'ACCEPTED':'ELAPSED_WITHOUT_ACTUAL_CHECK_IN',
-                           'CHECKED_IN':'ELAPSED_WITHOUT_ACTUAL_MEETING'}[row['status']],
+                           'CHECKED_IN':'ELAPSED_WITHOUT_ACTUAL_MEETING',
+                           'ACTOR_COUNTEROFFER_PENDING':'ELAPSED_WITHOUT_USER_ACCEPTANCE'}[row['status']],
                    settled_at_clock=row['meeting_clock'],
                    waiting_breach_or_actor_appraisal='NOT_ESTABLISHED')
         settled.append(row['id'])
@@ -195,7 +229,7 @@ def meeting_options(constitution,access,action):
                        ('meeting_ref','visitor_ref','visitor_event_ref'))
                 or any(type(cue.get(k)) is not int for k in
                        ('checkin_clock','meeting_clock'))):continue
-        out.append({'option_id':stable_id('meeting_choice',{
+        base={'option_id':stable_id('meeting_choice',{
             'actor':constitution.actor,'clock':access.world_clock,
             'action':action,'cue':cue['id'],'meeting':cue['meeting_ref']}),
             'actor':constitution.actor,'as_of_clock':access.world_clock,
@@ -209,7 +243,15 @@ def meeting_options(constitution,access,action):
             'meeting_source_cue_ref':cue['id'],
             'meeting_checkin_clock':cue['checkin_clock'],
             'meeting_clock':cue['meeting_clock'],
-            'not_future_presence_or_shared_motive':True,'grade':GRADE})
+            'not_future_presence_or_shared_motive':True,'grade':GRADE}
+        if action=='COUNTER_MEETING':
+            for due in counter_due_choices(access.world_clock,cue['meeting_clock']+1):
+                row=copy(base)
+                row['counter_due_clock']=due
+                row['option_id']=stable_id('meeting_counter_choice',{
+                    'base':base['option_id'],'due':due})
+                out.append(row)
+        else:out.append(base)
     return out
 
 
@@ -276,10 +318,14 @@ def qualified_meeting_receipt(world,actor,attempt,ledger_event):
            and q.get('meeting_clock')==row['meeting_clock']
            and actor['body']['sensor']>=q.get('threshold',.05)]
     if len(signs)!=1:return None
+    if attempt.action=='COUNTER_MEETING' and selected.get('counter_due_clock') not in counter_due_choices(world['clock'],row['due_clock']):
+        return None
     return {'actor':actor['id'],'visitor_ref':attempt.target,'operation':op,
             'meeting_ref':ref,'user_event_ref':e['event_ref'],
             'ledger_ref':ledger_event['id'],'clock':world['clock'],
-            'cue':dict(signs[0]),'grade':GRADE}
+            'cue':dict(signs[0]),
+            **({'counter_due_clock':selected['counter_due_clock']}
+               if attempt.action=='COUNTER_MEETING' else {}),'grade':GRADE}
 
 
 def perform_meeting_action(world,attempt,receipt):
@@ -287,6 +333,21 @@ def perform_meeting_action(world,attempt,receipt):
             or receipt.get('operation')!=MEETING_ACTIONS.get(attempt.action)):
         return 'BLOCKED','NO_QUALIFIED_CURRENT_MEETING_OCCASION',None
     row=meeting_record(world,receipt['meeting_ref'])
+    if attempt.action=='COUNTER_MEETING':
+        now=world['clock']+1;due=receipt['counter_due_clock']
+        ref=counter_meeting_ref(world,row['id'],now,due)
+        row.update(status='COUNTERED_BY_ACTOR',settled_at_clock=now,
+                   counter_meeting_ref=ref)
+        world.setdefault('scheduled_obligations',[]).append({
+            'id':ref,'kind':MEETING_KIND,'responsible_actor':row['responsible_actor'],
+            'recipient':row['recipient'],'location':row['location'],
+            'origin_clock':now,'due_clock':due,'checkin_clock':due-2,'meeting_clock':due-1,
+            'source_user_event_ref':row['source_user_event_ref'],
+            'counteroffer_from_meeting_ref':row['id'],
+            'status':'ACTOR_COUNTEROFFER_PENDING',
+            'no_actor_assent_or_real_calendar_inferred':True,
+            'conditional_actor_offer_not_user_consent':True,'grade':GRADE})
+        return 'PERFORMED','PARTICULAR_MEETING_COUNTEROFFERED',row['id']
     if attempt.action=='ACCEPT_MEETING':
         row.update(status='ACCEPTED',accepted_at_clock=world['clock']+1,
                    acceptance_source_user_event_ref=receipt['user_event_ref'])

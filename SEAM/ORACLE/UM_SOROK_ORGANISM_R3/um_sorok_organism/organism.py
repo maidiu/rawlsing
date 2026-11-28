@@ -40,6 +40,7 @@ ACTIONS = {
     'DRAW_WAGE_RELIEF':{'motor':0.14,'language':0.18,'cost':0.04},
     'PLEDGE_CARE':{'motor':0.18,'language':0.28,'cost':0.03},
     'ACCEPT_MEETING':{'motor':0.18,'language':0.35,'cost':0.03},
+    'COUNTER_MEETING':{'motor':0.18,'language':0.35,'cost':0.03},
     'MEET_VISITOR':{'motor':0.18,'language':0.35,'cost':0.03},
     'IMPOSE':{'motor':0.50,'language':0.0,'cost':0.14},
 }

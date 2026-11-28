@@ -766,13 +766,15 @@ class ConstitutiveRuntime:
                 practical['selected_speech_address']={'recipient':bound_target,
                     'presence_cue_ref':selected_alternative['speech_address_presence_ref'],
                     'option_ref':selected_alternative['option_id']}
-            if action in ('ACCEPT_MEETING','MEET_VISITOR'):
+            if action in ('ACCEPT_MEETING','COUNTER_MEETING','MEET_VISITOR'):
                 if (trial_choice is not None or not selected_alternative
                         or selected_alternative.get('binding_status')!='EXACT_CURRENT_HUMAN_MEETING_SIGN'
                         or proposed.get('practical_option_id')!=selected_alternative['option_id']):
                     raise ValueError('MEETING_REQUIRES_EXACT_ACTOR_SELECTED_OPTION')
                 practical['selected_meeting']={k:copy(selected_alternative[k]) for k in (
                     'meeting_ref','meeting_source_user_event_ref','meeting_source_cue_ref')}
+                if action=='COUNTER_MEETING':
+                    practical['selected_meeting']['counter_due_clock']=selected_alternative['counter_due_clock']
             if (action=='EAT' and selected_alternative
                     and selected_alternative.get('selected_self_meal_source')
                     and proposed.get('practical_option_id')==selected_alternative['option_id']
@@ -945,7 +947,7 @@ class ConstitutiveRuntime:
         # A caller never supplies another actor's response. The world owner
         # obtains it from the installed independently constituted actor policy.
         human_vocal = None
-        if (principal.action in ('SING','SIGNAL','REFUSE','ACCEPT_MEETING','MEET_VISITOR') and principal.target in
+        if (principal.action in ('SING','SIGNAL','REFUSE','ACCEPT_MEETING','COUNTER_MEETING','MEET_VISITOR') and principal.target in
                 world.get('neighbor_users', {}) and requested_action is None):
             history = self.ledger.events()
             human_vocal = qualified_human_vocal_receipt(

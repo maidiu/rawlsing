@@ -33,7 +33,11 @@ JOINED_PINS={**PINS,
     NEIGHBOR+"/neighbor_runtime.py":"f2b0e088e1ad84acef8f043e78b51ac9ed6e0bd4",
     R3+"/um_sorok_organism/runtime.py":"b74415db636af8a898600d13077f82d55be8a0ca",
 }
-SOURCE_PROFILES=(PINS,JOINED_PINS)
+COUNTER_PINS={**JOINED_PINS,
+    NEIGHBOR+"/neighbor_runtime.py":"cf9063ca7ab501f1ccb9adf38063f873e201ed89",
+    R3+"/um_sorok_organism/runtime.py":"c0cd223f45b9a5dcfee698588a6387eb689a6710",
+}
+SOURCE_PROFILES=(PINS,JOINED_PINS,COUNTER_PINS)
 ARMS={"acquired":{},"unheard":{"visitor_hears":False},
       "unacquired":{"learn":False},"unaddressed":{"acknowledge":False}}
 
