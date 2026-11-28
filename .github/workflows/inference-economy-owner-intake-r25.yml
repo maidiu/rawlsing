@@ -16,6 +16,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - lane: R62
+            ref: ee66a124476596ea0464e87ac2839191bdc1d651
+          - lane: R40
+            ref: a95cb4c11cc62d808d5c7780c0326dca00827b91
           - lane: R39
             ref: 4d104a17c4ec9126484faac4e6f13d5050162051
           - lane: R61
