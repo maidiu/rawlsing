@@ -572,6 +572,33 @@ class ExplicitJSONLLMProvider:
             if receipt is not None and compact!=instructions:
                 receipt["prompt_variant"]="TASK_ONLY_EXPERIMENT"
             instructions=compact
+        # Qualified task-local clauses. They survive task-only projection and
+        # apply only to the matching issued operation. Owner admission remains
+        # authoritative; the adapter neither manufactures offers nor repairs replies.
+        if task=="actor_attempt":
+            options=packet.get("options",[])
+            if any(type(o) is dict and o.get("action")=="SPEAK" for o in options):
+                instructions+=(" For an independently selected eligible SPEAK, "
+                    "you may nominate speech_intent as a nonblank string of at most "
+                    "500 characters. This is prospective intent, not actual words. "
+                    "Do not nominate speech_intent with another action.")
+        if task=="expression" and packet.get("expression_phase")=="LEXICAL_REALIZATION_BEFORE_EXPERIENCE":
+            instructions+=(" For LEXICAL_REALIZATION_BEFORE_EXPERIENCE return "
+                "task expression and speech, a nonblank string of at most 500 "
+                "characters: the words actually proposed for this already locally "
+                "settled SPEAK. Use only actor_accessible and prospective_speech_intent. "
+                "Do not narrate additional acts, private contents, truth, reception "
+                "or effects. The owner binds the occurrence before experience; "
+                "ordinary expression is not an occurrence.")
+        if task=="development" and packet.get("historically_possible_lexical_project_revaluations"):
+            instructions+=(" For historically_possible_lexical_project_revaluations "
+                "you may abstain or emit REORGANIZE_PROJECT with exactly kind, "
+                "project_id, lexical_revaluation_basis copied from this actor's "
+                "issued offer, priority (changed valid activity priority), and "
+                "personal_significance (nonblank string at most 512 characters). "
+                "Never use another actor's basis, change project means or claim "
+                "objective truth, necessary understanding or later action. "
+                "The owner independently qualifies this actor's receipt and history.")
         def request(prompt,body):
             return {"model":self.model,
                  "messages":[{"role":"system","content":prompt},

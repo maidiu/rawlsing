@@ -6,6 +6,8 @@ on:
     paths:
       - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/inference_lab_owner_intake_r25.py'
       - '.github/workflows/inference-economy-owner-intake-r25.yml'
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/inference_lab_lexical_transport_r27.py'
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/live_psychological_llm.py'
   workflow_dispatch:
 jobs:
   owner-intake:
@@ -43,3 +45,9 @@ jobs:
           git -C owner rev-parse HEAD
           python specialist/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/inference_lab_owner_intake_r25.py --owner-root owner --lane ${{ matrix.lane }}
           python -O specialist/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/inference_lab_owner_intake_r25.py --owner-root owner --lane ${{ matrix.lane }}
+
+      - name: R27 exact owner lexical transport admission, full and task-only prompts
+        if: matrix.lane == 'R39' || matrix.lane == 'R40'
+        run: |
+          python specialist/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/inference_lab_lexical_transport_r27.py --owner-root owner --lane ${{ matrix.lane }}
+          python -O specialist/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/inference_lab_lexical_transport_r27.py --owner-root owner --lane ${{ matrix.lane }}
