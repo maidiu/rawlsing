@@ -102,7 +102,7 @@ def run(root, lane, output=None):
                 "event_count_after":len(rt.ledger.events()),"before":before,"after":after,
                 "elapsed_ns":perf_counter_ns()-t0})
             raise
-        event = rt.ledger.latest_event()
+        event = rt.ledger.events()[-1]
         need(result["receipt"] == event["id"], "R25_STEP_EVENT")
         active["steps"].append({"start":start,"end":len(cap.rows),"status":"COMMITTED",
             "event":types.copy(event),"result":types.copy(result),"before":before,"after":state(rt),
