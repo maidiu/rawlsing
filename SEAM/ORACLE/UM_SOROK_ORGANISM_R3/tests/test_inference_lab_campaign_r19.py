@@ -111,6 +111,13 @@ class InferenceCampaignR19(unittest.TestCase):
                     observation_log=path/"observations")
             self.assertFalse((path/"budget").exists())
 
+    def test_r25_owner_intake_refuses_unqualified_transport(self):
+        for fixture in ("R25_R39_speak_1_0", "R25_R61_admit"):
+            doc=copy(self.doc);doc["payload"]["fixture"]=fixture
+            doc["sha256"]=digest(doc["payload"])
+            with self.assertRaisesRegex(ValueError,"OWNER_INTAKE_REQUIRES_QUALIFIED_TASK_TRANSPORT"):
+                build_plan(doc,config())
+
     def test_unknown_usage_stops_and_preserves_partial_observations(self):
         cfg=config();plan=build_plan(self.doc,cfg,per_stratum=1,tasks=["development"])
         calls=[]

@@ -58,7 +58,7 @@ def run(root, lane, output=None):
     def begin(name):
         nonlocal active
         active = {"name":name, "cap":lab.WorkloadCapture(source_head=head,
-            fixture=lane+"_"+name, sourcefree_fixture_attested=True), "steps":[],
+            fixture="R25_"+lane+"_"+name, sourcefree_fixture_attested=True), "steps":[],
             "views":[], "calls":[], "result":None}
         all_cases.append(active)
 
