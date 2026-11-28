@@ -538,14 +538,15 @@ class ContinuingLifeCourt(unittest.TestCase):
                                 if n==4:
                                     return rows(r,[("father",policy([action("REST")]),0),
                                         ("father",move("home"),0),("nadia",move("home"),0),
-                                        ("father",shared(refuse=True),0),("father",policy([action("REST")]),0),
-                                        ("mother",policy([action("REST")]),0),("father",shared(),0)])
+                                        ("father",shared(refuse=True),0),("father",policy([action("REST")]),0)])
                                 if n==5:
-                                    return rows(r,[("father",policy([action("REST")]),0),
-                                        ("mother",policy([action("REST")]),0),("father",shared(),0),
-                                        ("father",policy([action("REST")]),0),("mother",policy([action("REST")]),0),
-                                        ("father",shared(nominate_routine=True),0)])
+                                    return rows(r,[("mother",policy([action("REST")]),0),("father",shared(),0),
+                                        ("father",policy([action("REST")]),0),
+                                        ("mother",policy([action("REST")]),0),("father",shared(),0)])
                                 if n==6:
+                                    return rows(r,[("father",policy([action("REST")]),0),("mother",policy([action("REST")]),0),
+                                        ("father",shared(nominate_routine=True),0)])
+                                if n==7:
                                     return rows(r,[("nadia",course(),4),
                                         ("father",policy([action("REST")]),0),
                                         ("father",move("workshop"),0),("nadia",move("workshop"),0),
@@ -684,6 +685,7 @@ class ContinuingLifeCourt(unittest.TestCase):
                         w=cold.ledger.world()[1]
                         self.assertEqual(w["positions"]["father"],"home")
                         self.assertEqual(w["positions"]["nadia"],"home")
+                        s.historical_checkpoint()
                         s.historical_checkpoint()
                         w=cold.ledger.world()[1]
                         pair=[q for q in w["routine_source_registry"].values()
