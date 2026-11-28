@@ -14,7 +14,7 @@ from pathlib import Path
 import sqlite3
 from time import perf_counter_ns
 
-from modern_generation_port_r28 import ConditionalPolicy, policy_check, require, canonical, digest, detached
+from modern_generation_port_r28 import ConditionalPolicy, policy_check, require, canonical, digest, detached, exact_keys, text
 from um_sorok_organism.semantics import ValidatingSemanticService
 
 GRADE="SOURCEFREE_CONDITIONAL_LIVE_TURN_NOT_MODEL_ADEQUACY"
@@ -108,14 +108,24 @@ class OneTurnPolicy:
                 self.custody.update(self.source,provider_called=True)
                 result=detached(self.provider.call(req))
                 require(self.rt.ledger.latest_event()["chain_hash"]==self.source,"LIVE_PROVIDER_MUTATED_OWNER")
-                require(isinstance(result,dict) and set(result)=={"policies"} and
+                require(exact_keys(result,("policies",),("private_rehearsal",)) and
                         isinstance(result["policies"],dict),"LIVE_BAD_POLICY_RESPONSE")
                 policies=result["policies"]
                 require(self.principal in policies and set(policies)<={self.principal,*tips},
                         "LIVE_POLICY_FOREIGN_ACTOR")
                 for p in policies.values():policy_check(p)
+                rehearsal=None
+                if "private_rehearsal" in result:
+                    r=result["private_rehearsal"]
+                    require(exact_keys(r,("objective_ref","meaning")) and text(r["objective_ref"])
+                            and text(r["meaning"]),"LIVE_REHEARSAL_SCHEMA")
+                    rows=[q for q in packet.get("private_rehearsal_options",[])
+                          if q.get("memory_event_ref")==r["objective_ref"] and q.get("affect_ref") is None]
+                    require(len(rows)==1,"LIVE_REHEARSAL_NOT_CURRENTLY_OFFERED")
+                    rehearsal={"actor":self.principal,**detached(r)}
                 # Only actor-local hypotheses, no generated actual result.
-                self.policy=ConditionalPolicy(policies)
+                # Reuse the qualified R61 current private rehearsal carrier.
+                self.policy=ConditionalPolicy(policies,rehearsal=rehearsal)
                 self.custody.update(self.source,outcome="POLICY_RETURNED",response_bytes=len(canonical(result).encode("utf-8")),
                                     response_digest=digest(result),policy_actor_count=len(policies))
             except BaseException as exc:

@@ -223,4 +223,48 @@ class OneResponseLiveCourt(unittest.TestCase):
                     "actual_coactor_attempt":evt["coactor_attempt"]["action"],"local_attempt_tasks":2},sort_keys=True))
             finally:session.close();rt.close()
 
+
+    def test_rare_actual_private_reconsideration_after_generation_changes_live_eligibility(self):
+        # Same sourcefree actor history, via the existing inherited generation
+        # machinery, followed by one live private activity, then later choice.
+        from test_modern_generation_port_r28 import ModernGenerationCourt,RepairCheckpoint,MEANING
+        for nominate in (True,False):
+            with self.subTest(nominate=nominate),TemporaryDirectory() as d:
+                f=Path(d);rt,refs=ModernGenerationCourt.setup_repair(self,f/"life.sqlite")
+                p=RepairCheckpoint(refs)
+                g=ModernGenerationCourt.generation(self,rt,f,"worker",p)
+                try:
+                    b=g.bootstrap();ref=b["records"][0]["accessible"]["objective_ref"]
+                    self.assertTrue(any(x["action"]=="EAT" for x in rt.situated("worker")["suspended_actions"]))
+                    g.finish();g.terminal_handoff()
+                finally:g.close();rt.close()
+                rt=ConstitutiveRuntime(str(f/"life.sqlite"))
+                calls=[]
+                def call(req):
+                    calls.append(req)
+                    answer={"policies":{"worker":policy([action("WAIT") if len(calls)==1 else action("EAT"),action("WAIT")])}}
+                    if nominate and len(calls)==1:answer["private_rehearsal"]={"objective_ref":ref,"meaning":MEANING}
+                    return answer
+                wire=transport(call);session=LiveTurnSession(rt,wire,f/"live.sqlite",sourcefree_attested=True)
+                try:
+                    food=rt.ledger.world()[1]["sites"]["home"]["food"]
+                    n=NeighborEncounter(rt,"visitor",mii_module=mii)
+                    first=session.owner_actor_beat(n,"worker")
+                    self.assertEqual(first["attempt"],"WAIT")
+                    a=rt.ledger.actor("worker")[1]
+                    self.assertEqual(len(a["historical_orientations"][0].get("revisions",[])),int(nominate))
+                    self.assertNotIn(MEANING,canonical(rt.ledger.world()[1]))
+                finally:session.close();rt.close()
+                rt=ConstitutiveRuntime(str(f/"life.sqlite"));session=LiveTurnSession(rt,wire,f/"live.sqlite",sourcefree_attested=True)
+                try:
+                    out=session.owner_actor_beat(NeighborEncounter(rt,"visitor",mii_module=mii),"worker")
+                    self.assertEqual(out["attempt"],"EAT" if nominate else "WAIT")
+                    self.assertEqual(rt.ledger.world()[1]["sites"]["home"]["food"],food-int(nominate))
+                    self.assertEqual(wire.usage_snapshot()["total"],2)
+                    self.assertEqual(len(session.custody.receipts()),2)
+                    self.assertTrue(rt.verify()["valid"])
+                    print("R41_LIVE_RECONSIDERATION "+json.dumps({"nominate":nominate,"later":out["attempt"],
+                        "actual_live_calls":2,"generation_calls":len(p.requests)},sort_keys=True))
+                finally:session.close();rt.close()
+
 if __name__=="__main__":unittest.main()

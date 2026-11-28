@@ -870,7 +870,7 @@ packet and current practical alternatives. Do not attribute analyst knowledge
 to a person's conscious self. No fabricated human action, consent, assent,
 successful act, perception, memory, or development. Existing world owner settles
 the actual attempt, actual lexical occurrence, coaction and material result.
-Return exactly {policies:{actor_id:actor_policy,...}} with the principal present.
+Return {policies:{actor_id:actor_policy,...}} with the principal present. A rare current private reconsideration may additionally nominate private_rehearsal:{objective_ref,meaning} ONLY if exactly one actual current principal_packet.private_rehearsal_options has that memory_event_ref and null affect_ref. Meaning <=512 nonblank, a present hypothesis not causal truth or changed earlier experience. The existing R61 owner may admit a qualified revision after actual private rehearsal, never automatically. This is a private actor activity, not a spoken response. No other actor private rehearsal nomination.
 Only listed actor IDs; peer contexts are separately conditioned, never shared
 psychic state. Principal expression must use only principal actor-accessible
 content, not another person's private tip or analyst description. No exposition
@@ -951,7 +951,8 @@ class ExplicitLiveTurnProvider(ExplicitJSONLLMProvider):
             result=self._transport(copy(req)) if self._transport is not None else self._request(req)
             receipt["usage"]=self._reported_usage(result)
             data=self._decode_json_response(result,receipt)
-            if set(data)!={"policies"} or type(data["policies"]) is not dict:
+            if (not {"policies"}<=set(data)<={"policies","private_rehearsal"}
+                    or type(data["policies"]) is not dict):
                 raise ValueError("LIVE_TURN_RESPONSE_SHAPE")
             receipt["outcome"]="PROPOSAL_RETURNED"
             return copy(data)
