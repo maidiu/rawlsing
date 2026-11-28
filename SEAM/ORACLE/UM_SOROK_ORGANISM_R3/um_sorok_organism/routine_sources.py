@@ -22,8 +22,8 @@ ROUTINE_OPS={'CARE':'QUALIFIED_REPRODUCTIVE_CARE','FEED':'QUALIFIED_MATERIAL_FEE
              'WORK':'QUALIFIED_WAGE_LABOR',
              'PRACTICE':'QUALIFIED_ROUTINE_PRACTICE','SING':'QUALIFIED_ROUTINE_PRACTICE'}
 MAX_ROUTINE_WINDOW=90
-# Same-operation singing and complementary practice/join are the bounded
-# joint arrangements admitted here. No inference of general teamwork.
+# Bounded existing world-defined cooperative contributions, not a general
+# teamwork law. Common prior event identities still required for each pair.
 JOINT_ROUTINE_COMPLEMENTS={
     'SING':{'SING','JOIN','MAKE_SPACE'},'PRACTICE':{'JOIN','MAKE_SPACE'},
     'JOIN':{'PRACTICE','SING','MAKE_SPACE'},'MAKE_SPACE':{'SING','PRACTICE','JOIN'},
@@ -191,6 +191,7 @@ def possible_recurrent_routines(actor,experience,event_ref):
     for path in reversed(paths):
         row=path.get('routine_exercise_analytic_only')
         if (not isinstance(row,dict) or not all(row.get(k)==current[k] for k in keys)
+                or row.get('coactivity_partner')!=current.get('coactivity_partner')
                 or row.get('event_ref')!=path.get('event')
                 or row.get('experience_ref')!=path.get('experience_ref')
                 or type(row.get('clock')) is not int

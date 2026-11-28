@@ -13,18 +13,19 @@ from neighbor_runtime import NeighborEncounter
 import mii
 
 class ReciprocalOrdinaryLife(unittest.TestCase):
-    def course(self,db,both):
+    def course(self,db,both,operations=('SING','SING')):
+        own_op,other_op=operations
         phase={'op':'REST','revision':None,'refuse':False}
         offers=[]
         def policy(task,p):
             if task=='expression':return {'task':task,'surface':'Ordinary life.'}
             if task=='actor_attempt':
-                op=phase['op'];aid=p['actor']['id']
+                op=other_op if p.get('requesting_actor') else phase['op'];aid=p['actor']['id']
                 if p.get('requesting_actor') and phase['refuse']:
                     return {'task':task,'action':'REFUSE'}
                 rows=[x for x in p.get('practical_options',[]) if x.get('operation')==op
                       and x.get('project_id')==('a-song' if aid=='a' else 'b-song')]
-                if rows and op=='SING':
+                if rows and op in operations:
                     return {'task':task,'practical_option_id':rows[0]['option_id']}
                 return {'task':task,'action':op}
             if task=='development':
@@ -39,7 +40,7 @@ class ReciprocalOrdinaryLife(unittest.TestCase):
                                 'provisional_exposure_fraction':1. if aid=='a' else .5}]}
                 if phase['revision'] and aid=='b':
                     choices=[x for x in p.get('historically_possible_routine_revisions',[])
-                             if x['basis']['operation']=='SING']
+                             if x['basis']['operation']==other_op]
                     if choices:return {'task':task,'candidates':[{
                         'kind':'REVISE_RECURRENT_ROUTINE','basis':choices[0]['basis'],
                         'mode':phase['revision'],'interpretive_hypothesis':'Change my own involvement.'}]}
@@ -48,9 +49,9 @@ class ReciprocalOrdinaryLife(unittest.TestCase):
         service=ValidatingSemanticService(CallbackLLMProvider(policy))
         rt=ConstitutiveRuntime(str(db),semantic=service)
         aa=adult('a','A');bb=adult('b','B')
-        aa['projects']=[{'id':'a-song','object':'sing together','means':['SING'],
+        aa['projects']=[{'id':'a-song','object':'a particular shared practice','means':[own_op],
                          'addressed_party_ref':'b','status':'active','priority':.7}]
-        bb['projects']=[{'id':'b-song','object':'sing together','means':['SING'],
+        bb['projects']=[{'id':'b-song','object':'b particular shared practice','means':[other_op],
                          'addressed_party_ref':'a','status':'active','priority':.7}]
         rt.ledger.initialize(blank_world(),[aa,bb])
         def world():return rt.ledger.world()[1]
@@ -71,9 +72,9 @@ class ReciprocalOrdinaryLife(unittest.TestCase):
             self.assertTrue(rt.verify()['valid'])
         try:
             # A refusal cannot become an exercise warrant.
-            phase['refuse']=True;beat('a','SING','PARTIAL');phase['refuse']=False
+            phase['refuse']=True;beat('a',own_op,'PARTIAL');phase['refuse']=False
             for _ in range(3):
-                beat('a','REST');beat('b','REST');beat('a','SING')
+                beat('a','REST');beat('b','REST');beat('a',own_op)
             self.assertEqual({a for a,_ in offers},{'a','b'})
             sources=world()['routine_source_registry']
             self.assertEqual(len(sources),2 if both else 1)
@@ -82,7 +83,7 @@ class ReciprocalOrdinaryLife(unittest.TestCase):
                 a,b=sorted(sources.values(),key=lambda x:x['actor'])
                 self.assertEqual(a['basis_event_refs'],b['basis_event_refs'])
             before={a:deepcopy(actor(a)) for a in ('a','b')}
-            f0={a:situated_component_efficacy(before[a],'SING','home')[
+            f0={a:situated_component_efficacy(before[a],own_op if a=='a' else other_op,'home')[
                 'technical_component_facility_estimate'] for a in before}
             n=NeighborEncounter(rt,'visitor',mii_module=mii)
             n.install_sourcefree_conditions({'grade':'SOURCEFREE_TEST_ONLY',
@@ -113,7 +114,7 @@ class ReciprocalOrdinaryLife(unittest.TestCase):
                 self.assertEqual(q['power_exercises'],before[a]['power_exercises'])
                 self.assertEqual(q['memories'],before[a]['memories'])
                 self.assertEqual(bool(q['practice_exposures']),both)
-            f1={a:situated_component_efficacy(actor(a),'SING','home')[
+            f1={a:situated_component_efficacy(actor(a),own_op if a=='a' else other_op,'home')[
                 'technical_component_facility_estimate'] for a in before}
             if both:
                 self.assertTrue(all(f1[a]>f0[a] for a in f0))
@@ -154,7 +155,7 @@ class ReciprocalOrdinaryLife(unittest.TestCase):
             else:self.assertEqual(f1,f0)
             n=NeighborEncounter(rt,'visitor',mii_module=mii)
             self.assertEqual(n.contribute('return','MOVE',destination='home')['status'],'PERFORMED')
-            phase['refuse']=True;beat('a','SING','PARTIAL')
+            phase['refuse']=True;beat('a',own_op,'PARTIAL')
             self.assertNotIn('visitor',rt.ledger.actors())
             self.assertTrue(rt.verify()['valid'])
             print('RECIPROCAL_ROUTINE',both,f0,f1)
@@ -280,5 +281,9 @@ class ReciprocalOrdinaryLife(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             self.course(Path(d)/'both.sqlite',True)
             self.course(Path(d)/'one.sqlite',False)
+
+    def test_complementary_practice_and_support(self):
+        with tempfile.TemporaryDirectory() as d:
+            self.course(Path(d)/'complementary.sqlite',True,('PRACTICE','JOIN'))
 
 if __name__=='__main__':unittest.main()
