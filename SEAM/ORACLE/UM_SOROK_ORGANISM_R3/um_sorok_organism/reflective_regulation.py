@@ -325,3 +325,52 @@ def private_end_ground(memories,end,aid,location,clock):
           and (r.get('ordinary_affect_memory') is None
                or r['ordinary_affect_memory']==m.get('ordinary_affect_memory'))]
     return rows[0] if len(rows)==1 else None
+
+
+def ordinary_private_project_site(constitution,project,access):
+    """The later acquired concern is distinct from its private rehearsal.
+    Do not erase it upon departure, or export a site-specific formation
+    as a general capacity or permanent need. Verify its lived ancestry.
+    """
+    takeup=project.get('takeup_evidence',{}).get('private_takeup_basis',{})
+    source=takeup.get('ordinary_affect_memory')
+    if source is None:return True
+    if (source.get('location')!=access.location
+            or constitution.actor!=access.actor
+            or project.get('means')!=['REST']):return False
+    ends=[e for e in constitution.possible_ends
+          if e.get('id')==project.get('possible_end_ref')
+          and e.get('status')=='TAKEN_UP_AS_PRACTICAL_PROJECT'
+          and e.get('private_ordinary_affect_memory')==source
+          and e.get('private_rehearsal_ref')==takeup.get('rehearsal_ref')
+          and any(t.get('project_ref')==project['id']
+                  and t.get('event')==takeup.get('later_event_ref')
+                  for t in e.get('subsequent_takeup',[]))]
+    if len(ends)!=1:return False
+    end=ends[0]
+    ground=private_end_ground(constitution.memories,end,constitution.actor,
+                              access.location,access.world_clock)
+    if not ground:return False
+    trials=[t for t in end.get('trial_history',[])
+            if t.get('id')==takeup.get('prior_trial_ref')
+            and t.get('private_rehearsal_ref')==ground['id']
+            and t.get('actor_experienced_status')=='PERFORMED'
+            and t.get('operation')=='REST']
+    if len(trials)!=1:return False
+    t=trials[0]
+    paths=constitution.evidence_paths
+    a=[p for p in paths if p.get('event')==t.get('event_ref')
+       and p.get('own_action')=='REST'
+       and p.get('provisional_end_trial_ref_analytic_only') is not None]
+    b=[p for p in paths if p.get('event')==takeup.get('later_event_ref')
+       and p.get('own_action')=='REST'
+       and p.get('selected_project_refs')==[]
+       and p.get('provisional_end_trial_ref_analytic_only') is None]
+    affects=[v for e in constitution.expectations
+             if e.get('actor')==constitution.actor and e.get('id')==source.get('expectation_ref')
+             for v in e.get('affective_organizations',[])
+             if v.get('actor')==constitution.actor and v.get('id')==source.get('affect_ref')
+             and v.get('origin_event_ref')==source.get('event_ref')
+             and v.get('project_ref')==source.get('project_ref')
+             and v.get('basis',{}).get('current_cue_ref')==source.get('received_sign_ref')]
+    return len(a)==len(b)==len(affects)==1

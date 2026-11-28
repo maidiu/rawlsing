@@ -295,6 +295,8 @@ def eligible_activities(constitution, recruited_form_ids, encounter):
             # Retain acquired wanting; do not grant its same-site course in
             # every unfamiliar context or on loss of historical source.
             continue
+        from .reflective_regulation import ordinary_private_project_site
+        if not ordinary_private_project_site(constitution,p,encounter):continue
         if p.get('incidental_takeup_basis') is not None:
             if not any(c.get('kind')=='material_object_present'
                        and c.get('material_object_ref')==p.get('material_object_ref')

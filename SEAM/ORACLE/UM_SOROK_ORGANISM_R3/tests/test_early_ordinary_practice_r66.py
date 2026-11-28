@@ -375,8 +375,12 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                         self.assertEqual(choices[0]['productive_witness_basis']['source_route'],
                                          'ACTUAL_RESPONSIVE_SPEECH_THEN_OTHER_SOLO_SOUND')
                         return {'task':task,'candidates':choices if witness else []}
+                    if private is not None and aid=='mother':
+                        return {'task':task,'candidates':p.get('historically_possible_cultural_references',[])}
                     return {'task':task,'candidates':[]}
                 candidates=p.get('historically_possible_social_vocal_development',[])
+                if private is not None:
+                    candidates=candidates+p.get('historically_possible_cultural_references',[])
                 ends=[x for x in p.get('historically_possible_genetic_ends',[])
                       if x.get('productive_vocal_basis',{}).get('source_route')==
                          'ORDINARY_RESPONSIVE_COORDINATION_THEN_OWN_EXERCISE']
@@ -441,6 +445,11 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                             self.assertEqual(len(opts),1)
                             return {'task':task,'practical_option_id':opts[0]['option_id']}
                         return {'task':task,'action':'SPEAK'}
+                    if aid=='mother' and phase['name']=='mother_inspect':
+                        rows=[o for o in p['practical_options'] if
+                              o.get('grounds_status')=='UNTESTED_PERSONALLY_HEARD_PUBLIC_OBJECT_REFERENCE']
+                        self.assertEqual(len(rows),1)
+                        return {'task':task,'practical_option_id':rows[0]['option_id']}
                     if aid=='mother' and phase['name']=='witness':
                         opts=[o for o in p['practical_options'] if o.get('productive_witness_attention')]
                         self.assertEqual(len(opts),int(witness))
@@ -473,6 +482,17 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                     return {'task':task,'possible_end_trial_id':rows[0]['trial_id']} if rows else {'task':task,'action':'WAIT'}
                 if phase['name']=='private_takeup':
                     return {'task':task,'action':'REST'}
+                if phase['name'] in ('cultural_inspect','cultural_speak'):
+                    kind=('UNTESTED_PERSONALLY_HEARD_PUBLIC_OBJECT_REFERENCE' if phase['name']=='cultural_inspect'
+                          else 'ACQUIRED_CULTURAL_ATTENTION_MEETS_ACQUIRED_VOCAL_COORDINATION')
+                    rows=[o for o in p['practical_options'] if o.get('grounds_status')==kind]
+                    self.assertEqual(len(rows),1)
+                    return {'task':task,'practical_option_id':rows[0]['option_id']}
+                if phase['name']=='private_home':
+                    self.assertFalse(any(o['operation']=='REST' and o.get('project_id') for o in p['practical_options']))
+                    a=[o for o in p['practical_options'] if o['operation']=='SING' and o.get('project_id')]
+                    self.assertEqual(len(a),1)
+                    return {'task':task,'practical_option_id':a[0]['option_id']}
                 if phase['name']=='private_conduct':
                     rows=[o for o in p['practical_options'] if o['operation']=='REST' and o.get('project_id')]
                     self.assertEqual(len(rows),int(bool(private)))
@@ -696,6 +716,36 @@ class EarlyOrdinaryPractice(unittest.TestCase):
                         phase['name']='private_takeup'
                         self.assertEqual(rt.step('nadia')['attempt'],'REST')
                         self.assertEqual(len(self.child(rt)['projects']),1+int(bool(private)))
+                        rt.close();rt=runtime()
+                        phase['name']='private_conduct'
+                        self.assertEqual(rt.step('nadia')['attempt'],'REST' if private else 'SING')
+                        self.assertTrue(rt.verify()['valid'])
+                        # Private new concern remains actor-owned but does not
+                        # export its historical site to every world position.
+                        self.assertEqual(rt.step('nadia',requested_action='MOVE',object_ref='home')['objective_outcome'],'MOVED')
+                        phase['name']='private_home'
+                        self.assertEqual(rt.step('nadia')['attempt'],'SING')
+                        # Same continuing life becomes a cultural producer,
+                        # not only an internal activity or recipient of speech.
+                        self.assertEqual(rt.step('father',requested_action='MAKE_OBJECT')['status'],'PERFORMED')
+                        obj=next(iter(rt.ledger.world()[1]['material_objects']))
+                        self.assertEqual(rt.step('father',requested_action='SPEAK',object_ref=obj)['status'],'PERFORMED')
+                        phase['name']='cultural_inspect'
+                        self.assertEqual(rt.step('nadia')['attempt'],'INSPECT')
+                        phase['name']='recovery';rt.step('mother')
+                        phase['name']='cultural_speak'
+                        self.assertEqual(rt.step('nadia')['attempt'],'SPEAK')
+                        cue=rt.ledger.world()[1]['cues'][-1]
+                        self.assertEqual(cue['material_object_ref'],obj)
+                        self.assertTrue(cue['actual_spoken_object_demonstration'])
+                        self.assertNotIn('private_rehearsal',cue)
+                        self.assertNotIn('ordinary_affect_memory',cue)
+                        phase['name']='mother_inspect';self.assertEqual(rt.step('mother')['attempt'],'INSPECT')
+                        learned=rt.ledger.actor('mother')[1]['cultural_reference_practices']
+                        self.assertEqual(learned[-1]['particular_speaker_ref'],'nadia')
+                        self.assertEqual(learned[-1]['object_ref'],obj)
+                        self.assertEqual(rt.ledger.world()[1]['material_objects'][obj]['owner'],'father')
+                        self.assertEqual(rt.step('nadia',requested_action='MOVE',object_ref='workshop')['objective_outcome'],'MOVED')
                         rt.close();rt=runtime()
                         phase['name']='private_conduct'
                         self.assertEqual(rt.step('nadia')['attempt'],'REST' if private else 'SING')
