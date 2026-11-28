@@ -79,6 +79,9 @@ def possible_lexical_project_revaluations(actor,experience,event_ref):
                 'received_event_ref':event_ref,'received_experience_ref':experience['ref'],
                 'received_cue_ref':sign['id'],'received_words_hash':sign['utterance_text_hash'],
                 'visually_eligible_source_ref':sign.get('source_actor'),
+                **({'lexical_acquisition_route':sign['lexical_acquisition_route']}
+                   if sign.get('lexical_acquisition_route') in (
+                       'VOLUNTARILY_ADDRESSED_TO_SELF','AUDIBLE_NOT_ADDRESSED_TO_SELF') else {}),
                 'previous_priority':project.get('priority',.4),
                 'not_speaker_recognition_claim_truth_or_motive_fulfillment':True}
             out.append({'kind':'REORGANIZE_PROJECT','project_id':pid,

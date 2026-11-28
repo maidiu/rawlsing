@@ -165,6 +165,14 @@ def attach_actual_utterance(world,attempt,summary,text):
         raise ValueError('LEXICAL_REALIZATION_NOT_ACTUAL_SPEAK')
     binding={'utterance_cue_ref':cue['id'],'utterance_text_hash':digest(text),
              'utterance_grade':'SOURCEFREE_REALIZED_LEXICAL_OCCURRENCE'}
+    address=attempt.practical_selection.get('selected_speech_address')
+    if address is not None:
+        if (address.get('recipient')!=attempt.target or summary.get('target')!=attempt.target
+                or public.get('target')!=attempt.target):
+            raise ValueError('LEXICAL_ADDRESS_TARGET_MISMATCH')
+        binding['voluntary_address_ref']=stable_id('voluntary_lexical_address',{
+            'cue':cue['id'],'actor':attempt.actor,'recipient':attempt.target})
+        cue['voluntary_addressed_party_ref']=attempt.target
     cue.update(binding,spoken_text=text,utterance_claim_truth='NOT_ESTABLISHED')
     # The earlier object-demonstration branch did not encode words; this
     # opt-in lexical realization supersedes only those absence flags.
@@ -220,6 +228,17 @@ def project_recursive_actor_sign(world, actor, cue, location):
                         'unobserved_semantic_content'):
                 if key in cue:result[key]=copy(cue[key])
             result['tags']+=['public_object_reference','object_present']
+        if lexical and visible and cue.get('voluntary_address_ref'):
+            target=cue.get('voluntary_addressed_party_ref')
+            if (type(target) is str and cue['voluntary_address_ref']==stable_id(
+                    'voluntary_lexical_address',{'cue':cue['id'],'actor':source,'recipient':target})):
+                # Only the recipient's own qualified receipt establishes
+                # directedness. An overhearer gets words, not another's identity.
+                result['lexical_acquisition_route']=(
+                    'OWN_ADDRESSED_SPEECH' if own else
+                    'VOLUNTARILY_ADDRESSED_TO_SELF' if target==actor['id'] else
+                    'AUDIBLE_NOT_ADDRESSED_TO_SELF')
+                result['address_does_not_establish_trust_or_confidentiality']=True
         if lexical:
             # There now are words; do not falsely claim they were absent.
             result.pop('spoke_about_material_object_without_encoded_word',None)
@@ -932,6 +951,23 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     elif attempt.action=='SIGNAL':
         output='NONVERBAL_SIGNAL'
     elif attempt.action=='SPEAK':
+        address=attempt.practical_selection.get('selected_speech_address')
+        if address is not None:
+            other=attempt.target
+            actor_target=(type(other) is str and other!=aid and other in actors
+                          and world['positions'].get(other)==loc)
+            channels=(recursive_encounter_channels(world,aid,other,loc)
+                      if actor_target else None)
+            human_target=other in visible_vocal_visitors(world,actor,loc)
+            present=(actor_target and (channels is None or channels['visible'])) or human_target
+            expected=(('presence:' if actor_target else 'visitor_vocal_presence:')+
+                      str(other)+':'+str(world['clock']))
+            if (attempt.intention!='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+                    or type(address) is not dict or address.get('recipient')!=other
+                    or address.get('presence_cue_ref')!=expected or not present
+                    or type(attempt.practical_selection.get('prospective_speech_intent')) is not str
+                    or attempt.object_ref is not None):
+                raise ValueError('VOLUNTARY_ADDRESS_NO_LONGER_QUALIFIED')
         if attempt.object_ref is None:
             output='SPEECH_PERFORMED'
         else:
