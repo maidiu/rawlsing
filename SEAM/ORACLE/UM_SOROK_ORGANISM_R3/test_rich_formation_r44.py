@@ -10,7 +10,8 @@ import unittest
 from um_sorok_organism.types import adult,blank_world
 from um_sorok_organism.runtime import ConstitutiveRuntime
 from modern_generation_port_r28 import ModernDevelopmentOwner,ModernGeneration
-from test_modern_generation_port_r28 import action,policy,event,retro,ModernGenerationCourt
+from test_modern_generation_port_r28 import action,policy,event,retro
+import test_modern_generation_port_r28 as inherited
 
 def rich(offer,construct,**augment):
     return {"offer":"historically_possible_"+offer,"construct":construct,"augment":augment}
@@ -35,7 +36,7 @@ class Course:
 
 class RichFormationCourt(unittest.TestCase):
     def g(self,rt,folder,p,actor):
-        return ModernGenerationCourt.generation(self,rt,folder,actor,p)
+        return inherited.ModernGenerationCourt.generation(self,rt,folder,actor,p)
     def test_affect_of_own_expression_becomes_operative_without_public_private_collapse(self):
         for nominate in (True,False):
             with self.subTest(nominate=nominate),tempfile.TemporaryDirectory() as d:
@@ -91,7 +92,13 @@ class RichFormationCourt(unittest.TestCase):
                 f=Path(d);db=f/"life.sqlite";rt=ConstitutiveRuntime(str(db))
                 a=adult("giver","Giver");a["projects"]=[{"id":"care","object":"care for other","means":["CARE"],
                     "addressed_party_ref":"other","status":"active","priority":.6}]
-                rt.ledger.initialize(blank_world(),[a,adult("other","Other"),adult("third","Third")])
+                others=[adult("other","Other"),adult("third","Third")]
+                # A particular independent practical project is required:
+                # never make the imposition an automatic reaction to care.
+                for other in others:
+                    other["projects"]=[{"id":"impose:"+other["id"],"object":"obtain compliance",
+                        "means":["IMPOSE"],"addressed_party_ref":"giver","status":"active","priority":.6}]
+                rt.ledger.initialize(blank_world(),[a,*others])
                 care=action("CARE",{"world_request":{"addressed_party_ref":"other"}})
                 specific=action("CARE",{"world_request":{"addressed_party_ref":"other"},
                                       "grounds_status":"HISTORICALLY_PRACTICED_PARTICULAR_CARE"})
