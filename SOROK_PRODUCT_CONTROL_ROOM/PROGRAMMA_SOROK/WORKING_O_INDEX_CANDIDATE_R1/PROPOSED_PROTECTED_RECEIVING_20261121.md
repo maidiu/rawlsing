@@ -1,5 +1,43 @@
 # Proposed protected SOROK PROGRAMMA / paired CURRENT_PROGRESS receiving — 2026-11-21 R1
 
+## PM R004 proposed paired receiving — HOLD, not protected edit
+
+Protected PRE-MAIN `827714e83743056939894a39736d72ea16bdc6dd`; MD blob `a565e6239ee730bf8aae796d1c5afb35207b1e93`; JSON blob `f2081d41452a5fb5d7061fcf340af725e4ee07af`. Preserve R39 + MII and prior MI #907 correction. Proposed matching MD addition and JSON member (competent PROGRAMMA receiver only):
+
+```json
+{
+  "sorok_pm_r004_operational_candidate": {
+    "pm_cut": "01fb0a8256f6a160065a54d54aa168ba574e66f9",
+    "ledger_blob": "c50e06804d8afb53f893848a1da3f87337e2cde2",
+    "cic_blob": "7f0035483d2def5dac6590cebe1ae31551a37d80",
+    "returns": [
+      {
+        "pr": 1418,
+        "head": "2bef1d25fb6faa87fe9c97656febf4bb92876d83",
+        "job": 140784295632
+      },
+      {
+        "pr": 1419,
+        "head": "4d104a17c4ec9126484faac4e6f13d5050162051",
+        "job": 140784500054
+      },
+      {
+        "pr": 1378,
+        "head": "7e3c20baa8848601af8166e09d645cb5d2d3cc97",
+        "job": 140784155667
+      }
+    ],
+    "grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK",
+    "independent_review": "NOT_ESTABLISHED",
+    "protected_received": false,
+    "joined_execution": "NOT_ESTABLISHED",
+    "hold": "HQ_CURRENTNESS_HOLD: full controlling 27-task/authority/dependency state and local workers not independently reconciled; competent PROGRAMMA and protected receiver to reconcile paired records; no construction stop."
+  }
+}
+```
+MD equivalent: R004 three exact sourcefree candidate receipts, ledger/CIC pins above; no joint execution, independent review, native or protected promotion. No protected lease. PENDING_GUIDE_INTEGRATION. Owner: PROGRAMMA SOROK / competent protected receiver.
+
+
 **STATUS: PROPOSED_ONLY / HQ_CURRENTNESS_HOLD.** This file is an exact owner handoff, not a protected edit, SOROK HQ accreditation, acceptance of O-INDEX R3, a native science/actor decision, or proof of current worker leases. **Do not merge it automatically.**
 
 ## Protected parent and actual proposed receipt
